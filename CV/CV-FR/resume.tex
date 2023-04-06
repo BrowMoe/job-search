@@ -1,0 +1,142 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[11pt,a4paper,sans]{moderncv} % Font sizes: 10, 11, or 12; paper sizes: a4paper, letterpaper, a5paper, legalpaper, executivepaper or landscape; font families: sans or roman
+
+\moderncvstyle{banking} % CV theme - options include: 'casual' (default), 'classic', 'oldstyle' and 'banking'
+\moderncvcolor{black} % CV color - options include: 'blue' (default), 'orange', 'green', 'red', 'purple', 'grey' and 'black'
+\moderncvicons{awesome}
+\usepackage{multicol}
+
+\usepackage[scale=0.75]{geometry} % Reduce document margins
+%\setlength{\hintscolumnwidth}{3cm} % Uncomment to change the width of the dates column
+%\setlength{\makecvtitlenamewidth}{10cm} % For the 'classic' style, uncomment to adjust the width of the space allocated to your name
+
+\renewcommand*{\cventry}[7][.25em]{
+  \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}%
+	  {\bfseries #4} & {\bfseries #5} \\%
+	  {#3\ifthenelse{\equal{#6}{}}{}{#6}}&{#2}\\%
+  \end{tabular*}%
+  \ifx&#7&%
+    \else{\\\vbox{\small#7}}\fi%
+\par\addvspace{#1}}
+
+\renewcommand*{\cvitem}[3][.25em]{%
+  \ifthenelse{\equal{#2}{}}{}{\hintstyle{#2} }{#3}%
+\par\addvspace{#1}}
+%----------------------------------------------------------------------------------------
+%	NAME AND CONTACT INFORMATION SECTION
+%----------------------------------------------------------------------------------------
+
+\firstname{Xavier} % Your first name
+\familyname{Loizeau} % Your last name
+% All information in this block is optional, comment out any lines you don't need
+\title{Scientifique de Recherche Sup\'erieur}
+\address{Flat 6 Keats House, Roman Road,}{E2 0HT Londres, Angleterre}
+\mobile{(+44) 7845 0795959}
+\email{application@loizeau.eu}
+\photo[70pt][0.6pt]{picture} % The first bracket is the picture height, the second is the thickness of the frame around the picture (0pt for no frame)
+
+%----------------------------------------------------------------------------------------
+\usepackage[T1]{fontenc}
+\usepackage[francais]{babel}
+\usepackage[autolanguage]{numprint}
+\usepackage{hyphenat}
+\hyphenation{mate-mática recu-perar}
+
+\begin{document}
+\thispagestyle{empty}
+
+\makecvtitle % Print the CV title
+
+\section{Professional experiences}
+\cventry{2019--Present}{Scientifique de Recherche Sup\'erieur}{National Physical Laboratory,}{Teddington, Angleterre}{}{;}
+\cventry{2015--2019}{Doctorant en Mathématiques}{Ruprecht-Karls-Universit\"at, Institut de mathématiques appliquées,}{Heidelberg, Allemagne}{}{M\'ethodes Bay\'esiennes hierarchiques et aggr\'egation =;}
+\cventry{2015}{Internship, 18.50/20}{ONERA (National Agency of Study and Research in Aerospace)}{Palaiseau, France}{}{Building a multi-fidelity surrogate model for Infra-Red emission by space-rocket engines: based on design of experiment, Bayesian Co-Kriging, sensitivity analysis and propagation of uncertainty. Implementations with R.}
+\cventry{2014}{Internship}{CREST (Research Center for Economics and Statistics)}{Rennes, France}{}{Studied, implemented and compared two methods for illumination bias removal on electronic microscope images: implemented an R package using C++ for these methods, based on parametric and non parametric Kernel regression.}
+
+%----------------------------------------------------------------------------------------
+%	EDUCATION SECTION
+%----------------------------------------------------------------------------------------
+
+\section{Education}
+\cventry{2012--2015}{MSc in }{ENSAI - National School for Statistics and Information Analysis}{Rennes, France}{Advanced Statistical Engineering;}{16.15/20}
+\cventry{2015}{MSc in }{University of Rennes 1, department of mathematics}{Rennes, France}{Mathematical Statistics;}{13.9/20 ($2^{nd}$ class division II (2.2) Honours)}  % Arguments not required can be left empty
+\cventry{2012}{BSc in }{University of Rennes 1, department of mathematics}{Rennes, France}{Mathematics;}{10.114/20}
+\cventry{2010--2012}{Post secondary classes pr\'eparatoires }{Lyc\'ee Clemenceau}{Nantes, France}{Specialisation in Mathematic and Physics}{undergraduate-level courses required in preparation for competitive entrance exams into top graduate and engineering schools (France's grandes \'ecoles).}
+
+\medskip
+
+\subsection{Subjects in study program}
+
+\begin{multicols}{2}
+\underline{\textsc{Mathematics:}}
+complex analysis, differential equations, topology, functional analysis, measure theory, numerical analysis, group theory, arithmetic, linear algebra;
+
+\underline{\textsc{stochastic:}}
+statistical ill-posed inverse problems, Bayesian methods for non parametric models, frequentist methods for non parametric models, minimax theory, survival analysis, Le Cam theory, test theory, generalized additive models, non linear regression, time series, Hidden Markov Models, Kalman and particle filters, stochastic processes;
+
+\underline{\textsc{Data science:}} neural networks, SVM, random forests, classification/regression trees, CART, BAGGING, image processing (filtering, Markov fields, MAP classification, MAP reconstruction), kNN, surrogate models, design of experiments, quality control of industrial processes.
+\end{multicols}
+
+\newpage
+%------------------------------------------------
+
+\subsection{Academic projects}
+
+\cventry{2015}{}{Master thesis, 15/20}{Rennes1 university/ENSAI}{comparing prior choices in terms of their posterior concentration,}{comparison of theoretical and practical properties of two prior choices for the white noise model;}
+\cventry{2015}{}{Statistics project, 15.80/20}{ENSAI/THALES}{created a boat tracking algorithm using AIS system data,}{implemented in R, involves Kalman and particular filter (group project);}
+\cventry{2014}{}{Statistics project}{ENSAI/Aix-Marseille University}{cluster evolution analysis, application to cytometric analysis}{analyzed the evolution of an ecosystem in state of remediation. Involves managing a large amount of data, different clustering algorithm and research of comparison criterion for partitions on different data bases (group project);}
+\cventry{2013}{}{Statistics project}{ENSAI}{setting patient profiles based on IGS II and Glasgow scores after a liver transplant,}{analyzing the power of prediction of these scores about death, fitting a logistic regression model to our population (group project);}
+\cventry{2012}{}{Mathematics/IT project,}{Lyc\'ee Georges Clemenceau}{coding an automatic music composer using Rubik's Cube modeling,}{developed in PASCAL, involves group theory to create a Rubik's Cube solving algorithm.}
+
+\medskip
+
+\subsection{Online lectures (certificates available on Linkedin)}
+Responsive Website Development and Design (Coursera 6-courses specialization, University of London, Goldsmiths), Initiation \`a la th\'eorie des distributions (Coursera, \'Ecole Polytechnique), Approximation Algorithms Part I (Coursera, \'Ecole Normale Sup\'erieure), Introduction to Complex Analysis (Coursera, Wesleyan University)
+
+\medskip
+
+\section{Personal projects}
+\cventry{2018}{}{Website development}{}{Developing my personal website,}{to be deployed, it allows communication with students, sharing content about my research and my resume. It is dedicated to become a larger communication platform including a blog about my research activity. Deployed with meteor and mongoDB.}
+\newpage
+
+\section{IT}
+
+
+\subsection{Operating systems}
+Mac OS, Windows, Ubuntu
+\subsection{Programing languages}
+C++ (used to develop a smart house assistant application), Java, Pascal, HTML, CSS, JavaScript (Meteor)
+\subsection{Data science}
+R (many projects during studies, intensive use during internships for simulations and real data applications, data simulations during my PhD), Matlab (used during studies and for image treatment projects as well as for personal projects using Gibb's sampling for Hidden Markov Models), SAS (used during studies), currently learning : Python
+
+%----------------------------------------------------------------------------------------
+%	LANGUAGES SECTION
+%----------------------------------------------------------------------------------------
+
+\section{Languages}
+
+\cvitemwithcomment{French}{native language}{}
+\cvitemwithcomment{English}{2013 : TOEIC test, advanced level, 880/990}{}
+\cvitemwithcomment{German}{basic, currently learning}{}
+\cvitemwithcomment{Spanish}{Basic}{}
+
+%----------------------------------------------------------------------------------------
+%	INTERESTS SECTION
+%----------------------------------------------------------------------------------------
+
+\section{Interests}
+\cvitemwithcomment{Music}{Guitar (formerly in band), singing, composition}{}
+\cvitemwithcomment{Sport}{judo (13 years, brown belt), jujitsu, handball, volleyball, running, bouldering}{}
+\cvitemwithcomment{Reading}{fictions, popular science, philosophy, sociology, technological surveillance, news}{}
+\cvitem{Traveling}{}{}
+
+\section{Personal Details}
+\cvitem{Date of Birth:}{$13^{th}$ of January, 1992}
+\cvitem{\faEnvelope :}{Wilckensstra\ss e 20, 69120 Heidelberg, Germany}
+\cvitem{\faMobile :}{(+49) 1575 9361755}
+\cvitem{\faAt :}{\href{mailto:xloizeauhd@gmail.com}{xloizeauhd@gmail.com}}
+\cvitem{\faLinkedin :}{\url{www.linkedin.com/in/x-loizeau}}
+
+\end{document}
+\grid
+\grid
