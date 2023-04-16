@@ -1,0 +1,281 @@
+\documentclass[10pt]{beamer}
+\usetheme[
+%%% option passed to the outer theme
+%    progressstyle=fixedCircCnt,   % fixedCircCnt, movingCircCnt (moving is deault)
+  ]{Feather}
+  
+% If you want to change the colors of the various elements in the theme, edit and uncomment the following lines
+
+% Change the bar colors:
+\setbeamercolor{Feather}{fg=red!80!black,bg=red!60!black}
+
+% Change the color of the structural elements:
+\setbeamercolor{structure}{fg=black}
+
+% Change the frame title text color:
+\setbeamercolor{frametitle}{fg=yellow}
+
+% Change the normal text color background:
+%\setbeamercolor{normal text}{fg=black,bg=gray!10}
+
+%-------------------------------------------------------
+% INCLUDE PACKAGES
+%-------------------------------------------------------
+
+\usepackage{ifpdf}
+\usepackage{graphicx} 
+\ifpdf
+\DeclareGraphicsRule{*}{mps}{*}{}
+\else
+% Recent LaTeX versions donât require the next line
+% \DeclareGraphicsRule{*}{eps}{*}{}
+\fi
+
+\usepackage[english, french]{babel}
+\usepackage[utf8]{inputenc}
+%\usepackage[TS1,T1]{fontenc}
+%\usepackage{helvet}
+\usepackage{fourier}
+\usepackage{hyperref}
+%\usepackage{lmodern}
+%\usepackage{mathrsfs}
+%\usepackage{natbib}
+\usepackage{amsmath,amssymb,amsfonts,graphicx,shorttoc,textpos,caption,here, yfonts}
+\usepackage{verbatim,enumerate,hyperref,dsfont,fancyhdr,setspace,array}
+\usepackage[citestyle=verbose]{biblatex}
+
+\bibliography{Feathertheme.bib}
+\DeclareCiteCommand{\cite}
+{\usebibmacro{prenote}}
+{\usebibmacro{citeindex}%
+\usebibmacro{cite}}
+{\multicitedelim}
+{\usebibmacro{cite:postnote}}
+\usefonttheme[onlymath]{serif}
+\graphicspath{{Feathergraphics/}}
+\newbibmacro*{cite}{%
+\usebibmacro{cite:citepages}%
+\ifciteseen
+	{\iffieldundef{shorthand}
+		{\usebibmacro{cite:short}}
+		{\usebibmacro{cite:shorthand}}}
+	{\usebibmacro{cite:full}}}
+
+\renewbibmacro*{cite}{%
+\usebibmacro{cite:citepages}%
+{\usebibmacro{cite:full}}}
+%-------------------------------------------------------
+% DEFFINING AND REDEFINING COMMANDS
+%-------------------------------------------------------
+
+% colored hyperlinks
+\newcommand{\chref}[2]{
+  \href{#1}{{\usebeamercolor[bg]{Feather}#2}}
+}
+%\bibliographystyle{apalike}
+\renewcommand\bibfont{\scriptsize}
+\setbeamertemplate{frametitle continuation}[from second]
+
+%-------------------------------------------------------
+% INFORMATION IN THE TITLE PAGE
+%-------------------------------------------------------
+
+\title[Pre-talk : Bayesian asymptotics and nonparametric inverse problems] % [] is optional - is placed on the bottom of the sidebar on every slide
+{ % is placed on the title page
+     \textbf{Pre-talk : Bayesian asymptotics and nonparametric inverse problems}
+}
+
+
+
+
+
+
+\institute[Ruprecht-Karls-Universität Heidelberg]
+{
+  
+  Ruprecht-Karls-Universität Heidelberg
+  %there must be an empty line above this line - otherwise some unwanted space is added between the university and the country (I do not know why;( )
+}
+
+\date{$30^{th}$ of June 2016}
+
+\author[Xavier Loizeau] % [] is optional - is placed on the bottom of the sidebar on every slide
+{ % is placed on the title page
+      \textit{In anticipation of Bartek Knapik talk\\      Xavier Loizeau}
+}
+%-------------------------------------------------------
+% THE BODY OF THE PRESENTATION
+%-------------------------------------------------------
+
+\begin{document}
+%-------------------------------------------------------
+% THE TITLEPAGE
+%-------------------------------------------------------
+
+{\1% % this is the name of the PDF file for the background
+\begin{frame}[plain,noframenumbering] % the plain option removes the header from the title page, noframenumbering removes the numbering of this frame only
+  \titlepage % call the title page information from above
+\end{frame}}
+
+\AtBeginSection[]{
+\begin{frame}{Contents}
+\setcounter{tocdepth}{2}
+\tableofcontents[sectionstyle=show/shaded, subsectionstyle=show/show/hide]
+\end{frame}
+}
+
+\begin{frame}{Contents}
+\setcounter{tocdepth}{1}
+\tableofcontents
+\end{frame}
+
+%-------------------------------------------------------
+\section{Frequentist paradigm : convergence rates}
+%-------------------------------------------------------
+
+\begin{frame}{Point-wise comparison of frequentist estimators}
+\begin{columns}
+\begin{column}[T]{.4\textwidth}%
+\hspace*{8ex}
+\includegraphics<1>[scale=.8]{inv-niv-minimax.8}%
+\includegraphics<2>[scale=.8]{inv-niv-minimax.9}% lower
+\end{column}
+\begin{column}[T]{.7\textwidth}%
+\begin{itemize}
+\item<2->
+Measure the performance of a frequentist estimator $\widehat{\theta}_{n}$ using {\textcolor{red}{quadratic risk}} 
+for a given parameter $\theta^{\circ}$
+\begin{equation*}
+	\mathbb{E}_{\theta^{\circ}} \left[d\left(\widehat{\theta}_{n}, \theta^{\circ}\right)^{2}\right]
+\end{equation*}
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Comparison of frequentist estimators over a subset}
+\begin{columns}
+\begin{column}[T]{.4\textwidth}%
+\hspace*{8ex}
+\includegraphics<1-2>[scale=.8]{inv-gssm-minimax.1}%
+\includegraphics<3>[scale=.8]{inv-gssm-minimax.2}% lower
+\includegraphics<4>[scale=.8]{inv-gssm-minimax.3}%
+\includegraphics<5>[scale=.8]{inv-gssm-minimax.4}%
+\includegraphics<6>[scale=.8]{inv-gssm-minimax.5}% upper + lower
+\includegraphics<7>[scale=.8]{inv-gssm-minimax.6}%
+\includegraphics<8->[scale=.8]{inv-gssm-minimax.7}%
+\end{column}\begin{column}[T]{.7\textwidth}%
+\begin{itemize}
+\item<2->
+Measure the performance of a frequentist estimator using {\textcolor{red}{maximal risk}} 
+over a  class $\Theta^{\circ}$  of parameters
+  \begin{equation*}
+\sup\limits_{\theta^{\circ} \in \Theta^{\circ}} \mathbb{E}_{\theta^{\circ}} \left[d\left(\widehat{\theta}, \theta^{\circ}\right)^{2}\right]
+\end{equation*}
+ \item<3->  Goal : finding a lower bound $\mathcal{R}_{n}^{\star}(\Theta^{\circ})$ ...
+\begin{equation*}
+\inf\limits_{\tilde{\theta}}\sup\limits_{\theta^{\circ} \in \Theta^{\circ}} \mathbb{E}_{\theta^{\circ}}\left[d\left(\tilde{\theta}, \theta^{\circ}\right)^{2}\right] \geq C_{1} \cdot \mathcal{R}_{n}^{\star}\left(\Theta^{\circ}\right)
+\end{equation*}
+\item<8-> ... which is reached by an estimator $\widehat{\theta}$
+  \begin{equation*}
+\sup\limits_{\theta^{0}\in \Theta^{\circ}} \mathbb{E}_{\theta^{\circ}}\left[d\left(\widehat{\theta}, \theta^{\circ}\right)^{2}\right] \leq C_{2} \cdot \mathcal{R}_{n}^{\star}\left(\Theta^{\circ}\right)
+\end{equation*}
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+\section{Bayesian formulation : concentration rate}
+
+\begin{frame}{Bayesian paradigm}{Founding principles of the Bayesian paradigm}
+
+Let $(\Theta, \mathfrak{A})$ be a measurable space
+
+$\boldsymbol{\theta}$ is a random variable $(\Omega, \mathfrak{F}) \rightarrow (\Theta, \mathfrak{A})$
+
+\[ \boldsymbol{\theta} \sim \Pi \]
+
+\bigskip
+
+Denote by $p_{\theta}$ the density of $\Pi$ with respect to a measure $\mu$
+
+Posterior distribution
+
+\[ \forall \mathfrak{B} \in \mathfrak{A} \quad \Pi_{\boldsymbol{\theta}\vert Y}(\mathfrak{B}) = \frac{\int_{\mathfrak{B}} p_{\boldsymbol{\theta}}(Y)d\Pi(\boldsymbol{\theta})}{\int_{\Theta} p_{\boldsymbol{\theta}}(X)d\Pi(\boldsymbol{\theta})}\]
+
+\end{frame}
+
+\begin{frame}{Bayesian paradigm}{Comparing prior choices}
+
+Taking a frequentist point of view
+\begin{itemize}
+\item $\theta^{\circ}$ the true parameter
+\item Is $\Pi_{\boldsymbol{\theta}\vert Y}$ shrinking around $\theta^{\circ}$ as $\epsilon$ tends to $0$?
+\item How fast ?
+
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Bayesian paradigm}{Comparing prior choices}
+\begin{columns}
+\begin{column}[T]{.4\textwidth}%
+\hspace*{4ex}
+\includegraphics<1>[scale=.8]{reg.31}%
+\includegraphics<2>[scale=.8]{reg.32}%
+\includegraphics<3>[scale=.8]{reg.33}%
+\includegraphics<4>[scale=.8]{reg.34}%
+\includegraphics<5>[scale=.8]{inv-gssm-minimax.3}%
+\includegraphics<6>[scale=.8]{inv-gssm-minimax.4}%
+\includegraphics<7>[scale=.8]{inv-gssm-minimax.5}% upper + lower
+\includegraphics<8>[scale=.8]{inv-gssm-minimax.6}%
+\end{column}\begin{column}[T]{.7\textwidth}%
+
+\begin{itemize}
+
+\item<1-> Concentration rate $(\phi_{\epsilon})_{\epsilon \in \mathbb{R}_{+}}$
+\[\exists c \in \mathbb{R}_{+}, \quad \lim_{\epsilon \rightarrow 0} \mathbb{E}_{\theta^{\circ}}\left[ \Pi_{\boldsymbol{\theta}\vert Y} \left(d\left(\boldsymbol{\theta}, \theta^{\circ} \right)^{2} \geq c \, \phi_{\epsilon} \right) \right] = 0 \]
+
+\item<5-> Uniform concentration rate $(\phi_{\epsilon})_{\epsilon \in \mathbb{R}_{+}}$ over a subset on $\Theta^{\circ} \subset \Theta$
+\[  \lim_{\epsilon \rightarrow 0} \sup_{\theta^{\circ} \in \Theta^{\circ}} \mathbb{E}_{\theta^{\circ}}\left[ \Pi_{\boldsymbol{\theta}\vert Y} \left(d\left( \boldsymbol{\theta}, \theta^{\circ} \right)^{2} \geq c \, \phi_{\epsilon} \right) \right] = 0\]
+
+\end{itemize}
+\end{column}
+\end{columns}
+
+\end{frame}
+
+%-------------------------------------------------------
+\section{Inverse problems}
+%-------------------------------------------------------
+\begin{frame}{Inverse problems}
+
+\hspace*{4ex}
+\centerline{%
+\includegraphics<1>[scale=.8]{inv.2}%
+\includegraphics<2>[scale=.8]{inv.3}%
+\includegraphics<3>[scale=.8]{inv.4}%
+\includegraphics<4>[scale=.8]{inv.8}%
+\includegraphics<5>[scale=.8]{inv.9}%
+\includegraphics<6>[scale=.8]{inv.10}%
+\includegraphics<7>[scale=.8]{inv.11}%
+\includegraphics<8>[scale=.8]{inv.12}%
+}
+
+
+
+\end{frame}
+
+\end{document}
+
+
+
+
+
+
+
+
+

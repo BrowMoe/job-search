@@ -1,0 +1,226 @@
+% ======================================================================================================================
+%                                                                 
+% Title: Adaptive
+% Author: Jan JOHANNES, Ensai, Rue Blaise Pascal - BP 37203, 35172 Bruz Cedex, France
+% Email: jan.johannes@ensai.fr
+% Date: %%ts latex start%%[2016-02-11 Thu 01:48]%%ts latex end%%
+% Main-TeX-File: 2015-01-Paris-Vortrag in der form "Name"
+%
+% ======================================================================================================================
+
+
+% --------------------------------------------------------------------
+% <<Adaptive-F1>>
+% --------------------------------------------------------------------
+\bframeVL{1-3}{3}
+  \frametitle{Hierarchical Prior}
+{\small Suppose  $\mEvs[k]\;\leq\;
+  C_{\Ev} \min_{j>k}\Evs_j$ and let $\DiMa:=\max\{1\leq m \leq \gauss{\ObSoNoL^{-1}} :
+  \ObSoNoL\mEvs[m]\leq \Evs_{1}\}$.}
+\begin{rudiListeS}[\setListeL{2ex}{2ex}{5ex}{2ex}] 
+   \item<2->  random parameter $\RvDi$ taking its values in $\set{1,\dotsc,\DiMa}$
+\begin{rudiListeT}[\setListeL{0ex}{1ex}{2ex}{0ex}] 
+\item<2->  prior distribution $P_{\RvDi}$ given for $1\leq
+  {\Di}\leq \DiMa$  by
+\[\hspace*{-4ex}
+p_{\RvDi}(\Di)=P_{\RvDi}(\RvDi=\Di)\propto{\exp(-3C_{\Ev}
+  \Di/2)\prod_{j=1}^{\Di}(\RvSoVa_j/\PoVa[j])^{1/2}}
+%{\sum_{k=1}^{\DiMa}\exp(-{3C_{\Ev}
+%k}/2)\prod_{j=1}^{k}(\RvSoVa_j/\PoVa{j})^{1/2}}
+\]
+ \item<2-> and $p_{\RvDi}(\Di)=0$ otherwise
+ \end{rudiListeT}
+\item<3->  random variables $\ObSo=\suite{\ObSo}$ and $\DiRvSo[\RvDi]=\suite{\DiRvSo[\RvDi]}$
+determined by
+\begin{rudiListeT}[\setListeL{2ex}{2ex}{2ex}{0ex}] 
+\item<3-> $
+\ObSo_j=\DiRvSo[\RvDi]_j+\sqrt{\ObSoNoL}Z_j\quad\text{ and }\quad
+\DiRvSo[\RvDi]_j=\sqrt{\RvSoVa_j}\; V_j\; \1\set{1\leq j\leq \RvDi}$
+\end{rudiListeT}
+where $\{Z_j,V_j\}_{j\geq1}$ are iid.\ standard normally distributed and independent of $\RvDi$.
+\end{rudiListeS}
+\end{frame}
+% --------------------------------------------------------------------
+% <<Adaptive-F2>>
+% --------------------------------------------------------------------
+\bframeVL{2,4}{4}
+  \frametitle{Posterior distribution}
+\begin{rudiListeS}[\setListeL{4ex}{3ex}{5ex}{5ex}] 
+\item<1-> posterior distribution $P_{\RvDi|\ObSo}$ of  $\RvDi$ given  $\ObSo$ 
+\begin{drListeT}[\setListeL{0ex}{1ex}{2ex}{0ex}] 
+\item<2-> given for $1\leq {\Di}\leq \DiMa$  by
+\begin{equation*}
+\hspace*{-4ex}
+p_{\RvDi|\ObSo}(\Di)=P_{\RvDi|\ObSo}(\RvDi=\Di)\propto{\exp\bigg(\frac{1}{2}\big\{\sum_{j=1}^{\Di}\PoVa[j]^{-1}(\PoEr{j})^2-3C_{\Ev}\Di\big\}\bigg)}
+%{\sum_{k=1}^{\DiMa}\exp(-\frac{1}{2}\{-\normV{\hDiSo[k]}_{\PoVa}^2+3C_{\Ev} k\})}
+\end{equation*}
+ \item<2-> and $p_{\RvDi|\ObSo}(\Di)=0$ otherwise
+ \end{drListeT}
+\item<3-> posterior distribution $P_{\RvDiRvSo|\ObSo}$ of $\RvDiRvSo=\suite{\RvDiRvSo}$ given $\ObSo$ 
+\begin{drListeT}[\setListeL{1ex}{1ex}{2ex}{0ex}] 
+\item<4-> weighted mixture of posterior distributions of  $\{\DiRvSo\}_{\Di=1}^{\DiMa}$, i.e.,
+  \begin{equation*}
+\hspace*{-4ex}
+P_{\RvDiRvSo|\ObSo}=\sum_{\Di=1}^{\DiMa}\,p_{\RvDi|\ObSo}(\Di)\, P_{\DiRvSo|\ObSo}
+\end{equation*}
+\end{drListeT}
+\end{rudiListeS}
+% \begin{rudiListeS}[\setListeL{2ex}{0ex}{5ex}{5ex}]
+%   \item<5->  common Bayes estimator $\hSo=\suite{\hSo}=\Ex[\RvDiRvSo\vert\ObSo]$ given by
+% \begin{drListeT}[\setListeL{1ex}{1ex}{2ex}{0ex}] 
+%  \item<6->  $\hSo_j=\PoEr{j}P_{\RvDi|\ObSo}(j\leq \RvDi\leq \DiMa)\Ind{1\leq j\leq\DiMa}$.
+% \end{drListeT}
+% \end{rudiListeS}
+\end{frame}
+% --------------------------------------------------------------------
+% <<Adaptive-F3>>
+% --------------------------------------------------------------------
+\bframeVL{1-3}{3}
+  \frametitle{Adaptive {\rudicolor oracle} posterior concentration}
+\begin{overlayarea}{\textwidth}{\textheight}
+\mywsboxinvisible{0}{{\db\textsc{Assumption A4.}}\\[1ex]
+There  exists  $L_{\Ev}\geq1$ such that
+% \begin{rudiListeT}[\setListeL{2ex}{1.5ex}{3ex}{0ex}] 
+% \item  $\max_{j>k}\Ev_j^2\;\leq\; C_{\Ev} \min_{1\leq j\leq k}\Ev_j^2$;
+%\item<2-> 
+$1\leq \mEvs[k]/\oEvs[k]\leq L_{\Ev}$ and $\mEvs[kl]\leq\mEvs[k]\mEvs[l]$.
+%\end{rudiListeT}
+}
+\hfill\\[2ex]
+\mywsboxinvisible{-1}{{\dr\sc Lemma.} Under A1 and A4  there
+  exist $1\leq {\dg\meDi}\leq \treDi\leq {\dg\peDi}\leq\DiMa$
+  s.t.\\[1.5ex]
+\hspace*{1ex}$\Ex_{\TrSo}P_{\RvDi|\ObSo}({\dg\meDi}\leq \RvDi \leq {\dg\peDi} )\geq 1- 4\exp(-C_{\Ev}\treDi/5 + \log \DiMa)$.
+% \begin{drListeT}[\setListeL{2ex}{1.5ex}{3ex}{0ex}] 
+% \item $\Ex_{\TrSo}P_{\RvDi|\ObSo}(1\leq \RvDi< {\dg\meDi})\leq  2\exp(-C_{\Ev}\treDi/5 + \log \DiMa)$;
+% \item $\Ex_{\TrSo}P_{\RvDi|\ObSo}({\dg\peDi}<\RvDi\leq\DiMa)\leq  2\exp(-C_{\Ev}\treDi/5 + \log \DiMa)$.
+% \end{drListeT}
+}
+\hfill\\[2ex]
+\mywsboxinvisible{-2}{{\dr\sc Lemma.} Under A1 and A4  there
+  exist $1\leq {\dg\moeDi}\leq \oeDi\leq {\dg\poeDi}\leq\DiMa$
+  s.t.\\[1.5ex]
+\hspace*{1ex}$\inf_{\TrSo\in\cwrSo}\Ex_{\TrSo}P_{\RvDi|\ObSo}({\dg\moeDi}\leq\RvDi\leq
+{\dg\poeDi})\geq 1-  4\exp(-C_{\Ev}\oeDi/5 + \log \DiMa)$.
+% \begin{drListeT}[\setListeL{2ex}{1.5ex}{3ex}{0ex}] 
+% \item $\Ex_{\TrSo}P_{\RvDi|\ObSo}(1\leq \RvDi< {\dg\moeDi})\leq  2\exp(-C_{\Ev}\oeDi/5 + \log \DiMa)$;
+% \item $\Ex_{\TrSo}P_{\RvDi|\ObSo}({\dg\poeDi}<\RvDi\leq\DiMa)\leq  2\exp(-C_{\Ev}\oeDi/5 + \log \DiMa)$.
+% \end{drListeT}
+}
+\end{overlayarea}
+\end{frame}
+% --------------------------------------------------------------------
+% <<Adaptive-F4>>
+% --------------------------------------------------------------------
+\bframeVL{1-3}{3}
+  \frametitle{Adaptive {\rudicolor oracle} posterior concentration}
+\begin{overlayarea}{\textwidth}{\textheight}
+\mywsboxinvisible{0}{{\db\textsc{Assumption A5.} (Regular parameter)}\\[1ex]
+\centerline{$\inf_\ObSoNoL [\epsilon \treDi
+  \oEvs[\treDi] \wedge\gb_{\treDi}]/\treRa>0$}}
+\hfill\\[1ex]
+\mywsboxinvisible{-1}{{\dr\sc Lemma.} Under A1, A4 and A5  holds\\[1.5ex]
+% \begin{drListeT}[\setListeL{2ex}{1.5ex}{3ex}{0ex}] 
+% \item
+\hspace*{1ex}$\sum\limits_{\Di=\meDi}^{\peDi}\Ex_{\TrSo}P_{\hspace*{-.8ex}\DiRvSo|\ObSo}\Bigl(\treRa\lesssim\normV{\DiRvSo-\TrSo}^2\lesssim \treRa\Bigr)\leq 1-ce^{-c\meDi}$.
+%\end{drListeT}
+}
+\hfill\\[1ex]
+\mysboxinvisible{-2}{{\dr\sc Theorem.} Under A1, A4, A5 and $(\log \DiMa)/\treDi=o(1)$ holds\\[1.5ex]
+% \begin{drListeT}[\setListeL{2ex}{2ex}{3ex}{0ex}]
+% \item
+\mbox{$\lim\limits_{\ObSoNoL\to\infty}\Ex_{\TrSo} P_{\hspace*{-.8ex}\RvDiRvSo|\ObSo}\Bigl(\treRa \lesssim
+\normV{\RvDiRvSo-\TrSo}^2\lesssim \treRa\Bigr)=1$}
+% \item<4-> $\Ex_{\TrSo} \normV{\hSo-\TrSo}^2\lesssim \treRa$\quad where $\hSo=\Ex[\RvDiRvSo\vert\ObSo]$
+% \end{drListeT}
+}
+\end{overlayarea}
+\end{frame}
+% --------------------------------------------------------------------
+% <<Adaptive-F5>>
+% --------------------------------------------------------------------
+\bframeVL{1-4}{4}
+  \frametitle{Adaptive {\rudicolor minimax} posterior concentration}
+\begin{overlayarea}{\textwidth}{\textheight}
+\mywsboxinvisible{0}{{\db\textsc{Assumption A3.} (Regular parameter space)}\\[1ex]
+\centerline{$\inf_\ObSoNoL [\epsilon \oeDi
+  \oEvs[\oeDi] \wedge\wSo_{\oeDi}][\epsilon \oeDi \oEvs[\oeDi]\vee\wSo_{\oeDi}]^{-1}>0$}}
+\hfill\\[.5ex]
+\mywsboxinvisible{-1}{{\dr\sc Lemma.} Under A1, A3 and A4  holds for all $\TrSo\in\cwSo$\\[1ex]
+%\begin{drListeT}[\setListeL{2ex}{1.5ex}{3ex}{0ex}] 
+%\item 
+\hspace*{1ex}$\sum\limits_{\Di=\moeDi}^{\poeDi}\Ex_{\TrSo}P_{\hspace*{-.8ex}\DiRvSo|\ObSo}\Bigl(\normV{\DiRvSo-\TrSo}^2\lesssim \oeRa\Bigr)\geq 1-ce^{-c\moeDi}$.
+%\end{drListeT}
+}
+\hfill\\[1ex]
+\mysboxinvisible{-2}{{\dr\sc Theorem.} Under A1, A3, A4 and $(\log\DiMa)/\oeDi=o(1)$ holds
+\begin{drListeT}[\setListeL{2ex}{2ex}{3ex}{0ex}]
+\item<2-> $\lim\limits_{\ObSoNoL\to\infty}\Ex_{\TrSo}
+  P_{\hspace*{-.8ex}\RvDiRvSo|\ObSo}\Bigl(\normV{\RvDiRvSo-\TrSo}^2\lesssim
+  \oeRa\Bigr)=1$ for all $\TrSo\in\cwSo$;
+\item<4-> $\lim\limits_{\ObSoNoL\to\infty}\inf_{\TrSo\in\cwSo}\Ex_{\TrSo}
+  P_{\hspace*{-.8ex}\RvDiRvSo|\ObSo}\Bigl(\normV{\RvDiRvSo-\TrSo}^2\lesssim
+  K_{\ObSoNoL}\oeRa\Bigr)=1$ for any $K_{\ObSoNoL}\to\infty$; 
+%\item<4-> $\sup_{\TrSo\in\cwSo}\Ex_{\TrSo} \normV{\hSo-\TrSo}^2\lesssim \oeRa$\quad where $\hSo=\Ex[\RvDiRvSo\vert\ObSo]$
+\end{drListeT}}
+\end{overlayarea}
+\end{frame}
+
+% % --------------------------------------------------------------------
+% % <<Bayes-F11>>
+% % --------------------------------------------------------------------
+% \bframeVL{1-3}{3}
+%   \frametitle{Adaptive Bayes estimate}
+% \begin{rudiListeS}[\setListeL{2ex}{2ex}{5ex}{2ex}] 
+%    \item The
+% Bayes estimate $\widehat{\theta}_B^{\rvDib} :=\Ex[\mrvSo[\rvDi]|\rvSoObs]$ satisfies 
+% \begin{rudiListeT}[\setListeL{2ex}{1ex}{2ex}{0ex}] 
+%  \item $\widehat{\theta}_{Bj}^{\rvDib}=0$ for $j>\Geps$ 
+%  \item<2-> and for $1\leq j\leq \Geps$
+% \end{rudiListeT}
+% \end{rudiListeS}
+% \begin{align*}  \uncover<2->{\widehat{\theta}_{Bj}^{\rvDib}&= \Ex[\rvSo_j |\rvSoObs]\,P(j\leq \rvDi\leq \Geps\vert\rvSoObs)}\\
+% \uncover<3->{&= \frac{\collambda_j^{-1}\SoObsNoL^{-1}\rvSoObs_j}{\collambda_j^2\SoObsNoL^{-1}+\SoPriVar_j^{-1}}\, 
+% \frac{\sum_{m=j}^{\Geps}\exp\left(\frac{1}{2\SoObsNoL}\left\{\sum_{k=1}^m\frac{\rvSoObs^2_k}{1+\collambda_j^{-2}\SoPriVar_k^{-1}\SoObsNoL}  -3m\right\} \right)}{\sum_{m'=1}^{\Geps}\exp\left(\frac{1}{2\SoObsNoL}\left\{\sum_{k=1}^{m' }\frac{\rvSoObs^2_k}
+% {1+\collambda_j^{-2}\SoPriVar_k^{-1}\SoObsNoL}-3m' \right\} \right)}.}
+% \end{align*}
+% \end{frame}
+% % --------------------------------------------------------------------
+% % <<Bayes-F12>>
+% % --------------------------------------------------------------------
+% \bframeVL{1-2}{2}
+%   \frametitle{Adaptivity}
+% \mywboxinvisible{0}{{\rudicolor{\sc Theorem}}\\[1ex]
+% There exists a constant $K:=K(\ga,\Ev, \SoPriVar)$ such that 
+%   \[
+%   \lim_{\SoObsNoL\to0}
+%   \inf_{\colthetao\in\colThetaa}
+%   \Ex_{\colthetao}
+%   P_{\mrvSo[\rvDi]|\rvSoObs}(
+%   \normV{\mrvSo[\rvDi]-\colthetao}^2\leq K 
+%   \Res
+%   )=1.
+%   \]   
+%   \uncover<2->{moreover, if $\Psi_\SoObsNoL/\Res=o(1)$ as $\SoObsNoL\to0$ then
+%   \[\lim_{\SoObsNoL\to0}\sup_{\colthetao\in\colThetaa}\Ex_{\So_o}P_{\mrvSo[\rvDi]|\rvSoObs}(
+%   \normV{\mrvSo[\rvDi]-\colthetao}^2\leq \Psi_\SoObsNoL)=0.}
+%   \]}\end{frame}
+% % --------------------------------------------------------------------
+% % <<Bayes-F13>>
+% % --------------------------------------------------------------------
+% \bframeVL{1}{1}
+%   \frametitle{Adaptive  Bayes estimate}
+% \mywboxinvisible{0}{{\rudicolor{\sc Theorem}}\\[1ex]
+% There exists a constant $K:=K(\ga,\Ev, \SoPriVar)$ such that
+%   the Bayes estimate $\widehat{\theta}_{B}^{\rvDib}:=\Ex[\mrvSo[\rvDi]|\rvSoObs]$
+% satisfies  
+%   \[\sup_{\colthetao\in\colThetaa}
+%   \Ex_{\colthetao} \normV{\widehat{\theta}_{B}^{\rvDib}-\colthetao}^2 \leq K
+%  \Res.\]}
+% \hfill\\[10ex]
+% \end{frame}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "_2016-02-CIRM-Marseille"
+%%% End:

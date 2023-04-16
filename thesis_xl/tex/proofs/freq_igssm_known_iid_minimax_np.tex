@@ -1,0 +1,57 @@
+\section{Proof of \nref{THM_FREQ_IGSSM_KNOWN_IID_MINIMAX_NP}}
+The $l^{2}$ risk can be written :
+\[\E[\Vert \theta_{n, \widehat{m}} - \theta^{\circ} \Vert^{2}] = \E[\sum\nolimits_{s = 1}^{G_{n}} ( \theta_{n}(s) - \theta^{\circ}(s) )^{2}] + \E[\sum\nolimits_{s = G_{n} + 1}^{\infty} \theta^{\circ}(s)^{2}].\]
+Together with the fact that, for all $s$ in $\N$ we have
+\[\theta_{n, \widehat{m}}(s) - \theta^{\circ}(s) = (\theta_{n}(s) - \theta^{\circ}(s)) \mathds{1}_{\{\widehat{m} \in \llbracket s, G_{n} \rrbracket\}} + \theta^{\circ}(s) \mathds{1}_{\{\widehat{m} \in \llbracket 1, s-1 \rrbracket\}},\]
+implies that
+\begin{alignat*}{3}
+& \E[\Vert \theta_{n, \widehat{m}} - \theta^{\circ} \Vert^{2}] && \leq && \underbrace{\sum\nolimits_{s = 1}^{G_{n}}\E[(\theta_{n}(s) - \theta^{\circ}(s))^{2} \mathds{1}_{\{\widehat{m} \in \llbracket s, G_{n} \rrbracket\}}]}_{=: A}\\
+& && && + \underbrace{\sum\nolimits_{s = 1}^{G_{n}}\E[\theta^{\circ}(s)^{2} \mathds{1}_{\{\widehat{m} \in \llbracket 1, s-1 \rrbracket\}}]}_{=: B}+ \underbrace{\sum\nolimits_{s = G_{n} + 1}^{\infty}( \theta^{\circ}(s))^{2}}_{=: C}.
+\end{alignat*}
+We will now control each of the three parts of the sum.
+
+First, consider $A$ and let be some positive real number $p$ to be specified later.
+Then we can write
+\begin{alignat*}{3}
+& A && \leq && \underbrace{\sum\nolimits_{s = 1}^{G_{n}^{\star+}} \E[(\theta_{n}(s) - \theta^{\circ}(s))^{2}]}_{=: A_{3}} + \underbrace{\E [ (\sum\nolimits_{s = G_{n}^{\star+} + 1}^{G_{n}}(\theta_{n}(s) - \theta^{\circ}(s) )^{2} - p)_{+}]}_{=: A_{1}} + \underbrace{p \E[\mathds{1}_{\{\widehat{m} \in \llbracket G_{n}^{\star+}, G_{n} \rrbracket}]}_{=: A_{2}} .
+\end{alignat*}
+First, we will control $A_{1}$ using \textsc{\cref{lmA.1.2}}.
+The goal is to give $p$ a value that is large enough to control this object but small enough so $p \cdot \P [G_{n}^{\star+} < \widehat{m} \leq G_{n}]$ is still for the most $\Psi_{n}^{\star}$.
+Define $S_{n} := \sum\nolimits_{s = G_{n}^{\star+} + 1}^{G_{n}}(\theta_{n}(s) - \theta^{\circ}(s))^{2}$.
+We have, for all $s$ in $\llbracket G_{n}^{\star+} + 1, G_{n} \rrbracket$, $\theta_{n}(s) - \theta^{\circ}(s) \sim \mathcal{N}(0, n^{-1} \Lambda(s) )$, so $\E[S_{n}] = n^{-1} \sum\nolimits_{s = G_{n}^{\star+} + 1}^{G_{n}} \Lambda(s)$.
+And define
+\begin{multline*}
+t_{m} := \Lambda(1) \geq n^{-1}\Lambda(G_{n}) \geq \max\nolimits_{s \in \llbracket G_{n}^{\star+} + 1, G_{n} \rrbracket} n^{-1} \Lambda(s);\\
+ v_{m} := G_{n} \Lambda(1) \geq n^{-1}G_{n} \Lambda(G_{n}) \geq  n^{-1} \sum\nolimits_{s = G_{n}^{\star+} + 1}^{G_{n}} \Lambda(s).
+ \end{multline*}
+We can take $p = \E[S_{n}] + 3 v_{m}$ which gives $A_{1} \leq 6 \Lambda(1) \exp[- 2 m_{n}^{\star}/L]$.
+Thanks to \textsc{\cref{prB.1.2}} it is easily shown that $A_{2} \leq 4 \Lambda(1) \exp[-5 m_{n}^{\star}/(9 L) + 2 \log (G_{n})]$.
+Finally, we control $A_{3}.$
+Using the definition of $G_{n}^{\star+}$ we have
+\begin{alignat*}{3}
+& A_{3} && = \leq && \Lambda_{\circ}(G_{n}^{\star+})\Lambda(m_{n}^{\star})^{-1} \Psi_{n}^{\star} (3 (1 \vee r) + \Lambda(m_{n}^{\star})\Lambda_{\circ}(m_{n}^{\star})^{-1}).
+\end{alignat*}
+Note that, using \cref{AS_BAYES_GAUSS_CONTRACT_HIERARCHICAL_LAMBDA} and the definition of $G_{n}^{\star+}$, we have that $\Lambda_{\circ}(G_{n}^{\star+})\Lambda(m_{n}^{\star})^{-1}$ is bounded for $n$ large enough; indeed with $D^{\star} := \lceil 3 ( 1 \vee r ) / \kappa^{\star} + 1\rceil$,
+\[ G_{n}^{\star+} \leq 3 (1 \vee r ) \Psi_{n}^{\star} n\Lambda(m_{n}^{\star})^{-1} + m_{n}^{\star} \leq 3 (1 \vee r ) m_{n}^{\star} \Lambda_{\circ}(m_{n}^{\star}) n(n\Lambda(m_{n}^{\star}) \kappa^{\star})^{-1} + m_{n}^{\star} \leq (3(1 \vee r )/\kappa^{\star} + 1) m_{n}^{\star} \leq D^{\star} m_{n}^{\star},\]
+which implies, $\Lambda_{\circ}(G_{n}^{\star+})\Lambda(m_{n}^{\star})^{-1} \leq \Lambda_{D^{\star}}$.
+Hence, we have
+\[A \leq 6 \Lambda(1) \exp[- 2 m_{n}^{\star}/L] + 4 \Lambda(1) \exp[-5 m_{n}^{\star}/(9 L) + 2 \log (G_{n})] +  4 \Lambda_{D^{\star}} L (1 \vee r) \Psi_{n}^{\star}.\]
+
+Now we control $B$.
+We use a similar decomposition to the one used for $A$ :
+\[ B \leq \underbrace{\sum\nolimits_{s = G_{n}^{\star-} + 1}^{G_{n}} \theta^{\circ}(s)^{2}}_{=: B_{1}} + \underbrace{\sum\nolimits_{s = 1}^{G_{n}^{\star-}} \theta^{\circ}(s)^{2} \P[1 \leq \widehat{m} < G_{n}^{\star-}]}_{=: B_{2}}.\]
+First, notice that $B_{1} + C = \mathfrak{b}_{G_{n}^{\star-}} \leq 9 L (1 \vee r) \Psi_{n}^{\star}$ by the definition of $G_{n}^{\star-}$.
+To control $B_{2},$ we use the definition of the Sobolev ellipsoid and the \textsc{\cref{prB.1.2}}:
+\[ B_{2} \leq \exp[-7 m_{n}^{\star}/9 + \log(G_{n})] \cdot \mathfrak{a}_{1}r.\]
+We hence have
+\[B + C \leq 9 L (1 \vee r ) \Psi_{n}^{\star} + \mathfrak{a}_{1} L^{\circ} \cdot \exp[-7 m_{n}^{\star}/9 + \log(G_{n})].\]
+
+Finally we obtain:
+\begin{alignat*}{3}
+& \E[\Vert \theta_{n, \widehat{m}} - \theta^{\circ} \Vert^{2}] && \leq && L ( 1 \vee L^{\circ} ) ( 4 \Lambda_{D^{\star}} + 9) \Psi_{n}^{\star} +\\
+& && && (6 \Lambda(1) \exp[- 2 m_{n}^{\star}/L - \log(\Psi_{n}^{\star})] + 4 \Lambda(1) \exp[-5 m_{n}^{\star}/(9 L) + \log (G_{n}^{2}/\Psi_{n}^{\star})] + .\\
+& && && .\mathfrak{a}_{1} r \cdot \exp[-7 m_{n}^{\star}/9 + \log(G_{n}/\Psi_{n}^{\star})]) \Psi_{n}^{\star},\\
+\end{alignat*}
+
+which proves that there exist $K$ such that, for $n$ large enough, $\E[\Vert \theta_{n, \widehat{m}} - \theta^{\circ} \Vert^{2}] \leq C \Psi_{n}^{\star}$.
+\proEnd

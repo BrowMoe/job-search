@@ -1,0 +1,43 @@
+\documentclass[a4paper,11pt]{article}
+\synctex=1
+
+\usepackage{graphicx}
+% put all the other packages here:
+
+\usepackage{command}
+\usepackage{packages}
+\usepackage{style}
+\usepackage{theorem}
+\usepackage{hyperref} 
+
+\begin{document}
+
+\input{./tex/title.tex}
+\maketitle
+
+\input{./tex/introduction.tex}
+\input{./tex/frequentist-inference.tex}
+\input{./tex/bayesian-inference.tex}
+\input{./tex/iterative-procedure.tex}
+%\input{./tex/simulations.tex}
+%\input{./tex/open-questions.tex}
+
+\appendix
+
+\input{./tex/proof-thm-3-1.tex}
+\input{./tex/proof-thm-3-2.tex}
+\input{./tex/proof-thm-4-1.tex}
+\input{./tex/proof-thm-4-2.tex}
+\input{./tex/proof-thm-4-3.tex}
+\input{./tex/proof-thm-4-4.tex}
+
+\bibliography{biblio.bib}{}
+%\nocite{*}
+\bibliographystyle{apalike}
+
+
+\end{document}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

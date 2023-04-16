@@ -1,0 +1,12 @@
+\begin{frame}{The (under)sampling case}{Distribution of the observation}
+\underline{Image:}
+\begin{itemize}
+\item $1$ pixel = $1$ laser position
+\item pixel $r$ contains $Z_{r} = \frac{1}{n} \sum\limits_{p = 1}^{n} \mathds{1}_{\{Y_{p} = y_{r}\}}$
+\end{itemize}
+\[\mathds{P}(Z_{r} = p) = {{n}\choose{n \cdot p}} \cdot \left((\mathcal{I}_{\mathds{P}}(t_{0}, \cdot) \star f_{X})(y_{r})\right)^{n \cdot p} \cdot \left(1 - (\mathcal{I}_{\mathds{P}}(t_{0}, \cdot) \star f_{X})(y_{r})\right)^{n \cdot (1 - p)}\]
+
+\[ \mathds{E}\left[Z_{r}\right] = (\mathcal{I}_{\mathds{P}}(t_{0}, \cdot) \star f_{X})(y_{r}) \]
+
+\[ \mathds{V}\left[Z_{r}\right] \leq \frac{1}{4 \cdot n} \]
+\end{frame}

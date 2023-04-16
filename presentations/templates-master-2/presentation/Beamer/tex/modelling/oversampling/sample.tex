@@ -1,0 +1,8 @@
+\begin{frame}{Oversampling: Distribution of the observation}
+
+\[\mathds{P}(Z_{r} = p) = {{n}\choose{n \cdot p}} \cdot \left(\mathds{P}(Y = y_{r})\right)^{n \cdot p} \cdot \left(1 - \mathds{P}(Y = y_{r})\right)^{n \cdot (1 - p)}\]
+
+\[ \mathds{E}\left[Z_{r}\right] = (\mathds{P} \star f_{x})(y_{r}) \cdot \prod\limits_{s = 1}^{r - 1} \left(1 - \left(\mathds{P} \star f_{X}\right)(y_{s})\right)\]
+
+\[ \mathds{V}\left[Z_{r}\right] \leq \frac{1}{4 \cdot n} \]
+\end{frame}

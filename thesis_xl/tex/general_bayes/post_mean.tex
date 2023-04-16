@@ -1,0 +1,23 @@
+\section{On the shape of the posterior mean}\label{BAYES_POSTMEAN}
+
+We have hence seen that in a general case, considering the asymptotic iteration , the posterior distribution using a sieve prior contracts around the projection estimator and while using a hierarchical prior, the posterior contracts around some penalised contrast maximiser projection estimator.
+
+It is also interesting to note that for any number of iteration $\eta$, the posterior mean can be written both as a shrinkage and as an aggregation estimator.
+Indeed, we have
+\begin{alignat*}{3}
+& \E_{\boldsymbol{\theta}_{\overline{M}}\vert Y^{n}}^{(\eta)}\left[\boldsymbol{\theta}_{\overline{M}}\right] && = && \E_{\boldsymbol{\theta}_{\overline{M}}\vert Y^{n}}^{(\eta)}\left[\sum\nolimits_{\vert m \vert \leq G} \boldsymbol{\theta}_{\overline{M}} \mathds{1}_{M = m}\right]\\
+& && = && \sum\nolimits_{\vert m \vert \leq G} \E_{\boldsymbol{\theta}_{M}\vert Y^{n}}^{\eta}\left[ \boldsymbol{\theta}_{M} \mathds{1}_{M = m}\right]\\
+& && = && \sum\nolimits_{\vert m \vert \leq G} \P_{M \vert Y^{n}}^{(\eta)}(m = M) \E_{\boldsymbol{\theta}_{\overline{m}} \vert Y^{n}}^{(\eta)}\left[ \boldsymbol{\theta}_{\overline{m}} \right];
+\end{alignat*}
+and we see here the aggregation form of this estimator.
+
+On the other hand, if we write the expectation of the components individually, we obtain:
+\begin{alignat*}{3}
+& \E_{\boldsymbol{\theta}_{\overline{M}}\vert Y^{n}}^{(\eta)}\left[\boldsymbol{\theta}_{\overline{M}}(s)\right] && = && \E_{\boldsymbol{\theta}_{\overline{M}}\vert Y^{n}}^{(\eta)}\left[ \boldsymbol{\theta}_{\overline{m}}(s) \mathds{1}_{M \geq \vert s \vert}\right]\\
+& && = && \P_{M \vert Y^{n}}^{(\eta)}(M \geq \vert s \vert) \E_{\boldsymbol{\theta}_{\overline{m}}\vert Y^{n}}^{(\eta)}\left[ \boldsymbol{\theta}_{\overline{m}}(s) \right];
+\end{alignat*}
+where we see the shrinkage property.
+
+Aggregation estimates gathered a lot of interest, see for example \ncite{rigollet2007linear}.
+While considering such estimators, the goal is to reach the convergence rate of the best estimator contributing to the aggregation.
+In the next chapter, we hence investigate the properties of this estimator both in inverse Gaussian sequence space model and circular density deconvolution.

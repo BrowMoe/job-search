@@ -1,0 +1,232 @@
+\subsection{Circular deconvolution with independent data and known noise density}\label{FREQ_CIRCDECONV_KNOWN_IID}
+
+As stated in \nref{BAYES}, the non-conjugated nature of the hierarchical Gaussian sieve in the context of circular deconvolution does not allow to compute the posterior mean analytically.
+However, in this part we mimic the form of this posterior mean and construct an estimator from this idea.
+
+We start by reminding the definition of the projection estimators, which we will use to surrogate the posterior mean of sieve priors, which appear in the structure of the posterior mean of hierarchical sieves.
+
+\begin{rem}{\textsc{Projection estimators} \\}\label{REM_FREQ_CIRCDECONV_KNOWN_IID_PROJEST}
+We recall the notation for the projection estimators, for any $m$ in $\mathds{Z}$, we have
+\begin{alignat*}{3}
+& \overline{\theta}_{m} && := && \frac{1}{n}\sum\limits_{p = 1}^{n} \frac{e_{m}(Y_{p})}{\lambda_{m}};\\
+& \left( \overline{\theta}^{m}_{j} \right)_{j \in \mathds{Z}} && := &&\left(\mathds{1}_{\vert j \vert \leq m} \overline{\theta}_{j}\right)_{j \in \mathds{Z}}.
+\end{alignat*}
+\end{rem}
+
+As in the posterior mean of hierarchical sieves, we define a weight sequence, corresponding to the posterior distribution of the threshold parameter.
+
+\begin{de}{\textsc{Weight sequence} \\}\label{DE_FREQ_CIRCDECONV_KNOWN_IID_WEIGHT}
+Let be the following quantities:
+\begin{alignat*}{3}
+& \kappa && := && \frac{23}{2};\\
+& \cmiSv && := && \frac{\log\left(\Di \iSv[\Di] \vee (\Di + 2)\right)^{2}}{\log\left(\Di + 2\right)^{2}};\\
+& \DipenSv && := && \Di \iSv[\Di] \cmiSv; \\
+& \pen(\Di) && := && \frac{9}{2} \cdot 12 \cdot \cpen \cdot \DipenSv;\\
+& \Upsilon(Y, \Di) && := && n \left\Vert \overline{\theta}^{m} \right\Vert_{l^{2}}^{2}.
+\end{alignat*}
+Then, for any couple of natural integers $n$ and $\eta$, we define the distribution $\P_{M \vert Y^{n}}^{n, (\eta)}$, dominated by the counting measure on $\N^{\star}$ such that, for any $m$ in $\llbracket 1, n \rrbracket$
+\[\P_{M \vert Y^{n}}^{n, (\eta)}(m) := \frac{\exp\left[\eta\left(- \pen(m) + \Upsilon(Y^{n}, m)\right)\right]}{\sum\limits_{k = 1}^{n} \exp\left[\eta\left(- \pen(k) + \Upsilon(Y^{n}, k)\right)\right]}.\]
+\end{de}
+
+With those definitions at hand, we are able to define an estimator that reproduces the structure of the posterior mean of iterated hierarchical sieves.
+
+\begin{de}{\textsc{Aggregation/shrinkage estimator} \\}\label{DEFREQ_CIRCDECONV_KNOWN_IID_AGGREGEST}
+Using the notations we just introduced, we define, for any strictly positive integer $\eta$ the shrinkage/aggregation estimator $\widehat{\theta}^{(\eta)}$ such that, for any $j$ in $\mathds{Z}$
+\begin{alignat*}{3}
+& \widehat{\theta}^{(\eta)}_{j} && := && \P_{M \vert Y^{n}}^{n, (\eta)}(\llbracket \vert j \vert, n \rrbracket) \overline{\theta}_{j};\\
+& \widehat{\theta}^{\eta} && := && \sum\limits_{j = 1}^{n} \P_{M \vert Y^{n}}^{n, (\eta)}(j) \overline{\theta}^{j}.
+\end{alignat*}
+\end{de}
+
+As previously, one can notice that, as $\eta$ tends to infinity, this estimator converges to the penalised contrast maximiser projection estimator with penalty function $\pen$ and contrast $\Upsilon$.
+
+Using the method described in \nref{FREQ_STRATEGY}, we are able to show that, for any $\theta^{\circ}$, the sequence defined hereafter is a convergence rate.
+
+\begin{de}{\textsc{Convergence rate} \\}\label{DE_FREQ_CIRCDECONV_KNOWN_IID_CONVRATE}
+Let be the sequences:
+\[m^{\dagger}_{n} := \argmin_{m \in \N}\left\{\left[\mathfrak{b}_{m}^{2}(\theta^{\circ})\mathfrak{b}_{0}^{-2}(\theta^{\circ}) \vee 2 \frac{m \Lambda_{(m)}}{n} \psi_{n}\right]\right\};\]
+and
+\[\Phi^{\dagger}_{n} := \left[\mathfrak{b}_{m^{\dagger}_{n}}^{2}(\theta^{\circ})\mathfrak{b}_{0}^{-2}(\theta^{\circ}) \vee 2 \frac{m^{\dagger}_{n} \Lambda_{(m^{\dagger}_{n})}}{n} \psi_{n}\right].\]
+\end{de}
+
+\bigskip
+
+% ....................................................................
+% <<Ass upper bound p>>
+% ....................................................................
+\begin{as}\label{ass:ub:p}
+Let $\fxdf$ have a finite series expansion as definied in \ref{oo:xdf:p}, that is, either
+\begin{inparaenum}[i]\renewcommand{\theenumi}{\dgrau\rm(\alph{enumi})}
+\item\label{ass:ub:p:c1}
+	$\fxdf=\left(\mathds{1}_{j = 0}\right)_{j \in \mathds{Z}}$, i.e., $\bias[0](\fxdf)=\Vnormlp{\Proj[{\mHiH[0]}]^\perp\fxdf}^2=0$ or
+\item\label{ass:ub:p:c2}
+	there is $K\in\N$ with $1\geq \bias[{K-1}](\fxdf)>0$ and $\bias[K](\fxdf)=0$.
+\end{inparaenum}
+In case  \ref{ass:ub:p:c1} set $\dr\ssY_{\fxdf,\iSv}:=\ceil{15(\tfrac{300}{\sqrt{\cpen}})^4}$ while in case \ref{ass:ub:p:c2} given $K_{\fydf}:=K\dr\vee 3(\tfrac{800\Vnormlp[1]{\fydf}}{\cpen})^2$ and $c_{\fxdf}:=\tfrac{2\Vnormlp{\Proj[{\mHiH[0]}]^\perp\fxdf}^2+484\cpen}{\Vnormlp{\Proj[{\mHiH[0]}]^\perp\fxdf}^2\bias[{K-1}]^2(\fxdf)}$ let there $\ssY_{\fxdf,\iSv}\in\N$ be with $\ssY_{\fxdf,\iSv}>\ceil{c_{\fxdf}\DipenSv[K_{\fydf}]\dr\vee15(\tfrac{300}{\sqrt{\cpen}})^4}$ such that $\sDi{\ssY}:=\max\{\Di\in\nset{K,\ssY}:c_{\fxdf}\,\DipenSv<\ssY\}$ where the defining set contains $K_{\fydf}$ and thus it is not empty, satisfies $\cmiSv[\sDi{\ssY}]\sDi{\ssY}\geq K_{\fydf}(\log\ssY)$ for all $\ssY\geq \ssY_{\fxdf,\iSv}$.
+\end{as}
+% ....................................................................
+% <<Rem Ass upper bound p>>
+% ....................................................................
+\begin{rmk}\label{rem:ass:ub:p}
+ Keep in mind that $\Nsuite[\Di]{\bias(\fxdf)}\subset[0,1]$ is monotonically non increasing with $\bias[1](\fxdf)\leq1$ and $\lim_{\Di\to\infty}\bias(\fxdf)=0$.
+Thereby, in case \ref{ass:ub:p:c2} of \nref{ass:ub:p} holds $\Vnormlp{\Proj[{\mHiH[0]}]^\perp\fxdf}^2>0$ and $\tfrac{2\Vnormlp{\Proj[{\mHiH[0]}]^\perp\fxdf}^2+484\cpen}{\Vnormlp{\Proj[{\mHiH[0]}]^\perp\fxdf}^2\bias[{K-1}]^2(\fxdf)}\geq1$.
+We shall stress that in \nref{re:ub:co1} and \nref{re:ub:co2} in the \nref{PRO_FREQ_CIRCDECONV_KNOWN_IID_ORACLE_P} we derive upper bounds for the partially data-driven aggregated OSE featuring a deterioration of the upper bound which, due to \nref{ass:ub:p} is avoided in the next assertion.
+\end{rmk}
+% ....................................................................
+% <<Il Ass upper bound p>> \ref{il:ass:ub:p}
+% ....................................................................
+\begin{il}\label{il:ass:ub:p}
+Let us illustrate \nref{ass:ub:p} considering as in \nref{il:oo} the commonly studied behaviours \ref{il:edf:o} and \ref{il:edf:s} for the sequence  $\Nsuite[j]{\iSv[j]}$.
+\begin{Liste}[]
+\item[\mylabel{il:ass:ub:p:o}{\dg\bfseries{(o)}}]
+Let $\iSv[\Di]\sim \Di^{2a}$, $a>0$, then  we have $\cmSv\sim1$, $\miSv\sim \oiSv\sim\Di^{2a}$, $\DipenSv=\cmSv \Di \miSv\sim \Di^{2a+1}$ and hence $1\sim\DipenSv[\sDi{\ssY}]\ssY^{-1}\sim(\sDi{\ssY})^{2a+1}\ssY^{-1}$ implies $\sDi{\ssY}\sim\ssY^{1/(2a+1)}$ and $\sDi{\ssY}\cmSv[\sDi{\ssY}]\sim\ssY^{1/(2a+1)}$.
+\item[\mylabel{il:ass:ub:p:s}{\dg\bfseries{(s)}}]
+Let $\iSv[\Di]\sim \exp(\Di^{2a})$, $a>0$, then  we have $\cmSv\sim(\Di^{2a})^2$, $\DipenSv=\Di \cmSv \miSv\sim \Di^{1+4a}\exp(\Di^{2a})$ and hence $\ssY\sim\DipenSv[\sDi{\ssY}]\sim (\sDi{\ssY})^{1+4a}\exp((\sDi{\ssY})^{2a})$ implies $\sDi{\ssY}\sim(\log\ssY-\tfrac{1+4a}{2a}\log\log\ssY)^{1/(2a)}$ and $\sDi{\ssY}\cmSv[\sDi{\ssY}]\sim (\log \ssY)^{2+1/(2a)}$.
+\end{Liste}
+Clearly, in both cases \ref{il:ass:ub:p:o} and \ref{il:ass:ub:p:s}, there is ${\ssY}_{\fxdf,\iSv}\in\Nz$ such that $\cmiSv[\sDi{\ssY}]\sDi{\ssY}\geq K_{\fydf}(\log\ssY)$  for all $\ssY\geq{\ssY}_{\fxdf,\iSv}$ holds true.
+\end{il}
+
+More precisely, we obtain the following theorem, for which the proof is given in \nref{PRO_FREQ_CIRCDECONV_KNOWN_IID_ORACLE_P}.
+% ....................................................................
+% <<Re upper bound p>>
+% ....................................................................
+\begin{thm}\label{THM_FREQ_CIRCDECONV_KNOWN_IID_ORACLE_P}
+Let $\fxdf$ have a finite series expansion as defined in \ref{oo:xdf:p}.
+Under \nref{ass:ub:p} there is a finite numerical constant $\cst{}$ such that for all $\dr\ssY\in\N$,
+\begin{equation}\label{re:ub:p:e1}
+\FuEx[\ssY]{\fxdf}\left[\Vnormlp{\txdf-\xdf}^2\right]
+\leq\cst{}\{\DipenSv[{\ssY_{\fxdf,\iSv}}]+\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\ssY_{\xdf,\iSv}+ \Vnormlp[1]{\fydf}^2\}\ssY^{-1}.
+\end{equation}
+\end{thm}
+% ....................................................................
+% <<Il upper bound co2>>
+% ....................................................................
+\begin{il}\label{il:ub:p}
+Let us illustrate \nref{THM_FREQ_CIRCDECONV_KNOWN_IID_ORACLE_P}
+  considering as in \nref{il:ass:ub:p} the behaviours
+  \ref{il:edf:o} and \ref{il:edf:s} for the sequence
+  $\Nsuite[j]{\iSv[j]}$.  Keeping in mind that as shown in \nref{il:ass:ub:p} there is ${\ssY}_{\xdf,\iSv}\in\Nz$ such that
+    $\cmiSv[\sDi{\ssY}]\sDi{\ssY}\geq K_{\ydf}(\log\ssY)$  for all $\ssY\geq{\ssY}_{\xdf,\iSv}$ 
+ holds true, due to \nref{re:ub:co2} there is a constant $\cst{\xdf,\edf}$
+ depending only on the densities $\xdf$ and $\edf$ such that 
+ $\FuEx[\ssY]{\rY}\VnormLp{\txdf-\xdf}^2\leq
+ \cst{\xdf,\edf}\ssY^{-1}$ for all $\ssY\in\Nz$. Comparing the last result
+ with the oracle rate derived in \ref{il:oo:po} and  \ref{il:oo:so}
+ in \nref{il:oo} we conclude, that $\txdf$ is optimal  in an oracle sense in both cases \ref{il:oo:po} and  \ref{il:oo:so}.
+\end{il}
+
+\medskip
+
+% ....................................................................
+% <<Ass upper bound np>> \ref{ass:ub:np}
+% ....................................................................
+\begin{as}\label{ass:ub:np} Let $\xdf$  have an infinite series expansion
+  as definied in \ref{oo:xdf:np}, that is, $1\geq \bias(\xdf)>0$ for all $\Di\in\Nz$.
+Given   $\Di_{\ydf}:=\dr3(\tfrac{800\Vnormlp[1]{\fydf}}{\cpen})^2$ and
+$\tDi_{\ydf}=\min\{\Di\in\Nz:\bias[\Di_{\ydf}](\xdf)>\bias[\Di](\xdf)\}$
+ there is $\ssY_{\xdf,\iSv}\in\Nz$ with
+$\ssY_{\xdf,\iSv}\geq\ceil{\tfrac{\DipenSv[\tDi_{\ydf}]}{\bias[\tDi_{\ydf}]^2(\xdf)}\vee\dr15(\tfrac{300}{\sqrt{\cpen}})^4}$
+  such that either \begin{inparaenum}[i]\renewcommand{\theenumi}{\dgrau\rm(\alph{enumi})}\item\label{ass:ub:np:c1}
+$\cmiSv[\aDi{\ssY}]\aDi{\ssY}\geq \Di_{\ydf}|\log\hRa{\xdf,\iSv}|$ 
+for all
+$\ssY\geq{\ssY}_{\xdf,\iSv}$ or \item\label{ass:ub:np:c2}  
+$\aDi{\ssY}\leq  \Di_{\ydf}|\log\hRa{\xdf,\iSv}|$ for all
+$\ssY\geq{\ssY}_{\xdf,\iSv}$.
+\end{inparaenum}
+We set in case \ref{ass:ub:np:c1}  $\sDi{\ssY}:=\aDi{\ssY}$ and  in case \ref{ass:ub:np:c2}  $\sDi{\ssY}:= \Di_{\ydf}|\log\hRa{\xdf,\iSv}|$.
+\end{as}
+% ....................................................................
+% <<Rem Ass upper bound np>>
+% ....................................................................
+\begin{rmk}\label{rem:ass:ub:np}
+Considering $\Di_{\ydf}:=\dr3(\tfrac{800\Vnormlp[1]{\fydf}}{\cpen})^2$ and
+$\tDi_{\ydf}=\min\{\Di\in\Nz:\bias[\Di_{\ydf}](\xdf)>\bias[\Di](\xdf)\}$
+as defined in \nref{ass:ub:np} the defining set is not empty since $\bias[\Di](\xdf)>0$ for all
+$\Di\in\Nz$ and $\lim_{\Di\to\infty}\bias[\Di](\xdf)=0$. Moreover, it
+holds $\tDi_{\ydf}>\Di_{\ydf}$ due to the the monotonicity of
+$\bias(\xdf)$. Noting that 
+$\ceil{\tfrac{\DipenSv[\tDi_{\ydf}]}{\bias[\tDi_{\ydf}]^2(\xdf)}\vee\dr15(\tfrac{300}{\sqrt{\cpen}})^4}\geq \DipenSv[\tDi_{\ydf}]\geq\tDi_{\ydf}$ by construction,
+for all $\ssY\geq\ssY_{\xdf,\iSv}$ as in \nref{ass:ub:np} holds 
+$\oRaDi{\Di_{\ydf},\xdf,\iSv}\geq\bias[\Di_{\ydf}]^2(\xdf)>\bias[\tDi_{\ydf}]^2(\xdf)% =\bias[\tDi_{\Sv}]^2(\So)[1\vee
+% \tfrac{\tDi_{\Sv}\cmiSv[\tDi_{\Sv}]\miSv[\tDi_{\Sv}]/\nlIm}{\bias[\tDi_{\Sv}]^2(\So)}]
+=\oRaDi{\tDi_{\ydf},\xdf,\iSv}$
+and hence, for all
+$\ssY\geq\ssY_{\xdf,\iSv}$ we have $\aDi{\ssY}>
+\Di_{\ydf}$.
+We use these preliminary findings in the proof of \nref{THM_FREQ_CIRCDECONV_KNOWN_IID_ORACLE_NP}.  
+\end{rmk}
+% ....................................................................
+% <<Il Ass upper bound p>> \ref{il:ass:ub:np}
+% ....................................................................
+\begin{il}\label{il:ass:ub:np}
+Let us illustrate \nref{ass:ub:np}
+  considering as in \nref{il:oo} usual
+  behaviour \ref{il:oo:oo}, \ref{il:oo:so} and \ref{il:oo:os}
+ for the sequences $\Nsuite[\Di]{\bias[\Di](\xdf)}$ and
+  $\Nsuite[\Di]{\iSv[\Di]}$:
+ \begin{Liste}[]
+\item[\mylabel{il:ass:ub:np:oo}{\dg\bfseries{[o-o]}}] Since
+  $\bias^2(\xdf)\sim\Di^{-2p}$ and  $\DipenSv\sim\Di^{2a+1}$
+    (cf.  \nref{il:ass:ub:p} \ref{il:ass:ub:p:o}) follows
+    $\hRa{\xdf,\iSv}\sim(\aDi{\ssY})^{-2p}\sim\DipenSv[\aDi{\ssY}]\ssY^{-1}\sim(\aDi{\ssY})^{2a+1}\ssY^{-1}$ which
+    implies $\aDi{\ssY}\sim\ssY^{1/(2p+2a+1)}$,
+    $\cmiSv[\aDi{\ssY}]\aDi{\ssY}\sim\ssY^{1/(2p+2a+1)}$,
+    $\hRa{\xdf,\iSv}\sim\ssY^{-2p/(2p+2a+1)}$ and $|\log\hRa{\xdf,\iSv}|\sim(\log\ssY)$.
+ \item[\mylabel{il:ass:ub:np:os}{\dg\bfseries{[o-s]}}]
+    Since
+  $\bias^2(\xdf)\sim\Di^{-2p}$ and $\DipenSv\sim\Di^{1+4a}\exp(\Di^{2a})$ (cf. \nref{il:ass:ub:p} \ref{il:ass:ub:p:s}) follows
+    $\hRa{\xdf,\iSv}\sim(\aDi{\ssY})^{-2p}\sim\DipenSv[\aDi{\ssY}]\ssY^{-1}\sim(\aDi{\ssY})^{1+4a}\exp((\aDi{\ssY})^{2a})$
+    which implies  $\aDi{\ssY}\sim(\log\ssY)^{1/(2a)}$, $\cmiSv[\aDi{\ssY}]\aDi{\ssY}\sim(\log\ssY)^{2+1/(2a)}$, 
+    $\hRa{\xdf,\iSv}\sim(\log\ssY)^{-p/a}$ and $|\log\hRa{\xdf,\iSv}|\sim(\log\log\ssY)$.
+ \item[\mylabel{il:ass:ub:np:so}{\dg\bfseries{[s-o]}}]  Since
+  $\bias^2(\xdf)\sim\exp(-\Di^{2p})$ and    $\DipenSv\sim\Di^{2a+1}$
+    (cf.  \nref{il:ass:ub:p} \ref{il:ass:ub:p:o}) follows
+    $\hRa{\xdf,\iSv}\sim\exp(-(\aDi{\ssY})^{2p})\sim\DipenSv[\aDi{\ssY}]\ssY^{-1}\sim
+(\aDi{\ssY})^{2a+1}\ssY^{-1}$
+    which implies  $\aDi{\ssY}\sim(\log\ssY)^{1/(2p)}$, $\cmiSv[\aDi{\ssY}]\aDi{\ssY}\sim(\log\ssY)^{1/(2p)}$,
+    $\hRa{\xdf,\iSv}\sim(\log\ssY)^{(2a+1)/(2p)}\ssY^{-1}$
+    and     $|\log\hRa{\xdf,\iSv}|\sim(\log\ssY)$.
+  \end{Liste}
+Clearly,  there is ${\ssY}_{\xdf,\iSv}\in\Nz$ such that for all
+$\ssY\geq{\ssY}_{\xdf,\iSv}$ in the cases \ref{il:ass:ub:np:oo} and
+\ref{il:ass:ub:np:os}   $\cmiSv[\aDi{\ssY}]\aDi{\ssY}\geq
+\Di_{\ydf}|\log\hRa{\xdf,\iSv}|$, i.e., \nref{ass:ub:np}
+\ref{ass:ub:np:c1} holds, while in case \ref{il:ass:ub:np:so}
+$\aDi{\ssY}\leq \Di_{\ydf}|\log\hRa{\xdf,\iSv}|$ for $p\geq1/2$, i.e., \nref{ass:ub:np}
+\ref{ass:ub:np:c2} holds, and $\cmiSv[\aDi{\ssY}]\aDi{\ssY}\geq
+\Di_{\ydf}|\log\hRa{\xdf,\iSv}|$ for $p<1/2$, i.e., \nref{ass:ub:np}
+\ref{ass:ub:np:c1} holds.
+\end{il}
+
+\begin{thm}\label{THM_FREQ_CIRCDECONV_KNOWN_IID_ORACLE_NP}
+Let be the constants $K := \frac{\sqrt{2} - 1}{21 \sqrt{2}}$, and $C_{\lambda, \theta^{\circ}} \geq \sum\limits_{j = 1}^{\infty} \exp\left[- \eta \frac{\psi_{n} m \overline{\Lambda}_{m}}{2}\right]$ then, for any $n$ and $\eta$ integers greater than $1$, we have
+\begin{alignat*}{3}
+& \E_{\theta^{\circ}}^{n}\left[\Vert \widehat{\theta}^{(\eta)} - \theta^{\circ} \Vert_{l^{2}}^{2}\right] && \leq && 174 \mathfrak{b}_{0}^{2} \Phi^{\dagger}_{n} + \\
+& && && \frac{1}{n} 32 C_{\lambda, \theta} \exp\left[- K\left(\frac{\psi_{n} 2 m^{\circ}_{n}}{\left\Vert \theta^{\circ} \right\Vert_{l^{2}}^{2} \left\Vert \lambda \right\Vert_{l^{2}}^{2}}\wedge \sqrt{n \psi_{n}}\right) + \log(\psi_{n}) + 2 \log\left(\Lambda_{n} \vee n\right)\right];
+\end{alignat*}
+assuming $m^{\dagger}_{n}$ tends to $\infty$, this gives
+\[\E_{\theta^{\circ}}^{n}\left[\Vert \widehat{\theta}^{(\eta)} - \theta^{\circ} \Vert_{l^{2}}^{2}\right] \in \mathcal{O}_{n}\left(\Phi^{\dagger}_{n}\right).\]
+\end{thm}
+
+Comparison with the oracle rate of projection estimators reveals that in many cases, we obtain an oracle optimal estimator.
+
+\begin{il}\label{IL_FREQ_CIRCDECONV_KNOWN_IID_ORACLE_NP}
+Assume $m^{\dagger}_{n}$ tends to infinity and let be two positive real numbers $p$ and $a$.
+
+If $\mathfrak{b}_{m}^{2} \asymp_{m \rightarrow \infty} m^{-2p}$ and $\Lambda_{m} \asymp_{m \rightarrow \infty} m^{2a}$, then we have $\psi_{n} \asymp_{n \rightarrow \infty} 4a$; $m^{\dagger}_{n} \asymp_{n \rightarrow \infty} n^{\frac{1}{2a + 2p + 1}}$; and $\Phi^{\dagger}_{n} \asymp_{n \rightarrow \infty} n^{-\frac{2p}{2a + 2p + 1}}$ and we have
+\begin{alignat*}{3}
+& \E_{\theta^{\circ}}^{n}\left[\left\Vert \widehat{\theta}^{(\eta)} - \theta^{\circ} \right\Vert_{l^{2}}^{2}\right] && \in && \mathcal{O}_{n}\left(n^{-\frac{2p}{2a + 2p + 1}} +\right.\\
+& && && \left. \frac{1}{n} C_{\lambda, \theta^{\circ}} \exp\left[- K \left(\frac{8 a n^{\frac{1}{2a + 2p + 1}}}{\Vert \lambda \Vert_{l^{2}} \Vert \theta^{\circ} \Vert_{l_{2}}} \wedge \sqrt{4 a n}\right) + 4 a \log(n) + 2 n^{2a} \right]\right)\\
+& && \in && \mathcal{O}_{n}(n^{-\frac{2p}{2a + 2p + 1}})
+\end{alignat*}
+
+\medskip
+
+On the other hand, if $\Lambda_{m} \asymp_{m \rightarrow \infty} \exp\left[m^{2a}\right]$, then we have $\psi_{n} \asymp_{n \rightarrow \infty} \frac{n^{4a}}{\log(n)^{2}}$; $m^{\dagger}_{n} \asymp_{n \rightarrow \infty} \log(n)^{\frac{1}{2a}}$; and $\Phi^{\dagger}_{n} \asymp_{n \rightarrow \infty} \log(n)^{-\frac{p}{a}}$.
+Which leads to
+\begin{alignat*}{3}
+& \E_{\theta^{\circ}}^{n}\left[\left\Vert \widehat{\theta}^{(\eta)} - \theta^{\circ} \right\Vert_{l^{2}}^{2}\right] && \in && \mathcal{O}_{n}\left(\log(n)^{-\frac{p}{a}} + \right. \\
+& && && \left. \frac{1}{n} C_{\lambda, \theta^{\circ}} \exp\left[- K \left(\frac{n^{4a} 2 \log(n)^{\frac{1 - 4a}{2a}}}{\Vert \lambda \Vert_{l^{2}} \Vert \theta^{\circ} \Vert_{l_{2}}} \wedge \frac{n^{2a + \frac{1}{2}}}{\log(n)}\right) + 4 a \log(n) + 2 n^{2a} \right]\right)\\
+& && \in && \mathcal{O}_{n}(\log(n)^{-\frac{p}{a}}).
+\end{alignat*}
+\end{il}

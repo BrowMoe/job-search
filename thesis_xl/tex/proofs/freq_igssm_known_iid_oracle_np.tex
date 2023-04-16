@@ -1,0 +1,55 @@
+\section{Proof of \nref{THM_FREQ_IGSSM_KNOWN_IID_ORACLE_NP}}
+The $l^{2}$ risk can be written :
+\[\E[\Vert \theta_{n, \overline{\widehat{m}}} - \theta^{\circ} \Vert^{2}] = \E[\sum\nolimits_{s = 1}^{G_{n}} ( \theta_{n, \overline{\widehat{m}}}(s) - \theta^{\circ}(s) )^{2}] + \E[\sum\nolimits_{s = G_{n} + 1}^{\infty} \theta^{\circ}(s)^{2}].\]
+Together with the fact that, for all $s$ in $\llbracket 1, G_{n} \rrbracket$
+\[\theta_{n, \overline{\widehat{m}}}(s) - \theta^{\circ}(s) = (\phi_{n}(s)\lambda(s)^{-1} - \theta^{\circ}(s)) \mathds{1}_{\{\widehat{m} \in \llbracket s, G_{n} \rrbracket\}} + \theta^{\circ}(s) \mathds{1}_{\{\widehat{m} \in \llbracket 1, s-1 \rrbracket\}},\]
+implies that
+\begin{alignat*}{3}
+& \E[\Vert \theta_{n, \overline{\widehat{m}}} - \theta^{\circ} \Vert^{2}] &&\leq&& \underbrace{\sum\nolimits_{s = 1}^{G_{n}}\E[(\phi_{n}(s)\lambda(s)^{-1} - \theta^{\circ}(s))^{2} \mathds{1}_{\{\widehat{m} \in \llbracket s, G_{n} \rrbracket\}}]}_{=: A}\\
+& && && + \underbrace{\sum\nolimits_{s = 1}^{G_{n}}\E[\theta^{\circ}(s)^{2} \mathds{1}_{\{\widehat{m} \in \llbracket 1, s-1 \rrbracket\}}]}_{=: B}+ \underbrace{\sum\nolimits_{s = G_{n} + 1}^{\infty}\E[( \theta^{\circ}(s))^{2}]}_{=: C}.
+\end{alignat*}
+We will now control each of the three parts of the sum using \textsc{\cref{lmA.1.2}} and \textsc{\cref{prB.1.1}}.
+Remind that we have $\theta_{n}(s) = \phi_{n}(s)\lambda(s)^{-1}$ for any $s$ in $\N$.
+First, consider $A$ and let be some positive real number $p$ to be specified later.
+Then we can write
+\begin{alignat*}{3}
+& A && \leq && \sum\nolimits_{s = 1}^{G_{n}^{+}} \E[(\theta_{n}(s) - \theta^{\circ}(s))^{2}] + \sum\nolimits_{s = G_{n}^{+} + 1}^{G_{n}} \E [ (\theta_{n}(s) - \theta^{\circ}(s) )^{2} \mathds{1}_{\{\widehat{m} \in \llbracket s, G_{n} \rrbracket\}}]\\
+%& &&\leq&& \sum\nolimits_{s = 1}^{G_{n}^{+}} \E[(\theta_{n}(s) - \theta^{\circ}(s))^{2}] + \sum\nolimits_{s = G_{n}^{+} + 1}^{G_{n}} \E [ (\theta_{n}(s) - \theta^{\circ}(s) )^{2} \mathds{1}_{\{\widehat{m} \in \llbracket G_{n}^{+}+1, G_{n} \rrbracket\}}]\\
+%& &&\leq&& \sum\nolimits_{s = 1}^{G_{n}^{+}} \E[(\theta_{n}(s) - \theta^{\circ}(s))^{2}] + \sum\nolimits_{s = G_{n}^{+} + 1}^{G_{n}} \E [ (\theta_{n}(s) - \theta^{\circ}(s) )^{2} \mathds{1}_{\{\widehat{m} \in \llbracket G_{n}^{+}+1, G_{n} \rrbracket\}}] \\
+%& && && - p\E[\mathds{1}_{\{\widehat{m} \in \llbracket G_{n}^{+}+1, G_{n} \rrbracket}] + p \E[\mathds{1}_{\{\widehat{m} \in \llbracket G_{n}^{+}+1, G_{n} \rrbracket}]\\
+%& &&\leq&& \sum\nolimits_{s = 1}^{G_{n}^{+}} \E[(\theta_{n}(s) - \theta^{\circ}(s))^{2}] + \E [ ( \sum\nolimits_{s = G_{n}^{+} + 1}^{G_{n}}(\theta_{n}(s) - \theta^{\circ}(s) )^{2} - p) \mathds{1}_{\{\widehat{m} \in \llbracket G_{n}^{+}+1, G_{n} \rrbracket\}}]\\
+%& && &&+ p \E[\mathds{1}_{\{\widehat{m} \in \llbracket G_{n}^{+}+1, G_{n} \rrbracket}]\\
+& &&\leq&& \underbrace{\sum\nolimits_{s = 1}^{G_{n}^{+}} \E[(\theta_{n}(s) - \theta^{\circ}(s))^{2}]}_{=: A_{3}} + \underbrace{\E[ (\sum\nolimits_{s = G_{n}^{+} + 1}^{G_{n}}(\theta_{n}(s) - \theta^{\circ}(s) )^{2} - p)_{+}]}_{=: A_{1}} + \underbrace{p \E[\mathds{1}_{\{\widehat{m} \in \llbracket G_{n}^{+}+1, G_{n} \rrbracket}]}_{=: A_{2}} .
+\end{alignat*}
+First, we will control $A_{1}$ using \textsc{\cref{lmA.1.2}}.
+The goal is to give $p$ a value that is large enough to control this object but small enough so $p \cdot \P [G_{n}^{+} < \widehat{m} \leq G_{n}]$ is still for the most $\Phi_{n}^{\circ}$.
+Define $S_{n} := \sum\nolimits_{s = G_{n}^{+} + 1}^{G_{n}}(\theta_{n}(s) - \theta^{\circ}(s))^{2}.$
+We have, for all $s$ in $\llbracket G_{n}^{+} + 1, G_{n} \rrbracket$, $\theta_{n}(s) - \theta^{\circ}(s) \sim \mathcal{N}(0, n^{-1}\Lambda(s) ),$
+so $\E[S_{n}] = \frac{1}{n} \sum\nolimits_{s = G_{n}^{+} + 1}^{G_{n}} \Lambda(s)$.
+And define, using the definition of $G_{n}$ and \nref{AS_BAYES_GAUSS_CONTRACT_HIERARCHICAL_LAMBDA}
+\begin{alignat*}{3}
+& t_{m} &&:=&& \Lambda(1) \geq \frac{\Lambda_{G_{n}}}{n} \geq \max\nolimits_{s \in \llbracket G_{n}^{+} + 1, G_{n} \rrbracket} n^{-1}\Lambda(s); \quad v_{m} := G_{n} \Lambda(1) \geq \frac{G_{n} \Lambda_{G_{n}}}{n} \geq  \frac{1}{n} \sum\nolimits_{s = G_{n}^{+} + 1}^{G_{n}} \Lambda(s).
+\end{alignat*}
+We can take $p = \E[S_{n}] + 3 v_{m}$ which, using the definition of $G_{n}^{+}$ and $G_{n} > G_{n}^{+}$, gives, $A_{1} \leq 6 \Lambda(1) \exp[- 2 m_{n}^{\circ}/L]$.
+Thanks to \textsc{\cref{prB.1.1}} it is easily shown that $A_{2} < 4 \Lambda(1) \exp[-5 m_{n}^{\circ}/(9 L) + 2 \log (G_{n})]$.
+Finally, we control $A_{3}$ by using the definition of $G_{n}^{+}$, which gives $A_{3} \leq \Lambda_{\circ}(G_{n}^{+})\Lambda(m_{n}^{\circ})^{-1} 3 \Phi_{n}^{\circ}$.
+Note that, using \nref{AS_BAYES_GAUSS_CONTRACT_HIERARCHICAL_ORACLE} and the definition of $G_{n}^{+}$, we have that $\Lambda_{\circ}(G_{n}^{+})\Lambda(m_{n}^{\circ})^{-1}$ is bounded for $n$ large enough; indeed with $D^{\circ} := \lceil 3/\kappa^{\circ} + 1\rceil$,
+\[G_{n}^{+} \leq 3 n \Phi_{n}^{\circ}\Lambda(m_{n}^{\circ})^{-1} + m_{n}^{\circ} \leq 3 n m_{n}^{\circ} \Lambda_{\circ}(m_{n}^{\circ})(\Lambda(m_{n}^{\circ}) n \kappa^{\circ}){-1} + m_{n}^{\circ} \leq (\frac{3}{\kappa^{\circ}} + 1) m_{n}^{\circ} \leq D^{\circ} m_{n}^{\circ};\]
+which implies $\Lambda_{\circ}(G_{n}^{+})\Lambda(m_{n}^{\circ})^{-1} \leq \Lambda_{\circ}(D^{\circ} \cdot m_{n}^{\circ})\Lambda(D^{\circ} \cdot m_{n}^{\circ})^{-1} \cdot \Lambda(D^{\circ} \cdot m_{n}^{\circ})\Lambda(m_{n}^{\circ})^{-1} \leq \Lambda(D^{\circ})$.
+Hence, we have
+\[A \leq 6 \Lambda(1) \exp[- 2 m_{n}^{\circ}/L] + 4 \Lambda(1) \exp[-5 m_{n}^{\circ}/(9 L) + 2 \log (G_{n})] +  \Lambda(D^{\circ}) 3 \Phi_{n}^{\circ}.\]
+
+Now we control $B$ We use a decomposition similar to the one used for $A$ :
+\[ B \leq \underbrace{\sum\nolimits_{s = G_{n}^{-} + 1}^{G_{n}} \theta^{\circ}(s)^{2}}_{=: B_{1}} + \underbrace{\sum\nolimits_{s = 1}^{G_{n}^{-}} \theta^{\circ}(s)^{2} \P[1 \leq \widehat{m} < G_{n}^{-}]}_{=: B_{2}}.\]
+First, notice that $B_{1} + C = \mathfrak{b}_{G_{n}^{-}} \leq 9 L \Phi_{n}^{\circ}$ by the definition of $G_{n}^{-}.$
+To control $B_{2},$ we use the fact that $\theta^{\circ}$ is square summable and the \textsc{\cref{prB.1.1}}: $B_{2} \leq \exp[-7 m_{n}^{\circ}/9 + \log(G_{n})] \cdot \Vert \theta^{\circ} \Vert^{2}$.
+So we have $B + C \leq 9 L \Phi_{n}^{\circ} + \Vert \theta^{\circ} \Vert^{2} \cdot \exp[-\frac{7 m_{n}^{\circ}}{9} + \log(G_{n})]$.
+Which leads to :
+\begin{multline*}
+\E[\Vert \theta_{n, \overline{\widehat{m}}} - \theta^{\circ} \Vert^{2}] \leq 3 ( \Lambda(D^{\circ}) + 3 L ) \Phi_{n}^{\circ}\\
+  + (6 \Lambda(1) \exp[- (2 m_{n}^{\circ}/L + \log(\Phi_{n}^{\circ}))] + 4 \Lambda(1) \exp[-5 m_{n}^{\circ}/(9 L) + \log (G_{n}^{2}/\Phi_{n}^{\circ})]\\
+  + \Vert \theta^{\circ} \Vert^{2} \cdot \exp[-7 m_{n}^{\circ}/9 + \log(G_{n}/\Phi_{n}^{\circ})]) \Phi_{n}^{\circ},
+\end{multline*}
+which proves that there exist $C$ such that, for $n$ large enough,
+\[\E[\Vert \theta_{n, \overline{\widehat{m}}} - \theta^{\circ} \Vert^{2}] \leq C \Phi_{n}^{\circ}.\]
+\proEnd

@@ -1,0 +1,756 @@
+\documentclass[10pt]{beamer}
+\usetheme[
+%%% option passed to the outer theme
+%    progressstyle=fixedCircCnt,   % fixedCircCnt, movingCircCnt (moving is deault)
+  ]{Feather}
+  
+\usetikzlibrary{shapes,arrows}
+\setbeamerfont{author}{size=\normalsize}
+\setbeamerfont{institute}{size=\normalsize}
+\setbeamerfont{title}{size=\fontsize{30}{36}\bfseries}
+\setbeamerfont{subtitle}{size=\Large\normalfont\slshape}
+
+%customized template for RTG title page
+\setbeamertemplate{title page}{%
+\begin{tikzpicture}[remember picture,overlay]
+%color theme 
+\fill[RTGblue]
+  ([yshift=35pt]current page.south west) rectangle (current page.south east);
+\fill[RTGred]
+  ([yshift=32pt]current page.south west) rectangle ([yshift=35pt]current page.south east);  
+\fill[RTGblue]
+  ([yshift=-70pt]current page.north west) rectangle ([yshift=-35pt]current page.north east);
+\fill[RTGred]
+  ([yshift=-70pt]current page.north west) rectangle ([yshift=-72.5pt]current page.north east);
+%Header: University of Mannheim/Heidelberg logo 
+\node[anchor=north west] 
+  at ([yshift=-6pt]current page.north west) (logo)
+  {\parbox[t]{2.5cm}{\raggedleft%
+    \usebeamercolor[fg]{titlegraphic}\includegraphics[width=2cm]{uni-ma}}};
+    
+\node[anchor=north east] 
+  at ([yshift=1pt]current page.north east) (logo)
+  {\parbox[t]{2.5cm}{\raggedright%
+    \usebeamercolor[fg]{titlegraphic}\includegraphics[width=2cm]{uni-hd}}};
+    
+\node[anchor=north]
+ at([yshift=-5pt]current page.north) (header)
+ {\parbox[c]{0.5\paperwidth}{\centering \fontsize{10pt}{2pt}\selectfont Probability \& Statistics Group Heidelberg-Mannheim}};
+ 
+ %footer   
+\node[anchor=south east] 
+  at ([yshift=10pt]current page.south east) (rtg)
+  {\parbox[c]{2cm}{\raggedright%
+   \fontsize{12pt}{2pt}\selectfont \textcolor{white} {RTG 1953}}};
+
+%\node[anchor=south west] 
+%  at ([yshift=11pt]current page.south west) (dfg)
+%  {\parbox[c]{2.75cm}{\raggedleft%
+%   \fontsize{0pt}{2pt}\selectfont \textcolor{white} { }}};
+%   
+\node[anchor=south west] 
+  at ([yshift = 7pt,xshift=0.28cm]current page.south west) (logo)
+  {\parbox[c]{1.2cm}{\raggedleft%
+   \usebeamercolor[fg]{titlegraphic}\includegraphics[width=1.2cm]{dfg}}};
+    
+
+%% title + author, adjust yshift value if necessary (controls vertical position)
+\node[anchor=center]
+  at ([yshift=10pt]current page.center) (title)
+  {\parbox[t]{\textwidth}{\linespread{6} \selectfont \centering%
+\fontsize{14pt}{3pt}\selectfont \textcolor{black}{\inserttitle}}};
+ 
+\node[anchor=center]
+  at ([yshift=-45pt]current page.center) (author)
+  {\parbox[c]{\textwidth}{\centering\usebeamerfont{author}\textcolor{black}{\insertauthor}}};
+\end{tikzpicture}
+}
+
+
+% If you want to change the colors of the various elements in the theme, edit and uncomment the following lines
+\definecolor{RTGblue}{HTML}{2E2E2E}
+\definecolor{RTGred}{HTML}{C80B33}
+\definecolor{black}{rgb}{0.0, 0.0, 0.0}
+
+% Change the bar colors:
+\setbeamercolor{Feather}{fg=red!80!black, bg=RTGblue}
+\setbeamercolor{block title}{bg=RTGblue, fg=white}
+\setbeamercolor{block body}{bg=white, fg=black}
+
+% Change the color of the structural elements:
+\setbeamercolor{structure}{fg=black}
+
+% Change the frame title text color:
+\setbeamercolor{frametitle}{fg=white}
+
+% Change the normal text color background:
+%\setbeamercolor{normal text}{fg=black,bg=gray!10}
+
+%-------------------------------------------------------
+% INCLUDE PACKAGES
+%-------------------------------------------------------
+\usepackage{ifpdf}
+\usepackage{xcolor}
+\usepackage{graphicx} 
+\usepackage{multicol}
+\usepackage{animate}
+\usepackage{libertineotf}
+\usepackage{tikz}
+\usepackage{pdfrender}
+
+\ifpdf
+\DeclareGraphicsRule{*}{mps}{*}{}
+\else
+% Recent LaTeX versions donât require the next line
+% \DeclareGraphicsRule{*}{eps}{*}{}
+\fi
+
+
+\usepackage[sfdefault]{AlegreyaSans} %% Option 'black' gives heavier bold face
+%% The 'sfdefault' option to make the base font sans serif
+\renewcommand*\oldstylenums[1]{{\AlegreyaSansOsF #1}}
+    
+\usepackage{natbib}
+\usepackage[english]{babel}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage[utf8]{inputenc}
+%\usepackage[TS1,T1]{fontenc}
+%\usepackage{helvet}
+\usepackage{fourier}
+\usepackage{hyperref}
+%\usepackage{lmodern}
+%\usepackage{mathrsfs}
+\usepackage{amsmath,amssymb,amsfonts,graphicx,shorttoc,textpos,caption,here, yfonts}
+\usepackage{verbatim,enumerate,dsfont,fancyhdr,setspace,array}
+\usepackage[cal=boondox]{mathalfa}
+
+%\usepackage[style=authoryear]{biblatex}
+%\renewcommand*{\nameyeardelim}{\addcomma\addspace}
+
+
+\graphicspath{{Feathergraphics/}}
+%\bibliography{biblio1}
+%\DeclareCiteCommand{\cite}
+%{\usebibmacro{prenote}}
+%{\usebibmacro{citeindex}%
+%\usebibmacro{cite}}
+%{\multicitedelim}
+%{\usebibmacro{cite:postnote}}
+%\usefonttheme[onlymath]{serif}
+%\newbibmacro*{cite}{%
+%\usebibmacro{cite:citepages}%
+%\ifciteseen
+%	{\iffieldundef{shorthand}
+%		{\usebibmacro{cite:short}}
+%		{\usebibmacro{cite:shorthand}}}
+%	{\usebibmacro{cite:full}}}
+%
+%\renewbibmacro*{cite}{%
+%\usebibmacro{cite:citepages}%
+%{\usebibmacro{cite:full}}}
+%-------------------------------------------------------
+% DEFFINING AND REDEFINING COMMANDS
+%-------------------------------------------------------
+
+% colored hyperlinks
+\newcommand{\chref}[2]{
+  \href{#1}{{\usebeamercolor[bg]{Feather}#2}}
+}
+\DeclareMathOperator*{\argmin}{arg\,min}
+%\bibliographystyle{apalike}
+%\renewcommand\bibfont{\scriptsize}
+\DeclareMathOperator*{\Argmin}{Arg\,min}
+\setbeamertemplate{frametitle continuation}[from second]
+
+%-------------------------------------------------------
+% INFORMATION IN THE TITLE PAGE
+%-------------------------------------------------------
+
+\title[A family of adaptive Bayesian methods for statistical ill-posed inverse problems] % [] is optional - is placed on the bottom of the sidebar on every slide
+{ % is placed on the title page
+     \textbf{A family of adaptive Bayesian methods for statistical ill-posed inverse problems}
+}
+
+
+\subtitle[loizeau@math.uni-heidelberg.de] % [] is optional - is placed on the bottom of the sidebar on every slide
+{ % is placed on the title page
+    % \textit{loizeau@math.uni-heidelberg.de}
+}
+
+
+\institute[Ruprecht-Karls-Universität Heidelberg]
+{
+
+  \begin{flushright}Ruprecht-Karls-Universität Heidelberg\end{flushright}
+  %there must be an empty line above this line - otherwise some unwanted space is added between the university and the country (I do not know why;( )
+}
+
+\date{}
+
+\author[Xavier Loizeau] % [] is optional - is placed on the bottom of the sidebar on every slide
+{ % is placed on the title page
+      \textit{Xavier Loizeau}
+}
+%-------------------------------------------------------
+% THE BODY OF THE PRESENTATION
+%-------------------------------------------------------
+
+\begin{document}
+%-------------------------------------------------------
+% THE TITLEPAGE
+%-------------------------------------------------------
+
+% % this is the name of the PDF file for the background
+\begin{frame}[plain,noframenumbering] % the plain option removes the header from the title page, noframenumbering removes the numbering of this frame only
+  \titlepage % call the title page information from above
+\end{frame}
+
+\AtBeginSection[]{
+\begin{frame}[noframenumbering]{Contents}
+\setcounter{tocdepth}{1}
+%\begin{multicols}{2}
+\tableofcontents[sectionstyle=show/shaded, subsectionstyle=show/show/hide]
+%\end{multicols}
+\end{frame}
+}
+
+\begin{frame}{Contents}
+\setcounter{tocdepth}{1}
+\tableofcontents
+\end{frame}
+
+%-------------------------------------------------------
+\section{Introduction}
+%-------------------------------------------------------
+
+\begin{frame}{Statistical ill-posed inverse problems}
+\begin{columns}
+\begin{column}[T]{.3\textwidth}%
+\bigskip
+\begin{block}{Notations:}
+\begin{itemize}
+\setlength\itemsep{2em}
+\item $\lambda u_{j} = \lambda_{j} u_{j}$;
+\item $\theta = \sum\limits_{j \in \mathcal{J}} \theta_{j} u_{j}$;
+\item $\overline{\mathbb{P}}^{n}:= \delta_{Y^{n}}$;
+\item $Y^{n}_{j}:= \mathbb{E}_{\overline{\mathbb{P}}^{n}}[\langle u_{j} \vert Y^{n} \rangle]$.
+\end{itemize}
+\end{block}
+%\begin{block}{References}
+%\textsc{\citet{HEMHAN}}, \textsc{\citet{cavalier2011inverse}}, \textsc{\citet{doi:10.1121/1.3685484}}
+%\end{block}
+\end{column}
+
+\begin{column}[T]{.8\textwidth}%
+
+\bigskip
+
+Consider a class of inverse problems:
+\begin{itemize}
+%\item $\left(\Theta, \langle \cdot \vert \cdot \rangle_{\Theta}\right)$: a Hilbert space (parameter space);
+\item Statistical model $\left(\mathcal{S}, \left(\mathbb{P}_{\vert \theta}^{n}\right)_{\theta \in \Theta, n \in \mathbb{N}}\right)$;
+%\item compact linear operator $\lambda: \Theta \rightarrow \Theta$;
+%\item parameter of interest $\theta^{\circ}$ in $\Theta$;
+\item observation $Y^{n} \sim \mathbb{P}_{\vert \lambda \theta^{\circ}}^{n}$;
+%\item $\mathcal{J} \subseteq \mathbb{Z}$ an index set;
+\item an ONB $\mathcal{U} = \left(u_{j}\right)_{j \in \mathcal{J}}$ of $\Theta$ that diagonalises $\lambda$.
+\end{itemize}
+
+\bigskip
+\bigskip
+
+\underline{Likelihood:} $\frac{L_{Y^{n} \vert \boldsymbol{\theta}}^{n}(y^{n}, \theta)}{L_{Y^{n} \vert \boldsymbol{\theta}}^{n}(y^{n}, 0)} = \exp\left[-\frac{n}{2}\left(\sum\limits_{j \in \mathcal{J}} \lambda_{j}^{2}\theta_{j}^{2} + 2 \sum\limits_{j \in \mathcal{J}}\lambda_{j} \theta_{j} y_{j} + \Delta_{1}^{n}(\theta, y^{n})\right)\right]$
+
+\bigskip
+\bigskip
+
+\underline{References:} \textsc{\citet{HEMHAN}}, \textsc{\citet{cavalier2011inverse}}, \textsc{\citet{doi:10.1121/1.3685484}}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{The frequentist Bayesian point of view}
+%\begin{columns}
+%\begin{column}[T]{.3\textwidth}%
+%\begin{block}{References}
+%\textsc{\citet{Schwartz1965}}, \textsc{\citet{Schwartz01071964}}, \textsc{\citet{ghosal2000convergence}}
+%\end{block}
+%\end{column}
+%
+%\begin{column}[T]{.8\textwidth}%
+\underline{Consider:}
+\begin{itemize}
+\setlength\itemsep{2em}
+\item a true parameter $\theta^{\circ} \in \Theta$;
+\item $\left(\Theta, \mathcal{A}\right)$ to be a measurable space;
+\item a sequence of priors about $\theta^{\circ}$ denoted $\left(\mathbb{P}_{\boldsymbol{\theta}}^{n}\right)_{n \in \mathbb{N}}: \mathcal{A}^{\otimes \mathbb{N}} \rightarrow [0,1]^{\times\mathbb{N}}$;
+\item we have interest in the posterior distributions $\left(\mathbb{P}_{\boldsymbol{\theta}\vert Y^{n}}^{n}\right)_{n \in \mathbb{N}}$.
+\end{itemize}
+
+\bigskip
+\bigskip
+
+\underline{References:} \textsc{\citet{Schwartz1965}}, \textsc{\citet{Schwartz01071964}}, \textsc{\citet{ghosal2000convergence}}
+%\end{column}
+%\end{columns}
+\end{frame}
+
+\begin{frame}{The frequentist Bayesian point of view}{Contraction rate}
+\begin{columns}
+\begin{column}[T]{.3\textwidth}%
+\vspace*{-3ex}\hspace*{2ex}
+\includegraphics<1>[scale=.8]{reg.31}%
+\includegraphics<2>[scale=.8]{reg.32}%
+\includegraphics<3>[scale=.8]{reg.33}%
+\includegraphics<4>[scale=.8]{reg.34}%
+\includegraphics<5>[scale=.8]{reg.35}%
+\includegraphics<6>[scale=.8]{reg.36}%
+\includegraphics<7>[scale=.8]{reg.37}%
+\includegraphics<8->[scale=.8]{reg.38}%
+\end{column}
+
+\begin{column}[T]{.8\textwidth}%
+\begin{minipage}[c][.6\textheight][c]{\linewidth}
+
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+
+\begin{itemize}
+\setlength\itemsep{2em}
+\item<1-> A sequence $(\phi_{n})_{n \in \mathbb{N}}$ is a contraction rate at $\theta^{\circ}$ if
+\[\forall \left(c_{n}\right), c_{n} \rightarrow \infty, \quad \lim_{n \rightarrow \infty} \mathbb{E}_{\theta^{\circ}}^{n}\left[ \mathbb{P}_{\boldsymbol{\theta}\vert Y^{n}}^{n} \left(d\left(\boldsymbol{\theta}, \theta^{\circ} \right)^{2} \geq c_{n} \, \phi_{n} \right) \right] = 0; \]
+
+\item<5-> and an exact contraction rate if in addition
+\[ \lim_{n \rightarrow \infty} \mathbb{E}_{\theta^{\circ}}^{n}\left[ \mathbb{P}_{\boldsymbol{\theta}\vert Y^{n}}^{n} \left(d\left(\boldsymbol{\theta}, \theta^{\circ} \right)^{2} \leq c_{n}^{-1} \, \phi_{n} \right) \right] = 0.\]
+\end{itemize}
+
+\bigskip
+\bigskip
+
+\underline{Reference:} \textsc{\citet{castillo2008lower}}
+
+\end{minipage}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{The frequentist Bayesian point of view}{Oracle optimality}
+\begin{itemize}
+\item $\left(\Psi_{n}^{\circ}(\theta^{\circ})\right)_{n \in \mathbb{N}}$ is a lower bound at $\theta^{\circ}$ for the contraction rate over the family of prior sequences $\left(\mathcal{G}_{n}\right)_{n \in \mathbb{N}}$ if:
+\[\lim\limits_{n \rightarrow \infty} \sup\limits_{\mathbb{Q}_{\boldsymbol{\theta}}^{n}\in \mathcal{G}_{n}} \mathbb{E}_{\theta^{\circ}}^{n}\left[\mathbb{Q}_{\boldsymbol{\theta}\vert Y^{n}}^{n}\left(d^{2}\left(\theta^{\circ}, \boldsymbol{\theta}\right) \leq c_{n}^{-1}\Psi_{n}^{\circ}(\theta^{\circ})\right)\right] = 0;\]
+\item it is called oracle rate over the family of priors if in addition there exists $\mathbb{P}_{\boldsymbol{\theta}}^{n}$ in $\mathcal{G}_{n}$ such that
+\[\lim\limits_{n \rightarrow \infty} \mathbb{E}_{\theta^{\circ}}^{n}\left[\mathbb{P}_{\boldsymbol{\theta}\vert Y^{n}}^{n}\left(d^{2}\left(\theta^{\circ}, \boldsymbol{\theta}\right) \geq c_{n} \Psi_{n}^{\circ}(\theta^{\circ}) \right)\right] = 0.\]
+\end{itemize}
+
+\bigskip
+\bigskip
+
+\underline{Remark:} these definitions generalize using the maximal risk, defining the uniform contraction rate and minimax optimal contraction rate.
+\end{frame}
+
+\begin{frame}{Goal 1}
+\begin{columns}
+\begin{column}[T]{.3\textwidth}%
+\bigskip
+\bigskip
+\begin{block}{Notations:}
+\begin{itemize}
+\setlength\itemsep{2em}
+\item $\Lambda_{j}:= \vert\lambda_{j}\vert^{-2}$
+\item $\overline{\Lambda}_{m}:= \frac{1}{m} \sum_{\vert j \vert = 1}^{m} \Lambda_{j}$
+\item $b_{m}^{2}:= \sum\limits_{\vert j\vert > m} \vert \theta^{\circ}_{j} \vert^{2}$
+\end{itemize}
+\end{block}
+
+\end{column}
+\begin{column}[T]{.8\textwidth}%
+\vfill
+\underline{Likelihood:} $\frac{L_{Y^{n} \vert \boldsymbol{\theta}}^{n}(y^{n}, \theta)}{L_{Y^{n} \vert \boldsymbol{\theta}}^{n}(y^{n}, 0)} = \exp\left[-\frac{n}{2}\left(\sum\limits_{j \in \mathcal{J}} \lambda_{j}^{2}\theta_{j}^{2} + 2 \sum\limits_{j \in \mathcal{J}}\lambda_{j} \theta_{j} y_{j} + \Delta_{1}^{n}(\theta, y^{n})\right)\right]$
+
+\bigskip
+\bigskip
+
+\underline{Goal:}
+\begin{itemize}
+\item define a family of prior sequences indexed by a dimension parameter $m_{n}$;
+\item find conditions on $\Delta_{1}^{n}$ such that $\phi_{n}^{m_{n}}(\theta^{\circ}):= \left(\frac{m_{n} \overline{\Lambda}_{m_{n}}}{n} \vee b_{m_{n}}^{2}(\theta^{\circ})\right)$ is a lower bound for the contraction rate of the posterior indexed by $m_{n}$;
+\item show that by selecting $m_{n}^{\circ} = \argmin \phi_{n}^{m_{n}}(\theta^{\circ})$ as the dimension parameter, $\Phi_{n}^{\circ}(\theta^{\circ}):= \min\limits_{m_{n}} \phi_{n}^{m_{n}}(\theta^{\circ})$ is a contraction rate
+\item construct an adaptive prior from this family
+\end{itemize}
+
+%impose conditions on $\Delta_{1}^{n}$ such that our choice of prior reaches oracle optimality.
+%
+%More precisely, show that:
+%\begin{itemize}
+%\item $\Phi_{n}^{\circ}(\theta^{\circ}):= \min\limits_{m}\left(\frac{m \overline{\Lambda}_{m}}{n} \vee b_{m}^{2}(\theta^{\circ})\right)$ is a lower bound for the contraction of the family we define at any $\theta^{\circ}$ in $\Theta$;
+%\item find an element of the family reaching the bound;
+%\item show that the adaptive prior we use admits $\Phi_{n}^{\circ}(\theta^{\circ})$ as a contraction rate.
+%\end{itemize}
+\vfill
+\end{column}
+\end{columns}
+\end{frame}
+
+%
+%\begin{frame}{The frequentist Bayesian point of view}{Uniform contraction rate}
+%\begin{columns}
+%\begin{column}[T]{.3\textwidth}%
+%\vspace*{-3ex}\hspace*{2ex}
+%\includegraphics<1>[scale=.8]{inv-gssm-minimax.1}%
+%\includegraphics<2>[scale=.8]{inv-gssm-minimax.2}% lower
+%\includegraphics<3>[scale=.8]{inv-gssm-minimax.3}%
+%\includegraphics<4>[scale=.8]{inv-gssm-minimax.4}%
+%\includegraphics<5>[scale=.8]{inv-gssm-minimax.5}% upper + lower
+%\includegraphics<6>[scale=.8]{inv-gssm-minimax.6}%
+%\end{column}
+%\begin{column}[T]{.8\textwidth}%
+%\begin{minipage}[c][.6\textheight][c]{\linewidth}
+%\vfill
+%\begin{itemize}
+%\item<1->
+%A sequence $\left(\phi_{n}\right)_{n \in \mathbb{N}}$ is a uniform contraction rate over the class of parameters $\Theta^{\circ}$ if
+%\[\lim_{n \rightarrow \infty} \inf\limits_{\theta^{\circ} \in \Theta^{\circ}} \mathbb{E}_{\theta^{\circ}}^{n}\left[\mathbb{P}_{\boldsymbol{\theta}\vert Y^{n}}^{n}\left(d^{2}\left(\theta^{\circ}, \boldsymbol{\theta}\right) \leq c_{n} \cdot \phi_{n} \right)\right] = 1.\]
+% \item<2->  it is called exact uniform contraction rate if in addition
+%\[\lim_{n \rightarrow \infty} \inf\limits_{\theta^{\circ} \in \Theta^{\circ}} \mathbb{E}_{\theta^{\circ}}^{n}\left[\mathbb{P}_{\boldsymbol{\theta}\vert Y^{n}}^{n}\left(d^{2}\left(\theta^{\circ}, \boldsymbol{\theta}\right) \geq c_{n}^{-1} \cdot \phi_{n} \right)\right] = 1.\]
+%\end{itemize}
+%\vfill
+%\end{minipage}
+%\end{column}
+%\end{columns}
+%\end{frame}
+%
+%\begin{frame}{The frequentist Bayesian point of view}{Minimax optimality}
+%\begin{itemize}
+%\item $\left(\Psi_{n}^{\star}(\Theta^{\circ})\right)_{n \in \mathbb{N}}$ is a lower bound for the uniform contraction rate of any prior if:
+%\[\lim_{n \rightarrow \infty} \sup\limits_{\mathbb{Q}_{\boldsymbol{\theta}}} \inf\limits_{\theta^{\circ} \in \Theta^{\circ}} \mathbb{E}_{\theta^{\circ}}^{n}\left[\mathbb{Q}_{\boldsymbol{\theta}\vert Y^{n}}^{n}\left(d^{2}\left(\theta^{\circ}, \boldsymbol{\theta}\right) \leq c_{n}^{-1} \cdot \Psi_{n}^{\star}(\Theta_{\textgoth{a}}(r)) \right)\right] = 0;\]
+%\item it is called minimax rate over $\Theta^{\circ}$ if in addition there exists a prior $\mathbb{P}_{\boldsymbol{\theta}}^{n}$ such that
+%\[\lim_{n \rightarrow \infty} \inf\limits_{\theta^{\circ} \in \Theta^{\circ}} \mathbb{E}_{\theta^{\circ}}^{n}\left[\mathbb{Q}_{\boldsymbol{\theta}\vert Y^{n}}^{n}\left(d^{2}\left(\theta^{\circ}, \boldsymbol{\theta}\right) \leq c_{n}^{-1} \cdot \Psi_{n}^{\star}(\Theta_{\textgoth{a}}(r)) \right)\right] = 1;\]
+%\end{itemize}
+%
+%Following ideas in \textsc{\citet{ghosal2000convergence}}, we can show that a lower bound is always given by the frequentist minimax optimal rate of convergence $\Phi_{n}^{\star}(\Theta^{\circ})$.
+%\end{frame}
+
+
+\begin{frame}{Iterated posteriors and self information carriers}
+In the spirit of \textsc{\citet{OBJJ}}, we then generate a posterior family by introducing an \textcolor{red!90!black}{iteration parameter $\eta$}:
+\begin{itemize}
+\setlength\itemsep{1em}
+\item<1-> for $\textcolor{red!90!black}{\eta = 1}$, the prior distribution is $\mathbb{P}_{\boldsymbol{\theta}}^{n, (1)} = \mathbb{P}_{\boldsymbol{\theta}}^{n}$, the likelihood $\mathbb{P}_{Y^{n} \vert \boldsymbol{\theta}}^{n, (1)} = \mathbb{P}_{Y^{n} \vert \boldsymbol{\theta}}^{n}$ and the posterior distribution is $\mathbb{P}_{\boldsymbol{\theta} \vert Y^{n}}^{n, (1)} = \mathbb{P}_{\boldsymbol{\theta}\vert Y^{n}}^{n}$;
+\item<2-> for $\textcolor{red!90!black}{\eta = 2}$, we take the posterior for $\eta = 1$ as prior, hence, the \textcolor{red!90!black}{prior is} $\textcolor{red!90!black}{\mathbb{P}_{\boldsymbol{\theta}}^{n, (2)} = \mathbb{P}_{\boldsymbol{\theta} \vert Y^{n}}^{n, (1)}}$, the likelihood does not change $\mathbb{P}_{Y^{n} \vert \boldsymbol{\theta}}^{n, (2)} = \mathbb{P}_{Y^{n} \vert \boldsymbol{\theta}}^{n}$ and we compute the posterior with the same observations $Y^{n}$, which we note $\mathbb{P}_{\boldsymbol{\theta} \vert Y^{n}}^{n, (2)}$;
+\item<3->...
+\item<4-> for any value of $\textcolor{red!90!black}{\eta > 1}$, the prior is $\textcolor{red!90!black}{\mathbb{P}_{\boldsymbol{\theta}}^{n, (\eta)} = \mathbb{P}_{\boldsymbol{\theta} \vert Y^{n}}^{n, (\eta-1)}}$ and we compute the posterior with the same likelihood $\textcolor{red!90!black}{\mathbb{P}_{Y^{n} \vert \boldsymbol{\theta}}^{n, (\eta)} = \mathbb{P}_{Y^{n} \vert \boldsymbol{\theta}}^{n}}$ and same observations $Y^{n}$ which gives $\textcolor{red!90!black}{\mathbb{P}_{\boldsymbol{\theta} \vert Y^{n}}^{n, (\eta)}}$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Goal 2}
+For our family of prior sequences, study the asymptotic with $\eta$:
+\begin{itemize}
+\setlength\itemsep{2em}
+\item show that the posterior degenerates to a point mass
+\item give interpretation for the point mass
+\end{itemize}
+
+\bigskip
+\bigskip
+
+\underline{Remark:} \textsc{\citet{OBJJ}} show in some cases that the posterior concentrates around the generalized MLE.
+\end{frame}
+
+%-------------------------------------------------------
+\section{A family of Bayesian approaches}
+%-------------------------------------------------------
+
+\begin{frame}{Gaussian sieve}{Family of sieve priors}
+\begin{columns}
+\begin{column}[T]{.2\textwidth}%
+
+\bigskip
+\bigskip
+\bigskip
+
+\begin{block}{Notations:}
+$\theta^{\times}$ prior mean;
+
+\bigskip
+
+$s$ prior variance.
+\end{block}
+\end{column}
+\begin{column}[T]{.9\textwidth}%
+\underline{Define:}
+\begin{itemize}
+\setlength\itemsep{2em}
+% \item $\left(G_{n}\right)_{n \in \mathbb{N}} = \left(\max\left\{m \in [1, n]: \frac{\Lambda_{(m)}}{n} \leq \Lambda_{1}\right\}\right)_{n \in \mathbb{N}}$
+\item a sequence $\left(m_{n}\right)_{n \in \mathbb{N}}, \quad m_{n} \leq n$;
+\item the sequence of priors $\left(\mathbb{P}_{\boldsymbol{\theta}^{m_{n}}}^{n}\right)_{n \in \mathbb{N}}$ with density% such that if $\boldsymbol{\theta} \sim \mathbb{P}_{\boldsymbol{\theta}^{m_{n}}}^{n},$
+\[p_{\boldsymbol{\theta}}^{n}(\theta) \propto \exp\left[-\frac{1}{2} \sum\limits_{\vert j \vert \leq m_{n}}\frac{\left\vert \theta^{\times}_{j} - \theta_{j}\right\vert^{2}}{s_{j}} + \Delta_{2}^{n}(\theta)\right]\prod\limits_{\vert j \vert > m_{n}} \delta_{\theta^{\times}_{j}}(\theta_{j});\]
+\item $\mathcal{G}_{m_{n}}$ is the family of priors generated by taking any sequence $m_{n}$.
+%\begin{itemize}
+%\item $\vert j \vert \leq m_{n} \Rightarrow \boldsymbol{\theta}_{j} \sim \mathcal{N}\left(\theta^{\times}_{j}, s_{j}\right)$
+%\item $\vert j \vert > m_{n} \Rightarrow \boldsymbol{\theta}_{j} \sim \delta_{\theta_{j}^{\times}}$
+%\end{itemize}
+\end{itemize}
+
+\bigskip
+\bigskip
+\bigskip
+
+\underline{References:} \textsc{\citet{castillo2008lower}}, \textsc{\citet{rasmussen2006gaussian}}, \textsc{\citet{JJASRS}}.
+\end{column}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Gaussian sieve}{Contraction rate}
+\begin{columns}
+\begin{column}[T]{.25\textwidth}%
+
+\bigskip
+\bigskip
+
+\begin{block}{Notations:}
+\begin{alignat*}{3}
+& \widehat{\theta}_{\eta, j} &&:=&& \frac{\frac{\theta^{\times}_{j}}{\eta n} + s_{j} y_{j}^{n} \lambda_{j}}{\frac{1}{\eta n} + s_{j} \lambda_{j}^{2}};\\
+& && &&\\
+& \sigma_{\eta, j}^{n} &&:=&& \frac{s_{j}}{1 + \eta n s_{j} \lambda_{j}^{2}}.
+\end{alignat*}
+\end{block}
+\end{column}
+\begin{column}[T]{.8\textwidth}%
+
+The posterior distribution is given by:
+\begin{alignat*}{3}
+&p_{\boldsymbol{\theta}^{m_{n}}\vert Y^{n}}^{n}(\theta, y^{n}) &&\propto&& \exp\left[-\frac{1}{2} \sum\limits_{\vert j \vert \leq m_{n}} \frac{\vert \widehat{\theta}_{\eta, j} - \theta_{j} \vert ^{2}}{\sigma_{\eta, j}^{n}} + \eta \Delta_{2}^{n}(\theta, y^{n}) + \Delta_{1}^{n}(\theta)\right].
+\end{alignat*}
+\begin{block}{Theorem Johannes \& L. 2018: oracle contraction rate}
+Let $\Delta_{2}^{n}$, $\Delta_{1}^{n}$ be such that for any $0 \leq k_{1}, k_{2} \leq 2$ and $j_{1}, j_{2} \leq m_{n}$:
+\begin{alignat*}{3}
+& \mathbb{E}_{\boldsymbol{\theta}\vert Y^{n}}^{n}\left[\boldsymbol{\theta}_{j_{1}}^{k_{1}}\boldsymbol{\theta}_{j_{2}}^{k_{2}}\right] && = && \mathcal{O}_{\mathbb{P}_{\theta^{\circ}}^{n}}\left(\mathbb{E}_{\widetilde{\mathbb{P}}^{n}}\left[\boldsymbol{\theta}_{j_{1}}^{k_{1}}\boldsymbol{\theta}_{j_{2}}^{k_{2}}\right]\right)
+\end{alignat*}
+Where $\widetilde{\mathbb{P}}^{n} = \mathcal{N}(\widehat{\theta}_{\eta}, \sigma_{\eta}^{n})$.
+
+Then $\mathbb{P}_{\boldsymbol{\theta}^{m_{n}}\vert Y^{n}}^{m}$ admits $\phi_{n}^{m_{n}}(\theta^{\circ})$ as a contraction rate.
+\end{block}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Hierarchical Gaussian sieves}{Posterior distribution}
+Consider the dimension parameter $m$ as a random variable:
+\begin{alignat*}{3}
+&\mathbb{P}_{M}(\{M = m\}) &&=&& \frac{\exp[-\eta \cdot pen(m)]}{\sum\limits_{k=1}^{n}\exp[-\eta \cdot pen(k)]};\\
+& && &&\\
+&\mathbb{P}_{M \vert Y^{n}}^{n, (\eta)} &&=&& \frac{\mathbb{P}_{M}}{\mathbb{P}_{Y^{n}}} \left(\int\limits_{\Theta} \mathbb{P}_{Y^{n} \vert \boldsymbol{\theta}} \cdot \mathbb{P}_{\boldsymbol{\theta} \vert M} \,d\theta\right)^{\eta};\\
+& && &&\\
+%& &&=&&\frac{1}{\sum\limits_{k = 1}^{G_{n}} \exp\left[\eta\left\{\left(\mu_{k}^{n, (1)}(y^{n}) - pen(k)\right)-\left(\mu_{m}^{n, (1)}(y^{n}) - pen(m)\right)\right\}\right]};\\
+&\mathbb{P}_{\boldsymbol{\theta}^{M} \vert Y^{n}}^{n, (\eta)} &&=&& \sum\limits_{m = 1}^{n} \mathbb{P}_{\boldsymbol{\theta} \vert M = m, Y^{n}}^{n, (\eta)} \cdot \mathbb{P}_{M \vert Y^{n}}^{n, (\eta)}(\{M = m\});\\
+& && &&\\
+&\mathbb{E}_{\boldsymbol{\theta}^{M} \vert Y^{n}}^{n, (\eta)}[\boldsymbol{\theta}] &&=&& \sum\limits_{m = 1}^{n} \mathbb{E}_{\boldsymbol{\theta} \vert M = m, Y^{n}}^{n, (\eta)}[\boldsymbol{\theta}] \cdot \mathbb{P}_{M \vert Y^{n}}^{n, (\eta)}(\{M = m\}).
+%& &&=&&  \sum\limits_{m = 1}^{G_{n}} \frac{\exp\left[\pi_{\boldsymbol{\theta}^{m}}\left(\theta\right) + \eta \mathcal{l}^{n}\left(y^{n}, \theta\right) \right]}{\exp\left[\mu_{m}^{n, \left(\eta\right)}\left(y^{n}\right)\right]} \cdot \mathbb{P}_{M \vert Y^{n}}^{n, (\eta)}(m).
+\end{alignat*}
+\end{frame}
+
+
+
+%\begin{frame}{Gaussian sieve}{Posterior from a sieve prior}
+%In the general case we hence have
+%\begin{itemize}
+%\item \underline{Prior density:}
+%\[\Pi_{\boldsymbol{\theta}^{m_{n}}}(\theta) =  \exp\left[\pi_{\boldsymbol{\theta}^{m_{n}}}\left(\theta\right)\right];\]
+%\item \underline{Likelihood:}
+%\[L_{Y^{n} \vert \boldsymbol{\theta}}^{n}(y^{n}, \theta) =  \exp\left[\mathcal{l}^{n}\left(y^{n}, \theta\right)\right];\]
+%\item \underline{(Iterated) marginal density of observations:}
+%\[M_{Y^{n}}^{n, \left(\eta\right)}(y^{n}) = \exp\left[\mu_{m_{n}}^{n, \left(\eta\right)}\left(y^{n}\right)\right] = \int_{\theta \in \Theta} \exp\left[\pi_{\boldsymbol{\theta}^{m_{n}}}\left(\theta\right) + \eta \mathcal{l}^{n}\left(y^{n}, \theta\right) \right] \,d\theta;\]
+%\item \underline{(Iterated) posterior density:}
+%\[\Pi_{\boldsymbol{\theta}^{m_{n}}\vert Y^{n}}^{n, \left(\eta\right)}(\theta, y^{n}) = \exp\left[\pi_{\boldsymbol{\theta}^{m_{n}}\vert Y^{n}}^{n, \left( \eta \right)}\left(\theta, y^{n}\right)\right] = \frac{\exp\left[\pi_{\boldsymbol{\theta}^{m_{n}}}\left(\theta\right) + \eta \mathcal{l}^{n}\left(y^{n}, \theta\right) \right]}{\exp\left[\mu_{m_{n}}^{n, \left(\eta\right)}\left(y^{n}\right)\right]}.\]
+%\end{itemize}
+%\end{frame}
+
+
+
+\begin{frame}{Hierarchical Gaussian sieves}{Self informative limit}
+\begin{block}{Theorem \textsc{Johannes \& L. 2016: Self informative Bayes carrier}}
+As the number of iterations $\eta$ tends to infinite, the distribution of $\boldsymbol{\theta}^{M}$ contracts around the projection estimator for which the dimension is given by the minimizer of the penalized contrast:
+\[-\mu_{m}^{n, (1)}(y^{n}) + pen(m)\]
+\end{block}
+Where $\mu_{m}^{n, (1)}(y^{n})$ is the log of the marginal of $Y^{n}$:
+\[\exp\left[\mu_{m_{n}}^{n, \left(1\right)}\left(y^{n}\right)\right] \propto \int_{\theta \in \Theta} p_{\boldsymbol{\theta}\vert Y^{n}}(\theta, y^{n}) \,d\theta\]
+\end{frame}
+
+%-------------------------------------------------------
+\section{The inverse Gaussian sequence space model}
+%-------------------------------------------------------
+
+\begin{frame}{The model and its likelihood}
+\underline{Data:} $Y^{n}(x) = \int\limits_{0}^{x} \lambda(\theta^{\circ})(s) ds + \int\limits_{0}^{x}\frac{1}{\sqrt{n}}dW(s)$, \quad $Y^{n}_{j} = \lambda_{j} \theta^{\circ}_{j} + \frac{1}{\sqrt{n}} \xi_{j}$
+
+\underline{Likelihood:} $\frac{L_{Y^{n} \vert \boldsymbol{\theta}}^{n}(y^{n}, \theta)}{L_{Y^{n} \vert \boldsymbol{\theta}}^{n}(y^{n}, 0)} = \exp\left[-\frac{n}{2}\sum\limits_{j \in \mathbb{N}} \lambda_{j}^{2}\theta_{j}^{2} + n \sum\limits_{j \in \mathbb{N}}\lambda_{j} \theta_{j} Y_{j}\right]$
+
+\begin{columns}
+	\begin{column}[T]{.4\textwidth}%
+		\bigskip
+		\bigskip
+		\begin{block}{Notations:}
+			\begin{alignat*}{2}
+				&\color{green!90!black} \sum\limits_{j \geq 1}\theta^{\circ}_{j} \lambda_{j}^{t} \cdot u_{j}(x);&&\\
+				&\color{red!90!black} \sum\limits_{j \geq 1} Y_{j} \cdot u_{j}(x);&&\\
+				&\lambda_{j}^{t} = \exp\left[-\left(j + 1\right)^{2} \cdot t \right]&&\\
+				&\lambda_{j}^{t} = \exp\left[-2 \cdot \log\left(j + 1\right) \cdot t \right]&&
+			\end{alignat*}
+		\end{block}
+	\end{column}
+	\begin{column}[T]{.7\textwidth}%
+		\begin{center}
+			\animategraphics[loop,controls,width=30ex]{10}{animation/test-}{0}{147}
+		\end{center}
+	\end{column}
+\end{columns}
+\end{frame}
+
+%\begin{frame}{An explicit form for the posterior distribution}
+%\begin{columns}
+%\begin{column}[T]{.3\textwidth}%
+%\begin{block}{Notations:}
+%\begin{alignat*}{3}
+%& \widehat{\theta}_{\eta, j}^{n} && = && \frac{\frac{\theta^{\times}_{j}}{n \eta s_{j}} + \frac{Y_{j}^{n}}{\lambda_{j}}}{1 + \frac{\Lambda_{j}}{n \eta s_{j}}};\\
+%& \sigma_{\eta, j}^{n} && = && \frac{\Lambda_{j}}{n \eta \left(1 + \frac{\Lambda_{j}}{n \eta s_{j}}\right)};\\
+%& b_{m}^{2} &&=&& \sum\limits_{j > m} \left(\theta^{\times}_{j} - \theta^{\circ}_{j}\right)^{2}.
+%\end{alignat*}
+%\end{block}
+%\end{column}
+%\begin{column}[T]{.8\textwidth}%
+%\begin{alignat*}{3}
+%& \mathbb{P}_{\boldsymbol{\theta}^{m_{n}} \vert Y^{n}}^{n, (\eta)} &&=&& \bigotimes\limits_{j = 1}^{m_{n}} \mathcal{N}\left(\widehat{\theta}_{\eta, j}^{n}, \sigma_{\eta, j}^{n}\right) \bigotimes\limits_{j > m_{n}} \delta_{\theta^{\times}_{j}};\\
+%&\mathbb{P}_{M \vert Y^{\eta}}^{n}(\{M = m\}) &&\propto&& \exp\!\!\left[- \frac{1}{2} \left( 3 m \eta - \sum\limits_{j = 1}^{m} \frac{\left(\widehat{\theta}_{\eta, j}^{n}\right)^{2}}{\sigma_{\eta, j}^{n}} \right)\right];\\
+%& \mathbb{E}_{\theta^{\circ}}^{n}\left[\Vert \widehat{\theta}_{\eta}^{n, m} - \theta^{\circ} \Vert^{2}\right] &&=&& \mathcal{O}_{n}\left(\frac{m \overline{\Lambda}_{m}}{n} \wedge b_{m}^{2}\right)\\
+%& && = && \phi_{n}^{m, \eta}(\theta^{\circ}).
+%\end{alignat*}
+%\end{column}
+%\end{columns}
+%\end{frame}
+
+\begin{frame}{Optimality results: oracle optimality}
+%\begin{columns}
+%\begin{column}[T]{.3\textwidth}%
+%\bigskip
+%\bigskip
+%\begin{block}{Notations:}
+%\begin{alignat*}{3}
+%&m_{n}^{\circ} && = && \argmin\limits_{m \in \llbracket 1, G_{n} \rrbracket} \phi_{n}^{m, \eta};\\
+%& && &&\\
+%&\Phi_{n}^{\circ}(\theta^{\circ}) &&=&&\phi_{n}^{m_{n}^{\circ}, \eta}(\theta^{\circ}).
+%\end{alignat*}
+%\end{block}
+%\end{column}
+%\begin{column}[T]{.8\textwidth}%
+For any increasing and unbounded sequence $(c_{n})_{n \in \mathbb{N}}$
+\begin{block}{Theorem \textsc{Johannes \& L. 2016: Oracle optimality}}
+\begin{alignat*}{3}
+& \lim\limits_{n \rightarrow \infty} \mathbb{E}_{\theta^{\circ}}^{n}\left[\mathbb{P}_{\boldsymbol{\theta}^{m_{n}^{\circ}}\vert Y^{n}}^{n}\left(d^{2}\left(\theta^{\circ}, \boldsymbol{\theta}^{m_{n}^{\circ}}\right) \geq c_{n}^{-1} \Phi_{n}^{\circ}(\theta^{\circ}) \right)\right] &&=&& 1;\\
+& \lim\limits_{n \rightarrow \infty} \mathbb{E}_{\theta^{\circ}}^{n}\left[\mathbb{P}_{\boldsymbol{\theta}^{m_{n}^{\circ}}\vert Y^{n}}^{n}\left(d^{2}\left(\theta^{\circ}, \boldsymbol{\theta}^{m_{n}^{\circ}}\right) \leq c_{n} \Phi_{n}^{\circ}(\theta^{\circ}) \right)\right] &&=&& 1;\\
+& \lim\limits_{n \rightarrow \infty} \mathbb{E}_{\theta^{\circ}}^{n}\left[\mathbb{P}_{\boldsymbol{\theta}^{M} \vert Y^{n}}^{n}\left(d^{2}\left(\theta^{\circ}, \boldsymbol{\theta}^{M}\right) \leq c_{n} \Phi_{n}^{\circ}(\theta^{\circ}) \right)\right] &&=&& 1;\\
+\end{alignat*}
+\end{block}
+
+\bigskip
+\bigskip
+\textsc{\citet{JJASRS}} exhibit cases where $(c_{n})_{n \in \mathbb{N}}$ can be replaced by a constant with $\eta = 1$.
+We generalized this property for any $\eta \in [2, \infty]$.
+%\end{column}
+%\end{columns} 
+\end{frame}
+
+%\begin{frame}{Optimality results: minimax optimality}
+%For any increasing and unbounded sequence $(c_{n})_{n \in \mathbb{N}}$
+%\begin{block}{Theorem \textsc{Johannes \& L. 2016: Minimax optimality}}
+%\begin{alignat*}{3}
+%& \lim\limits_{n \rightarrow \infty} \inf\limits_{m_{n} \in \llbracket 1, G_{n} \rrbracket} \sup\limits_{\theta^{\circ} \in \Theta^{\circ}} \mathbb{E}_{\theta^{\circ}}^{n}\left[\mathbb{P}_{\boldsymbol{\theta}^{m_{n}}\vert Y^{n}}^{n}\left(d^{2}\left(\theta^{\circ}, \boldsymbol{\theta}^{m_{n}}\right) \leq c_{n} \Phi_{n}^{\star}(\Theta^{\circ}) \right)\right] &&=&& 1;\\
+%& \lim\limits_{n \rightarrow \infty} \sup\limits_{\theta^{\circ} \in \Theta^{\circ}} \mathbb{E}_{\theta^{\circ}}^{n}\left[\mathbb{P}_{\boldsymbol{\theta}^{M} \vert Y^{n}}^{n}\left(d^{2}\left(\theta^{\circ}, \boldsymbol{\theta}^{M}\right) \leq c_{n} \Phi_{n}^{\star}(\Theta^{\circ}) \right)\right] &&=&& 1;
+%\end{alignat*}
+%\end{block}
+%\textsc{\citet{JJASRS}} exhibit cases where $(c_{n})_{n \in \mathbb{N}}$ can be replaced by a constant with $\eta = 1$.
+%We generalized this property for any $\eta \in [2, \infty].$
+%\end{frame}
+
+%\begin{frame}{Simulations}
+%\end{frame}
+
+%-------------------------------------------------------
+\section{The circular deconvolution model}
+%-------------------------------------------------------
+
+\begin{frame}{The model and its likelihood}
+
+\begin{columns}
+	\begin{column}[T]{.4\textwidth}%
+		\begin{block}{Data:}
+			$Y^{n} = \left(Y_{k}\right)_{k \in \llbracket1, n\rrbracket} = \left(X_{k} + \epsilon_{k}\right)_{k}$,
+			$f^{X}(x) = \sum\limits_{j \in \mathbb{Z}} \theta^{\circ}_{j} \exp[-2 i \pi j \cdot]$
+			$f^{\epsilon}(x) = \sum\limits_{j \in \mathbb{Z}} \lambda_{j} \exp[-2 i \pi j \cdot]$
+			$f^{Y}(x) = \sum\limits_{j \in \mathbb{Z}} \theta^{\circ}_{j} \lambda_{j} \exp[-2 i \pi j \cdot]$
+		\end{block}
+		\begin{block}{Likelihood:}
+			$L_{Y^{n} \vert \boldsymbol{\theta}}^{n}(y^{n}, \theta) = \prod\limits_{k=1}^{n}\left(\sum\limits_{j \in \mathbb{Z}} \lambda_{j} \cdot \theta_{j} \cdot e_{j}(y_{k})\right)$
+		\end{block}
+	\end{column}
+	\begin{column}[T]{.7\textwidth}%
+		\begin{center}
+			\animategraphics[loop,controls,width=30ex]{10}{illu-deconv2/}{950}{997}
+		\end{center}
+	\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Optimality results}
+\underline{Assume:} $\Vert f^{Y} \Vert_{l^{1}} \leq C < 2$,
+
+we hence obtain
+\[\Delta_{1}^{n}(\theta, y^{n}) = -2\left(1 + \sum\limits_{k = 1}^{n} \frac{\log(f^{Y}(y_{k})) - f^{Y}(y_{k})}{n}\right).\]
+
+\bigskip
+
+\underline{Goal:} apply previous result by showing convergence of moments.
+
+\bigskip
+
+\underline{Reasons to hope for a positive result:}
+\begin{itemize}
+\item existing results around equivalence of these experiments,
+\item proven optimality of the posterior mean estimator,
+\item promising simulations.
+\end{itemize}
+\end{frame}
+
+%%-------------------------------------------------------
+%\section{Some additional properties of the shrinkage estimator}
+%%-------------------------------------------------------
+
+\begin{frame}{Further developments}
+\begin{itemize}
+\setlength\itemsep{2em}
+\item Consider $\mathbb{L}^{p}$-norms, $p \neq 2$;
+\item contemplate empirical Bayes for partially unknown operator;
+\item selecting prior variance sequence instead of dimension parameter.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Summary}
+\begin{itemize}
+\setlength\itemsep{2em}
+\item Family of Bayesian methods indexed by an iteration parameter;
+\item frequentist "model selection" method  is a limit case;
+\item optimal contraction rate of the posterior distributions in Gaussian case;
+\item hints of good behavior for more general models;
+\item optimality of the estimators given by the posterior means for a larger class of models.
+\end{itemize}
+\end{frame}
+
+\begin{frame}<beamer:0>
+\bibliography{iGSSM}
+\end{frame}
+\bibliographystyle{plainnat}
+\end{document}

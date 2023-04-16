@@ -1,0 +1,1283 @@
+% ====================================================================
+%                                                                 
+%                           ILPwuO-abrev-package.sty
+%
+% %%ts latex start%%[2014-06-20 Fri 23:34]%%ts latex end%%
+% ====================================================================
+\NeedsTeXFormat{LaTeX2e}[1998/06/01]
+%%%%%%%%%%%%%%%%%%%%
+\ProvidesPackage{Himmel-abrev-package}
+                [2013/01/01 v1.0%
+     ILPwuO Abrevation Package]
+%%%%%%%%%%%%%%%%%%%%    
+%  used  Packages loaded in ILPwuO-book.cls
+\RequirePackage{amstext}
+\RequirePackage{amsthm}
+\RequirePackage{amssymb}
+\RequirePackage{amsmath}
+\RequirePackage{amsbsy} 
+\RequirePackage{verbatim}
+\RequirePackage{bbm}
+\RequirePackage{bm}
+\RequirePackage{color}
+
+
+\RequirePackage{ctable}
+\RequirePackage{array}
+\RequirePackage{colortbl}
+\ProcessOptions
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\setListeStandard}{\setlength{\itemsep}{.2em}\setlength{\topsep}{0.5em}\setlength{\leftmargin}{2em}\setlength{\labelsep}{1ex}}
+\newcommand{\setListe}[3]{\setlength{\itemsep}{#1}\setlength{\topsep}{#2}\setlength{\leftmargin}{#3}}
+\newcommand{\setListeL}[4]{\setlength{\itemsep}{#1}\setlength{\topsep}{#2}\setlength{\leftmargin}{#3}\setlength{\rightmargin}{#4}}
+\newcommand{\setitemsep}[1]{\setlength{\itemsep}{#1}}
+\newcommand{\setleftmargin}[1]{\setlength{\leftmargin}{#1}}
+\newcommand{\settopsep}[1]{\setlength{\topsep}{#1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcounter{ListeN}
+\newenvironment{dsListeN}[1][~]%
+{\begin{list}{\ds\arabic{ListeN}.}%
+{\usecounter{ListeN}\setListeStandard #1}}
+{\end{list}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newenvironment{rudiListeS}[1][~]%
+{\begin{list}{\rudicolor\raisebox{0.3ex}{\scriptsize$\blacksquare$}}%
+{\setListeStandard #1}}
+{\end{list}}
+
+\newenvironment{rudiListeB}[1][~]%
+{\begin{list}{\rudicolor\raisebox{0.3ex}{$\bullet$}}%
+{\setListeStandard #1}}
+{\end{list}}
+
+\newenvironment{rudiListeT}[1][~]%
+{\begin{list}{\rudicolor\raisebox{0.3ex}{\scriptsize$\blacktriangleright$}}
+{\setListeStandard #1}}
+{\end{list}}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newenvironment{dsListeS}[1][~]%
+{\begin{list}{\ds\raisebox{0.3ex}{\scriptsize$\blacksquare$}}%
+{\setListeStandard #1}}
+{\end{list}}
+
+\newenvironment{dsListeB}[1][~]%
+{\begin{list}{\ds\raisebox{0.3ex}{$\bullet$}}%
+{\setListeStandard #1}}
+{\end{list}}
+
+\newenvironment{dsListeT}[1][~]%
+{\begin{list}{\ds\raisebox{0.3ex}{\scriptsize$\blacktriangleright$}}
+{\setListeStandard #1}}
+{\end{list}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newenvironment{dshListeS}[1][~]%
+{\begin{list}{\dsh\raisebox{0.3ex}{\scriptsize$\blacksquare$}}%
+{\setListeStandard #1}}
+{\end{list}}
+
+\newenvironment{dshListeB}[1][~]%
+{\begin{list}{\dsh\raisebox{0.3ex}{$\bullet$}}%
+{\setListeStandard #1}}
+{\end{list}}
+
+\newenvironment{dshListeT}[1][~]%
+{\begin{list}{\dsh\raisebox{0.3ex}{\scriptsize$\blacktriangleright$}}
+{\setListeStandard #1}}
+{\end{list}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newenvironment{dbListeS}[1][~]%
+{\begin{list}{\db\raisebox{0.3ex}{\scriptsize$\blacksquare$}}%
+{\setListeStandard #1}}
+{\end{list}}
+
+\newenvironment{dbListeB}[1][~]%
+{\begin{list}{\db\raisebox{0.3ex}{$\bullet$}}%
+{\setListeStandard #1}}
+{\end{list}}
+
+\newenvironment{dbListeT}[1][~]%
+{\begin{list}{\db\raisebox{0.3ex}{\scriptsize$\blacktriangleright$}}
+{\setListeStandard #1}}
+{\end{list}}
+
+
+\newenvironment{dbListeD}[1][~]%
+{\begin{list}{\db\raisebox{0.3ex}{\scriptsize$\diamondsuit$}}
+{\setListeStandard #1}}
+{\end{list}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newenvironment{dgListeS}[1][~]%
+{\begin{list}{\dg\raisebox{0.3ex}{\scriptsize$\blacksquare$}}%
+{\setListeStandard #1}}
+{\end{list}}
+
+\newenvironment{dgListeB}[1][~]%
+{\begin{list}{\dg\raisebox{0.3ex}{$\bullet$}}%
+{\setListeStandard #1}}
+{\end{list}}
+
+\newenvironment{dgListeT}[1][~]%
+{\begin{list}{\dg\raisebox{0.3ex}{\scriptsize$\blacktriangleright$}}
+{\setListeStandard #1}}
+{\end{list}}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+
+\newenvironment{drListeS}[1][~]%
+{\begin{list}{\dr\raisebox{0.3ex}{\scriptsize$\blacksquare$}}%
+{\setListeStandard #1}}
+{\end{list}}
+
+\newenvironment{drListeB}[1][~]%
+{\begin{list}{\dr\raisebox{0.3ex}{$\bullet$}}%
+{\setListeStandard #1}}
+{\end{list}}
+
+\newenvironment{drListeT}[1][~]%
+{\begin{list}{\dr\raisebox{0.3ex}{\scriptsize$\blacktriangleright$}}
+{\setListeStandard #1}}
+{\end{list}}
+
+% ====================================================================
+% Globale Änderungen
+% <<Global>>
+% ====================================================================
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\epsilon}{\varepsilon}
+
+\RequirePackage{xspace}
+\newcommand{\iid}{iid.\xspace}
+\newcommand{\rv}{rv.\xspace}
+\newcommand{\ps}{p.s.\xspace}
+% \newcommand{\fd}{fd.\xspace}
+% \newcommand{\fp}{fp.\xspace}
+% \newcommand{\fr}{fr.\xspace}
+% ====================================================================
+% Folgen, Klammern
+% <<Folgen>>
+% ====================================================================
+\newcommand{\ls}{\left<}
+\newcommand{\rs}{\right>}
+\newcommand{\suite}[1]{(#1_j)_{j \geq 1}}
+\newcommand{\Ksuite}[1]{(#1_j)_{j \in\Kz}}
+\newcommand{\Jsuite}[1]{(#1_j)_{j \in\cJ}}
+\newcommand{\Jsum}[1]{\sum_{j \in\cJ}#1}
+\newcommand{\Jset}[1]{\set{#1,j \in\cJ}}
+\newcommand{\Jsup}[1]{\sup_{j \in\cJ}#1}
+\newcommand{\Nsuite}[1]{(#1_j)_{j \in\Nz}}
+\newcommand{\Nsum}[1]{\sum_{j \in\Nz}#1}
+\newcommand{\Nset}[1]{\set{#1,j \in\Nz}}
+\newcommand{\NsetB}[1]{\big\{#1,j \in\Nz\big\}}
+\newcommand{\Zsuite}[1]{(#1_j)_{j \in\Zz}}
+\newcommand{\Zsum}[1]{\sum_{j \in\Zz}#1}
+\newcommand{\Zset}[1]{\set{#1,j \in\Zz}}
+
+\newcommand{\set}[1]{{\left\lbrace #1\right\rbrace }}	
+\newcommand{\seq}[1]{\ls#1\rs}
+\newcommand{\vect}[1]{{\left( #1\right) }}	
+\newcommand{\vectp}[1]{{\left( #1\right)_{\hspace*{-.5ex}+}}}	
+\newcommand{\gauss}[1]{\lfloor #1\rfloor}
+\newcommand{\floor}[1]{\lfloor #1\rfloor}
+
+% %%% Projection
+\newcommand{\fou}[1]{[#1]}
+\newcommand{\hfou}[1]{\widehat{[#1]}}
+\newcommand{\basH}{u}
+\newcommand{\basG}{v}
+\newcommand{\mHspace}[1][m]{\Uz_{#1}}
+\newcommand{\mHiSo}[1][m]{\Uz_{#1}}
+\newcommand{\mGspace}[1][m]{\Vz_{#1}}
+% \newcommand{\basis}[1]{\left\{{#1}_j,j \in \Nz\right\}}
+% \newcommand{\proj}{\Pi}
+
+\newcommand{\Ev}{\lambda}
+\newcommand{\Sv}{\gs}
+
+
+%====================================================================
+%Mathematische Operatoren
+%<<MathOp>>
+%====================================================================
+\def\Ex{\mathbb E}%
+\def\Var{\mathop{\rm {\mathbb V}ar}\nolimits}%
+% \def\cov{\mathop{\rm cov}\nolimits}%
+\def\var{\mathop{\rm var}\nolimits}%
+% \def\Cov{\mathop{\rm {\mathbb C}ov}\nolimits}%
+\def\argmax{\mathop{\rm arg \; max}\limits}%
+\def\argmin{\mathop{\rm arg \; min}\limits}%
+% \def\argsup{\mathop{\rm arg \; sup}\limits}%
+% \def\arginf{\mathop{\rm arg \; inf}\limits}%
+\def\esssup{\mathop{\rm ess \; sup}\limits}%
+% \def\tr{\mathop{\rm sp}\nolimits}%
+% \def\diag{\mathop{\rm diag}\nolimits}%
+% \def\supp{\mathop{\rm supp}\nolimits}
+% \def\indep{\mathop{\ \perp\hspace{-1em}\perp \ }}
+% \def\ess{\mathop{\rm ess}\nolimits}
+% \def\sign{\mathop{\rm sign}\nolimits}
+% \def\codim{\mathop{\rm codim}\nolimits}
+% \def\rank{\mathop{\rm rank}\nolimits}
+% \def\rg{\mathop{\rm rg}\nolimits}
+% \def\lin{\mathop{\rm lin}\nolimits}
+% \def\cum{\mathop{\rm Cum}\nolimits}%
+% \def\rest{\mathop{\rm Rest}\nolimits}
+% \def\spec{\mathop{\rm spec}\nolimits}
+
+% Konvergenzen und Pfeile
+% \newcommand{\cvP}{\xrightarrow{P}}
+% \newcommand{\cvps}{\xrightarrow{p.s.}}
+% \newcommand{\cvD}{\xrightarrow{D}}
+% \newcommand{\cvLp}{\xrightarrow{{\cal{L}}_p}}
+% \newcommand{\proj}{\twoheadrightarrow}
+
+% Funktionen
+\def\1{{\mathbbm 1}} %indicator
+%\def\1{\mathop{\mathbbm 1}\nolimits} %indicator
+\newcommand{\Ind}[1]{\1\mbox{\scriptsize$\{#1\}$}}
+\def\Id{\mathop{\rm Id}\nolimits} %identity
+\def\diag{\mathop{\rm \nabla}\nolimits}%
+\newcommand{\Diag}[1]{\diag_{#1}}
+\newcommand{\fDiag}[1]{\fou{\diag_{#1}}}
+\def\tr{\mathop{\rm tr}\nolimits}%
+% \newcommand{\0}{{ 0}}
+% \newcommand{\I}{\mbox{I}}
+% \newcommand{\II}{\mbox{II}}
+% \newcommand{\III}{\mbox{III}}
+\newcommand{\test}[1]{\mbox{$\1\mbox{\scriptsize$\{#1\}$}$}}
+
+
+% ====================================================================
+% Funkana - Normen und Skalarprodukte
+% <<Funkana-NormSkalar>>
+% ====================================================================
+\DeclareMathOperator{\skalar}{\langle\cdot,\cdot\rangle}   %Skalarprodukt
+\newcommand{\skalarV}[1]{\langle #1\rangle}   %Skalarprodukt
+\newcommand{\skalarVl}[1]{\left\langle #1\right\rangle}   %Skalarprodukt
+\DeclareMathOperator{\norm}{\lVert\cdot\rVert}   %Norm
+\newcommand{\normVl}[1]{\left\lVert#1\right\rVert}   %Norm
+\newcommand{\normV}[1]{\lVert#1\rVert}   %Norm
+\DeclareMathOperator{\abs}{\lvert\cdot\rvert}   %betrag
+\newcommand{\absV}[1]{\lvert#1\rvert}   %betrag
+% % \DeclareMathOperator{\onorm}{\overset{\circ}{\lVert\cdot\rVert}}   %Norm
+% % \newcommand{\onormV}[1]{\overset{\circ}{\normV{#1}}}   %Norm
+% % \DeclareMathOperator{\dnorm}{{\lvert\lvert\lvert\cdot\rvert\rvert\rvert}}   %Norm
+% %  \newcommand{\dnormV}[1]{\lvert\lvert\lvert#1\rvert\rvert\rvert}   %Norm
+\newcommand{\Hspace}{\cF} % Hilbert raum
+\newcommand{\HskalarV}[1]{\langle #1\rangle_{_{\Hz}}}   %Skalarprodukt in Hspace
+\DeclareMathOperator{\Hskalar}{\langle\cdot,\cdot\rangle_{_{\Hz}}} % 
+\DeclareMathOperator{\Hnorm}{\lVert\cdot\rVert_{_{\Hz}}} %Norm in Hspace
+\newcommand{\HnormV}[1]{\lVert#1\rVert_{_{\Hz}}}   %Norm
+\newcommand{\Gspace}{\Gz} % Hilbert raum
+\newcommand{\GskalarV}[1]{\langle #1\rangle_{_{\Gz}}}   %Skalarprodukt in Hspace
+\DeclareMathOperator{\Gskalar}{\langle\cdot,\cdot\rangle_{_{\Gz}}} % 
+\DeclareMathOperator{\Gnorm}{\lVert\cdot\rVert_{_{\Gz}}} %Norm in Hspace
+\newcommand{\GnormV}[1]{\lVert#1\rVert_{_{\Gz}}}   %Norm
+\DeclareMathOperator{\snorm}{\lVert\cdot\rVert_{s}} %Norm in Hspace
+\newcommand{\snormV}[1]{\lVert#1\rVert_{s}}   %Norm
+
+\def\dom{\mathop{\cD}\nolimits}%
+\def\range{\mathop{\cR}\nolimits}%
+\def\ker{\mathop{\cN}\nolimits}%
+\def\lin{\mathop{\overline{\rm lin}}\nolimits}%
+\newcommand{\Proj}{\Pi}
+
+% \newcommand{\mnormV}[1]{\lVert#1\rVert_{s}}   %Norm
+ 
+
+% ====================================================================
+% Statistical Inverse Problem - Inverse problem
+% <<SIP-IP>>
+% ====================================================================
+
+\newcommand{\HiIm}{\Gz} % Hilbert Raum Bild
+\newcommand{\HiSo}{\Hz} % Hilbert Raum Lösung
+\DeclareMathOperator{\skalarIm}{\langle\cdot,\cdot\rangle_{\HiIm}}   %Skalarprodukt Bild
+\newcommand{\VskalarIm}[1]{\langle #1\rangle_{\HiIm}}   
+\newcommand{\lVskalarIm}[1]{\left\langle #1\right\rangle_{\HiIm}} 
+\DeclareMathOperator{\normIm}{\lVert\cdot\rVert_{\HiIm}}   %Norm Bild
+\newcommand{\VnormIm}[1]{\lVert#1\rVert_{\HiIm}}   
+\newcommand{\lVnormIm}[1]{\left\lVert#1\right\rVert_{\HiIm}}   
+\DeclareMathOperator{\skalarSo}{\langle\cdot,\cdot\rangle_{\HiSo}}   %Skalarprodukt Lösung
+\newcommand{\VskalarSo}[1]{\langle #1\rangle_{\HiSo}}   
+\newcommand{\lVskalarSo}[1]{\left\langle #1\right\rangle_{\HiSo}} 
+\DeclareMathOperator{\normSo}{\lVert\cdot\rVert_{\HiSo}}   %Norm Lösung
+\newcommand{\VnormSo}[1]{\lVert#1\rVert_{\HiSo}}   
+\newcommand{\lVnormSo}[1]{\left\lVert#1\right\rVert_{\HiSo}}   
+
+\renewcommand{\Im}{g} % Bild
+\newcommand{\fIm}{\fou{\Im}} % Bild
+
+\newcommand{\repLi}{\phi} %Linear functional
+\newcommand{\Li}{\Phi} %Linear functional
+\newcommand{\Lic}{\cL} %Linear functional
+\newcommand{\fLi}{\fou{\Li}} %Linear functional
+
+\newcommand{\Op}{T} % Operator
+\newcommand{\fOp}{\fou{\Op}} % Operator
+ \newcommand{\Opw}{\gb}
+ \newcommand{\Opd}{d}
+ \newcommand{\Opc}{\cT}
+ \newcommand{\Opcwd}{\Opc_{\Opw}^\Opd}
+ \newcommand{\sOpc}{\cE}
+ \newcommand{\sOpcwd}{\sOpc_{\Opw}^\Opd}
+
+\newcommand{\So}{f} % Lösung
+\newcommand{\fSo}{\fou{\So}} % Lösung
+\newcommand{\Sow}{\ga}
+\newcommand{\Sor}{r}
+\newcommand{\Soc}{\cF}
+\newcommand{\Socwr}{\Soc_{\Sow}^\Sor}
+
+\newcommand{\SoGa}[1][m]{\So_{#1}}
+\newcommand{\fSoGa}[1][m]{\fou{\So_{#1}}}
+\newcommand{\hfSoGa}[1][m]{\widehat{\fou{\So_{#1}}}}
+\newcommand{\hSoGa}[1][m]{\widehat{\So}_{#1}}
+\newcommand{\fhSoGa}[1][m]{\fou{\hSo_{#1}}}
+\newcommand{\SoPr}[1][m]{\So_{#1}}
+\newcommand{\fSoPr}[1][m]{\fou{\So_{#1}}}
+\newcommand{\hfSoPr}[1][m]{\widehat{\fou{\So_{#1}}}}
+\newcommand{\hSoPr}[1][m]{\hSo_{#1}}
+\newcommand{\fhSoPr}[1][m]{\fou{\hSo_{#1}}}
+
+% ====================================================================
+% Statistical Inverse Problem - Statistical Inverse problem
+% <<SIP-SIP>>
+% ====================================================================
+
+
+\newcommand{\nIm}{\dot W}
+\newcommand{\nOp}{\dot B}
+\newcommand{\lnIm}{\epsilon}
+\newcommand{\lnOp}{\sigma}
+\newcommand{\oIm}[1][\lnIm]{\widehat{\Im}_{#1}}
+\newcommand{\foIm}[1][\lnIm]{\fou{\widehat{\Im}_{#1}}}
+\newcommand{\oOp}[1][\lnOp]{\widehat{\Op}_{#1}}
+\newcommand{\foOp}[1][\lnOp]{\fou{\widehat{\Op}_{#1}}}
+\newcommand{\fnIm}{\fou{\nIm}}
+\newcommand{\fnOp}{\fou{\nOp}}
+
+
+
+% ====================================================================
+% Statistical Inverse Problem - Estimation
+% <<SIP-Estimation>>
+% ====================================================================
+
+\newcommand{\hSo}{\widehat{\So}}
+\newcommand{\fhSo}{\fou{\widehat{\So}}}
+\newcommand{\hfSo}{\widehat{\fSo}}
+\newcommand{\tSo}{\widetilde{\So}}
+\newcommand{\hLi}{\widehat{\Li}}
+
+% ====================================================================
+% Minimax Theory - Risk
+% <<MT-Risk>>
+% ====================================================================
+%\def\loss{\gl_{\mbox{\tiny oss}}}
+\def\dist{\gD_{\mbox{\tiny ist}}}
+\def\Ri{\cR}%
+\def\oRi{\cR^\star}%
+\def\mRi{\cR^m}%
+\def\Now{\gv}
+\def\oNow{\overline{\Now}}
+%\newcommand{\Rif}[1]{\Ri\big[\,#1\big]}
+
+\newcommand{\RiP}[2][\cP_{\Soc}^\nole]{\Ri\big[#2\,|\,#1\big]}
+\newcommand{\oRiP}[1][\cP_{\Soc}^\nole]{\oRi\big[#1\big]}
+
+\newcommand{\RiPG}[3][\cP_{\Soc}^\nole]{\Ri_{#3}\big[#2\,|\,#1\big]}
+\newcommand{\oRiPG}[2][\cP_{\Soc}^\nole]{\oRi_{#2}\big[#1\big]}
+
+
+
+\newcommand{\Rife}[3][\lnIm]{\Ri_{#1}\big[#2\,|\,#3\big]}
+\newcommand{\Rifes}[3][\lnIm,\lnOp]{\Ri_{#1}\big[#2\,|\,#3\big]}
+\newcommand{\oRife}[2][\lnIm]{\oRi_{#1}\big(#2\big)}
+\newcommand{\oRifes}[2][\lnIm,\lnOp]{\oRi_{#1}\big(#2\big)}
+
+\newcommand{\oRies}[1][\lnIm,\lnOp]{\oRi_{#1}}
+
+\newcommand{\omes}[1][\lnIm,\lnOp]{m^\star_{#1}}
+\newcommand{\uomes}[1][\lnIm,\lnOp]{\um^\star_{#1}}
+\newcommand{\Ces}[1][\lnIm,\lnOp]{K_{#1}}
+\newcommand{\uwhm}[1][m]{\widehat{\underline{#1}}}
+
+
+
+\newcommand{\RifeG}[4][\lnIm]{\Ri_{#1}^{#4}\big[#2\,|\,#3\big]}
+\newcommand{\RifesG}[4][\lnIm,\lnOp]{\Ri_{#1}^{#4}\big[#2\,|\,#3\big]}
+\newcommand{\oRifeG}[3][\lnIm]{\Ri_{#1}^{#3\star}\big(#2\big)}
+\newcommand{\oRifesG}[3][\lnIm,\lnOp]{\oRi_{#1}\big(#2;#3\big)}
+
+\newcommand{\oRif}[2]{\oRi_{#1}\big[\,#2\big]}
+\newcommand{\mRif}[3]{\Ri^{#3}_{#1}\big[\,#2\big]}
+\newcommand{\oRir}[1]{\oRi_{#1}}
+\newcommand{\cSo}{\cF}
+
+\newcommand{\cOp}{\Opc}
+\newcommand{\kstar}{k^\star}
+\newcommand{\mopte}[2][m]{#1^\star_{#2}}
+\newcommand{\umopte}[2][m]{\underline{#1}^\star_{#2}}
+\newcommand{\nuPa}{\xi}
+\newcommand{\hnuPa}{\widehat{\nuPa}}
+\newcommand{\nuPac}{\Xi}
+\newcommand{\nole}{\epsilon}
+\newcommand{\nols}{\sigma}
+
+% ====================================================================
+% Model selection
+% <<Ms>>
+% ====================================================================
+
+\def\pen{\mathop{\rm pen}\nolimits}%
+\def\hpen{\mathop{\rm \widehat{\pen}}\nolimits}%
+\def\bias{\mathop{\rm bias}\nolimits}
+\def\var{\mathop{\rm var}\nolimits}
+\def\contr{\mathop{\rm \Upsilon}\nolimits}
+\newcommand{\hcontr}{\widehat{\contr}}
+\def\Me{\mathop{\rm \widehat{M}}\nolimits}
+\def\Mt{{\rm {M}}}
+\def\Mun{\mathop{\rm M^u}\nolimits}
+\newcommand{\Mue}[1][\nole]{\mathop{\rm M^u_{#1}}\nolimits}
+\def\Mun{\mathop{\rm M^u}\nolimits}
+\newcommand{\Mut}{\mathop{\rm M^{-}_{\nuPa}}\nolimits}
+\newcommand{\Mot}{\mathop{\rm M^{+}_{\nuPa}}\nolimits}
+\def\Mon{\mathop{\rm M^o}\nolimits}
+\newcommand{\Moe}[1][\nole]{\mathop{\rm M^o_{#1}}\nolimits}
+\newcommand{\mdage}[1][\nole]{\mdag_{#1}}
+\newcommand{\mdag}{m^\diamond}
+
+\def\crit{\mathop{\rm \kappa}\nolimits}
+\newcommand{\hcrit}{\widehat{\crit}}
+
+\def\Rem{\mathop{\rm rest}\nolimits}
+
+% ====================================================================
+% FLIR
+% <<SIP-FLIR>>
+% ====================================================================
+
+\newcommand{\flirOp}[1][\iV\iZ]{\Gamma_{_{\hspace*{-.7ex}#1}}}
+\newcommand{\fflirOp}[1][\iV\iZ]{\fou{\Gamma_{_{\hspace*{-.7ex}#1}}}}
+\newcommand{\hflirOp}[1][\iV\iZ]{\widehat{\Gamma}_{_{\hspace*{-.7ex}#1}}}
+\newcommand{\OpWX}{\Gamma_{_{\hspace*{-.7ex}WX}}}
+\newcommand{\OpXW}{\Gamma_{_{\hspace*{-.7ex}XW}}}
+\newcommand{\OpXX}{\Gamma_{_{\hspace*{-.7ex}XX}}}
+\newcommand{\OpWW}{\Gamma_{_{\hspace*{-.7ex}WW}}}
+\newcommand{\OpWoWo}{\Gamma_{_{\hspace*{-.7ex}W_oW_o}}}
+\newcommand{\OpWoX}{\Gamma_{_{\hspace*{-.7ex}W_oX}}}
+\newcommand{\OpXWo}{\Gamma_{_{\hspace*{-.7ex}XW_o}}}
+\newcommand{\OpXtWo}{\Gamma_{_{\hspace*{-.7ex}X\widetilde{W}_o}}}
+\newcommand{\OptWotWo}{\Gamma_{_{\hspace*{-.7ex}\widetilde{W}_o\widetilde{W}_o}}}
+\newcommand{\OphWoX}{\Gamma_{_{\hspace*{-.7ex}\widehat{W}_oX}}}
+
+\newcommand{\flirIm}[1][\iV]{\Im_{_{\hspace*{-.1ex}#1}}}
+\newcommand{\fflirIm}[1][\iV]{\fou{\Im_{_{\hspace*{-.1ex}#1}}}}
+\newcommand{\gW}{g_{_{\hspace*{-.1ex}W}}}
+\newcommand{\gWo}{g_{_{\hspace*{-.1ex}W_o}}}
+\newcommand{\gtWo}{g_{_{\hspace*{-.1ex}\widetilde{W}_o}}}
+\newcommand{\ghWo}{g_{_{\hspace*{-.1ex}\widehat{W}_o}}}
+
+% \newcommand{\gauSo}{\So}
+% \newcommand{\fgauSo}{\fou{\So}} % Lösung
+
+% \newcommand{\gauSow}{\ga}
+% \newcommand{\gauSor}{r}
+% \newcommand{\gauSoc}{\cF}
+% \newcommand{\gauSocwr}{\gauSoc_{\gauSow}^\gauSor}
+
+% \newcommand{\gauSv}[1][\gs]{#1}
+% \newcommand{\gauSvc}[1][\cS]{#1}
+% \newcommand{\gauOpcwd}{\Opc_{\Opw}^\Opd}
+% \newcommand{\gausOpc}{\cS}
+
+% \newcommand{\gauIm}{\Im}
+% \newcommand{\gaulnIm}{\lnIm}
+
+% ====================================================================
+% GSSM
+
+
+\newcommand{\gssSo}{\So}
+\newcommand{\tgssSo}{\tSo}
+\newcommand{\hgssSo}{\hSo}
+\newcommand{\fgssSo}{\fou{\gssSo}} % Lösung
+\newcommand{\hfgssSo}{\widehat{\fgssSo}} % Lösung
+\newcommand{\fhgssSo}{\fou{\hgssSo}} % Lösung
+\newcommand{\gssSow}{\Sow}
+\newcommand{\gssSor}{\Sor}
+\newcommand{\gssSocwr}{\Socwr}
+
+
+\newcommand{\gssIm}{\Im}
+\newcommand{\gsslnIm}{\lnIm}
+\newcommand{\gssnIm}{\dot W}
+\newcommand{\gssoIm}{\oIm}
+
+\newcommand{\fgssoIm}{\foIm}
+\newcommand{\fgssnIm}{\fnIm}
+
+\newcommand{\gssmopte}{\mopte{\gsslnIm}}
+
+\newcommand{\gssRife}[2][\gsslnIm]{\Ri_{#1}\big[#2\vert \cP_{\gssSocwr}\big]}
+\newcommand{\gssRifeG}[3][\gsslnIm]{\Ri_{#1}^{#3}\big[#2\,\vert\, {\gssSocwr}\big]}
+
+\newcommand{\gssmRifeG}[2][\gssSow]{\Ri_{\gsslnIm}^{m}\big(#2,#1\big)}
+\newcommand{\gssoRifeG}[2][\gssSow]{\Ri_{\gsslnIm}^{\star}\big(#2,#1\big)}
+
+
+% ====================================================================
+% GISSM
+
+
+\newcommand{\gisSo}{\So}
+\newcommand{\hgisSo}{\widehat{\gisSo}}
+\newcommand{\tgisSo}{\widetilde{\gisSo}}
+\newcommand{\fgisSo}{\fou{\So}} % Lösung
+\newcommand{\hfgisSo}{\widehat{\fgisSo}} % Lösung
+\newcommand{\fhgisSo}{\fou{\hgisSo}} % Lösung
+\newcommand{\gisSow}{\Sow}
+\newcommand{\gisSor}{\Sor}
+\newcommand{\gisSocwr}{\Socwr}
+\newcommand{\gisOpcwd}{\sOpcwd}
+
+
+\newcommand{\gisSv}[1][\gs]{#1}
+\newcommand{\gisOp}{\Op}
+\newcommand{\fgisOp}{\fou{\Op}} % Lösung
+\newcommand{\gisOpw}{\Opw}
+\newcommand{\gisOpd}{\Opd}
+
+
+
+
+\newcommand{\gisIm}{\Im}
+\newcommand{\gislnIm}{\lnIm}
+\newcommand{\gisnIm}{\dot W}
+\newcommand{\gisoIm}{\oIm}
+
+\newcommand{\fgisoIm}{\foIm}
+\newcommand{\fgisnIm}{\fnIm}
+
+\newcommand{\gismopte}{\mopte{\gislnIm}}
+\newcommand{\gismopteG}[2][\gisSow,\gisOpw]{\mopte{\gislnIm}\big(#2,#1\big)}
+
+
+\newcommand{\gisRife}[2][\gislnIm]{\Ri_{#1}\big[#2\vert \Socwr,\gisOp\big]}
+\newcommand{\gisRifeG}[3][\gislnIm]{\Ri_{#1}\big[#2\vert #3,\Socwr,\gisOp\big]}
+
+\newcommand{\gismRifeG}[2][\gislnIm]{\mRi_{#1}\big(#2,\gisSow,\gisOpw\big)}
+\newcommand{\gisoRifeG}[2][\gislnIm]{\Ri_{#1}^{\star}\big(#2,\gisSow,\gisOpw\big)}
+
+% \newcommand{\gisoReG}[2][\gaulnIm]{\Ri_{\gisSow,\gisOpw}^{#1}\big(#2\big)}
+% \newcommand{\gisoResG}[2][\gisSow,\gisOpw]{\oRi_{\gaulnIm}\big(#2,#1\big)}
+
+
+
+
+% \newcommand{\gaumReG}[2][\gaulnIm]{{\rm R}^{\gisSow,\gisOpw}_{#1}\big(m;#2\big)}
+% \newcommand{\gaumResG}[2][\gisSow,\gisOpw]{\mRi_{\gaulnIm}\big(#2,#1\big)}
+
+% \newcommand{\gauoReG}[2][\gaulnIm]{\Ri_{\gisSow,\gisOpw}^{#1}\big(#2\big)}
+% \newcommand{\gauoResG}[2][\gisSocwr,\gisOpcwd]{\oRi_{\gaulnIm}\big(#2,#1\big)}
+
+
+
+% ====================================================================
+% GIR
+
+
+\newcommand{\girSo}{\So}
+\newcommand{\hgirSo}{\widehat{\girSo}}
+\newcommand{\tgirSo}{\widetilde{\girSo}}
+\newcommand{\fgirSo}{\fou{\So}} % Lösung
+\newcommand{\hfgirSo}{\widehat{\fgirSo}} % Lösung
+\newcommand{\fhgirSo}{\fou{\hgirSo}} % Lösung
+\newcommand{\girSow}{\Sow}
+\newcommand{\girSor}{\Sor}
+\newcommand{\girSocwr}{\Socwr}
+\newcommand{\girOpcwd}{\Opcwd}
+
+
+\newcommand{\girSv}[1][\gs]{#1}
+\newcommand{\girOp}{\Op}
+\newcommand{\fgirOp}{\fou{\Op}} % Lösung
+\newcommand{\girOpw}{\Opw}
+\newcommand{\girOpd}{\Opd}
+
+
+
+
+\newcommand{\girIm}{\Im}
+\newcommand{\girlnIm}{\lnIm}
+\newcommand{\girnIm}{\dot W}
+\newcommand{\giroIm}{\oIm}
+
+\newcommand{\fgiroIm}{\foIm}
+\newcommand{\fgirnIm}{\fnIm}
+
+\newcommand{\girmopte}{\mopte{\girlnIm}}
+\newcommand{\girmopteG}[2][\girSow,\girOpw]{\mopte{\girlnIm}\big(#2,#1\big)}
+
+
+\newcommand{\girRife}[2][\girlnIm]{\Ri_{#1}\big[#2\vert \Socwr,\girOp\big]}
+\newcommand{\girRifeG}[3][\girlnIm]{\Ri_{#1}\big[#2\vert #3,\Socwr,\girOp\big]}
+
+\newcommand{\girmRifeG}[2][\girlnIm]{\mRi_{#1}\big(#2,\girSow,\girOpw\big)}
+\newcommand{\giroRifeG}[2][\girlnIm]{\Ri_{#1}^{\star}\big(#2,\girSow,\girOpw\big)}
+
+
+% ====================================================================
+% Deconvolution
+% <<SIP-Deconv>>
+% ====================================================================
+
+\newcommand{\decNo}{U}
+
+\newcommand{\xdf}{f}
+\newcommand{\ydf}{f_Y}
+\newcommand{\edf}{f_\decNo}
+
+\newcommand{\decSo}{\xdf}
+\newcommand{\decOp}[1][\edf]{C_{\mbox{\hspace*{-.2ex}\tiny$#1$}}}
+\newcommand{\hdecOp}[1][\edf]{\widehat{C}_{\mbox{\hspace*{-.2ex}\tiny$#1$}}}
+\newcommand{\fdecOp}[1][\edf]{\fou{C_{\mbox{\hspace*{-.2ex}\tiny$#1$}}}}
+\newcommand{\decIm}{\ydf}
+
+\newcommand{\hdecIm}{\widehat{f}_Y}
+\newcommand{\fhdecIm}{\fou{\hdecIm}}
+\newcommand{\hfdecIm}{\hfou{\decIm}}
+\newcommand{\fdecIm}{\fou{\decIm}}
+\newcommand{\fdecSo}{\fou{\decSo}}
+\newcommand{\hdecSo}{\widehat{\decSo}}
+\newcommand{\fedf}{\fou{\edf}}
+\newcommand{\hfedf}{\widehat{\fedf}}
+\newcommand{\hedf}{\widehat{\edf}}
+
+
+% ====================================================================
+% FLM
+% <<SIP-FLM>>
+% ====================================================================
+
+
+%\newcommand{\flmSo}{\beta}
+\newcommand{\flmSo}{\So}
+\newcommand{\flmOp}[1][XX]{\Gamma_{\mbox{\hspace*{-.2ex}\tiny$#1$}}}
+\newcommand{\flmIm}[1][YX]{c_{\mbox{\tiny$#1$}}}
+
+\newcommand{\flmNo}{U}
+
+\newcommand{\hflmSo}{\widehat{\flmSo}}
+
+\newcommand{\hflmIm}[1][YX]{\widehat{c}_{\mbox{\tiny$#1$}}}
+\newcommand{\fhflmIm}[1][YX]{\fou{\widehat{c}_{\mbox{\tiny$#1$}}}}
+\newcommand{\fflmIm}[1][YX]{\fou{c_{\mbox{\tiny$#1$}}}}
+\newcommand{\fflmSo}{\fou{\flmSo}}
+\newcommand{\hflmOp}[1][XX]{\widehat{\Gamma}_{\mbox{\hspace*{-.2ex}\tiny$#1$}}}
+\newcommand{\fhflmOp}[1][XX]{\fou{\widehat{\Gamma}_{\mbox{\hspace*{-.2ex}\tiny$#1$}}}}
+\newcommand{\fflmOp}[1][XX]{\fou{\Gamma_{\mbox{\hspace*{-.2ex}\tiny$#1$}}}}
+% ====================================================================
+% NIV
+% <<SIP-NIV>>
+% ====================================================================
+
+\newcommand{\iY}{Y}
+\newcommand{\iV}{Z}
+\newcommand{\iZ}{X}
+
+\newcommand{\nivNo}{U}
+%\newcommand{\nivSo}{\varphi}
+\newcommand{\nivSo}{\So}
+\newcommand{\nivOp}[1][\iZ|\iV]{K_{\mbox{\tiny$#1$}}}
+\newcommand{\nivIm}[1][\iY|\iV]{r_{\mbox{\hspace*{-.1ex}\tiny$#1$}}}
+
+\newcommand{\hnivSo}{\widehat{\nivSo}}
+
+\newcommand{\fnivIm}[1][\iY|\iV]{\fou{r_{\mbox{\hspace*{-.1ex}\tiny$#1$}}}}
+\newcommand{\hfnivIm}[1][\iY|\iV]{\widehat{\fou{r_{\mbox{\hspace*{-.1ex}\tiny$#1$}}}}}
+\newcommand{\fhnivIm}[1][\iY|\iV]{\fou{\widehat{r}_{\mbox{\hspace*{-.1ex}\tiny$#1$}}}}
+\newcommand{\hnivIm}[1][\iY|\iV]{\widehat{r}_{\mbox{\hspace*{-.1ex}\tiny$#1$}}}
+
+\newcommand{\fnivOp}[1][\iZ|\iV]{\fou{K_{\mbox{\tiny$#1$}}}}
+\newcommand{\hfnivOp}[1][\iZ|\iV]{\widehat{\fou{K_{\mbox{\tiny$#1$}}}}}
+\newcommand{\fhnivOp}[1][\iZ|\iV]{\fou{\widehat{K}_{\mbox{\tiny$#1$}}}}
+\newcommand{\hnivOp}[1][\iZ|\iV]{\widehat{K}{\mbox{\tiny$#1$}}}
+\newcommand{\basZ}{u}
+\newcommand{\basW}{v}
+
+% %% Slope
+% \newcommand{\So}{\phi}
+% \newcommand{\fSo}{\fou{\So}}
+% \newcommand{\hSo}{\widehat{\So}}
+% \newcommand{\tSo}{\widetilde{\So}}
+% \newcommand{\Sow}{\beta}
+% \newcommand{\Sor}{r}
+% \newcommand{\Soclass}{\cF}
+% \newcommand{\cSowr}{\Soclass_{\Sow}^\Sor}
+
+
+% %%% IP
+% \newcommand{\Op}{\Gamma}
+% \newcommand{\fOp}{\fou{\Op}}
+% \newcommand{\hOp}{\widehat{\Op}}
+\newcommand{\fhOp}{\fou{\widehat{\Op}}}
+\newcommand{\fhIm}{\fou{\widehat{\Im}}}
+% \newcommand{\tOp}{\widetilde{\Op}}
+% \newcommand{\Opw}{\gamma}
+% \newcommand{\Opd}{d}
+% \newcommand{\Opclass}{\mathcal{G}}
+% \newcommand{\cOpwd}{\Opclass_{\Opw}^\Opd}
+% \newcommand{\Opother}{\mathrm{T}}
+
+% \newcommand{\gf}{g}
+% \newcommand{\hgf}{\widehat{\gf}}
+
+
+% ====================================================================
+% Bayes
+% <<SIP-Bayes>>
+% ====================================================================
+\newcommand{\functioncolor}{black}
+\newcommand{\sequencecolor}{black}
+\newcommand{\nuissancecolor}{red}
+\newcommand{\randomcolor}{dblue}
+\newcommand{\deterministiccolor}{BurntOrange}
+\newcommand{\truecolor}{\mycolor}
+\newcommand{\colF}{\textcolor{black}{\cF}}
+\newcommand{\colG}{\textcolor{black}{\cG}}
+\newcommand{\colf}{\textcolor{\functioncolor}{f}}
+\newcommand{\colg}{\textcolor{\functioncolor}{g}}
+\newcommand{\colbas}{\textcolor{\functioncolor}{\bas}}
+\newcommand{\colbasF}{\textcolor{\functioncolor}{u}}
+\newcommand{\colbasG}{\textcolor{\functioncolor}{v}}
+\newcommand{\colTheta}{\textcolor{black}{\Theta}}
+\newcommand{\colThetaa}{\textcolor{black}{\Theta}_{\textcolor{\nuissancecolor}{\ga}}}
+\newcommand{\coltheta}{\textcolor{\sequencecolor}{\theta}}
+\newcommand{\colthetao}{\textcolor{\truecolor}{\theta_\circ}}
+\newcommand{\colthetab}{\textcolor{black}{\theta_B}}
+\newcommand{\colm}{\textcolor{black}{m}}
+\newcommand{\colmm}{\textcolor{dgreen}{m}}
+\newcommand{\collambda}{\textcolor{\nuissancecolor}{\lambda}}
+\newcommand{\colLambda}{\textcolor{\nuissancecolor}{\Lambda}}
+\newcommand{\colT}{\textcolor{\nuissancecolor}{T}}
+\newcommand{\colga}{\textcolor{\nuissancecolor}{\ga}}
+
+\newcommand{\Geps}{G_\epsilon}
+% % Noise
+\newcommand{\SoObsNo}{\xi}
+\newcommand{\SoObsNoL}{\epsilon}
+
+\newcommand{\EvObsNo}{\xi}
+\newcommand{\EvObsNoL}{\sigma}
+\newcommand{\Soo}{\colthetao}
+
+\newcommand{\rSo}{r}
+\newcommand{\wSo}{\ga}
+
+\newcommand{\mes}[1][\SoObsNoL]{{\colmm}^*_{#1}}
+\newcommand{\Res}{R_\epsilon^*}
+\newcommand{\smedir}{{\colmm}^*_\epsilon}
+
+
+\newcommand{\rvSoObs}{Y}
+\DeclareMathOperator{\rvEvObs}{\boldsymbol X}
+
+
+\newcommand{\mrvSo}[1][\colmm]{\rvSo^{#1}}
+\newcommand{\MrvSo}{\rvSo^{M}}
+\newcommand{\srvSo}{\rvSo^{*}}
+\DeclareMathOperator{\rvSo}{ \textcolor{\randomcolor}{\boldsymbol \vartheta} }
+\newcommand{\mrvEv}{\rvEv^{m}}
+\newcommand{\srvEv}{\rvEv^{*}}
+\DeclareMathOperator{\rvEv}{\boldsymbol \lambda}
+
+
+\DeclareMathOperator{\rvDi}{\textcolor{\randomcolor}{\boldsymbol M}}
+\DeclareMathOperator{\rvDib}{\textcolor{black}{\boldsymbol M}}
+\newcommand{\SoPriNo}{\eta}
+\newcommand{\SoPriVar}{\varsigma}
+\newcommand{\SoPriErw}{\So^\PriSym}
+
+\newcommand{\EvPriNo}{\zeta}
+\newcommand{\EvPriVar}{\delta}
+\newcommand{\EvPriErw}{\Ev^\PriSym}
+
+\newcommand{\PriSym}{\times}
+
+% \newcommand{\bw}{\sw}
+% \newcommand{\br}{\sr}
+% \newcommand{\Tw}{\Opw}
+% \newcommand{\Td}{\Opd}
+
+
+% %% LinFun
+% \newcommand{\Li}{\ell}
+% \newcommand{\fLi}{\fou{\Li}}
+% \newcommand{\hLi}{\widehat{\Li}}
+
+% \newcommand{\rep}{h}
+% \newcommand{\rw}{\omega}
+% \newcommand{\rr}{\tau}
+% \newcommand{\hw}{\omega}
+%\newcommand{\lfun}{\Ell}
+
+% %%% Minimax
+% \newcommand{\mstar}{{k}}
+% \newcommand{\mstarn}{{\mstar_n}}
+% \newcommand{\mdag}{{m^\diamond}}
+% \newcommand{\mdagn}{{m^\diamond_n}}
+% \newcommand{\Mstar}{{k}}
+% \newcommand{\uMstar}{\underline{\Mstar}}
+% \newcommand{\umstar}{\underline{\mstar}}
+% \newcommand{\umstarn}{\underline{m^*_n}}
+
+% \newcommand{\moptn}{{m^*_n}}
+% \newcommand{\mloptn}{{m^\diamond_n}}
+% \newcommand{\umloptn}{\underline{m^\diamond_n}}
+% \newcommand{\mrisk}{\cR}
+% \newcommand{\mmrisk}{\cR^{*}}
+
+% %%% Projection
+% \newcommand{\fou}[1]{[#1]}
+% \newcommand{\hfou}[1]{\widehat{[#1]}}
+% \newcommand{\bas}{\psi}
+% \newcommand{\basis}[1]{\left\{{#1}_j,j \in \Nz\right\}}
+% \newcommand{\Sspace}{\Hz}
+% \newcommand{\Hspace}{\Hz}
+% \newcommand{\galsol}{\So_{m}}
+
+% %%% Events
+
+% \newcommand{\MOmega}{\mho_m}
+% \newcommand{\MOmegastar}{\mho_{m^*}}
+% \newcommand{\Aset}{{\mho}}
+% \newcommand{\Bset}{{\Omega}}
+
+% \newcommand{\hOpset}[1]{\Omega_{#1}}
+% \newcommand{\hOpsetmn}{\hOpset{m,n}}
+% \newcommand{\Xiset}[1]{\mho_{#1}}
+% \newcommand{\Xisetmn}{\Xiset{m,n}}
+% \newcommand{\aset}[1]{\mathcal{A}_{#1}}
+% \newcommand{\asetn}{\aset{n}}
+% \newcommand{\bset}[1]{\mathcal{B}_{#1}}
+% \newcommand{\bsetn}{\bset{n}}
+% \newcommand{\cset}[1]{\mathcal{C}_{#1}}
+% \newcommand{\csetn}{\cset{n}}
+
+% \newcommand{\eset}[1]{\mathcal{E}_{#1}}
+% \newcommand{\esetn}{\eset{n}}
+
+%\newcommand{\dset}[1]{\mathcal{D}_{#1}}
+%\newcommand{\fset}[1]{\mathcal{B}}
+%\newcommand{\gset}[1]{\mathcal{G}}
+%\newcommand{\Cset}{\Omega}
+%\newcommand{\tCset}{\tilde\Omega}
+
+
+% %% Model selection
+% \def\pen{\mathop{\rm p}\nolimits}%
+% \def\hpen{\mathop{\rm \widehat{p}}\nolimits}%
+% \def\bias{\mathop{\rm b}\nolimits}
+% \def\contr{\mathop{\rm \kappa}\nolimits}
+
+%\newcommand{\hcontr}{\widehat{\contr}}
+
+% \newcommand{\Mu}{M^-}
+% \newcommand{\Mun}{M^-_n}
+% \newcommand{\Mo}{M^+}
+% \newcommand{\Mon}{M^+_n}
+% \newcommand{\Me}{\widhat{M}}
+% \newcommand{\Men}{\widehat{M}_n}
+
+% \newcommand{\Mln}{{M^\Li_n}}
+% \newcommand{\Ml}{{M^\Li}}
+
+% \newcommand{\Mfunc}{M}
+% \newcommand{\Bfunc}{B}
+
+
+%%% 
+% \newcommand{\quart}{{1/4}}
+% \newcommand{\nlogn}{{n(1+\log n)^{-1}}}
+% \newcommand{\lognn}{{(1+\log n)n^{-1}}}
+
+%%% Lemma Gauss
+% \newcommand{\lU}{U}
+% \newcommand{\lV}{V}
+% \newcommand{\ltU}{\widetilde{\lU}}
+% \newcommand{\ltV}{\widetilde{\lV}}
+% \newcommand{\lW}{W}
+% \newcommand{\lZ}{Z}
+%\newcommand{\lA}{{V}}
+
+
+% \newcommand{\func}{f}
+% \newcommand{\nXi}{\Xi}
+% \newcommand{\nU}{R}
+% \newcommand{\nW}{W}
+% \newcommand{\nDelta}{V}
+% \newcommand{\nhDelta}{\widehat{\nDelta}}
+% \newcommand{\ntau}{\tau}
+% \newcommand{\nhtau}{\widehat{\ntau}}
+% \newcommand{\EW}{\lambda}
+%\newcommand{\mn}{{m}}
+%\renewcommand{\um}{{\underline{\mn}}}
+%\newcommand{\tmn}{\widetilde{\mn}}
+%\newcommand{\whmn}{\widehat{\mn}}
+
+
+% \newcommand{\ix}{j}
+% \newcommand{\ixi}{k}
+% \newcommand{\ixo}{i}
+% \newcommand{\Complement}[1]{{#1^{c}}}
+% \newcommand{\lU}{U}
+% \newcommand{\lV}{V}
+% \newcommand{\ltU}{\widetilde{\lU}}
+% \newcommand{\ltV}{\widetilde{\lV}}
+% \newcommand{\lW}{W}
+% \newcommand{\lZ}{Z}
+% \newcommand{\lA}{{V}}
+% \newcommand{\lOm}{O}
+% \newcommand{\stigma}{\sigma^2}
+% \newcommand{\hstigma}{\widehat{\sigma}^2}
+% \newcommand{\const}{\mathcal{C}}
+% \newcommand{\zitat}[1]{\textcolor{red}{#1}}
+% \newcommand{\ndelta}{\cR}
+% \newcommand{\aconst}{\frac{1}{7}}
+% \newcommand{\nv}[1]{\rho^2_{#1}}
+% \newcommand{\sqnv}[1]{\rho_{#1}}
+% \renewcommand{\uc}{\frac{1}{8}}
+% \renewcommand{\oc}{\frac{9}{8}}
+% \newcommand{\gw}{\omega}
+% \renewcommand{\var}{\Var}
+
+%newcommands
+% \newcommand{\mmH}{\Hspace}
+% \newcommand{\risk}{\mathcal{R}}
+% \newcommand{\kstar}{m^*}
+% \newcommand{\dstar}{\delta^*}
+% \newcommand{\Cdep}{\mathcal{C}}
+% \newcommand{\Cnum}{C}
+% \renewcommand{\const}{\Cnum}
+% \newcommand{\BS}{b}
+% \newcommand{\hBS}{\widehat{b}}
+% \newcommand{\Ell}{\ell}
+% \newcommand{\triplenorm}{\ensuremath{| \! | \! |}}
+% \newcommand{\SnormV}[1]{\triplenorm#1\triplenorm}
+% \newcommand{\cFF}{\mathfrak{F}}
+%
+%Abbbrev
+%
+
+
+
+
+
+
+
+
+% ====================================================================
+% Buchstaben - Command
+% <<Buchstaben-CommandLetters>>
+% ====================================================================
+\newcommand{\mm}[1]{\mathbb{#1}}
+\newcommand{\mc}[1]{\mathcal{#1}}
+\newcommand{\mf}[1]{\mathfrak{#1}}
+\newcommand{\ocirc}[1]{\overset{\circ}{#1}}
+% ====================================================================
+% Buchstaben - Doppelstrich letters
+% <<Buchstaben-DoppelLetters>>
+% ====================================================================
+\newcommand{\Bz}{{\mathbb B}}
+\newcommand{\Cz}{{\mathbb C}}
+\newcommand{\Fz}{{\mathbb F}}
+\newcommand{\Gz}{{\mathbb G}}
+\newcommand{\Hz}{{\mathbb H}}
+\newcommand{\Iz}{{\mathbb I}}
+\newcommand{\Jz}{{\mathbb J}}
+\newcommand{\Kz}{{\mathbb K}}
+\newcommand{\Nz}{{\mathbb N}}
+\newcommand{\Rz}{{\mathbb R}}
+\newcommand{\Sz}{{\mathbb S}}
+\newcommand{\Uz}{{\mathbb U}}
+\newcommand{\Vz}{{\mathbb V}}
+\newcommand{\Wz}{{\mathbb W}}
+\newcommand{\Xz}{{\mathbb X}}
+\newcommand{\Yz}{{\mathbb Y}}
+\newcommand{\Zz}{{\mathbb Z}}
+% ====================================================================
+% Buchstaben - German letters
+% <<Buchstaben-GermanLetters>>
+% ====================================================================
+\newcommand{\ga}{\mathfrak{a}}
+\newcommand{\gb}{\mathfrak{b}}
+\newcommand{\gd}{\mathfrak{d}}
+\renewcommand{\ge}{\mathfrak{e}}
+\newcommand{\gf}{\mathfrak{f}}
+\newcommand{\gl}{\mathfrak{l}}
+\newcommand{\gn}{\mathfrak{n}}
+\newcommand{\gp}{\mathfrak{p}}
+\newcommand{\gq}{\mathfrak{q}}
+\newcommand{\gr}{\mathfrak{r}}
+\newcommand{\gs}{\mathfrak{s}}
+\newcommand{\gt}{\mathfrak{t}}
+\newcommand{\gu}{\mathfrak{u}}
+\newcommand{\gv}{\mathfrak{v}}
+\newcommand{\gw}{\mathfrak{w}}
+\newcommand{\gL}{\mathfrak{L}}
+\newcommand{\gD}{\mathfrak{D}}
+\newcommand{\gG}{\mathfrak{G}}
+\newcommand{\gN}{\mathfrak{N}}
+\newcommand{\gR}{\mathfrak{R}}
+\newcommand{\gV}{\mathfrak{V}}
+% ====================================================================
+% Buchstaben - Scr letters
+% <<Buchstaben-ScrLetters>>
+% ====================================================================
+\newcommand{\sA}{\mathscr{A}}
+\newcommand{\sB}{\mathscr{B}}
+\newcommand{\sD}{\mathscr{D}}
+\newcommand{\sH}{\mathscr{H}}
+\newcommand{\sK}{\mathscr{K}}
+\newcommand{\sL}{\mathscr{L}}
+\newcommand{\sM}{\mathscr{M}}
+\newcommand{\sN}{\mathscr{N}}
+\newcommand{\sP}{\mathscr{P}}
+\newcommand{\sR}{\mathscr{R}}
+\newcommand{\sS}{\mathscr{S}}
+\newcommand{\sW}{\mathscr{W}}
+% ====================================================================
+% Buchstaben - Cal letters
+% <<Buchstaben-CalLetters>>
+% ====================================================================
+\newcommand{\cA}{{\mathcal A}}
+\newcommand{\cB}{{\mathcal B}}
+\newcommand{\cD}{{\mathcal D}}
+\newcommand{\cE}{{\mathcal E}}
+\newcommand{\cF}{{\mathcal F}}
+\newcommand{\cG}{{\mathcal G}}
+\newcommand{\cH}{{\mathcal H}}
+\newcommand{\cI}{{\mathcal I}}
+\newcommand{\cJ}{{\mathcal J}}
+\newcommand{\cK}{{\mathcal K}}
+\newcommand{\cL}{{\mathcal L}}
+\newcommand{\cM}{{\mathcal M}}
+\newcommand{\cN}{{\mathcal N}}
+\newcommand{\cO}{{\mathcal O}}
+\newcommand{\cP}{{\mathcal P}}
+\newcommand{\cQ}{{\mathcal Q}}
+\newcommand{\cR}{{\mathcal R}}
+\newcommand{\cS}{{\mathcal S}}
+\newcommand{\cT}{{\mathcal T}}
+\newcommand{\cU}{{\mathcal U}}
+\newcommand{\cV}{{\mathcal V}}
+\newcommand{\cW}{{\mathcal W}}
+\newcommand{\cX}{{\mathcal X}}
+\newcommand{\cY}{{\mathcal Y}}
+\newcommand{\cZ}{{\mathcal Z}}
+% ====================================================================
+% Buchstaben - Overline letters
+% <<Buchstaben-OverLetters>>
+% ====================================================================
+\newcommand{\oa}{\overline{a}}
+\newcommand{\ob}{\overline{b}}
+\newcommand{\oc}{\overline{c}}
+\newcommand{\of}{\overline{f}}
+\newcommand{\og}{\overline{g}} %% Achtung falls Babel frnazösisch ist dies schon definiert!! 
+\newcommand{\oh}{\overline{h}}
+\newcommand{\oi}{\overline{i}}
+\newcommand{\ok}{\overline{k}}
+\newcommand{\ol}{\overline{l}}
+\newcommand{\om}{\overline{m}}
+\newcommand{\op}{\overline{p}}
+\newcommand{\oq}{\overline{q}}
+\newcommand{\ot}{\overline{t}}
+\newcommand{\ou}{\overline{u}}
+\newcommand{\ov}{\overline{v}}
+\newcommand{\ox}{\overline{x}}
+\newcommand{\oy}{\overline{y}}
+\newcommand{\oz}{\overline{z}}
+\newcommand{\oA}{\overline{A}}
+\newcommand{\oB}{\overline{B}}
+\newcommand{\oC}{\overline{C}}
+\newcommand{\oD}{\overline{D}}
+\newcommand{\oG}{\overline{G}}
+\newcommand{\oH}{\overline{H}}
+\newcommand{\oI}{\overline{I}}
+\newcommand{\oK}{\overline{K}}
+\newcommand{\oN}{\overline{N}}
+\newcommand{\oP}{\overline{P}}
+\newcommand{\oQ}{\overline{Q}}
+\newcommand{\oR}{\overline{R}}
+\newcommand{\oS}{\overline{S}}
+\newcommand{\oT}{\overline{T}}
+\newcommand{\oU}{\overline{U}}
+\newcommand{\oV}{\overline{V}}
+\newcommand{\oW}{\overline{W}}
+\newcommand{\oX}{\overline{X}}
+\newcommand{\oXb}{\overline{\Xb}}
+\newcommand{\oY}{\overline{Y}}
+\newcommand{\oZ}{\overline{Z}}
+\newcommand{\omu}{\overline{\mu}}
+\newcommand{\olambda}{\overline{\lambda}}
+\newcommand{\orho}{\overline{\rho}}
+\newcommand{\otheta}{\overline{\theta}}
+\newcommand{\oDelta}{\overline{\Delta}}
+\newcommand{\oLambda}{\overline{\Lambda}}
+\newcommand{\oOmega}{\overline{\Omega}}
+\newcommand{\oPsi}{\overline{\Psi}}
+\newcommand{\oTheta}{\overline{\Theta}}
+\newcommand{\oSigma}{\overline{\Sigma}}
+% ====================================================================
+% Buchstaben - Underline letters
+% <<Buchstaben-UnderLetters>>
+% ====================================================================
+\newcommand{\uc}{\underline{c}}
+\newcommand{\ud}{\underline{d}}
+\newcommand{\uk}{{\underline{k}}}
+\newcommand{\um}{{\underline{m}}}
+\newcommand{\ut}{\underline{t}}
+\newcommand{\ux}{{\underline x}}
+\newcommand{\uC}{\underline{C}}
+\newcommand{\uD}{\underline{D}}
+\newcommand{\uU}{\underline{U}}
+\newcommand{\uV}{\underline{V}}
+\newcommand{\uX}{{\underline X}}
+\newcommand{\uY}{{\underline Y}}
+\newcommand{\uZ}{{\underline Z}}
+\newcommand{\uxi}{{\underline \xi}}
+\newcommand{\utheta}{\underline{\theta}}
+% ====================================================================
+% Buchstaben - Widetilde letters
+% <<Buchstaben-WTildeLetters>>
+% ====================================================================
+\newcommand{\ta}{\widetilde{a}}
+\newcommand{\tb}{\widetilde{b}}
+\newcommand{\tc}{\widetilde{c}}
+\newcommand{\td}{\widetilde{d}}
+\newcommand{\tf}{\widetilde{f}}
+\newcommand{\tg}{\widetilde{g}}
+\newcommand{\tk}{\widetilde{k}}
+\newcommand{\tl}{\widetilde{l}}
+\newcommand{\tm}{\widetilde{m}}
+\newcommand{\wtm}{\widetilde{m}}
+\newcommand{\tn}{\widetilde{n}}
+\newcommand{\tp}{\widetilde{p}}
+\newcommand{\tq}{\widetilde{q}}
+\newcommand{\ts}{\widetilde{s}}
+\newcommand{\tv}{\widetilde{v}}
+\newcommand{\tw}{\widetilde{w}}
+\newcommand{\tx}{\widetilde{x}}
+\newcommand{\tA}{\widetilde{A}}
+\newcommand{\tB}{\widetilde{B}}
+\newcommand{\tD}{\widetilde{D}}
+\newcommand{\tF}{\widetilde{F}}
+\newcommand{\tG}{\widetilde{G}}
+\newcommand{\tI}{\widetilde{I}}
+\newcommand{\tK}{\widetilde{K}}
+\newcommand{\tL}{\widetilde{L}}
+\newcommand{\tN}{\widetilde{N}}
+\newcommand{\tM}{\widetilde{M}}
+\newcommand{\tP}{\widetilde{P}}
+\newcommand{\tQ}{\widetilde{Q}}
+\newcommand{\tR}{\widetilde{R}}
+\newcommand{\tS}{\widetilde{S}}
+\newcommand{\tU}{\widetilde{U}}
+\newcommand{\tV}{\widetilde{V}}
+\newcommand{\tW}{\widetilde{W}}
+\newcommand{\tX}{\widetilde{X}}
+\newcommand{\tZ}{\widetilde{Z}}
+\newcommand{\talpha}{\widetilde{\alpha}}
+\newcommand{\tbeta}{\widetilde{\beta}}
+\newcommand{\tgamma}{\widetilde{\gamma}}
+\newcommand{\tmu}{\widetilde{\mu}}
+\newcommand{\tlambda}{\widetilde{\lambda}}
+\newcommand{\trho}{\widetilde{\rho}}
+\newcommand{\tsigma}{\widetilde{\sigma}}
+\newcommand{\ttheta}{\widetilde{\theta}}
+\newcommand{\tDelta}{\widetilde{\Delta}}
+\newcommand{\tGamma}{\widetilde{\Gamma}}
+\newcommand{\tOmega}{\widetilde{\Omega}}
+\newcommand{\tPhi}{\widetilde{\Phi}}
+\newcommand{\tLambda}{\widetilde{\Lambda}}
+\newcommand{\tSigma}{\widetilde{\Sigma}}
+% ====================================================================
+% Buchstaben - WidetHat letters
+% <<Buchstaben-WHatLetters>>
+% ====================================================================
+\newcommand{\ha}{\widehat{a}}
+\newcommand{\hb}{\widehat{b}}
+\newcommand{\hf}{\widehat{f}}
+\newcommand{\hg}{\widehat{g}}
+\newcommand{\whk}{\widehat{k}}
+\newcommand{\whm}{\widehat{m}}
+\newcommand{\hp}{\widehat{p}}
+\newcommand{\hx}{\widehat{x}}
+\newcommand{\hy}{\widehat{y}}
+\newcommand{\hA}{\widehat{A}}
+\newcommand{\hB}{\widehat{B}}
+\newcommand{\hD}{\widehat{D}}
+\newcommand{\hF}{\widehat{F}}
+\newcommand{\hG}{\widehat{G}}
+\newcommand{\hM}{\widehat{M}}
+\newcommand{\hN}{\widehat{N}}
+\newcommand{\hP}{\widehat{P}}
+\newcommand{\hS}{\widehat{S}}
+\newcommand{\hV}{\widehat{V}}
+\newcommand{\hmu}{\widehat{\mu}}
+\newcommand{\halpha}{\widehat{\alpha}}
+\newcommand{\hbeta}{\widehat{\beta}}
+\newcommand{\hdelta}{\widehat{\delta}}
+\newcommand{\hDelta}{\widehat{\Delta}}
+\newcommand{\hgamma}{\widehat{\gamma}}
+\newcommand{\hlambda}{\widehat{\lambda}}
+\newcommand{\hPhi}{\widehat{\Phi}}
+\newcommand{\hsigma}{\widehat{\sigma}}
+\newcommand{\htau}{\widehat{\tau}}
+\newcommand{\htheta}{\widehat{\theta}}
+\newcommand{\hLambda}{\widehat{\Lambda}}
+\newcommand{\hSigma}{\widehat{\Sigma}}
+\newcommand{\hTheta}{\widehat{\Theta}}
+\newcommand{\hXi}{\widehat{\Xi}}
+\newcommand{\hPsi}{\widehat{\Psi}}
+\newcommand{\hfb}{\widehat{\fb}}
+% \newcommand{\osA}{\overset{\circ}{\mathscr{A}}}
+% \newcommand{\osB}{\overset{\circ}{\mathscr{B}}}
+% \newcommand{\osH}{\overset{\circ}{\mathscr{H}}}
+% \newcommand{\osK}{\overset{\circ}{\mathscr{K}}}
+% \newcommand{\osL}{\overset{\circ}{\mathscr{L}}}
+% \newcommand{\osM}{\overset{\circ}{\mathscr{M}}}
+% \newcommand{\osW}{\overset{\circ}{\mathscr{W}}}
+% \newcommand{\ocB}{\overset{\circ}{\cal{B}}}
+% \newcommand{\ocH}{\overset{\circ}{\cal{H}}}
+\endinput
+%%
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "_Syllabus-ILPwuO-2013"
+%%% End: 

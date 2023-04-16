@@ -1,0 +1,57 @@
+\ProvidesPackage{style}
+
+\usetikzlibrary{shapes,arrows}
+\setbeamerfont{author}{size=\normalsize}
+\setbeamerfont{institute}{size=\normalsize}
+\setbeamerfont{title}{size=\fontsize{30}{36}\bfseries}
+\setbeamerfont{subtitle}{size=\Large\normalfont\slshape}
+
+\synctex=1
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+\lstset{literate=%
+{é}{{\'e}}1
+{è}{{\`e}}1
+{à}{{\o}}1
+{Æ}{{\AE}}1
+{Å}{{\AA}}1
+{Ø}{{\O}}1
+}
+\lstset{extendedchars=\true}
+\lstset{inputencoding=ansinew}
+
+\graphicspath{{img/}}
+
+\hypersetup{colorlinks=true,linkcolor=blue}
+
+\linespread{1.1}
+
+\parindent0cm
+
+\titleformat{\chapter}[display]
+{\normalfont\Large\filcenter\sffamily}
+{\rule[1mm]{15mm}{1.5mm} \hspace{4mm} \large{\chaptertitlename} \thechapter \hspace{5mm} \rule[1mm]{15mm}{1.5mm}}
+{1pc}
+{\titlerule
+\vspace{1pc}
+\huge}
+
+% If you want to change the colors of the various elements in the theme, edit and uncomment the following lines
+\definecolor{RTGblue}{HTML}{2E2E2E}
+\definecolor{RTGred}{HTML}{C80B33}
+\definecolor{black}{rgb}{0.0, 0.0, 0.0}
+
+% Change the bar colors:
+\setbeamercolor{Feather}{fg=red!80!black, bg=RTGblue}
+\setbeamercolor{block title}{bg=RTGblue, fg=white}
+\setbeamercolor{block body}{bg=white, fg=black}
+
+% Change the color of the structural elements:
+\setbeamercolor{structure}{fg=black}
+
+% Change the frame title text color:
+\setbeamercolor{frametitle}{fg=white}
+
+% Change the normal text color background:
+%\setbeamercolor{normal text}{fg=black,bg=gray!10}

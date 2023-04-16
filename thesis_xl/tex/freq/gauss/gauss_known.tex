@@ -1,0 +1,63 @@
+\subsection{Oracle optimality}\label{FREQ_GAUSS_ORACLE}
+
+A direct application of \nref{lmA.1.1} and \nref{lmA.1.2} gives us the following result.
+\begin{cor*}
+For any $m$ and $n$ in $\N$, we have
+\[\P(\Vert \theta_{n, \overline{m}} - \theta^{\circ}_{\overline{m}} \Vert_{l^{2}}^{2} \geq \penSv / 7) \leq \exp[- \tfrac{\tfrac{2 \kappa}{21} (\tfrac{2 \kappa}{21} \wedge 1)}{4} m \cmiSv];\]
+\[\E[(\Vert \theta_{n, \overline{m}} - \theta^{\circ}_{\overline{m}} \Vert_{l^{2}}^{2} - \penSv / 7 )_{+}] \leq 6 n^{-1}\Lambda_{+}(m) \exp[- \tfrac{\kappa}{42} m \cmiSv].\]
+\reEnd
+\end{cor*}
+
+
+
+\begin{thm}\label{THM_FREQ_IGSSM_KNOWN_IID_ORACLE_NP}
+\reEnd
+\end{thm}
+
+\subsection{Minimax optimality}\label{FREQ_GAUSS_MINIMAX}
+  By applying the same strategy, we derive bounds for the maximal risk over
+  ellipsoids  $\rwCxdf$ of the aggregated estimator $\txdfAg[{\erWe[]}]$.
+  Therefore, we aim next to control the second and
+  third right hand side term in \eqref{freq:ge:strat:kn:co:agg:e1} uniformly over
+  $\rwCxdf$.
+  Keeping the definition \nref{gauss:pen} of
+$\daRa{\Di}{\xdfCw[],\Lambda}$  in mind it holds
+$\xdfCr^2\dRa{\Di}{\xdfCw[],\Lambda}\geq\Vnormlp{\xdf_{\underline{0}}}^2\bias^2(\xdf)$
+uniformly for all $\xdf\in\rwCxdf$ and for all
+$\Di\in\Nz$.
+\begin{de}
+We use $\DipenSv$ and $\penSv$ defined in \nref{gau:pen:oo} and define
+  $\daRa{\Di}{(\xdfCw[])}:=\daRa{\Di}{(\xdfCw[],\Lambda)}:=[\xdfCw^2\vee \DipenSv\,\ssY^{-1}]$.
+  Then, it holds
+  \begin{equation*}
+    [\xdfCr^2+\cpen]\daRa{\Di}{(\xdfCw[])}\geq\big[\Vnormlp{\xdf_{\underline{0}}}^2\bias^2(\xdf)\vee\penSv\big]\quad\text{for
+      all $\Di\in\nset{1,\ssY}$ and $\xdf\in\rwCxdf$}.
+\end{equation*}
+And we define the specific choice:
+    $\aDi{\ssY}(\xdfCw[]):=\argmin\Nset[\Di\in\Nz]{\daRa{\Di}{(\xdfCw[],\Lambda)}}\in\nset{1,\ssY}$;\\
+    $\naRa{(\xdfCw[])}:=\naRa{(\xdfCw[],\Lambda)}:=\min\Nset[\Di\in\Nz]{\daRa{\Di}{(\xdfCw[],\Lambda)}}$
+    with $\daRa{\aDi{\ssY}(\xdfCw[])}{(\xdfCw[],\Lambda)}=\naRa{(\xdfCw[],\Lambda)}$.
+\assEnd
+\end{de}
+For any $\pdDi,\mdDi\in\nset{1,\ssY}$ let us define 
+\begin{multline*}
+\mDi:=\min\set{\Di\in\nset{1,\mdDi}: \Vnormlp{\xdf_{\underline{0}}}^2\bias[\Di]^2(\xdf)\leq
+  [\xdfCr^2+4\cpen]\dRa{\mdDi}{\xdfCw[]}}\quad\text{and}\\\pDi:=\max\set{\Di\in\nset{\pdDi,\ssY}:
+   \penSv \leq 2[3\xdfCr^2+ 2\cpen] \dRa{\pdDi}{\xdfCw[]}}
+\end{multline*}
+where  the defining sets obviously contains $\mdDi$ and $\pdDi$, respectively, and hence, they are
+not empty.
+Hence we have, for any $\theta^{\circ}$ in $\rwCxdf$
+ \begin{multline*}
+    \E\Vnormlp{\txdfAg-\xdf}^2 \leq 3c([\xdfCr^2+\cpen]\daRa{\pDi}{(\xdfCw[])}) +2r^{2} [r^{2}+28 (\tfrac{3c}{2} \vee 1)][\xdfCr^2+\cpen]\daRa{\mdDi}{(\xdfCw[])} \\
+    + \tfrac{2}{7}\sum\nolimits_{\Di\in\nsetlo{\pDi,\ssY}}\tfrac{21c}{2}[\xdfCr^2+\cpen]\daRa{\Di}{(\xdfCw[])}\exp[\eta n (\tfrac{21c}{2}[\xdfCr^2+\cpen]\daRa{\Di}{(\xdfCw[])}/2 - 14 (\tfrac{3c}{2} \vee 1) [\xdfCr^2+\cpen]\daRa{\pdDi}{(\xdfCw[])})]\\\hfill
+    +2r^{2} (\sum\nolimits_{m = 1}^{m_{-}} \exp[-14 \eta n (\tfrac{3c}{2} \vee 1) [\xdfCr^2+\cpen]\daRa{\mdDi}{(\xdfCw[])}] + \exp[- \tfrac{c (c \wedge 1)}{4} m_{-}^{\dagger} \cmiSv[\mdDi]])\\
++2\sum_{\Di\in\nset{\pDi,\ssY}}6 n^{-1}\Lambda_{+}(m) \exp[- \tfrac{c}{4} m \cmiSv]  
++\tfrac{2}{7}\sum_{\Di\in\nsetlo{\pDi,\ssY}}\tfrac{21c}{2}[\xdfCr^2+\cpen]\daRa{\Di}{(\xdfCw[])}\exp[- \tfrac{c (c \wedge 1)}{4} m \cmiSv].
+\end{multline*}
+
+\begin{thm}\label{THM_FREQ_IGSSM_KNOWN_IID_MINIMAX_NP}
+\reEnd
+\end{thm}
+
+

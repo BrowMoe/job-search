@@ -1,0 +1,55 @@
+%customized template for RTG title page
+\setbeamertemplate{title page}{%
+\begin{tikzpicture}[remember picture,overlay]
+%color theme 
+\fill[RTGblue]
+  ([yshift=35pt]current page.south west) rectangle (current page.south east);
+\fill[RTGred]
+  ([yshift=32pt]current page.south west) rectangle ([yshift=35pt]current page.south east);  
+\fill[RTGblue]
+  ([yshift=-70pt]current page.north west) rectangle ([yshift=-35pt]current page.north east);
+\fill[RTGred]
+  ([yshift=-70pt]current page.north west) rectangle ([yshift=-72.5pt]current page.north east);
+%Header: University of Mannheim/Heidelberg logo 
+\node[anchor=north west] 
+  at ([yshift=-6pt]current page.north west) (logo)
+  {\parbox[t]{2.5cm}{\raggedleft%
+    \usebeamercolor[fg]{titlegraphic}\includegraphics[width=2cm]{uni-ma}}};
+    
+\node[anchor=north east] 
+  at ([yshift=1pt]current page.north east) (logo)
+  {\parbox[t]{2.5cm}{\raggedright%
+    \usebeamercolor[fg]{titlegraphic}\includegraphics[width=2cm]{uni-hd}}};
+    
+\node[anchor=north]
+ at([yshift=-5pt]current page.north) (header)
+ {\parbox[c]{0.5\paperwidth}{\centering \fontsize{10pt}{2pt}\selectfont Probability \& Statistics Group Heidelberg-Mannheim}};
+ 
+ %footer   
+\node[anchor=south east] 
+  at ([yshift=10pt]current page.south east) (rtg)
+  {\parbox[c]{2cm}{\raggedright%
+   \fontsize{12pt}{2pt}\selectfont \textcolor{white} {RTG 1953}}};
+
+%\node[anchor=south west] 
+%  at ([yshift=11pt]current page.south west) (dfg)
+%  {\parbox[c]{2.75cm}{\raggedleft%
+%   \fontsize{0pt}{2pt}\selectfont \textcolor{white} { }}};
+%   
+\node[anchor=south west] 
+  at ([yshift = 7pt,xshift=0.28cm]current page.south west) (logo)
+  {\parbox[c]{1.2cm}{\raggedleft%
+   \usebeamercolor[fg]{titlegraphic}\includegraphics[width=1.2cm]{dfg}}};
+    
+
+%% title + author, adjust yshift value if necessary (controls vertical position)
+\node[anchor=center]
+  at ([yshift=10pt]current page.center) (title)
+  {\parbox[t]{\textwidth}{\linespread{6} \selectfont \centering%
+\fontsize{14pt}{3pt}\selectfont \textcolor{black}{\inserttitle}}};
+ 
+\node[anchor=center]
+  at ([yshift=-45pt]current page.center) (author)
+  {\parbox[c]{\textwidth}{\centering\usebeamerfont{author}\textcolor{black}{\insertauthor}}};
+\end{tikzpicture}
+}

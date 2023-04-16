@@ -1,0 +1,27 @@
+\begin{frame}{This frame has a title}
+
+This is a frame
+\end{frame}
+
+\begin{frame}{This is a frame with columns}
+\begin{columns}
+\begin{column}{.5\paperwidth}
+Text in the first column
+\end{column}
+\begin{column}{.5\paperwidth}
+Text in the second column
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Frame with an image}
+\begin{figure}[H]
+	\label{figure4}
+	\centering
+    \includegraphics[scale = .5, keepaspectratio]{CRUK/Rosetta_Logo.png}
+    \caption{Write a nice caption for your graphic}
+\end{figure}
+this is a reference to the figure: \cref{figure4}
+but also all the other figures:
+\cref{figure1}, \cref{figure2}, \cref{figure3}
+\end{frame}

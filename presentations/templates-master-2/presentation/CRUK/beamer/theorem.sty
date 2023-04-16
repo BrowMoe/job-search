@@ -1,0 +1,133 @@
+\ProvidesPackage{theorem}
+
+%==========================================
+% Theorem Definition
+% <<Def-Theorem>>
+%==========================================
+\newtheoremstyle{styre}% name
+  {\topsep}%      Space above
+  {\topsep}%      Space below
+  {\normalfont\itshape}%         Body font
+  {}%         Indent amount (empty = no indent, \parindent = para indent)
+  {\color{\colre}\scshape}% Thm head font
+  {.}%        Punctuation after thm head
+  {.5em}%     Space after thm head: " " = normal interword space;
+        %       \newline = linebreak
+  {\thmname{\textbf{#1}\xspace}{\xspace\thmnumber{#2}}\thmnote{\xspace\textit{\small(#3)}}}%         Thm head spec (can be left empty, meaning `normal')
+
+\newtheoremstyle{styas}% name
+  {\topsep}%      Space above
+  {\topsep}%      Space below
+  {\normalfont\rmfamily}%         Body font
+  {}%         Indent amount (empty = no indent, \parindent = para indent)
+  {\color{\colas}\scshape}% Thm head font
+  {}%        Punctuation after thm head
+  {.5em}%     Space after thm head: " " = normal interword space;
+        %       \newline = linebreak
+  {}%         Thm head spec (can be left empty, meaning `normal')
+
+\newtheoremstyle{styrem}% name
+  {\topsep}%      Space above
+  {\topsep}%      Space below
+  {\normalfont\itshape}%         Body font
+  {}%         Indent amount (empty = no indent, \parindent = para indent)
+  {\color{\colrem}\scshape}% Thm head font
+  {.}%        Punctuation after thm head
+  {.5em}%     Space after thm head: " " = normal interword space;
+        %       \newline = linebreak
+  {}%         Thm head spec (can be left empty, meaning `normal')
+
+\newtheoremstyle{styil}% name
+  {\topsep}%      Space above
+  {\topsep}%      Space below
+  {\normalfont\rmfamily}%         Body font
+  {}%         Indent amount (empty = no indent, \parindent = para indent)
+  {\color{\colil}\scshape}% Thm head font
+  {.}%        Punctuation after thm head
+  {\newline}%     Space after thm head: " " = normal interword space;
+        %       \newline = linebreak
+  {\thmname{\textbf{#1}\xspace}{\xspace\thmnumber{#2}}\thmnote{\xspace\textit{\small(#3)}}}%         Thm head spec (can be left empty, meaning `normal')
+
+
+\newtheoremstyle{styte}% name
+        {}%      Space above
+        {}%      Space below
+        {\normalfont}%         Body font
+        {}%         Indent amount (empty = no indent, \parindent = para indent)
+        {}% Thm head font
+        {}%        Punctuation after thm head
+        {0ex}%     Space after thm head: " " = normal interword space;
+        {}%         Thm head spec (can be left empty, meaning `normal')
+
+\newtheoremstyle{stypro}%
+	{\topsep}%space above
+	{\topsep}%space below
+	{\upshape}%		body font
+	{}%				indent amount
+	{\scshape\color{\colre}}%	theorem head font
+	{}%			punctuation after theorem head
+	{\newline}%			space after theorem head
+	{\thmnote{\textcolor{\colre}#3}}%         Thm head spec (can be left empty, meaning `normal')
+ 
+\theoremstyle{styte}\newtheorem*{te}{}
+
+\theoremstyle{styre}
+\newtheorem{pr}{Proposition}[section]
+
+\theoremstyle{styre}
+\newtheorem{cor}{Corollary}[section]
+
+\theoremstyle{styre}
+\newtheorem{thm}{Theorem}[section]
+
+\theoremstyle{styre}
+\newtheorem{lm}{Lemma}[section]
+
+\theoremstyle{styrem}
+\newtheorem{rmk}{Remark}[section]
+\newtheorem*{rem}{Reminder}
+\newtheorem*{ex}{Example}
+
+
+\theoremstyle{styil}
+\newtheorem{il}{Numerical discussion}[section]
+
+\theoremstyle{styas}
+\newtheorem{as}{Assumption}
+\newtheorem{de}{Definition}
+\newtheorem{nota}{Notation}
+%\renewcommand{\theass}{(A\arabic{as})}
+
+\theoremstyle{stypro}
+\newtheorem*{pro}{}
+
+
+\newcommand{\reEnd}{{\scriptsize\textcolor{\colre}{\qed}}}
+\newcommand{\remEnd}{{\scriptsize\textcolor{\colrem}{\qed}}}
+\newcommand{\proEnd}{{\scriptsize\textcolor{\colre}{\qed}}}
+\newcommand{\ilEnd}{{\scriptsize\textcolor{\colil}{\qed}}}
+\newcommand{\assEnd}{{\scriptsize\textcolor{\colas}{\qed}}}
+
+
+\usepackage{cleveref}
+\crefname{pr}{proposition}{propositions}
+\crefformat{pr}{#2{\color{\colre}Proposition {#1}}#3}
+\crefname{co}{corollary}{corollaries}
+\crefformat{co}{#2{\color{\colre}Corollary {#1}}#3}
+\crefname{thm}{theorem}{theorems}
+\crefformat{thm}{#2{\color{\colre}Theorem {#1}}#3}
+\crefname{lm}{lemma}{lemmas}
+\crefformat{lm}{#2{\color{\colre}Lemma {#1}}#3}
+
+
+\crefname{as}{assumption}{assumptions}
+\crefformat{as}{#2{\color{\colas}Assumption {#1}}#3}
+
+\crefname{rmk}{remark}{remarks}
+\crefformat{rmk}{#2{\color{\colrem}Remark {#1}}#3}
+
+\crefname{il}{numerical discussion}{numerical discussion}
+\crefformat{il}{#2{\color{\colil}Num. discussion {#1}}#3}
+
+
+\setbeamertemplate{frametitle continuation}[from second]

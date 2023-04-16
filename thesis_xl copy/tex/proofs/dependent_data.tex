@@ -1,0 +1,80 @@
+We present in this annex definitions, and results which are used in \nref{FREQ_CIRCDECONV_KNOWN_BETA} in order to compute the convergence rate of the adaptive aggregation estimator for strictly stationary, absolutely regular process.
+
+\begin{de}{\textsc{Strict stationarity} \\}\label{DE_DEPENDENTDATA_STRICTSTATIONARITY}
+Consider a sequence of random variables $\left(Y_{p}\right)_{p \in \N}$.
+We say that $\left(Y_{p}\right)_{p \in \N}$ is strictly stationary if, for any integer $q$, any finite family of integers $\left(p_{r}\right)_{r \in \llbracket 1, q\rrbracket}$, and integer $h$, $\left(Y_{p_{r}}\right)_{r \in \llbracket 1, q \rrbracket}$ is identically distributed to $\left(Y_{p_{r} + h}\right)_{r \in \llbracket 1, q \rrbracket}$. In particular, for any integers $p$ and $q$, $Y_{p}$ and $Y_{q}$ have same distribution.
+\end{de}
+
+\begin{de}{\textsc{$\beta$-mixing coefficients} \\}\label{DE_DEPENDENTDATA_BETAMIXING}
+Let $\left(\Omega, \mathcal{A}, \P\right)$ be a probability space and $\mathcal{U}$ and $\mathcal{V}$ be two sub $\sigma$-algebras of $\mathcal{A}$.
+Then, we define the $\beta$-mixing coefficient of $\mathcal{U}$ and $\mathcal{V}$:
+\[\beta(\mathcal{U}, \mathcal{V}) := \frac{1}{2} \sup\limits_{(U_{j})_{j \in I}(V_{j})_{j \in J}}\left\{\sum\sum \vert \P(U_{j}\P(V_{k}) - \P(U_{j} \cap V_{k}) \vert \right\}\]
+where the $\sup$ is taken over all possible finite partition of $\Omega$ which are respectively $\mathcal{U}$ and $\mathcal{V}$ measurable.
+
+In addition for two random variables $Y_{1}$ and $Y_{2}$ we note $\sigma(Y_{1})$ and $\sigma(Y_{2})$ the $\sigma$-algebra they generate and $\beta\left(Y_{1}, Y_{2}\right) = \beta\left(\sigma(Y_{1}), \sigma(Y_{2})\right)$.
+\end{de}
+
+\begin{de}{\textsc{Absolutely regular process} \\}\label{DE_DEPENDENTDATA_ABSOLUTELYREGULAR}
+Consider a stochastic process $(Y_{p})_{p \in \mathds{Z}}$.
+Denote, for any $p$ in $\N$, by $\mathcal{F}^{-}_{p} := \sigma\left((Y_{q})_{q \leq p}\right)$ and $\mathcal{F}^{+}_{p} := \sigma\left((Y_{q})_{q \geq p}\right)$.
+The stochastic process $(Y_{p})_{p \in \mathds{Z}}$ is said to be absolutely regular if
+\[\lim\limits_{p \rightarrow \infty} \beta(\mathcal{F}_{0}^{-}, \mathcal{F}_{p}^{+}) = 0.\]
+\end{de}
+
+%\begin{de}{\textsc{Space $\mathcal{L}(q, \omega, \P)$} \\}\label{DE2.5.3}
+%Given $q \geq 2$, a non negative sequence $\omega = \left(\omega_{p}\right)_{p \in \N}$ and a probability measure $\P$, let $\mathcal{L}(q, \omega, \P)$ be the set of functions $b : \R \rightarrow \overline{\R_{+}}$ such that there exists a sequence $(b_{p})_{p \in \N}$ of measurable functions $b_{p}: \R \rightarrow [0, 1]$ with $b_{0} = \mathds{1}$ and $\E_{\P} b_{p} \leq \omega_{p}$ satisfying $b = \sum\limits_{p = 0}^{\infty} (p + 1)^{q - 2} b_{p}$.
+%
+%A sufficient condition for elements of $\mathcal{L}(q, \omega, \P)$ to be non-negative $\P$-integrable functions is $\sum\limits_{j = 0}^{\infty} (j - 1)^{q-2} \omega_{j} y \infty$.
+%\end{de}
+%
+%
+%\begin{lm}\label{LMB.0.1}
+%Consider a strictly stationary process $(Y_{p})_{p \in \mathds{Z}}$.
+%Denote $\P_{Y}$ the common marginal distribution and $\left(\beta_{p}\right)_{p \in \N} = \left(\beta(\mathcal{F}_{0}^{-}, \mathcal{F}_{p}^{+})\right)_{p \in \N}$ the sequence of mixing coefficients with the convention $\beta_{0} = 1$.
+%
+%Then, there exist a function $b$ belonging to $\mathcal{L}(2, \beta, \P)$ such that for any measurable function $h$ with $\E\left[\left\vert h(\epsilon_{0})\right\vert^{2}\right] < \infty$ and any integer $n$, we have
+%\[\V\left[\sum\limits_{p = 0}^{n} h(\epsilon_{p})\right] \leq 4 n \E\left[\left\vert h(\epsilon_{0})\right\vert^{2} b(\epsilon_{0})\right].\]
+%
+%Assuming in addition $\sum\limits_{p \in \N} \beta(\epsilon_{0}, \epsilon_{p}) < \infty$ and $\Vert h \Vert_{\infty} < \infty$ gives
+%\[\E\left[\left\vert h(\epsilon_{0})\right\vert^{2} b(\epsilon_{0})\right] \leq \Vert h \Vert_{\infty} \sum\limits_{p\in \N} \beta(\epsilon_{0}, \epsilon_{p}) \leq \infty.\]
+%
+%Alternatively, assuming, for $r$ and $q$ exponents as in Hölder's inequality, that $\E\left[\vert b(\epsilon_{0}) \vert^{r}\right] < \infty$ and $\E\left[\vert h(\epsilon_{0})\vert^{2q}\right] < \infty$
+%\[\E\left[\left\vert h(\epsilon_{0})\right\vert^{2} b(\epsilon_{0})\right] \leq \E\left[\left\vert h(\epsilon_{0})\right\vert^{2q}\right]^{1/q} \E\left[ b(\epsilon_{0})^{r}\right]^{1/r}.\]
+%
+%If one assumes that, for some $r$, $\omega_{p}$ tends to $0$ as $p \rightarrow \infty$ with $\omega_{0} = 1$ and such that $\sum\limits_{p \in \N} (p+1)^{r-1} \omega_{p} < \infty$ then, for each function $b$ in $\mathcal{L}(2, \omega, \P)$, the function $b^{r}$ is $\P$-integrable and $\E_{\P}\left[\vert b \vert^{r}\right] \leq p \sum\limits_{p \in \N} (p+1)^{r-1} \omega_{p}$.
+%\end{lm}
+%
+%\begin{as}\label{ASB.0.1}
+%For any integer $p$, the joint distribution $\P_{Y_{0}^{n}, Y_{p}^{n}}$ of $Y_{0}^{n}$ and $Y_{p}^{n}$ admits a density $f_{Y_{0}^{n}, Y_{p}^{n}}$ which is square integrable.
+%Let $\Vert f_{Y_{0}^{n}, Y_{p}^{n}} \Vert_{L^{2}}^{2} := \int_{0}^{1} \int_{0}^{1} \vert f_{Y_{0}^{n}, Y_{p}^{n}}(x, y)\vert^{2}dx \, dy < \infty$ with a slight abuse of notations.
+%If we denote further by $h \otimes g : [0, 1]^{2} \rightarrow \R$ the bivariate function $[h \otimes g](x, y) := h(x) g(y)$ then let assume $\gamma_{f} := \sup\limits_{p \geq 1} \Vert f_{Y_{0}^{n}, Y_{p}^{n}} - f \otimes f \Vert_{L^{2}} < \infty$.
+%\end{as}
+%
+%\begin{lm}\label{LMB.0.2}
+%Let $(Y_{p})_{p \in \N}$ be a strictly stationary process with associated sequence of mixing coefficients $\left(\beta(Y_{0}, Y_{p})\right)_{p \in \N}$.
+%Under \nref{ASB.0.1}, for any $n \geq 1$ and $K \in \llbracket 0, n-1\rrbracket$, it holds
+%\[\sum\limits_{m \leq \vert j \vert \leq l} \V\left[\sum\limits_{p = 1}^{n} e_{j}(Y_{p})\right] \leq n 2 (l-m+1) \left\{1 + 2\left[\gamma_{f} \frac{K}{\sqrt{(l-m+1)}} + 2 \sum\limits_{p = K + 1}^{n - 1} \beta(Y_{0}, Y_{p})\right]\right\}\]
+%\end{lm}
+%
+%If we assume in addition that $\sum\limits_{p = 1}^{\infty} \beta(Y_{0}, Y_{p}) < \infty$ and $\gamma := \sup\limits_{\theta \in \Theta(\mathfrak{a}, r)} \gamma_{\theta} < \infty$ then, for any constant $C$ and any unbounded, increasing sequence $P_{n}$, there exist two integers $P^{\circ}$ and $n^{\circ}$ such that $\sum\limits_{p = P_{\circ} + 1}^{\infty} \beta(Y_{0}, Y_{p}) < C$ and $P_{n} > P^{\circ}$ for all $n$ greater than $n^{\circ}$.
+%Hence, for any $n \geq n^{\circ}$
+%\[\sum\limits_{m \leq \vert j \vert \leq l} \V\left[\sum\limits_{p=1}^{n} e_{j}(Y_{p})\right]\]
+%
+
+\begin{as}{\textsc{Rich space \\}}\label{AS_DEPENDENTDATA_RICHSPACE}
+Assume that the universe is rich enough in the sense that there exist a sequence of random variables with uniform distribution on $[0,1]$ which is independent of $(Y_{p})_{p \in \mathds{N}}$.
+
+As a consequence, there exist a sequence $(Y_{p}^{\perp})_{p \in \mathds{N}}$ satisfying the following properties.
+For any positive integer $s$ and for any strictly positive integer $q$, define the sets $(I_{q, p}^{e})_{p \in \llbracket 1, s\rrbracket} := \llbracket 2(q-1) s + 1, (2q - 1) s\rrbracket$ and $\left(I_{q, p}^{o}\right)_{p \in \llbracket 1, s \rrbracket} := \llbracket (2q-1) s + 1, 2q s\rrbracket$.
+
+Define for any $q$ in $\N$ the vectors of random variables $E_{q} := (Y_{I_{q, p}^{e}}^{n})_{p \in \llbracket 1, s \rrbracket}$; $O_{q} := (Y_{I_{q, p}^{o}}^{n})_{p \in \llbracket 1, s \rrbracket}$; and their counterparts $E_{q}^{\perp} := (Y_{I_{q, p}^{e}}^{n, \perp})_{p \in \llbracket 1, s \rrbracket}$ and $O_{q}^{\perp} := (Y_{I_{q, p}^{o}}^{n, \perp})_{p \in \llbracket 1, s \rrbracket}$.
+
+Then, $\left(Y^{\perp}_{p}\right)_{p \in \N}$ satisfies:
+\begin{itemize}
+\item for any integer $q$, $E^{\perp}_{q}$, $E_{q}$, $O^{\perp}_{q}$, and $O_{q}$ are identically distributed;
+\item for any integer $q$, $\P_{\theta^{\circ}}^{n}\left(E_{q} \neq E^{\perp}_{q}\right) \leq \beta_{s}$ and $\P_{\theta^{\circ}}^{n}\left(O_{q} \neq O^{\perp}_{q}\right) \leq \beta_{s}$;
+\item $\left(E^{\perp}_{q}\right)_{q \in \N}$ are independent and identically distributed and $\left(O^{\perp}_{q}\right)_{q \in \N}$ as well.
+\end{itemize}
+\end{as}
+
+

@@ -1,0 +1,250 @@
+%======================================================================================================================
+%                                                                 
+% Title: Aggregated CDE: unknown error density
+% Author: Jan JOHANNES, Institut für Angewandte Mathematik, Ruprecht-Karls Universität Heidelberg, Deutschland  
+% 
+% Email: johannes@math.uni-heidelberg.de
+% Date: %%ts latex start%%[2018-03-29 Thu 13:12]%%ts latex end%%
+%
+% ======================================================================================================================
+\subsection{Independent data and unknown noise density}\label{FREQ_DECONV_UNKNOWN}
+We now consider the case when $\lambda$ is unknown and we hence use the observations $(\epsilon_{p})_{p \in \llbracket 1, n_{\lambda} \rrbracket}$ to estimate it.
+\subsubsection{Shape of the estimator}
+\begin{de*}
+We use, as usual an aggregation estimator, where, this time, the aggregating sequence does not depend on $\lambda$ but on $\epsilon^{n_{\lambda}}$,
+\begin{equation*}
+(\widehat{\theta}^{(\eta)}(s))_{s \in \mathds{F}} = (\sum\nolimits_{m \in \N} \widehat{\P}_{M}^{(\eta)} \cdot \theta_{n, n_{\lambda}, \overline{m}}(s))_{s \in \mathds{F}} = (\sum\nolimits_{m \geq \vert s \vert} \widehat{\P}_{M}^{(\eta)} \cdot \theta_{n, n_{\lambda}}(s))_{s \in \mathds{F}}.
+\end{equation*}
+In particular, we give the following shape to the aggregating sequence with the contrast $\Upsilon$ and penalty $\pen^{\widehat{\Lambda}}$,
+\begin{multline*}
+\Upsilon : \N \to \R_{+}, \quad m \mapsto \Upsilon(m); \qquad \pen^{\widehat{\Lambda}} : \N \to \R_{-}, \quad m \mapsto \pen^{\widehat{\Lambda}}(m);\\
+\widehat{\P}_{M}^{(\eta)} : \N \to \R_{+}; \quad m \mapsto \tfrac{\exp[\eta n (\Upsilon(m) + \pen^{\widehat{\Lambda}}(m))]}{\sum\nolimits_{k = 0}^{n} \exp[\eta n (\Upsilon(k) + \pen^{\widehat{\Lambda}}(k))]} \mathds{1}_{m \leq n}.
+\end{multline*}
+Notice that if we let $\eta$ tend to infinity we obtain the following penalised contrast model selection estimator,
+\begin{equation*}
+  \hDi:=\argmin_{\Di\in\nset{1,\ssY}} \big\{\Upsilon(m)+\peneSv\big\}
+\end{equation*}
+which corresponds to the following weight sequence,
+\begin{equation*}
+  \lim_{\rWc\to\infty}\erWe=\dirac[\hDi](\{\Di\})=:\widehat{\P}_{M}^{(\infty)}.
+\end{equation*}
+In particular, we take the following expressions for $\Upsilon$ and $\pen^{\widehat{\Lambda}}$, with $\kappa := 84$,
+\begin{alignat*}{4}
+  & \Upsilon(m) && := && \Vert \theta_{n, n_{\lambda}, \overline{m}}\Vert_{l^{2}}^{2}; && \quad \eiSv[(s)]:= \vert \hfedfmpI[(s)] \vert ^2\\
+    & \meiSv && := && \max\{\eiSv[(l)],l\in\nset{1,\Di}\}; && \quad \cmeiSv:=\tfrac{\log^{2}(\Di\meiSv\vee(\Di+2))}{\log^{2}(\Di+2)}\geq1;\\
+    &\DipeneSv && := && \cmeiSv \Di \meiSv;&& \quad \peneSv:= \peneD.
+  \end{alignat*}
+\assEnd
+\end{de*}
+
+\subsubsection{Risk bounds of the aggregated estimator}\label{au:rb}\label{AU:RB}
+We first look at the quadratic risk for each $\theta^{\circ}$ and we recall the sequence which shall be an upper bound for the quadratic risk of our estimators.
+\begin{de*}
+Remind that we defined for any $\theta$ in $\Theta$ and $\Di$ in $\N$ the following term $\b_{m}^{2}(\theta) = \Vert \theta_{\underline{m}} \Vert_{l^{2}}/\Vert \theta_{\underline{0}} \Vert_{l^{2}} \leq 1$.
+We then define a family of sequences $(\daRa{\Di}{(\xdf)})_{\Di \in \N} := (\daRa{\Di}{(\xdf,\Lambda)})_{\Di \in \N} = [\b_{m}^{2}(\theta^{\circ}) \vee \penSv/\cpen]$.
+We intend to prove that the specific choice
+\begin{multline*}
+\aDi{\ssY}(\xdf):=\argmin\Nset[\Di\in\Nz]{\daRa{\Di}{(\xdf)}}\in\nset{1,\ssY}; \\
+\naRa{(\xdf)}:=\naRa{(\xdf,\Lambda)}:=\min\Nset[\Di\in\Nz]{\daRa{\Di}{(\xdf)}}
+\end{multline*}
+with $\daRa{\aDi{\ssY}}{(\xdf,\Lambda)}=\naRa{(\xdf,\Lambda)}$ defines an upper bound for the convergence rate of the aggregation estimators.
+\assEnd
+\end{de*}
+
+The following result assures that the hypotheses to apply our method are verified.
+\begin{lm}\label{re:cconc}
+  Consider
+  $\hxdfPr-\dxdfPr=\sum_{|s|\in\nset{1,\Di}}\hfedfmpI[(s)](\hfydf[(s)]-\fydf[(s)])\bas_s$.
+  Conditionally on $\{\rE_1,\dotsc,\rE_{\ssE}\}$ the r.v.'s
+  $\{\rY_1,\dotsc,\rY_{\ssY}\}$ are \iid and we denote by
+  $\FuVg[]{\rY|\rE}$ and $\E_{\rY\vert\rE}$ their conditional
+  distribution and expectation, respectively.  Let
+  $\eiSv[(s)]=|\hfedfmpI[(s)]|^2$,
+  $\oeiSv=\tfrac{1}{\Di}\sum_{s\in\nset{1,\Di}}\eiSv[(s)]$,
+  $\meiSv= \max\{\eiSv[(s)],s\in\nset{1,\Di}\}$,
+  $\DiepenSv=\cmeiSv\Di \meiSv$ and $\cmeiSv\geq1$.  Then there is a
+  numerical constant $\cst{}$ such that for all $\ssY\in\Nz$ and
+  $\Di\in\nset{1,\ssY}$ holds
+  \begin{resListeN}[]
+  \item\label{re:cconc:i}
+    $\E_{\rY\vert\rE} \vectp{\Vnormlp{\hxdfPr-\dxdfPr}^2 - 12\DiepenSv\ssY^{-1}}
+    \\ \leq \cst{} \bigg[\tfrac{\Vnormlp[1]{\fydf}\,\meiSv}{\ssY}
+    \exp\big(\tfrac{-\cmeiSv\Di}{3\Vnormlp[1]{\fydf}}\big)
+    +\tfrac{2\Di\meiSv}{n^2}\exp\big(\tfrac{-\sqrt{\ssY\cmeiSv}}{200}\big) \bigg]$
+  \item\label{re:cconc:ii}
+$\FuVg[]{\rY|\rE}\big(\Vnormlp{\hxdfPr-\dxdfPr}^2 \geq 12\DiepenSv\ssY^{-1}\big)\leq 
+3 \bigg[\exp\big(\tfrac{-\cmeiSv\Di}{200\Vnormlp[1]{\fydf}}\big)
++\exp\big(\tfrac{-\sqrt{\ssY\cmeiSv}}{200}\big)\bigg]$
+   \item\label{re:cconc:iii}
+     $\FuVg[]{\rY|\rE}\big(\Vnormlp{\hxdfPr-\dxdfPr}^2 \geq 12\DiepenSv\ssY^{-1}\big)\leq 
+     3 \bigg[\exp\big(\tfrac{-\cmeiSv\Di}{200\Vnormlp[1]{\fydf}}\big)
+     +\exp\big(\tfrac{-\ssY\sqrt{\daRa{\Di}{(\xdf,\eiSv)}}}{200\sqrt{\Di\meiSv}}\big)\bigg]$
+\end{resListeN}
+\reEnd
+\end{lm}
+
+\begin{lm}\label{re:xevent}
+Given $\Di\in\Nz$ for all $s\in\nset{1,\Di}$ we have
+\begin{equation}\label{re:xevent:e1}
+\P\big(|\hfedf[(s)]/\fedf[(s)]-1|>1/3\big)\leq 2\exp\big(-\tfrac{\ssE|\fedf[(s)]|^2}{72}\big)\leq 2\exp\big(-\tfrac{\ssE}{72\miSv}\big).
+\end{equation}
+\end{lm}
+
+The following theorem is then a direct consequence of \nref{au:ag:ub:pnp} and we omit its proof.
+\begin{thm}
+Consider the   penalty sequence $\peneSv:=\peneD$,
+  $\Di\in\nset{1,\ssY}$, as in \nref{freq:ge:shape:uk:de:pen:oo}.
+  Let $\hxdfAg[{\erWe[]}]=\sum_{\Di=1}^{\ssY} \erWe\hxdfPr$ be an aggregation of the orthogonal series estimators using either aggregation weights $\erWe[]$ as in \eqref{freq:ge:shape:uk:we} or model selection weights $\msWe[]$ as in \nref{freq:ge:shape:uk:de:msWe}.
+  \begin{Liste}[]
+  \item[{\dgrau\bfseries{(p)}}]Assume there is
+    $K\in\Nz_0$ with $1\geq \bias[{[K-1] }](\xdf)>0$ and
+    $\bias[\Di](\xdf)=0$. For $K>0$ let
+    $c_{\xdf}:=\tfrac{\Vnormlp{\xdf_{\underline{0}}}^2+104\cpen}{\Vnormlp{\xdf_{\underline{0}}}^2\bias[{[K-1]}]^2(\xdf)}>1$,
+    $\ssY_{\xdf,\Lambda}:=\floor{c_{\xdf}\DipenSv[K]}\in\Nz$ and
+    $\ssE(\xdf,\Lambda):=\floor{289\log(K+2)\cmiSv[K]\miSv[K]}\in\Nz$. If
+    $\ssY>\ssY_{\xdf,\Lambda}$ and $\ssE>\ssE(\xdf,\Lambda)$ then set
+    $\sDi{\ssY}:=\max\{\Di\in\nset{K,\ssY}:\ssY>c_{\xdf}\DipenSv\}$
+    and
+    $\sDi{\ssE}:=\max\{\Di\in\nset{K,\ssE}:289\log(\Di+2)\cmiSv[\Di]\miSv[\Di]\leq\ssE\}$
+    where the defining set, respectively, contains $K$ and thus is not
+    empty, and otherwise $\sDi{\ssY}\wedge\sDi{\ssE}:=\Di_{\cst{3}}\log(\ssY\wedge\ssE)$.
+    There is a numerical constant $\cst{}$ and a  constant $\cst{\xdf,\Lambda}$ given in
+    \eqref{au:ag:ub:pnp:p9} depending only on $\xdf$ and $\Lambda$ such
+    that for all $\ssY,\ssE\in\Nz$ holds
+    \begin{equation}
+       \nmRi{\hxdfAg[{\erWe[]}]}{\xdf,\Lambda}
+       %\E\Vnormlp{\widehat{\theta}^{(\eta)}-\xdf}^2
+       \leq
+      \cst{}\Vnormlp{\xdf_{\underline{0}}}^2\big[\ssY^{-1}\vee \ssE^{-1} \vee
+      \exp\big(\tfrac{-\cmiSv[\sDi{\ssY}\wedge\sDi{\ssE}]\sDi{\ssY}\wedge\sDi{\ssE}}{\Di_{\cst{3}}}\big)\big]\\
+      + \cst{\xdf,\Lambda}\{\ssY^{-1}\vee\ssE^{-1}\}.
+    \end{equation}
+  \item[{\dgrau\bfseries{(np)}}] Assume that
+    $\bias(\xdf)>0$ for all $\Di\in\Nz$. Let    
+    $\ssE(\Lambda):=\floor{289\log(3)\cmiSv[1]\miSv[1]}\in\Nz$. If
+    $\ssE>\ssE(\Lambda)$ then set
+    $\sDi{\ssE}:=\max\{\Di\in\nset{1,\ssE}:289\log(\Di+2)\cmiSv[\Di]\miSv[\Di]\leq\ssE\}$
+    where the defining set, respectively, contains $1$ and thus is not
+    empty.  There is a numerical constant $\cst{}$  such that for all $\ssY\in\Nz$
+    with $\aDi{\ssY}:=\aDi{\ssY}(\xdf)\in\nset{1,n}$ as in \nref{freq:ge:strat:kn:ma:de:rate} and
+    for all $\ssE>\ssE(\Lambda)$ holds
+    \begin{multline}
+     \nmRi{\hxdfAg[{\erWe[]}]}{\xdf,\Lambda}  
+     %\E\Vnormlp{\widehat{\theta}^{(\eta)}-\xdf}^2
+     \leq\cst{}(1\vee\Vnormlp{\xdf_{\underline{0}}}^2)\min_{\Di\in\nset{1,\ssY}}\{\daRa{\Di}{(\xdf,\Lambda)}\vee\exp\big(\tfrac{-\cmiSv[\Di]\Di}{\Di_{\cst{3}}}\big)\}\Ind{\{\ssE>\ssE(\Lambda)\}}\\\hfill
++\cst{}(1\vee\Vnormlp{\xdf_{\underline{0}}}^2)\{\bias[\aDi{\ssY}\wedge\sDi{\ssE}]^2(\xdf)\vee\exp\big(\tfrac{-\cmiSv[\sDi{\ssE}]\sDi{\ssE}}{\Di_{\cst{3}}}\big)\}\Ind{\{\ssE>\ssE(\Lambda)\}} \\\hfill
+ +\cst{}\mRa{\xdf,\Lambda}   + \cst{}(1\vee\Vnormlp{\xdf_{\underline{0}}}^2)\miSv[1]^2\ssE^{-1}  
+    +\cst{}\{\miSv[\Di_{\cst{3}}]^2\Di_{\cst{3}}^3+\miSv[\ssY_{o}]^2\}\ssY^{-1}
+  \end{multline}
+  while for $\ssE\in\nset{1,\ssE(\Lambda)}$ we have
+  
+  $\cst{}\mRa{\xdf,\Lambda}
+    + \cst{}(1\vee\Vnormlp{\xdf_{\underline{0}}}^2)\miSv[1]^2\ssE^{-1}  
+    +\cst{}\{\miSv[\Di_{\cst{3}}]^2\Di_{\cst{3}}^3+\miSv[\ssY_{o}]^2\}\ssY^{-1}$. 
+\end{Liste}  
+\reEnd
+\end{thm}
+
+\begin{cor}
+  \begin{Liste}[]
+  \item[{\dgrau\bfseries{(p)}}]
+    If \ref{ge:ak:ag:ub2:pnp:pc} as in \nref{ge:ak:ag:ub2:pnp} and 
+    in addition
+    \begin{inparaenum}% \item[\mylabel{ge:au:ag:ub2:pnp:pc:a}{{\dgrau\bfseries(A1)}}]
+      % there is $\ssY_{\xdf,\Lambda}\in\Nz$ such that
+      % $\cmiSv[\sDi{\ssY}]\sDi{\ssY}\geq \Di_{\cst{3}}(\log\ssY)$ for all
+      % $\ssY\geq \ssY_{\xdf,\Lambda}$ and
+    \item[{{\dgrau\bfseries(A4)}}]
+            there is
+            
+            $\ssE(\xdf,\Lambda)\in\Nz$ such that
+      $\cmiSv[\sDi{\ssE}]\sDi{\ssE}\geq \Di_{\cst{3}}(\log\ssE)$ for all
+      $\ssE\geq \ssE(\xdf,\Lambda)$ 
+    \end{inparaenum}
+    hold true, then there is a constant $\cst{\xdf,\Lambda}$ depending
+    only on $\xdf$ and $\Lambda$ such that for all $\ssY,\ssE\in\Nz$ holds
+    $\nmRi{\hxdfAg[{\erWe[]}]}{\xdf,\Lambda} \leq
+    \cst{\xdf,\Lambda}[\ssY^{-1}\vee\ssE^{-1}]$.
+  \item[{\dgrau\bfseries{(np)}}]
+    If  \ref{ge:ak:ag:ub2:pnp:npc} as in \nref{ge:ak:ag:ub2:pnp} and \ref{ge:au:ag:ub2:pnp:pc:b}
+    hold true, then there is a constant $\cst{\xdf,\Lambda}$ depending
+    only on $\xdf$ and $\Lambda$ such that $\nmRi{\hxdfAg[{\erWe[]}]}{\xdf,\Lambda}
+    \leq \cst{\xdf,\Lambda}\{\naRa{(\xdf,\Lambda)}+\mRa{\xdf,\Lambda}+\bias[\sDi{\ssE}\wedge\aDi{\ssY}]^2(\xdf)\}$ for all $\ssY,\ssE\in\Nz$ holds true.
+  \end{Liste}  
+\end{cor}
+
+We hence see that we obtained the optimal rate under mild assumptions for the circular density deconvolution model.
+
+\subsubsection{Maximal risk bounds of the aggregated estimator}\label{au:mrb}
+We now give interest to the maximal risk over Sobolev's ellipsoids.
+We aim to apply \nref{ak:ag:ub:pnp:mm} which allows to show that the sequences defined hereafter are upper bounds for the maximal risk of our estimators.
+\begin{de*}
+  Let be the following family of sequences,
+  $\daRa{\Di}{(\xdfCw[])}:=\daRa{\Di}{(\xdfCw[],\Lambda)}:=[\xdfCw^2\vee \DipenSv\,\ssY^{-1}]$.
+Considering the following specific case, we aim to show that it describes an upper bound for the maximal risk over $\rwCxdf$ for our aggregation estimator,
+    $\aDi{\ssY}(\xdfCw[]):=\argmin\Nset[\Di\in\Nz]{\daRa{\Di}{(\xdfCw[],\Lambda)}}\in\nset{1,\ssY}$\\
+    $\naRa{(\xdfCw[])}:=\naRa{(\xdfCw[],\Lambda)}:=\min\Nset[\Di\in\Nz]{\daRa{\Di}{(\xdfCw[],\Lambda)}}$
+    with $\daRa{\aDi{\ssY}(\xdfCw[])}{(\xdfCw[],\Lambda)}=\naRa{(\xdfCw[],\Lambda)}$
+\assEnd
+\end{de*}
+
+The hypotheses to apply \nref{au:mrb:ag:ub:pnp} are the same as for \nref{freq:ge:strat:kn:qu:pnp} and hence we directly obtain the following result.
+\begin{thm}
+  Consider the   penalty sequence $\peneSv:=\peneD$,
+  $\Di\in\nset{1,\ssY}$, as in \nref{freq:ge:shape:uk:de:pen:oo} with numerical
+  constant $\cpen\geq84$. Let
+  $\hxdfAg[{\erWe[]}]=\sum_{\Di=1}^{\ssY} \erWe\hxdfPr$ be an
+  aggregation of the orthogonal series estimators using either
+  aggregation weights $\erWe[]$ as in \eqref{freq:ge:shape:uk:we} or model
+  selection weights $\msWe[]$ as in \nref{freq:ge:shape:uk:de:msWe}. Let
+  $\dr\Di_{\edf,\xdfCr}:=\floor{3(400\Vnorm[{\xdfCw[]}]{\edf}\xdfCr)^2}$
+  and $\dr \ssY_{o}:=15({600})^4$. Let
+  $\ssE(\Lambda):=\floor{289\log(3)\cmiSv[1]\miSv[1]}\in\Nz$. If
+  $\ssE>\ssE(\Lambda)$ then set
+  $\sDi{\ssE}:=\max\{\Di\in\nset{1,\ssE}:289\log(\Di+2)\cmiSv[\Di]\miSv[\Di]\leq\ssE\}$
+  where the defining set, respectively, contains $1$ and thus is not
+  empty.  There is a numerical constant $\cst{}$ such that for all
+  $\ssY\in\Nz$ with $\aDi{\ssY}:=\aDi{\ssY}(\xdf)\in\nset{1,n}$ as in
+  \nref{freq:ge:shape:uk:de:pen:oo} and for all $\ssE>\ssE(\Lambda)$ holds
+  \begin{multline}
+    \nmRi{\hxdfAg[{\erWe[]}]}{\rwCxdf,\Lambda}  
+    \leq\cst{}(1\vee\xdfCr^2)\min_{\Di\in\nset{1,\ssY}}
+    \{\daRa{\Di}{(\xdfCw[],\Lambda)}\vee
+    \exp\big(\tfrac{-\cmiSv[\Di]\Di}{\Di_{\edf,\xdfCr}}\big)\} \\\hfill
+    +\cst{}(1\vee\xdfCr^2)\{\xdfCw[(\aDi{\ssY}\wedge\sDi{\ssE})]^2\vee
+    \exp\big(\tfrac{-\cmiSv[\sDi{\ssE}]\sDi{\ssE}}{\Di_{\edf,\xdfCr}}\big)\}\\\hfill
+    +\cst{}\xdfCr^2\mmRa{\xdfCw[],\Lambda}   + \cst{}(1\vee\xdfCr^2)\miSv[1]^2\ssE^{-1}  
+    +\cst{}\{\miSv[\Di_{\edf,\xdfCr}]^2\Di_{\edf,\xdfCr}^3+\miSv[\ssY_{o}]^2\}\ssY^{-1}
+  \end{multline}
+  while for $\ssE\in\nset{1,\ssE(\Lambda)}$ we have
+  \begin{multline}
+    \nmRi{\hxdfAg[{\erWe[]}]}{\rwCxdf,\Lambda}  
+    \leq \cst{}\xdfCr^2\mmRa{\xdfCw[],\Lambda}
+    + \cst{}(1\vee\xdfCr^2)\miSv[1]^2\ssE^{-1}\\
+    +\cst{}\{\miSv[\Di_{\edf,\xdfCr}]^2\Di_{\edf,\xdfCr}^3+\miSv[\ssY_{o}]^2\}\ssY^{-1}.
+  \end{multline}
+\end{thm}
+
+
+\begin{cor}
+  Let the assumptions of \nref{au:mrb:ag:ub:pnp} be satisfied.
+    If  \ref{ge:ak:ag:ub2:pnp:npc} as in \nref{ge:ak:ag:ub2:pnp} and \ref{ge:au:ag:ub2:pnp:pc:b}
+    as in \nref{ge:au:ag:ub2:pnp} hold true, then there is a constant $\cst{\xdfCw[],\xdfCr,\Lambda}$ depending
+    only on $\xdfCw[]$, $\xdfCr$ and $\Lambda$ such that $\nmRi{\hxdfAg[{\erWe[]}]}{\rwCxdf,\Lambda}
+    \leq \cst{\xdfCw[],\xdfCr,\Lambda}\{\naRa{(\xdfCw[],\Lambda)}+\mmRa{\xdfCw[],\Lambda}+\xdfCw[(\sDi{\ssE}\wedge\aDi{\ssY})]^2\}$ for all $\ssY,\ssE\in\Nz$ holds true.
+\end{cor}
+
+Consequently, the fully data-driven estimator attains the minimax
+  rate in case \ref{freq:ge:strat:kn:qu:il:rate:np:oo} with $p>a$,
+  \ref{freq:ge:strat:kn:qu:il:rate:np:os} and \ref{freq:ge:strat:kn:qu:il:rate:np:so} with
+  $p\leq1/2$, while in  case \ref{freq:ge:strat:kn:qu:il:rate:np:oo} with $p\leq a$ and
+  \ref{freq:ge:strat:kn:qu:il:rate:np:so} with $p>1/2$ the rate of the fully data-driven estimator
+  $\hxdfAg[{\erWe[]}]$ features a deterioration by a logarithmic factor
+  $(\log\ssE)^{p/a}$  and $(\log\ssY)^{(2a+1)(1-1/(2p))}$,
+  respectively, compared to the minimax  rate.
+  
+\section{Conclusion}
+We heave hence seen that the estimator we suggested in this chapter, which is motivated by the posterior mean of hierarchical Gaussian sieves, attains optimal oracle as well as minimax rates under mild assumptions.
+We have shown that the said assumptions can be verified for the inverse Gaussian sequence space model with known and unknown operator and in the circular density deconvolution model with known and unknown error density.
+We pointed out that in the case of absolutely regular processes, we need a strong hypothesis for the decay of the mixing coefficients which relaxation would be an interesting subject of study.
+It would also be interesting to study Gaussian processes defined on the entire real axis or deconvolution of densities of $\R$-valued random variables as it would require to investigate the case $\mathds{F} = \R$.

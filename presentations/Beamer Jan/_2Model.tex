@@ -1,0 +1,461 @@
+% ======================================================================================================================
+%                                                                 
+% Title: Model
+% Author: Jan JOHANNES, Ensai, Rue Blaise Pascal - BP 37203, 35172 Bruz Cedex, France
+% Email: jan.johannes@ensai.fr
+% Date: %%ts latex start%%[2016-02-11 Thu 14:31]%%ts latex end%%
+% Main-TeX-File: _2015-01-Paris in der form "Name"
+%
+% ======================================================================================================================
+
+% % --------------------------------------------------------------------
+% % <<Model-F1>>
+% % --------------------------------------------------------------------
+% %%%%%%%%%%%%%%%%%%%%%
+% \bframeVL{1-2,7-9}{9}
+% \frametitle{{\dgrau A glimpse to the essential:} oracle optimality}
+% \begin{drListeT}[\setListe{2ex}{0ex}{5ex}] \item  Measure the performance of any estimator $\tSo$ --  {\dr risk}
+%   \begin{equation*}
+% {\dbonly{2,6-}\dwonly{1}\Ex_{\invisible<1>{\TrSo}}\big[\,\dbonly{1,6-}\normV{\tSo-\TrSo}^2\dwonly{1}\big]}
+% \end{equation*}
+%  \item<7->  Complexity of  the statistical inverse problem -- {\dr lower bound} 
+%   \begin{equation*}
+% %\db\inf_{\tSo}\ds\sup_{\Op\in \cOp}\, \sup_{\So\in\cSo} \, \Ex\big[\, |\loss({\dbonly{6-}\tSo},\So)|^2\big]\db
+% %\gtrsim \oRif{\lnIm,\lnOp}{\cSo,\cOp}.
+% \db\inf_{m}\ds\Ex_{\TrSo}\big[\,\normV{{\dbonly{7-}\hDiSo[\colm]}-\TrSo}^2\big]\db\gtrsim\treRa[](\TrSo)
+% \end{equation*}
+% where the infimum is taken over a given family $\{\hDiSo[\colm]\}$ of estimators.
+% \item<8-> An  estimator $\db\hSo\in\{\hDiSo[\colm]\}$ is called an {\rudicolor oracle} if
+%   \begin{equation*}
+% % \sup_{\Op\in \cOp}\, \sup_{\So\in\cSo} \, \Ex\big[\, |\loss({\dbonly{7-}\hSo},\So)|^2\big]\db\lesssim
+% % \oRif{\lnIm,\lnOp}{\cSo,\cOp},
+% \ds\Ex_{\TrSo}\big[\,\normV{{\dbonly{7-}\hSo}-\TrSo}^2\big]\db\lesssim \treRa[](\TrSo)
+% \end{equation*}%
+% \invisible<-8>{and {\dr adaptive} if $\hSo$ does not depend on $\TrSo$.}
+% \end{drListeT}
+% \end{frame}
+
+% --------------------------------------------------------------------
+% <<Model-F2>>
+% --------------------------------------------------------------------
+\bframeVL{1-11}{11}
+\frametitle{{\dgrau Projection estimator reviewed:} oracle optimality} 
+Observations  $Y_j=\Ev_j\TrSo[j]+\sqrt{\ObSoNoL}Z_j$, ${j\geq1}$ 
+\begin{rudiListeS}[\setListeL{2ex}{2ex}{5ex}{0ex}] 
+%\item Sieve $\Uz_1\subset\Uz_2\subset\Uz_3 \subset \ldots \subset\Uz_m \subset\ldots $
+\item  $\hSo^{m} = \suite{\hSo^{m}}=(Y_1/\Ev_1, \ldots, Y_{m}/\Ev_m,0,\ldots)$ projection estimator
+\item<4-> $\Evs_j:= \Ev_j^{-2}$, \quad
+  \uncover<5->{$\oEvs[m]:=\frac{1}{m}\sum_{j=1}^{m}\Evs_j$}\uncover<6->{\quad and\quad $\gb_{m}^2:=\gb_{m}^2(\TrSo):=\sum_{j>m} (\TrSo[j])^2$}
+\end{rudiListeS}
+\uncover<2->{\hrule}
+\begin{drListeT}[\setListeL{2ex}{2ex}{3ex}{0ex}]
+\item<2-> 
+Risk: $\only<7->{[\epsilon m \oEvs[m]\vee \gb_{m}^2]\,\leq\,}
+\Ex_{\TrSo} \normV{\hSo^{m}-\TrSo}^2%
+\only<2>{=\sum_{j=1}^{m}\Var\hSo^m_{j}}%
+\only<3>{={\epsilon}\sum_{j=1}^{m} {\Ev_j^{-2}}}%
+\only<4>{=\epsilon\sum_{j=1}^{m}{\Evs_j}}%
+\only<5>{=\epsilon m\oEvs[m]}%
+\only<6-7>{={\dgronly{6}\epsilon m\oEvs[m]}}%
+\only<2-7>{\dgronly{3-5}+} 
+\only<1-5>{\sum_{j>m} (\TrSo[j])^2}
+\only<6-7>{{\gb_{m}^2}}
+\only<8->{\,{\lesssim}\, [\epsilon m \oEvs[m]\vee \gb_{m}^2]=:\eRa^{m}(\TrSo)}$%\only<8->{=:\eRa^m(\TrSo)=:\eRa^m}$%
+\end{drListeT}
+\uncover<9->{\hrule}
+\begin{rudiListeS}[\setListeL{1ex}{2ex}{5ex}{0ex}]
+\item<9-> {\rudicolor oracle} cut-off $\treDi:=\treDi(\TrSo):=\argmin\nolimits_{\Di\geq 1}\set{\eRa^{\Di}(\TrSo)}$ %[\epsilon \Di \oEvs \vee \gb_{\Di}]} $
+\item<10-> {\rudicolor oracle} rate $\treRa:=\treRa(\TrSo): =[\epsilon \treDi
+  \oEvs[\treDi]\vee \gb_{\treDi}^2]=  \min_{\Di\geq 1}\eRa^{\Di}(\TrSo)$%[ \epsilon \Di \oEvs \vee \gb_{\Di}]$ 
+\item<11-> {\rudicolor oracle} estimator $\hSo^{\treDi}$, i.e., $\Ex_{\TrSo}  \normV{\hSo^{\treDi}-\TrSo}^2\lesssim \treRa$
+\end{rudiListeS}
+\end{frame}
+% % --------------------------------------------------------------------
+% % <<Model-F3>>
+% % --------------------------------------------------------------------
+% %%%%%%%%%%%%%%%%%%%%%
+% \bframeVL{2-3,6-9}{9}
+% \frametitle{{\dgrau A glimpse to the essential:} minimax optimality}
+% \begin{drListeT}[\setListe{2ex}{0ex}{5ex}] \item  Measure the performance of any estimator $\tSo$ --  {\dr maximal risk}
+%   \begin{equation*}
+% {\dbonly{6-}\dwonly{1-5}\Ra[\,\tSo\,|\,\invisible<-3>{\cwSo}\,]:=}{\dbonly{3,6-}\dwonly{-2}\sup_{\invisible<2>{\TrSo\in\cwSo}}}\,{\dbonly{2,6-}\dwonly{1}\Ex_{\TrSo}\big[\,\dbonly{1,6-}\normV{\tSo-\TrSo}^2\dwonly{1}\big]}
+% \end{equation*}
+%  \item<7-> Complexity of  the statistical inverse problem -- {\dr lower bound} 
+%   \begin{equation*}
+% %\db\inf_{\tSo}\ds\sup_{\Op\in \cOp}\, \sup_{\So\in\cwSo} \, \Ex\big[\, |\loss({\dbonly{6-}\tSo},\So)|^2\big]\db
+% %\gtrsim \oRif{\lnIm,\lnOp}{\cSo,\cOp}.
+% \db\inf_{\tSo}\ds\Ra[\,{\dbonly{7-}\tSo}\,|\,\cwSo\,]\db\gtrsim
+% \oeRa[](\wSo)
+% \end{equation*}
+% where the infimum is taken over all possible estimator $\tSo$.
+% \item<8-> An  estimator $\db\hSo$ is called {\rudicolor minimax} optimal if
+%   \begin{equation*}
+% % \sup_{\Op\in \cOp}\, \sup_{\So\in\cSo} \, \Ex\big[\, |\loss({\dbonly{7-}\hSo},\So)|^2\big]\db\lesssim
+% % \oRif{\lnIm,\lnOp}{\cSo,\cOp},
+% \Ra[\,{\dbonly{7-}\hSo}\,|\,\cwSo\,] \db\lesssim
+% \oeRa[](\wSo),
+% \end{equation*}%
+% \invisible<-8>{and {\dr adaptive} if $\hSo$ does not  depend on $\wSo$.}
+% \end{drListeT}
+% \end{frame}
+% --------------------------------------------------------------------
+% <<Model-F4>>
+% --------------------------------------------------------------------
+\bframeVL{1-4}{4}
+\frametitle{{\rudicolor Illustration:} typical smoothness condition}
+Consider a non-increasing weight sequence
+$\wSo=({\wSo_j})_{j\geq1}$ and let 
+\[\cwSo :=\set{\So\in \cSo: \sum_{j=1}^\infty
+  \theta_j^2/{\rudicolor\wSo_j}=:\normV{\So}_{\wSo}^2 \leq\rSo} \]
+\mywboxinvisible{1}{{\rudicolor Illustration}
+\begin{rudiListeT}[\setListeL{2ex}{3ex}{5ex}{5ex}] 
+ \item $(\colbasF_j)_j$ trigonometric basis %$\colbasF_1(x)=1, \colbasF_{2j}(x)=\sqrt{2}\cos(2\pi jx),\colbasF_{2j+1}(x)=\sqrt{2}\sin(2\pi jx) $
+ \item $ {\rudicolor\wSo_{1}}=1, {\rudicolor\wSo_{2j}}=(2j)^{-2p}, {\rudicolor\wSo_{2j+1}}=(2j)^{-2p}$, $p>0$
+ \begin{rudiListeB}[\setListeL{2ex}{2ex}{5ex}{5ex}] 
+  \item<3-> Sobolev ellipsoid of $p$-times differentiable, absolutely continuous, periodic functions
+  \end{rudiListeB}
+\item<4-> ${\rudicolor\wSo_j} = \exp(1-|j|^{2p})$, $p > \frac{1}{2}$ 
+ \begin{rudiListeB}[\setListeL{2ex}{2ex}{5ex}{5ex}] 
+\item<4-> analytical functions 
+\end{rudiListeB}
+\end{rudiListeT}}
+\end{frame}
+% --------------------------------------------------------------------
+% <<Model-F5>>
+% --------------------------------------------------------------------
+\bframeVL{1-7}{7}
+\frametitle{{\dgrau Projection estimator reviewed:} minimax optimality} 
+\begin{overlayarea}{\textwidth}{\textheight}%
+Observations  $Y_j=\collambda_j{\colthetao}_{j}+\sqrt{\ObSoNoL}Z_j$, ${j\geq1}$ 
+\begin{rudiListeS}[\setListeL{2ex}{1.5ex}{5ex}{5ex}] 
+%\item Sieve $\Uz_1\subset\Uz_2\subset\Uz_3 \subset \ldots \subset\Uz_m \subset\ldots $
+\item  $\widehat{\coltheta}^{\colm} = (Y_1/\collambda_1, \ldots,
+  Y_{\colm}/\collambda_{\colm},0,\ldots)$ projection estimator
+\item $\Evs_j:= \Ev_j^{-2}$,  $\oEvs[m]:=\frac{1}{m}\sum_{j=1}^{m}\Evs_j$ and $\gb_{m}^2:=\gb_{m}^2(\TrSo):=\sum_{j>m} (\TrSo[j])^2$
+\end{rudiListeS}
+\uncover<1->{\hrule}
+\begin{drListeT}[\setListeL{2ex}{1.5ex}{3ex}{0ex}]
+\item<1->% 
+\only<1-2>{Risk: $\only<0>{[\epsilon m \oEvs[m]\vee \gb_{m}^2]\,\leq\,}
+\Ex_{\TrSo} \normV{\hSo^{m}-\TrSo}^2
+\,{\lesssim}\, [\epsilon m \oEvs[m]\vee {\dronly{2}\gb_{m}^2}]\only<2->{\leq (1\vee\rSo) [\epsilon m \oEvs[m]\vee {\dronly{2}\ga_{m}}]}$}%
+\only<3->{Maximal risk: $\sup_{\TrSo\in
+\cwSo}\Ex_{\TrSo} \normV{\hSo^{m}-\TrSo}^2\lesssim[\epsilon m \oEvs[m]\vee {\wSo_{m}}]$}%
+\end{drListeT}
+\uncover<4->{\hrule}
+\begin{rudiListeS}[\setListeL{1ex}{1.5ex}{5ex}{5ex}]
+\item<4-> {\rudicolor minimax} cut-off $\oeDi:=\oeDi(\wSo):=\argmin\nolimits_{\Di\geq
+    1} \{ [\epsilon \Di \oEvs  \vee \wSo_{\Di}]\} $
+\item<5-> {\rudicolor minimax} rate $\oeRa :=\oeRa (\wSo):=[\epsilon \oeDi \oEvs[\oeDi] \vee\wSo_{\oeDi}]$%=\min_{\Di\geq 1}[\ObSoNoL \Di \oEvs \vee\wSo_{\Di}]$ 
+\item<6-> {\rudicolor minimax} estimator $\hSo^{\oeDi}$, i.e., $\sup_{\TrSo\in\cwSo}\Ex_{\TrSo}  \normV{\hSo^{\oeDi}-\TrSo}^2\lesssim \oeRa$
+\end{rudiListeS}
+\uncover<7->{\hrule}\hfill\\[.5ex]
+\hfill{\dwonly{-6}\dgronly{7}\footnotesize (JJ \& Schwarz, 2013)}\\
+\begin{drListeT}[\setListeL{2ex}{0ex}{3ex}{0ex}]
+\item<7->{Lower bound}: $\inf_{\hSo}\sup_{\TrSo\in\cwSo} \Ex
+  \normV{\hSo-\TrSo}^2\gtrsim \oeRa$, if\\[.5ex]\hfill\small $\inf_\ObSoNoL [\epsilon \oeDi
+  \oEvs[\oeDi] \wedge\wSo_{\oeDi}]/[\epsilon \oeDi
+  \oEvs[\oeDi] \vee\wSo_{\oeDi}]>0$
+\end{drListeT}
+\end{overlayarea}
+\end{frame}
+% --------------------------------------------------------------------
+% <<Model-F6>>
+% --------------------------------------------------------------------
+\bframeVL{2-5}{5}
+\frametitle{{\dgrau Projection estimator reviewed:} adaptation} 
+\begin{overlayarea}{\textwidth}{\textheight}%
+Observations  $Y_j=\collambda_j{\colthetao}_{j}+\sqrt{\ObSoNoL}Z_j$, ${j\geq1}$ 
+\begin{rudiListeS}[\setListeL{2ex}{1.5ex}{5ex}{5ex}] 
+%\item Sieve $\Uz_1\subset\Uz_2\subset\Uz_3 \subset \ldots \subset\Uz_m \subset\ldots $
+\item  $\widehat{\coltheta}^{\colm} = (Y_1/\collambda_1, \ldots,
+  Y_{\colm}/\collambda_{\colm},0,\ldots)$ projection estimator
+\item $\Evs_j:= \Ev_j^{-2}$,  $\oEvs[m]:=\frac{1}{m}\sum_{j=1}^{m}\Evs_j$ and $\gb_{m}^2:=\gb_{m}^2(\TrSo):=\sum_{j>m} (\TrSo[j])^2$
+\end{rudiListeS}
+\uncover<1->{\hrule}
+\begin{drListeT}[\setListeL{2ex}{0ex}{3ex}{0ex}]
+\item<2-> 
+Select  $\dbonly{2}\only<1-2>{m}\only<3->{\whm}$ by using a {\dbonly{2}penalised minimum contrast criterion}\dwonly{2}%\\[.7ex]%
+\begin{multline*} \uncover<3->{
+{\dbonly{3}\whm}:=\argmin_{1\leq m\leq \dbonly{0}M} \big\{{\dbonly{0}-\normV{\widehat{\coltheta}^{\colm}}}+10\epsilon
+     m \oEvs[m]\big\}}\\
+\uncover<3->{M:=\max\set{1\leq m\leq \gauss{\epsilon^{-1}}:\epsilon
+      m \oEvs[m]\leq \Evs_1}}
+  \end{multline*}
+\end{drListeT}
+\uncover<4->{\hrule}
+\begin{rudiListeS}[\setListeL{1ex}{1.5ex}{5ex}{5ex}]
+\item<4-> {\rudicolor minimax} optimal data-driven estimator, \hfill
+  if \small $1\leq \mEvs[m]/\oEvs[m]\leq L_{\Ev}$.
+ \begin{equation*}
+\sup_{\TrSo\in \cwSo}\Ex_{\TrSo} \normV{\hSo^{\whm}-\TrSo}^2\lesssim\oeRa (\wSo)=[\epsilon \oeDi \oEvs[\oeDi] \vee\wSo_{\oeDi}]
+\end{equation*}
+\end{rudiListeS}
+\end{overlayarea}
+\end{frame}
+% % --------------------------------------------------------------------
+% % <<Model-F7>>
+% % --------------------------------------------------------------------
+% \bframeVL{1-5}{5}[label=Op]
+% \frametitle{{\rudicolor  Aim of the paper:}  exact posterior concentration rate}
+% \begin{rudiListeS}[\setListeL{4ex}{2ex}{5ex}{5ex}] 
+% \item Construct   a family  $\{P_{\DiRvSo}\}_{\Di}$ of prior
+%   distributions \dwonly{1}with
+% \begin{rudiListeT}[\setListeL{2ex}{1ex}{2ex}{0ex}] 
+% \item<2->posterior
+%   concentration rate   $\eRa^{\Di}:=\eRa^{\Di}(\TrSo)$ for $\TrSo\in\cSo$,
+%   i.e.,
+% \[\lim_{\ObSoNoL\to0} \Ex_{\TrSo}
+% P_{\hspace*{-.8ex}\DiRvSo[\eDi]|\ObSo}\Bigl(\eRa^{\eDi} \lesssim
+% \normV{\DiRvSo[\eDi]-\TrSo}^2\lesssim \eRa^{\eDi}\Bigr)=1;\]
+% \item<3->associated Bayes estimator $\hDiSo:=\Ex[\DiRvSo|\ObSo]$ satisfying
+% \[\eRa^{\eDi} \lesssim \Ex_{\TrSo}\normV{\hDiSo[\eDi]-\TrSo}^2\lesssim
+% \eRa^{\eDi}.\]
+% \null\hfill\\[-10ex]\null\hfill
+% \end{rudiListeT}
+% \item<4-> Consider for a given $\TrSo\in\cSo$ the {\rudicolor oracle} rate
+% \[\treRa:=\treRa(\TrSo):=\inf_{\Di}\,\eRa^{\Di}(\TrSo).  \]
+% \item<5-> Consider for a given $\cwSo\subset\cSo$  the {\rudicolor minimax} rate
+% \[\oeRa:=\oeRa(\wSo):=\inf_{\tSo}\sup_{\TrSo\in\cwSo}\Ex_{\TrSo}\normV{\tSo-\TrSo}^2.  \]
+% \end{rudiListeS}
+% \end{frame}
+% % --------------------------------------------------------------------
+% % <<Model-F8>>
+% % --------------------------------------------------------------------
+% \bframeVL{1-2}{2}[label=OPC]
+% \frametitle{{\rudicolor  Aim of the paper:} optimal prior choice}
+% \begin{rudiListeS}[\setListeL{4ex}{2ex}{5ex}{5ex}] 
+% \item A  sub-family $\{P_{\hspace*{-.8ex}\DiRvSo[\treDi]}\}_{\treDi}$   with posterior
+%   concentration rate   $\treRa$, i.e.
+% \[\lim_{\ObSoNoL\to0} \Ex_{\TrSo} P_{\hspace*{-.8ex}\DiRvSo[\treDi]|\ObSo}\Bigl(\treRa \lesssim \normV{\DiRvSo[\treDi]-\TrSo}^2\lesssim \treRa  \Bigr)=1, \]  
+% is called {\rudicolor oracle} prior  and {\dr adaptive} if it
+% does not depend on $\TrSo$.
+% % \item<3-> and  a Bayes estimate
+% %   $\hDiSo[\treDi]:=\Ex[\DiRvSo[\treDi]|\ObSo]$ satisfying
+% %   \[  \Ex_{\TrSo}\normV{\hDiSo[\treDi]-\TrSo}^2\lesssim \treRa \]   
+% % is called ``oracle Bayes estimate''.
+% % \item Consider for given $\cwSo\subset\cSo$  the minimax rate
+% % \[\oeRa:=\oeRa(\wSo):=\inf_{\tSo}\sup_{\TrSo\in\cwSo}\Ex_{\TrSo}\normV{\tSo-\TrSo}^2.  \]
+% \item<2-> A sub-family $\{P_{\hspace*{-.8ex}\DiRvSo[\oeDi]}\}_{\oeDi}$ with posterior
+%   concentration rate   $\oeRa$, i.e.
+% \[\lim_{\ObSoNoL\to0}  \inf_{\TrSo\in\cwSo} \Ex_{\TrSo}P_{\hspace*{-.8ex}\DiRvSo[\oeDi]|\ObSo}\Bigl(\oeRa\lesssim
+%   \normV{\DiRvSo[\oeDi]-\TrSo}^2\lesssim \oeRa  \Bigr)=1.
+%   \]  
+% is called {\rudicolor minimax} prior and {\dr adaptive} if it
+% depends not on $\cwSo$.
+% % \item<3-> and  a Bayes estimate
+% %   $\hDiSo[\oeDi]:=\Ex[\DiRvSo[\oeDi]|\ObSo]$ satisfying
+% %   \[ \sup_{\TrSo\in\cwSo} \Ex_{\TrSo}\normV{\hDiSo[\oeDi]-\TrSo}^2\lesssim \oeRa \]   
+% % is called ``minimax Bayes estimate''.
+% \end{rudiListeS}
+% \end{frame}
+
+% % --------------------------------------------------------------------
+% % <<Model-F1>>
+% % --------------------------------------------------------------------
+% \bframeVL{1-5}{5}
+% \frametitle{{\dgrau Background:} analytical inverse problem}
+% Consider $(\colF,\skalar)$, $(\colG,\skalar)$ and
+% $\colT:\colF\to\colG$ linear\\[1.5ex]
+% \hspace*{5ex}{\xymatrix{
+% \colf \ar@{|->}[r]^\colT\only<3->{\ar@{<->}[d]}& \colg \only<5->{\ar@{<->}[d]}\\
+% \uncover<3->{(\alt<3>{\skalarV{\colf,\colbasF_j}}{\coltheta_j})_{j\geq1}}\only<5->{\ar@{|->}[r]^\collambda}& 
+% \uncover<5->{(\collambda_j\coltheta_j)_{j\geq1}}}}\hfill\\[1.5ex]
+% \mywboxinvisible{-1}{{special case}
+%  $\colT$ permits a singular value decomposition  
+% \begin{rudiListeS}[\setListeL{2ex}{2ex}{5ex}{5ex}] 
+%   \item<2-> Singular values $\collambda:=(\collambda_j)_{j}$
+%   \item<2-> Eigenfunctions $\{\colbasF_j\}_{j}$ and
+%     $\{\colbasG_j\}_{j}$ ONB of $\colF$ and $\colG$, resp.
+%   \end{rudiListeS}}
+
+% \mywboxinvisible{-2}{{\rudicolor Representation}
+% \begin{rudiListeS}[\setListeL{2ex}{2ex}{5ex}{5ex}] 
+%   \item<3-> $ \colf\in \colF$\uncover<4->{$\leftrightarrow \coltheta \in \colTheta:=\ell^2  $ via $\coltheta_j =\skalarV{\colf,\colbasF_j}$} 
+%   \item<5-> Operator $\colT \leftrightarrow$ Multiplication with $\collambda$
+%   \end{rudiListeS}}
+% \end{frame}
+% % --------------------------------------------------------------------
+% % <<Model-F2>>
+% % --------------------------------------------------------------------
+% \bframeVL{2-6}{6}
+%  \frametitle{{\dgrau Framework:} Gaussian sequence space models}
+% \begin{columns}[t]
+% \begin{column}{0.5\textwidth}
+% \mywboxinvisible{-1}{{\rudicolor indirect GSSM}
+% \[Y_j=\collambda_j\coltheta_j+\sqrt{\epsilon}Z_j,\]
+% \begin{rudiListeB}[\setListeL{2ex}{2ex}{6ex}{5ex}] 
+% \item<2-> $Z_j\stackrel{iid}{\sim}\cN(0,1)$, $j\geq 1$
+% \item<3->{$Y_j\sim\cN(\collambda_j\coltheta_j,\epsilon)$, $j\geq1$ }
+% \end{rudiListeB}}
+% \end{column}
+% \begin{column}{0.5\textwidth}
+% \mywboxinvisible{-3}{{\rudicolor direct GSSM}
+% \[\collambda_j=1\]
+% \begin{rudiListeB}[\setListeL{2ex}{2ex}{6ex}{5ex}] 
+% \item<0> $Z_j\stackrel{iid}{\sim}\cN(0,1)$, $j\geq 1$
+% \item<0>{$Y_j\sim\cN(\collambda_j\coltheta_j,\epsilon)$, $j\geq1$ }
+% \end{rudiListeB}}
+% \end{column}
+% \end{columns}
+% \hfill\\[1ex]
+% \begin{columns}[t]
+% \begin{column}[t]{0.5\textwidth}
+% \mywboxinvisible{-4}{{\rudicolor indirect Gaussian regression}
+% \[dY =\colT\colf +\sqrt{\epsilon}dW\]}
+% \end{column}
+% \begin{column}[t]{0.5\textwidth}
+% \mywboxinvisible{-5}{{\rudicolor direct Gaussian regression}
+% \[\colT= {id}\]}
+% \end{column}
+% \end{columns}
+% \end{frame}
+% % --------------------------------------------------------------------
+% % <<Model-F3>>
+% % --------------------------------------------------------------------
+% \bframeVL{1-11}{11}
+% \frametitle{{\dgrau Motivation:} family of projection estimators} 
+% Observations  $Y_j=\Ev_j\TrSo[j]+\sqrt{\ObSoNoL}Z_j$, ${j\geq1}$ 
+% \begin{rudiListeS}[\setListeL{2ex}{2ex}{5ex}{0ex}] 
+% %\item Sieve $\Uz_1\subset\Uz_2\subset\Uz_3 \subset \ldots \subset\Uz_m \subset\ldots $
+% \item  $\hSo^{m} = \suite{\hSo^{m}}=(Y_1/\Ev_1, \ldots, Y_{m}/\Ev_m,0,\ldots)$ projection estimator
+% \item<4-> $\Evs_j:= \Ev_j^{-2}$, \quad
+%   \uncover<5->{$\oEvs[m]:=\frac{1}{m}\sum_{j=1}^{m}\Evs_j$}\uncover<6->{\quad and\quad $\gb_{m}:=\gb_{m}(\TrSo):=\sum_{j>m} (\TrSo[j])^2$}
+% \end{rudiListeS}
+% \uncover<2->{\hrule}
+% \begin{drListeT}[\setListeL{2ex}{2ex}{3ex}{0ex}]
+% \item<2-> 
+% Risk: $\only<7->{[\epsilon m \oEvs[m]\vee \gb_{m}]\,\leq\,}
+% \Ex_{\TrSo} \normV{\hSo^{m}-\TrSo}^2%
+% \only<2>{=\sum_{j=1}^{m}\Var\hSo^m_{j}}%
+% \only<3>{={\epsilon}\sum_{j=1}^{m} {\Ev_j^{-2}}}%
+% \only<4>{=\epsilon\sum_{j=1}^{m}{\Evs_j}}%
+% \only<5>{=\epsilon m\oEvs[m]}%
+% \only<6-7>{={\dgronly{6}\epsilon m\oEvs[m]}}%
+% \only<2-7>{\dgronly{3-5}+} 
+% \only<1-5>{\sum_{j>m} (\TrSo[j])^2}
+% \only<6-7>{{\gb_{m}}}
+% \only<8->{\,{\lesssim}\, [\epsilon m \oEvs[m]\vee \gb_{m}]}$%\only<8->{=:\eRa^m(\TrSo)=:\eRa^m}$%
+% \end{drListeT}
+% \uncover<9->{\hrule}
+% \begin{rudiListeS}[\setListeL{1ex}{2ex}{5ex}{0ex}]
+% \item<9-> {\rudicolor oracle} cut-off $\treDi:=\treDi(\TrSo):=\argmin\nolimits_{\Di\geq 1}\set{ [\epsilon \Di \oEvs \vee \gb_{\Di}]} $
+% \item<10-> {\rudicolor oracle} rate $\treRa:=\treRa(\TrSo): =[\epsilon \treDi
+%   \oEvs[\treDi]\vee \gb_{\treDi}]=  \min_{\Di\geq 1}[ \epsilon \Di \oEvs \vee \gb_{\Di}]$ 
+% \item<11-> {\rudicolor oracle} estimator $\hSo^{\treDi}$, i.e., $\Ex_{\TrSo}  \normV{\hSo^{\treDi}-\TrSo}^2\lesssim \treRa$
+% \end{rudiListeS}
+% \end{frame}
+
+
+
+% % % --------------------------------------------------------------------
+% % % <<Model-F3>>
+% % % --------------------------------------------------------------------
+% % \frameVL{\againframe<1>{OPC}}{\againframe<9>{OPC}}
+
+% % --------------------------------------------------------------------
+% % <<Model-F4>>
+% % --------------------------------------------------------------------
+% \bframeVL{1-4}{4}
+% \frametitle{{\rudicolor Illustration:} typical smoothness condition}
+% Consider a non-increasing weight sequence
+% $\wSo=({\wSo_j})_{j\geq1}$ and let 
+% \[\cwSo :=\set{\So\in \cSo: \sum_{j=1}^\infty
+%   \theta_j^2/{\rudicolor\wSo_j}=:\normV{\So}_{\wSo}^2 \leq\rSo} \]
+% \mywboxinvisible{1}{{\rudicolor Illustration}
+% \begin{rudiListeT}[\setListeL{2ex}{3ex}{5ex}{5ex}] 
+%  \item $(\colbasF_j)_j$ trigonometric basis %$\colbasF_1(x)=1, \colbasF_{2j}(x)=\sqrt{2}\cos(2\pi jx),\colbasF_{2j+1}(x)=\sqrt{2}\sin(2\pi jx) $
+%  \item $ {\rudicolor\wSo_{1}}=1, {\rudicolor\wSo_{2j}}=(2j)^{-2p}, {\rudicolor\wSo_{2j+1}}=(2j)^{-2p}$, $p>0$
+%  \begin{rudiListeB}[\setListeL{2ex}{2ex}{5ex}{5ex}] 
+%   \item<3-> Sobolev ellipsoid of $p$-times differentiable, absolutely continuous, periodic functions
+%   \end{rudiListeB}
+% \item<4-> ${\rudicolor\wSo_j} = \exp(1-|j|^{2p})$, $p > \frac{1}{2}$ 
+%  \begin{rudiListeB}[\setListeL{2ex}{2ex}{5ex}{5ex}] 
+% \item<4-> analytical functions 
+% \end{rudiListeB}
+% \end{rudiListeT}}
+% \end{frame}
+% % --------------------------------------------------------------------
+% % <<Model-F5>>
+% % --------------------------------------------------------------------
+% \bframeVL{1-7}{7}
+% \frametitle{{\dgrau Motivation:} family of projection estimators} 
+% \begin{overlayarea}{\textwidth}{\textheight}%
+% Observations  $Y_j=\collambda_j{\colthetao}_{j}+\sqrt{\ObSoNoL}Z_j$, ${j\geq1}$ 
+% \begin{rudiListeS}[\setListeL{2ex}{1.5ex}{5ex}{5ex}] 
+% %\item Sieve $\Uz_1\subset\Uz_2\subset\Uz_3 \subset \ldots \subset\Uz_m \subset\ldots $
+% \item  $\widehat{\coltheta}^{\colm} = (Y_1/\collambda_1, \ldots,
+%   Y_{\colm}/\collambda_{\colm},0,\ldots)$ projection estimator
+% \item $\Evs_j:= \Ev_j^{-2}$,  $\oEvs[m]:=\frac{1}{m}\sum_{j=1}^{m}\Evs_j$ and $\gb_{m}:=\gb_{m}(\TrSo):=\sum_{j>m} (\TrSo[j])^2$
+% \end{rudiListeS}
+% \uncover<1->{\hrule}
+% \begin{drListeT}[\setListeL{2ex}{1.5ex}{3ex}{0ex}]
+% \item<1->% 
+% \only<1-2>{Risk: $\only<0>{[\epsilon m \oEvs[m]\vee \gb_{m}]\,\leq\,}
+% \Ex_{\TrSo} \normV{\hSo^{m}-\TrSo}^2
+% \,{\lesssim}\, [\epsilon m \oEvs[m]\vee {\dronly{2}\gb_{m}}]\only<2->{\leq (1\vee\rSo) [\epsilon m \oEvs[m]\vee {\dronly{2}\ga_{m}}]}$}%
+% \only<3->{Maximal risk: $\sup_{\TrSo\in
+% \cwSo}\Ex_{\TrSo} \normV{\hSo^{m}-\TrSo}^2\lesssim[\epsilon m \oEvs[m]\vee {\wSo_{m}}]$}%
+% \end{drListeT}
+% \uncover<4->{\hrule}
+% \begin{rudiListeS}[\setListeL{1ex}{1.5ex}{5ex}{5ex}]
+% \item<4-> {\rudicolor minimax} cut-off $\oeDi:=\oeDi(\wSo):=\argmin\nolimits_{\Di\geq
+%     1} \{ [\epsilon \Di \oEvs  \vee \wSo_{\Di}]\} $
+% \item<5-> {\rudicolor minimax} rate $\oeRa :=\oeRa (\wSo):=[\epsilon \oeDi \oEvs[\oeDi] \vee\wSo_{\oeDi}]$%=\min_{\Di\geq 1}[\ObSoNoL \Di \oEvs \vee\wSo_{\Di}]$ 
+% \item<6-> {\rudicolor minimax} estimator $\hSo^{\oeDi}$, i.e., $\Ex_{\TrSo}  \normV{\hSo^{\oeDi}-\TrSo}^2\lesssim \oeRa$
+% \end{rudiListeS}
+% \uncover<7->{\hrule}\hfill\\[.5ex]
+% \hfill{\dwonly{-6}\dgronly{7}\footnotesize (JJ \& Schwarz, 2013)}\\
+% \begin{drListeT}[\setListeL{2ex}{0ex}{3ex}{0ex}]
+% \item<7->{Lower bound}: $\inf_{\hSo}\sup_{\TrSo\in\cwSo} \Ex
+%   \normV{\hSo-\TrSo}^2\gtrsim \oeRa$, if\\[.5ex]\hfill\small $\inf_\ObSoNoL [\epsilon \oeDi
+%   \oEvs[\oeDi] \wedge\wSo_{\oeDi}]/\oeRa>0$
+% \end{drListeT}
+% \end{overlayarea}
+% \end{frame}
+
+% % --------------------------------------------------------------------
+% % <<Model-F5>>
+% % --------------------------------------------------------------------
+% \bframeVL{1-7}{7}
+% \frametitle{{\dgrau Motivation:} family of projection estimators} 
+% \begin{overlayarea}{\textwidth}{\textheight}%
+% Observations  $Y_j=\collambda_j{\colthetao}_{j}+\sqrt{\ObSoNoL}Z_j$, ${j\geq1}$ 
+% \begin{rudiListeS}[\setListeL{2ex}{1.5ex}{5ex}{5ex}] 
+% %\item Sieve $\Uz_1\subset\Uz_2\subset\Uz_3 \subset \ldots \subset\Uz_m \subset\ldots $
+% \item  $\widehat{\coltheta}^{\colm} = (Y_1/\collambda_1, \ldots,
+%   Y_{\colm}/\collambda_{\colm},0,\ldots)$ projection estimator
+% \item $\Evs_j:= \Ev_j^{-2}$,  $\oEvs[m]:=\frac{1}{m}\sum_{j=1}^{m}\Evs_j$ and $\gb_{m}:=\gb_{m}(\TrSo):=\sum_{j>m} (\TrSo[j])^2$
+% \end{rudiListeS}
+% \uncover<1->{\hrule}
+% \begin{drListeT}[\setListeL{2ex}{0ex}{3ex}{0ex}]
+% \item<2-> 
+% Select  $\dbonly{2}\only<1-2>{m}\only<3->{\whm}$ by using a {\dbonly{2}penalised minimum contrast criterion}\dwonly{2}%\\[.7ex]%
+% \begin{multline*} \uncover<3->{
+% {\dbonly{3}\whm}:=\argmin_{1\leq m\leq \dbonly{0}M} \big\{{\dbonly{0}-\normV{\widehat{\coltheta}^{\colm}}}+10\epsilon
+%      m \oEvs[m]\big\}}\\
+% \uncover<3->{M:=\max\set{1\leq m\leq \gauss{\epsilon^{-1}}:\epsilon
+%       m \oEvs[m]\leq \Evs_1}}
+%   \end{multline*}
+% \end{drListeT}
+% \uncover<4->{\hrule}
+% \begin{rudiListeS}[\setListeL{1ex}{1.5ex}{5ex}{5ex}]
+% \item<4-> {\rudicolor minimax} optimal data-driven estimator, \hfill
+%   if \small $1\leq \mEvs[m]/\oEvs[m]\leq L_{\Ev}$.
+%  \begin{equation*}
+% \sup_{\TrSo\in \cwSo}\Ex_{\TrSo} \normV{\hSo^{\whm}-\TrSo}^2\lesssim\oeRa (\wSo)=[\epsilon \oeDi \oEvs[\oeDi] \vee\wSo_{\oeDi}]
+% \end{equation*}
+% \end{rudiListeS}
+% \end{overlayarea}
+% \end{frame}
+
+
+% % --------------------------------------------------------------------
+% % <<Model-F7>>
+% % --------------------------------------------------------------------
+% \frameVL{\againframe<2>{OPC}}{\againframe<2>{OPC}}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "_2016-02-CIRM-Marseille"
+%%% End:

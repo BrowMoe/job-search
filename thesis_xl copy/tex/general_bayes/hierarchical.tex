@@ -1,0 +1,107 @@
+\section{Adaptivity using a hierarchical prior}\label{BAYES_HIERARCHICAL}
+
+We denote $\P_{\boldsymbol{\theta}^{M}}$ a so called hierarchical prior distribution, described hereafter, and $\boldsymbol{\theta}^{M}$ a random variable following this prior.
+Define $G$ a finite subset of $\mathds{F}$ and  $\pen: \mathcal{P}(G) \rightarrow \R_{+}$ a so-called penalty function.
+The threshold parameter noted $m$ for the sieve prior described in the previous section is now a $\mathcal{P}(G)$-valued random variable denoted $M$. We note $\P_{M}$ the distribution of this parameter.
+
+The density of $\P_{M}$ with respect to the counting measure (denoted \#) has the shape
+\[\frac{d\P_{M}}{d\#}(m) \propto \exp[- \pen(m)] \mathds{1}_{m \subset G}.\]
+
+The dependance structure between the different quantities of the model is then the following:
+
+\begin{alignat*}{3}
+& \P_{\boldsymbol{\theta}^{M} \vert M=m} && = && \P_{\boldsymbol{\theta}^{m}};\\
+& \P_{Y \vert \boldsymbol{\theta}, M} && = && \P_{Y \vert \boldsymbol{\theta}}.
+\end{alignat*}
+
+The following proposition is obtained by direct calculus.
+
+\begin{pr}{\textsc{Iterated posterior distribution for the hyper parameter} \\}\label{PR_BAYES_HIERARCHICAL_ITERATED}
+Using the convention $\P_{\boldsymbol{\theta}^{m}\vert Y^{n}}^{0} = \P_{\boldsymbol{\theta}^{m}}$, define for any $\eta$ in $\N^{\star}$, $Y$ in $\mathds{Y}$, and $m$ included in $G$
+\begin{alignat*}{3}
+& \exp[\Upsilon^{\eta}(Y, m)] &&:=&& \int_{\Theta}\frac{d\P_{Y \vert \boldsymbol{\theta}^{M}}}{d\P^{\circ}}(y, \theta) \, \frac{d\P_{\boldsymbol{\theta}^{m}\vert Y^{n}}^{\eta-1}}{d\mathds{Q}^{\circ}}(m, \theta) d\mathds{Q}^{\circ}(\theta)\\
+& && = && \int_{\Theta} \exp\left[ - \left(\frac{1}{2} \sum\limits_{j \in m} \vert \theta_{j} \vert^{2} + \eta l(\theta, y)\right) \right] d\mathds{Q}^{\circ}(\theta);
+\end{alignat*}
+
+The iterated posterior distribution of the threshold parameter is given, for any $m$ subset of $G$ and $y$ in $\mathds{Y}$ by:
+\begin{alignat*}{3}
+&\P_{M \vert Y}^{\eta}(m, y) && = && \frac{\exp\left[-\pen(m) + \eta \Upsilon^{\eta}(y, m)\right]}{\sum\limits_{j \subset G}\exp\left[- \pen(j) + \eta \Upsilon^{\eta}(y, j)\right]} \mathds{1}_{m \subset G}\\
+& && = && \frac{1}{\sum\limits_{j \subset G}\exp\left[\eta \left(\Upsilon^{\eta}(y, j) - \eta \Upsilon^{\eta}(y, m)\right) - \left(\pen(j) - \pen(m)\right)\right]} \mathds{1}_{m \subset G}.
+\end{alignat*}
+\end{pr}
+
+\begin{pro}{\textsc{Proof of \nref{PR_BAYES_HIERARCHICAL_ITERATED}} \\}\label{PRO_BAYES_HIERARCHICAL_ITERATED}
+\begin{alignat*}{3}
+&\frac{d\P_{M \vert Y}}{d\#}(m, y) &&\propto&& \frac{d\P_{M, Y}}{d\# \, d\P^{\circ}}(m, y)\\
+& &&\propto&&\int_{\Theta}\frac{d\P_{M, Y, \boldsymbol{\theta}^{M}}}{d\# \, d\P^{\circ} \, d\Q^{\circ}}(m, y, \theta)d\mathds{Q}^{\circ}(\theta)\\
+& &&\propto&&\int_{\Theta}\frac{d\P_{Y \vert M, \boldsymbol{\theta}^{M}}}{d\P^{\circ}}(m, y, \theta) \, \frac{d\P_{M, \boldsymbol{\theta}^{M}}}{d\# \, d\mathds{Q}^{\circ}}(m, \theta)d\mathds{Q}^{\circ}(\theta)\\
+& &&\propto&&\int_{\Theta}\frac{d\P_{Y \vert \boldsymbol{\theta}^{M}}}{d\P^{\circ}}(y, \theta) \, \frac{d\P_{\boldsymbol{\theta}^{M}\vert M}}{d\mathds{Q}^{\circ}}(m, \theta) \frac{d\P_{M}}{d\#}(m)d\mathds{Q}^{\circ}(\theta)\\
+& &&\propto&&\frac{d\P_{M}}{d\#}(m)\int_{\Theta}\frac{d\P_{Y \vert \boldsymbol{\theta}^{M}}}{d\P^{\circ}}(y, \theta) \, \frac{d\P_{\boldsymbol{\theta}^{m}}}{d\mathds{Q}^{\circ}}(m, \theta) d\mathds{Q}^{\circ}(\theta)\\
+& && = && \frac{\frac{d\P_{M}}{d\#}(m)\int_{\Theta}\frac{d\P_{Y \vert \boldsymbol{\theta}^{M}}}{d\P^{\circ}}(y, \theta) \, \frac{d\P_{\boldsymbol{\theta}^{m}}}{d\mathds{Q}^{\circ}}(m, \theta) d\mathds{Q}^{\circ}(\theta)}{\sum\limits_{j \subset G}\frac{d\P_{M}}{d\#}(j)\int_{\Theta}\frac{d\P_{Y \vert \boldsymbol{\theta}^{M}}}{d\P^{\circ}}(y, \theta) \, \frac{d\P_{\boldsymbol{\theta}^{m}}}{d\mathds{Q}^{\circ}}(j, \theta) d\mathds{Q}^{\circ}(\theta)}\\
+& && = && \frac{\exp[- \pen(m)] \int_{\Theta_{m}}\exp[-\frac{1}{2}(2 l(y, \theta) + \sum\limits_{k \in m} \vert \theta_{k} \vert^{2})] d\mathds{Q}^{\circ}(\theta)}{\sum\limits_{j \subset G}\exp[- \pen(j)] \int_{\Theta_{j}}\exp[-\frac{1}{2}(2 l(y, \theta) + \sum\limits_{k \in j} \vert \theta_{k} \vert^{2})] d\mathds{Q}^{\circ}(\theta)}.
+\end{alignat*}
+\qedsymbol
+\end{pro}
+
+and we can deduce the self informative Bayes carrier.
+
+\begin{lm}{\textsc{Self informative Bayes carrier of the hyper-parameter in a hierarchical sieve prior I}\\}\label{LM_BAYES_HIERARCHICAL_LIMIT}
+Note $\Upsilon$ the function
+\begin{alignat*}{5}
+& \Upsilon && : && \mathds{Y} \times \mathcal{P}(G) && \rightarrow && \R\\
+& && && (y, m) && \mapsto && \lim\limits_{\eta \rightarrow \infty} \Upsilon^{\eta}(y, m).
+\end{alignat*}
+
+The support of the self informative Bayes carrier for the hyper-parameter $M$ is
+\[\argmax\limits_{m \subset G} \{\Upsilon(Y, m)\}.\]
+\end{lm}
+
+Unfortunately, in many practical cases, the choice led by $\argmax\limits_{m \subset G} \{\Upsilon(y, m)\}$ is $G$ itself and leads to inconsistent or suboptimal inference (as we will show later).
+However, if one allows the prior distribution to depend on $\eta$ and to take the shape $\exp[- \eta \pen(m)] \mathds{1}_{m \subset G}$, we obtain the following theorem.
+
+\begin{thm}{\textsc{Self informative Bayes carrier of the hyper-parameter in a hierarchical sieve prior II}\\}\label{THM_BAYES_HIERARCHICAL_LIMITTHRESHOLD}
+Using the modified prior which depends on $\eta$, the support of the self informative Bayes carrier for the hyper-parameter $M$ is
+\[\argmax\limits_{m \subset G} \{\Upsilon(Y, m) - \pen(Y, m)\}.\]
+\end{thm}
+
+\begin{pro}{\textsc{Proof of \nref{THM_BAYES_HIERARCHICAL_LIMITTHRESHOLD}}\\}\label{PRO_BAYES_HIERARCHICAL_THRESHOLD}
+For any finite set $P$ of subsets of $G$ such that $\max\limits_{m \in P} \Upsilon(Y, m) - \pen(Y, m) < \max\limits_{k \subset G} \Upsilon(Y, k) - \pen(Y, k)$, there exist a value of $\eta_{\circ}$ such that, for any $\eta$ greater than $\eta_{\circ}$, $\max\limits_{m \in P} \Upsilon^{\eta}(Y, m) - \pen(Y, m) < \max\limits_{k \subset G} \Upsilon^{\eta}(Y, k) - \pen(Y, k)$ we can hence write
+
+\begin{alignat*}{3}
+& \P_{M\vert Y}^{\eta}(P) && = && \sum\limits_{m \in P} \frac{1}{\sum\limits_{j \subset G}\exp\left[\eta \left(\Upsilon^{\eta}(Y, j) - \Upsilon^{\eta}(Y, m) - \left(\pen(j) - \pen(m)\right)\right)\right]} \mathds{1}_{m \subset G}\\
+& && \leq && \frac{\Card(P)}{\exp\left[\eta \left(\max\limits_{j \subset G}\left(\Upsilon^{\eta}(Y, j) - \pen(j)\right) - \max\limits_{m \in P}\left(\Upsilon^{\eta}(Y, m) - \pen(m)\right)\right)\right]} \mathds{1}_{m \subset G}\\
+& && \rightarrow && 0.
+\end{alignat*}
+\qedsymbol
+\end{pro}
+
+Now that we determined the posterior distribution for the hyper-parameter, we can compute the posterior distribution for $\boldsymbol{\theta}^{M}$ itself.
+
+\begin{pr}{\textsc{Iterated posterior distribution} \\}\label{PR_BAYES_HIERARCHICAL_ITER}
+The iterated posterior distribution is given by:
+\begin{alignat*}{3}
+& \frac{d\mathds{Q}_{\boldsymbol{\theta}^{M} \vert Y}^{\eta}}{d\P^{\circ}}(\theta, y) && = && \sum\limits_{m \subset G} \frac{d\P_{\boldsymbol{\theta}^{m} \vert Y}^{\eta}}{d\mathds{Q}^{\circ}}(\theta, y, m) \frac{d\P_{M \vert Y}^{\eta}}{d\P^{\circ}}(m, y)\\
+& && = && \sum\limits_{m \subset G} \frac{\exp\left[-\left(\frac{1}{2}\sum\limits_{j \in m} \vert \boldsymbol{\theta}_{j} \vert^{2} + \eta l(\boldsymbol{\theta}, y)\right)\right] \cdot \prod\limits_{j \notin m} \delta_{0}(\boldsymbol{\theta}_{j})}{\int_{\Theta_{m}} \exp\left[-\left(\frac{1}{2}\sum\limits_{j \in m} \vert \mu_{j} \vert^{2} + \eta l(\mu, y)\right)\right] d\mu} \frac{\exp[-\pen(m) + \eta \Upsilon^{\eta}(Y, m)]}{\sum\limits_{j \subset G}\exp[- \pen(j) + \eta \Upsilon^{\eta}(Y, j)]} \mathds{1}_{m \subset G}\\
+\end{alignat*}
+\end{pr}
+
+\begin{pro}{\textsc{Proof for \nref{PR_BAYES_HIERARCHICAL_ITER} \\}}\label{PRO_BAYES_HIERARCHICAL_ITER}
+\begin{alignat*}{3}
+&\frac{d\mathds{Q}_{\boldsymbol{\theta}^{M} \vert Y}}{d\P^{\circ}}(\theta, y) && \propto && \frac{d\P_{\boldsymbol{\theta}^{M}, Y}}{d\mathds{Q}^{\circ} \, d\P^{\circ}}(\theta, y)\\
+& &&\propto&& \sum\limits_{m \subset J} \frac{d\P_{\boldsymbol{\theta}^{M}, Y, M}}{d\mathds{Q}^{\circ} \, d\P^{\circ} \, d\P^{\circ}}(\theta, y, m)\\
+& &&\propto&& \sum\limits_{m \subset J} \frac{d\P_{\boldsymbol{\theta}^{M} \vert Y, M}}{d\mathds{Q}^{\circ}}(\theta, y, m) \frac{d\P_{Y, M}}{d\P^{\circ} \, d\P^{\circ}}\\
+& &&\propto&& \sum\limits_{m \subset J} \frac{d\P_{\boldsymbol{\theta}^{m} \vert Y}}{d\mathds{Q}^{\circ}}(\theta, y, m) \frac{d\P_{M \vert Y}}{d\P^{\circ}} \frac{d\P_{Y}}{d\P^{\circ}}(Y)\\
+& &&=&& \sum\limits_{m \subset J} \frac{d\P_{\boldsymbol{\theta}^{m} \vert Y}}{d\mathds{Q}^{\circ}}(\theta, y, m) \frac{d\P_{M \vert Y}}{d\P^{\circ}}.
+\end{alignat*}
+\qedsymbol
+\end{pro}
+
+And as a consequence, we can deduce the self informative Bayes carrier.
+
+\begin{thm}{\textsc{Self informative carrier using a hierarchical sieve prior}\\}\label{THM_BAYES_HIERARCHICAL_LIMIT}
+Denote $\widehat{m} := \argmax\limits_{m \subset G} \{\Upsilon(Y, m) - \pen(m)\}$ then the support of the self informative Bayes carrier is contained in $\argmax\limits_{\theta \in \Theta_{m}, m \in \widehat{m}}\{-l(\theta, Y)\}$.
+\end{thm}
+
+We have hence seen in these two first sections investigated the behaviour of the sieve prior and its hierarchical version under the iterative asymptotic and shown that under some mild assumptions, their self informative Bayes carriers correspond to some constrained maximum likelihood estimator and penalised contrast model selection version of it respectively.
+
+We should now investigate the behaviour of these (iterated) posteriorii under the noise asymptotic and define hypotheses under which they behave properly.

@@ -1,0 +1,86 @@
+\chapter*{List of notations}
+
+\section*{Spaces}
+\begin{alignat*}{3}
+& \left(\mathds{Y}, \mathcal{Y}\right) &&: && \quad \text{the measurable space of observations};\\
+%& \left([0, 1[, \mathcal{A}\right) &&: && \quad \text{the measurable space of observations};\\
+& \left(\Xi, \mathcal{A}\right) &&: && \quad \text{the parameter space};\\
+%& \mathcal{D}_{\mu}([0,1[) && : && \quad \text{space of densities on } [0, 1[ \text{ with respect to } \mu ;\\
+& \mathcal{M}([0, 1[) && : && \quad \text{space of probability measures on } [0, 1[\\
+& \mathcal{S}^{+}(\mathds{Z}) && : && \quad \text{ set of all positive definite, complex valued functions } [f] \text{ on } \mathds{Z} \text{ with } [f](0) = 1;\\
+\end{alignat*}
+
+\section*{Measures and densities}
+\begin{alignat*}{5}
+& (\mathds{P}_{Y \vert f} &&:&& \mathcal{Y} \rightarrow [0,1])_{f \in \Xi} &&:&& \quad \text{family to which the data distribution belongs}\\
+& \mathds{P}^{X} &&:&& \mathcal{A} \rightarrow [0,1] &&: && \quad \text{distribution of interest};\\
+& \mathds{P}^{\epsilon}&&:&& \mathcal{A} \rightarrow [0,1] &&: && \quad \text{distribution of the noise};\\
+& \mu&&:&& \mathcal{A} \rightarrow \mathds{R}_{+} &&: && \quad \text{ a sigma-finite measure, dominating both } \mathds{P}^{X} \text{ and } \mathds{P}^{\epsilon};\\
+& f^{X}&&:&& [0, 1[ \rightarrow \overline{\mathds{R}_{+}} &&: && \quad \text{density of } \mathds{P}^{X} \text{ with respect to } \mu;\\
+& f^{\epsilon}&&:&& [0, 1[ \rightarrow \overline{\mathds{R}_{+}} &&: && \quad \text{density of } \mathds{P}^{\epsilon} \text{ with respect to } \mu;\\
+& \mathds{P}^{Y} (=\mathds{P}^{X}*\mathds{P}^{\epsilon})&&:&& \mathcal{A} \rightarrow [0,1] &&: && \quad \text{distribution of the observations};\\
+& f^{Y}(=f^{X}*f^{\epsilon})&&:&& [0, 1[ \rightarrow \overline{\mathds{R}_{+}} &&: && \quad \text{density of } \mathds{P}^{Y} \text{ with respect to } \mu;\\
+\end{alignat*}
+
+
+\section*{Random variables}
+\begin{alignat*}{5}
+& X &&:&& (\Omega, \mathcal{B}) \rightarrow ([0,1[, \mathcal{A}) &&: && \quad \text{a random variable with distribution } \mathds{P}^{X};\\
+& \epsilon &&:&& (\Omega, \mathcal{B}) \rightarrow ([0,1[, \mathcal{A})  &&: && \quad \text{a random variable with distribution } \mathds{P}^{\epsilon};\\
+& Y (=X \Box \epsilon) &&:&& (\Omega, \mathcal{B}) \rightarrow ([0,1[, \mathcal{A})  &&: && \quad \text{a random variable with distribution } \mathds{P}^{Y};\\
+& X^{n} (=(X^{n}_{i})_{i \in \llbracket 1, n \rrbracket}) &&:&& (\Omega, \mathcal{B}) \rightarrow ([0,1[^{n}, \mathcal{A}^{\otimes n}) &&: && \quad \text{a } n \text{-vector of i.i.d. replications of } X;\\
+& \epsilon^{n} (=(\epsilon^{n}_{i})_{i \in \llbracket 1, n \rrbracket})&&:&& (\Omega, \mathcal{B}) \rightarrow ([0,1[^{n}, \mathcal{A}^{\otimes n}) &&: && \quad \text{a } n \text{-vector of i.i.d. replications of } \epsilon;\\
+& Y^{n} (=(Y^{n}_{i})_{i \in \llbracket 1, n \rrbracket}) &&:&& (\Omega, \mathcal{B}) \rightarrow ([0,1[^{n}, \mathcal{A}^{\otimes n})  &&: && \quad \text{a } n \text{-vector of i.i.d. replications of } Y;
+\end{alignat*}
+
+\section*{Unary operators}
+\begin{alignat*}{6}
+& &&\mathds{E}[\cdot] && && &&:&& \quad \text{the expectation operator when the distribution is obvious};\\
+& \forall \mathds{P} \text{ distribution } && \mathds{E}_{\mathds{P}}[\cdot] && && &&:&& \quad \text{the expected value under } \mathds{P};\\
+& && ^{*}\cdot &&:&& \mathcal{M}([0, 1[) && \rightarrow && \mathcal{M}([0, 1[);\\
+& && && && \mathds{P} && \mapsto && ^{*}\mathds{P} = \mathds{P}*\mathds{P}^{\epsilon}\\
+& && ^{*}\cdot &&:&& \mathcal{D}_{\mu}([0, 1[) && \rightarrow && \mathcal{D}_{\mu}([0, 1[);\\
+& && && && f && \mapsto && ^{*}f = f*f^{\epsilon}\\
+& \forall j \in \mathds{Z} && e_{j}(\cdot) &&:&& [0,1[ && \rightarrow && \mathds{C};\\
+& && && && x && \mapsto && \exp[-2 i \pi j x]\\
+& && \mathcal{F}_{\mu}(\cdot) &&:&& \mathcal{D}_{\mu}([0, 1[) && \rightarrow && \mathcal{S}^{+}(\mathds{Z});\\
+& && && && f && \mapsto && [f] = \left(j \mapsto \int_{0}^{1} f(x) e_{j}(x) d\mu(x)\right)\\
+& && \mathcal{F}(\cdot) &&:&& \mathcal{M}([0, 1[) && \rightarrow && \mathcal{S}^{+}(\mathds{Z});\\
+& && && && \mathds{P} && \mapsto && [\mathds{P}] = \left(j \mapsto \int_{0}^{1} e_{j}(x) d\mathds{P}(x)\right)\\
+& && \mathcal{F}_{\mu}^{-1}(\cdot) &&:&& \mathcal{S}^{+}(\mathds{Z}) && \rightarrow && \mathcal{D}_{\mu}([0, 1[);\\
+& && && && [f] && \mapsto && f = \left(x \mapsto \sum\limits_{j \in \mathds{Z}} [f]_{j} e_{j}(x) \right)\\
+& && \mathcal{F}^{-1}(\cdot) &&:&& \mathcal{S}^{+}(\mathds{Z}) && \rightarrow && \mathcal{M}([0, 1[);\\
+& && && && [\mathds{P}] && \mapsto && \mathds{P} = \left(A \mapsto \int_{A} \sum\limits_{j \in \mathds{Z}} [\mathds{P}]_{j} e_{j}(x) dx\right)\\
+\end{alignat*}
+
+\section*{Binary operators}
+\begin{alignat*}{7}
+& \cdot \Box \cdot &&:&& [0,1[^{2} &&\rightarrow&& [0,1[ &&: && \quad \text{the modular addition binary operator on the unit segment};\\
+& && && (x,y) &&\mapsto&& x+y-\lfloor x+y \rfloor && &&\\
+\end{alignat*}
+
+\section*{Miscellaneous}
+For any set $S$, subset $s \subseteq S$ we note $\mathds{1}_{s}$ the indicatrix function
+\begin{alignat*}{5}
+	&\mathds{1}_{s} &&:&& S &&\rightarrow&& \{0, 1\};\\
+	& && && x && \mapsto &&
+		\begin{cases}
+			0 \text{ if } x \notin s\\
+			1 \text{ if } x \in s
+		\end{cases}
+\end{alignat*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

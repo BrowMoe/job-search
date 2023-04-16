@@ -1,0 +1,54 @@
+\section{First examples of inverse problem: the inverse Gaussian sequence space model}\label{INTRO_IGSSM}
+
+Consider the Gaussian process $Y(x)$, defined on $[0, 1[$ with constant volatility $\frac{1}{n}$ with $n$ in $\mathds{N}^{\star}$ and mean process $f \star g$ where $f$ and $g$ are functions from $[0, 1[$ to $\mathds{R}$.
+In short, we have $dY(x) = (f \star g)(x) dx + \frac{1}{n} dW(x)$ where $W$ is the Brownian motion.
+We want to estimate $f$ while observing a realisation of $Y$.
+We assume that $g$ is known.
+
+
+
+We denote $\theta$ and $\lambda$ respectively the Fourier transforms of $f$ and $g$ respectively.
+
+The likelihood with respect to the standard Brownian motion, noted $\P^{\circ}$, for this model can be written as follows (see \ncite{liptser2013statistics})
+\[\frac{d \P_{Y^{n} \vert f, g}^{n}}{d \P^{\circ}} \propto \exp\left[\int_{[0, 1[} \frac{1}{\sqrt{n}} (f \star g)(x) dW(x) - \frac{1}{2} \left\Vert \frac{f \star g}{\sqrt{n}} \right\Vert^{2}\right].\]
+
+We use the fact that the volatility of the process is constant and the properties of the Fourier transform to show that there exist a sequence of independent random variables with standard normal distribution such that the likelihood of the Fourier transform of the process is given by:
+\[\frac{d\P^{n}_{Y^{n} \vert (\theta, \lambda)}}{d \P^{\circ}} \propto \exp\left[ -\frac{1}{2}\sum\limits_{j \in \mathds{Z}} \frac{\left(\theta_{j} \lambda_{j} - \xi_{j}\right)^{2}}{\sqrt{n}}\right].\]
+Therefore, the Fourier transform of the observed process follows a Gaussian process indexed by $\mathds{Z}$, with mean $\theta \cdot \lambda$ and variance $\frac{1}{n}$.
+
+Note that if the volatility was not constant, we would obtain
+\[\frac{d\P^{n}_{Y^{n} \vert (\theta, \lambda)}}{d \P^{\circ}} \propto \exp\left[ -\frac{1}{2}\sum\limits_{j \in \mathds{Z}} \left((\sigma \star (\theta \lambda))_{j} - \xi_{j}\right)^{2}\right].\]
+The mean process would hence be $\sigma \star (\theta \cdot \lambda)$, which can be rewritten as an inverse problem with a non diagonal operator, more precisely a Toeplitz operator.
+We do not consider this case in this thesis.
+
+Another motivation for this model is the heat equation.
+\textcolor{red}{Heat equation + oracle rate for projection estimate + minimax rate (so all notations are introduced before moving on)}
+
+\begin{il}\label{IL_INTRO_IGSSM_KNOWN_ORACLE}
+Let us now illustrate the oracle rate $\Nsuite[n]{\oRa{\xdf,\iSv}}$  in those
+cases. Firstly, recall that for any error density $\edf$ and associated $\Nsuite[\Di]{\iSv[\Di]}$ in case \ref{oo:xdf:p} the oracle rate is parametric, that is
+$\oRa{\xdf,\iSv}\sim\ssY^{-1}$. Thereby, in both, the case \ref{il:po}
+and \ref{il:ps}, the oracle rate is parametric, i.e. setting
+$\ssY_{\xdf}:=\tfrac{K\oiSv[K]}{\bias[K-1]^2(\xdf)}$, for all
+$\ssY\geq \ssY_{\xdf}$ holds
+$\bias[K-1]^2(\xdf)>K\oiSv[K]\ssY^{-1}$, and hence  $\oDi{\ssY}=K$ and
+$\oRa{\xdf,\iSv}= K\oiSv[K]\ssY^{-1}\sim \ssY^{-1}$, where
+  \begin{Liste}
+  \item[\mylabel{IL_INTRO_IGSSM_KNOWN_ORACLE_PO}{\dg\bfseries{[p-o]}}] $\ssY_{\xdf}\sim  K^{2a+1}/\bias[K-1]^2(\xdf)$, 
+  \item[\mylabel{IL_INTRO_IGSSM_KNOWN_ORACLE_PS}{\dg\bfseries{[p-s]}}] $\ssY_{\xdf}\sim  K^{-(1-2a)_+}\exp(K^{2a})/\bias[K-1]^2(\xdf)$. 
+\end{Liste}
+On the other hand side, to illustrate \ref{oo:xdf:np}, where the oracle rate is
+non-parametric, more precisely,
+$\lim_{\ssY\to\infty}\ssY\oRa{\xdf,\iSv}=\infty$ we consider the  cases
+\begin{Liste}[]
+\item[\mylabel{IL_INTRO_IGSSM_KNOWN_ORACLE_OO}{\dg\bfseries{[o-o]}}] 
+$\oRa{\xdf,\iSv}\sim(\oDi{\ssY})^{-2p}\sim (\oDi{\ssY})^{2a+1}\ssY^{-1}$, and hence,
+    $\oDi{\ssY}\sim \ssY^{1/(2p+2a+1)}$ and $\oRa{\xdf,\iSv}\sim\ssY^{-2p/(2p+2a+1)}$
+\item[\mylabel{IL_INTRO_IGSSM_KNOWN_ORACLE_OS}{\dg\bfseries{[o-s]}}]
+$\oRa{\xdf,\iSv}\sim(\oDi{\ssY})^{-2p}\sim (\oDi{\ssY})^{-(1-2a)_+}\exp((\oDi{\ssY})^{2a})\ssY^{-1}$, and hence,\\
+    $\oDi{\ssY}\sim (\log\ssY - \tfrac{2p-(1-2a)_+}{2a}\log\log\ssY)^{1/(2a)}$ and $\oRa{\xdf,\iSv}\sim(\log\ssY)^{-p/a}$.
+\item[\mylabel{IL_INTRO_IGSSM_KNOWN_ORACLE_SO}{\dg\bfseries{[s-o]}}] 
+$\oRa{\xdf,\iSv}\sim\exp(-(\oDi{\ssY})^{2p})\sim (\oDi{\ssY})^{2a+1}\ssY^{-1}$, and hence,\\
+    $\oDi{\ssY}\sim (\log\ssY - \tfrac{2a+1}{2p}\log\log\ssY)^{1/(2p)}$ and $\oRa{\xdf,\iSv}\sim(\log\ssY)^{(2a+1)/(2p)}\ssY^{-1}$.
+\end{Liste}
+\end{il}

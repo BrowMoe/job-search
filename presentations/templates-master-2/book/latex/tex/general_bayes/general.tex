@@ -1,0 +1,81 @@
+\section{Proof strategies for contraction rates}\label{2.3}
+
+In this section, we depict two proof strategies for contraction rates.
+They will be used in the next sections to compute contraction rates for sieve and hierarchical sieve priors respectively.
+
+The first proof relies on moment bounding of the random variable $\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert$ which is more easily interpretable of the norm used is the $L^{2}$ norm.
+The second proof relies on the use of exponential concentration inequalities.
+
+\subsection{A moment control based method for contraction rate computation}\label{2.3.1}
+
+In this section we outline a method to prove contraction rates which requires to bound properly some moments of the posterior distribution.
+We later use this method in the case of the inverse Gaussian sequence space with a sieve prior.
+Provided that bounds are available for the required moments, this method barely needs any other assumption on the model.
+Moreover, it appears that, in the example we display here, it leads to the same rate as the frequentist optimal convergence rate without a logarithmic loss as it is often the case with popular methods.
+
+A limitation is that moments of posterior distributions are not always explicitly available, in particular for non conjugate prior.
+A consequence is that we were not able to use this method for the deconvolution model nor for computation of contraction rate of the hierarchical prior.
+
+However, we believe that the method could be generalised to wider cases, for example using convergence of distribution in Wasserstein distance implying convergence of moments.
+
+A similar method to obtain lower bounds is described in annex.
+Unfortunately, it could not be used in any practical case here.
+
+\bigskip
+
+\begin{lm}\label{lm2.3}{\textsc{Upper bound for posterior expectation}\\}
+Assume $\max\left\{ \E_{\theta^{\circ}}\left[\E_{\boldsymbol{\theta} \vert Y^{n}}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert\right]\right], \sqrt{\V_{\theta^{\circ}}\left[ \E_{\boldsymbol{\theta} \vert Y^{n}}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert\right]\right]} \right\} \in \mathcal{O}(\Phi_{n}(\theta^{\circ}))$.
+Then, for any increasing unbounded sequence $c_{n}$, we have:
+\[\lim\limits_{n \rightarrow \infty} \mathds{P}_{\theta^{\circ}}^{n}\left(\E_{\boldsymbol{\theta} \vert Y^{n}}^{n}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert \right] \geq c_{n}\Phi_{n}\right) = 0.\]
+\end{lm}
+
+\begin{pro}\label{pro2.4}{\textsc{Proof of \nref{lm2.3}}\\}
+Define the sequence of random variables $\mathcal{S}_{n} := \frac{\E_{\boldsymbol{\theta} \vert Y^{n}}^{n}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert \right] - \E_{\theta^{\circ}}\left[\E_{\boldsymbol{\theta} \vert Y^{n}}^{n}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert \right]\right]}{\sqrt{\V_{\theta^{\circ}}\left[\E_{\boldsymbol{\theta} \vert Y^{n}}^{n}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert \right]\right]}}$.
+This is a sequence of random variables with common expectation $0$ and variance $1$ and, as such, their distributions for a sequence of tight measures.
+Hence, for any increasing unbounded sequence $c_{n}$ and $K_{n} := \E_{\theta^{\circ}}\left[\E_{\boldsymbol{\theta} \vert Y^{n}}^{n}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert \right]\right] + c_{n} \sqrt{\V_{\theta^{\circ}}\left[\E_{\boldsymbol{\theta} \vert Y^{n}}^{n}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert \right]\right]}$ we can write
+\begin{alignat*}{3}
+& \mathds{P}_{\theta^{\circ}}^{n}\left(\E_{\boldsymbol{\theta} \vert Y^{n}}^{n}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert \right] \geq K_{n}\right) && = && \mathds{P}_{\theta^{\circ}}^{n}\left(S_{n} \geq \frac{K_{n} - \E_{\theta^{\circ}}\left[\E_{\boldsymbol{\theta} \vert Y^{n}}^{n}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert \right]\right]}{\sqrt{\V_{\theta^{\circ}}\left[\E_{\boldsymbol{\theta} \vert Y^{n}}^{n}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert \right]\right]}}\right)\\
+& &&=&& \mathds{P}_{\theta^{\circ}}^{n}\left(S_{n} \geq c_{n}\right)
+\end{alignat*}
+which tends to $0$ as $S_{n}$ is tight.
+\end{pro}
+
+\begin{lm}\label{lm2.4}{\textsc{Upper bound for posterior variance}\\}
+Assume $\max\left\{ \E_{\theta^{\circ}}\left[\V_{\boldsymbol{\theta} \vert Y^{n}}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert\right]\right], \V_{\theta^{\circ}}\left[ \V_{\boldsymbol{\theta} \vert Y^{n}}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert\right]\right] \right\} \in \mathcal{O}(\Phi_{n}(\theta^{\circ}))$.
+Then, for any increasing unbounded sequence $c_{n}$, we have:
+\[\lim\limits_{n \rightarrow \infty} \mathds{P}_{\theta^{\circ}}^{n}\left(\V_{\boldsymbol{\theta} \vert Y^{n}}^{n}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert \right] \geq c_{n}\Phi_{n}\right) = 0.\]
+\end{lm}
+
+\begin{pro}\label{pro2.5}{\textsc{Proof of \nref{lm2.4}}\\}
+Define the sequence of random variables $\mathcal{S}_{n} := \frac{\V_{\boldsymbol{\theta} \vert Y^{n}}^{n}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert \right] - \E_{\theta^{\circ}}\left[\V_{\boldsymbol{\theta} \vert Y^{n}}^{n}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert \right]\right]}{\sqrt{\V_{\theta^{\circ}}\left[\V_{\boldsymbol{\theta} \vert Y^{n}}^{n}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert \right]\right]}}$.
+This is a sequence of random variables with common expectation $0$ and variance $1$ and, as such, their distributions for a sequence of tight measures.
+Hence, for any increasing unbounded sequence $c_{n}$ and $K_{n} := \E_{\theta^{\circ}}\left[\V_{\boldsymbol{\theta} \vert Y^{n}}^{n}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert \right]\right] + c_{n} \sqrt{\V_{\theta^{\circ}}\left[\V_{\boldsymbol{\theta} \vert Y^{n}}^{n}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert \right]\right]}$ we can write
+\begin{alignat*}{3}
+& \mathds{P}_{\theta^{\circ}}^{n}\left(\V_{\boldsymbol{\theta} \vert Y^{n}}^{n}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert \right] \geq K_{n}\right) && = && \mathds{P}_{\theta^{\circ}}^{n}\left(S_{n} \geq \frac{K_{n} - \E_{\theta^{\circ}}\left[\V_{\boldsymbol{\theta} \vert Y^{n}}^{n}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert \right]\right]}{\sqrt{\V_{\theta^{\circ}}\left[\V_{\boldsymbol{\theta} \vert Y^{n}}^{n}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert \right]\right]}}\right)\\
+& &&=&& \mathds{P}_{\theta^{\circ}}^{n}\left(S_{n} \geq c_{n}\right)
+\end{alignat*}
+which tends to $0$ as $S_{n}$ is tight.
+\end{pro}
+
+\begin{thm}\label{thm2.2}{\textsc{Upper bound}\\}
+Under the hypotheses of \nref{lm2.3} and \nref{lm2.4} we have for any increasing unbounded sequence $c_{n}$
+\[\lim\limits_{n \rightarrow \infty} \E_{\theta^{\circ}}^{n}\left[\mathds{P}_{\boldsymbol{\theta} \vert Y^{n}}\left(\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert > c_{n}\Phi_{n}(\theta^{\circ}) \right)\right] = 0.\]
+\end{thm}
+
+\begin{pro}\label{pro2.6}{\textsc{Proof of \nref{thm2.2}}\\}
+Define the tight sequence of random variables $S_{n} := \frac{\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert - \E_{\boldsymbol{\theta} \vert Y^{n}}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert\right]}{\sqrt{\V_{\boldsymbol{\theta} \vert Y^{n}}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert\right]}}$.
+We consider the sequence of events $\Omega_{n} := \left\{\left\{\E_{\boldsymbol{\theta} \vert Y^{n}}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert\right] \geq c_{n} \Phi_{n}\right\} \cap \left\{\V_{\boldsymbol{\theta} \vert Y^{n}}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert\right] \geq c_{n} \Phi_{n}\right\}\right\}$.
+We have $\mathds{P}_{\theta^{\circ}}(\Omega_{n}) \leq \max\left(\mathds{P}_{\theta^{\circ}}(\left\{\E_{\boldsymbol{\theta} \vert Y^{n}}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert\right] \geq c_{n} \Phi_{n}\right\}), \mathds{P}_{\theta^{\circ}}(\left\{\V_{\boldsymbol{\theta} \vert Y^{n}}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert\right] \geq c_{n} \Phi_{n}\right\})\right)$ which hence tends to $0$.
+Hence, for $K_{n} := c_{n} \Phi_{n} (1 + c_{n})$, we can write
+\begin{alignat*}{3}
+& \E_{\theta^{\circ}}^{n}\left[\mathds{P}_{\boldsymbol{\theta} \vert Y^{n}}\left(\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert > K_{n} \right)\right] && = && \E_{\theta^{\circ}}^{n}\left[\mathds{P}_{\boldsymbol{\theta} \vert Y^{n}}\left(S_{n} > \frac{K_{n} - \E_{\boldsymbol{\theta} \vert Y^{n}}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert\right]}{\sqrt{\V_{\boldsymbol{\theta} \vert Y^{n}}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert\right]}} \right)\right]\\
+& && = && \E_{\theta^{\circ}}^{n}\left[\mathds{1}_{\Omega_{n}}\mathds{P}_{\boldsymbol{\theta} \vert Y^{n}}\left(S_{n} > \frac{K_{n} - \E_{\boldsymbol{\theta} \vert Y^{n}}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert\right]}{\sqrt{\V_{\boldsymbol{\theta} \vert Y^{n}}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert\right]}} \right)\right]\\
+& && && + \E_{\theta^{\circ}}^{n}\left[\mathds{1}_{\Omega_{n}^{c}}\mathds{P}_{\boldsymbol{\theta} \vert Y^{n}}\left(S_{n} > \frac{K_{n} - \E_{\boldsymbol{\theta} \vert Y^{n}}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert\right]}{\sqrt{\V_{\boldsymbol{\theta} \vert Y^{n}}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert\right]}} \right)\right]\\
+& && \leq && \mathds{P}_{\theta^{\circ}}^{n}\left(\Omega_{n}\right) + \mathds{P}_{\theta^{\circ}}\left(\Omega_{n}^{c}\right) \cdot \E_{\theta^{\circ}}^{n}\left[\mathds{P}_{\boldsymbol{\theta} \vert Y^{n}}\left(S_{n} > \frac{K_{n} - c_{n} \Phi_{n}}{c_{n} \Phi_{n}} \right)\right]\\
+& && \leq && \mathds{P}_{\theta^{\circ}}^{n}\left(\Omega_{n}\right) + \E_{\theta^{\circ}}^{n}\left[\mathds{P}_{\boldsymbol{\theta} \vert Y^{n}}\left(S_{n} > c_{n} \right)\right].
+\end{alignat*}
+We can conclude as $S_{n}$ is a tight sequence, $c_{n}$ tends to infinity and $\mathds{P}_{\theta^{\circ}}^{n}\left(\Omega_{n}\right)$ tends to $0$.
+\end{pro}
+
+\subsection{An exponential concentration inequality based proof for contraction rates of hierarchical sieve priors}\label{2.3.2}
+

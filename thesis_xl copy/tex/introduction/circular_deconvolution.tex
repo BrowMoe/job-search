@@ -1,0 +1,513 @@
+\section{Second example of inverse problem: circular density deconvolution}\label{INTRO_CIRCULARDECONVOLUTION}
+
+\subsection{The model}
+The circular deconvolution model is defined as follows: let $X$ and $\epsilon$ be circular random variables (that is to say, taking values in the unit circle, identified to the interval $[0,1[$) with respective distributions $\mathds{P}^{X}$ and $\mathds{P}^{\epsilon}$ and densities $f^{X}$ and $f^{\epsilon}$ with respect to some common and known dominating measure $\mu$ on $([0, 1[, \mathcal{A})$.
+We would hence write for any $x$ in $[0, 1[$, $f^{X}(x) = \frac{d \mathds{P}^{X}}{d \mu} (x)$ for instance.
+
+\begin{de}{\textsc{Modular addition}\\}\label{DE_INTRO_CIRCULARDECONVOLUTION_MODADD}
+From now on we denote by $\Box$ the modular addition on $[0,1[$. That is to say
+\[\forall (x, y) \in [0,1[^{2}, \quad x\Box y = x+y [1] = x + y - \lfloor x + y \rfloor.\]
+\end{de}
+
+The object of interest is $f^{X}$ while we only observe identically distributed replications $Y^{n} = \left(Y_{k}\right)_{k \in \llbracket 1, n \rrbracket}$ of the random variable $Y$, defined by $Y := X \Box \epsilon$.
+We note $\mathds{P}^{Y}$ the distribution of the random variable $Y$ and $f^{Y}$ its density with respect to $\mu$.
+One would notice that $\mathds{P}^{Y}$ and $f^{Y}$ are respectively given, for any $A$ in $\mathcal{A}$ and $y$ in $[0, 1[$, by $\mathds{P}^{Y}(A) = (\mathds{P}^{X} \star \mathds{P}^{\epsilon})(A) = \int\limits_{[0,1[}\int\limits_{[0,1[} \mathds{1}_{A}(x \Box s)d\mathds{P}^{X}(x)d\mathds{P}^{\epsilon}(s)$ and $f^{Y}(y) = (f^{X} \star f^{\epsilon})(y) = \int\limits_{0}^{1} f^{X}(y \Box (- s))f^{\epsilon}(s)d\mu(s)$.
+Indeed, for any $\mu$-measurable and $\mu$-almost surely bounded function $g$, we have
+\begin{alignat*}{3}
+&\mathds{E}\left[g(Y)\right] &&=&& \mathds{E}\left[g(X \Box \epsilon)\right]\\
+& &&=&&\int\limits_{0}^{1}\int\limits_{0}^{1} g(x \Box s) d\mathds{P}^{X}(x)d\mathds{P}^{\epsilon}(s)\\
+& &&=&&\int\limits_{0}^{1}\int\limits_{0}^{1} g(y) d\mathds{P}^{X}(y \Box (-s))d\mathds{P}^{\epsilon}(s)\\
+& &&=&&\int\limits_{0}^{1} g(y) \int\limits_{0}^{1} d\mathds{P}^{\epsilon}(s) d\mathds{P}^{X}(y \Box (-s))\\
+& &&=&&\int\limits_{0}^{1} g(y) \int\limits_{0}^{1}f^{X}(y \Box (- s)) f^{\epsilon}(s)d\mu(s) d\mu(y);
+\end{alignat*}
+one should note that the integrals above converge, according to the dominated convergence theorem.
+
+We will thus note $\mathcal{D}_{\mu}([0,1[)$ the space of densities on $[0, 1[$ with respect to $\mu$.
+Moreover we write indifferently $^{\star}\cdot$ the unary operator which associates to a distribution itself convoluted with $\mathds{P}^{\epsilon}$ and the unary operator which associates to a density itself convoluted with $f^{\epsilon}$.
+That is to say, given a probability measure $\mathds{P}$ on $\left([0, 1[, \mathcal{A}\right)$, $^{\star}\mathds{P}$ is such that, for any $A$ in $\mathcal{A}$, $^{\star}\mathds{P}_{f}(A) = (\mathds{P}^{\epsilon}\star\mathds{P}_{f})(A)$.
+And for any element $f$ of $\mathcal{D}_{\mu}([0, 1[)$, $^{\star}f$ is such that, for any $x$ in $[0, 1[$, $^{\star}f(x) = (f \star f^{\epsilon})(x)$.
+The model can therefore at first be written $\left([0,1[^{n}, ^{\star}\mathds{P}_{f}, f\in\mathcal{D}_{\mu}([0,1[) \right)$, where $\mathds{P}_{f}$ is the probability distribution with density $f$ with respect to $\mu$.
+
+\textcolor{red}{I think it should be possible to show that $\mathds{P}^{\epsilon}$ does not have to be continuous w.r.t $\mu$ and that $\mathds{P}^{Y}$ would be anyway. Hence we do not need a density for $\mathds{P}^{\epsilon}$ and we can compute the Fourier transform of the distribution anyway.}
+
+\medskip
+
+\begin{de}{\textsc{Positive (semi-)definitiveness}\\}\label{DE_INTRO_CIRCULARDECONVOLUTION_SEMIDEF}
+A sequence/function $[f]$ from $\mathds{Z}$ to $\mathds{C}$ is positive (semi-)definite iff, for any finite subset $\left\{x_{1}, \hdots, x_{n}\right\}$, the Toeplitz matrix $A=(a_{i,j})_{(i,j) \in \llbracket 1, n \rrbracket^{2}}$ with $a_{i,j}$ defined by $[f](x_{i} - x_{j})$ is positive (semi-)definite.
+
+In particular, this requires that $[f](x) = \overline{[f](-x)}$, $[f](0) > 0$ and for all $x$, $[f](x) \leq [f](0).$
+\end{de}
+
+\medskip
+
+Then, by denoting $\mathcal{M}([0, 1[)$ the set of all probability measures on $[0,1[$ and $\mathcal{S}^{+}(\mathds{Z})$ the set of all positive definite, complex valued, functions $[f]$ on $\mathds{Z}$ with $[f](0)=1$, we define the Fourier transform.
+
+\begin{de}{\textsc{Fourier transform of measures}\\}\label{DE_INTRO_CIRCULARDECONVOLUTION_FOURIERMEASURE}
+We denote by $\mathcal{F}$ the Fourier transform operator on measures :
+\begin{alignat*}{4}
+&\mathcal{F} : \quad && \mathcal{M}([0, 1[) &&\rightarrow&& \mathcal{S}^{+}(\mathds{Z})\\
+& && \nu && \mapsto && \left(j \mapsto \int\limits_{0}^{1} \exp\left[- 2 i \pi j x\right] d\nu(x)\right).
+\end{alignat*}
+\end{de}
+
+\begin{nota}{\textsc{Fourier basis functions}\\}\label{NOTA_INTRO_CIRCULARDECONVOLUTION_FOURIERBASIS}
+As we will operate in the frequency domain for most of the remaining note, it is convenient to use the following notation for the orthonormal basis used in Fourier transform :
+\[\forall j \in \mathds{Z}, \forall x \in [0, 1[, \quad e_{j}(x) := \exp[- 2 i \pi j x].\]
+\end{nota}
+
+\begin{rmk}\label{RMK_INTRO_CIRCULARDECONVOLUTION_PERIOD}
+It is convenient to note that for any $x$ and $s$ in $[0, 1[$ and $j$ in $\mathds{Z}$, we have $e_{j}[x \Box s] = e_{j}[x]e_{j}[s]$, due to the periodicity of the complex exponential function.
+\end{rmk}
+
+As we are interested in densities of probability distributions dominated by a common measure $\mu$ we define the Fourier transform with respect to $\mu$.
+
+\begin{de}{\textsc{Fourier transform of densities}\\}\label{DE_INTRO_CIRCULARDECONVOLUTION_FOURIERDENSITY}
+We denote by $\mathcal{F}_{\mu}$ the Fourier transform operator of densities with respect to the measure $\mu$ :
+\begin{alignat*}{4}
+&\mathcal{F}_{\mu} : \quad && \mathcal{D}_{\mu}([0,1[) &&\rightarrow&& \mathcal{S}^{+}(\mathds{Z})\\
+& && f && \mapsto && \left(j \mapsto \int\limits_{0}^{1} e_{j}(x) f(x) d\mu(x)\right).
+\end{alignat*}
+\end{de}
+
+\begin{nota}{\textsc{Fourier transform of useful functions}\\}\label{NOTA_INTRO_CIRCULARDECONVOLUTION_FOURIERTRANSFORM}
+From now on we adopt the following notations for the functions which will appear regularly :
+\begin{alignat*}{4}
+&\forall j \in \mathds{Z}, && \theta^{\circ}_{j} := \mathcal{F}_{\mu}(f^{X})(j);\\
+& && \lambda_{j} := \mathcal{F}_{\mu}(f^{\epsilon})(j);\\
+&\forall f \in \mathcal{D}_{\mu}([0, 1[), \forall j \in \mathds{Z}, \quad && [f](j) := \mathcal{F}_{\mu}(f)(j).\\
+\end{alignat*}
+\end{nota}
+
+Obviously, we have
+\begin{alignat*}{4}
+&\forall j \in \mathds{Z}, && \mathcal{F}(f^{Y})(j)&&=&&\int\limits_{0}^{1} e_{j}(y) \mathds{P}^{Y}(dy)\\
+& && &&=&&\int\limits_{0}^{1}\int\limits_{0}^{1} e_{j}(x \Box s) \mathds{P}^{X}(dx)\mathds{P}^{\epsilon}(ds)\\
+& && &&=&&\int\limits_{0}^{1}e_{j}(s)\int\limits_{0}^{1} e_{j}(x) \mathds{P}^{X}(dx)\mathds{P}^{\epsilon}(ds)\\
+& && &&=&&\int\limits_{0}^{1}e_{j}(s)\mathds{P}^{\epsilon}(ds)\int\limits_{0}^{1} e_{j}(x)\mathds{P}^{X}(dx)\\
+& && &&=&&\mathcal{F}(\mathds{P}^{\epsilon})(j) \mathcal{F}(\mathds{P}^{X})(j)\\
+%& && &&=&&\int\limits_{0}^{1} \exp\left[- 2 i \pi j y\right] f^{Y}(y)\mu(dy)\\
+& && &&=&&\int\limits_{0}^{1} f^{\epsilon}(s) e_{j}(s) d\mu(s) \int\limits_{0}^{1} e_{j}(x) f^{X}(x)\mu(dx)\\
+& && &&=&&\mathcal{F}_{\mu}(f^{\epsilon})(j) \mathcal{F}_{\mu}(f^{X})(j)\\
+& && &&=&& \theta^{\circ}_{j} \lambda_{j}
+\end{alignat*}
+so the Fourier transform, exchanges convolution with point-wise product.
+
+\medskip
+
+The following theorem, which is a special case of Bochner's theorem, allows us to formulate an inverse for the Fourier transform.
+
+\begin{thm}{\textsc{Herglotz's representation theorem}\\}\label{THM_INTRO_CIRCULARDECONVOLUTION_HERGLOTZ}
+A function $[f]$ from $\mathds{Z}$ to $\mathds{C}$ with $[f](0) = 1$ is semi-definite positive iff there exist $\mu$ in $\mathcal{M}([0, 1[)$ such that for all $j$ in $\mathds{Z}$, we have
+\[[f](j) = \int\limits_{[0, 1[} \exp[- 2 i \pi j x] d\mu(x).\]
+\end{thm}
+
+The properties of the set $\mathcal{S}^{+}(\mathds{Z})$ can be interpreted as follow :
+
+\begin{alignat*}{5}
+& && \mathcal{F}(f)(j)&&=&& \overline{\mathcal{F}(f^{Y})(-j)}&& \quad f \text{ is real valued;}\\ 
+& && \mathcal{F}(f)(0) &&=&& 1&& \quad f \text{ integrates at }1;\\
+\end{alignat*}
+and $\mathcal{F}(f)$ positive semi-definitive implies the positivity of $f$.
+
+The Fourier transform being bijective, one can safely write its inversion and we have, for any function $[f]$ in $\mathcal{S}^{+}$ :
+\begin{alignat*}{4}
+&\forall A \in \mathcal{A},&& \quad \mathcal{F}^{-1}[f](A) &&=&& \int\limits_{A}\sum\limits_{j \in \mathds{Z}} [f](j)e_{j}(x)dx;\\
+&\forall x \in [0, 1[,&& \quad \mathcal{F}_{\mu}^{-1}[f](x) &&=&& \sum\limits_{j \in \mathds{Z}} [f](j)e_{j}(x).
+\end{alignat*}
+
+However, in the most general case, the above mentioned series do not necessarily converge and one would need to consider the densities on our model as Schwartz distributions (see \ncite{Bill86}).
+We avoid this difficulty by assuming the considered distributions dominated by the Lebesgue measure.
+We hence drop the $\mu$ index from now on (and, for example note $\mathcal{D}([0,1[)$ instead of $\mathcal{D}_{\mu}([0, 1)$).
+
+We will hence consider the model written in these terms : $\left([0, 1[^{n}, \mathds{P}_{[f]}, f \in \mathcal{S}^{+}(\mathds{Z})\right)$; where $\mathds{P}_{[f]}$ is the distribution which admits the density with respect to $\mu$ which Fourier transform is $[f]$.
+
+\subsection{Known noise density}
+\begin{te}
+Considering an \iid $\ssY$-sample $\rY_1,\dotsc,\rY_{\ssY}$ from $\ydf$
+we denote by $\FuEx[\ssY]{\rY}$ the expectation with respect to their
+joint distribution $\FuVg[\ssY]{\rY}$. Given an estimator $\txdf[]$ of $\xdf\in\Lp^2$
+based on the observations % or
+                                % equivalently  $\fou[]{\txdf[]}$ of
+                                % $\fxdf\in\lp^2$
+we measure its accuracy
+by a quadratic risk, that is, $\FuEx[\ssY]{\rY}\VnormLp{\txdf[]-\xdf}^2$.
+Keep in mind that throughout the paper we assume that $|\fedf[j]|>0$ holds for all $j\in\Zz$. Considering $\iSv[]=\Nsuite{\iSv[j]}$ with $\iSv[j]:=|\fedf[j]|^{-2}$ for
+$j\in\Nz$, we set  $\miSv=\max\set{\iSv[j],j\in\nset{1,\Di}}$ and
+$\oiSv=\tfrac{1}{\Di}\sum_{j=1}^{\Di}\iSv[j]$. Keeping for each
+$j\in\Zz\backslash\{0\}$ in mind that
+$\fedf[0]=1\geq|\fedf[j]|=|\fedf[-j]|$ it follows $\iSv[|j|]=|\fedf[j]|^{-2}$ and consequently,
+$\miSv=\max\set{|\fedf[j]|^{-2},j\in\nset{-\Di,\Di}}$ and
+$\sum_{|j|\in\nset{1,\Di}}|\fedf[j]|^{-2}=2\Di\oiSv$. Finally, since
+$\Zsuite[j]{\fedf[j]}$ is a $\lp^2$ sequence having only non-zero
+components bounded by one, i.e., $0<|\fedf[j]|\leq1$, for all
+$j\in\Zz$, it follows $\lim_{\Di\to\infty}\miSv=\infty$ and for any
+diverging sequence $\Nsuite[\ssY]{\Di_{\ssY}}$ of positive integers,
+i.e., $\lim_{\ssY\to\infty}\Di_{\ssY}=\infty:\Leftrightarrow\forall
+K>0:\exists n_o\in\Nz:\forall n\geq n_o:\Di_n\geq K$, holds $\lim_{\Di\to\infty}\Di_{\ssY}\oiSv[\Di_{\ssY}]=\infty$. Given
+$\Di\in\Nz$  letting $\Bi^2(\xdf):=\VnormLp{\fxdf- \ofxdf{\Di}}^2$ we observe
+that
+\begin{multline*}
+\FuEx[\ssY]{\rY}\VnormLp{\txdf-\xdf}^2=\frac{1}{n}\sum_{|j|\in\nset{1,\Di}}\frac{1-|\fydf[j]|^2}{|\Ev[j]|^2}+\Bi^2(\xdf)=\frac{1}{n}\sum_{0<|j|\leq\Di}\{\frac{1}{|\Ev[j]|^2}-|\fxdf[j]|^2\}+\Bi^2(\xdf)\\
+=\frac{2\Di}{n}\oEvs - \frac{1}{n} \sum_{0<|j|\leq\Di}|\fxdf[j]|^2
++\Bi^2(\xdf)
+%=\frac{2\Di}{n}\oEvs +\VnormLp{\xdf}^2\bias^2(\xdf)- \frac{1}{n} \set{\VnormLp{\xdfPr}^2-1}
+\end{multline*}
+and using
+$\Bi^2(\xdf)=\VnormLp{\ProjC[{\mHiH[0]}]\xdf}^2\bias^2(\xdf)$ and $\sum_{0<|j|\leq\Di}|\fxdf[j]|^2=\VnormLp{\xdfPr}^2-1=\VnormLp{\ProjC[{\mHiH[0]}]\xdfPr}^2$
+hence
+\begin{equation}\label{oo:e1}
+\FuEx[\ssY]{\rY}\VnormLp{\txdf-\xdf}^2+ \frac{1}{n} \VnormLp{\ProjC[{\mHiH[0]}]\xdfPr}^2=\frac{2\Di}{n}\oEvs +\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\bias^2(\xdf).
+  \end{equation}
+Defining 
+$\oRaDi{\Di,\xdf,\iSv}:=[\bias^2(\xdf)\vee\Di \oiSv \ssY^{-1}]$ for $\Di,\ssY\in\Nz$   it follows immediately
+\begin{equation}\label{oo:e2}
+[\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\wedge2]\,\oRaDi{\Di,\xdf,\iSv}\leq \FuEx[\ssY]{\rY}\VnormLp{\txdfPr-\xdf}^2+ \frac{1}{n}\VnormLp{\ProjC[{\mHiH[0]}]\xdfPr}^2\leq (\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2+2)\,\oRaDi{\Di,\xdf,\iSv}.
+  \end{equation}
+Let us select 
+    $\oDi{\ssY}:=\argmin\Nset[{\Di\in\Nz}]{\oRaDi{\Di,\xdf,\iSv}}$ and set
+    $\oRa{\xdf,\iSv}:=\oRaDi{\oDi{\ssY},\xdf,\iSv}$ 
+ where
+$\argmin\nolimits_{m\in A}\{a_m\}:=\min\{m: a_m\leq a_{m'},\,\forall
+m'\in A\}$ for a sequence $\Nsuite{a_j}$ with minimal value in
+$A\subset \Nz$. We shall emphasise that  $\oRa{\xdf,\iSv}\geq
+\ssY^{-1}$ for all $\ssY\in\Nz$, and $\oRa{\xdf,\iSv}=o(1)$ as
+$\ssY\to\infty$. Observe that for all $\delta>0$ there exists
+$\Di_{\delta}\in\Nz$ and  $\ssY_\delta\in\Nz$ such that for
+all $\ssY\geq \ssY_{\delta}$ holds $\bias[\Di_\delta]^2(\So)\leq \delta$ 
+and $\Di_{\delta} \oiSv[\Di_\delta] \ssY^{-1}\leq\delta$, and
+whence $\oRa{\xdf,\iSv}\leq\oRaDi{\Di_\delta,\xdf,\iSv}\leq \delta$.
+Moreover, we have
+$\oDi{\ssY}\leq \ssY$. Indeed, by construction holds $\bias[\ssY]^2(\xdf)\leq 1<(\ssY+1)\ssY^{-1}\leq
+(\ssY+1)\oiSv[\ssY+1]{}\ssY^{-1}$, and hence  $\oRaDi{\ssY,\xdf,\iSv}<\oRaDi{\Di,\xdf,\iSv}$ for all $\Di\in \nsetro{\ssY+1,\infty}$ which in turn implies
+the claim $\oDi{\ssY}\leq \ssY$. Obviously, it follows thus $\oRa{\xdf,\iSv}=\min\set{
+    \oRaDi{\Di,\xdf,\iSv} ,\Di\in\nset{1,\ssY}}$ for all $\ssY\in\Nz$. We shall use
+  those elementary findings in the sequel without further reference.
+ However, using the dimension $\oDi{\ssY}\in\nset{1,\ssY}$ it follows immediately 
+  \begin{multline}\label{oo:e3}
+[\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\wedge2]\oRa{\xdf,\iSv}- \tfrac{1}{n}\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2
+\leq 
+ \inf\NsetB[\Di\in\Nz]{\FuEx[\ssY]{\rY}\VnormLp{\txdfPr-\xdf}^2}\\\hfill\leq
+\FuEx[\ssY]{\rY}\VnormLp{\txdfPr[\oDi{\ssY}]-\xdf}^2\leq(\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2+2)\oRa{\xdf,\iSv}=\tfrac{(\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2+2)}{[\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\wedge2]}[\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\wedge2]\oRa{\xdf,\iSv}
+\\\hfill\leq(1+\tfrac{2}{\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2}\vee\tfrac{\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2}{2})\{\inf\NsetB[\Di\in\Nz]{\FuEx[\ssY]{\rY}\VnormLp{\txdfPr-\xdf}^2}+\tfrac{1}{n}\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\}.
+  \end{multline}
+%$(a\vee b)/(a\wedge b)=(a\vee b)(a^{-1}\vee b^{-1})=(1\vee b/a \vee a/b)$
+%$(a+b)/(a\wedge b)=(a+b)(a^{-1}\vee b^{-1})=1+(a/b\vee b/a)$
+Consequently, the  rate $\Nsuite[\ssY]{\oRa{\xdf,\iSv}}$, the dimension parameters $\Nsuite[\ssY]{\oDi{\ssY}}$  and  the OSE's
+  $\Nsuite[\ssY]{\txdfPr[\oDi{\ssY}]}$, respectively, is an oracle
+rate, an oracle dimension and oracle optimal (up to the
+constant
+$2(1+\tfrac{2}{\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2}\vee\tfrac{\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2}{2})$).\\
+
+
+Interestingly, for any error density $\edf$ and associated $\Nsuite[\Di]{\iSv[\Di]}$ in case \ref{oo:xdf:p} the oracle rate is parametric, that is
+$\oRa{\xdf,\iSv}\sim\ssY^{-1}$. More precisely, if $\xdf=\bas_o$ then
+for each  $\Di\in\Nz$,
+$\FuEx[\ssY]{\ydf}\VnormLp{\txdfPr-\xdf}^2=2\Di\oiSv[\Di]\ssY^{-1}$,
+and hence $\oDi{\ssY}=1$ and $\oRa{\xdf,\iSv}=2\oiSv[1]\ssY^{-1}\sim\ssY^{-1}$. Otherwise
+if there is $K\in\Nz$  with $\bias[K-1](\xdf)>0$ and
+$\bias[K](\xdf)=0$, then setting
+$\ssY_{\xdf}:=\tfrac{K\oiSv[K]}{\bias[K-1]^2(\xdf)}$, for all
+$\ssY\geq \ssY_{\xdf}$ holds
+$\bias[K-1]^2(\xdf)>K\oiSv[K]\ssY^{-1}$, and hence  $\oDi{\ssY}=K$ and
+$\oRa{\xdf,\iSv}= K\oiSv[K]\ssY^{-1}\sim \ssY^{-1}$.
+On the other hand side, in case \ref{oo:xdf:np} the oracle rate is
+non-parametric, more precisely, it holds
+$\lim_{\ssY\to\infty}\ssY\oRa{\xdf,\iSv}=\infty$. Indeed, since
+$\bias[\oDi{\ssY}]^2(\xdf)\leq\oRaDi{\oDi{\ssY},\xdf,\iSv}=\oRa{\xdf,\iSv}=o(1)$ as $\ssY\to\infty$
+follows $\oDi{\ssY}\to\infty$ and hence
+$\oDi{\ssY}\oiSv[\oDi{\ssY}]\to\infty$ which implies the claim because
+$\ssY\oRa{\xdf,\iSv}\geq\oDi{\ssY}\oiSv[\oDi{\ssY}]$.
+\end{te}
+% ....................................................................
+% <<Il upper bound oo>>
+% ....................................................................
+\begin{il}\label{il:oo}
+Let us now illustrate the oracle rate $\Nsuite[n]{\oRa{\xdf,\iSv}}$  in those
+cases. Firstly, recall that for any error density $\edf$ and associated $\Nsuite[\Di]{\iSv[\Di]}$ in case \ref{oo:xdf:p} the oracle rate is parametric, that is
+$\oRa{\xdf,\iSv}\sim\ssY^{-1}$. Thereby, in both, the case \ref{il:po}
+and \ref{il:ps}, the oracle rate is parametric, i.e. setting
+$\ssY_{\xdf}:=\tfrac{K\oiSv[K]}{\bias[K-1]^2(\xdf)}$, for all
+$\ssY\geq \ssY_{\xdf}$ holds
+$\bias[K-1]^2(\xdf)>K\oiSv[K]\ssY^{-1}$, and hence  $\oDi{\ssY}=K$ and
+$\oRa{\xdf,\iSv}= K\oiSv[K]\ssY^{-1}\sim \ssY^{-1}$, where
+  \begin{Liste}
+  \item[\mylabel{il:oo:po}{\dg\bfseries{[p-o]}}] $\ssY_{\xdf}\sim  K^{2a+1}/\bias[K-1]^2(\xdf)$, 
+  \item[\mylabel{il:oo:ps}{\dg\bfseries{[p-s]}}] $\ssY_{\xdf}\sim  K^{-(1-2a)_+}\exp(K^{2a})/\bias[K-1]^2(\xdf)$. 
+\end{Liste}
+On the other hand side, to illustrate \ref{oo:xdf:np}, where the oracle rate is
+non-parametric, more precisely,
+$\lim_{\ssY\to\infty}\ssY\oRa{\xdf,\iSv}=\infty$ we consider the  cases
+\begin{Liste}[]
+\item[\mylabel{il:oo:oo}{\dg\bfseries{[o-o]}}] 
+$\oRa{\xdf,\iSv}\sim(\oDi{\ssY})^{-2p}\sim (\oDi{\ssY})^{2a+1}\ssY^{-1}$, and hence,
+    $\oDi{\ssY}\sim \ssY^{1/(2p+2a+1)}$ and $\oRa{\xdf,\iSv}\sim\ssY^{-2p/(2p+2a+1)}$
+\item[\mylabel{il:oo:os}{\dg\bfseries{[o-s]}}]
+$\oRa{\xdf,\iSv}\sim(\oDi{\ssY})^{-2p}\sim (\oDi{\ssY})^{-(1-2a)_+}\exp((\oDi{\ssY})^{2a})\ssY^{-1}$, and hence,\\
+    $\oDi{\ssY}\sim (\log\ssY - \tfrac{2p-(1-2a)_+}{2a}\log\log\ssY)^{1/(2a)}$ and $\oRa{\xdf,\iSv}\sim(\log\ssY)^{-p/a}$.
+\item[\mylabel{il:oo:so}{\dg\bfseries{[s-o]}}] 
+$\oRa{\xdf,\iSv}\sim\exp(-(\oDi{\ssY})^{2p})\sim (\oDi{\ssY})^{2a+1}\ssY^{-1}$, and hence,\\
+    $\oDi{\ssY}\sim (\log\ssY - \tfrac{2a+1}{2p}\log\log\ssY)^{1/(2p)}$ and $\oRa{\xdf,\iSv}\sim(\log\ssY)^{(2a+1)/(2p)}\ssY^{-1}$.\ilEnd.
+\end{Liste}
+\end{il}
+
+\subsection{Unknown convolution density}
+\begin{te}Considering independent \iid $\ssY$-sample
+  $\rY_1,\dotsc,\rY_{\ssY}$ from $\ydf$ and \iid $\ssE$-sample
+  $\rE_1,\dotsc,\rE_{\ssE}$ from $\edf$
+we denote by $\FuEx[\ssY,\ssE]{\rY,\rE}$, $\FuEx[\ssY]{\rY}$ and $\FuEx[\ssE]{\rE}$ the expectation with respect to their
+joint distribution $\FuVg[\ssY,\ssE]{\rY,\rE}$,
+$\FuVg[\ssY]{\rY}$ and $\FuVg[\ssE]{\rE}$, respectively. Exploiting the independence assumption the risk of the OSE $\hxdfPr$ can be decomposed as follows
+  \begin{multline}\label{oo:e4}
+    \FuEx[\ssY,\ssE]{\rY,\rE}\VnormLp{\hxdfPr-\xdf}^2=  \ssY^{-1}\sum_{|j|\in\nset{1,\Di}}\iSv[j](1-|\fydf[j]|^2)\FuEx[\ssE]{\rE}\Vabs{\hfedfmpI[j]\fedf[j]}^2+\VnormH{\Proj[{\mHiH[0]^\perp}]\xdf}^2\bias^2(\xdf)\\
++\sum_{|j|\in\nset{1,\Di}}|\fxdf[j]|^2\FuEx[\ssE]{\rE}\Vabs{\hfedf[j]-\fedf[j]}^2\Vabs{\hfedfmpI[j]}^2
++\sum_{|j|\in\nset{1,\Di}}\fxdf[j]^2\FuVg[\ssE]{\rE}(|\hfedf[j]|^2<1/\ssE).
+  \end{multline}
+\end{te}
+% ....................................................................
+% <<Re Sv Moore Penrose Inverse>> 
+% ....................................................................
+\begin{lm}\label{oSv:re}
+There is a finite nurmerical constant $\cst{4}>0$ such that
+for all $j\in\Zz$ hold
+\begin{inparaenum}[\dgrau\upshape(i)]
+\item[] $\ssE^2\FuEx[\ssE]{\rE}\Vabs{\fedf[j]-\hfedf[j]}^4\leq\cst{4}$, 
+\item[\mylabel{oSv:re:i}{{\dr\upshape(i)}}]
+${\FuEx[\ssE]{\rE}\Vabs{\fedf[j]\hfedfmpI[j]}^2}\leq 4$;
+\item[\mylabel{oSv:re:ii}{{\dr\upshape(ii)}}]
+$\FuVg[\ssE]{\rE}(\Vabs{\hfedfmpI[j]}^2<1/\ssE)\leq4(1\wedge \iSv[j]/\ssE)$,
+\item[\mylabel{oSv:re:iii}{{\dr\upshape(iii)}}] $\FuEx[\ssE]{\rE}\Vabs{\fedf[j]-\hfedf[j]}^2\Vabs{\hfedfmpI[j]}^2\leq
+  4\cst{4}(1\wedge \iSv[j]/\ssE)$.
+\end{inparaenum}
+\end{lm}
+% ....................................................................
+% <<Pro Re Sv Moore Penrose Inverse>> 
+% ....................................................................
+\begin{pro}[Proof of \cref{oSv:re}] 
+  Since $\ssE\FuEx[\ssE]{\edf}\Vabs{\fedf[j]-\hfedf[j]}^2=1-|\fedf[j]|^2\leq1$ we obtain \ref{oSv:re:i} as follows
+\begin{multline*}
+  \FuEx[\ssE]{\edf}\Vabs{\fedf[j]\hfedfmpI[j]}^2\leq
+  2\FuEx[\ssE]{\edf}\{\Vabs{\fedf[j]-\hfedf[j]}^2\Vabs{\hfedfmpI[j]}^2+\Ind{\{|\hfedf[j]|^2\geq1/\ssE\}}\}\leq
+  2(\ssE\FuEx[\ssE]{\edf}(\fedf[j]-\hfedf[j])^2+1)\leq 4.
+\end{multline*}
+Consider \ref{oSv:re:ii}. Trivially, for any $j\in\Nz$ we
+have $\FuVg[\ssE]{\edf}(|\hfedf[j]|^2<1/\ssE)\leq 1$. If $1\leq
+4/(\ssE|\fedf[j]|^{2})=4\iSv[j]/\ssE$, then obviously
+$\FuVg[\ssE]{\edf}(|\hfedf[j]|^2<1/\ssE)\leq\min
+(1,4\iSv[j]/\ssE)$. Otherwise, we have $1/\ssE<
+|\fedf[j]|^2/4$
+and hence using Tchebychev's inequaltiy,
+\begin{multline*}
+\FuVg[\ssE]{\edf}(|\hfedf[j]|^2<1/\ssE)\leq
+\FuVg[\ssE]{\edf}(|\hfedf[j]-\fedf[j]|>|\fedf[j]|/2)\leq 4\iSv[j]\FuEx[\ssE]{\edf}\Vabs{\fedf[j]-\hfedf[j]}^2\\\leq4\iSv[j]/\ssE=\min(1,4\iSv[j]/\ssE)  
+\end{multline*}
+ where we have used again that $\ssE\FuEx[\ssE]{\edf}\Vabs{\fedf[j]-\hfedf[j]}^2\leq1$. Combining both cases we obtain \ref{oSv:re:ii}. Consider
+ \ref{oSv:re:iii}.  there is a numerical constant $\cst{4}$ such that
+$\ssE^2\FuEx[\ssE]{\edf}|\fedf[j]-\hfedf[j]|^4\leq \cst{4}$ 
+due to Theorem 2.10 of \ncite{Petrov1995}, which in turn implies
+\begin{multline*}
+ \FuEx[\ssE]{\edf}\Vabs{\fedf[j]-\hfedf[j]}^2\Vabs{\hfedfmpI[j]}^2\leq \FuEx[\ssE]{\edf}\Big\{\Vabs{\fedf[j]-\hfedf[j]}^2\Vabs{\hfedfmpI[j]}^22\big[\frac{\Vabs{\fedf[j]-\hfedf[j]}^2}{|\fedf[j]|^2}+\frac{|\hfedf[j]|^2}{|\fedf[j]|^2}\big]\Big\}\\
+ \leq
+\frac{2\ssE\FuEx[\ssE]{\edf}\Vabs{\fedf[j]-\hfedf[j]}^4}{|\fedf[j]|^2}+\frac{2\FuEx[\ssE]{\edf}\Vabs{\fedf[j]-\hfedf[j]}^2}{|\fedf[j]|^2}\leq
+4\cst{4}\iSv[j]/\ssE. 
+\end{multline*}
+Combining the last bound and $\FuEx[\ssE]{\edf}\Vabs{\fedf[j]-\hfedf[j]}^2|\hfedfmpI[j]|^2\leq\ssE\FuEx[\ssE]{\edf}\Vabs{\fedf[j]-\hfedf[j]}^2\leq1$  implies \ref{oSv:re:iii},
+which
+completes the proof.\proEnd
+\end{pro}
+% ....................................................................
+% Upper bound hat
+% ....................................................................
+\begin{te}
+Exploiting \cref{oSv:re}, $|\fxdf[j]|^2=|\fxdf[-j]|^2$, $\iSv[j]=\iSv[-j]$ and  from \eqref{oo:e4} follows
+\begin{multline*}
+\FuEx[\ssY,\ssE]{\rY,\rE}\VnormLp{\hxdfPr-\xdf}^2\leq 4\ssY^{-1}\sum_{|j|\in\nset{1,\Di}}\iSv[j]+\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\bias^2(\xdf)\\
+\hfill+4\cst{4}\sum_{|j|\in\nset{1,\Di}}|\fxdf[j]|^2[1\wedge\iSv[j]/\ssE]
++4\sum_{|j|\in\nset{1,\Di}}|\fxdf[j]|^2[1\wedge\iSv[j]/\ssE]\\
+\leq
+(\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2+8) \oRaDi{\Di,\xdf,\iSv}
++8(\cst{4}+1)\sum_{j\in\Nz}|\fxdf[j]|^2[1\wedge \iSv[j]/\ssE],
+  \end{multline*}
+which in turn implies by setting
+$\mRa{\xdf,\iSv}:=\sum_{j\in\Nz}|\fxdf[j]|^2[1\wedge \iSv[j]/\ssE]$
+and select again
+$\oDi{\ssY}:=\argmin\Nset[{\Di\in\Nz}]{\oRaDi{\Di,\xdf,\iSv}}$
+with $\oRa{\xdf,\iSv}:=\oRaDi{\oDi{\ssY},\xdf,\iSv}$ that
+\begin{equation}\label{oo:e5}
+\FuEx[\ssY,\ssE]{\rY,\rE}\VnormLp{\hxdfPr[\oDi{\ssY}]-\xdf}^2\leq
+(\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2+8) \oRa{\xdf,\iSv}
++8(\cst{4}+1)\mRa{\xdf,\iSv}.
+  \end{equation}
+\end{te}
+% ....................................................................
+% Rem upper bound hat
+% ....................................................................
+\begin{rem}
+  We note that $\oRa{\xdf,\iSv}\geq \ssY^{-1}$
+  and
+  $\mRa{\xdf,\iSv}\geq\ssE^{-1}\sum_{j\in\Nz}|\fxdf[j]|^2=\tfrac{1}{2}\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2
+  \ssE^{-1}$, thereby whenever $\xdf\ne\bas_0$
+  any additional term of order $\ssY^{-1}+\ssE^{-1}$
+  is negligible with respect to the rate
+  $\oRa{\xdf,\iSv}+\mRa{\xdf,\iSv}$,
+  which we will use below without further reference. We shall
+  emphasise that in case $\ssY=\ssE$ it holds
+  \begin{multline}\label{oo:e6}
+    \mRa[\ssY]{\xdf,\iSv}=\sum_{j\in\nset{1,\oDi{\ssY}}}|\fxdf[j]|^2[1\wedge
+    \ssY^{-1}\iSv[j]]+\sum_{j>\oDi{\ssY}}|\fxdf[j]|^2[1\wedge
+    \ssY^{-1}\iSv[j]]\\\leq
+    \tfrac{1}{2}\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2 \oDi{\ssY}
+    \oiSv[\oDi{\ssY}]/\ssY +
+    \tfrac{1}{2}\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\bias[\oDi{\ssY}]^2\leq
+    \VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\oRaDi{\oDi{\ssY},\xdf,\iSv}
+  \end{multline}
+  which in turn implies
+  $\FuEx[\ssY,\ssE]{\rY,\rE}\VnormLp{\hxdfPr-\xdf}^2\leq(8+[8\cst{4}+9]\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2)\oRa{\xdf,\iSv}.$
+  In other words, the estimation of the unknown error density $\edf$
+  is negligible whenever $\ssY\leq\ssE$.\remEnd
+\end{rem}
+% ....................................................................
+% Text (p) versus (np)
+% ....................................................................
+\begin{te}
+Let us again consider the   two cases \ref{oo:xdf:p} and
+\ref{oo:xdf:np}. We note that in case \ref{oo:xdf:p}
+$\mRa{\xdf,\iSv}\leq
+\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\miSv[K]\ssE^{-1}$
+and hence
+\begin{equation}\label{oo:au:p}
+\FuEx[\ssY,\ssE]{\rY,\rE}\VnormLp{\hxdfPr[\oDi{\ssY}]-\xdf}^2\leq
+\cst{}\{[1\vee\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2]\{
+K\oiSv[K]\ssY^{-1}+\miSv[K]\ssE^{-1}\}
+\end{equation}
+for all $\ssE\in\Nz$ and $\ssY\geq\ssY_{\xdf}$. In other words the
+rate is parametric in both the $\rE$-sample size $\ssE$ and the $\rY$-sample size $\ssY$. Thereby, the  additional estimation of the error
+density is negligible whenever $\ssE\geq\ssY$.  In the
+opposite case \ref{oo:xdf:np}, it is obviously of interest to characterise the minimal size $\ssE$ of the additional
+sample from $\rE$ needed to attain the same rate as in case of a known
+error density. Thus, in the next illustration we let the $\rE$-sample size 
+depend on the $\rY$-sample size $\ssY$ as well. 
+\end{te}
+% ....................................................................
+% Illustration additional error 
+% ....................................................................
+\begin{il}\label{il:ee} Consider as in \cref{il:oo} again the usual behaviours
+ \ref{il:oo:po}, \ref{il:oo:ps}, \ref{il:oo:oo}, \ref{il:oo:os} and \ref{il:oo:so} for the sequences
+  $\Nsuite[\Di]{\bias(\xdf)}$ and  $\Nsuite[\Di]{\iSv[\Di]}$. Let
+  $\Nsuite[\ssY]{\ssE_{\ssY}}$ be a sequence of positive integers. 
+
+Firstly, recall that due to \eqref{oo:au:p} for any error density $\edf$ and associated $\Nsuite[\Di]{\iSv[\Di]}$ in case \ref{oo:xdf:p} the oracle rate is parametric, that is
+$\oRa{\xdf,\iSv}\sim\ssY^{-1}$ and $\mRa{\xdf,\iSv}\sim\ssE^{-1}$. Thereby, in both, the case \ref{il:po}
+and \ref{il:ps}, if
+ $q_{\text{p}}:=\lim_{\ssY\to\infty}\ssY\ssE_{\ssY}^{-1}$ exists\footnote{The limit
+   \lq\lq$\infty$\rq\rq\  is authorized.} then it follows that
+\begin{equation}
+\FuEx[\ssY,\ssE]{\rY,\rE}\VnormLp{\hxdfPr[\oDi{\ssY}]-\xdf}^2=\left\{\begin{array}{ll}
+O(\ssY^{-1}),& \text{if }q_{\text{p}}<\infty,\\
+O(\ssE_{\ssY}^{-1}),& \text{otherwise }.
+\end{array}\right.
+\end{equation}
+On the other hand side, to illustrate \ref{oo:xdf:np}, where the oracle rate is
+non-parametric, more precisely,
+$\lim_{\ssY\to\infty}\ssY\oRa{\xdf,\iSv}=\infty$ we consider the  cases
+\begin{Liste}[]
+\item[\mylabel{il:ee:oo}{\dg\bfseries{[o-o]}}] 
+ $\oDi{\ssY}\sim \ssY^{1/(2p+2a+1)}$ and
+ $\oRa{\xdf,\iSv}\sim\ssY^{-2p/(2p+2a+1)}$ (cf. \cref{il:oo}
+ \ref{il:oo:oo}) and $\mRa{\xdf,\iSv}\sim\ssE^{-(p\wedge a)/a}$.\\ If
+ $q_{\text{o-o}}:=\lim_{\ssY\to\infty}\ssY^{2(p\vee
+   a)/(2p+2a+1)}\ssE_{\ssY}^{-1}$ exists then it follows that as
+ $\ssY\to\infty$
+\begin{equation}
+\FuEx[\ssY,\ssE]{\rY,\rE}\VnormLp{\hxdfPr[\oDi{\ssY}]-\xdf}^2=\left\{\begin{array}{ll}
+O(\ssY^{-2p/(2p+2a+1)}),& \text{if }q_{\text{o-o}}<\infty,\\
+O(\ssE_{\ssY}^{-(p\wedge a)/a}),& \text{otherwise }.
+\end{array}\right.
+\end{equation}
+\item[\mylabel{il:ee:os}{\dg\bfseries{[o-s]}}]
+ $\oDi{\ssY}\sim (\log\ssY)^{1/(2a)}$ and
+ $\oRa{\xdf,\iSv}\sim(\log\ssY)^{-p/a}$ (cf. \cref{il:oo}
+ \ref{il:oo:os}) and $\mRa{\xdf,\iSv}\sim(\log \ssE)^{-p/a}$\\
+If $q_{\text{o-s}}:=\lim_{\ssY\to\infty}(\log \ssY)(\log \ssE_{\ssY})^{-1}$ exists, then it follows that as
+ $\ssY\to\infty$
+\begin{equation}
+\FuEx[\ssY,\ssE]{\rY,\rE}\VnormLp{\hxdfPr[\oDi{\ssY}]-\xdf}^2=\left\{\begin{array}{ll}
+O\big((\log\ssY)^{-p/a}\big),& \text{if }q_{\text{o-s}}<\infty,\\
+O\big((\log \ssE_{\ssY})^{-p/a}\big),& \text{otherwise }.
+\end{array}\right.
+\end{equation}
+\item[\mylabel{il:ee:so}{\dg\bfseries{[s-o]}}] 
+ $\oDi{\ssY}\sim (\log\ssY)^{1/(2p)}$ and
+ $\oRa{\xdf,\iSv}\sim(\log\ssY)^{(2a+1)/(2p)}\ssY^{-1}$ (cf. \cref{il:oo}
+ \ref{il:oo:so}) and $\mRa{\xdf,\iSv}\sim\ssE^{-1}$.\\
+If $q_{\text{s-o}}:=\lim_{\ssY\to\infty}\ssY(\log \ssY)^{-(2a+1)/(2p)}\ssE_{\ssY}^{-1}$ exists, then it follows that as
+ $\ssY\to\infty$
+\begin{equation}
+\FuEx[\ssY,\ssE]{\rY,\rE}\VnormLp{\hxdfPr[\oDi{\ssY}]-\xdf}^2=\left\{\begin{array}{ll}
+O\big((\log \ssY)^{(2a+1)/(2p)}\ssY^{-1}\big),& \text{if }q_{\text{s-o}}<\infty,\\
+O\big(\ssE_{\ssY}^{-1}\big),& \text{otherwise }.
+\end{array}\right.
+\end{equation}
+\end{Liste}
+The existence of the limits $q_{\text{p}}$, $q_{\text{o-o}}$, $q_{\text{o-s}}$, and
+$q_{\text{s-o}}$ is required only to exclude the case of oscillating
+sequences, which we are not interested in here. In this case, none of
+the two terms in the upper bound is asymptotically dominant, and the
+convergence rate is the alternating maximum of the two terms.
+
+
+
+In the case \ref{il:oo:po} and \ref{il:oo:ps}, whenever
+$\ssY = O(\ssE_{\ssY})$ we obtain the rate of known error density.
+However, this is true in the case \ref{il:ee:oo}, whenever
+$\ssY^{2(p\vee a)/(2p+2a+1)} = O(\ssE_{\ssY})$,
+which is much less than $\ssE_{\ssY}=\ssY$. This is even more visible
+in the case \ref{il:ee:os}, where the rate of known error density is
+attained even if $\ssE_{\ssY}=\ssY^r$
+for arbitrarily small $r > 0$.
+Moreover, we emphasise the influence of the parameter $a$ as in
+\cref{il:oo} \ref{il:edf:o} or \ref{il:edf:s} that
+characterises the rate of decay of the Fourier coefficients of the
+error density $\edf$. Because a smaller value of $a$ leads to faster rates of
+convergence, this parameter is often called \textit{degree of ill-posedness}.
+\ilEnd
+\end{il}
+
+\subsection{Empirical distribution and projection estimates}\label{INTRO_CIRCULARDECONVOLUTION_PROJESTIM}
+Within this framework, a natural approach for frequentist is, first, estimating of the Fourier coefficients through the empirical distribution and, secondly, reduce the dimension by projecting the sequence.
+
+Consider the empirical distribution of the sample $\overline{\mathds{P}}_{Y^{n}}^{n} = \frac{1}{n}\sum\limits_{k \in \llbracket 1, n \rrbracket} \delta_{Y^{n}_{k}}.$
+It is a sum of shifted Dirac distributions.
+Hence, the Fourier transform of this probability distribution can be written, for any $j$ in $\mathds{Z}$, as $\mathcal{F}(\overline{\mathds{P}}_{Y^{n}}^{n})(j) = \frac{1}{n}\sum\limits_{k \in \llbracket 1, n \rrbracket} \mathcal{F}(\delta_{Y_{k}^{n}}) = \frac{1}{n}\sum\limits_{k \in \llbracket 1, n \rrbracket} \exp[- 2 i \pi Y_{k}^{n} j] \mathcal{F}(\delta_{0}) = \frac{1}{n}\sum\limits_{k \in \llbracket 1, n \rrbracket} \exp[- 2 i \pi Y_{k}^{n} j].$
+
+\medskip
+
+This Fourier transform is a random variable for which computation of the expected value and variance are rather straightforward :
+\begin{alignat*}{3}
+&\mathds{E}_{\theta^{\circ}}[\mathcal{F}(\overline{\mathds{P}}_{Y^{n}}^{n})(j)] &&=&& \mathds{E}_{\theta^{\circ}}\left[\frac{1}{n}\sum\limits_{k \in \llbracket 1, n \rrbracket} \exp[- 2 i \pi Y_{k}^{n} j]\right]\\
+& &&=&&\mathds{E}_{\theta^{\circ}}\left[ \exp[- 2 i \pi Y_{1}^{n} j]\right]\\
+& &&=&&\int\limits_{[0, 1[} \exp[- 2 i \pi y j]d\mathds{P}^{Y}(y)\\
+& &&=&&\theta^{\circ}_{j} \lambda_{j};\\
+&\mathds{V}_{\theta^{\circ}}[\mathcal{F}(\overline{\mathds{P}}_{Y^{n}}^{n})(j)] &&=&& \mathds{V}_{\theta^{\circ}}\left[\frac{1}{n}\sum\limits_{k \in \llbracket 1, n \rrbracket} \exp[- 2 i \pi Y_{k}^{n} j]\right]\\
+& &&=&&\frac{1}{n}\mathds{V}_{\theta^{\circ}}\left[ \exp[- 2 i \pi Y_{1}^{n} j]\right]\\
+& &&=&&\frac{1}{n}\left(\mathds{E}_{\theta^{\circ}}\left[\vert\exp[- 2 i \pi Y_{1}^{n} j]\vert^{2}\right] - \vert \mathds{E}_{\theta^{\circ}}\left[ \exp\left[- 2 i \pi Y_{1}^{n} j\right]\right] \vert^{2}\right)\\
+& &&=&&\frac{1}{n}\left(1 - \vert\theta^{\circ}_{j}\vert^{2}\vert\lambda_{j}\vert^{2}\right).
+\end{alignat*}
+
+We hence obtain an unbiased estimator for $\theta^{\circ}_{j}$, $\overline{\theta}^{n}_{j} := \frac{1}{n\lambda_{j}}\sum\limits_{k \in \llbracket 1, n \rrbracket} \exp[- 2 i \pi Y_{k}^{n} j]$ with variance $\frac{1}{n\vert\lambda_{j}\vert^{2}}\left(1 - \vert\theta^{\circ}_{j}\vert^{2}\vert\lambda_{j}\vert^{2}\right).$
+Note that the variance cancels if and only if $\vert\theta^{\circ}_{j}\vert = \vert\lambda_{j}\vert = 1$ which is the case for all $j$ only for Dirac distributions.
+
+In order to build an estimator for $\theta^{\circ}$ from these estimators of its components, consider a threshold $m$ in $\mathds{N}$ and the estimator $\overline{\theta}^{n, m} = \left(\overline{\theta}^{n}_{j} \cdot \mathds{1}_{\vert j \vert \leq m}\right)_{j \in \mathds{Z}}$.
+Then the risk (that is to say the expected loss) takes the form
+\begin{alignat*}{3}
+& \mathcal{R}_{\mathfrak{u}}^{2}(\overline{\theta}^{n, m} \vert f^{X}) &&=&& \mathds{E}_{\theta^{\circ}}\left[\Vert \overline{\theta}^{n, m} - \theta^{\circ} \Vert_{l^{2}_{\mathfrak{u}}}^{2} \right]\\
+& && = && \mathds{E}_{\theta^{\circ}}\left[\sum\limits_{j \in \mathds{Z}} \left\vert \left(\left(\overline{\theta}^{n, m} - \theta^{\circ} \right)\cdot[\mathfrak{u}]\right)(j) \right\vert^{2} \right]\\
+& &&=&&\sum\limits_{\vert j \vert \leq m} \mathds{E}_{\theta^{\circ}}\left[ \left\vert \left(\left(\overline{\theta}^{n, m} - \theta^{\circ} \right)\cdot[\mathfrak{u}]\right)(j) \right\vert^{2} \right] + \sum\limits_{\vert j \vert > m} \left\vert \left(\theta^{\circ}\cdot[\mathfrak{u}]\right)(j) \right\vert^{2}\\
+& &&=&&\sum\limits_{\vert j \vert \leq m} \left(\mathds{V}_{\theta^{\circ}}\left[ \left(\left(\overline{\theta}^{n, m} - \theta^{\circ} \right)\cdot[\mathfrak{u}]\right)(j) \right]+ \left\vert \mathds{E}_{\theta^{\circ}}\left[\left(\left(\overline{\theta}^{n, m} - \theta^{\circ} \right)\cdot[\mathfrak{u}]\right)(j)\right]\right\vert^{2} \right) + \mathfrak{b}_{m}^{2}\\
+& &&=&&\sum\limits_{\vert j \vert \leq m} \vert[\mathfrak{u}](j)\vert^{2} \mathds{V}_{\theta^{\circ}}\left[ \overline{\theta}^{n, m}_{j} \right] + \mathfrak{b}_{m}^{2}\\
+& &&=&&\sum\limits_{\vert j \vert \leq m} \frac{\vert[\mathfrak{u}](j)\vert^{2}}{n\vert\lambda_{j}\vert^{2}}\left(1 - \vert\theta^{\circ}_{j}\vert^{2}\vert\lambda_{j}\vert^{2}\right) + \mathfrak{b}_{m}^{2}\\
+& &&=&&\sum\limits_{\vert j \vert \leq m} \frac{\vert[\mathfrak{u}](j)\vert^{2}\Lambda_{j}}{n} - \frac{\vert[\mathfrak{u}](j)\vert^{2}\vert\theta^{\circ}_{j}\vert^{2}}{n} + \mathfrak{b}_{m}^{2}.
+\end{alignat*}
+
+Using the notations from previous chapter, we have $\phi_{n}^{m_{n}}(f^{X}, [\mathfrak{u}]) \leq \mathcal{R}_{\mathfrak{u}}^{2}(\overline{\theta}^{n, m} \vert f^{X}) + \sum\limits_{\vert j\vert \leq m_{n}}\frac{\vert[\mathfrak{u}](j)\vert^{2}\vert\theta^{\circ}_{j}\vert^{2}}{n} \leq 2 \cdot \phi_{n}^{m_{n}}(f^{X}, [\mathfrak{u}])$
+
+One could minimise this risk with respect to $m$, hence defining an oracle estimator, that is to say the best projection estimator for a specific value of $\theta^{\circ}$.

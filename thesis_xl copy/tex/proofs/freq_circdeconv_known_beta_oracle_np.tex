@@ -1,0 +1,716 @@
+\section{Intermediate results}
+
+\begin{de}\label{DED.5.1}
+Define the following quantities :
+\begin{alignat*}{3}
+& G_{n}^{-} &&:=&& \min\left\{m \in \llbracket 1, m_{n}^{\dagger} \rrbracket : \quad \mathfrak{b}_{m}^{2} \leq 141 \mathfrak{b}_{0}^{2} \Phi^{\dagger}_{n}\right\},\\
+& G_{n}^{+} &&:=&& \max \left\{m \in \llbracket m_{n}^{\dagger}, n \rrbracket : \psi_{n} m \Lambda_{m} \leq \frac{25}{4} n \mathfrak{b}_{0}^{2} \Phi_{n}^{\dagger} \right\}.
+\end{alignat*}
+\end{de}
+
+\begin{pr}\label{PRD.5.1}
+Using the notations of \nref{DED.5.1}, we have
+\begin{alignat}{4}
+& \E_{\theta^{\circ}}^{n}\left[\left\Vert \widehat{\theta} - \theta^{\circ}\right\Vert_{l^{2}}^{2}\right] && \leq && \sum\limits_{0 < \vert j \vert \leq n}&& \E_{\theta^{\circ}}^{n}\left[\P_{M \vert Y^{n}}^{n, (\eta)} \left(\llbracket \vert j \vert, n \rrbracket\right) \left\vert  \left(\overline{\theta}_{j} - \theta^{\circ}_{j}\right) \right\vert^{2}\right] + \label{EQD.26}\\
+& && && && \E_{\theta^{\circ}}^{n}\left[\P_{M \vert Y^{n}}^{n, (\eta)} \left(\left\llbracket 1, G^{-}_{n} - 1\right\rrbracket \right) \right] \left\Vert \theta^{\circ} \right\Vert_{l^{2}}^{2} + 141 \mathfrak{b}_{0}^{2}(\theta^{\circ}) \Phi^{\dagger}_{n}. \label{EQD.27}
+\end{alignat}
+
+\end{pr}
+
+\begin{pr}{\textsc{Control of \nref{EQD.30}} \\}\label{PRD.5.2}
+Using the notations from \nref{DED.5.1} and \nref{DE2.5.3} we have, under \nref{ASB.0.1}
+\begin{alignat}{3}
+& \sum\limits_{0 < \vert j \vert \leq n} \E_{\theta^{\circ}}^{n}\left[\P_{M \vert Y^{n}}^{n, (\eta)} \left(\llbracket \vert j \vert, n \rrbracket \right) \left\vert  \overline{\theta}_{j} - \theta^{\circ}_{j} \right\vert^{2}\right] && \leq && \frac{25 \mathfrak{b}_{0}^{2}(\theta^{\circ}) \Phi^{\dagger}_{n}}{2 \psi_{n}} + \notag\\
+& && && \E_{\theta^{\circ}}^{n}\left[ \left(\sup\limits_{t \in \mathds{B}_{G^{+}_{n}, n}} \left\vert\left\langle t \vert \overline{\theta} - \theta^{\circ}\right\rangle_{l^{2}} \right\vert^{2} - 2 \Lambda_{(n)} \psi_{n} \right)_{+} \right]+\notag\\
+& && && 2 \Lambda_{(n)} \psi_{n} \E_{\theta^{\circ}}^{n}\left[ \P_{M \vert Y^{n}}^{n, (\eta)}\left(\llbracket G^{+}_{n} + 1, n \rrbracket\right)\right]\label{EQD.28}.
+\end{alignat}
+\end{pr}
+
+\begin{pr}\label{PRD.5.3}
+For any $n$ and $\eta$ in $\N$, and constant $C_{\lambda, \theta^{\circ}} > \sum\limits_{j = 1}^{\infty} \exp\left[- \eta \frac{\psi_{n} m \Lambda_{(m)}}{2}\right]$ we have
+
+%\begin{alignat}{3}
+%& \E_{\theta^{\circ}}^{n}\left[\P_{M \vert Y^{n}}^{n, (\eta)}\left(\llbracket 0, G^{\dagger -}_{n} - 1 \rrbracket\right)\right] && \leq && 4 m^{\dagger}_{n} \left(\exp\left[- \frac{(m^{\dagger}_{n})\psi_{n}}{800 s \Vert \theta^{\circ} \Vert_{l^{2}} \cdot \Vert \lambda \Vert_{l^{2}}}\right] + \exp\left[ \frac{-\sqrt{r \psi_{n}}}{100 \sqrt{2 s}}\right] + r\beta_{s}\right)\label{EQD.28}\\
+%& \E_{\theta^{\circ}}^{n}\left[\P_{M \vert Y^{n}}^{n, (\eta)}\left(\llbracket G^{\dagger +}_{n} + 1, n \rrbracket\right)\right] && \leq && C_{\theta^{\circ}\lambda} \left(\exp\left[- \frac{m^{\dagger}_{n}\psi_{n}}{800 s \Vert \theta^{\circ} \Vert_{l^{2}} \cdot \Vert \lambda \Vert_{l^{2}}}\right] + \exp\left[ \frac{- \sqrt{ r \psi_{n}}}{\sqrt{2 s} 100}\right]\right) + n r \beta_{s}\label{EQD.29}
+%\end{alignat}
+
+\begin{alignat}{3}
+& \E_{\theta^{\circ}}^{n}\left[\P_{M \vert Y^{n}}^{n, (\eta)}\left(\left\llbracket 1, G^{-}_{n} - 1 \right\rrbracket\right)\right] && \leq && G^{-}_{n}\exp\left[\frac{- \eta n \mathfrak{b}_{0}^{2}(\theta^{\circ}) \Phi^{\dagger}_{n}}{2}\right] +\notag\\
+& && && \sum\limits_{1 \leq \vert j \vert < G^{-}_{n}}\P_{\theta^{\circ}}^{n}\left(\sup\limits_{x \in \mathds{B}_{m, m^{\dagger}_{n}}} \left\vert \left\langle x \vert \Pi_{m, m^{\dagger}_{n}} (\overline{\theta} - \theta^{\circ}) \right\rangle \right\vert_{l^{2}}^{2} < \frac{2 \Lambda_{(m^{\dagger}_{n})} m^{\dagger}_{n} \psi_{n}}{n}\right)\label{EQD.28}\\
+& \E_{\theta^{\circ}}^{n}\left[\P_{M \vert Y^{n}}^{n, (\eta)}(\llbracket G^{+}_{n} + 1, n \rrbracket)\right] && \leq && C_{\theta^{\circ} \lambda} \exp \left[-\frac{\eta \mathfrak{b}_{0}^{2}(\theta^{\circ}) n \Phi^{\dagger}_{n}}{2}\right] +\notag\\
+& && && \sum\limits_{G^{+}_{n} < \vert j \vert \leq n}\P_{\theta^{\circ}}^{n}\left(\sup\limits_{x \in \mathds{B}_{m^{\dagger}_{n}, m}} \left\vert \left\langle x \vert \Pi_{m^{\dagger}_{n}, m} (\overline{\theta} - \theta^{\circ}) \right\rangle \right\vert_{l^{2}}^{2} < \frac{2 \Lambda_{(m)} m \psi_{n}}{n}\right)\label{EQD.29}
+\end{alignat}
+\end{pr}
+
+\begin{pr}\label{PRD.5.4}
+For any integer $m$ and $l$ such that $m \leq l$, define for any $t$ in $\mathds{B}_{m, l}$ the functional $\overline{\nu}_{t} = \left\langle t \vert \overline{\theta} - \theta^{\circ}\right\rangle_{l^{2}}$.
+Under \nref{ASB.0.2}, we define
+\begin{alignat*}{3}
+& \overline{\nu}^{e, \perp}_{t} && = && \frac{1}{r} \sum\limits_{q = 1}^{r} \left(v_{t}(E^{\perp}_{q}) - \E_{\theta^{\circ}}^{n}\left[v_{t}(E^{\perp}_{q})\right]\right);\\
+& v_{t}(E^{\perp}_{q}) && = && \frac{1}{s} \sum\limits_{p = 1}^{s} \nu_{t}(E^{\perp}_{q, p});\\
+& \nu_{t}(E^{\perp}_{q, p}) && = && \sum\limits_{m \leq \vert j \vert \leq l} \left(\frac{t_{j}}{\overline{\lambda_{j}}} e_{j}(E^{\perp}_{q, p})\right).
+\end{alignat*}
+Then, for any sequence $\left(C_{n}\right)_{n \in \N}$, we have the following inequalities:
+\begin{alignat}{3}
+& \E_{\theta^{\circ}}^{n} \left[ \left(\sup\limits_{t \in \mathds{B}_{m, l}} \left\vert\left\langle t \vert \overline{\theta} - \theta^{\circ}\right\rangle_{l^{2}} \right\vert^{2} - C_{n} \right)_{+} \right] && \leq && 2 \cdot \E_{\theta^{\circ}}^{n}\left[ \left(\sup\limits_{t \in \mathds{B}_{m, l}} \vert \overline{\nu}^{e, \perp}_{t} \vert^{2} - C_{n} \right)_{+} \right] +\notag\\
+& && && 2 \cdot \E_{\theta^{\circ}}^{n}\left[ \sup\limits_{t \in \mathds{B}_{m, l}} \vert \overline{\nu}^{e, \perp}_{t} - \overline{\nu}^{e}_{t} \vert^{2} \right]\label{EQD.26}\\
+& \P_{\theta^{\circ}}^{n}\left(\sup\limits_{t \in \mathds{B}_{m, l}} \left\vert \left\langle t \vert \overline{\theta} - \theta^{\circ}\right\rangle_{l^{2}} \right\vert \geq C_{n}\right) && \leq && \P_{\theta^{\circ}}^{n}\left(\sup\limits_{t \in \mathds{B}_{m, l}} \left\vert \overline{\nu}_{t}^{e, \perp} \right\vert \geq C_{n} \right) +\notag\\
+& && && 3 \P_{\theta^{\circ}}^{n}\left(\overline{\nu}_{t}^{e} \neq \overline{\nu}_{t}^{e, \perp}\right)\label{EQD.27}
+\end{alignat}
+\end{pr}
+
+\begin{pr}\label{PRD.5.5}
+For any integers $m$ and $l$ with $m < l$; consider a triplet $h^{2}$, $H^{2}$ and $v$ verifying
+\begin{alignat*}{3}
+& h^{2} && \geq &&\sum\limits_{m \leq \vert j \vert \leq l} \Lambda_{j};\\
+& H^{2} && \geq && \frac{\Lambda_{(l)}(l-m+1)( \psi_{n} + 1)}{n};\\
+& v && \geq &&\Lambda_{(l)} \Vert \theta^{\circ} \Vert_{l^{2}} \cdot \Vert \lambda \Vert_{l^{2}};
+\end{alignat*}
+then, under \nref{ASB.0.1}, for any $C > 0$, we have:
+\begin{alignat}{3}
+& \E_{\theta^{\circ}}^{n}\left[\left(\sup\limits_{t \in \mathds{B}_{m, l}}\vert \overline{\nu}^{e, \perp}_{t} \vert^{2} - 6 H^{2}\right)_{+}\right] && \leq && C \left[\frac{v}{r} \exp\left(\frac{-r H^{2}}{6 v}\right) + \frac{h^{2}}{r^{2}} \exp\left(\frac{- r H}{100 h}\right)\right];\label{EQD.28}\\
+& \P_{\theta^{\circ}}^{n}\left(\sup\limits_{t \in \mathds{B}_{m, l}} \vert \overline{\nu}^{e, \perp}_{t} \vert \geq 6 H^{2}\right) && \leq && 3 \left(\exp\left[- \frac{r H^{2}}{400 v}\right] + \exp\left[ \frac{-r H}{100 h}\right]\right)\label{EQD.29}.
+\end{alignat}
+\end{pr}
+
+\begin{pr}\label{PRD.5.6}
+\begin{alignat}{3}
+& \E_{\theta^{\circ}}^{n}\left[\sup\limits_{t \in \mathds{B}_{m, l}} \left\vert \overline{\nu}^{e, \perp}_{t} - \overline{\nu}^{e}_{t} \right\vert^{2} \right] && \leq && 4 \beta_{s} \sum\limits_{m \leq \vert j \vert \leq l} \Lambda_{j}\label{EQD.30}\\
+& \P_{\theta^{\circ}}^{n}\left(\overline{\nu}_{t}^{e} \neq \overline{\nu}_{t}^{e, \perp}\right) && \leq && r\beta_{s}\label{EQD.31}
+\end{alignat}
+\end{pr}
+
+\section{Detailed proofs}
+
+\begin{pro}{\textsc{Proof for \nref{PRD.5.1}} \\}\label{PROD.5.1}
+Using triangular inequality, linearity of the expectation, and the structure of our estimator, straightforward calculus yields:
+\begin{alignat*}{4}
+& \E_{\theta^{\circ}}^{n}\left[\left\Vert \widehat{\theta} - \theta^{\circ}\right\Vert_{l^{2}}^{2}\right] && = && \E_{\theta^{\circ}}^{n}&&\left[\sum\limits_{0 < \vert j \vert \leq n} \left\vert \P_{M \vert Y^{n}}^{n, (\eta)} \left(\llbracket \vert j \vert, n \rrbracket \right) \left(\overline{\theta}_{j} - \theta^{\circ}_{j}\right) - \P_{M \vert Y^{n}}^{n, (\eta)} \left(\llbracket 1, \vert j \vert - 1 \rrbracket \right) \theta^{\circ}_{j}\right\vert^{2} \right]\\
+& && && && + \sum\limits_{\vert j \vert > n} \vert \theta^{\circ} \vert^{2}\\
+& && \leq && \sum\limits_{0 < \vert j \vert \leq n}&& \E_{\theta^{\circ}}^{n}\left[\P_{M \vert Y^{n}}^{n, (\eta)} \left(\llbracket \vert j \vert, n \rrbracket\right) \left\vert  \left(\overline{\theta}_{j} - \theta^{\circ}_{j}\right) \right\vert^{2}\right] +\\
+& && && && \sum\limits_{0 < \vert j \vert \leq n} \left\vert \theta^{\circ}_{j}\right\vert^{2} \E_{\theta^{\circ}}^{n}\left[\P_{M \vert Y^{n}}^{n, (\eta)} \left(\llbracket 1, \vert j \vert - 1 \rrbracket\right) \right] + \sum\limits_{\vert j \vert > n} \vert \theta^{\circ}_{j} \vert^{2}.
+\end{alignat*}
+
+The second term can be decomposed as follows, using the definition of $G^{-}_{n}$:
+
+\begin{alignat*}{2}
+& \sum\limits_{0 < \vert j \vert \leq n} &&\left\vert \theta^{\circ}_{j} \right\vert^{2} \E_{\theta^{\circ}}^{n}\left[\P_{M \vert Y^{n}}^{n, (\eta)} \left(\left\llbracket 1, \vert j \vert - 1\right\rrbracket \right) \right] + \sum\limits_{\vert j \vert > n} \left\vert \theta^{\circ}_{j} \right\vert^{2}\\
+& && \leq \sum\limits_{0 < \vert j \vert \leq G^{-}_{n} - 1} \left\vert \theta^{\circ}_{j} \right\vert^{2} \E_{\theta^{\circ}}^{n}\left[\P_{M \vert Y^{n}}^{n, (\eta)} \left(\left\llbracket 1, \vert j \vert - 1\right\rrbracket \right) \right] + \sum\limits_{G^{-}_{n} \leq \vert j \vert \leq n} \left\vert \theta^{\circ}_{j}\right\vert^{2} + \sum\limits_{\vert j \vert > n} \left\vert \theta^{\circ}_{j} \right\vert^{2}\\
+& && \leq \E_{\theta^{\circ}}^{n}\left[\P_{M \vert Y^{n}}^{n, (\eta)} \left(\left\llbracket 1, G^{-}_{n} - 1\right\rrbracket \right) \right] \left\Vert \theta^{\circ} \right\Vert_{l^{2}}^{2} + \mathfrak{b}_{G^{-}_{n}}^{2}(\theta^{\circ})\\
+& && \leq \E_{\theta^{\circ}}^{n}\left[\P_{M \vert Y^{n}}^{n, (\eta)} \left(\left\llbracket 1, G^{-}_{n} - 1\right\rrbracket \right) \right] \left\Vert \theta^{\circ} \right\Vert_{l^{2}}^{2} + 141 \mathfrak{b}_{0}^{2} \Phi^{\dagger}_{n}\\.
+\end{alignat*}
+
+which proves the statement.
+
+\qedsymbol
+\end{pro}
+
+\begin{pro}{\textsc{Proof of \nref{PRD.5.2}} \\}\label{PROD.5.2}
+First decompose the sum between the "good" and "bad" values of the threshold parameter:
+\begin{alignat}{3}
+& \sum\limits_{0 < \vert j \vert \leq n} \E_{\theta^{\circ}}^{n}\left[\P_{M \vert Y^{n}}^{n, (\eta)} \left(\llbracket \vert j \vert, n \rrbracket \right) \left\vert  \overline{\theta}_{j} - \theta^{\circ}_{j} \right\vert^{2}\right] && \leq && \sum\limits_{0 < \vert j \vert \leq G^{+}_{n}} \E_{\theta^{\circ}}^{n}\left[\left\vert \overline{\theta}_{j} - \theta^{\circ}_{j}\right\vert^{2} \right] +\label{EQD.28}\\
+& && && \sum\limits_{G^{+}_{n} < \vert j \vert \leq n} \E_{\theta^{\circ}}^{n}\left[\P_{M \vert Y^{n}}^{n, (\eta)}\left(\llbracket G^{+}_{n} + 1, n\rrbracket\right) \left\vert \overline{\theta}_{j} - \theta^{\circ}_{j}\right\vert^{2} \right]\label{EQD.29}.
+\end{alignat}
+
+We control \nref{EQD.28} using the definition of $G^{+}_{n}$ and \nref{LMB.0.1} which can be applied thanks to \nref{ASB.0.1}:
+
+\begin{alignat*}{3}
+& \sum\limits_{0 < \vert j \vert \leq G^{+}_{n}} \E_{\theta^{\circ}}^{n}\left[\left\vert \overline{\theta}_{j} - \theta^{\circ}_{j}\right\vert^{2} \right] && = && \sum\limits_{0 < \vert j \vert \leq G^{+}_{n}} \V_{\theta^{\circ}}^{n}\left[ \overline{\theta}_{j} - \theta^{\circ}_{j} \right]\\
+& && = && \sum\limits_{0 < \vert j \vert \leq G^{+}_{n}} \frac{\Lambda_{j}}{n^{2}} \V_{\theta^{\circ}}^{n}\left[ \sum\limits_{p = 1}^{n} e_{j}(Y_{p}^{n})\right]\\
+& && \leq && \frac{\Lambda_{(G^{+}_{n})}2 G^{+}_{n}}{n}\\
+& && \leq && \frac{25 \mathfrak{b}_{0}^{2}(\theta^{\circ}) \Phi^{\dagger}_{n}}{2 \psi_{n}}\\
+\end{alignat*}
+
+Consider \nref{EQD.29}
+
+\begin{alignat}{3}
+& \sum\limits_{G^{+}_{n} < \vert j \vert \leq n} \E_{\theta^{\circ}}^{n}\left[\P_{M \vert Y^{n}}^{n, (\eta)}\left(\llbracket G^{+}_{n} + 1, n\rrbracket\right) \left\vert \overline{\theta}_{j} - \theta^{\circ}_{j}\right\vert^{2} \right] && = &&  \E_{\theta^{\circ}}^{n}\left[\P_{M \vert Y^{n}}^{n, (\eta)}\left(\llbracket G^{+}_{n} + 1, n\rrbracket\right) \sum\limits_{G^{+}_{n} < \vert j \vert \leq n} \left\vert \overline{\theta}_{j} - \theta^{\circ}_{j}\right\vert^{2} \right] \notag\\
+& && = && \E_{\theta^{\circ}}^{n}\left[\P_{M \vert Y^{n}}^{n, (\eta)}\left(\llbracket G^{+}_{n} + 1, n\rrbracket\right) \left\Vert \Pi_{G^{+}_{n}, n}\left(\overline{\theta} - \theta^{\circ}\right)\right\Vert_{l^{2}}^{2} \right] \notag\\
+& && = && \E_{\theta^{\circ}}^{n}\left[ \left(\sup\limits_{t \in \mathds{B}_{G^{+}_{n}, n}} \left\vert\left\langle t \vert \overline{\theta} - \theta^{\circ}\right\rangle_{l^{2}} \right\vert^{2} - 2 \Lambda_{(n)} \psi_{n} \right)_{+} \right]+ \label{EQD.34}\\
+& && && 2 \Lambda_{(n)} \psi_{n} \E_{\theta^{\circ}}^{n}\left[ \P_{M \vert Y^{n}}^{n, (\eta)}\left(\llbracket G^{+}_{n} + 1, n \rrbracket\right)\right]\label{EQD.35}
+\end{alignat}
+\end{pro}
+
+\begin{pro}{\textsc{Proof of \nref{PRD.5.3}} \\}\label{PROD.5.3}
+
+Before considering the two inequalities separately, let us do some observations.
+
+Throughout the proof, $m$ and $l$ will be two positive integers.
+
+For now, assume $m < l$ and let $H$ be a positive real number.
+
+We use \nref{EQD.11}, \nref{EQD.14} in order to obtain, with the event $\mathcal{A}_{m, l} := \left\{ \sup\limits_{x \in \mathds{B}_{m, l}} \left\vert \left\langle x \vert \Pi_{m, l} (\overline{\theta} - \theta^{\circ}) \right\rangle \right\vert_{l^{2}}^{2} < 6H^{2} \right\}$
+
+\begin{alignat*}{4}
+& \P_{M \vert Y^{n}}^{n, (\eta)}(m) && \leq && \exp &&\left[\eta\left((\pen(l)-\pen(m)) +\right.\right.\\
+& && && && \left.\left. \frac{n}{2} \left( \frac{21}{4} \sup\limits_{x \in \mathds{B}_{m, l}} \left\vert \left\langle x \vert \Pi_{m, l} (\overline{\theta} - \theta^{\circ}) \right\rangle \right\vert_{l^{2}}^{2} - \frac{3}{4} \left\Vert \Pi_{m, l} \theta^{\circ} \right\Vert_{l^{2}}^{2} \right) \right)\right] \mathds{1}_{\mathcal{A}_{m, l}} +\\
+& && && && \mathds{1}_{\mathcal{A}_{m, l}^{c}}
+\end{alignat*}
+
+which gives us
+
+\begin{alignat*}{4}
+& \E_{\theta^{\circ}}^{n}\left[\P_{M \vert Y^{n}}^{n, (\eta)}(m)\right]&& \leq && \E_{\theta^{\circ}}^{n} && \left[\exp\left[\eta\left((\pen(l)-\pen(m)) +\right.\right.\right.\notag\\
+& && && && \left.\left.\left. \frac{n}{2} \left( \frac{21}{4} \sup\limits_{x \in \mathds{B}_{m, l}} \left\vert \left\langle x \vert \Pi_{m, l} (\overline{\theta} - \theta^{\circ}) \right\rangle \right\vert_{l^{2}}^{2} - \frac{3}{4} \left\Vert \Pi_{m, l} \theta^{\circ} \right\Vert_{l^{2}}^{2} \right) \right)\right]\mathds{1}_{\mathcal{A}_{m, l}} \right] + \\
+& && && &&\P_{\theta^{\circ}}^{n}\left(\mathcal{A}_{m, l}^{c}\right)\\
+& && \leq && \exp && \left[\eta\left((\pen(l)-\pen(m)) +\right.\right.\\
+& && && && \left.\left. \frac{n}{2} \left( \frac{63}{2} H^{2} - \frac{3}{4} \left\Vert \Pi_{m, l} \theta^{\circ} \right\Vert_{l^{2}}^{2} \right) \right)\right] + \notag\\
+& && && && \P_{\theta^{\circ}}^{n}\left(\sup\limits_{x \in \mathds{B}_{m, l}} \left\vert \left\langle x \vert \Pi_{m, l} (\overline{\theta} - \theta^{\circ}) \right\rangle \right\vert_{l^{2}}^{2} > 6H^{2}\right)
+\end{alignat*}
+
+%\begin{alignat*}{4}
+%& \E_{\theta^{\circ}}^{n}\left[\P_{M \vert Y^{n}}^{n, (\eta)}(m)\right]&& \leq && \E_{\theta^{\circ}}^{n} && \left[\exp\left[\eta\left((\pen(l)-\pen(m)) +\right.\right.\right.\notag\\
+%& && && && \left.\left.\left. \frac{n}{2} \left( \frac{21}{4} \sup\limits_{x \in \mathds{B}_{m, l}} \left\vert \left\langle x \vert \Pi_{m, l} (\overline{\theta} - \theta^{\circ}) \right\rangle \right\vert_{l^{2}}^{2} - \frac{3}{4} \left\Vert \Pi_{m, l} \theta^{\circ} \right\Vert_{l^{2}}^{2} \right) \right)\right]\mathds{1}_{\mathcal{A}_{m, l}} \right] + \notag\\
+%& && && &&\P_{\theta^{\circ}}^{n}\left(\mathcal{A}_{m, l}^{c}\right)\notag\\
+%& && \leq && \exp && \left[\eta\left((\pen(l)-\pen(m)) +\right.\right.\notag\\
+%& && && && \left.\left. \frac{n}{2} \left( \frac{21}{2} 3H^{2} - \frac{3}{4} \left\Vert \Pi_{m, l} \theta^{\circ} \right\Vert_{l^{2}}^{2} \right) \right)\right] + \notag\\
+%& && && && 3 \left(\exp\left[- \frac{r H^{2}}{400 v}\right] + \exp\left[ \frac{-r H}{100 h}\right]\right) +\notag\\
+%& && && && 3 r\beta_{s}.\label{EQD.34}
+%\end{alignat*}
+
+%, $h^{2} = m^{\dagger}_{n} \Lambda_{(m^{\dagger}_{n})}$, and $v = \Lambda_{(m^{\dagger}_{n})} \Vert \theta^{\circ} \Vert_{l^{2}} \cdot \Vert \lambda \Vert_{l^{2}}$
+
+
+In particular with $l = m^{\dagger}_{n}$, set $H^{2} = 2 \frac{\Lambda_{(m^{\dagger}_{n})}m^{\dagger}_{n}\psi_{n}}{n}$.
+Using the definitions of $\pen$, and $\Phi^{\dagger}_{n}$, and finishing with $\kappa = \frac{41}{4}$, we obtain
+
+
+\begin{alignat}{4}
+& \E_{\theta^{\circ}}^{n}\left[\P_{M \vert Y^{n}}^{n, (\eta)}(m)\right]&& \leq && \exp && \left[\frac{\eta n}{2}\left(\frac{419}{4} \mathfrak{b}_{0}^{2}(\theta^{\circ}) \Phi^{\dagger}_{n} - \frac{3}{4} \mathfrak{b}_{m}^{2}(\theta^{\circ}) \right)\right] + \notag\\
+& && && && \P_{\theta^{\circ}}^{n}\left(\sup\limits_{x \in \mathds{B}_{m, m^{\dagger}_{n}}} \left\vert \left\langle x \vert \Pi_{m, m^{\dagger}_{n}} (\overline{\theta} - \theta^{\circ}) \right\rangle \right\vert_{l^{2}}^{2} > 6H^{2}\right).
+\end{alignat}
+
+
+
+%\begin{alignat}{4}
+%& \E_{\theta^{\circ}}^{n}\left[\P_{M \vert Y^{n}}^{n, (\eta)}(m)\right] && \leq && \exp && \left[\frac{n \eta}{2}\left(\frac{419}{4} \mathfrak{b}_{0}^{2}(\theta^{\circ}) \Phi^{\dagger}_{n} - \frac{3}{4} \mathfrak{b}_{m}^{2}(\theta^{\circ}) \right)\right] + \notag\\
+%& && && && 3 \left(\exp\left[- \frac{m^{\dagger}_{n}\psi_{n}}{800 s \Vert \theta^{\circ} \Vert_{l^{2}} \cdot \Vert \lambda \Vert_{l^{2}}}\right] + \exp\left[ \frac{- \sqrt{r \psi_{n}}}{100 \sqrt{ 2 s }}\right]\right) +\notag\\
+%& && && && 3 r\beta_{s}\label{EQD.35}.
+%\end{alignat}
+
+\medskip
+
+Now, we assume $m > l$.
+
+We use \nref{EQD.11}, and \nref{EQD.17} in order to obtain, with the event $\mathcal{A}_{m, l} := \left\{ \sup\limits_{x \in \mathds{B}_{l, m}} \left\vert \left\langle x \vert \Pi_{l, m} (\overline{\theta} - \theta^{\circ}) \right\rangle \right\vert_{l^{2}}^{2} < 6H^{2} \right\}$ for some real number $H$
+
+\begin{alignat*}{3}
+& \P_{M \vert Y^{n}}^{n, (\eta)}(m) && \leq && \exp\left[\eta\left((\pen(l)-\pen(m)) +\right.\right.\notag\\
+& && && \left.\left. \frac{n}{2} \left(\frac{13}{4}\sup\limits_{x \in \mathds{B}_{l, m}}\left\vert \left\langle x \vert  (\overline{\theta} - \theta^{\circ}) \right\rangle_{l^{2}} \right\vert^{2} + \frac{5}{4} \Vert \Pi_{l, m} \theta^{\circ} \Vert_{l^{2}}^{2} \right) \right)\right] \mathds{1}_{\mathcal{A}_{m, l}} +\notag\\
+& && && \mathds{1}_{\mathcal{A}_{m, l}}^{c}\\
+& \E_{\theta^{\circ}}^{n}\left[\P_{M \vert Y^{n}}^{n, (\eta)}(m)\right] && \leq &&  \exp \left[\eta\left((\pen(l)-\pen(m)) +\right.\right.\notag\\
+& && && \left.\left. \frac{n}{2} \left( \frac{13}{2} 3H^{2} + \frac{5}{4} \left\Vert \Pi_{l, m} \theta^{\circ} \right\Vert_{l^{2}}^{2} \right) \right)\right] + \notag\\
+& && && \P_{\theta^{\circ}}^{n}\left(\sup\limits_{x \in \mathds{B}_{l, m}} \left\vert \left\langle x \vert \Pi_{l, m} (\overline{\theta} - \theta^{\circ}) \right\rangle \right\vert_{l^{2}}^{2} > 6H^{2}\right).
+\end{alignat*}
+
+In particular with $l = m^{\dagger}_{n}$, set $H^{2} = 2 \frac{\Lambda_{(m)} m \psi_{n}}{n}$.
+Using the definitions of $\pen$ and $\Phi^{\dagger}_{n}$ and finishing with $\kappa = 41/4$ we obtain
+
+\begin{alignat}{3}
+& \E_{\theta^{\circ}}^{n}\left[\P_{M \vert Y^{n}}^{n, (\eta)}(m)\right] && \leq &&  \exp \left[\frac{\eta n}{2}\left(\left(\frac{169}{4}\right) \mathfrak{b}_{0}^{2}(\theta^{\circ}) \Phi^{\dagger}_{n} - 2 \frac{m \Lambda_{(m)} \psi_{n}}{n} \right)\right] + \notag\\
+& && && \P_{\theta^{\circ}}^{n}\left(\sup\limits_{x \in \mathds{B}_{m^{\dagger}_{n}, m}} \left\vert \left\langle x \vert \Pi_{m^{\dagger}_{n}, m} (\overline{\theta} - \theta^{\circ}) \right\rangle \right\vert_{l^{2}}^{2} > 6H^{2}\right).\label{EQD.36}
+\end{alignat}
+
+%\begin{alignat}{3}
+%& \E_{\theta^{\circ}}^{n}\left[\P_{M \vert Y^{n}}^{n, (\eta)}(m)\right] && \leq && \exp \left[\frac{n\eta}{2}\left(\left(\frac{23}{2}\right) \mathfrak{b}_{0}^{2} \Phi^{\dagger}_{n} - 2 \frac{m \Lambda_{(m)} \psi_{n}}{n} \right)\right] + \notag\\
+%& && && 3 \left(\exp\left[- \frac{m\psi_{n}}{800 s \Vert \theta^{\circ} \Vert_{l^{2}} \cdot \Vert \lambda \Vert_{l^{2}}}\right] + \exp\left[ \frac{- \sqrt{ rm\psi_{n}}}{100 \sqrt{ 2 s m}}\right]\right) +\notag\\
+%& && && 3 r\beta_{s} \label{EQD.37}.
+%\end{alignat}
+
+\bigskip
+
+We will now conclude using the definitions of $G^{\dagger -}_{n}$ and $G^{\dagger +}_{n}$.
+
+Consider \nref{EQD.32}.
+As for all $m < G^{\dagger -}_{n}$, we have $\mathfrak{b}_{m}^{2}(\theta^{\circ}) > 141 \Phi^{\dagger}_{n} \mathfrak{b}_{0}^{2}(\theta^{\circ})$ and using \nref{EQD.35}
+
+
+\begin{alignat*}{4}
+& \E_{\theta^{\circ}}^{n}\left[\P_{M \vert Y^{n}}^{n, (\eta)}(\llbracket 1, G^{-}_{n} - 1 \rrbracket)\right]&& \leq && && G^{-}_{n} \exp \left[- \frac{\eta n}{2}\left( \mathfrak{b}_{0}^{2}(\theta^{\circ}) \Phi^{\dagger}_{n} \right)\right] + \notag\\
+& && && && \sum\limits_{m = 1}^{G^{-}_{n} - 1} \P_{\theta^{\circ}}^{n}\left(\sup\limits_{x \in \mathds{B}_{m, m^{\dagger}_{n}}} \left\vert \left\langle x \vert \Pi_{m, m^{\dagger}_{n}} (\overline{\theta} - \theta^{\circ}) \right\rangle \right\vert_{l^{2}}^{2} > 6H^{2}\right).
+\end{alignat*}
+
+
+%\begin{alignat*}{4}
+%& \E_{\theta^{\circ}}^{n}\left[\P_{M \vert Y^{n}}^{n, (\eta)}(\llbracket 1, G^{-}_{n} - 1) \rrbracket\right] && \leq && G^{-}_{n} \exp && \left[- \frac{ n \eta \mathfrak{b}_{0}^{2}(\theta^{\circ}) \Phi^{\dagger}_{n}}{2}\right] + \\
+%& && && && 3 G^{-}_{n} \left(\exp\left[- \frac{(m^{\dagger}_{n})\psi_{n}}{800 s \Vert \theta^{\circ} \Vert_{l^{2}} \cdot \Vert \lambda \Vert_{l^{2}}}\right] + \exp\left[ \frac{-\sqrt{r \psi_{n}}}{100 \sqrt{2 s}}\right] + r\beta_{s}\right)\\
+%& && \leq && 4 m^{\dagger}_{n} && \left(\exp\left[- \frac{(m^{\dagger}_{n})\psi_{n}}{800 s \Vert \theta^{\circ} \Vert_{l^{2}} \cdot \Vert \lambda \Vert_{l^{2}}}\right] + \exp\left[ \frac{-\sqrt{r \psi_{n}}}{100 \sqrt{2 s}}\right] + r\beta_{s}\right).
+%\end{alignat*}
+
+Consider \nref{EQD.33}.
+As for all $m > G^{\dagger +}_{n}$, we have $m \Lambda_{(m)} \psi_{n} > \frac{173}{4} \mathfrak{b}_{0}^{2}(\theta^{\circ}) n \Phi^{\dagger}_{n}$, with a constant $C_{\theta^{\circ}, \lambda} > \sum\limits_{m = 1}^{\infty} \exp \left[- \eta \frac{m \Lambda_{(m)} \psi_{n}}{2}\right]$ and using \nref{EQD.37}
+
+\begin{alignat*}{3}
+& \E_{\theta^{\circ}}^{n}\left[\P_{M \vert Y^{n}}^{n, (\eta)}(\llbracket G^{+}_{n} + 1, n \rrbracket )\right] && \leq && \exp \left[- \eta \frac{\mathfrak{b}_{0}^{2}(\theta^{\circ}) n \Phi^{\dagger}_{n}}{2}\right] \sum\limits_{m = G^{+}_{n} + 1}^{n} \exp \left[- \eta \frac{m \Lambda_{(m)} \psi_{n}}{2}\right] +\\
+& && && \sum\limits_{m = G^{+} + 1}^{n} \P_{\theta^{\circ}}^{n}\left(\sup\limits_{x \in \mathds{B}_{m^{\dagger}_{n}, m}} \left\vert \left\langle x \vert \Pi_{m^{\dagger}_{n}, m} (\overline{\theta} - \theta^{\circ}) \right\rangle \right\vert_{l^{2}}^{2} > 6H^{2}\right)\\
+& && \leq && C_{\theta^{\circ}, \lambda} \exp \left[- \eta \frac{\mathfrak{b}_{0}^{2}(\theta^{\circ}) n \Phi^{\dagger}_{n}}{2}\right] +\\
+& && && \sum\limits_{m = G^{+} + 1}^{n} \P_{\theta^{\circ}}^{n}\left(\sup\limits_{x \in \mathds{B}_{m^{\dagger}_{n}, m}} \left\vert \left\langle x \vert \Pi_{m^{\dagger}_{n}, m} (\overline{\theta} - \theta^{\circ}) \right\rangle \right\vert_{l^{2}}^{2} > 6H^{2}\right).
+\end{alignat*}
+
+%\begin{alignat*}{3}
+%& \E_{\theta^{\circ}}^{n}\left[\P_{M \vert Y^{n}}^{n, (\eta)}(\llbracket G^{+}_{n} + 1 , n \rrbracket)\right] && \leq && \sum\limits_{m = G^{+}_{n} + 1}^{n}\left(\exp \left[- \frac{\psi_{n} \eta m \Lambda_{(m)}}{2} - \frac{ \mathfrak{b}_{0}^{2}(\theta^{\circ}) n \Phi^{\dagger}_{n}}{2}\right]\right) + \\
+%& && && 3 \sum\limits_{m = G^{+}_{n} + 1}^{n} \left(\exp\left[- \frac{m\psi_{n}}{800 s \Vert \theta^{\circ} \Vert_{l^{2}} \cdot \Vert \lambda \Vert_{l^{2}}}\right] + \exp\left[ \frac{- \sqrt{ r \psi_{n}}}{\sqrt{2 s} 100}\right] + r\beta_{s}\right)\\
+%& && \leq && \exp \left[- \frac{ \mathfrak{b}_{0}^{2}(\theta^{\circ}) n \Phi^{\dagger}_{n}}{2}\right]\underbrace{\sum\limits_{m = G^{+}_{n} + 1}^{n}\left(\exp \left[- \frac{\psi_{n} \eta m \Lambda_{(m)}}{2}\right]\right)}_{\leq 5 C_{\theta^{\circ} \lambda}/ 6} + \\
+%& && && 3 \left(\exp\left[- \frac{G^{+}_{n}\psi_{n}}{800 s \Vert \theta^{\circ} \Vert_{l^{2}} \cdot \Vert \lambda \Vert_{l^{2}}}\right] + \exp\left[ \frac{- \sqrt{ r \psi_{n}}}{\sqrt{2 s} 100}\right]\right) \cdot \\
+%& && &&\underbrace{\left(\sum\limits_{m = 1}^{n} \exp\left[- \frac{m\psi_{n}}{800 s \Vert \theta^{\circ} \Vert_{l^{2}} \cdot \Vert \lambda \Vert_{l^{2}}}\right] + \exp\left[ \frac{- \sqrt{ r \psi_{n}}}{\sqrt{2 s} 100}\right] \right)}_{\leq C_{\theta^{\circ} \lambda}/6} + n r\beta_{s}\\
+%& && \leq && C_{\theta^{\circ}\lambda} \left(\exp\left[- \frac{m^{\dagger}_{n}\psi_{n}}{800 s \Vert \theta^{\circ} \Vert_{l^{2}} \cdot \Vert \lambda \Vert_{l^{2}}}\right] + \exp\left[ \frac{- \sqrt{ r \psi_{n}}}{\sqrt{2 s} 100}\right]\right) + n r \beta_{s}.
+%\end{alignat*}
+
+Which proves the statement.
+
+%\begin{alignat*}{2}
+%& \frac{2 \Lambda_{(m^{\dagger}_{n})}}{n} && \left(2(m^{\dagger}_{n}-m+1) \left\{1 + 2 \left[\gamma_{\theta^{\circ} \lambda}\frac{S}{\sqrt{2(m^{\dagger}_{n}-m+1)}} + 2 \sum\limits_{p = S+1}^{s-1} \beta(E^{\perp}_{1, 0},E^{\perp}_{1, p})\right]\right\}\right)\\
+%& && \leq \frac{2 \Lambda_{(m^{\dagger}_{n})}}{n} \left(2(m^{\dagger}_{n} + 1) \left\{1 + 2 \left[\gamma_{\theta^{\circ} \lambda}\frac{S}{\sqrt{2(m^{\dagger}_{n}-G^{-}_{n}+1)}} + 2 \sum\limits_{p = S+1}^{s-1} \beta(E^{\perp}_{1, 0},E^{\perp}_{1, p})\right]\right\}\right)\\
+%\end{alignat*}
+%
+%Take \textcolor{red}{$S = \left\lfloor\frac{\sqrt{2 \left(m^{\dagger}_{n} - G^{-}_{n} + 1\right)}}{\gamma_{\theta^{\circ} \lambda}}\right\rfloor \rightarrow \infty$} so for $n$ large enough, $\sum\limits_{p = S+1}^{s-1} \beta(E^{\perp}_{1, 0},E^{\perp}_{1, p}) < \frac{1}{8}$
+%
+%\begin{alignat*}{2}
+%& \frac{2 \Lambda_{(m^{\dagger}_{n})}}{n} && \left(2(m^{\dagger}_{n}-m+1) \left\{1 + 2 \left[\gamma_{\theta^{\circ} \lambda}\frac{S}{\sqrt{2(m^{\dagger}_{n}-m+1)}} + 2 \sum\limits_{p = S+1}^{s-1} \beta(E^{\perp}_{1, 0},E^{\perp}_{1, p})\right]\right\}\right)\\
+%& && \leq \frac{2 \Lambda_{(m^{\dagger}_{n})}}{n} \left(2(m^{\dagger}_{n} + 1) \left\{1 + 2 \left[\gamma_{\theta^{\circ} \lambda}\frac{S}{\sqrt{2(m^{\dagger}_{n}-G^{\dagger}_{-}+1)}} + \frac{1}{4}\right]\right\}\right)\\
+%& && \leq \frac{14 (m^{\dagger}_{n} + 1)\Lambda_{(m^{\dagger}_{n})}}{n}
+%\end{alignat*}
+%
+%\begin{alignat}{4}
+%& \E_{\theta^{\circ}}^{n}\left[\P_{M \vert Y^{n}}^{n, (\eta)}(\llbracket 1, G^{-}_{n} - 1 \rrbracket)\right] && \leq && \sum\limits_{m = 1}^{G^{-}_{n} - 1} \exp&&\left[\eta\left((\pen(m^{\dagger}_{n})-\pen(m)) +\right.\right. \notag\\
+%& && && &&\left.\left. \frac{n}{2} \left( \frac{21}{2} 3H^{2} - \frac{3}{4} \left( \mathfrak{b}_{m}^{2}\left(\theta^{\circ}\right) - \mathfrak{b}_{m^{\dagger}_{n}}^{2}\left(\theta^{\circ}\right) \right) \right) \right)\right] +\notag\\
+%& && && && 3 \exp\left[- K n \left(\frac{\gamma^{2}}{v} \wedge \frac{\gamma}{h}\right)\right]\notag\\
+%& && \leq &&\sum\limits_{m = 1}^{G^{-}_{n} - 1} \exp&&\left[\eta\left((\pen(m^{\dagger}_{n})-\pen(m)) +\right.\right. \notag\\
+%& && && &&\left.\left. \frac{3 n}{4} \left( 21 \frac{14 \left(m^{\dagger}_{n} + 1\right) \Lambda_{(m^{\dagger}_{n})} \psi_{n}}{n} - \frac{1}{2} \left( \mathfrak{b}_{m}^{2}\left(\theta^{\circ}\right) - \mathfrak{b}_{m^{\dagger}_{n}}^{2}\left(\theta^{\circ}\right) \right) \right) \right)\right] +\notag\\
+%& && && && 3 \exp\left[- K n \left(\frac{14 (m^{\dagger}_{n} + 1) \psi_{n}}{n \Vert \theta^{\circ} \Vert_{l^{2}} \cdot \Vert \lambda \Vert_{l^{2}}} \wedge \sqrt{\frac{14 (m^{\dagger}_{n} + 1)\psi_{n}}{n}}\right)\right]\notag\\
+%\end{alignat}
+%
+%\begin{alignat*}{3}
+%& \E_{\theta^{\circ}}^{n}\left[\P_{M \vert Y^{n}}^{n, (\eta)}\left(\llbracket 0, G^{\dagger -}_{n} - 1 \rrbracket\right)\right] && \leq && G^{\dagger -}_{n} \exp\left[- \frac{\mathfrak{b}_{0}^{2}(\theta^{\circ}) n \Phi^{\dagger}_{n}}{2} \right] + 3 G^{\dagger -}_{n} \exp\left[ -K \left(\frac{\psi_{n} 2 m^{\dagger}_{n}}{\Vert \lambda \Vert_{l^{2}} \Vert \theta^{\circ} \Vert_{l^{2}}} \wedge \sqrt{n \psi_{n}} \right)\right]\\
+%& && \leq && 4 m^{\dagger}_{n} \exp\left[ -K \left(\frac{\psi_{n} 2 m^{\dagger}_{n}}{\Vert \lambda \Vert_{l^{2}} \Vert \theta^{\circ} \Vert_{l^{2}}} \wedge \sqrt{n \psi_{n}} \right)\right].
+%\end{alignat*}
+%
+%Now for \nref{EQD.33}.
+%As for all $m > G^{\dagger +}_{n}$, we have $\psi_{n} m \Lambda_{(m)} > \frac{25}{3} n \Phi^{\dagger}_{n} \mathfrak{b}_{0}^{2}$, using \nref{EQC.18}
+%
+%\begin{alignat*}{2}
+%& \frac{2 \Lambda_{(m)}}{n} && \left(2(m-m^{\dagger}_{n}+1) \left\{1 + 2 \left[\gamma_{\theta^{\circ} \lambda}\frac{S}{\sqrt{2(m-m^{\dagger}_{n}+1)}} + 2 \sum\limits_{p = S+1}^{s-1} \beta(E^{\perp}_{1, 0},E^{\perp}_{1, p})\right]\right\}\right)\\
+%& && \leq \frac{2 \Lambda_{(m)}}{n} \left(2(m + 1) \left\{1 + 2 \left[\gamma_{\theta^{\circ} \lambda}\frac{S}{\sqrt{2(G^{+}_{n}-m^{\dagger}_{n}+1)}} + 2 \sum\limits_{p = S+1}^{s-1} \beta(E^{\perp}_{1, 0},E^{\perp}_{1, p})\right]\right\}\right)\\
+%\end{alignat*}
+%
+%Take \textcolor{red}{$S = \left\lfloor\frac{\sqrt{2 \left(G^{+}_{n} - m^{\dagger}_{n} + 1\right)}}{\gamma_{\theta^{\circ} \lambda}}\right\rfloor \rightarrow \infty$} so for $n$ large enough, $\sum\limits_{p = S+1}^{s-1} \beta(E^{\perp}_{1, 0},E^{\perp}_{1, p}) < \frac{1}{8}$
+%
+%\begin{alignat*}{2}
+%&  \frac{2 \Lambda_{(m)}}{n} && \left(2(m-m^{\dagger}_{n}+1) \left\{1 + 2 \left[\gamma_{\theta^{\circ} \lambda}\frac{S}{\sqrt{2(m-m^{\dagger}_{n}+1)}} + 2 \sum\limits_{p = S+1}^{s-1} \beta(E^{\perp}_{1, 0},E^{\perp}_{1, p})\right]\right\}\right)\\
+%& && \leq \frac{2 \Lambda_{(m)}}{n} \left(2(m + 1) \left\{1 + 2 \left[\gamma_{\theta^{\circ} \lambda}\frac{S}{\sqrt{2(G^{+}_{n}-m^{\dagger}_{n}+1)}} + \frac{1}{4}\right]\right\}\right)\\
+%& && \leq \frac{14 (m + 1)\Lambda_{(m)}}{n}
+%\end{alignat*}
+%
+%\begin{alignat*}{3}
+%& \E_{\theta^{\circ}}^{n}&& &&\left[\P_{M \vert Y^{n}}^{n, (\eta)}\left(\llbracket G^{\dagger +}_{n} + 1, n \rrbracket\right)\right]\\
+%& && \leq && \sum\limits_{G^{\dagger +} < m \leq n}\exp\left[\frac{n \eta}{2} \left(12 \mathfrak{b}_{0}^{2}(\theta^{\circ}) \Phi^{\dagger}_{n} - 2 \frac{m \Lambda_{(m)}}{n} \psi_{n} \right)\right] +\notag\\
+%& && && 3 \sum\limits_{G^{\dagger +} < m \leq n} \exp\left[ -K \left(\frac{\psi_{n} 2 m}{\Vert \lambda \Vert_{l^{2}} \Vert \theta^{\circ} \Vert_{l^{2}}} \wedge \sqrt{n \psi_{n}} \right)\right]\\
+%& && \leq && \sum\limits_{G^{\dagger +} < m \leq n} \exp\left[\eta\left(-\frac{\mathfrak{b}_{0}^{2}(\theta^{\circ}) n \Phi^{\dagger}_{n}}{2} - \frac{\psi_{n} m \Lambda_{(m)}}{2}\right)\right] +\notag\\
+%& && && \exp\left[ -K \left(\frac{\psi_{n} 2 G^{+}_{n}}{\Vert \lambda \Vert_{l^{2}} \Vert \theta^{\circ} \Vert_{l^{2}}} \wedge \sqrt{n \psi_{n}} \right)\right]\cdot \sum\limits_{G^{\dagger +} < m \leq n} \frac{\exp\left[ -K \left(\frac{\psi_{n} 2 m}{\Vert \lambda \Vert_{l^{2}} \Vert \theta^{\circ} \Vert_{l^{2}}} \wedge \sqrt{n \psi_{n}} \right)\right]}{\exp\left[ -K \left(\frac{\psi_{n} 2 G^{+}_{n}}{\Vert \lambda \Vert_{l^{2}} \Vert \theta^{\circ} \Vert_{l^{2}}} \wedge \sqrt{n \psi_{n}} \right)\right]}\\
+%& && \leq && \exp\left[-\frac{\eta \mathfrak{b}_{0}^{2}(\theta^{\circ}) n \Phi^{\dagger}_{n}}{2}\right]\sum\limits_{1 < m \leq n} \exp\left[- \frac{\eta \psi_{n} m \Lambda_{(m)}}{2}\right] +\\
+%& && && \exp\left[ -K \left(\frac{\psi_{n} 2 G^{+}_{n}}{\Vert \lambda \Vert_{l^{2}} \Vert \theta^{\circ} \Vert_{l^{2}}} \wedge \sqrt{n \psi_{n}} \right)\right]\cdot \sum\limits_{1 < m \leq n} \exp\left[ -K \left(\frac{\psi_{n} 2 m}{\Vert \lambda \Vert_{l^{2}} \Vert \theta^{\circ} \Vert_{l^{2}}} \wedge \sqrt{n \psi_{n}} \right)\right]\\
+%& && \leq &&  C_{\lambda, \theta^{\circ}} \exp\left[ -K \left(\frac{\psi_{n} 2 G^{\dagger +}_{n} }{\Vert \lambda \Vert_{l^{2}} \Vert \theta^{\circ} \Vert_{l^{2}}} \wedge \sqrt{n \psi_{n}} \right)\right].
+%\end{alignat*}
+%
+%Which completes the proof.
+
+\qedsymbol
+\end{pro}
+
+
+\begin{pro}{Proof of \nref{PRD.5.3}\\}\label{PROD.5.3}
+
+In this part, let $m$ and $l$ be two positive integers with $m < l$.
+
+We have, for any $t$ in $\mathds{B}_{m, l}$
+\begin{alignat*}{3}
+&\left\langle t \vert \overline{\theta} \right\rangle_{l^{2}} && = && \frac{1}{n} \sum\limits_{p = 1}^{n} \sum\limits_{m \leq \vert j \vert \leq l} \left(\frac{t_{j}}{\overline{\lambda}_{j}} \cdot e_{j}\left(- Y_{p}^{n}\right)\right)\\
+& && = && \frac{1}{n} \sum\limits_{p = 1}^{n} \mathcal{F}^{-1}\left(\frac{t}{\overline{\lambda}}\right)\left(- Y_{p}^{n}\right).
+\end{alignat*}
+So we define for any $t$ in $\mathds{B}_{m, l}$ the functional $\nu_{t} := \sum\limits_{m \leq \vert j \vert \leq l} \left(\frac{t_{j}}{\overline{\lambda}_{j}}\right) e_{j} = \mathcal{F}^{-1}\left(\frac{t}{\overline{\lambda}}\right)$ and we obtain
+\[\overline{\nu}_{t} := \left\langle t \vert \overline{\theta} - \theta^{\circ} \right\rangle_{l^{2}} = \frac{1}{n} \sum\limits_{p = 1}^{n} \left(\nu_{t}\left(Y_{p}\right) - \E_{\theta^{\circ}}^{n}\left[\nu_{t}\left(Y_{p}^{n}\right)\right]\right)\]
+
+\medskip
+
+Then, for any $t$ in $\mathds{B}_{m, l}$ and $x$ in $\mathcal{L}^{2}$ we define $v_{t}(x) = \frac{1}{s} \sum\limits_{p = 1}^{s} \nu_{t}(x_{p})$, so we can write $\frac{1}{n} \sum\limits_{p = 1}^{n} \nu_{t}(Y_{p}^{n}) = \frac{1}{2} \left\{ \frac{1}{r} \sum\limits_{q = 1}^{r} v_{t}(E_{q}) + \frac{1}{r} \sum\limits_{q = 1}^{r} v_{t}(O_{q}) \right\}$, which gives
+\begin{alignat*}{3}
+& \left\langle t \vert \overline{\theta} - \theta^{\circ}\right\rangle && = && \frac{1}{n} \sum\limits_{p = 1}^{n} \left(\nu_{t}(Y_{p}^{n}) - \E_{\theta^{\circ}}^{n}\left[\nu_{t}(Y_{p}^{n})\right]\right)\\
+& && = && \frac{1}{2} \left(\underbrace{\frac{1}{r} \sum\limits_{q = 1}^{r} \left(v_{t}(E_{q})- \E_{\theta^{\circ}}^{n}\left[v_{t}(E_{q})\right]\right)}_{=: \overline{\nu}_{t}^{e}} + \underbrace{\frac{1}{r} \sum\limits_{q = 1}^{r} \left(v_{t}(O_{q})- \E_{\theta^{\circ}}^{n}\left[v_{t}(O_{q})\right]\right)}_{=: \overline{\nu}_{t}^{o}}\right)
+\end{alignat*}
+Similarly, we define for any $t$ in $\mathds{B}_{m, l}$ the quantities $\overline{\nu}_{t}^{e, \perp} := \frac{1}{r} \sum\limits_{q = 1}^{r} \left(v_{t}(E_{q}^{\perp})- \E_{\theta^{\circ}}^{n}\left[v_{t}(E_{q}^{\perp})\right]\right)$ and $\overline{\nu}_{t}^{o, \perp} := \frac{1}{r} \sum\limits_{q = 1}^{r} \left(v_{t}(O_{q}^{\perp})- \E_{\theta^{\circ}}^{n}\left[v_{t}(O_{q}^{\perp})\right]\right)$ which combined give $\overline{\nu}_{t}^{\perp} := \frac{1}{2} \left(\overline{\nu}_{t}^{e, \perp} + \overline{\nu}_{t}^{o, \perp}\right)$.
+
+
+Consider first \nref{EQD.26}.
+
+\begin{alignat*}{3}
+& \E_{\theta^{\circ}}^{n} && && \left[ \left(\sup\limits_{t \in \mathds{B}_{m, l}} \left\vert\left\langle t \vert \overline{\theta} - \theta^{\circ}\right\rangle_{l^{2}} \right\vert^{2} - C_{n} \right)_{+} \right] = \E_{\theta^{\circ}}^{n}\left[ \left(\sup\limits_{t \in \mathds{B}_{m, l}} \vert \overline{\nu}_{t} \vert^{2} - C_{n} \right)_{+} \right]\notag\\
+& && \leq && \E_{\theta^{\circ}}^{n}\left[ \left(\sup\limits_{t \in \mathds{B}_{m, l}} \vert \overline{\nu}^{e, \perp}_{t} \vert^{2} - C_{n} \right)_{+} \right] + \E_{\theta^{\circ}}^{n}\left[ \sup\limits_{t \in \mathds{B}_{m, l}} \vert \overline{\nu}^{e, \perp}_{t} - \overline{\nu}^{e}_{t} \vert^{2} \right] + \notag\\
+& && &&\E_{\theta^{\circ}}^{n}\left[ \left(\sup\limits_{t \in \mathds{B}_{m, l}} \vert \overline{\nu}^{o, \perp}_{t} \vert^{2} - C_{n} \right)_{+} \right] + \E_{\theta^{\circ}}^{n}\left[ \sup\limits_{t \in \mathds{B}_{m, l}} \vert \overline{\nu}^{o, \perp}_{t} - \overline{\nu}^{o}_{t} \vert^{2} \right] \notag\\
+& && \leq && 2 \cdot \E_{\theta^{\circ}}^{n}\left[ \left(\sup\limits_{t \in \mathds{B}_{m, l}} \vert \overline{\nu}^{e, \perp}_{t} \vert^{2} - C_{n} \right)_{+} \right] +\\
+& && && 2 \cdot \E_{\theta^{\circ}}^{n}\left[ \sup\limits_{t \in \mathds{B}_{m, l}} \vert \overline{\nu}^{e, \perp}_{t} - \overline{\nu}^{e}_{t} \vert^{2} \right]
+\end{alignat*}
+Which proves the statement.
+
+Consider now \nref{EQD.27}.
+\begin{alignat*}{3}
+& \P_{\theta^{\circ}}^{n}\left(\sup\limits_{t \in \mathds{B}_{m, l}} \left\vert \left\langle t \vert \overline{\theta} - \theta^{\circ}\right\rangle_{l^{2}} \right\vert \geq C_{n}'\right) && = && \P_{\theta^{\circ}}^{n}\left(\sup\limits_{t \in \mathds{B}_{m, l}} \left\vert \overline{\nu}_{t} \right\vert \geq C_{n}'\right)\notag\\
+& && = && \P_{\theta^{\circ}}^{n}\left(\sup\limits_{t \in \mathds{B}_{m, l}} \left\vert \frac{1}{2} \left(\overline{\nu}_{t}^{e} - \overline{\nu}_{t}^{e, \perp} + \overline{\nu}_{t}^{e, \perp} + \overline{\nu}_{t}^{o} - \overline{\nu}_{t}^{o, \perp} + \overline{\nu}_{t}^{o, \perp}\right) \right\vert \geq C_{n}'\right)\notag\\
+& && = && \P_{\theta^{\circ}}^{n}\left(\left\{\sup\limits_{t \in \mathds{B}_{m, l}} \left\vert \frac{1}{2} \left(\overline{\nu}_{t}^{e} - \overline{\nu}_{t}^{e, \perp} + \overline{\nu}_{t}^{e, \perp} + \overline{\nu}_{t}^{o} - \overline{\nu}_{t}^{o, \perp} + \overline{\nu}_{t}^{o, \perp} \right) \right\vert \geq C_{n}'\right\} \cap \right.\notag\\
+& && && \left.\left\{ \overline{\nu}_{t}^{e} = \overline{\nu}_{t}^{e, \perp}, \overline{\nu}_{t}^{o} = \overline{\nu}_{t}^{o, \perp} \right\}\right) + \notag\\
+& && && \P_{\theta^{\circ}}^{n}\left(\left\{\sup\limits_{t \in \mathds{B}_{m, l}} \left\vert \frac{1}{2} \left(\overline{\nu}_{t}^{e} - \overline{\nu}_{t}^{e, \perp} + \overline{\nu}_{t}^{e, \perp} + \overline{\nu}_{t}^{o} - \overline{\nu}_{t}^{o, \perp} + \overline{\nu}_{t}^{o, \perp}\right) \right\vert \geq C_{n}'\right\} \right.\notag\\
+& && && \left.\cap \left\{ \overline{\nu}_{t}^{e} \neq \overline{\nu}_{t}^{e, \perp}, \overline{\nu}_{t}^{o} \neq \overline{\nu}_{t}^{o, \perp} \right\}\right) +\notag\\
+& && && \P_{\theta^{\circ}}^{n}\left(\left\{\sup\limits_{t \in \mathds{B}_{m, l}} \left\vert \frac{1}{2} \left(\overline{\nu}_{t}^{e} - \overline{\nu}_{t}^{e, \perp} + \overline{\nu}_{t}^{e, \perp} + \overline{\nu}_{t}^{o} - \overline{\nu}_{t}^{o, \perp} + \overline{\nu}_{t}^{o, \perp}\right) \right\vert \geq C_{n}'\right\} \right.\notag\\
+& && && \left.\cap \left\{ \overline{\nu}_{t}^{e} \neq \overline{\nu}_{t}^{e, \perp}, \overline{\nu}_{t}^{o} = \overline{\nu}_{t}^{o, \perp} \right\}\right) +\notag\\
+& && && \P_{\theta^{\circ}}^{n}\left(\left\{\sup\limits_{t \in \mathds{B}_{m, l}} \left\vert \frac{1}{2} \left(\overline{\nu}_{t}^{e} - \overline{\nu}_{t}^{e, \perp} + \overline{\nu}_{t}^{e, \perp} + \overline{\nu}_{t}^{o} - \overline{\nu}_{t}^{o, \perp} + \overline{\nu}_{t}^{o, \perp}\right) \right\vert \geq C_{n}'\right\} \right.\notag\\
+& && && \left.\cap \left\{ \overline{\nu}_{t}^{e} = \overline{\nu}_{t}^{e, \perp}, \overline{\nu}_{t}^{o} \neq \overline{\nu}_{t}^{o, \perp} \right\}\right) +\notag\\
+& && \leq && \P_{\theta^{\circ}}^{n}\left(\sup\limits_{t \in \mathds{B}_{m, l}} \left\vert \frac{1}{2} \left(\overline{\nu}_{t}^{e, \perp} + \overline{\nu}_{t}^{o, \perp} \right) \right\vert \geq C_{n}'\right) + \P_{\theta^{\circ}}^{n}\left(\overline{\nu}_{t}^{e} \neq \overline{\nu}_{t}^{e, \perp}, \overline{\nu}_{t}^{o} \neq \overline{\nu}_{t}^{o, \perp}\right) +\notag\\
+& && && \P_{\theta^{\circ}}^{n}\left(\overline{\nu}_{t}^{e} = \overline{\nu}_{t}^{e, \perp}, \overline{\nu}_{t}^{o} \neq \overline{\nu}_{t}^{o, \perp}\right) +\notag\\
+& && && \P_{\theta^{\circ}}^{n}\left(\overline{\nu}_{t}^{e} \neq \overline{\nu}_{t}^{e, \perp}, \overline{\nu}_{t}^{o} = \overline{\nu}_{t}^{o, \perp}\right)\notag\\
+& && \leq && \P_{\theta^{\circ}}^{n}\left(\sup\limits_{t \in \mathds{B}_{m, l}} \left\vert \max\left\{ \overline{\nu}_{t}^{e, \perp}, \overline{\nu}_{t}^{o, \perp} \right\} \right\vert \geq C_{n}'\right) + \notag\\
+& && &&\min\left\{\P_{\theta^{\circ}}^{n}\left(\overline{\nu}_{t}^{e} \neq \overline{\nu}_{t}^{e, \perp}\right), \P\left(\overline{\nu}_{t}^{o} \neq \overline{\nu}_{t}^{o, \perp}\right)\right\} +\notag\\
+& && &&\min\left\{\P_{\theta^{\circ}}^{n}\left(\overline{\nu}_{t}^{e} = \overline{\nu}_{t}^{e, \perp}\right), \P\left(\overline{\nu}_{t}^{o} \neq \overline{\nu}_{t}^{o, \perp}\right)\right\} +\notag\\
+& && &&\min\left\{\P_{\theta^{\circ}}^{n}\left(\overline{\nu}_{t}^{e} \neq \overline{\nu}_{t}^{e, \perp}\right), \P\left(\overline{\nu}_{t}^{o} = \overline{\nu}_{t}^{o, \perp}\right)\right\}\notag\\
+& && \leq && \P_{\theta^{\circ}}^{n}\left(\sup\limits_{t \in \mathds{B}_{m, l}} \left\vert \max\left\{ \overline{\nu}_{t}^{e, \perp}, \overline{\nu}_{t}^{o, \perp} \right\} \right\vert \geq C_{n}' \vert \overline{\nu}_{t}^{e, \perp}\geq \overline{\nu}_{t}^{o, \perp} \right)\cdot \P\left(\overline{\nu}_{t}^{e, \perp}\geq \overline{\nu}_{t}^{o, \perp}\right) +\notag\\
+& && && \P_{\theta^{\circ}}^{n}\left(\sup\limits_{t \in \mathds{B}_{m, l}} \left\vert \max\left\{ \overline{\nu}_{t}^{e, \perp}, \overline{\nu}_{t}^{o, \perp} \right\} \right\vert \geq C_{n}' \vert \overline{\nu}_{t}^{e, \perp}\leq \overline{\nu}_{t}^{o, \perp} \right)\cdot \P\left(\overline{\nu}_{t}^{e, \perp}\leq \overline{\nu}_{t}^{o, \perp}\right) + \notag\\
+& && && 3 \P_{\theta^{\circ}}^{n}\left(\overline{\nu}_{t}^{e} \neq \overline{\nu}_{t}^{e, \perp}\right)
+\end{alignat*}
+
+\begin{alignat*}{3}
+& && \leq && \P_{\theta^{\circ}}^{n}\left(\sup\limits_{t \in \mathds{B}_{m, l}} \left\vert \overline{\nu}_{t}^{e, \perp} \right\vert \geq C_{n}' \right)\cdot \P\left(\overline{\nu}_{t}^{e, \perp}\geq \overline{\nu}_{t}^{o, \perp}\right) +\notag\\
+& && && \P_{\theta^{\circ}}^{n}\left(\sup\limits_{t \in \mathds{B}_{m, l}} \left\vert \overline{\nu}_{t}^{o, \perp}  \right\vert \geq C_{n}' \right)\cdot \P\left(\overline{\nu}_{t}^{e, \perp}\leq \overline{\nu}_{t}^{o, \perp}\right) + \notag\\
+& && && 3 \P_{\theta^{\circ}}^{n}\left(\overline{\nu}_{t}^{e} \neq \overline{\nu}_{t}^{e, \perp}\right)\notag\\
+& && \leq && \P_{\theta^{\circ}}^{n}\left(\sup\limits_{t \in \mathds{B}_{m, l}} \left\vert \overline{\nu}_{t}^{e, \perp} \right\vert \geq C_{n}' \right) + 3 \P_{\theta^{\circ}}^{n}\left(\overline{\nu}_{t}^{e} \neq \overline{\nu}_{t}^{e, \perp}\right)
+\end{alignat*}
+Which completes the proof.
+
+\qedsymbol
+\end{pro}
+
+
+
+\begin{pro}{\textsc{Proof of \nref{PRD.5.4}}\\}\label{PROD.5.4}
+
+We will use Talagrand's inequality with, for any $t$ in $\mathds{B}_{m, l}$
+\begin{alignat*}{3}
+& \overline{\nu}^{e, \perp}_{t} && = && \frac{1}{r} \sum\limits_{q = 1}^{r} \left(v_{t}(E^{\perp}_{q}) - \E_{\theta^{\circ}}^{n}\left[v_{t}(E^{\perp}_{q})\right]\right)\\
+& v_{t}(E^{\perp}_{q}) && = && \frac{1}{s} \sum\limits_{p = 1}^{s} \nu_{t}(E^{\perp}_{q, p})\\
+& \nu_{t}(E^{\perp}_{q, p}) && = && \sum\limits_{m \leq \vert j \vert \leq l} \left(\frac{t_{j}}{\overline{\lambda_{j}}} e_{j}(E^{\perp}_{q, p})\right)
+\end{alignat*}
+
+\begin{alignat*}{3}
+& \sup\limits_{t \in \mathds{B}_{m,l}} \sup\limits_{x \in [0, 1]^{s}} \vert v_{t}(x) \vert^{2} && = && \sup\limits_{t \in \mathds{B}_{m,l}} \sup\limits_{x \in [0, 1]^{s}} \left\vert \frac{1}{s} \sum\limits_{p = 1}^{s} \nu_{t}(x_{p}) \right\vert^{2}\\
+& && = && \sup\limits_{t \in \mathds{B}_{m,l}} \sup\limits_{x \in [0, 1]^{s}} \left\vert \frac{1}{s} \sum\limits_{p = 1}^{s} \sum\limits_{m \leq \vert j \vert \leq l} \left(\frac{t_{j}}{\overline{\lambda_{j}}} e_{j}(x_{p})\right) \right\vert^{2}\\
+& && \leq && \sup\limits_{t \in \mathds{B}_{m,l}} \sup\limits_{x \in [0, 1]^{s}} \frac{1}{s^{2}}  \sum\limits_{m \leq \vert j \vert \leq l} \left\vert t_{j} \right\vert^{2} \Lambda_{j} \underbrace{\left\vert \sum\limits_{p = 1}^{s} e_{j}(x_{p}) \right\vert^{2}}_{\leq s^{2}}\\
+& && \leq && \sup\limits_{t \in \mathds{B}_{m,l}} \sum\limits_{m \leq \vert j \vert \leq l} \left\vert t_{j} \right\vert^{2} \Lambda_{j}\\
+& && \leq && \sum\limits_{m \leq \vert j \vert \leq l} \Lambda_{j}.
+\end{alignat*}
+
+Hence we define \textcolor{red}{$h^{2} := \delta^{\star}_{m, l} \geq \sum\limits_{m \leq \vert j \vert \leq l} \Lambda_{j}$.}
+
+\medskip
+
+To define $H^{2}$, we define the following objects: $\overline{e}_{j}(E_{q}^{\perp}) := \frac{1}{s} \sum\limits_{p = 1}^{s} e_{j}(E^{\perp}_{q, p})$ and $\overline{e}(E_{q}^{\perp}) = \left(\overline{e}_{j}(E_{q}^{\perp})\right)_{j \in \mathds{Z}}$.
+
+We use \nref{lmB.0.2} in the last line to conclude:
+
+\begin{alignat*}{4}
+& \E_{\theta^{\circ}}&&\left[\sup\limits_{t \in \mathds{B}_{m,l}} \left\vert \overline{\nu}^{e, \perp}_{t}\right\vert^{2}\right] && = && \E_{\theta^{\circ}}\left[\sup\limits_{t \in \mathds{B}_{m,l}} \left\vert \frac{1}{r} \sum\limits_{q = 1}^{r} \left(v_{t}(E^{\perp}_{q}) - \E_{\theta^{\circ}}^{n}\left[v_{t}(E^{\perp}_{q})\right]\right)\right\vert^{2}\right]\\
+& && = && \E_{\theta^{\circ}}&&\left[\sup\limits_{t \in \mathds{B}_{m,l}} \left\vert \frac{1}{r} \sum\limits_{q = 1}^{r} \left(\frac{1}{s} \sum\limits_{p = 1}^{s} \nu_{t}(E^{\perp}_{q, p}) - \E_{\theta^{\circ}}^{n}\left[\frac{1}{s} \sum\limits_{p = 1}^{s} \nu_{t}(E^{\perp}_{q, p})\right]\right)\right\vert^{2}\right]\\
+& && = && \E_{\theta^{\circ}}&&\left[\sup\limits_{t \in \mathds{B}_{m,l}} \left\vert \frac{1}{r} \sum\limits_{q = 1}^{r} \left(\frac{1}{s} \sum\limits_{p = 1}^{s} \sum\limits_{m \leq \vert j \vert \leq l} \left(\frac{t_{j}}{\overline{\lambda_{j}}} e_{j}(E^{\perp}_{q, p})\right) \right.\right.\right. \\
+& && && && \left.\left.\left.- \E_{\theta^{\circ}}^{n}\left[\frac{1}{s} \sum\limits_{p = 1}^{s} \sum\limits_{m \leq \vert j \vert \leq l} \left(\frac{t_{j}}{\overline{\lambda_{j}}} e_{j}(E^{\perp}_{q, p})\right)\right]\right)\right\vert^{2}\right]\\
+& && = && \E_{\theta^{\circ}}&&\left[\sup\limits_{t \in \mathds{B}_{m,l}} \frac{1}{r^{2}}\left\vert \sum\limits_{q = 1}^{r} \left( \sum\limits_{m \leq \vert j \vert \leq l}\frac{t_{j}}{\overline{\lambda_{j}}} \sum\limits_{p = 1}^{s}\frac{1}{s} e_{j}(E^{\perp}_{q, p}) \right.\right.\right. \\
+& && && && \left.\left.\left.- \E_{\theta^{\circ}}^{n}\left[ \sum\limits_{m \leq \vert j \vert \leq l} \frac{t_{j}}{\overline{\lambda_{j}}} \sum\limits_{p = 1}^{s} \frac{1}{s} e_{j}(E^{\perp}_{q, p})\right]\right)\right\vert^{2}\right]\\
+& && = && \E_{\theta^{\circ}}&&\left[\sup\limits_{t \in \mathds{B}_{m,l}} \frac{1}{r^{2}}\left\vert \sum\limits_{q = 1}^{r} \left\langle t \vert \frac{\overline{e}(-E^{\perp}_{q})}{\lambda} - \overline{\theta^{\circ}} \right\rangle \right\vert^{2}\right]\\
+& && \leq && \E_{\theta^{\circ}}&&\left[\sup\limits_{t \in \mathds{B}_{m,l}} \frac{1}{r^{2}}\left\Vert t \right\Vert_{l^{2}}^{2} \sum\limits_{q = 1}^{r} \left\Vert \frac{\overline{e}(-E^{\perp}_{q})}{\lambda} - \overline{\theta^{\circ}} \right\Vert_{l^{2}}^{2}\right]\\
+& && \leq && \E_{\theta^{\circ}}&&\left[\frac{1}{r^{2}} \sum\limits_{q = 1}^{r} \left\Vert \Pi_{m, l}\left(\frac{\overline{e}(-E^{\perp}_{q})}{\lambda} - \overline{\theta^{\circ}} \right)\right\Vert_{l^{2}}^{2}\right]\\
+& && \leq && \frac{1}{r}\E_{\theta^{\circ}}&&\left[ \left\Vert \Pi_{m, l}\left(\frac{\overline{e}(-E^{\perp}_{1})}{\lambda} - \overline{\theta^{\circ}}\right) \right\Vert_{l^{2}}^{2}\right]\\
+& && \leq && \frac{1}{r}\E_{\theta^{\circ}}&&\left[ \sum\limits_{m \leq \vert j \vert \leq l} \left\vert \frac{\overline{e}_{j}(E^{\perp}_{1})}{\lambda_{j}} - \theta^{\circ}_{j} \right\vert^{2} \right]\\
+& && \leq && \frac{1}{r} \sum\limits_{m \leq \vert j \vert \leq l} \E_{\theta^{\circ}}&&\left[ \left\vert \frac{\overline{e}_{j}(E^{\perp}_{1})}{\lambda_{j}} - \theta^{\circ}_{j} \right\vert^{2} \right]\\
+& && \leq && \frac{1}{r} \sum\limits_{m \leq \vert j \vert \leq l}\left( \frac{\Lambda_{j}}{s^{2}}\V_{\theta^{\circ}}\right. && \left.\left[ \sum\limits_{p = 1}^{s} e_{j}(E^{\perp}_{1, p}) \right] + \left\vert \frac{1}{\lambda_{j}} \E_{\theta^{\circ}}\left[ e_{j}(E^{\perp}_{1, 1})\right] - \theta^{\circ}_{j} \right\vert^{2}\right)\\
+& && \leq && \frac{\Lambda_{(l)}}{r s} &&\left(2(l-m+1) \left\{1 + 2 \left[\gamma_{\theta^{\circ} \lambda}\frac{S}{\sqrt{2(l-m+1)}} +\right.\right.\right. \\
+& && && && \left.\left.\left. 2 \sum\limits_{p = S+1}^{s-1} \beta(E^{\perp}_{1, 0},E^{\perp}_{1, K})\right]\right\}\right)
+\end{alignat*}
+
+In particular, we set \textcolor{red}{$S := \left\lfloor \frac{\psi_{n} \sqrt{2 \left(l - m + 1\right)}}{\gamma_{\theta^{\circ} \lambda}} \right\rfloor \leq s-1$} so it tends to infinity and $\sum\limits_{p = S+1}^{s-1} \beta(E^{\perp}_{1, 0},E^{\perp}_{1, K}) \leq \frac{1}{8}$ for $n \geq n^{\circ}$ and 
+\begin{alignat*}{3}
+& \E_{\theta^{\circ}}\left[\sup\limits_{t \in \mathds{B}_{m,l}} \left\vert \overline{\nu}^{e, \perp}_{t}\right\vert^{2}\right] && \leq && \frac{6 \Lambda_{(l)}(l-m+1)( \psi_{n} + 1)}{n}
+\end{alignat*}
+
+\textcolor{red}{So we set $H^{2} \geq \frac{6 \Lambda_{(l)}(l-m+1)( \psi_{n} + 1)}{n}$.}
+
+
+Finally we control $v$ in the same way as in \nref{PROD.3.1} and hence \textcolor{red}{$v \geq \Lambda_{(l)} \Vert \theta^{\circ} \Vert_{l^{2}} \cdot \Vert \lambda \Vert_{l^{2}}$.}
+
+Using Talagrand's inequality gives us the result.
+
+\qedsymbol
+\end{pro}
+
+
+
+\begin{pro}{\textsc{Proof of \nref{PRD.5.5}} \\}\label{PROD.5.5}
+Both inequalities are verified using $\P_{\theta^{\circ}}^{n}\left(E_{q} \neq E^{\perp}_{q}\right) \leq \beta_{s}$ and, as it was proven in \nref{PROD.5.2}, $\Vert v_{t} \Vert_{\infty}^{2} \leq \sum\limits_{m \leq \vert j \vert \leq l}\Lambda_{j} \leq h^{2}$.
+
+\medskip
+
+Consider first \nref{EQD.30}.
+\begin{alignat*}{3}
+& \E_{\theta^{\circ}}^{n}\left[\sup\limits_{t \in \mathds{B}_{m, l}} \left\vert \overline{\nu}^{e, \perp}_{t} - \overline{\nu}^{e}_{t} \right\vert^{2} \right] && = && \frac{1}{r^{2}}\E_{\theta^{\circ}}^{n}\left[\sup\limits_{t \in \mathds{B}_{m, l}} \left\vert \sum\limits_{q = 1}^{r} v_{t}(E^{\perp}_{q}) - v_{t}(E_{q})  \right\vert^{2} \right]\\
+& && \leq && 4 \sup\limits_{t \in\mathds{B}_{m, l}} \Vert v_{t} \Vert_{\infty}^{2} \beta_{s}\\
+& && \leq && 4 \beta_{s} \sum\limits_{m \leq \vert j \vert \leq l} \Lambda_{j}
+\end{alignat*}
+
+Consider now \nref{EQD.31}
+\begin{alignat*}{3}
+& \P_{\theta^{\circ}}^{n}\left(\overline{\nu}_{t}^{e} \neq \overline{\nu}_{t}^{e, \perp}\right) && \leq && \P_{\theta^{\circ}}^{n}\left(\bigcup\limits_{q = 1}^{r} E_{q}^{\perp} \neq E_{q}\right)\\
+& && \leq && r \beta_{s}
+\end{alignat*}
+Which completes the proof.
+
+\qedsymbol
+\end{pro}
+
+\begin{pro}{\textsc{Proof of \nref{THM3.5.1}} \\}\label{PROD.5.7}
+We use \nref{EQD.35} and \nref{EQD.33} in \nref{EQD.31} to obtain for any $m$ and $l$ such that $m < l$
+
+\begin{alignat*}{3}
+& \P_{\theta^{\circ}}^{n}\left(\sup\limits_{t \in \mathds{B}_{m, l}} \left\vert \left\langle t \vert \overline{\theta} - \theta^{\circ}\right\rangle_{l^{2}} \right\vert^{2} \geq H^{2} \right) && \leq && 3 \left(\exp\left[- \frac{r H^{2}}{400 v}\right] + \exp\left[ \frac{-r H}{100 h}\right]\right) + 3 r\beta_{s}.
+\end{alignat*}
+
+We inject this result in \nref{EQD.28} with $H^{2} = 2 \frac{\Lambda_{(m^{\dagger}_{n})} m^{\dagger}_{n} \psi_{n}}{n}$, $h^{2} = \Lambda_{(m^{\dagger}_{n})}$ and $v = \Lambda_{(m^{\dagger}_{n}) \Vert \theta^{\circ} \Vert_{l^{2}} \cdot \Vert \lambda \Vert_{l^{2}}}$ to obtain
+
+\begin{alignat}{3}
+& \E_{\theta^{\circ}}^{n}\left[\P_{M \vert Y^{n}}^{n, (\eta)}\left(\left\llbracket 1, G^{-}_{n} - 1 \right\rrbracket\right)\right] && \leq && G^{-}_{n}\exp\left[\frac{- \eta n \mathfrak{b}_{0}^{2}(\theta^{\circ}) \Phi^{\dagger}_{n}}{2}\right] +\notag\\
+& && && 3 \sum\limits_{1 \leq \vert j \vert < G^{-}_{n}}\left(\exp\left[- \frac{m^{\dagger}_{n} \psi_{n}}{400 s \Vert \theta^{\circ} \Vert_{l^{2}} \cdot \Vert \lambda \Vert_{l^{2}}}\right] + \exp\left[ \frac{- \sqrt{r m^{\dagger}_{n} \psi_{n}}}{100\sqrt{s}}\right] + r\beta_{s}\right)\label{EQD.42}
+\end{alignat}
+
+and in similarly in \nref{EQD.29} with $H^{2} = 2 \frac{\Lambda_{(m)} m \psi_{n}}{n}$, $h^{2} = \Lambda_{(m)}$ and $v = \Lambda_{(m) \Vert \theta^{\circ} \Vert_{l^{2}} \cdot \Vert \lambda \Vert_{l^{2}}}$ and fixing $C_{\theta^{\circ}, \lambda} \geq  \sum\limits_{1 < \vert j \vert \leq \infty} \left(\exp\left[- \frac{m \psi_{n}}{400 s \Vert \theta^{\circ} \Vert_{l^{2}} \cdot \Vert \lambda \Vert_{l^{2}}}\right] + \exp\left[ \frac{- \sqrt{r m \psi_{n}}}{100 \sqrt{s}}\right]\right)$ to obtain
+
+\begin{alignat}{3}
+& \E_{\theta^{\circ}}^{n}\left[\P_{M \vert Y^{n}}^{n, (\eta)}(\llbracket G^{+}_{n} + 1, n \rrbracket)\right] && \leq && C_{\theta^{\circ} \lambda} \exp \left[-\frac{\eta \mathfrak{b}_{0}^{2}(\theta^{\circ}) n \Phi^{\dagger}_{n}}{2}\right] +\notag\\
+& && && 3 \left(\exp\left[- \frac{G^{+}_{n} \psi_{n}}{400 s \Vert \theta^{\circ} \Vert_{l^{2}} \cdot \Vert \lambda \Vert_{l^{2}}}\right] + \exp\left[ \frac{- \sqrt{r G^{+}_{n} \psi_{n}}}{100 \sqrt{s}}\right] + G^{+}_{n} r\beta_{s}\right) \cdot\notag\\
+& && && \sum\limits_{1 < \vert j \vert \leq \infty} \left(\exp\left[- \frac{m \psi_{n}}{400 s \Vert \theta^{\circ} \Vert_{l^{2}} \cdot \Vert \lambda \Vert_{l^{2}}}\right] + \exp\left[ \frac{- \sqrt{r m \psi_{n}}}{100 \sqrt{s}}\right]\right)\notag\\
+& && \leq && C_{\theta^{\circ} \lambda} \exp \left[-\frac{\eta \mathfrak{b}_{0}^{2}(\theta^{\circ}) n \Phi^{\dagger}_{n}}{2}\right] +\notag\\
+& && && 3 C_{\theta^{\circ}, \lambda} \left(\exp\left[- \frac{G^{+}_{n} \psi_{n}}{400 s \Vert \theta^{\circ} \Vert_{l^{2}} \cdot \Vert \lambda \Vert_{l^{2}}}\right] + \exp\left[ \frac{- \sqrt{r G^{+}_{n} \psi_{n}}}{100 \sqrt{s}}\right] + G^{+}_{n} r\beta_{s}\right)\label{EQD.43}
+\end{alignat}
+
+We use first \nref{EQD.42} in \nref{EQD.27} to obtain
+
+\begin{alignat}{3}
+& \E_{\theta^{\circ}}^{n}&& &&\left[\P_{M \vert Y^{n}}^{n, (\eta)} \left(\left\llbracket 1, G^{-}_{n} - 1\right\rrbracket \right) \right] \left\Vert \theta^{\circ} \right\Vert_{l^{2}}^{2} + 141 \mathfrak{b}_{0}^{2}(\theta^{\circ}) \Phi^{\dagger}_{n}\notag\\
+& && \leq && G^{-}_{n}\exp\left[\frac{- \eta n \mathfrak{b}_{0}^{2}(\theta^{\circ}) \Phi^{\dagger}_{n}}{2}\right] +\notag\\
+& && && 3 \sum\limits_{1 \leq \vert j \vert < G^{-}_{n}}\left(\exp\left[- \frac{m^{\dagger}_{n} \psi_{n}}{400 s \Vert \theta^{\circ} \Vert_{l^{2}} \cdot \Vert \lambda \Vert_{l^{2}}}\right] + \exp\left[ \frac{- \sqrt{r m^{\dagger}_{n} \psi_{n}}}{100\sqrt{s}}\right] + r\beta_{s}\right).
+\end{alignat}
+
+And we use \nref{EQD.44} and \nref{EQD.31} followed by \nref{EQD.33} and \nref{EQD.35} in \nref{EQD.28} with $H^{2} = 2\frac{\Lambda_{(n)}n\psi_{n}}{r}$, $h^{2} = n \Lambda_{n}$ and $v = \Lambda_{(n)} \Vert \theta^{\circ} \Vert_{l^{2}} \cdot \Vert \lambda \Vert_{l^{2}}$ to obtain
+\begin{alignat}{3}
+& \sum\limits_{0 < \vert j \vert \leq n} && && \E_{\theta^{\circ}}^{n}\left[\P_{M \vert Y^{n}}^{n, (\eta)} \left(\llbracket \vert j \vert, n \rrbracket \right) \left\vert  \overline{\theta}_{j} - \theta^{\circ}_{j} \right\vert^{2}\right] \notag\\
+& &&\leq&& \frac{25 \mathfrak{b}_{0}^{2}(\theta^{\circ}) \Phi^{\dagger}_{n}}{2 \psi_{n}} + \notag\\
+& && && 2 \cdot C \left[\frac{\Lambda_{(n)} \Vert \theta^{\circ} \Vert_{l^{2}} \cdot \Vert \lambda \Vert_{l^{2}}}{r} \exp\left(\frac{-n \Lambda_{(n)} \psi_{n}}{3 \Vert \theta^{\circ} \Vert_{l^{2}} \cdot \Vert \lambda \Vert_{l^{2}}}\right) + \frac{n \Lambda_{(n)}}{r^{2}} \exp\left(\frac{- \sqrt{2 r \psi_{n}}}{100}\right)\right] +\notag\\
+& && && 2 \cdot 4 \beta_{s} \sum\limits_{m \leq \vert j \vert \leq l} \Lambda_{j}+\notag\\
+& && && 2 \Lambda_{(n)} \psi_{n} C_{\theta^{\circ} \lambda} \exp \left[-\frac{\eta \mathfrak{b}_{0}^{2}(\theta^{\circ}) n \Phi^{\dagger}_{n}}{2}\right] +\notag\\
+& && && 3 C_{\theta^{\circ}, \lambda} \left(\exp\left[- \frac{G^{+}_{n} \psi_{n}}{400 s \Vert \theta^{\circ} \Vert_{l^{2}} \cdot \Vert \lambda \Vert_{l^{2}}}\right] + \exp\left[ \frac{- \sqrt{r G^{+}_{n} \psi_{n}}}{100 \sqrt{s}}\right] + G^{+}_{n} r\beta_{s}\right)\label{EQD.47}.
+\end{alignat}
+
+Finally, we combine \nref{EQD.45} and \nref{EQD.46} in \nref{PRD.5.1} to obtain the result:
+
+\begin{alignat*}{3}
+& \E_{\theta^{\circ}}^{n}\left[\left\Vert \widehat{\theta} - \theta^{\circ}\right\Vert_{l^{2}}^{2}\right] && \leq &&  \frac{25 \mathfrak{b}_{0}^{2}(\theta^{\circ}) \Phi^{\dagger}_{n}}{2 \psi_{n}} + \notag\\
+& && && 2 \cdot C \left[\frac{\Lambda_{(n)} \Vert \theta^{\circ} \Vert_{l^{2}} \cdot \Vert \lambda \Vert_{l^{2}}}{r} \exp\left(\frac{-n \Lambda_{(n)} \psi_{n}}{3 \Vert \theta^{\circ} \Vert_{l^{2}} \cdot \Vert \lambda \Vert_{l^{2}}}\right) + \frac{n \Lambda_{(n)}}{r^{2}} \exp\left(\frac{- \sqrt{2 r \psi_{n}}}{100}\right)\right] +\notag\\
+& && && 2 \cdot 4 \beta_{s} \sum\limits_{m \leq \vert j \vert \leq l} \Lambda_{j}+\notag\\
+& && && 2 \Lambda_{(n)} \psi_{n} C_{\theta^{\circ} \lambda} \exp \left[-\frac{\eta \mathfrak{b}_{0}^{2}(\theta^{\circ}) n \Phi^{\dagger}_{n}}{2}\right] +\notag\\
+& && && 3 C_{\theta^{\circ}, \lambda} \left(\exp\left[- \frac{G^{+}_{n} \psi_{n}}{400 s \Vert \theta^{\circ} \Vert_{l^{2}} \cdot \Vert \lambda \Vert_{l^{2}}}\right] + \exp\left[ \frac{- \sqrt{r G^{+}_{n} \psi_{n}}}{100 \sqrt{s}}\right] + G^{+}_{n} r\beta_{s}\right) +\\
+& && && \left(G^{-}_{n}\exp\left[\frac{- \eta n \mathfrak{b}_{0}^{2}(\theta^{\circ}) \Phi^{\dagger}_{n}}{2}\right] + \right.\notag\\
+& && &&\left. 3 \sum\limits_{1 \leq \vert j \vert < G^{-}_{n}}\left(\exp\left[- \frac{m^{\dagger}_{n} \psi_{n}}{400 s \Vert \theta^{\circ} \Vert_{l^{2}} \cdot \Vert \lambda \Vert_{l^{2}}}\right] + \exp\left[ \frac{- \sqrt{r m^{\dagger}_{n} \psi_{n}}}{100\sqrt{s}}\right] + r\beta_{s}\right)\right) \left\Vert \theta^{\circ} \right\Vert_{l^{2}}^{2} +\\
+& && && 141 \mathfrak{b}_{0}^{2}(\theta^{\circ}) \Phi^{\dagger}_{n}.
+\end{alignat*}
+
+which completes the proof.
+
+\qedsymbol
+\end{pro}
+
+
+% ....................................................................
+% <<Re upper bound 1>>
+% ....................................................................
+\begin{lm}\label{re:ub:co1} If $\xdf=\bas_0$ then  there is a finite numerical
+  constant $\cst{}$ such that for all $\dr\ssY\in\Nz$ we have
+  $\FuEx[\ssY]{\rY}\VnormLp{\txdfPr[]-\xdf}^2\leq\cst{}\DipenSv[\ssY_o]\ssY^{-1}$ with  
+$\dr\ssY_o:=\ceil{15(\tfrac{300}{\sqrt{\cpen}})^4}$.
+\end{lm}
+% ....................................................................
+% <<Pro Re upper bound 1>>
+% ....................................................................
+\begin{pro}[Proof of \cref{re:ub:co1}.]
+Let $\dr\ssY_o:=\ceil{15(\tfrac{300}{\sqrt{\cpen}})^4}$. We destinguish for $\ssY\in\Nz$ the following two cases
+cases, \begin{inparaenum}[i]\renewcommand{\theenumi}{\dgrau\rm(\alph{enumi})}\item\label{pro:ub:co1:c1}
+$\ssY\in\nsetro{1,\ssY_o}$ and \item\label{pro:ub:co1:c2}
+$\ssY\geq\ssY_o$.\end{inparaenum}
+
+Consider \ref{pro:ub:co1:c1}. We select 
+$\dr\pDi=\ssY\leq\ssY_o$ and thus keeping in mind that $\xdf=\bas_0$,
+and hence $\VnormLp{\Proj[{\mHiH[0]}]^\perp\xdf}^2=0$  from
+\cref{co:agg} follows for all $\ssY\in\nsetro{1,\ssY_o}$
+\begin{equation}\label{pro:ub:co1:e1}
+\FuEx[\ssY]{\rY}\VnormLp{\txdf-\xdf}^2\leq2\FuEx[\ssY]{\rY}\VnormLp{\txdfPr[\ssY]-\xdfPr[\ssY]}^2\leq4\ssY\oiSv[\ssY]\ssY^{-1}\leq
+4 \ssY_o\oiSv[\ssY_o]\ssY^{-1}\leq4\DipenSv[\ssY_o]\ssY^{-1}.
+\end{equation}
+
+Consider \ref{pro:ub:co1:c2}, i.e., $\ssY\geq\ssY_o$. We select
+$\dr\pdDi:=\ssY_o\in\nset{1,\ssY}$. 
+Note that $\Vnormlp[1]{\fydf}=1$ and hence, $\dr\pDi\geq\pdDi\geq
+3(\tfrac{800\Vnormlp[1]{\fydf}}{\cpen})^2$. Therefore, for all  $\dr
+\ssY\geq \ssY_o\geq 15(\tfrac{300}{\sqrt{\cpen}})^4$ due to \cref{re:ub} 
+ follows
+\begin{multline*}
+\FuEx[\ssY]{\rY}\VnormLp{\txdf-\xdf}^2\leq\cst{}\big\{
+[1\vee\VnormLp{\Proj[{\mHiH[0]}]^\perp\xdf}^2]\hRa{\pdDi,\xdf,\iSv}+\ssY^{-1}\}\\\hfill
++2\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\bias[\mDi]^2(\xdf)
++6\VnormLp{\Proj[{\mHiH[0]}]^\perp\xdf}^2 \exp\big(\tfrac{-\cpen\cmSv[\mdDi]\mdDi}{400\Vnormlp[1]{\fydf}}\big)
+\\\hfill
+\hfill+2\VnormLp{\Proj[{\mHiH[0]}]^\perp\xdf}^2\,[\mDi-1]\exp\big(-\rWc\cpen\ssY\hRa{\mdDi,\xdf,\iSv}-
+    \tfrac{\rWc\VnormLp{\Proj[{\mHiH[0]}]^\perp\xdf}^2}{4}\ssY\bias[{[\mDi-1]}]^2(\xdf)\big).
+\end{multline*}
+Since
+$\VnormLp{\Proj[{\mHiH[0]}]^\perp\xdf}^2=0$, and thus
+$\hRa{\pdDi,\xdf,\iSv}=\DipenSv[\pdDi]/\ssY=\DipenSv[\ssY_o]/\ssY$,
+there is a numerical constant $\cst{}$ such that
+$\FuEx[\ssY]{\rY}\VnormLp{\txdf-\xdf}^2\leq\cst{}\DipenSv[\ssY_o]\ssY^{-1}$
+for all $\ssY\geq\ssY_o$. Combining
+the upper bounds  for the two
+cases \ref{pro:ub:co1:c1} and \ref{pro:ub:co1:c2}  we obtain the
+assertion which  completes the proof.
+\end{pro}
+% ....................................................................
+% <<Re upper bound 2>>
+% ....................................................................
+\begin{lm}\label{re:ub:co2} Assume there is $K\in\Nz$
+  with   $1\geq \bias[{[K-1] }](\xdf)>0$ and $\bias[K](\xdf)=0$. Set
+ $K_{\ydf}:=K\dr\vee
+3(\tfrac{800\Vnormlp[1]{\fydf}}{\cpen})^2$, $c_{\xdf}:=\tfrac{2\VnormLp{\Proj[{\mHiH[0]}]^\perp\xdf}^2+484\cpen}{\VnormLp{\Proj[{\mHiH[0]}]^\perp\xdf}^2\bias[{[K-1]}]^2(\xdf)}$
+and
+$\ssY_{\xdf,\iSv}=\ceil{c_{\xdf}\DipenSv[K_{\ydf}]\dr\vee15(\tfrac{300}{\sqrt{\cpen}})^4}$.\\
+If $\ssY\leq\ssY_{\xdf,\iSv}$ then let $\sDi{\ssY}:=K_{\ydf}(\log
+n)$, and otherwise if  $\ssY>\ssY_{\xdf,\iSv}$ then let
+$\sDi{\ssY}:=\max\{\Di\in\nset{K,\ssY}:c_{\xdf}\,\DipenSv<\ssY\}$
+where the defining set contains $K_{\ydf}$ and thus it is not empty.
+There is a finite numerical constant $\cst{}$ such that for all $\ssY\in\Nz$ holds
+\begin{equation}\label{re:ub:co2:e1}
+\FuEx[\ssY]{\rY}\VnormLp{\txdf-\xdf}^2
+\leq\cst{}\{\DipenSv[\ssY_{\xdf,\iSv}]+\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\ssY_{\xdf,\iSv}+ \Vnormlp[1]{\fydf}^2\}\ssY^{-1}
++ 6\VnormLp{\Proj[{\mHiH[0]}]^\perp\xdf}^2\{ \exp\big(\tfrac{-\cpen\cmSv[\sDi{\ssY}]\sDi{\ssY}}{400\Vnormlp[1]{\fydf}}\big)-\tfrac{1}{\ssY}\}.
+\end{equation}
+If there is $\widetilde{\ssY}_{\xdf,\iSv}\in\Nz$ such that for all
+$\ssY\geq\widetilde{\ssY}_{\xdf,\iSv}$ in addition
+$\cmiSv[\sDi{\ssY}]\sDi{\ssY}\geq K_{\ydf}(\log\ssY)$  holds true then  
+\begin{equation}\label{re:ub:co2:e2}
+\FuEx[\ssY]{\rY}\VnormLp{\txdf-\xdf}^2
+\leq\cst{}\{\DipenSv[{[\ssY_{\xdf,\iSv}\vee\widetilde{\ssY}_{\xdf,\iSv}]}]+\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2[\ssY_{\xdf,\iSv}\vee\widetilde{\ssY}_{\xdf,\iSv}]+ \Vnormlp[1]{\fydf}^2\}\ssY^{-1}.
+\end{equation}
+\end{lm}
+% ....................................................................
+% <<Pro Re upper bound 2>>
+% ....................................................................
+\begin{pro}[Proof of \cref{re:ub:co2}.]\label{pro:ub:co2}
+Given $K\in\Nz$   with   $1\geq \bias[{[K-1] }](\xdf)>0$ and
+$\bias(\xdf)=0$ for all $\Di\geq K$ let $K_{\ydf}:=K\dr\vee
+3(\tfrac{800\Vnormlp[1]{\fydf}}{\cpen})^2$, 
+$c_{\xdf}:=\tfrac{2\VnormLp{\Proj[{\mHiH[0]}]^\perp\xdf}^2+484\cpen}{\VnormLp{\Proj[{\mHiH[0]}]^\perp\xdf}^2\bias[{[K-1]}]^2(\xdf)}$
+and
+$\ssY_{\xdf,\iSv}=\ceil{c_{\xdf}\DipenSv[K_{\ydf}]\dr\vee15(\tfrac{300}{\sqrt{\cpen}})^4}$
+we distinguish for $\ssY\in\Nz$ the following two
+cases, \begin{inparaenum}[i]\renewcommand{\theenumi}{\dgrau\rm(\alph{enumi})}\item\label{pro:ub:co2:c1}
+$\ssY\in\nsetro{1,\ssY_{\xdf,\iSv}}$ and \item\label{pro:ub:co2:c2}
+$\ssY>\ssY_{\xdf,\iSv}$.\end{inparaenum}\\
+
+Firstly, consider \ref{pro:ub:co2:c1},  let
+$\ssY\in\nsetro{1,\ssY_{\xdf,\iSv}}$, then setting $\mDi=1$ and
+$\pDi=\ssY$ from \cref{co:agg} follows
+\begin{multline}\label{pro:ub:co2:e1}
+\FuEx[\ssY]{\rY} \VnormLp{\txdf-\xdf}^2\leq 2\FuEx[\ssY]{\rY}\VnormLp{\txdfPr[\ssY]-\xdfPr[\ssY]}^2+2\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\bias[1]^2(\xdf)
+\\\hfill\leq 4\ssY\oiSv[\ssY]\ssY^{-1}+2\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\leq
+4 \ssY_{\xdf,\iSv}\oiSv[\ssY_{\xdf,\iSv}]\ssY^{-1}+2\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\ssY_{\xdf,\iSv}\ssY^{-1}\\\leq(4\DipenSv[\ssY_{\xdf,\iSv}]+2\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\ssY_{\xdf,\iSv})\ssY^{-1}.
+\end{multline}
+
+Secondly, consider \ref{pro:ub:co2:c2}, i.e., 
+$\ssY>\ssY_{\xdf,\iSv}$. Setting $\pdDi:=K_{\ydf}\leq\DipenSv[K_{\ydf}]\leq\ssY_{\xdf,\iSv}$, i.e., $\pdDi\in\nset{1,\ssY}$ from $\pdDi=K_{\ydf}\geq K$  follows
+$\bias[\pdDi](\xdf)=0$ and hence
+$\hRa{\pdDi,\xdf,\iSv}=\DipenSv[K_{\ydf}]\ssY^{-1}$. 
+Keeping in mind that $\dr\pdDi\geq
+3(\tfrac{800\Vnormlp[1]{\fydf}}{\cpen})^2$ and  $\dr
+\ssY\geq \ssY_o\geq 15(\tfrac{300}{\sqrt{\cpen}})^4$ 
+from
+\cref{re:ub} follows
+\begin{multline}\label{pro:ub:co2:e2}
+\FuEx[\ssY]{\rY}\VnormLp{\txdf-\xdf}^2\leq\cst{}\big\{
+[1\vee\VnormLp{\Proj[{\mHiH[0]}]^\perp\xdf}^2]\DipenSv[K_{\ydf}]\ssY^{-1}+\Vnormlp[1]{\fydf}^2
+\ssY^{-1}\}\\\hfill
++2\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\bias[\mDi]^2(\xdf)
++6\VnormLp{\Proj[{\mHiH[0]}]^\perp\xdf}^2 \exp\big(\tfrac{-\cpen\cmSv[\mdDi]\mdDi}{400\Vnormlp[1]{\fydf}}\big)
+\\\hfill
+\hfill+2\VnormLp{\Proj[{\mHiH[0]}]^\perp\xdf}^2\,[\mDi-1]\exp\big(-\rWc\cpen\ssY\hRa{\mdDi,\xdf,\iSv}-
+    \tfrac{\rWc\VnormLp{\Proj[{\mHiH[0]}]^\perp\xdf}^2}{4}\ssY\bias[{[\mDi-1]}]^2(\xdf)\big).
+\end{multline}
+Since
+$\ssY>\ssY_{\xdf,\iSv}\geq c_{\xdf}\DipenSv[K_{\ydf}]$
+with $c_{\xdf}=\tfrac{2\VnormLp{\Proj[{\mHiH[0]}]^\perp\xdf}^2+484\cpen}{\VnormLp{\Proj[{\mHiH[0]}]^\perp\xdf}^2\bias[{[K-1]}]^2(\xdf)}$ the defining set of
+$\sDi{\ssY}:=\max\{\Di\in\nset{K,\ssY}:\ssY>c_{\xdf,\iSv}\DipenSv\}$
+evenutally containing $K_{\ydf}$ is not empty. Consequently, $\sDi{\ssY}\geq K$ and $\VnormLp{\Proj[{\mHiH[0]}]^\perp\xdf}^2\bias[{[K-1]}]^2(\xdf)>[2\VnormLp{\Proj[{\mHiH[0]}]^\perp\xdf}^2+484\cpen]\DipenSv[\sDi{\ssY}]/\ssY=[2\VnormLp{\Proj[{\mHiH[0]}]^\perp\xdf}^2+484\cpen]\hRa{\sDi{\ssY},\xdf,\iSv}$. Therefore,
+  setting $\mdDi:=\sDi{\ssY}$ the definition  \eqref{de:*Di} implies  $\mDi=K$ and hence
+  $\bias[\mDi]^2(\xdf)=\bias[K]^2(\xdf)=0$,
+  $\bias[{[\mDi-1]}]^2(\xdf)=\bias[{[K-1]}]^2(\xdf)>0$. From
+  \eqref{pro:ub:co2:e2} follows for all $\ssY>\ssY_{\xdf,\iSv}$  thus
+\begin{multline}\label{pro:ub:co2:e3}
+\FuEx[\ssY]{\rY}\VnormLp{\txdf-\xdf}^2\leq\cst{}\big\{
+[1\vee\VnormLp{\Proj[{\mHiH[0]}]^\perp\xdf}^2]\DipenSv[K_{\ydf}]\ssY^{-1}+\Vnormlp[1]{\fydf}^2
+\ssY^{-1}\}\\\hfill
++6\VnormLp{\Proj[{\mHiH[0]}]^\perp\xdf}^2 \exp\big(\tfrac{-\cpen\cmSv[\sDi{\ssY}]\sDi{\ssY}}{400\Vnormlp[1]{\fydf}}\big)
+\\\hfill
+\hfill+2\VnormLp{\Proj[{\mHiH[0]}]^\perp\xdf}^2\,\sDi{\ssY}\exp\big(-\rWc\cpen\ssY\hRa{\mdDi,\xdf,\iSv}-
+    \tfrac{\rWc\VnormLp{\Proj[{\mHiH[0]}]^\perp\xdf}^2}{4}\ssY\bias[{[K-1]}]^2(\xdf)\big)\\\hfill
+\leq\cst{}\big\{
+[1\vee\VnormLp{\Proj[{\mHiH[0]}]^\perp\xdf}^2]\DipenSv[K_{\ydf}]\ssY^{-1}+\Vnormlp[1]{\fydf}^2
+\ssY^{-1}\}\\\hfill
++6\VnormLp{\Proj[{\mHiH[0]}]^\perp\xdf}^2 \exp\big(\tfrac{-\cpen\cmSv[\sDi{\ssY}]\sDi{\ssY}}{400\Vnormlp[1]{\fydf}}\big)
+\\\hfill
++2\VnormLp{\Proj[{\mHiH[0]}]^\perp\xdf}^2\,[K-1]\underbrace{\exp\big(-\tfrac{\rWc\VnormLp{\Proj[{\mHiH[0]}]^\perp\xdf}^2}{4}\ssY\bias[{[\mDi-1]}]^2(\xdf)\big)}_{\leq
+  \tfrac{4}{\rWc\VnormLp{\Proj[{\mHiH[0]}]^\perp\xdf}^2\bias[{[K-1]}]^2(\xdf)}\ssY^{-1}\exp(-1)}
+\end{multline}
+Note that $\DipenSv[K_{\ydf}]\leq\ssY_{\xdf,\iSv}$ and
+$\tfrac{8[K-1]}{e\rWc\bias[{[K-1]}]^2(\xdf)}\leq\tfrac{1}{\rWc}\VnormLp{\Proj[{\mHiH[0]}]^\perp\xdf}^2\ssY_{\xdf,\iSv}$. Thereby,
+we obtain 
+\begin{multline}\label{pro:ub:co2:e4}
+\FuEx[\ssY]{\rY}\VnormLp{\txdf-\xdf}^2
+\leq\cst{2}\{\VnormLp{\Proj[{\mHiH[0]}]^\perp\xdf}^2\ssY_{\xdf,\iSv}+ \Vnormlp[1]{\fydf}^2\}\ssY^{-1}\\
++ 6\VnormLp{\Proj[{\mHiH[0]}]^\perp\xdf}^2\{ \exp\big(\tfrac{-\cpen\cmSv[\sDi{\ssY}]\sDi{\ssY}}{400\Vnormlp[1]{\fydf}}\big)-\tfrac{1}{\ssY}\}
+ \end{multline}
+for some finite numerical constant $\cst{2}$.\\
+Combining
+the upper bounds 
+\eqref{pro:ub:co2:e1} and
+\eqref{pro:ub:co2:e4} for the two
+cases \ref{pro:ub:co2:c1} and \ref{pro:ub:co2:c2}  we obtain the
+assertion \eqref{re:ub:co2:e1}, that is, there is a finite numerical
+constant $\cst{}$ such that  for all
+$\ssY\in\Nz$ holds
+\begin{multline}\label{pro:ub:co2:e5}
+\FuEx[\ssY]{\rY}\VnormLp{\txdf-\xdf}^2
+\leq\cst{}\{\DipenSv[\ssY_{\xdf,\iSv}]+\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\ssY_{\xdf,\iSv}+ \Vnormlp[1]{\fydf}^2\}\ssY^{-1}\\
++ 6\VnormLp{\Proj[{\mHiH[0]}]^\perp\xdf}^2\{ \exp\big(\tfrac{-\cpen\cmSv[\sDi{\ssY}]\sDi{\ssY}}{400\Vnormlp[1]{\fydf}}\big)-\tfrac{1}{\ssY}\}
+\end{multline}
+
+Assume finally, that there is in addition
+$\widetilde{\ssY}_{\xdf,\iSv}\in\Nz$ such that
+$\cmiSv[\sDi{\ssY}]\sDi{\ssY}\geq K_{\ydf}(\log\ssY)$ for all
+$\ssY\geq\widetilde{\ssY}_{\xdf,\iSv}$. We shall use without further
+reference that then $\exp\big(\tfrac{-\cpen\cmSv[\sDi{\ssY}]\sDi{\ssY}}{400\Vnormlp[1]{\fydf}}\big)\leq\ssY^{-1}$ for
+all $\ssY\geq\widetilde{\ssY}_{\xdf,\iSv}$ since $K_{\ydf}\geq
+\tfrac{400\Vnormlp[1]{\fydf}}{\cpen}$. Following line by line the
+proof of \eqref{pro:ub:co2:e5} using
+$\widetilde{\ssY}_{\xdf,\iSv}\vee\ssY_{\xdf,\iSv}$  rather than
+$\ssY_{\xdf,\iSv}$  we obtain the
+assertion, that is,
+$\FuEx[\ssY]{\rY}\VnormLp{\txdf-\xdf}^2
+\leq\cst{}\{\DipenSv[{[\ssY_{\xdf,\iSv}\vee\widetilde{\ssY}_{\xdf,\iSv}]}]+\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2[\ssY_{\xdf,\iSv}\vee\widetilde{\ssY}_{\xdf,\iSv}]+ \Vnormlp[1]{\fydf}^2\}\ssY^{-1}$, which completes the proof.
+\end{pro}

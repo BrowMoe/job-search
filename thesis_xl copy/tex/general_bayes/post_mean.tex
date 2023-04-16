@@ -1,0 +1,32 @@
+\section{On the shape of the posterior mean}\label{BAYES_POSTMEAN}
+
+We have hence seen that in a general case, considering the asymptotic iteration , the posterior distribution using a sieve prior contracts around the projection estimator and while using a hierarchical prior, the posterior contracts around some penalised contrast maximiser projection estimator.
+
+It is also interesting to note that for any number of iteration $\eta$, the posterior mean can be written both as a shrinkage and as an aggregation estimator.
+Indeed, we have
+
+\begin{alignat*}{3}
+& \E_{\boldsymbol{\theta}^{M}\vert Y^{n}}^{\eta}\left[\boldsymbol{\theta}^{M}\right] && = && \E_{\boldsymbol{\theta}^{M}\vert Y^{n}}^{\eta}\left[\sum\limits_{m \in G} \boldsymbol{\theta}^{M} \mathds{1}_{M = m}\right]\\
+& && = && \sum\limits_{m \in G} \E_{\boldsymbol{\theta}^{M}\vert Y^{n}}^{\eta}\left[ \boldsymbol{\theta}^{M} \mathds{1}_{M = m}\right]\\
+& && = && \sum\limits_{m \in G} \mathds{P}_{M \vert Y^{n}}^{\eta}(m = M) \E_{\boldsymbol{\theta}^{m}\vert Y^{n}}^{\eta}\left[ \boldsymbol{\theta}^{m} \right];
+\end{alignat*}
+
+and we see here the aggregation form of this estimator.
+
+On the other hand, if we write the expectation of the components individually, we obtain:
+
+\begin{alignat*}{3}
+& \E_{\boldsymbol{\theta}^{M}\vert Y^{n}}^{\eta}\left[\boldsymbol{\theta}_{j}^{M}\right] && = && \E_{\boldsymbol{\theta}^{M}\vert Y^{n}}^{\eta}\left[ \boldsymbol{\theta}_{j}^{m} \mathds{1}_{M \geq j}\right]\\
+& && = && \mathds{P}_{M \vert Y^{n}}^{\eta}(M \geq j) \E_{\boldsymbol{\theta}^{m}\vert Y^{n}}^{\eta}\left[ \boldsymbol{\theta}^{m}_{j} \right];
+\end{alignat*}
+
+where we see the shrinkage property.
+
+\medskip
+
+Aggregation estimates gathered a lot of interest, see for example \ncite{rigollet2007linear}.
+While considering such estimators, the goal is to reach the convergence rate of the best estimator contributing to the aggregation.
+
+\medskip
+
+In the next chapter, we hence investigate the properties of this estimator both in inverse Gaussian sequence space model and circular density deconvolution.

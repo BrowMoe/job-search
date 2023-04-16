@@ -1,0 +1,83 @@
+\section{Bayesian inference}\label{3}
+From a Bayesian point of view, one would define a prior distribution $\mathds{P}_{\boldsymbol{\theta}}^{n}$ over the parameter space, potentially depending on the noise level $n$, after observing $Y^{n}$ with likelihood $\mathds{P}_{Y^{n} \vert \boldsymbol{\theta}}^{n}$ one would update the distribution of $\boldsymbol{\theta}$ to obtain the posterior distribution $\mathds{P}_{\boldsymbol{\theta} \vert Y^{n}}^{n}$.
+
+To analyse the quality of a Bayesian procedure from a frequentist point of view one needs to admit the existence of a true parameter $\theta^{\circ}$ and proof that the posterior distribution contracts with optimal rate for some criterion.
+
+\subsection{Oracle optimality}\label{3.1}
+An intuitive prior for a single element $\boldsymbol{\theta}_{j}$, $j$ in $\mathds{N}^{\star}$, of the sequence $\boldsymbol{\theta}$ would be a standard normal distribution $\mathds{P}_{\boldsymbol{\theta}_{j}} = \mathcal{N}(0, 1)$ as it is conjugate in this framework. Indeed, in our context, if we define, for any $j$ in $\mathds{N}^{\star}$,
+\[\widehat{\theta}_{j} := \frac{n \cdot Y_{j} \cdot \lambda_{j}}{1 + n \lambda_{j}^{2}}; \quad \sigma_{j} := \frac{1}{1 + n \lambda_{j}^{2}};\]
+we obtain $\mathds{P}_{\boldsymbol{\theta}_{j} \vert Y^{n}}^{n} = \mathds{P}_{\boldsymbol{\theta}_{j} \vert Y^{n}_{j}}^{n} = \mathcal{N}(\widehat{\theta}_{j}, \sigma_{j}).$
+
+We can then define the family of sieve priors, indexed by a parameter $m$ in $\mathds{N}^{\star}$ as the family of distributions $\mathcal{G} := \left\{\mathds{P}_{\boldsymbol{\theta}^{m}} = \bigotimes\limits_{j = 1}^{m} \mathcal{N}(0, 1) \bigotimes\limits_{j > m} \delta_{0}, m \in \mathds{N}^{\star}\right\}$.
+The posterior then obtained is the Gaussian process with mean $\widehat{\theta}^{m} = \left(\widehat{\theta}_{j} \cdot \mathds{1}_{j \leq m}\right)_{j \in \mathds{N}}$ and variance $\sigma^{m} = \left(\sigma_{j} \cdot \mathds{1}_{j \leq m}\right)_{j \in \mathds{N}}$.
+
+One of the main result of this paper is showing a lower bound for the contraction rate of the priors of this family and exhibiting a prior of this family which reaches this bound without a log-loss term, therefore giving purely Bayesian formulation of oracle optimality.
+
+\begin{thm}\label{thm1}
+For any $\theta^{\circ}$ in $\Theta$ and increasing, unbounded sequence $c_{n}$, we have, with $\Phi_{n}^{\circ}$ and $m_{n}^{\circ}$ as in \textsc{\cref{de1}}
+\begin{alignat*}{6}
+& \lim\limits_{n \rightarrow \infty} &&\sup\limits_{\mathds{P}_{\boldsymbol{\theta}^{m_{n}}}\in \mathcal{G}} && \mathds{E}_{\theta^{\circ}}^{n}&&\left[\mathds{P}_{\boldsymbol{\theta}^{m_{n}}\vert Y^{n}}^{n}\left(d^{2}\left(\theta^{\circ}, \boldsymbol{\theta}\right) \leq c_{n}^{-1}\Phi_{n}^{\circ}\right)\right] && < && 1;\\
+& \lim\limits_{n \rightarrow \infty} && && \mathds{E}_{\theta^{\circ}}^{n}&&\left[\mathds{P}_{\boldsymbol{\theta}^{m_{n}^{\circ}}\vert Y^{n}}^{n}\left(d^{2}\left(\theta^{\circ}, \boldsymbol{\theta}\right) \leq c_{n} \Phi_{n}^{\circ} \right)\right] &&=&& 1.
+\end{alignat*}
+We therefore call $\Phi_{n}^{\circ}$ oracle optimal contraction rate for the family $\mathcal{G}$ at $\theta^{\circ}$.
+\end{thm}
+
+This result allows a purely Bayesian formulation of oracle optimality in the sense that it does not rely on comparison of the contraction rate with some convergence rate but with the contraction rates over a family of priors.
+Moreover, it shows contraction at the same rate as a popular family of estimators without a $\log$-loss term in the upper bound.
+
+However, the prior leading to optimal contraction rate depends on $m_{n}^{\circ}$ which is not available.
+
+\subsection{Minimax optimality}\label{3.2}
+We also give attention here to Bayesian formulation of minimax optimality.
+The second major result of this paper shows that $\Psi_{n}^{\star}$ is a lower bound for the uniform contraction rate of posterior distributions and exhibit a posterior distribution reaching this rate without a $\log$-loss term, giving purely Bayesian formulation of minimax optimality.
+
+\begin{thm}\label{thm2}
+For any increasing and unbounded sequence, we have,  with $\Psi_{n}^{\star}$ and $m_{n}^{\star}$ as in \textsc{\cref{de1}},
+\begin{alignat*}{5}
+& \lim_{n \rightarrow \infty} && \sup\limits_{\mathds{Q}_{\boldsymbol{\theta}}} && \inf\limits_{\theta^{\circ} \in \Theta_{\mathfrak{a}}(r)} && \mathds{E}_{\theta^{\circ}}^{n}\left[\mathds{Q}_{\boldsymbol{\theta}\vert Y^{n}}^{n}\left(d^{2}\left(\theta^{\circ}, \boldsymbol{\theta}\right) \leq c_{n}^{-1} \cdot \Psi_{n}^{\star}(\Theta_{\mathfrak{a}}(r)) \right)\right]&& < 1;\\
+& \lim_{n \rightarrow \infty}&& && \inf\limits_{\theta^{\circ} \in \Theta_{\mathfrak{a}}(r)} && \mathds{E}_{\theta^{\circ}}^{n}\left[\mathds{P}_{\boldsymbol{\theta}^{m_{n}^{\star}}\vert Y^{n}}^{n}\left(d^{2}\left(\theta^{\circ}, \boldsymbol{\theta}\right) \leq c_{n} \cdot \Psi^{\star}_{n}(\Theta_{\mathfrak{a}}(r)) \right)\right]&& = 1;
+\end{alignat*}
+where $\sup\limits_{\mathds{Q}_{\boldsymbol{\theta}}}$ is taken over all prior distributions such that, for any positive sequence $\rho_{n}$, $\argmax\limits_{\widetilde{\theta} \in \Theta}\left\{\mathds{Q}_{\boldsymbol{\theta} \vert Y^{n}} \left(\boldsymbol{\theta} \in \left\{ \theta \in \Theta : \Vert \theta - \widetilde{\theta} \Vert^{2} \leq \rho_{n}\right\}\right)\right\}$ is an estimator.
+\end{thm}
+
+We therefore call $\Psi_{n}^{\star}$ minimax optimal contraction over $\Theta^{\mathfrak{a}}(r)$ and $\mathds{P}_{\boldsymbol{\theta}^{m_{n}^{\star}}}$ minimax optimal prior.
+Obviously $m_{n}^{\star}$ depends on $\Theta^{\mathfrak{a}}(r)$ and is not available in practice.
+
+An important result given in \textcolor{red}{Ghosal and van der Vaart} already stated that a lower bound for the minimax optimal contraction rate is given by the minimax optimal convergence rate. It is however formulated for Hellinger distance and we give this result here for the $L^{2}$ distance, however, the proof follows the same lines.
+
+A limitation of most results obtained about minimax contraction rates, up to our knowledge, is that the upper bounds differ from the lower bound by a $\log$ factor due to the fact that they derive from the powerful result obtained in \textcolor{red}{Ghosal and van der Vaart} which states general sufficient conditions on a prior sequence and parameter space to obtain a contraction rate.
+Moreover, most of those results are obtained for the Hellinger distance, which yields a weaker topology than the $L^{2}$ norm.
+However \textcolor{red}{Nickl} highlight results for the family of $L^{p}$-norms, including for $p = \infty$.
+
+
+\subsection{Hierarchical prior}\label{3.3}
+From a Bayesian approach, a sensitive way to overcome the difficulty of selecting $m$ is to use a so-called hierarchical prior where $m$ is considered as a random variable $M$ taking values in (a subset of) $\mathds{N}^{\star}$.
+The prior on $\boldsymbol{\theta}$ is then denoted $\mathds{P}_{\boldsymbol{\theta}^{M}}$ and is such that, for any $m$ we have $\mathds{P}_{\boldsymbol{\theta}^{M}\vert M=m} = \mathds{P}_{\boldsymbol{\theta}^{m}}$.
+Moreover $Y^{n}, \boldsymbol{\theta}$ and $M$ are such that $\mathds{P}_{Y^{n} \vert \boldsymbol{\theta}, M} = \mathds{P}_{Y^{n} \vert \boldsymbol{\theta}}$.
+As a consequence, we have $\mathds{P}_{\boldsymbol{\theta}^{M} \vert Y} = \sum\limits_{m \in \mathds{N}} \mathds{P}_{\boldsymbol{\theta}^{m}\vert Y^{n}} \mathds{P}_{M \vert Y^{n}}(m)$ and $\mathds{P}_{M \vert Y^{n}}(m) = \frac{\int_{\Theta}\mathds{P}_{Y^{n} \vert \boldsymbol{\theta}} \cdot \mathds{P}_{\boldsymbol{\theta}^{m}} \cdot \mathds{P}_{M}}{\mathds{P}_{Y^{n}}}$.
+
+\medskip
+
+In our case, following the methodology presented in \textsc{\citet{JJASRS}}, we define $G_{n} := \max\left\{m \in \llbracket 1, n \rrbracket : \Lambda_{m} / n \leq \Lambda_{1}\right\}$ and chose $\mathds{P}_{M}^{n}(m) = \mathds{1}_{m \in \llbracket 1, G_{n} \rrbracket}\frac{\exp\left[-3 m / 2\right]}{\sum\limits_{k = 1}^{G_{n}} \exp [-3 k / 2]}$.
+This choice leads to the posterior distribution $\mathds{P}_{M \vert Y^{n}}^{n} = \frac{\exp\left[-\frac{1}{2}\left(3 m - \Vert \widehat{\theta}^{m} \Vert_{\sigma^{m}}^{2}\right)\right]}{\sum\limits_{k = 1}^{G_{n}} \exp\left[-\frac{1}{2}\left(3 k - \Vert \widehat{\theta}^{k} \Vert_{\sigma^{k}}^{2}\right)\right]}$ and posterior mean $\widehat{\theta}^{M} = \sum\limits_{m = 1}^{G_{n}} \widehat{\theta}^{m} \mathds{P}_{M \vert Y^{n}}(m) = \left(\widehat{\theta}_{j} \mathds{P}_{M \vert Y^{n}}(\llbracket j, G_{n} \rrbracket)\right)_{j \in \mathds{N}}$ where $\widehat{\theta}^{m}$, $\widehat{\theta}_{j}$ and $\sigma^{k}$ are define in \textsc{\cref{3.1}} and $\Vert \cdot \Vert_{\sigma^{k}}$ is defined as in \textsc{\cref{1.2}} with the convention "$0/0 = 0$".
+
+\medskip
+
+Interesting results about this posterior distribution and mean are already given in \textsc{\citet{JJASRS}} they are reminded hereafter with a stronger, yet simpler to formulate, set of assumptions.
+
+\begin{lm}\label{lm1}
+Under \textsc{\cref{as1}} and \textsc{\cref{as2}}, if, in addition $\log(G_{n})/m_{n}^{\circ} \rightarrow 0$ as $n \rightarrow \infty$ then with $D^{\circ} := D^{\circ}(\theta^{\circ}, \lambda) = \lceil 5 L/\kappa^{\circ} \rceil$ and $K^{\circ} := 10(2 \vee \Vert \theta^{\circ} \Vert^{2})L^{2}(16 \vee D^{\circ} \Lambda_{D^{\circ}})$ we have:
+\[\lim\limits_{n \rightarrow \infty} \mathds{E}_{\theta^{\circ}}^{n}\left[\mathds{P}_{\boldsymbol{\theta}^{M} \vert Y^{n}}^{n} \left(\left(K^{\circ}\right)^{-1} \Phi_{n}^{\circ} \leq \Vert \theta^{\circ} - \boldsymbol{\theta}^{M} \Vert_{l^{2}}^{2} \leq K^{\circ} \Phi_{n}^{\circ}\right)\right] = 1.\]
+\end{lm}
+
+\begin{lm}\label{lm2}
+Under \textsc{\cref{as1}} and \textsc{\cref{as3}}, if, in addition, $\log(G_{n})/m_{n}^{\star} \rightarrow 0$ as $n \rightarrow \infty$ then
+\begin{itemize}
+\item for all $\theta^{\circ}$ in $\Theta_{\mathfrak{a}}(r)$, with $D^{\star} := D^{\star}(\mathfrak{a}, \lambda) = \lceil 5 L/\kappa^{\star} \rceil$ and $K^{\star} := 16\left(2 \vee r\right)L^{2}\left(16 \vee D^{\star} \Lambda_{D^{\star}}\right)\left(1 \vee r \right)$, we have
+\[\lim\limits_{n \rightarrow \infty} \mathds{E}_{\theta^{\circ}}^{n}\left[\mathds{P}_{\boldsymbol{\theta}^{M} \vert Y^{n}}^{n}\left(\Vert \theta^{\circ} - \boldsymbol{\theta}^{M} \Vert^{2} \leq K^{\star} \Phi_{n}^{\star}\right)\right] =1;\]
+\item for any monotonically increasing and unbounded sequence $K_{n}$ holds
+\[\lim\limits_{n \rightarrow \infty} \inf\limits_{\theta^{\circ} \in \Theta_{\mathfrak{a}}(r)} \mathds{E}_{\theta^{\circ}}^{n}\left[\mathds{P}_{\boldsymbol{\theta}^{M} \vert Y^{n}}^{n}\left(\Vert \theta^{\circ} - \boldsymbol{\theta}^{M} \Vert^{2} \leq K_{n} \Phi_{n}^{\star}\right)\right] =1.\]
+\end{itemize}
+\end{lm}
+
+In the next section, we intend to generalise those results to a larger family of Bayesian methods.

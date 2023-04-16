@@ -1,0 +1,2086 @@
+%======================================================================================================================
+%                                                                 
+% Title: Appendix Preliminaries
+% Author: Jan JOHANNES, Institut für Angewandte Mathematik, Ruprecht-Karls Universität Heidelberg, Deutschland  
+% 
+% Email: johannes@math.uni-heidelberg.de
+% Date: %%ts latex start%%[2018-03-29 Thu 13:18]%%ts latex end%%
+%
+% ======================================================================================================================
+\begin{pro}[Proof of \nref{re:contr}.]\label{pro:re:contr}
+Consider \ref{re:contr:e1}. For $l>k$ remind that we have 
+ $\dProj{k}{l}=\Proj[l]-\Proj[k]=\ProjC[k]-\ProjC[l]$ the
+orthogonal projection onto $\dmHiH{k}{l}:=\lin\{(\mathds{1}_{s' = s})_{s' \in \Z},|s|\in\nsetlo{k,l}\}$
+where
+$\Vnormlp{\dProj{k}{l}\He}^2=\Vnormlp{\dProj{l}{}\He}^2-\Vnormlp{\dProj{k}{}\He}^2=\Vnormlp{\dProjC{k}{}\He}^2-\Vnormlp{\dProjC{l}{}\He}^2$
+for all $\He\in\mathcal{L}^{2}$. 
+Let us define
+$\contr[](\He):=\Vnormlp{\He}^2-2\Vskalarlp{\He \vert \dxdfPr[]}$. For
+each $l\in\nset{1,n}$ and for any $\He\in\mHiH[l]$ we have
+$\Vskalarlp{\He \vert \dxdfPr[]}=\Vskalarlp{\He\vert\dxdfPr[l]}$, which in
+turn implies $\contr[](\He)=\Vnormlp{\He}^2-2\Vskalarlp{\He\vert\dxdfPr[l]}+\Vnormlp{\dxdfPr[l]}^2-\Vnormlp{\dxdfPr[l]}^2=\Vnormlp{\He-\dxdfPr[l]}^2-\Vnormlp{\dxdfPr[l]}^2$
+and consequently, $\contr[](\dxdfPr[l])=-\Vnormlp{\dxdfPr[l]}^2$ for all
+$l\in\Nz$. Obviously,
+$\Vnormlp{\dxdfPr[k]}^2-\Vnormlp{\dxdfPr[l]}^2=\contr[](\dxdfPr[l])-\contr[](\dxdfPr[k])$,
+while
+$\Vnormlp{\dProj{k}{l}\xdf}^2=\Vnormlp{\xdf_{\underline{0}}}^2\{\bias[k]^2(\xdf)-\bias[l]^2(\xdf)\}$. Consequently,
+the claim \ref{re:contr:e1} can equivalently be rewritten as
+\begin{equation}\label{re:contr:pr1}
+\contr[](\dxdfPr[l])-\contr[](\dxdfPr[k])
+\leq \tfrac{11}{2}\Vnormlp{\dxdfPr[l]-\xdfPr[l]}^2-\tfrac{1}{2}\Vnormlp{\dProj{k}{l}\xdf}^2.
+\end{equation}
+Analogously, if $k>l$ then the claim \ref{re:contr:e2} can equivalently be rewritten as
+\begin{equation}\label{re:contr:pr2}
+\contr[](\dxdfPr[l])-\contr[](\dxdfPr[k])
+\leq \tfrac{7}{2}\Vnormlp{\dxdfPr[k]-\xdfPr[k]}^2+\tfrac{3}{2}
+\Vnormlp{\dProj{l}{k}\xdf}^2.
+\end{equation}
+
+\textit{Proof of \eqref{re:contr:pr1}}. For $x,y,z\in\lp[2]$ we observe that
+\begin{multline*}
+\contr[](x)-\contr[](y)%=\Vnormlp{x}^2-2\Vskalarlp{x,\hfydf}-\Vnormlp{y}^2+2\Vskalarlp{y,\hfydf}\\
+=\Vnormlp{x}^2-\Vnormlp{y}^2-2\Vskalarlp{x-y\vert\dxdfPr[]}\\
+=\Vnormlp{x}^2-2\Vskalarlp{x\vert z}+\Vnormlp{z}^2-\Vnormlp{y}^2+2\Vskalarlp{y\vert z}-\Vnormlp{z}^2-2\Vskalarlp{x-y\vert\dxdfPr[]-z}\\
+= \Vnormlp{x-z}^2-\Vnormlp{y-z}^2-2\Vskalarlp{x-y\vert\dxdfPr[]-z}
+\end{multline*}
+and in particular for $x_{\overline{l}}=\dProj{l}{}x$ and $x_{\overline{k}}=\dProj{k}{}x$ with $k<l$
+where $x_{\overline{l}}-x_{\overline{k}}=\dProj{k}{l}x$ we have
+\begin{multline}\label{scd:le:op:pr:e1}
+ \contr[](x_{\overline{l}})-\contr[](x_{\overline{k}})
+=
+\Vnormlp{x_{\overline{l}}-z}^2-\Vnormlp{x_{\overline{k}}-z}^2-2\Vskalarlp{x_{\overline{l}}-x_{\overline{k}}\vert \dxdfPr[]-z}\\
+=\Vnormlp{\dProj{l}{}(x-z)}^2-\Vnormlp{\dProj{k}{}(x-z)}^2+
+\Vnormlp{\dProjC{l}{}z}^2-\Vnormlp{\dProjC{k}{}z}^2
+-2\Vskalarlp{\dProj{k}{l}x\vert \dxdfPr[]-z}\\
+=\Vnormlp{\dProj{k}{l}(x-z)}^2-
+\Vnormlp{\dProj{k}{l}z}^2-2\Vskalarlp{\dProj{k}{l}x\vert \dProj{k}{l}(\dxdfPr[]-z)}\\
+=\Vnormlp{\dProj{k}{l}(x-z)}^2-
+ \Vnormlp{\dProj{k}{l}z}^2-2\Vnormlp{\dProj{k}{l}x}\Vskalarlp{\tfrac{\dProj{k}{l}x}{\Vnormlp{\dProj{k}{l}x}}\vert \dProj{k}{l}(\dxdfPr[]-z)}.
+\end{multline}
+Exploiting the elementary inequality $-2ab\leq \tfrac{1}{4}a^2+4b^2$
+and setting $\dmBaH{k}{l}:=\{x\in\dmHiH{k}{l}:\Vnormlp{x}=1\}$
+it follows 
+\begin{multline*}
+ \contr[](x_l)-\contr[](x_k)
+\leq \Vnormlp{\dProj{k}{l}(x-z)}^2-
+\Vnormlp{\dProj{k}{l}z}^2+ \tfrac{1}{4}\Vnormlp{\dProj{k}{l}x}^2 +
+4|\Vskalarlp{\tfrac{\dProj{k}{l}x}{\Vnormlp{\dProj{k}{l}x}}\vert \dProj{k}{l}(\dxdfPr[]-z)}|^2\\
+\leq \Vnormlp{\dProj{k}{l}(x-z)}^2-
+\Vnormlp{\dProj{k}{l}z}^2+ \tfrac{1}{2}\Vnormlp{\dProj{k}{l}(x-z)}^2+ \tfrac{1}{2}\Vnormlp{\dProj{k}{l}z}^2 +
+4\sup_{y\in\dmBaH{k}{l}} |\Vskalarlp{y\vert \dProj{k}{l}(\dxdfPr[]-z)}|^2\\
+ = \tfrac{3}{2}\Vnormlp{\dProj{k}{l}(x-z)}^2-\tfrac{1}{2}
+ \Vnormlp{\dProj{k}{l}z}^2 + 4 \Vnormlp{\dProj{k}{l}(\dxdfPr[]-z)}^2.
+\end{multline*}
+ Replacing $x$ by $\dxdfPr[]$ and $z$ by $\xdf$ the last estimate
+ implies \eqref{re:contr:pr1}, that is, 
+\begin{multline*}
+\contr[](\dxdfPr[l])-\contr[](\dxdfPr[k])
+\leq \tfrac{3}{2}\Vnormlp{\dProj{k}{l}(\dxdfPr[]-\xdf)}^2-\tfrac{1}{2}
+\Vnormlp{\dProj{k}{l}\xdf}^2 + 4 \Vnormlp{\dProj{k}{l}(\dxdfPr[]-\xdf)}^2\\
+\hfill=\tfrac{11}{2}\Vnormlp{\dProj{k}{l}(\dxdfPr[]-\xdf)}^2-\tfrac{1}{2}
+\Vnormlp{\dProj{k}{l}\xdf}^2%=\tfrac{11}{2}\sup_{y\in\dmBaH{k}{l}} |\VskalarH{y,(\dSoPr[\bullet]-\So)}|^2-\tfrac{1}{2}\VnormH{\dProj{k}{l}\So}^2\\
+\leq\tfrac{11}{2}\Vnormlp{\dxdfPr[l]-\xdfPr[l]}^2-\tfrac{1}{2}
+\Vnormlp{\dProj{k}{l}\xdf}^2
+\end{multline*}
+
+\textit{Proof of} \eqref{re:contr:pr2}. In case of $k>l$  from
+\eqref{scd:le:op:pr:e1} follows
+\begin{multline*}
+\contr[](x_{\overline{l}})-\contr[](x_{\overline{k}})=-(\contr[](x_{\overline{k}})-\contr[](x_{\overline{l}}))\\=-\Vnormlp{\dProj{l}{k}(x-z)}^2+\Vnormlp{\dProj{l}{k}z}^2+2\Vnormlp{\dProj{l}{k}x}\Vskalarlp{\tfrac{\dProj{l}{k}x}{\Vnormlp{\dProj{l}{k}x}}\vert \dProj{l}{k}(\dxdfPr[]-z)}
+\end{multline*}
+Exploiting again the elementary inequality $-2ab\leq \tfrac{1}{4}a^2+4b^2$
+and keeping in mind that $\dmBaH{l}{k}:=\{x\in\dmHiH{l}{k}:\Vnormlp{x}=1\}$
+it follows 
+\begin{multline*}
+\contr[](x_{\overline{l}})-\contr[](x_{\overline{k}})%\\
+%\leq-\VnormH{\dProj{l}{k}(x-z)}^2+\VnormH{\dProj{l}{k}z}^2+\tfrac{1}{4}\VnormH{\dProj{l}{k}x}^2 +4|\VskalarH{\tfrac{\dProj{l}{k}x}{\VnormH{\dProj{l}{k}x}},\dProj{l}{k}(\dSoPr[\bullet]-z)}|^2\\
+\leq-\Vnormlp{\dProj{l}{k}(x-z)}^2+\Vnormlp{\dProj{l}{k}z}^2+ \tfrac{1}{2}\Vnormlp{\dProj{l}{k}(x-z)}^2\\\hfill+ \tfrac{1}{2}\Vnormlp{\dProj{l}{k}z}^2 +
+4\sup_{y\in\dmBaH{l}{k}} |\Vskalarlp{y\vert \dProj{l}{k}(\dxdfPr[]-z)}|^2\\
+=-\tfrac{1}{2}\Vnormlp{\dProj{l}{k}(x-z)}^2+\tfrac{3}{2}\Vnormlp{\dProj{l}{k}z}^2+ 4 \Vnormlp{\dProj{l}{k}(\dxdfPr[]-z)}^2.
+\end{multline*}
+Replacing $x$ by $\dxdf$ and $z$ by $\xdf$ the last estimate
+ implies \eqref{re:contr:pr1}, that is
+\begin{multline*}
+\contr[](\dxdfPr[l])-\contr[](\dxdfPr[k])
+\leq -\tfrac{1}{2}\Vnormlp{\dProj{l}{k}(\dxdfPr[]-\xdf)}^2+\tfrac{3}{2}
+\Vnormlp{\dProj{l}{k}\xdf}^2 + 4 \Vnormlp{\dProj{l}{k}(\dxdfPr[]-\xdf)}^2\\
+=\tfrac{7}{2}\Vnormlp{\dProj{l}{k}(\dxdfPr[]-\xdf)}^2+\tfrac{3}{2}
+\Vnormlp{\dProj{l}{k}\xdf}^2%=\tfrac{7}{2}\sup_{x\in\dmBaH{l}{k}} |\VskalarH{x,(\dSoPr[\bullet]-\So)}|^2+\tfrac{3}{2}\VnormH{\dProj{l}{k}\So}^2\\
+\leq \tfrac{7}{2}\Vnormlp{\dxdfPr[k]-\xdfPr[k]}^2+\tfrac{3}{2}\Vnormlp{\dProj{l}{k}\xdf}^2,
+\end{multline*}
+ which completes the proof.\proEnd
+\end{pro}
+
+\section{Proofs for \nref{freq:ge:strat:kn}}\label{pro:freq:ge:strat:kn}
+We present here the results in specific case of $\mathds{F} = \N$ or $\Z$ and $\mathds{M} = \N$, note, though, that they could be easily generalised to any of nested sieve.
+\begin{pro}[Proof of \nref{freq:ge:strat:kn:co:agg}.]\label{pro:freq:ge:strat:kn:co:agg}
+We start the proof with the observation that
+% $\overline{\theta_{n}}(s)-\ofxdf[(s)]=\theta_{n}(-s)-\fxdf[(-s)]$ for all $s\in\Zz$ and
+
+$\theta_{n}(s)-\fxdf[(s)]=\fedfI[(s)](\hfydf[(s)]-\fydf[(s)])\We[](\nset{ \vert s \vert,\ssY})-\fxdf[(s)]\We[](\nsetro{1, \vert s \vert})$ for all $s$ with $\vert s \vert$ in $\nset{0,\ssY}$ and $\theta_{n}(s)-\fxdf[(s)]=-\fxdf[(s)]$ for all $s$ with $\vert s \vert>\ssY$.
+%\begin{multline*}
+%  \theta_{n}(s)-\fxdf[(s)]=\fedfI[(s)](\hfydf[(s)]-\fydf[(s)])\We[](\nset{s,\ssY})-\fxdf[(s)]\We[](\nsetro{1,s})\text{ for all }s\in\nset{1,\ssY},\\\theta_{n}(0)-\fxdf[(0)]=0\text{ and }\theta_{n}(s)-\fxdf[(s)]=-\fxdf[(s)]\text{ for all }s>\ssY.
+%\end{multline*}
+Consequently, (keep in mind that $\vert\fedfI[(s)]\vert^2=\iSv[s]$)  we  have
+  \begin{multline}\label{freq:ge:strat:kn:co:agg:pro1}
+    \Vnormlp{\theta_{n}-\xdf}^2=\\
+   \sum_{\vert s \vert \in \nset{0,\ssY}}\vert\fedfI[(s)](\hfydf[(s)]-\fydf[(s)])\We[](\nset{\vert s \vert,\ssY})-\fxdf[(s)]\We[](\nsetro{1,\vert s\vert })\vert^2+\sum_{\vert s \vert>\ssY}\vert\fxdf[(s)]\vert^2\\
+\leq
+   \sum_{\vert s \vert \in\nset{1,\ssY}}2\{\iSv[s]\vert\hfydf[(s)]-\fydf[(s)]\vert^2 \We[](\nset{\vert s \vert ,\ssY})\}\\
+   + \sum_{\vert s \vert \in \nset{1,\ssY}}2\vert\fxdf[(s)]\vert^2\We[](\nsetro{1,\vert s \vert})+2\sum_{\vert s \vert >n}\vert\fxdf[(s)]\vert^2,%\\
+% \leq 2\{n^{-1} \peDi \oEvs[\peDi]+6\Evs_1\exp(-\DiMa/3)+6\Evs_1\exp
+%   \big(-\frac{n\dnRa}{2}+ 2\log \DiMa \big)\}\\
+% + 2\{\gb_{\meDi}^2 +2\Vnormlp{\xdf}^2\exp\big(-\frac{n\dnRa}{2}+ 2\log \DiMa \big)\}.
+ \end{multline}
+where we consider the first r.h.s and the two other r.h.s. terms
+separately. Consider the first r.h.s. term in \eqref{freq:ge:strat:kn:co:agg:pro1}. We split the sum into two parts which we bound separately.
+Precisely, for any $\pDi$ in $\llbracket 1, n \rrbracket$, we have
+\begin{multline}\label{freq:ge:strat:kn:co:agg:pro2}
+2\sum_{\vert s \vert \in\nset{0,\ssY}}\iSv[s]\vert\hfydf[(s)]-\fydf[(s)]\vert^2
+\We[](\nset{\vert s \vert,\ssY})\\
+% \leq 2\sum_{s\in\nset{1,\pDi}}\iSv[s]\vert\hfydf[(s)]-\fydf[(s)]\vert^2 +
+% 2\sum_{s\in\nsetlo{\pDi,\ssY}}\iSv[s]\vert\hfydf[(s)]-\fydf[(s)]\vert^2\sum_{l\in\nset{s,\ssY}}\We[(l)]\\
+% = 2\sum_{s\in\nset{1,\pDi}}\iSv[s]\vert\hfydf[(s)]-\fydf[(s)]\vert^2 +
+% \sum_{l\in\nsetlo{\pDi,\ssY}}\We[(l)]\;2\sum_{s\in\nsetlo{\pDi,l}}\iSv[s]\vert\hfydf[(s)]-\fydf[(s)]\vert^2\\
+\leq \Vnormlp{\txdfPr[\pDi]-\xdfPr[\pDi]}^2
++\sum_{\vert l \vert \in\nsetlo{\pDi,\ssY}}\We[(l)]\Vnormlp{\txdfPr[l]-\xdfPr[l]}^2\\
+% \leq\Vnormlp{\txdfPr[\pDi]-\xdfPr[\pDi]}^2
+% +\sum_{l\in\nsetlo{\pDi,\ssY}}\We[(l)]\Vnormlp{\txdfPr[l]-\xdfPr[l]}^2\Ind{\{\Vnormlp{\txdfPr[l]-\xdfPr[l]}^2\geq\penSv[l]\}}
+% \\
+% \hfill+(12\cpen/\ssY)\sum_{l\in\nsetlo{\pDi,\ssY}}\DipenSv[l]\We[(l)]\Ind{\{\Vnormlp{\txdfPr[l]-\xdfPr[l]}^2<\penSv[l]\}}\\
+% =\Vnormlp{\txdfPr[\pDi]-\xdfPr[\pDi]}^2
+% +\sum_{l\in\nsetlo{\pDi,\ssY}}\We[(l)]\vect{\Vnormlp{\txdfPr[l]-\xdfPr[l]}^2-\cst{1}\penSv[l]}\Ind{\{\Vnormlp{\txdfPr[l]-\xdfPr[l]}^2\geq\penSv[l]\}}\\
+% \hfill+(12\cst{1}\cpen/\ssY)\sum_{l\in\nsetlo{\pDi,\ssY}}\We[(l)]\DipenSv[l]\Ind{\{\Vnormlp{\txdfPr[l]-\xdfPr[l]}^2\geq\penSv[l]\}}
+%  +(12\cpen/\ssY)\sum_{l\in\nsetlo{\pDi,\ssY}}\DipenSv[l]\We[(l)]\Ind{\{\Vnormlp{\txdfPr[l]-\xdfPr[l]}^2<\penSv[l]\}}\\
+\leq\Vnormlp{\txdfPr[\pDi]-\xdfPr[\pDi]}^2
++\sum_{\vert l \vert \in \nsetlo{\pDi,\ssY}}\We[(l)]\vectp{\Vnormlp{\txdfPr[l]-\xdfPr[l]}^2-\pen(l)/7}\\
++\tfrac{1}{7}\sum_{\vert l \vert \in \nsetlo{\pDi,\ssY}}\We[(l)]\pen(l)\Ind{\{\Vnormlp{\txdfPr[l]-\xdfPr[l]}^2\geq\pen(l)/7\}}
++\tfrac{1}{7}\sum_{l\in\nsetlo{\pDi,\ssY}}\pen(l)\We[(l)]\Ind{\{\Vnormlp{\txdfPr[l]-\xdfPr[l]}^2<\pen(l)/7\}}\\
+\leq\tfrac{1}{7}\pen(\pDi)
++\sum_{\vert l \vert \in \nset{\pDi,\ssY}}\vectp{\Vnormlp{\txdfPr[l]-\xdfPr[l]}^2-\pen(l)/7}\\
++\tfrac{1}{7}\sum_{\vert l \vert \in \nsetlo{\pDi,\ssY}}\We[(l)]\pen(l)\Ind{\{\Vnormlp{\txdfPr[l]-\xdfPr[l]}^2\geq\pen(l)/7\}}\\
++\tfrac{1}{7}\sum_{\vert l \vert\in\nsetlo{\pDi,\ssY}}\pen(l)\We[(l)]\Ind{\{\Vnormlp{\txdfPr[l]-\xdfPr[l]}^2<\pen(l)/7\}}%\\
+\end{multline}
+Consider the second and third r.h.s. term in \eqref{freq:ge:strat:kn:co:agg:pro1}.
+Splitting the first sum into two parts we obtain, for any $\pDi$ in $\llbracket 1, n \rrbracket$,
+\begin{multline}\label{freq:ge:strat:kn:co:agg:pro3}
+2\sum_{\vert s \vert \in\nset{0,\ssY}}\vert\fxdf[(s)]\vert^2\We[](\nsetro{0, \vert s \vert })+2\sum_{\vert s \vert > \ssY}\vert\fxdf[(s)]\vert^2\\
+\hspace*{5ex}\leq  2\sum_{\vert s \vert \in\nset{0,\mDi}}\vert\fxdf[(s)]\vert^2\We[](\nsetro{0,s})+ 2\sum_{\vert s \vert \in\nsetlo{\mDi,n}}\vert\fxdf[(s)]\vert^2+
+  2\sum_{\vert s \vert > n}\vert\fxdf[(s)]\vert^2\\\hfill
+\leq \Vnormlp{\theta^{\circ}_{\underline{0}}}^2\{\We[](\nsetro{0, \mDi})+\bias[\mDi]^2(\xdf)\}
+\end{multline}
+Combining  \eqref{freq:ge:strat:kn:co:agg:pro1} and the upper bounds \eqref{freq:ge:strat:kn:co:agg:pro2}
+and \eqref{freq:ge:strat:kn:co:agg:pro3} we obtain   the assertion, which completes the proof.\proEnd
+\end{pro}
+
+\subsection{Proofs for \nref{freq:ge:strat:kn:qu}}\label{pro:freq:ge:strat:kn:qu}
+% --------------------------------------------------------------------
+% <<Proof of Cor contr>>
+% --------------------------------------------------------------------
+Bellow we state the proof of \nref{freq:ge:strat:kn:qu:re:SrWe:ag} based on \nref{freq:ge:strat:kn:qu:re:SrWe:ag:prelem}, stated first.
+\begin{lm}\label{freq:ge:strat:kn:qu:re:SrWe:ag:prelem} Consider the data-driven aggregation weights
+  $\rWe[]$ as in \eqref{freq:ge:shape:kn:we}.
+  Using the weights as specified in \nref{freq:ge:shape:uk:we}, for any $l\in\nset{1,\ssY}$ with
+  $\daRaS{l}{\xdf,\Lambda}:=\daRa{l}{(\xdf,\Lambda)}$ holds
+  \begin{resListeN}[]
+  \item\label{re:rWe:i} for all $k\in\nsetro{1,l}$ we have\\
+    $\rWe\Ind{\setB{\Vnormlp{\txdfPr[l]-\xdfPr[l]}^2<\cpen\daRaS{l}{\xdf,\Lambda}/7}} 
+    \leq\exp\big(\rWn\big\{-\tfrac{\Vnormlp{\xdf_{\underline{0}}}^2}{2}\bias^2(\xdf)
+    +[\tfrac{25\cpen}{14}+\tfrac{\Vnormlp{\xdf_{\underline{0}}}^2}{2}]\daRaS{l}{\xdf,\Lambda}-\penSv\big\}\big)$%\\
+    % $\rWe\Ind{\setB{\Vnormlp{\txdfPr[l]-\xdfPr[l]}^2<\penSv[l]}} 
+    % \leq\exp\big(\rWn\big\{-\tfrac{\Vnormlp{\Proj[{\mHiH[0]}]^\perp\xdf}^2}{2}\bias^2(\xdf)
+    % +[120\cpen+\tfrac{\Vnormlp{\Proj[{\mHiH[0]}]^\perp\xdf}^2}{2}]\hRaDi{l,\xdf,\Lambda}\big\}\big)$
+  \item\label{re:rWe:ii} for all $\Di\in\nsetlo{l,\ssY}$ we have\\
+    $\rWe\Ind{\setB{\Vnormlp{\txdfPr-\xdfPr}^2<\penSv/7}}\leq\exp\big(\rWn\big\{-\tfrac{1}{2}\penSv
+    +[\tfrac{3}{2}\Vnormlp{\xdf_{\underline{0}}}^2+\cpen]\daRaS{l}{\xdf,\Lambda}\big\}\big)$.
+    % $\rWe\Ind{\setB{\Vnormlp{\txdfPr-\xdfPr}^2<\penSv}}\leq
+    % \exp\big(\rWn\big\{-\penSv
+    % +[\tfrac{3}{2}\Vnormlp{\Proj[{\mHiH[0]}]^\perp\xdf}^2+54\cpen]\hRaDi{l,\xdf,\Lambda}\big\}\big)$.
+  \end{resListeN}
+\end{lm}
+% --------------------------------------------------------------------
+% <<Proof Re Random weights>>
+% --------------------------------------------------------------------
+\begin{pro}[Proof of \nref{freq:ge:strat:kn:qu:re:SrWe:ag:prelem}.]\label{pro:freq:ge:strat:kn:qu:re:SrWe:ag:prelem}
+  Given $\Di,l\in\nset{1,\ssY}$ and an event $\dmEv{\Di}{l}$ (to be
+  specified below) it clearly follows
+  \begin{multline}\label{re:rWe:pro1}
+    \rWe\Ind{\dmEv{\Di}{l}}
+    =\frac{\exp(-\rWn\{-\Vnormlp{\txdfPr}^2+\penSv\})}
+    {\sum_{l\in\nset{1,\ssY}}\exp(-\rWn\{-\Vnormlp{\txdfPr[l]}^2+\penSv[l]\})}\Ind{\dmEv{\Di}{l}}\\
+    \leq
+    \exp\big(\rWn\big\{\Vnormlp{\txdfPr}^2-\Vnormlp{\txdfPr[l]}^2+(\penSv[l]-\penSv)\big\}\big)\Ind{\dmEv{\Di}{l}}
+  \end{multline}
+  We distinguish the two cases \ref{re:rWe:i} $\Di\in\nsetro{1,l}$ and \ref{re:rWe:ii}
+  $\Di\in\nsetlo{l,n}$.  Consider first \ref{re:rWe:i} $\Di\in\nsetro{1,l}$. From
+  \ref{re:contr:e1} in \nref{re:contr} (with
+  $\dxdfPr[]=\txdfPr[\ssY]$) follows that
+  \begin{multline*}%\label{re:rWe:pro2}
+    \rWe\Ind{\dmEv{\Di}{l}}
+    \leq
+    \exp\big(\rWn\big\{\Vnormlp{\txdfPr}^2-\Vnormlp{\txdfPr[l]}^2+(\penSv[l]-\penSv)\big\}\big)\Ind{\dmEv{\Di}{l}}\\
+    % \exp\big(\rWn\big\{\contr[](\txdfPr[l])-\contr[](\txdfPr)+\tfrac{9}{2}(\penSv[l]-\penSv)\big\}\big)\Ind{\dmEv{\Di}{l}}\\
+    \leq \exp\big(\rWn\big\{\tfrac{11}{2}\Vnormlp{\txdfPr[l]-\xdfPr[l]}^2-\tfrac{1}{2}\Vnormlp{\xdf_{\underline{0}}}^2(\bias[k]^2(\xdf)-\bias[l]^2(\xdf))+(\penSv[l]-\penSv[k])\big\}\big)\Ind{\dmEv{k}{l}}
+  \end{multline*}
+  If we define
+  $\dmEv{\Di}{l}:=\setB{\Vnormlp{\txdfPr[l]-\xdfPr[l]}^2<\cpen\daRa{l}{(\xdf,\Lambda)}/7}$
+  then the last bound together with \nref{freq:ge:shape:uk:we}, i.e.,
+  $[\Vnormlp{\xdf_{\underline{0}}}^2+\cpen]\daRa{\Di}{(\xdf,\Lambda)}\geq
+  \Vnormlp{\xdf_{\underline{0}}}^2\bias^2(\xdf)\vee\penSv$, implies the
+  assertion \ref{re:rWe:i}, that is
+  \begin{multline*}
+    \rWe\Ind{\setB{\Vnormlp{\txdfPr[l]-\xdfPr[l]}^2<\cpen\daRa{l}{(\xdf,\Lambda)}/7}}
+    \\\leq\exp\big(\rWn\big\{\tfrac{11}{14}\cpen\daRa{l}{(\xdf,\Lambda)}
+    +\tfrac{1}{2}\Vnormlp{\xdf_{\underline{0}}}^2\bias[l]^2(\xdf) +\penSv[l]
+    -\tfrac{1}{2}\Vnormlp{\xdf_{\underline{0}}}^2\bias^2(\xdf)-\penSv\big\}\big)\\
+    \leq\exp\big(\rWn\big\{[\tfrac{25}{14}\cpen+\tfrac{1}{2}\Vnormlp{\xdf_{\underline{0}}}^2]\daRa{l}{(\xdf,\Lambda)}
+    -\tfrac{1}{2}\Vnormlp{\xdf_{\underline{0}}}^2\bias^2(\xdf)-\penSv\big\}\big).
+    % =\exp\big(\rWn\big\{10*\penSv[l]-\tfrac{1}{2}\Vnormlp{\Proj[{\mHiH[0]}]^\perp\xdf}^2(\bias[k]^2(\xdf)-\bias[l]^2(\xdf))-\tfrac{9}{2}\penSv[k]\big\}\big)
+  \end{multline*}
+  % and hence, by exploiting that $\penSv[k]\geq0$ and
+  % $\hRa{l,\xdf,\Lambda}=[\bias[l]^2(\xdf)\vee \DipenSv[l] \ssY^{-1}]$
+  % follows the assertion \ref{re:rWe:i}, that is
+  % \begin{multline*}
+  %   \rWe[(k)]\Ind{\setB{\Vnormlp{\txdfPr[l]-\xdfPr[l]}^2<\penSv[l]}}\leq
+  %   \exp\big(\rWn\big\{-\tfrac{\Vnormlp{\Proj[{\mHiH[0]}]^\perp\xdf}^2}{2}\bias[k]^2(\xdf)+[10*12\cpen+\tfrac{\Vnormlp{\Proj[{\mHiH[0]}]^\perp\xdf}^2}{2}]\hRa{l,\xdf,\Lambda})\big\}\big).
+  % \end{multline*}
+  Consider secondly \ref{re:rWe:ii} $\Di\in\nsetlo{l,n}$. From \ref{re:contr:e2}
+  in \nref{re:contr} (with $\dxdfPr[]=\txdfPr[\ssY]$) and
+  \eqref{re:rWe:pro1} follows
+  \begin{multline*}
+    \rWe[(k)]\Ind{\dmEv{l}{k}}
+    \leq\exp\big(\rWn\big\{\Vnormlp{\txdfPr}^2-\Vnormlp{\txdfPr[l]}^2
+    +(\penSv[l]-\penSv)\big\}\big)\Ind{\dmEv{\Di}{l}}\\
+    \leq
+    \exp\big(\rWn\big\{\tfrac{7}{2}\Vnormlp{\txdfPr[k]-\xdfPr[k]}^2
+    +\tfrac{3}{2}\Vnormlp{\xdf_{\underline{0}}}^2(\bias[l]^2(\xdf)-\bias^2(\xdf))
+    +(\penSv[l]-\penSv)\big\}\big)\Ind{\dmEv{l}{k}}
+  \end{multline*}
+  If we set $\dmEv{l}{\Di}:=\{\Vnormlp{\txdfPr-\xdfPr}^2<\penSv/7\}$
+  then we clearly have
+  \begin{multline*}
+    \rWe\Ind{\setB{\Vnormlp{\txdfPr-\xdfPr}^2<\penSv/7}}\\
+    \leq \exp\big(\rWn\big\{-\tfrac{1}{2}\penSv+\penSv[l]+
+    \tfrac{3}{2}\Vnormlp{\xdf_{\underline{0}}}^2\bias[l]^2(\xdf)
+    -\tfrac{3}{2}\Vnormlp{\xdf_{\underline{0}}}^2\bias^2(\xdf)\big\}\big)
+  \end{multline*}
+  and hence, by exploiting $\bias^2(\xdf)\geq0$ and
+  \nref{freq:ge:shape:uk:we} follows the assertion \ref{re:rWe:ii}, that is
+  \begin{equation*}
+    \rWe[(k)]\Ind{\setB{\Vnormlp{\txdfPr[k]-\xdfPr[k]}^2<\penSv}}
+    % \leq \exp\big(\rWn\big\{-\tfrac{1}{2}\penSv
+    % +[\tfrac{3}{2}\Vnormlp{\Proj[{\mHiH[0]}]^\perp\xdf}^2+\tfrac{9}{2}*12\cpen]\hRa{l,\xdf,\Lambda}\big\}\big).
+    \leq \exp\big(\rWn\big\{-\tfrac{1}{2}\penSv+[\tfrac{3}{2}\Vnormlp{\xdf_{\underline{0}}}^2+\cpen]\daRa{l}{(\xdf,\Lambda)}\big\}\big),
+ \end{equation*}
+which completes the proof.\proEnd
+\end{pro}
+% ....................................................................
+% <<Proof Re Sum Random weights>>
+% ....................................................................
+\begin{pro}[Proof of \nref{freq:ge:strat:kn:qu:re:SrWe:ag}.]\label{pro:freq:ge:strat:kn:qu:re:SrWe:ag}
+  Consider \ref{freq:ge:strat:kn:qu:re:SrWe:ag:i}. For the non trivial case $\mDi>1$
+  from \nref{freq:ge:strat:kn:qu:re:SrWe:ag:prelem} \ref{re:rWe:i} with $l=\mdDi$ follows for all
+  $\Di<\mDi\leq \mdDi$, and hence due to the definition
+  \eqref{freq:ge:strat:kn:ma:de:mDipDi}
+  $\Vnormlp{\xdf_{\underline{0}}}^2\bias^2\geq
+  \Vnormlp{\xdf_{\underline{0}}}^2\bias[\mDi-1]^2>2[\Vnormlp{\xdf_{\underline{0}}}^2+2\cpen]\daRaS{\mdDi}{\xdf,\Lambda}$.
+  Exploiting the last bound we obtain for each $\Di\in\nsetro{1,\mDi}$
+  \begin{multline*}
+    \rWe\Ind{\setB{\Vnormlp{\txdfPr[\mdDi]-\xdfPr[\mdDi]}^2<\cpen\daRaS{\mdDi}{\xdf,\Lambda}/7}}\\
+    \leq\exp\big(\rWn\big\{-\tfrac{\Vnormlp{\xdf_{\underline{0}}}^2}{2}\bias^2(\xdf)
+    +[\tfrac{25\cpen}{14}+\tfrac{\Vnormlp{\xdf_{\underline{0}}}^2}{2}]\daRaS{\mdDi}{\xdf,\Lambda}-\penSv\big\}\big)\\
+    % \hfill=\exp\big(\rWn\big\{\underbrace{-\tfrac{1}{2}\Vnormlp{\So}^2\bias^2(\So)
+    % +[\tfrac{28}{14}\cpen+\tfrac{1}{2}\Vnormlp{\So}^2]\dRa{\mdDi}(\So)}_{\leq0}\}\big)\hfill\\
+    % \hfill\times\exp\big(-\tfrac{3}{14}\rWc\cpen
+    % n\dRa{\mdDi}(\So)\big)\\
+    \hfill
+    \leq\exp\big(-\tfrac{3}{14}\rWc\cpen \ssY\daRaS{\mdDi}{\xdf,\Lambda}-\rWn\penSv\big)
+  \end{multline*}
+  which in turn with
+  $\penSv=\cpen \Di\cmiSv\miSv \ssY^{-1}\geq \cpen\Di\ssY^{-1}$ and
+  $\sum_{\Di\in\Nz}\exp(-\mu\Di)\leq \mu^{-1}$ for any $\mu>0$
+  implies \ref{freq:ge:strat:kn:qu:re:SrWe:ag:i}, that is,
+  \begin{multline*}
+    \rWe[](\nsetro{1,\mDi})\leq
+    \rWe[](\nsetro{1,\mDi})\Ind{\setB{\Vnormlp{\txdfPr[\mdDi]-\xdfPr[\mdDi]}^2<\cpen\daRaS{\mdDi}{\xdf,\Lambda}/7}}
+    +\Ind{\setB{\Vnormlp{\txdfPr[\mdDi]-\xdfPr[\mdDi]}^2\geq\cpen\daRaS{\mdDi}{\xdf,\Lambda}/7}}\\
+    \hfill\leq\exp\big(-\tfrac{3\rWc\cpen}{14}\ssY\daRaS{\mdDi}{\xdf,\Lambda}\big)\sum_{k=1}^{\mDi-1}\exp(-\rWc\cpen\Di)
+    +\Ind{\setB{\Vnormlp{\txdfPr[\mdDi]-\xdfPr[\mdDi]}^2\geq\cpen\daRaS{\mdDi}{\xdf,\Lambda}/7}}\\
+    \leq \tfrac{1}{\rWc\cpen}\exp\big(-\tfrac{3\rWc\cpen}{14}\ssY\daRaS{\mdDi}{\xdf,\Lambda}\big)
+    +\Ind{\setB{\Vnormlp{\txdfPr[\mdDi]-\xdfPr[\mdDi]}^2\geq\cpen\daRaS{\mdDi}{\xdf,\Lambda}/7}}.
+  \end{multline*} 
+  Consider \ref{freq:ge:strat:kn:qu:re:SrWe:ag:ii}. From \nref{freq:ge:strat:kn:qu:re:SrWe:ag:prelem} \ref{re:rWe:ii}
+  with $l=\pdDi$ follows for all $\Di>\pDi\geq \pdDi$, and hence due
+  to the definition \eqref{freq:ge:strat:kn:ma:de:mDipDi}
+  $\penSv > 2[3\Vnormlp{\xdf_{\underline{0}}}^2+ 2\cpen]\daRaS{\pdDi}{\xdf,\Lambda}$. Thereby, we
+  obtain for $\Di\in\nsetlo{\pDi,n}$
+  \begin{multline*}
+    \rWe\Ind{\setB{\Vnormlp{\txdfPr-\xdfPr}^2<\penSv/7}}
+    \leq % \exp\big(\rWn\big\{-\tfrac{1}{2}\pen +[\tfrac{3}{2}\Vnormlp{\So}^2+\cpen]\dRa{\pdDi}(\So)\big\}\big)
+    % \\
+    % =
+    \exp\big(\rWn\big\{-\tfrac{1}{4} \penSv
+    -\tfrac{1}{4}\penSv 
+    +[\tfrac{3}{2}\Vnormlp{\xdf_{\underline{0}}}^2+\cpen]\daRaS{\pdDi}{\xdf,\Lambda}\big\}\big)\\
+    \leq \exp\big(\rWn\big\{-\tfrac{1}{4} \penSv\big\}\big).
+  \end{multline*}
+   which in turn with $\penSv=\cpen \Di\cmiSv\miSv \ssY^{-1}$  implies
+  \begin{multline}\label{freq:ge:strat:kn:qu:re:SrWe:ag:pe1}
+    \sum_{\Di\in\nsetlo{\pDi,n}}\penSv\rWe\Ind{\{\Vnormlp{\txdfPr-\xdfPr}^2\leq\pen/7\}}\\
+    \leq \cpen\ssY^{-1}\sum_{\Di\in\nsetlo{\pDi,n}} \Di\cmiSv\miSv\exp\big(-\tfrac{\rWc\cpen}{4}\Di\cmiSv\miSv\big)
+    % \tfrac{4}{\rWc}n{^{-1}}\sum_{\Di\in\nsetlo{\pDi,n}}\tfrac{\rWc\cpen}{4}\Di
+    %\exp\big(-\tfrac{\rWc\cpen}{4}\Di\big)\leq\tfrac{16}{\rWc^2\cpen}n^{-1},\hfill
+  \end{multline}
+  Exploiting that
+  $\sqrt{\cmiSv}=\tfrac{\log (\Di\miSv \vee
+    (\Di+2))}{\log(\Di+2)}\geq1$, $\cpen/4\geq2\log(3e)$ and
+  $\rWc\geq1$, then for all $k\in\Nz$ we have
+  $\tfrac{\rWc\cpen}{4} k-\log(k+2)\geq1$, and hence by
+  $a\exp(-ab)\leq \exp(-b)$ for $a,b\geq1$, it follows
+  \begin{multline*}
+    \cmiSv\Di \miSv\exp\big(-\tfrac{\rWc\cpen}{4}\cmiSv\Di\miSv\big)\\
+    \leq\cmiSv\exp\big(-\tfrac{\rWc\cpen}{4}\cmiSv\Di\miSv + \sqrt{\cmiSv}\log(\Di+2)\big)
+    \\\hfill\leq
+    \cmiSv\exp\big(-\cmiSv(\tfrac{\rWc\cpen}{4}\Di-\log(\Di+2))\big)
+    \leq\exp\big(-(\tfrac{\rWc\cpen}{4}\Di-\log(\Di+2))\big)\\
+    =(\Di+2)\exp\big(-\tfrac{\rWc\cpen}{4}\Di\big).
+  \end{multline*}
+  Exploiting $\sum_{\Di\in\Nz}\mu\Di\exp(-\mu\Di)\leq \mu^{-1}$ and
+  $\sum_{\Di\in\Nz}\mu\exp(-\mu\Di)\leq 1$ for any $\mu$; we obtain
+  \begin{displaymath}
+    \sum_{k=\pDi+1}^{\ssY}\cmiSv\Di \miSv\exp\big(-\tfrac{\rWc\cpen}{4}\cmiSv\Di\miSv\big)
+    \leq \sum_{k=\pDi+1}^\infty(\Di+2)\exp\big(-\tfrac{\rWc\cpen}{4}\Di\big)
+    \leq \tfrac{16}{\cpen^2\rWc^{2}}+ \tfrac{8}{\cpen\rWc}.
+  \end{displaymath}
+  Combining the last bound and \eqref{freq:ge:strat:kn:qu:re:SrWe:ag:pe1} we obtain the
+  assertion \ref{freq:ge:strat:kn:qu:re:SrWe:ag:ii}, that is
+  \begin{displaymath}
+    \sum_{\Di\in\nsetlo{\pDi,n}}\penSv\rWe\Ind{\{\Vnormlp{\txdfPr-\xdfPr}^2\leq\pen/7\}}
+    \leq \ssY^{-1}\{\tfrac{16}{\cpen\rWc^{2}}+ \tfrac{8}{\rWc}\}
+  \end{displaymath}
+  which completes the proof.\proEnd
+\end{pro}
+
+% --------------------------------------------------------------------
+% <<Proof Re Sum MS Random weights>>
+% --------------------------------------------------------------------
+\begin{pro}[Proof of \nref{freq:ge:strat:kn:qu:re:SrWe:ms}.]
+  By definition of $\hDi$ it holds
+  $-\Vnormlp{\txdfPr[\hDi]}^2+\penSv[\hDi]\leq
+  -\Vnormlp{\txdfPr}^2+\penSv$ for all $\Di\in\nset{1,\ssY}$, and
+  hence
+  \begin{equation}\label{freq:ge:strat:kn:qu:re:SrWe:ms:pr:e1}
+    \Vnormlp{\txdfPr[\hDi]}^2-\Vnormlp{\txdfPr}^2\geq
+    \penSv[\hDi]-\penSv\text{ for all }\Di\in\nset{1,\ssY}.
+  \end{equation}
+  Consider \ref{freq:ge:strat:kn:qu:re:SrWe:ms:i}. It is sufficient to show, that
+  $\{\hDi\in\nsetro{1,\mDi}\}\subseteq
+  \{\Vnormlp{\txdfPr-\xdfPr}^2\geq\cpen\daRaS{\mdDi}{\xdf,\Lambda}/7\}$
+  for $\mDi>1$ holds.  On the event $\{\hDi\in\nsetro{1,\mDi}\}$ holds
+  $1\leq\hDi<\mDi\leq\mdDi$ and thus by definition
+  \eqref{freq:ge:strat:kn:ma:de:mDipDi}
+  \begin{equation}\label{freq:ge:strat:kn:qu:re:SrWe:ms:pr:e2}
+    \Vnormlp{\xdf_{\underline{0}}}^2\bias[\hDi]^2(\xdf)>
+    [\Vnormlp{\xdf_{\underline{0}}}^2+4\cpen]\daRaS{\mdDi}{\xdf,\Lambda}
+  \end{equation}
+  and due to \nref{re:contr} \ref{re:contr:e1} also
+  \begin{equation}\label{freq:ge:strat:kn:qu:re:SrWe:ms:pr:e3}
+    \Vnormlp{\txdfPr[\hDi]}^2-\Vnormlp{\txdfPr[\mdDi]}^2\leq
+    \tfrac{11}{2}\Vnormlp{\txdfPr[\mdDi]-\xdfPr[\mdDi]}^2
+    -\tfrac{1}{2}\Vnormlp{\xdf_{\underline{0}}}^2\{\bias[\hDi]^2(\xdf)-\bias[\mdDi]^2(\xdf)\}.
+  \end{equation}
+  Combining, \eqref{freq:ge:strat:kn:qu:re:SrWe:ms:pr:e1} and
+  \eqref{freq:ge:strat:kn:qu:re:SrWe:ms:pr:e3} it follows that
+  \begin{multline*}
+    \tfrac{11}{2}\Vnormlp{\txdfPr[\mdDi]-\xdfPr[\mdDi]}^2\geq
+    \penSv[\hDi]-\penSv[\mdDi]
+    +\tfrac{1}{2}\Vnormlp{\xdf_{\underline{0}}}^2\{\bias[\hDi]^2(\xdf)-\bias[\mdDi]^2(\xdf)\}\hfill
+  \end{multline*}
+  and hence together with $\penSv[\hDi]\geq0$, \eqref{freq:ge:strat:kn:qu:re:SrWe:ms:pr:e2}
+  and \nref{freq:ge:shape:uk:we} we obtain the claim, that is
+  \begin{multline*}
+    \tfrac{11}{2}\Vnormlp{\txdfPr[\mdDi]-\xdfPr[\mdDi]}^2\geq
+    \tfrac{1}{2}\Vnormlp{\xdf_{\underline{0}}}^2\bias[\hDi]^2(\xdf)-
+    \tfrac{1}{2}\Vnormlp{\xdf_{\underline{0}}}^2\bias[\mdDi]^2(\xdf)
+    -\penSv[\mdDi]\\
+    >[\tfrac{1}{2}\Vnormlp{\xdf_{\underline{0}}}^2+2\cpen]\daRaS{\mdDi}{\xdf,\Lambda}
+    -\tfrac{1}{2}\Vnormlp{\xdf_{\underline{0}}}^2\bias[\mdDi]^2(\xdf)-\penSv[\mdDi]
+    \geq\tfrac{11}{14}\cpen\daRaS{\mdDi}{\xdf,\Lambda},
+  \end{multline*}
+  and shows \ref{freq:ge:strat:kn:qu:re:SrWe:ms:i}.  Consider \ref{freq:ge:strat:kn:qu:re:SrWe:ms:ii}. It is sufficient to show that,
+  $\{\hDi\in\nsetlo{\pDi,\ssY}\}\subseteq
+  \{\Vnormlp{\txdfPr[\hDi]-\xdfPr[\hDi]}^2\geq\penSv[\hDi]/7\}$.  On the
+  event $\{\hDi\in\nsetlo{\pDi,\ssY}\}$ holds $\hDi>\pDi\geq\pdDi$ and
+  thus by definition \eqref{freq:ge:strat:kn:ma:de:mDipDi}
+  \begin{equation}\label{freq:ge:strat:kn:qu:re:SrWe:ms:pr:e4}
+    \penSv[\hDi] > [6\Vnormlp{\So}^2+ 4\cpen] \daRaS{\pdDi}{\xdf,\Lambda}
+  \end{equation}
+  and due to \nref{re:contr} \ref{re:contr:e2} also
+  \begin{equation}\label{freq:ge:strat:kn:qu:re:SrWe:ms:pr:e5}
+    \Vnormlp{\txdfPr[\hDi]}^2-\Vnormlp{\txdfPr[\pdDi]}^2\leq
+    \tfrac{7}{2}\Vnormlp{\txdfPr[\hDi]-\xdfPr[\hDi]}^2+\tfrac{3}{2}\Vnormlp{\xdf_{\underline{0}}}^2
+    \{\bias[\pdDi]^2(\xdf)-\bias[\hDi]^2(\xdf)\}.
+  \end{equation}
+  Combining, \eqref{freq:ge:strat:kn:qu:re:SrWe:ms:pr:e1} and \eqref{freq:ge:strat:kn:qu:re:SrWe:ms:pr:e5} it
+  follows that
+  \begin{multline*}
+    \tfrac{7}{2}\Vnormlp{\txdfPr[\hDi]-\xdfPr[\hDi]}^2\geq
+    \penSv[\hDi]-\penSv[\pdDi]  -\tfrac{3}{2}\Vnormlp{\xdf_{\underline{0}}}^2
+    \{\bias[\pdDi]^2(\xdf)-\bias[\hDi]^2(\xdf)\}\hfill
+  \end{multline*}
+  and hence together with $\bias[\hDi]^2(\xdf)\geq0$,
+  \eqref{freq:ge:strat:kn:qu:re:SrWe:ms:pr:e4} and \nref{freq:ge:shape:uk:we} we obtain the claim,
+  that is
+  \begin{multline*}
+    \tfrac{7}{2}\Vnormlp{\txdfPr[\hDi]-\xdfPr[\hDi]}^2\geq
+    (\tfrac{1}{2}+\tfrac{1}{2})\penSv[\hDi]-\penSv[\pdDi]  -\tfrac{3}{2}\Vnormlp{\xdf_{\underline{0}}}^2
+    \bias[\pdDi]^2(\xdf)\\
+    >\tfrac{1}{2}\penSv[\hDi]+\tfrac{1}{2}[6\Vnormlp{\xdf_{\underline{0}}}^2+ 4\cpen]
+    \daRaS{\pdDi}{\xdf,\Lambda}-\penSv[\pdDi]-\tfrac{3}{2}\Vnormlp{\xdf_{\underline{0}}}^2
+    \bias[\pdDi]^2(\xdf)
+    \geq\tfrac{1}{2}\penSv[\hDi],
+  \end{multline*}
+  which shows \ref{freq:ge:strat:kn:qu:re:SrWe:ms:ii} and completes the proof.\proEnd
+\end{pro}
+
+\begin{lm}\label{ak:re:rest}
+Assume that \nref{freq:ge:strat:kn:qu:as} holds true and use the penalty described in \nref{freq:ge:shape:kn:de:pen:oo}.
+Then, for all $\ssY\in\Nz$ and $\Di\in\nset{1,\ssY}$ hold
+  \begin{resListeN}[]
+  \item\label{ak:re:rest:i} let $\Di_{\cst{3}}:=\floor{  3(2/\cst{3})^2}$ and $\ssY_{o}:={15(\cst{5})^{-4}}$ then\\ 
+    $\sum_{\Di=1}^{\ssY}\E
+    \vectp{\Vnormlp{\txdfPr-\xdfPr}^2-12\DipenSv/\ssY}
+    \leq \cst{1}\ssY^{-1}\big[\tfrac{2 \cst{2}}{\cst{3}}\miSv[\Di_{\cst{3}}] + \cst{4} n_{o} \miSv[\ssY_{o}]\big]$
+  \item\label{ak:re:rest:ii} let
+    $\Di_{\cst{7}}:=\floor{3(2 / \cst{7})^2}$ and
+    $\ssY_{o}:=15(3/\cst{8})^4$ then\\
+    $\sum_{\Di=1}^{\ssY}\DipenSv\P\big(\Vnormlp{\txdfPr-\xdfPr}^2
+    \geq12\DipenSv/\ssY\big)\leq\cst{6}\big[\miSv[\Di_{\cst{7}}]^2\Di_{\cst{7}}^2+\miSv[\ssY_{o}]^2 \ssY_{o}^{2}\big]$
+  \item\label{ak:re:rest:iii} 
+  $\P\big(\Vnormlp{\txdfPr-\xdfPr}^2 \geq 12\daRaS{\Di}{\xdf,\Lambda}\big)\leq 
+    \cst{9} \big[\exp\big(\tfrac{-\cst{10}\ssY\daRaS{\Di}{\xdf,\Lambda}}{\miSv}\big)+(\cst{8})^{-2}\ssY^{-1}\big]$
+  \end{resListeN}
+\end{lm}
+
+\begin{pro}[Proof of \nref{ak:re:rest}.]
+Consider \ref{ak:re:rest:i}.
+  Since $\cmiSv\geq1$ for
+  $\Di\geq3(\tfrac{2}{\cst{3}})^2$ holds
+  $\sqrt{\cmSv}\Di\tfrac{\cst{3}}{2}-\log(\Di+2)\geq0$
+  and%
+  \begin{multline*}
+    \miSv\exp\big(-\cmSv\Di\cst{3}\big)\leq
+    \exp\big(-\cmSv\Di\tfrac{\cst{3}}{2}\big)
+    \exp\big(-\sqrt{\cmSv}[\sqrt{\cmSv}\Di\tfrac{\cst{3}}{2}-\log(\Di+2)]\big)\\
+    \leq\exp\big(-\cmSv\Di\tfrac{\cst{3}}{2}\big)
+    \leq\exp\big(-\tfrac{\cst{3}}{2}\Di\big)
+  \end{multline*}
+  consequently, for
+  $\Di_{\cst{3}}:=\floor{3(\tfrac{2}{\cst{3}})^2}$ then exploiting
+  $\sum_{\Di\in\Nz}\exp(-\mu\Di)\leq \mu^{-1}$ follows
+  \begin{displaymath}
+    \sum_{\Di=1+\Di_{\cst{3}}}^{\ssY}\miSv\exp\big(-\cst{3} \cmSv \Di\big)\leq
+    \sum_{\Di=1+\Di_{\cst{3}}}^{\ssY}\exp\big(-\tfrac{\cst{3}}{2}\Di\big)
+    \leq \tfrac{2}{\cst{3}}
+  \end{displaymath}
+  while
+  \begin{displaymath}
+   \sum_{\Di=1}^{\Di_{\cst{3}}}\miSv\exp\big(-\cst{3}\cmSv\Di\big)\leq
+   \miSv[\Di_{\cst{3}}]\sum_{\Di=1}^{\Di_{\cst{3}}}\exp\big(-\cst{3}\Di\big)
+   \leq \tfrac{\miSv[\Di_{\cst{3}}]}{\cst{3}}
+ \end{displaymath}
+ hence
+ \begin{displaymath}
+   \sum_{\Di=1}^{\ssY}\miSv\exp\big(-\cst{3}\cmSv\Di\big)\leq
+   \tfrac{2}{\cst{3}}+\tfrac{\miSv[\Di_{\cst{3}}]}{\cst{3}}\leq \tfrac{2}{\cst{3}}\miSv[\Di_{\cst{3}}]
+ \end{displaymath}
+ Using for all $ \ssY>\ssY_{o}:=15({\cst{5}})^{-4}$ holds 
+ $\sqrt{n}\geq{(\cst{5})^{-1}}\log(n+2)$ it follows for all $\Di\in\nset{1,n}$
+ \begin{displaymath}
+   \tfrac{\Di\miSv}{\ssY\cst{5}}\exp\big(-\sqrt{n\cmSv}\cst{5}\big)
+   \leq
+   \tfrac{1}{\ssY}\exp\big(-\sqrt{\cmSv}[\sqrt{\ssY}\cst{5}-\log(\Di+2)]\big)\leq \tfrac{1}{\ssY}
+ \end{displaymath}
+ consequently, 
+ \begin{equation*}
+   \sum_{\Di=1}^{\ssY}\tfrac{\Di\miSv}{\ssY}\exp\big(-\sqrt{n\cmSv}\cst{5}\big)
+   \leq\sum_{\Di=1}^{\ssY}\tfrac{1}{\ssY}\leq1
+ \end{equation*}
+ while for $\ssY\leq \ssY_{o}$ with
+ $\miSv[\ssY]\leq\miSv[\ssY_{o}]$ follows
+\begin{equation*}
+   \sum_{\Di=1}^{\ssY}\tfrac{\Di\miSv}{\ssY}\exp\big(-\sqrt{\ssY\cmSv}\cst{5}\big)\leq 
+    \miSv[\ssY]\ssY\exp\big(-\cst{5}\sqrt{\ssY}\big)\leq\ssY_{o}\miSv[\ssY_{o}]
+  \end{equation*}
+ consequently, for all $\ssY\in\Nz$ holds
+ \begin{displaymath}
+ \sum_{\Di=1}^{\ssY}\tfrac{\Di\miSv}{\ssY}\exp\big(-\cst{5}\sqrt{n\cmSv}\big)\leq \miSv[\ssY_{o}]\ssY_{o}
+\end{displaymath}
+Combining the last two bounds and \nref{freq:ge:strat:kn:qu:as} \ref{freq:ge:strat:kn:qu:as:i}  we obtain \ref{ak:re:rest:i}, that is 
+\begin{multline*}
+\sum_{\Di=1}^{\ssY}\E\vectp{\Vnormlp{\txdfPr[\Di]-\xdfPr[\Di]}^2-12\DipenSv/\ssY}\\\hfill\leq \cst{1}\bigg[\tfrac{\cst{2}}{\ssY}\sum_{\Di=1}^{\ssY}
+\miSv\exp\big(-\cst{3}\cmSv\Di\big)+\tfrac{\cst{4}}{n}\sum_{\Di=1}^{\ssY}\tfrac{\Di\miSv}{n}\exp\big(-\cst{5}\sqrt{n\cmSv}\big)
+\bigg]\\\leq \cst{1}\ssY^{-1}\big[\tfrac{2}{\cst{3}}\miSv[\Di_{\cst{3}}]{\Vnormlp[1]{\fydf}^2}+4 \miSv[\ssY_{o}]\ssY_{o}\big]
+\end{multline*}
+Consider  \ref{ak:re:rest:ii}. If $\Di\geq 3(2/\cst{7})^2$ then 
+$\Di\geq(2/\cst{7})\log(\Di+2)$ and
+hence
+$\Di-{(\cst{7})^{-1}}\log(\Di+2)\geq{(\cst{7})^{-1}}\log(\Di+2)$
+or equivalently,
+$\cst{7}\Di-\log(\Di+2)\geq\log(\Di+2)\geq1$
+and thus
+\begin{multline*}
+\Di\cmSv\miSv\exp\big(-\cst{7}\cmSv\Di\big)\leq
+\cmSv\exp\big(-\cmSv\,[\cst{7}\Di - \log(\Di+2)]\big)\\\leq
+(\Di+2)\exp\big(-\cst{7}\Di\big)% =
+% \\\cmSv\exp\big(-\tfrac{\cpen}{800\Vnormlp[1]{\fydf}}\cmSv\Di\big)\exp\big(-\sqrt{\cmSv}[\tfrac{\cpen\sqrt{\cmSv}}{800\Vnormlp[1]{\fydf}}\Di-\log(\Di+2)]\big)\leq\\
+\end{multline*}
+consequently, if $\Di>\Di_{\cst{7}}:=\floor{3({2/\cst{7}})^2}$ exploiting $\sum_{\Di\in\Nz}(\Di+2)\exp(-\mu\Di)\leq \mu^{-2}+ 2\mu^{-1}$
+follows
+\begin{multline*}
+\sum_{\Di=1+\Di_{\cst{7}}}^{\ssY}\Di\cmSv\miSv\exp\big(-\cst{7}\cmSv\Di\big)\leq
+\sum_{\Di=1+\Di_{\cst{7}}}^{\ssY}(k+2)\exp\big(-\cst{7}\Di\big)
+\\\leq
+(\cst{7})^{-2}+{2/\cst{7}}\leq \Di_{\cst{7}}^2
+\end{multline*}
+while $\log(\Di\miSv)\leq \tfrac{1}{e}\Di\miSv$ implies
+$\cmSv\leq\Di\miSv$ it follows
+\begin{multline*}
+  \sum_{\Di=1}^{\Di_{\cst{7}}}\Di\cmSv\miSv\exp\big(-\cst{7}\cmSv\Di\big)\leq
+  \cmSv[\Di_{\cst{7}}]\miSv[\Di_{\cst{7}}]\sum_{\Di=1}^{\Di_{\cst{7}}}\Di\exp\big(-\cst{7}\Di\big)\\\leq
+  \cmSv[\Di_{\cst{7}}]\miSv[\Di_{\cst{7}}](\cst{7})^{-2}\leq\miSv[\Di_{\cst{7}}]^2\Di_{\cst{7}}^2
+\end{multline*}
+consequently for all $\ssY\in\Nz$ we have
+\begin{displaymath}
+  \sum_{\Di=1}^{\ssY}\Di\cmSv\miSv\exp\big(-\cst{7}\cmSv\Di\big)\leq(1+\miSv[\Di_{\cst{7}}]^2)\Di_{\cst{7}}^2\leq 2\miSv[\Di_{\cst{7}}]^2\Di_{\cst{7}}^2
+\end{displaymath}
+Since  $\cmSv\leq\Di\miSv$,
+and  for all $ \ssY>\ssY_{o}:=\floor{15({3/\cst{8}})^4}$ holds $\sqrt{\ssY}\geq{3/\cst{8}}\log(\ssY+2)$
+\begin{multline*}
+\Di\cmSv\miSv\exp\big(-\cst{8}\sqrt{\ssY\cmSv}\big)\leq
+\Di^2\miSv^2\exp\big(-\cst{8}\sqrt{\ssY\cmSv}\big)\\\leq
+\tfrac{1}{\ssY}\exp\big(-\sqrt{\cmSv}[\sqrt{\ssY}\cst{8}-2\log(\Di+2)]+\log(\ssY+2)\big)
+\leq\tfrac{1}{\ssY}\exp\big(-3\sqrt{\cmSv}[\tfrac{\cst{8}\sqrt{\ssY}}{3}-\log(\ssY+2)]\big)
+\\
+\leq \tfrac{1}{\ssY}
+  \end{multline*}
+consequently, 
+\begin{equation*}
+\sum_{\Di=1}^{\ssY}\Di\cmSv\miSv\exp\big(-\cst{8}\sqrt{\ssY\cmSv}\big)\leq\sum_{\Di=1}^{\ssY}\tfrac{1}{\ssY}\leq1
+\end{equation*}
+On the other hand side for $\ssY\leq\ssY_{o}$ with  $\ssY^b\exp(-a\ssY^{1/c})\leq (\tfrac{cb}{ea})^{cb}$ for all $c>0$ and $a,b\geq0$  follows
+\begin{multline*}
+\sum_{\Di=1}^{\ssY}\Di\cmSv\miSv\exp\big(-\cst{8}\sqrt{\ssY\cmSv}\big)\\
+\leq\ssY^2\cmSv[\ssY]\miSv[\ssY]\exp\big(-\cst{8}\sqrt{\ssY}\big)\leq
+\miSv[\ssY]^2\ssY^3\exp\big(-\cst{8}\sqrt{\ssY}\big)\leq \miSv[\ssY_{o}]^2\big({3/\cst{8}}\big)^6\leq\miSv[\ssY_{o}]^2\ssY_{o}^2
+\end{multline*}
+ consequently, for all $\ssY\in\Nz$ holds
+ \begin{displaymath}
+ \sum_{\Di=1}^{\ssY}\Di\cmSv\miSv\exp\big(-\cst{8}\sqrt{\ssY\cmSv}\big)\leq \miSv[\ssY_{o}]^2\ssY_{o}^2
+\end{displaymath}
+Combining the last two bounds and \nref{freq:ge:strat:kn:qu:as} \ref{freq:ge:strat:kn:qu:as:ii} we obtain \ref{ak:re:rest:ii}, that is 
+\begin{multline*}
+\sum_{\Di=1}^{\ssY}\cmiSv \Di \miSv\P\big(\Vnormlp{\txdfPr[\Di]-\xdfPr[\Di]}^2\geq12\DipenSv/\ssY\big)\\\hfill\leq \cst{6}\sum_{\Di=1}^{\ssY}\cmiSv \Di \miSv\bigg[\exp\big(-\cst{7}\cmSv\Di\big)+\exp\big(-\cst{8}\sqrt{\ssY\cmSv}\big)
+\bigg]\\
+\leq\cst{6}\bigg[2\miSv[\Di_{\cst{7}}]^2\Di_{\cst{7}}^2+\miSv[\ssY_{o}]^2\ssY_{o}^2\bigg]
+\end{multline*}
+Consider \ref{ak:re:rest:iii}. Since
+$\tfrac{\cst{11}\ssY\sqrt{\daRa{\Di}{(\xdf,\Lambda)}}}{\sqrt{\Di\miSv}}\geq\cst{11}\sqrt{\ssY\cmiSv}\geq\cst{11}\sqrt{\ssY}$
+and $\ssY\exp(-\cst{11}\sqrt{\ssY})\leq(\cst{11})^2$ 
+from \nref{freq:ge:strat:kn:qu:as} \ref{freq:ge:strat:kn:qu:as:iii} follows \ref{ak:re:rest:iii}, that is 
+\begin{multline*}
+ \P\big(\Vnormlp{\txdfPr-\xdfPr}^2 \geq 12\daRa{\Di}{(\xdf,\Lambda)}\big)\leq 
+    \cst{9} \big[\exp\big(\tfrac{-\cst{10}\ssY\daRa{\Di}{(\xdf,\Lambda)}}{\miSv}\big)
+    +\exp\big(\tfrac{-\cst{11}\ssY\sqrt{\daRa{\Di}{(\xdf,\Lambda)}}}{\sqrt{\Di\miSv}}\big)\big]\\\leq \cst{9} \big[\exp\big(\tfrac{-\cst{10}\ssY\daRa{\Di}{(\xdf,\Lambda)}}{\miSv}\big)
+    +(\cst{8})^{-2}\ssY^{-1}\big] 
+\end{multline*}
+which  completes the proof.
+\proEnd
+\end{pro}
+
+\begin{pro}[Proof of \nref{ak:re:nd:rest}]
+  Since $\cpen/7\geq 12$ and $\penSv/7\geq12\DipenSv\ssY^{-1}$,
+  $\Di\in\nset{1,n}$, by exploiting \nref{ak:re:rest}
+  \ref{ak:re:rest:i}, \ref{ak:re:rest:ii} and \ref{ak:re:rest:iii} we
+  obtain immediately the claim \ref{ak:re:nd:rest1},
+  \ref{ak:re:nd:rest2} and \ref{ak:re:nd:rest3}, respectively, which  completes the proof.
+\proEnd\end{pro}
+
+%\begin{pro}[Proof of \nref{freq:ge:strat:kn:qu:ub}.]
+%  Consider firstly the aggregation using the aggregation weights
+%  $\rWe[]$ as in \eqref{freq:ge:shape:kn:we}.  Combining
+%  \nref{freq:ge:strat:uk:qu:as} and the upper bound given in \eqref{freq:ge:strat:kn:qu:e1}
+%  we obtain
+%  \begin{multline}\label{ak:ag:ub:p1}
+%    \E\Vnormlp{\txdfAg-\xdf}^2\leq \tfrac{2}{7}\penSv[\pDi]
+%    +2\Vnormlp{\xdf_{\underline{0}}}^2\bias[\mDi]^2(\xdf)
+%    \\\hfill
+% + \cst{}\Vnormlp{\xdf_{\underline{0}}}^2\Ind{\{\mDi>1\}}\big[ \tfrac{1}{\rWc}
+%     \exp\big(-18\rWc\ssY\daRaS{\mdDi}{\xdf,\Lambda}\big)+
+% \exp\big(\tfrac{-1}{200\Vnormlp[1]{\fydf}}\ssY\daRaS{\mdDi}{\xdf,\Lambda}\miSv[\mdDi]^{-1}\big)\big]
+% \\
+% +\cst{}\big[\tfrac{1}{\rWc}+
+% \Vnormlp{\xdf_{\underline{0}}}^2\Ind{\{\mDi>1\}}
+%+\miSv[\Di_{\cst{7}}]^2\Di_{\cst{7}}^2+\miSv[\ssY_{o}]^2 \big]\ssY^{-1}
+%  \end{multline}
+% Moreover, since $1\geq\miSv[\mdDi]^{-1}$  it holds
+%$\ssY\daRaS{\mdDi}{\xdf,\Lambda}\geq\ssY\daRaS{\mdDi}{\xdf,\Lambda}\miSv[\mdDi]^{-1}$. From
+%\eqref{ak:ag:ub:p1} with $18\rWc>\tfrac{1}{200\Vnormlp[1]{\fydf}}$
+%(since $\rWc\geq1$ and $\Vnormlp[1]{\fydf}\geq\vert\fydf[(0)]\vert=1$) follows
+%  \begin{multline}\label{ak:ag:ub:p2}
+%    \E\Vnormlp{\txdfAg-\xdf}^2\leq \tfrac{2}{7}\penSv[\pDi]
+%    +2\Vnormlp{\xdf_{\underline{0}}}^2\bias[\mDi]^2(\xdf)
+%    \\\hfill
+% + \cst{}\Vnormlp{\xdf_{\underline{0}}}^2\Ind{\{\mDi>1\}}
+% \exp\big(\tfrac{-1}{200\Vnormlp[1]{\fydf}}\ssY\daRaS{\mdDi}{\xdf,\Lambda}\miSv[\mdDi]^{-1}\big)
+% \\
+% +\cst{}\big[
+% \Vnormlp{\xdf_{\underline{0}}}^2\Ind{\{\mDi>1\}}
+%+\miSv[\Di_{\cst{7}}]^2\Di_{\cst{7}}^2+\miSv[\ssY_{o}]^2 \big]\ssY^{-1}.
+%  \end{multline}
+%  Consider secondly the aggregation using the model selection weights $\msWe[]$
+%  as in \eqref{freq:ge:shape:kn:de:msWe}. Combining
+%  \nref{freq:ge:strat:uk:qu:as} and the upper bound given in \label{freq:ge:strat:kn:qu:e2}
+%  we obtain
+%  \begin{multline}\label{ak:ag:ub:p3}
+%    \E\Vnormlp{\txdfAg[{\msWe[]}]-\xdf}^2\leq \tfrac{2}{7}\penSv[\pDi]
+%    +2\Vnormlp{\xdf_{\underline{0}}}^2\bias[\mDi]^2(\xdf)
+%    \\\hfill
+% + \cst{}\Vnormlp{\xdf_{\underline{0}}}^2\Ind{\{\mDi>1\}}
+% \exp\big(\tfrac{-1}{200\Vnormlp[1]{\fydf}}\ssY\daRaS{\mdDi}{\xdf,\Lambda}\miSv[\mdDi]^{-1}\big)
+% \\
+% +\cst{}\big[
+% \Vnormlp{\xdf_{\underline{0}}}^2\Ind{\{\mDi>1\}}
+%+\miSv[\Di_{\cst{7}}]^2\Di_{\cst{7}}^2+\miSv[\ssY_{o}]^2 \big]\ssY^{-1}.
+%  \end{multline}  
+%From \eqref{ak:ag:ub:p2} and \eqref{ak:ag:ub:p3} together with
+%$\ssY\daRaS{\mdDi}{\xdf,\Lambda}\miSv[\mdDi]^{-1}\geq\cmiSv[\mdDi]\mdDi$
+%follows the claim, which  completes the proof.
+%\proEnd\end{pro}
+\begin{pro}[Proof of \nref{freq:ge:strat:kn:qu:ub}.]
+  Consider firstly the aggregation using the aggregation weights
+  $\rWe[]$ as in \eqref{freq:ge:shape:kn:we}.  Combining
+  \nref{ak:re:nd:rest} and the upper bound given in \ref{freq:ge:strat:kn:qu:e1}
+  we obtain the existence of a constant $\cst{}$ such that,
+  \begin{multline}\label{ak:ag:ub:p1}
+    \E\Vnormlp{\txdfAg-\xdf}^2\leq \tfrac{2}{7} \penSv[\pDi]  + 2 \Vnormlp{\xdf_{\underline{0}}}^2 \bias[\mDi]^2(\xdf)\\
+     + \cst{}\Vnormlp{\xdf_{\underline{0}}}^2\Ind{\{\mDi>1\}}\big[ \tfrac{1}{\rWc}
+     \exp\big(-18\rWc\ssY\daRaS{\mdDi}{\xdf,\Lambda}\big)+
+ \exp\big(-\cst{10}\ssY\daRaS{\mdDi}{\xdf,\Lambda}\miSv[\mdDi]^{-1}\big)\big]\\
+    \hfill + \ssY^{-1} \big( \eta^{-1} + \Vnormlp{\xdf_{\underline{0}}}^2\Ind{\{\mDi>1\}} + \miSv[\Di_{\cst{3}}] + \miSv[\Di_{\cst{7}}]^2\Di_{\cst{7}}^2+\miSv[\ssY_{o}]^2 \ssY_{o}^{2} \big)
+  \end{multline}
+%  \begin{multline}\label{ak:ag:ub:p1}
+%    \E\Vnormlp{\txdfAg-\xdf}^2\leq \tfrac{2}{7}\penSv[\pDi]
+%    +2\Vnormlp{\xdf_{\underline{0}}}^2\bias[\mDi]^2(\xdf)
+%    \\\hfill
+% + \cst{}\Vnormlp{\xdf_{\underline{0}}}^2\Ind{\{\mDi>1\}}\big[ \tfrac{1}{\rWc}
+%     \exp\big(-18\rWc\ssY\daRaS{\mdDi}{\xdf,\Lambda}\big)+
+% \exp\big(\tfrac{-1}{200\Vnormlp[1]{\fydf}}\ssY\daRaS{\mdDi}{\xdf,\Lambda}\miSv[\mdDi]^{-1}\big)\big]
+% \\
+% +\cst{}\big[\tfrac{1}{\rWc}+
+% \Vnormlp{\xdf_{\underline{0}}}^2\Ind{\{\mDi>1\}}
+%+\miSv[\Di_{\cst{7}}]^2\Di_{\cst{7}}^2+\miSv[\ssY_{o}]^2 \big]\ssY^{-1}
+%  \end{multline}
+ Moreover, since $1\geq\miSv[\mdDi]^{-1}$  it holds
+$\ssY\daRaS{\mdDi}{\xdf,\Lambda}\geq\ssY\daRaS{\mdDi}{\xdf,\Lambda}\miSv[\mdDi]^{-1}$. From
+\eqref{ak:ag:ub:p1} with $18\rWc>\cst{10}$
+(since $\rWc\geq1$ and $\cst{10} \leq 1$) follows
+  \begin{multline}\label{ak:ag:ub:p2}
+\E\Vnormlp{\widehat{\theta}^{(\eta)}-\xdf}^2\leq \tfrac{2}{7}\penSv[\pDi] + 2\Vnormlp{\xdf_{\underline{0}}}^2\bias[\mDi]^2(\xdf)\\
++ 2\Vnormlp{\xdf_{\underline{0}}}^2\Ind{\{\mDi>1\}}\cst{} \big[\exp\big(-\cst{10}\ssY\daRaS{\mdDi}{\xdf,\Lambda}\Lambda_{+}(\mdDi)^{-1}\big)\big]\\
+ + \ssY^{-1}\big[2\Vnormlp{\xdf_{\underline{0}}}^2\Ind{\{\mDi>1\}} + \miSv[\Di_{\cst{7}}]^2\Di_{\cst{7}}^2+\tfrac{2}{7}\cst{6}\miSv[\ssY_{o}]^2\big]
+\end{multline} 
+  Consider secondly the aggregation using the model selection weights $\msWe[]$
+  as in \eqref{freq:ge:shape:kn:de:msWe}. Combining
+  \nref{ak:re:nd:rest} and the upper bound given in \ref{freq:ge:strat:kn:qu:e2}
+  we obtain
+    \begin{multline}\label{ak:ag:ub:p3}
+\E\Vnormlp{\txdfPr[\hDi]-\xdf}^2\leq \tfrac{2}{7}\penSv[\pDi] + 2\Vnormlp{\xdf_{\underline{0}}}^2\bias[\mDi]^2(\xdf)\\
++ 2\Vnormlp{\xdf_{\underline{0}}}^2\Ind{\{\mDi>1\}}\cst{} \big[\exp\big(-\cst{10}\ssY\daRaS{\mdDi}{\xdf,\Lambda}\Lambda_{+}(\mdDi)^{-1}\big)\big]\\
+ + \ssY^{-1}\big[2\Vnormlp{\xdf_{\underline{0}}}^2\Ind{\{\mDi>1\}} + \miSv[\Di_{\cst{7}}]^2\Di_{\cst{7}}^2+\tfrac{2}{7}\cst{6}\miSv[\ssY_{o}]^2\big]
+\end{multline} 
+From \eqref{ak:ag:ub:p2} and \eqref{ak:ag:ub:p3} together with
+$\ssY\daRaS{\mdDi}{\xdf,\Lambda}\miSv[\mdDi]^{-1}\geq\cmiSv[\mdDi]\mdDi$
+follows the claim, which  completes the proof.
+\proEnd\end{pro}
+
+
+% ....................................................................
+% <<Pro upper bound ag p>>
+% ....................................................................
+\begin{pro}[Proof of \nref{freq:ge:strat:kn:qu:pnp}.]
+From \eqref{freq:ge:strat:kn:qu:ub:e1} follows for any $\mdDi,\pdDi\in\nset{1,n}$ and associated
+$\mDi,\pDi\in\nset{1,n}$ as defined in  \eqref{freq:ge:strat:kn:qu:de:mDipDi}%
+\begin{multline}\label{ak:ag:ub:pnp:p1}
+\E\Vnormlp{\widehat{\theta}^{(\eta)}-\xdf}^2\leq \tfrac{2}{7}\penSv[\pDi] + 2\Vnormlp{\xdf_{\underline{0}}}^2\bias[\mDi]^2(\xdf) + \cst{}\Vnormlp{\xdf_{\underline{0}}}^2\Ind{\{\mDi>1\}} \big[\exp\big(-\cst{10}\delta_{\Lambda}(\mdDi) \mdDi\big)\big]\\
+ + \cst{}\big[\Vnormlp{\xdf_{\underline{0}}}^2\Ind{\{\mDi>1\}} + \miSv[\Di_{\cst{7}}]^2\Di_{\cst{7}}^2+\miSv[\ssY_{o}]^2\big]\ssY^{-1}.
+\end{multline}
+We distinguish the two cases \ref{ak:ag:ub:pnp:p} and
+\ref{ak:ag:ub:pnp:np}. Consider first \ref{ak:ag:ub:pnp:p}, and hence there is $K\in\Nz_0$   with   $1\geq \bias[{[K-1] }](\xdf)>0$ and
+$\bias(\xdf)=0$ for all $\Di\geq K$. Consider first $K=0$, then $\bias[0](\xdf)=0$
+and hence $\Vnormlp{\xdf_{\underline{0}}}^2=0$. From \eqref{ak:ag:ub:pnp:p1}
+follows 
+ \begin{equation}\label{ak:ag:ub:pnp:p2}
+     \E\Vnormlp{\txdfAg[{\erWe[]}]-\xdf}^2\leq \tfrac{2}{7}\penSv[\pDi]
+    +\cst{}\big[\miSv[\Di_{\cst{7}}]^2\Di_{\cst{7}}^2+\miSv[\ssY_{o}]^2 \big]\ssY^{-1}
+\end{equation}
+Setting  $\pdDi:=1$ it follows from the definition
+\ref{freq:ge:strat:kn:qu:de:mDipDi} of  $\pDi$ that
+$\penSv[\pDi]\leq4\cpen\daRaS{1}{\xdf,\Lambda}$, where
+$\daRaS{1}{\xdf,\Lambda}=\DipenSv[1]\ssY^{-1}$ and
+$\DipenSv[1]=\cmSv[1] \miSv[1]\leq\miSv[1]^2$. Thereby with numerical
+constant $\cpen\geq84$, \eqref{ak:ag:ub:pnp:p2} implies
+ \begin{equation}\label{ak:ag:ub:pnp:p3}
+     \E\Vnormlp{\txdfAg[{\erWe[]}]-\xdf}^2\leq\cst{}\big[\miSv[1]^2+\miSv[\Di_{\cst{7}}]^2\Di_{\cst{7}}^2+\miSv[\ssY_{o}]^2 \big]\ssY^{-1}
+\end{equation}
+Consider now $K\in\Nz$, and hence $\Vnormlp{\xdf_{\underline{0}}}^2>0$. Let 
+$c_{\xdf}:=\tfrac{\Vnormlp{\xdf_{\underline{0}}}^2+4\cpen}{\Vnormlp{\xdf_{\underline{0}}}^2\bias[{[K-1]}]^2(\xdf)}>1$
+and $\ssY_{\xdf}:=\ceil{c_{\xdf}\DipenSv[K])}\in\Nz$. We distinguish for $n\in\Nz$ the following two
+ cases, \begin{inparaenum}[i]\renewcommand{\theenumi}{\dgrau\rm(\alph{enumi})}\item\label{ak:ag:ub:pnp:p:c1}
+$\ssY\in\nset{1,\ssY_{\xdf}}$ and \item\label{ak:ag:ub:pnp:p:c2}
+$\ssY> \ssY_{\xdf}$. \end{inparaenum} Firstly, consider
+\ref{ak:ag:ub:pnp:p:c1} with $\ssY\in\nset{1,\ssY_{\xdf}}$, then setting $\mdDi:=1$, $\pdDi:=1$ we have
+$\mDi=1$, $1\geq\bias[\mDi]$ and from the definition
+\eqref{freq:ge:strat:kn:ma:de:mDipDi} of  $\pDi$ also
+$\penSv[\pDi]\leq2[3\Vnormlp{\xdf_{\underline{0}}}^2+2\cpen]\daRaS{1}{\xdf,\Lambda}\leq10\cpen\,[\Vnormlp{\xdf_{\underline{0}}}^2\vee1]\miSv[1]^2$
+exploiting $\bias[1]\leq1\leq\DipenSv[1]=\cmSv[1]
+\miSv[1]\leq\miSv[1]^2$. Thereby,  from \ref{ak:ag:ub:pnp:p1} 
+follows
+ \begin{multline*}
+     \E\Vnormlp{\txdfAg[{\erWe[]}]-\xdf}^2\leq \tfrac{20}{7}\cpen(\Vnormlp{\xdf_{\underline{0}}}^2\vee1)\miSv[1]^2   +2\Vnormlp{\xdf_{\underline{0}}}^2
+    +\cst{}\big[\miSv[\Di_{\cst{7}}]^2\Di_{\cst{7}}^2+\miSv[\ssY_{o}]^2
+    \big]\ssY^{-1}\\
+    \leq \cst{}\big[(\Vnormlp{\xdf_{\underline{0}}}^2\vee1)\miSv[1]^2\ssY+\miSv[\Di_{\cst{7}}]^2\Di_{\cst{7}}^2+\miSv[\ssY_{o}]^2\big]\ssY^{-1}
+\end{multline*}
+Moreover, for all $\ssY\in\nset{1,\ssY_{\xdf}}$ with
+$\ssY_{\xdf}=\ceil{c_{\xdf}\DipenSv[K]}$ and
+$\DipenSv[K]=K\cmSv[K] \miSv[K]\leq K^2\miSv[K]^2$ holds
+$\ssY\leq\cst{}\tfrac{(\Vnormlp{\xdf_{\underline{0}}}^2\vee1)}{\Vnormlp{\xdf_{\underline{0}}}^2\bias[{[K-1]}]^2(\xdf)}
+K^2\miSv[K]^2$and thereby, 
+\begin{equation}\label{ak:ag:ub:pnp:p4}
+  \E\Vnormlp{\txdfAg[{\erWe[]}]-\xdf}^2\leq
+  \cst{}\big[(\Vnormlp{\xdf_{\underline{0}}}^2\vee1)\miSv[1]^2\tfrac{K^2\miSv[K]^2}{\Vnormlp{\xdf_{\underline{0}}}^2\bias[{[K-1]}]^2(\xdf)}+\miSv[\Di_{\cst{7}}]^2\Di_{\cst{7}}^2+\miSv[\ssY_{o}]^2\big]\ssY^{-1}.
+\end{equation}
+Secondly, consider \ref{ak:ag:ub:pnp:p:c2}, i.e., $\ssY>
+\ssY_{\xdf}$. Setting
+$\pdDi:=K< \ceil{c_{\xdf}\DipenSv[K]}=\ssY_{\xdf}$, i.e.,
+$\pdDi\in\nset{1,\ssY}$, it follows $\bias[\pdDi](\xdf)=0$ and hence
+$\daRaS{\pdDi}{\xdf,\Lambda}= \DipenSv[K] \ssY^{-1}$.  Therefore, the
+definition \eqref{freq:ge:strat:kn:ma:de:mDipDi} of $\pDi$ implies
+$\pen^{\Lambda}(\pDi)\leq[6\Vnormlp{\xdf_{\underline{0}}}^2+ 4\cpen]\DipenSv[K]
+\ssY^{-1}\leq
+\cst{}(\Vnormlp{\xdf_{\underline{0}}}^2\vee1)K^2\miSv[K]^2\ssY^{-1}$. From
+\eqref{ak:ag:ub:pnp:p1} follows for all $\ssY> \ssY_{\xdf}$ thus
+\begin{multline}\label{ak:ag:ub:pnp:p5}
+  \E\Vnormlp{\txdfAg[{\erWe[]}]-\xdf}^2\leq 2\Vnormlp{\xdf_{\underline{0}}}^2\bias[\mDi]^2(\xdf)
+    + \cst{}\Vnormlp{\xdf_{\underline{0}}}^2\Ind{\{\mDi>1\}}
+    \exp\big(-\cst{10}\cmiSv[\mdDi]\mdDi\big)\\
+    +\cst{}\big[(\Vnormlp{\xdf_{\underline{0}}}^2\vee1)K^2\miSv[K]^2
+    +\miSv[\Di_{\cst{7}}]^2\Di_{\cst{7}}^2+\miSv[\ssY_{o}]^2 \big]\ssY^{-1}.
+\end{multline}
+Since
+$\ssY> \ssY_{\xdf}:=\ceil{c_{\xdf}\DipenSv[K]}$ with
+$c_{\xdf}=\tfrac{\Vnormlp{\xdf_{\underline{0}}}^2+4\cpen}{\Vnormlp{\xdf_{\underline{0}}}^2\bias[{[K-1]}]^2(\xdf)}>1$
+the defining set of
+$\sDi{\ssY}:=\max\{\Di\in\nset{K,\ssY}:\ssY>c_{\xdf}\DipenSv\}$
+evenutally containing $K$ and is hence not empty. Consequently,  $\sDi{\ssY}\geq
+K$ and, hence 
+$\bias[\sDi{\ssY}](\xdf)=0$, and
+$\daRaS{\sDi{\ssY}}{\xdf,\Lambda}=\DipenSv[\sDi{\ssY}]\ssY^{-1}<c_{\xdf}^{-1}=\tfrac{\Vnormlp{\xdf_{\underline{0}}}^2\bias[{[K-1]}]^2(\xdf)}{\Vnormlp{\xdf_{\underline{0}}}^2+4\cpen}$,
+it follows
+$\Vnormlp{\xdf_{\underline{0}}}^2\bias[{[K-1]}]^2(\xdf)>[\Vnormlp{\xdf_{\underline{0}}}^2+4\cpen]\daRaS{\sDi{\ssY}}{\xdf,\Lambda}$
+and trivially
+$\Vnormlp{\xdf_{\underline{0}}}^2\bias[{K}]^2(\xdf)=0<[\Vnormlp{\xdf_{\underline{0}}}^2+4\cpen]\daRaS{\sDi{\ssY}}{\xdf,\Lambda}$. Therefore,
+setting $\mdDi:=\sDi{\ssY}$ the definition \eqref{freq:ge:strat:kn:ma:de:mDipDi}
+implies $\mDi=K$ and hence
+$\bias[\mDi]^2(\xdf)=\bias[K]^2(\xdf)=0$. From \eqref{ak:ag:ub:pnp:p5}  follows
+now for all $\ssY> \ssY_{\xdf}$ thus
+\begin{multline}\label{ak:ag:ub:pnp:p6}
+  \E\Vnormlp{\txdfAg[{\erWe[]}]-\xdf}^2\leq  \cst{}\Vnormlp{\xdf_{\underline{0}}}^2\exp\big(-\cst{10}\cmiSv[\sDi{\ssY}]\sDi{\ssY}\big)\\
+  +\cst{}\big[(\Vnormlp{\xdf_{\underline{0}}}^2\vee1)K^2\miSv[K]^2
+  +\miSv[\Di_{\cst{7}}]^2\Di_{\cst{7}}^2+\miSv[\ssY_{o}]^2 \big]\ssY^{-1}.
+\end{multline}
+Combining \eqref{ak:ag:ub:pnp:p4} and
+    \eqref{ak:ag:ub:pnp:p6}  for $K\geq1$ with \ref{ak:ag:ub:pnp:p:c1}
+$\ssY\in\nsetro{1,\ssY_{\xdf}}$ and \ref{ak:ag:ub:pnp:p:c2}
+$\ssY\geq \ssY_{\xdf}$, respectively, and \eqref{ak:ag:ub:pnp:p3}  for
+$K=0$ implies for all $K\in\Nz_0$ and for all $\ssY\in\Nz$ the claim
+\eqref{ak:ag:ub:pnp:e1} in case \ref{ak:ag:ub:pnp:p}, that is
+\begin{multline}\label{ak:ag:ub:pnp:p7}
+  \E\Vnormlp{\txdfAg[{\erWe[]}]-\xdf}^2\leq
+  \cst{}\Vnormlp{\xdf_{\underline{0}}}^2\big[  \ssY^{-1}\vee\exp\big(-\cst{10}\cmiSv[\sDi{\ssY}]\sDi{\ssY}\big)\big]\\
+  +\cst{}\big[\miSv[1]^2\{\tfrac{(\Vnormlp{\xdf_{\underline{0}}}^2\vee1)K^2\miSv[K]^2}{\Vnormlp{\xdf_{\underline{0}}}^2\bias[{[K-1]}]^2(\xdf)}\Ind{K\geq1}+\Ind{K=0}\}
+  +\miSv[\Di_{\cst{7}}]^2\Di_{\cst{7}}^2+\miSv[\ssY_{o}]^2 \big]\ssY^{-1}.
+\end{multline}
+Consider the case \ref{ak:ag:ub:pnp:np}. For $\aDi{\ssY}(\xdf)\in\nset{1,n}$
+as in \ref{freq:ge:shape:uk:we}  set $\pdDi:=\aDi{\ssY}(\xdf)$ and $\mdDi:=\sDi{\ssY}\in\nset{\aDi{\ssY}(\xdf),\ssY}$ by exploiting the definition
+\eqref{freq:ge:strat:kn:qu:de:mDipDi} of $\pDi$ and $\mDi$ it follows
+$\penSv[\pDi] \leq 2[3\Vnormlp{\xdf_{\underline{0}}}^2+ 2\cpen]
+\daRa{\pdDi}{(\xdf)}$ and 
+$\Vnormlp{\xdf_{\underline{0}}}^2\bias[\mDi]^2(\xdf)\leq
+      [\Vnormlp{\xdf_{\underline{0}}}^2+4\cpen]\daRa{\sDi{\ssY}}{(\xdf)}$
+which together with
+$\daRa{\sDi{\ssY}}{(\xdf)}\geq\naRa{(\xdf)}=\daRa{\pdDi}{(\xdf)}\geq\ssY^{-1}$
+and exploiting 
+\eqref{ak:ag:ub:pnp:p1} implies%
+ \begin{multline}\label{ak:ag:ub:pnp:p8}
+   \E\Vnormlp{\txdfAg[{\erWe[]}]-\xdf}^2% \leq
+ %   \tfrac{2}{7}\penSv[\pDi]
+ %    +2\Vnormlp{\xdf_{\underline{0}}}^2\bias[\mDi]^2(\xdf)
+ % + \cst{}\Vnormlp{\xdf_{\underline{0}}}^2\Ind{\{\mDi>1\}}\exp\big(\tfrac{-\cmiSv[\mdDi]\mdDi}{200\Vnormlp[1]{\fydf}}\big)\\
+ %    +\cst{}\big[\Vnormlp{\xdf_{\underline{0}}}^2\Ind{\{\mDi>1\}}
+ %    +\miSv[\Di_{\cst{7}}]^2\Di_{\cst{7}}^2+\miSv[\ssY_{o}]^2 \big]\ssY^{-1}\\
+    \leq 
+   \cst{}(\Vnormlp{\xdf_{\underline{0}}}^2\vee1)\big[\daRa{\sDi{\ssY}}{(\xdf,\Lambda)}\vee\exp\big(-\cst{10}\cmiSv[\sDi{\ssY}]\sDi{\ssY}\big)\big]\\
+   +\cst{}\big[\miSv[\Di_{\cst{7}}]^2\Di_{\cst{7}}^2+\miSv[\ssY_{o}]^2 \big]\ssY^{-1}
+\end{multline}
+
+which shows the assertion \eqref{ak:ag:ub:pnp:e2} and completes the
+proof.\proEnd\end{pro}
+
+\subsection{Proofs for \nref{freq:ge:strat:kn:ma}}\label{pro:freq:ge:strat:kn:ma}
+\begin{te}
+ Below  we state the proofs of  \nref{ak:re:SrWe:ag:mm} and \nref{ak:re:SrWe:ms:mm}. The
+  proof of \nref{ak:re:SrWe:ag:mm} is based on \nref{re:rWe:mm} given first.
+\end{te}
+% ....................................................................
+% <<Upper bound random weights>>
+% ....................................................................
+\begin{lm}\label{re:rWe:mm} Consider the data-driven aggregation weights
+  $\rWe[]$ as in \eqref{freq:ge:shape:kn:we}. Under definition
+  \ref{freq:ge:shape:uk:we} for any $l\in\nset{1,\ssY}$ with
+  $\daRaS{l}{\xdfCw[],\Lambda}:=\daRa{l}{(\xdfCw[])}$ holds
+  \begin{resListeN}[]
+  \item\label{re:rWe:mm:i} for all $k\in\nsetro{1,l}$ we have\\
+    $\rWe\Ind{\setB{\Vnormlp{\txdfPr[l]-\xdfPr[l]}^2<\cpen\daRa{l}{(\xdfCw[])}/7}} 
+    \leq\exp\big(\rWn\big\{-\tfrac{\Vnormlp{\xdf_{\underline{0}}}^2}{2}\bias^2(\xdf)
+    +[\tfrac{25\cpen}{14}+\tfrac{\Vnormlp{\xdf_{\underline{0}}}^2}{2}]\daRaS{l}{\xdfCw[],\Lambda}-\penSv\big\}\big)$
+  \item\label{re:rWe:mm:ii} for all $\Di\in\nsetlo{l,\ssY}$ we have\\
+    $\rWe\Ind{\setB{\Vnormlp{\txdfPr-\xdfPr}^2<\penSv/7}}\leq\exp\big(\rWn\big\{-\tfrac{1}{2}\penSv
+    +[\tfrac{3}{2}\Vnormlp{\xdf_{\underline{0}}}^2+\cpen]\daRaS{l}{\xdfCw[],\Lambda}\big\}\big)$.
+  \end{resListeN}
+\end{lm}
+% --------------------------------------------------------------------
+% <<Proof Re Random weights>> angepasst
+% --------------------------------------------------------------------
+\begin{pro}[Proof of \nref{re:rWe:mm}.]
+The proof follows line by line the proof of \nref{freq:ge:strat:kn:qu:re:SrWe:ag:prelem} using
+\eqref{freq:ge:strat:kn:ma:de:rate:e1} rather than \eqref{freq:ge:strat:kn:qu:de:rate:e1}, and we omit the details.\proEnd
+\end{pro}
+% ....................................................................
+% <<Proof Re Sum Random weights>>
+% ....................................................................
+\begin{pro}[Proof of \nref{ak:re:SrWe:ag:mm}.]
+The proof follows line by line the proof of \nref{freq:ge:strat:kn:qu:re:SrWe:ag} using
+\nref{re:rWe:mm} rather than \nref{freq:ge:strat:kn:qu:re:SrWe:ag:prelem}, and we omit the details.\proEnd  
+\end{pro}
+% --------------------------------------------------------------------
+% Proof <<Upper bound random weights>> ms mm
+% --------------------------------------------------------------------
+\begin{pro}[Proof of \nref{ak:re:SrWe:ms:mm}.]
+The proof follows line by line the proof of \nref{freq:ge:strat:kn:qu:re:SrWe:ms}  using
+\eqref{freq:ge:strat:kn:ma:de:rate:e1} rather than \eqref{freq:ge:strat:kn:qu:de:rate:e1}, and we omit the details.\proEnd
+\end{pro}
+% ....................................................................
+% <<Pro upper bound ag p>>
+% ....................................................................
+\begin{pro}[Proof of \nref{ak:ag:ub:pnp:mm}.]Keep in mind that
+  $\Vnormlp{\xdf_{\underline{0}}}^2\leq\xdfCr^2$ for all $\xdf\in\rwCxdf$.
+From
+\eqref{ak:ag:ub:mm:e1} follows for any $\xdf\in\rwCxdf$, $\mdDi,\pdDi\in\nset{1,n}$ and associated
+$\mDi,\pDi\in\nset{1,n}$ as defined in  \eqref{freq:ge:strat:kn:ma:de:mDipDi}%
+ \begin{multline}\label{ak:ag:ub:pnp:mm:p1}
+    \E\Vnormlp{\txdfAg[{\erWe[]}]-\xdf}^2\leq \tfrac{2}{7}\penSv[\pDi]
+    +2\Vnormlp{\xdf_{\underline{0}}}^2\bias[\mDi]^2(\xdf)
+    %\\\hfill
+ + \cst{}\xdfCr^2
+ \exp\big(-\cst{10}\cmiSv[\mdDi]\mdDi\big)%\big]
+\\ +\cst{}\big[%\tfrac{1}{\rWc}+
+ \xdfCr^2+\miSv[\Di_{\cst{7}}]^2\Di_{\cst{7}}^2+\miSv[\ssY_{o}]^2 \big]\ssY^{-1}% \\
+\end{multline}
+ For $\aDi{\ssY}(\xdfCw[])\in\nset{1,n}$
+as in \ref{freq:ge:strat:kn:ma:de:rate}  set $\pdDi:=\aDi{\ssY}(\xdfCw[])$ and $\mdDi:=\sDi{\ssY}\in\nset{\aDi{\ssY}(\xdfCw[]),\ssY}$ by exploiting the definition
+\eqref{freq:ge:strat:kn:ma:de:mDipDi} of $\pDi$ and $\mDi$ it follows
+$\penSv[\pDi] \leq 2[3\xdfCr^2+ 2\cpen]
+\daRa{\pdDi}{(\xdfCw[])}$ and 
+$\Vnormlp{\xdf_{\underline{0}}}^2\bias[\mDi]^2(\xdf)\leq
+      [\xdfCr^2+4\cpen]\daRa{\sDi{\ssY}}{(\xdfCw[])}$
+which together with
+$\daRa{\sDi{\ssY}}{(\xdfCw[])}\geq\naRa{(\xdfCw[])}=\daRa{\pdDi}{(\xdfCw[])}\geq\ssY^{-1}$
+and exploiting 
+\eqref{ak:ag:ub:pnp:mm:p1} implies%
+ \begin{multline}\label{ak:ag:ub:pnp:mm:p2}
+   \sup_{\xdf\in\rwCxdf}\E\Vnormlp{\txdfAg[{\erWe[]}]-\xdf}^2% \leq
+ %   \tfrac{2}{7}\penSv[\pDi]
+ %    +2\Vnormlp{\xdf_{\underline{0}}}^2\bias[\mDi]^2(\xdf)
+ % + \cst{}\Vnormlp{\xdf_{\underline{0}}}^2\Ind{\{\mDi>1\}}\exp\big(\tfrac{-\cmiSv[\mdDi]\mdDi}{200\Vnormlp[1]{\fydf}}\big)\\
+ %    +\cst{}\big[\Vnormlp{\xdf_{\underline{0}}}^2\Ind{\{\mDi>1\}}
+ %    +\miSv[\Di_{\cst{7}}]^2\Di_{\cst{7}}^2+\miSv[\ssY_{o}]^2 \big]\ssY^{-1}\\
+    \leq 
+   \cst{}(\xdfCr^2\vee1)\min_{\Di\in\nset{1,\ssY}}\big[\daRa{\Di}{(\xdfCw[])}\vee\exp\big(-\cst{10}\cmiSv\Di\big)\big]\\
+   +\cst{}\big[\miSv[\Di_{\cst{7}}]^2\Di_{\cst{7}}^2+\miSv[\ssY_{o}]^2 \big]\ssY^{-1}
+\end{multline}
+which shows the assertion \eqref{ak:ag:ub:pnp:mm:e1} and  completes the
+proof of \nref{ak:ag:ub:pnp:mm}.\proEnd\end{pro}
+% ....................................................................
+% <<Pro upper bound ag p>>
+% ....................................................................
+\begin{pro}[Proof of \nref{ge:ak:ag:ub2:pnp:mm}.] Under
+  \ref{ge:ak:ag:ub2:pnp:mm:c} holds  
+  $\exp\big(-\cst{10}\cmiSv[\aDi{\ssY}({\xdfCw[]})]\aDi{\ssY}({\xdfCw[]})\big)\leq
+  \naRa{(\xdfCw[])}$  for $\ssY> \ssY_{\xdfCw[],\xdfCr,\Lambda}$, while 
+  $\exp\big(-\cst{10}\cmiSv[\aDi{\ssY}({\xdfCw[]})]\aDi{\ssY}({\xdfCw[]})\big)\leq1\leq
+  \ssY\naRa{(\xdfCw[])}\leq \ssY_{\xdfCw[],\xdfCr,\Lambda}
+  \naRa{{(\xdfCw[])}}$ for $\ssY\in\nset{1,\ssY_{\xdfCw[],\xdfCr,\Lambda}}$. Thereby, from
+  \eqref{ak:ag:ub:pnp:mm:e1} with $\sDi{\ssY}:=\aDi{\ssY}({\xdfCw[]})$
+  follows immediately the assertion
+    $\nRi{\txdfAg[{\erWe[]}]}{\rwCxdf,\Lambda}
+    \leq \cst{\xdfCw[],\xdfCr,\Lambda} \naRa{\xdfCw[],\Lambda}$ for all
+    $\ssY\in\Nz$, which  completes the
+proof of \nref{ge:ak:ag:ub2:pnp:mm}.\proEnd\end{pro}
+
+
+\section{Proofs for \nref{freq:ge:strat:uk}}\label{pro:freq:ge:strat:uk}
+\begin{pro}[Proof of \nref{co:agg:au}]
+We start the proof with the observation that for all
+$s\in\nset{1,n}$ with $\xEv:= \{\vert\hfedf[(s)]\vert^2\geq1/\ssE\}$ and
+$\xEv^c:= \{\vert\hfedf[(s)]\vert^2<1/\ssE\}$ holds
+\begin{multline*}
+  \widehat{\theta}^{(\eta)}{(s)}-\fxdf[(s)]=(\hfedfmpI[(s)]\hfydf[(s)]-\fxdf[(s)])\We[](\nset{s,n})-\fxdf[(s)]\We[](\nsetro{1,s})% \\=
+\\
+=
+\hfedfmpI[(s)](\hfydf[(s)]-\fydf[(s)])\We[](\nset{s,n})\\
++\hfedfmpI[(s)](\fedf[(s)]-\hfedf[(s)])\fxdf[(s)]\We[](\nset{s,n})
+-\Ind{\xEv}\fxdf[(s)]\We[](\nsetro{1,s})-\Ind{\xEv^c}\fxdf[(s)]
+\end{multline*}
+Consequently, we  have
+  \begin{multline}\label{pro:au:key:e1}
+    \Vnormlp{\widehat{\theta}^{(\eta)}-\xdf}^2% =
+%    2\sum_{s\in\nset{1,n}}\vert\hfedfmpI[(s)](\hfydf[(s)]-\fydf[(s)])\We[](\nset{s,\ssY})
+% +\hfedfmpI[(s)](\fedf[(s)]-\hfedf[(s)])\fxdf[(s)]\We[](\nset{s,\ssY})
+% -\fxdf[(s)]\We[](\nsetro{1,s})\vert^2\Ind{\xEv}\\\hfill+2\sum_{s\in\nset{1,\ssY}}\Ind{\xEv^c}\vert\fxdf[(s)]\vert^2+2\sum_{s>\ssY}\vert\fxdf[(s)]\vert^2
+\leq6\sum_{s\in\nset{1,n}}\vert\hfedfmpI[(s)]\vert^2\vert\hfydf[(s)]-\fydf[(s)]\vert^2\We[](\nset{s,n})
+\\\hfill+6\sum_{s\in\nset{1,n}}\Ind{\xEv}\vert\fxdf[(s)]\vert^2\We[](\nsetro{1,s})+2\sum_{s>n}\vert\fxdf[(s)]\vert^2\\\hfill
++6\sum_{s\in\nset{1,n}}\vert\hfedfmpI[(s)]\vert^2\vert\fedf[(s)]-\hfedf[(s)]\vert^2\vert\fxdf[(s)]\vert^2
++2\sum_{s\in\nset{1,n}}\Ind{\xEv^c}\vert\fxdf[(s)]\vert^2.
+ \end{multline}
+Consider the first r.h.s. term in
+\eqref{pro:au:key:e1}. We split the sum into two parts which we
+bound separately.  Precisely, given
+$\dxdfPr=(\mathds{1}_{\{s \leq m\}}\hfedfmpI[(s)]\fydf[(s)])_{s \in \Z}$ where
+$\Vnormlp{\hxdfPr-\dxdfPr}^2=2\sum_{s\in\nset{1,\Di}}\vert \theta_{n, n_{\lambda}}(s) - \dxdfPr(s)\vert^2=2\sum_{s\in\nset{1,\Di}}\vert\hfedfmpI[(s)]\vert^2\vert\hfydf[(s)]-\fydf[(s)]\vert^2$
+it follows
+\begin{multline}\label{pro:au:key:e2}
+2\sum_{s\in\nset{1,\ssY}}\vert\hfedfmpI[(s)]\vert^2(\hfydf[(s)]-\fydf[(s)])^2
+\We[](\nset{s,\ssY})\\
+%=\sum_{s=1}^{\DiMa}\Ex\Vnormlp{\DiPro[(j-1)j](\hfxdf[]-\fxdf[])}^2\pM[\hw](\nset{j,\DiMa})\}\\
+% \leq2 \sum_{s\in\nset{1,\pDi}}\vert\hfedfmpI[(s)]\vert^2\vert(\hfydf[(s)]-\fydf[(s)])^2 +
+% 2\sum_{s\in\nsetlo{\pDi,n}}\vert\hfedfmpI[(s)]\vert^2(\hfydf[(s)]-\fydf[(s)])^2\sum_{l\in\nset{s,\ssY}}\We[(l)]\\
+% = 2\sum_{s\in\nset{1,\pDi}}\vert\hfedfmpI[(s)]\vert^2\vert(\hfydf[(s)]-\fydf[(s)])^2 +
+% 2\sum_{l\in\nsetlo{\pDi,\ssY}}\We[(l)]\sum_{s\in\nsetlo{\pDi,l}}\vert\hfedfmpI[(s)]\vert^2(\hfydf[(s)]-\fydf[(s)])^2\\
+\leq \Vnormlp{\hxdfPr[\pDi]-\dxdfPr[\pDi]}^2
++\sum_{l\in\nsetlo{\pDi,\ssY}}\We[(l)]\Vnormlp{\hxdfPr[l]-\dxdfPr[l]}^2\\
+% \leq\Vnormlp{\hxdfPr[\pDi]-\dSoPr[\pDi]}^2
+% +\sum_{l\in\nsetlo{\pDi,\nS}}\We[(l)]\Vnormlp{\hxdfPr[l]-\dSoPr[l]}^2\Ind{\{\Vnormlp{\hxdfPr[l]-\dSoPr[l]}^2\geq\epenSv[l]\}}
+% \\
+% \hfill+(\cpen/\ssY)\sum_{l\in\nsetlo{\pDi,\nS}}\DiepenSv[l]\We[(l)]\Ind{\{\Vnormlp{\hxdfPr[l]-\dSoPr[l]}^2<\epenSv[l]\}}\\
+% =\Vnormlp{\hxdfPr[\pDi]-\dSoPr[\pDi]}^2
+% +\sum_{l\in\nsetlo{\pDi,\nS}}\We[(l)]\vectp{\Vnormlp{\hxdfPr[l]-\dSoPr[l]}^2-\epenSv[l]}\Ind{\{\Vnormlp{\hxdfPr[l]-\dSoPr[l]}^2\geq\epenSv[l]\}}\\
+% \hfill+(\cpen/\ssY)\sum_{l\in\nsetlo{\pDi,\nS}}\DiepenSv[l]\Ind{\{\Vnormlp{\hxdfPr[l]-\dSoPr[l]}^2\geq\epenSv[l]\}}
+% +(\cpen/\ssY)\sum_{l\in\nsetlo{\pDi,\nS}}\DiepenSv[l]\We[(l)]\Ind{\{\Vnormlp{\hxdfPr[l]-\dSoPr[l]}^2<\epenSv[l]\}}\\
+\leq\Vnormlp{\hxdfPr[\pDi]-\dxdfPr[\pDi]}^2
++\sum_{l\in\nsetlo{\pDi,\ssY}}\We[(l)]\vectp{\Vnormlp{\hxdfPr[l]-\dxdfPr[l]}^2-\pen(l)/7}\\
++\tfrac{1}{7}\sum\nolimits_{l\in\nsetlo{\pDi,\ssY}}\We[(l)]\pen(l)\Ind{\{\Vnormlp{\hxdfPr[l]-\dxdfPr[l]}^2\geq\pen(l)/7\}}\\
++\tfrac{1}{7}\sum\nolimits_{l\in\nsetlo{\pDi,\ssY}}\We[(l)]\pen(l)\Ind{\{\Vnormlp{\hxdfPr[l]-\dxdfPr[l]}^2<\pen(l)/7\}}%\\
+% =\pen[\pDi] +
+% \vectp{\Vnormlp{\tSoPr[\pDi]-\SoPr[\pDi]}^2-\pen[\pDi]}+
+% \vectp{\Vnormlp{\tSoPr[n]-\SoPr[n]}^2-\pen[n]} + \cpen \We[](\nsetlo{\pDi,n})\\
+% =\Vnormlp{\tSoPr[\pDi]-\SoPr[\pDi]}^2+ 
+% \vectp{\Vnormlp{\tSoPr[\nS]-\SoPr[\nS]}^2-\cpen\DipenSv[\nS]} + \cpen\,\DipenSv[\nS]\, \We[](\nsetlo{\pDi,n}).% \\
+% \leq \pen[\peDi] +\cpen
+% \We[](\nsetlo{\pDi,n}) + 2\max\setB{\vectp{\Vnormlp{\tSoPr[k]-\SoPr[k]}^2-\pen[k]},k\in\set{\pDi,n}}
+\end{multline}
+Consider the second and third r.h.s. term in \eqref{pro:au:key:e1}.  Splitting the first sum into two parts we obtain
+\begin{multline}\label{pro:au:key:e3}
+2\sum_{s\in\nset{1,n}}\Ind{\xEv}\vert\fxdf[(s)]\vert^2\We[](\nsetro{1,s})+2\sum_{s>n}\vert\fxdf[(s)]\vert^2\\
+\hspace*{5ex}\leq  2\sum_{s\in\nset{1,\mDi}}\vert\fxdf[(s)]\vert^2\Ind{\xEv}\We[](\nsetro{1,s})+ 2\sum_{s\in\nsetlo{\mDi,n}}\vert\fxdf[(s)]\vert^2+
+  2\sum_{s>n}\vert\fxdf[(s)]\vert^2\\\hfill
+\leq \Vnormlp{\xdf_{\underline{0}}}^2\{\We[](\nsetro{1,\mDi})+\bias[\mDi]^2(\xdf)\}
+\end{multline}
+Combining  \eqref{pro:au:key:e1} and the upper bounds \eqref{pro:au:key:e2}
+and \eqref{pro:au:key:e3} we obtain   the assertion \eqref{co:agg:au:e1}, which completes the proof.\proEnd
+\end{pro}
+
+\subsection{Proofs for \nref{freq:ge:strat:uk:qu}}\label{pro:freq:ge:strat:uk:qu}
+\begin{te}
+ Below  we state the proofs of  \nref{au:re:SrWe:ag} and \nref{au:re:SrWe:ms}. The
+  proof of \nref{au:re:SrWe:ag} is based on \nref{re:erWe} given first.
+\end{te}
+% ....................................................................
+% <<Re Random weights>>
+% ....................................................................
+\begin{lm}\label{re:erWe} Consider the data-driven aggregation weights
+  $\erWe[]$ as in \eqref{freq:ge:shape:uk:we} and the rates given in \nref{freq:ge:strat:kn:qu:de:rate}.
+  For any $l\in\nset{1,\ssY}$ with $\daRa{l}{(\xdf,\Lambda)}=[\bias[l]^2(\xdf)\vee \DipenSv[l]\, n^{-1}]$ holds
+  \begin{resListeN}[]
+  \item\label{re:erWe:i} with
+    $\aixEv[l]:=\set{1/4\leq\iSv[s]^{-1}\eiSv[(s)]\leq9/4,\;\forall\;s\in\nset{1,l}}$ for all $k\in\nsetro{1,l}$ 
+    we have\\
+   $\erWe[(k)]\Ind{\setB{\Vnormlp{\hxdfPr[l]-\dxdfPr[l]}^2<\peneSv[(l)]/7}}\Ind{\aixEv[l]}$\\\null\hfill$\leq
+  \exp\big(\rWn\big\{[\tfrac{25}{2}\cpen+\tfrac{1}{8}\Vnormlp{\xdf_{\underline{0}}}^2]\dRa{l}{\xdf,\Lambda}-\tfrac{1}{8}\Vnormlp{\xdf_{\underline{0}}}^2\bias^2(\xdf)-\tfrac{1}{50}\penSv\big\}\big)$.
+  \item\label{re:erWe:ii} with $\Vnormlp{\ProjC[l]\dxdfPr[\ssY]}^2=2\sum_{s=l+1}^{\ssY}\iSv[s]^{-1}\eiSv[(s)]\vert\fxdf[(s)]\vert^2$
+    for all $\Di\in\nsetlo{l,\ssY}$ we have\\
+    $\erWe\Ind{\setB{\Vnormlp{\hxdfPr-\dxdfPr}^2<\penSv/7}} \leq
+   \exp\big(\rWn\big\{-\tfrac{1}{2}\peneSv+\tfrac{3}{2}\Vnormlp{\ProjC[l]\dxdfPr[\ssY]}^2+\peneSv[(l)]\big\}\big)$.
+  \end{resListeN}
+\end{lm}
+% --------------------------------------------------------------------
+% <<Proof Re Random weights>>
+% --------------------------------------------------------------------
+\begin{pro}[Proof of \nref{re:erWe}.]
+Given $\Di,l\in\nset{1,n}$ and an event $\dmEv{\Di}{l}$ (to be specified below) it clearly follows
+\begin{multline}\label{p:re:erWe:e1}
+ \erWe\Ind{\dmEv{\Di}{l}}=\frac{\exp(-\rWn\{-\Vnormlp{\hxdfPr}^2+\peneSv\})}{\sum_{l\in\nset{1,\ssY}}\exp(-\rWn\{-\Vnormlp{\hxdfPr[l]}^2+\peneSv[(l)]\})}\Ind{\dmEv{\Di}{l}}\\
+\leq
+\exp\big(\rWn\big\{\Vnormlp{\hxdfPr}^2-\Vnormlp{\hxdfPr[l]}^2+(\peneSv[(l)]-\peneSv)\big\}\big)\Ind{\dmEv{\Di}{l}}
+\end{multline}
+We distinguish the two cases \ref{re:erWe:i} $\Di\in\nsetro{1,l}$ and
+\ref{re:erWe:ii} $\Di\in\nsetlo{l,\ssY}$.
+Consider first  \ref{re:erWe:i} $\Di\in\nsetro{1,l}$. From \ref{re:contr:e1} in \nref{re:contr}
+(with
+$\dxdfPr[\bullet]=\hxdfPr[\ssY]$
+and  $\xdf=\dxdfPr[\ssY]=(\mathds{1}_{\{\vert s \vert \leq n\}}\hfedfmpI[(s)]\fydf[(s)])_{s \in \Z}$) follows that
+\begin{multline}\label{p:re:erWe:e2}
+ \erWe\Ind{\dmEv{\Di}{l}}
+\leq
+\exp\big(\rWn\big\{\Vnormlp{\hxdfPr}^2-\Vnormlp{\hxdfPr[l]}^2+(\peneSv[(l)]-\peneSv)\big\}\big)\Ind{\dmEv{\Di}{l}}\\
+%\exp\big(\rWn\big\{\contr[](\tSoPr[l])-\contr[](\tSoPr)+\tfrac{9}{2}(\penSv[l]-\penSv)\big\}\big)\Ind{\dmEv{\Di}{l}}\\
+\leq
+\exp\big(\rWn\big\{\tfrac{11}{2}\Vnormlp{\hxdfPr[l]-\dxdfPr[l]}^2-\tfrac{1}{2}\Vnormlp{\dProj{\Di}{l}\dxdfPr[\ssY]}^2
++(\peneSv[(l)]-\peneSv)\big\}\big)\Ind{\dmEv{k}{l}}
+\end{multline}
+Note that on the event
+$\aixEv[l]:=\set{1/2\leq\vert\fedf[(s)]\hfedfmpI[(s)]\vert\leq3/2,\;\forall\;s\in\nset{1,l}}$
+we have
+\begin{multline*}
+\Vnormlp{\dProj{\Di}{l}\dxdfPr[\ssY]}^2\Ind{\aixEv[l]}\geq
+\tfrac{1}{4}\Vnormlp{\dProj{\Di}{l}\xdf}^2=\tfrac{1}{4}\Vnormlp{\xdf_{\underline{0}}}^2(\bias^2(\xdf)-\bias[l]^2(\xdf))\hfill\\
+\meiSv[l]\Ind{\aixEv[l]}=\max\set{\eiSv[(s)]=(\hfedfmpI[(s)])^2,s\in\nset{1,l}}\Ind{\aixEv[l]}\hfill\\
+\hfill\leq\tfrac{9}{4}\max\set{\iSv[s]=\fedf[(s)]^{-2},s\in\nset{1,l}}=\tfrac{9}{4}\miSv[l]\\
+\meiSv[l]\Ind{\aixEv[l]}\geq\tfrac{1}{4}\miSv[l]\hfill
+\end{multline*}
+Thus on $\aixEv[l]$ holds  
+$\tfrac{1}{4}l\miSv[l]\vee(l+2)\leq l\meiSv[l]\vee(l+2)\leq
+\tfrac{9}{4}l\miSv[l]\vee(l+2) $. Since 
+$\sqrt{\cmiSv[l]}=\tfrac{\log (l\miSv[l] \vee (l+2))}{\log(l+2)}\geq1 $
+ for all $l\in\Nz$ hold
+$\tfrac{\log (\tfrac{1}{4}l\miSv[l] \vee (l+2))}{\log(l+2)}\geq
+\sqrt{\cmiSv[l]}\tfrac{\log(3/4)}{\log 3}\geq \tfrac{3}{10}\sqrt{\cmiSv[l]}$
+and $\tfrac{\log (\tfrac{9}{4}l\miSv[l] \vee
+  (l+2))}{\log(l+2)}\leq\sqrt{\cmiSv[l]}\tfrac{\log(27/4)}{\log 3}\leq
+\tfrac{7}{4}\sqrt{\cmiSv[l]}$
+which together with $\DipenSv[l]=l\cmiSv[l]\miSv[l]$ and $\DipeneSv[l]=l\cmeiSv[l]\meiSv[l]$
+imply 
+\begin{multline}\label{pro:au:erWe:e3}
+\tfrac{3}{10}\sqrt{\cmiSv[l]}\leq\sqrt{\cmeiSv[l]}\Ind{\aixEv[l]}\leq
+\tfrac{7}{4}\sqrt{\cmiSv[l]}\hfill\\
+\tfrac{1}{50}\DipenSv[l]\leq\tfrac{9}{400}\DipenSv[l]=l\,\tfrac{9}{100}\cmiSv[l]\,\tfrac{1}{4}\miSv[l]\\
+\leq l\,\cmeiSv[l]\,\meiSv[l]\Ind{\aixEv[l]}=\DipeneSv[l]\Ind{\aixEv[l]}\leq l\,\tfrac{49}{16}\cmiSv[l]\,\tfrac{9}{4}\miSv[l]=\tfrac{441}{64}\DipenSv[l]\leq7\DipenSv[l]\hfill
+\end{multline}
+and hence for $\penSv=\cpen\DipenSv$ and $\peneSv=\cpen\DipeneSv$
+follows
+\begin{equation}\label{pro:au:erWe:peneSv}
+\tfrac{1}{50}\penSv\leq\peneSv\Ind{\aixEv[l]}\leq7\penSv\quad\text{for
+all }\Di\in\nset{1,l}\text{ and for all }l\in\Nz.
+\end{equation}
+If we define $\dmEv{k}{l}:=\{\Vnormlp{\hxdfPr[l]-\dxdfPr[l]}^2<\peneSv[(l)]/7\}\cap\aixEv[l]$
+then the last bounds imply
+\begin{multline*}
+ \erWe\Ind{\setB{\Vnormlp{\hxdfPr[l]-\dxdfPr[l]}^2<\peneSv[(l)]/7}}\Ind{\aixEv[l]}
+\\\leq\exp\big(\rWn\big\{\tfrac{11}{14}\peneSv[(l)]-\tfrac{1}{8}\Vnormlp{\xdf_{\underline{0}}}^2(\bias^2(\xdf)-\bias[l]^2(\xdf))+(\peneSv[(l)]-\peneSv)\big\}\big)\Ind{\aixEv[l]}\\
+\\=\exp\big(\rWn\big\{\tfrac{25}{14}\peneSv[(l)]-\tfrac{1}{8}\Vnormlp{\xdf_{\underline{0}}}^2(\bias^2(\xdf)-\bias[l]^2(\xdf))-\peneSv\big\}\big)\Ind{\aixEv[l]}\\
+\hfill\leq\exp\big(\rWn\big\{7*\tfrac{25}{14}\penSv[l]+\tfrac{1}{8}\Vnormlp{\xdf_{\underline{0}}}^2(\bias[l]^2(\xdf)-\bias^2(\xdf))-\tfrac{1}{50}\penSv\big\}\big)% \\
+% \leq\exp\big(\rWn\big\{\tfrac{630}{16}*\penSv[l]-\tfrac{1}{8}\Vnormlp{\Proj[{\mHiH[0]^\perp}]\xdf}^2(\bias[k]^2(\xdf)-\bias[l]^2(\xdf))\}\big)
+\end{multline*}
+ and hence, by exploiting \nref{freq:ge:shape:uk:we} for
+ $\dRa{l}{\xdf,\Lambda}=[\bias[l]^2(\xdf)\vee \DipenSv[l] n^{-1}]$  follows the
+ assertion \ref{re:erWe:i}, that is
+\begin{multline*}
+  \erWe[(k)]\Ind{\setB{\Vnormlp{\hxdfPr[l]-\dxdfPr[l]}^2<\peneSv[(l)]/7}}\Ind{\aixEv[l]}\\\leq
+  \exp\big(\rWn\big\{[\tfrac{25}{2}\cpen+\tfrac{1}{8}\Vnormlp{\xdf_{\underline{0}}}^2]\dRa{l}{\xdf,\Lambda}-\tfrac{1}{8}\Vnormlp{\xdf_{\underline{0}}}^2\bias^2(\xdf)-\tfrac{1}{50}\penSv\big\}\big).
+ \end{multline*}
+Consider secondly \ref{re:erWe:ii} $\Di\in\nsetlo{l,\ssY}$. From 
+\ref{re:contr:e2} in \nref{re:contr} (with $\dxdfPr[\bullet]=\hxdfPr[\ssY]$
+and  $\xdf=\dxdfPr[\ssY]=(\mathds{1}_{\{\vert s \vert \leq \ssY\}}\hfedfmpI[(s)]\fydf[(s)])_{s \in \Z}$) and \eqref{p:re:erWe:e1} follows 
+ \begin{multline}\label{p:re:erWe:e4}
+  \erWe\Ind{\dmEv{l}{\Di}}
+\leq\exp\big(\rWn\big\{\Vnormlp{\hxdfPr}^2-\Vnormlp{\hxdfPr[l]}^2+(\peneSv[(l)]-\peneSv)\big\}\big)\Ind{\dmEv{l}{\Di}}\\
+\leq \exp\big(\rWn\big\{\tfrac{7}{2}\Vnormlp{\hxdfPr[k]-\dxdfPr[k]}^2+\tfrac{3}{2}\Vnormlp{\dProj{l}{k}\dxdfPr[\ssY]}^2+(\peneSv[(l)]-\peneSv)\big\}\big)\Ind{\dmEv{l}{k}}
+\end{multline}
+Keep in mind that
+\begin{multline*}
+\Vnormlp{\dProj{l}{k}\dxdfPr[\ssY]}^2\Ind{\aixEv[l]}=2\sum\nolimits_{s=l+1}^k(\fedf[(s)]\hfedfmpI[(s)])^2\vert\fxdf[(s)]\vert^2\\
+\leq 2\sum\nolimits_{s=l+1}^{\ssY}(\fedf[(s)]\hfedfmpI[(s)])^2\vert\fxdf[(s)]\vert^2=\Vnormlp{\ProjC[{\mHiH[l]}]\dxdfPr[\ssY]}^2.
+\end{multline*} 
+If we set $\dmEv{l}{\Di}:=\{\Vnormlp{\hxdfPr-\dxdfPr}^2<\peneSv/7\}$
+ then we clearly have \ref{re:erWe:ii}, that is
+ \begin{displaymath}
+   \erWe\Ind{\setB{\Vnormlp{\hxdfPr-\dxdfPr}^2<\penSv/7}} \leq
+   \exp\big(\rWn\big\{-\tfrac{1}{2}\peneSv+\tfrac{3}{2}\Vnormlp{\ProjC[l]\dxdfPr[\ssY]}^2+\peneSv[(l)]\big\}\big)
+ \end{displaymath}
+ which completes the proof.\proEnd
+\end{pro}
+% ....................................................................
+% <<Proof Re Sum Random weights>>
+% ....................................................................
+\begin{pro}[Proof of \nref{au:re:SrWe:ag}.]
+  Consider \ref{au:re:SrWe:ag:i}. For the non trivial case $\mDi>1$
+  from \nref{re:erWe} \ref{re:erWe:i} with $l=\mdDi$ follows for all
+  $\Di<\mDi\leq \mdDi$, and hence due to the definition
+  \eqref{au:de:*Di:ag}
+  $\Vnormlp{\xdf_{\underline{0}}}^2\bias^2\geq
+  \Vnormlp{\xdf_{\underline{0}}}^2\bias[\mDi-1]^2>[\Vnormlp{\xdf_{\underline{0}}}^2+8*13\cpen]\daRa{\mdDi}{(\xdf,\Lambda)}$.
+  Exploiting the last bound we obtain for each $\Di\in\nsetro{1,\mDi}$
+  \begin{multline*}
+    \erWe\Ind{\setB{\Vnormlp{\hxdfPr[\mdDi]-\dxdfPr[\mdDi]}^2<\peneSv[(\mdDi)]/7}\cap\aixEv[l]}
+    \\\hfill\leq
+    \exp\big(\rWn\big\{-\tfrac{\Vnormlp{\xdf_{\underline{0}}}^2}{8}\bias^2(\xdf)
+    +[\tfrac{25\cpen}{2}+\tfrac{\Vnormlp{\xdf_{\underline{0}}}^2}{8}]\daRaS{\mdDi}{\xdf,\Lambda}-\tfrac{1}{50}\penSv\big\}\big)\\
+    \hfill
+    \leq\exp\big(-\tfrac{1}{2}\rWc\cpen \ssY\daRaS{\mdDi}{\xdf,\Lambda}-\tfrac{1}{50}\rWn\penSv\big)
+  \end{multline*}
+  which in turn with
+  $\pen^{\widehat{\Lambda}}(m)=\cpen \Di\delta_{\widehat{\Lambda}}(m)\widehat{\Lambda}_{+}(m) \ssY^{-1}\geq \cpen\Di\ssY^{-1}$ and
+  $\sum_{\Di\in\Nz}\exp(-\mu\Di)\leq \mu^{-1}$ for any $\mu>0$
+  implies \ref{freq:ge:strat:kn:qu:re:SrWe:ag:i}, that is,
+  \begin{multline*}
+    \rWe[](\nsetro{1,\mDi})\\
+    \leq\rWe[](\nsetro{1,\mDi})\Ind{\setB{\Vnormlp{\hxdfPr[\mdDi]-\dxdfPr[\mdDi]}^2<\peneSv[(\mdDi)]/7}\cap\aixEv[\mdDi]}
+    +\Ind{\setB{\Vnormlp{\hxdfPr[\mdDi]-\dxdfPr[\mdDi]}^2\geq\peneSv[(\mdDi)]/7}\cup\aixEv[\mdDi]^c}\\
+    \hfill\leq\exp\big(-\tfrac{\rWc\cpen}{2}\ssY\daRaS{\mdDi}{\xdf,\Lambda}\big)\sum\nolimits_{k=1}^{\mDi-1}\exp(-\tfrac{\rWc\cpen}{50}\Di)
+    +\Ind{\setB{\Vnormlp{\hxdfPr[\mdDi]-\dxdfPr[\mdDi]}^2\geq\peneSv[(\mdDi)]/7}\cup\aixEv[\mdDi]^c}\\
+    \leq \tfrac{50}{\rWc\cpen}\exp\big(-\tfrac{\rWc\cpen}{2}\ssY\daRaS{\mdDi}{\xdf,\Lambda}\big)
+    +\Ind{\setB{\Vnormlp{\hxdfPr[\mdDi]-\dxdfPr[\mdDi]}^2\geq\peneSv[(\mdDi)]/7}\cup\aixEv[\mdDi]^c}.
+  \end{multline*} 
+  Consider \ref{au:re:SrWe:ag:ii}. From \nref{re:erWe} \ref{re:erWe:ii}
+  with $l=\pdDi$ follows for all $\Di>\pDi\geq \pdDi$, and hence due
+  to the definition \eqref{au:de:*Di:ag}
+  $\peneSv > 6\Vnormlp{\xdf_{\underline{0}}}^2+ 4\peneSv$. Thereby, we
+  obtain for $\Di\in\nsetlo{\pDi,n}$
+  \begin{multline*}
+    \erWe\Ind{\setB{\Vnormlp{\hxdfPr-\dxdfPr}^2<\penSv/7}} \leq
+   \exp\big(\rWn\big\{-\tfrac{1}{2}\peneSv+\tfrac{3}{2}\Vnormlp{\ProjC[\pdDi]\dxdfPr[\ssY]}^2+\peneSv[(\pdDi)]\big\}\big)
+    % \rWe\Ind{\setB{\Vnormlp{\txdfPr-\xdfPr}^2<\penSv/7}}
+    % \leq % \exp\big(\rWn\big\{-\tfrac{1}{2}\pen +[\tfrac{3}{2}\Vnormlp{\So}^2+\cpen]\dRa{\pdDi}(\So)\big\}\big)
+    % \\
+    % =
+    % \exp\big(\rWn\big\{-\tfrac{1}{4} \penSv
+    % -\tfrac{1}{4}\penSv 
+    % +[\tfrac{3}{2}\Vnormlp{\xdf_{\underline{0}}}^2+\cpen]\daRaS{\pdDi}{\xdf,\Lambda}\big\}\big)
+    \\
+    \leq \exp\big(\rWn\big\{-\tfrac{1}{4} \peneSv\big\}\big).
+  \end{multline*}
+Note that $\vert\hfedf[(s)]\vert^2\leq1$ for all $s\in\Zz$, hence if
+$\vert\hfedf[(s)]\vert^2\geq1/\ssE$ then $\eiSv[(s)]=\vert\hfedfmpI[(s)]\vert^2\geq1$. Thereby,
+$\eiSv[(s)]=\vert\hfedfmpI[(s)]\vert^2<1$ implies $\vert\hfedf[(s)]\vert^2<1/\ssE$ and hence
+$\eiSv[(s)]=\vert\hfedfmpI[(s)]\vert^2=0$. Thereby
+$1>\meiSv=\max\{\vert\hfedfmpI[(s)]\vert^2,s\in\nset{1,\Di}\}$ implies
+$\meiSv=0$, that is,
+\begin{equation}\label{p:au:re:SrWe:ag:hPhi}
+{\{\meiSv<1\}=\{\meiSv=0\}}\text{ and, }\peneSv=\cpen\cmeiSv \Di \meiSv=\peneSv\Ind{\{\meiSv\geq1\}.}
+\end{equation}
+Thereby, it   follows 
+  \begin{multline}\label{p:au:re:SrWe:ag:e1}
+\sum_{\Di\in\nsetlo{\pDi,\ssY}}\peneSv\erWe\Ind{\{\Vnormlp{\hxdfPr[k]-\dxdfPr[k]}^2\leq\peneSv/7\}}\\
+\leq \sum_{\Di\in\nsetlo{\pDi,\ssY}}\peneSv\exp\big(-\tfrac{\rWc}{4}\ssY\peneSv\big)
+\\\hfill=\sum_{\Di\in\nsetlo{\pDi,\ssY}}\peneSv\exp\big(-\tfrac{\rWc}{4}\ssY\peneSv\big)\{\Ind{\{\meiSv\geq1\}}+\Ind{\{\meiSv<1\}}\}\\
+\hfill=\sum_{\Di\in\nsetlo{\pDi,\ssY}}\peneSv\exp\big(-\tfrac{\rWc}{4}\ssY\peneSv\big)\Ind{\{\meiSv\geq1\}}\\
+=\cpen\ssY^{-1}\sum_{\Di\in\nsetlo{\pDi,\ssY}} \Di\cmeiSv\meiSv\exp\big(-\tfrac{\rWc\cpen}{4}\Di\cmeiSv\meiSv\big)\Ind{\{\meiSv\geq1\}}
+  \end{multline}
+  Exploiting that
+  $\sqrt{\cmeiSv}=\tfrac{\log (\Di\meiSv \vee
+    (\Di+2))}{\log(\Di+2)}\geq1$, $\cpen/4\geq2\log(3e)$ and
+  $\rWc\geq1$, then for all $k\in\Nz$ we have
+  $\tfrac{\rWc\cpen}{4} k-\log(k+2)\geq1$, and hence by
+  $a\exp(-ab)\leq \exp(-b)$ for $a,b\geq1$, it follows
+  \begin{multline}\label{p:au:re:SrWe:ag:e2}
+    \cmeiSv\Di \meiSv\exp\big(-\tfrac{\rWc\cpen}{4}\cmeiSv\Di\meiSv\big)\Ind{\{\meiSv\geq1\}}\\
+    \leq\cmeiSv\exp\big(-\tfrac{\rWc\cpen}{4}\cmeiSv\Di\meiSv + \sqrt{\cmeiSv}\log(\Di+2)\big)\Ind{\{\meiSv\geq1\}}
+    \\
+    \hfill\leq
+    \cmeiSv\exp\big(-\cmeiSv(\tfrac{\rWc\cpen}{4}\Di-\log(\Di+2))\big)\Ind{\{\meiSv\geq1\}}\\
+\leq\exp\big(-(\tfrac{\rWc\cpen}{4}\Di-\log(\Di+2))\big)\Ind{\{\meiSv\geq1\}}
+    =(\Di+2)\exp\big(-\tfrac{\rWc\cpen}{4}\Di\big)\Ind{\{\meiSv\geq1\}}\\
+    \leq (\Di+2)\exp\big(-\tfrac{\rWc\cpen}{4}\Di\big).
+  \end{multline}
+  Exploiting $\sum_{\Di\in\Nz}\mu\Di\exp(-\mu\Di)\leq \mu^{-1}$ und
+  $\sum_{\Di\in\Nz}\mu\exp(-\mu\Di)\leq 1$ we obtain
+  \begin{multline*}
+    \sum_{k=\pDi+1}^{\ssY}\cmeiSv\Di \meiSv\exp\big(-\tfrac{\rWc\cpen}{4}\cmeiSv\Di\meiSv\big)\Ind{\{\meiSv\geq1\}}\\
+    \leq \sum_{k=\pDi+1}^\infty(\Di+2)\exp\big(-\tfrac{\rWc\cpen}{4}\Di\big)
+    \leq \tfrac{16}{\cpen^2\rWc^{2}}+ \tfrac{8}{\cpen\rWc}.
+  \end{multline*}
+  Combining the last bound and \eqref{p:au:re:SrWe:ag:e1} we obtain the
+  assertion \ref{au:re:SrWe:ag:ii}, that is
+  \begin{displaymath}
+    \sum_{\Di\in\nsetlo{\pDi,n}}\peneSv\erWe\Ind{\{\Vnormlp{\hxdfPr-\dxdfPr}^2\leq\peneSv/7\}}
+    \leq \ssY^{-1}\{\tfrac{16}{\cpen\rWc^{2}}+ \tfrac{8}{\rWc}\}
+  \end{displaymath}
+  which completes the proof.\proEnd
+\end{pro}
+% --------------------------------------------------------------------
+% <<Proof Re Sum MS Random weights>>
+% --------------------------------------------------------------------
+\begin{pro}[Proof of \nref{au:re:SrWe:ms}.]
+  By definition of $\hDi$ it holds
+  $-\Vnormlp{\hxdfPr[\hDi]}^2+\peneSv[(\hDi)]\leq
+  -\Vnormlp{\hxdfPr}^2+\peneSv$ for all $\Di\in\nset{1,\ssY}$, and
+  hence
+  \begin{equation}\label{au:re:SrWe:ms:pr:e1}
+    \Vnormlp{\hxdfPr[\hDi]}^2-\Vnormlp{\hxdfPr}^2\geq
+    \peneSv[(\hDi)]-\peneSv\text{ for all }\Di\in\nset{1,\ssY}.
+  \end{equation}
+  Consider \ref{freq:ge:strat:kn:qu:re:SrWe:ms:i}. It is sufficient to show, that 
+  $\{\hDi\in\nsetro{1,\mDi}\}\cap\aixEv[\mdDi]\subseteq
+  \{\Vnormlp{\hxdfPr[\mdDi]-\dxdfPr[\mdDi]}^2\geq\peneSv[(\mdDi)]/7\}$ holds for $\mDi>1$.  On the event $\{\hDi\in\nsetro{1,\mDi}\}$ holds
+  $1\leq\hDi<\mDi\leq\mdDi$ and thus by definition
+  \eqref{au:de:*Di:ag}
+  \begin{equation}\label{au:re:SrWe:ms:pr:e2}
+    \Vnormlp{\xdf_{\underline{0}}}^2\bias[\hDi]^2(\xdf)>
+    [\Vnormlp{\xdf_{\underline{0}}}^2+104\cpen]\daRa{\mdDi}{(\xdf,\Lambda)}
+  \end{equation}
+  and due to  \nref{re:contr} \ref{re:contr:e1} 
+(with
+$\dxdfPr[\bullet]=\hxdfPr[\ssY]$
+and  $\xdf=\dxdfPr[\ssY]=(\mathds{1}_{\{\vert s \vert \leq \ssY\}}\hfedfmpI[(s)]\fydf[(s)])_{s \in \Z}$) also
+  \begin{equation}\label{au:re:SrWe:ms:pr:e3}
+    \Vnormlp{\hxdfPr[\hDi]}^2-\Vnormlp{\hxdfPr[\mdDi]}^2\leq
+    \tfrac{11}{2}\Vnormlp{\hxdfPr[\mdDi]-\dxdfPr[\mdDi]}^2
+    -\tfrac{1}{2}\Vnormlp{\dProj{\hDi}{\mdDi}\dxdfPr[\ssY]}^2.
+  \end{equation}
+  On $\{\hDi\in\nsetro{1,\mDi}\}\cap\aixEv[\mdDi]$ we have
+\begin{equation}\label{au:re:SrWe:ms:pr:e3:b}
+\Vnormlp{\dProj{\hDi}{\mdDi}\dxdfPr[\ssY]}^2\Ind{\aixEv[\mdDi]}\geq
+\tfrac{1}{4}\Vnormlp{\dProj{\hDi}{\mdDi}\xdf}^2=\tfrac{1}{4}\Vnormlp{\xdf_{\underline{0}}}^2(\bias[\hDi]^2(\xdf)-\bias[\mdDi]^2(\xdf))
+\end{equation}
+Combining, \eqref{au:re:SrWe:ms:pr:e1}, \eqref{au:re:SrWe:ms:pr:e3}  and
+  \eqref{au:re:SrWe:ms:pr:e3:b} it follows that
+  \begin{multline*}
+    \tfrac{11}{2}\Vnormlp{\hxdfPr[\mdDi]-\dxdfPr[\mdDi]}^2\geq
+    \peneSv[(\hDi)]-\peneSv[(\mdDi)]
+    +\tfrac{1}{8}\Vnormlp{\xdf_{\underline{0}}}^2\{\bias[\hDi]^2(\xdf)-\bias[\mdDi]^2(\xdf)\}\hfill
+  \end{multline*}
+  and hence together with $\peneSv[(\hDi)]\geq0$,  $\peneSv[(\mdDi)]\Ind{\aixEv[\mdDi]}\leq7\penSv[\mdDi]$ 
+  by \eqref{pro:au:erWe:peneSv},  \eqref{au:re:SrWe:ms:pr:e2}
+  and \nref{freq:ge:strat:kn:qu:de:rate} we obtain the claim, that is
+  \begin{multline*}
+    \tfrac{11}{2}\Vnormlp{\hxdfPr[\mdDi]-\dxdfPr[\mdDi]}^2\geq
+    \tfrac{1}{8}\Vnormlp{\xdf_{\underline{0}}}^2\bias[\hDi]^2(\xdf)-
+    \tfrac{1}{8}\Vnormlp{\xdf_{\underline{0}}}^2\bias[\mdDi]^2(\xdf)
+    -\peneSv[(\mdDi)]\\
+    >\tfrac{1}{8}[\Vnormlp{\xdf_{\underline{0}}}^2+104\cpen]\daRa{\mdDi}{(\xdf,\Lambda)}
+    -\tfrac{1}{8}\Vnormlp{\xdf_{\underline{0}}}^2\bias[\mdDi]^2(\xdf)-\peneSv[(\mdDi)]\\
+    \geq 13\cpen \daRa{\mdDi}{(\xdf,\Lambda)}-\peneSv[(\mdDi)]\geq\tfrac{26}{14}\peneSv[(\mdDi)]-\peneSv[(\mdDi)]  \geq\tfrac{11}{14}\peneSv[(\mdDi)],
+  \end{multline*}
+which  shows \ref{au:re:SrWe:ms:i}.  Consider \ref{freq:ge:strat:kn:qu:re:SrWe:ms:ii}. It is sufficient to show that,
+  $\{\hDi\in\nsetlo{\pDi,\ssY}\}\subseteq
+  \{\Vnormlp{\hxdfPr[\hDi]-\dxdfPr[\hDi]}^2\geq\peneSv[(\hDi)]/7\}$.  On the
+  event $\{\hDi\in\nsetlo{\pDi,\ssY}\}$ holds $\hDi>\pDi\geq\pdDi$ and
+  thus by definition \eqref{au:de:*Di:ag}
+  \begin{equation}\label{au:re:SrWe:ms:pr:e4}
+    \peneSv[(\hDi)] > 2[3\Vnormlp{\ProjC[\pdDi]\dxdfPr[\ssY]}^2+2\peneSv[(\pdDi)]]
+  \end{equation}
+  and due to \nref{re:contr} \ref{re:contr:e2} 
+(with
+$\dxdfPr[\bullet]=\hxdfPr[\ssY]$
+and
+$\xdf=\dxdfPr[\ssY]=(\mathds{1}_{\{\vert s \vert \leq n\}}\hfedfmpI[(s)]\fydf[(s)])_{s \in \Z}$)
+also
+\begin{equation}\label{au:re:SrWe:ms:pr:e5}
+  \Vnormlp{\dxdfPr[\hDi]}^2-\Vnormlp{\dxdfPr[\pdDi]}^2\leq
+  \tfrac{7}{2}\Vnormlp{\dxdfPr[\hDi]-\xdfPr[\hDi]}^2+\tfrac{3}{2}\Vnormlp{\dProj{\pdDi}{\hDi}\dxdfPr[\ssY]}^2.
+  \end{equation}
+  Combining, \eqref{au:re:SrWe:ms:pr:e1} and \eqref{au:re:SrWe:ms:pr:e5} it
+  follows that
+  \begin{multline*}
+    \tfrac{7}{2}\Vnormlp{\hxdfPr[\hDi]-\dxdfPr[\hDi]}^2\geq
+    \peneSv[(\hDi)]-\peneSv[(\pdDi)]  -\tfrac{3}{2}\Vnormlp{\dProj{\pdDi}{\hDi}\dxdfPr[\ssY]}^2\hfill
+  \end{multline*}
+  and hence together with
+  $\Vnormlp{\dProj{\pdDi}{\hDi}\dxdfPr[\ssY]}^2\leq\Vnormlp{\ProjC[\pdDi]\dxdfPr[\ssY]}^2$ and
+  \eqref{au:re:SrWe:ms:pr:e4} we obtain the claim,
+  that is
+  \begin{multline*}
+    \tfrac{7}{2}\Vnormlp{\hxdfPr[\hDi]-\dxdfPr[\hDi]}^2\geq
+    (\tfrac{1}{2}+\tfrac{1}{2})\peneSv[(\hDi)]-\peneSv[(\pdDi)]  -\tfrac{3}{2}\Vnormlp{\ProjC[\pdDi]\dxdfPr[\ssY]}^2\\
+    >\tfrac{1}{2}\penSv[\hDi]+\tfrac{1}{2}2[3\Vnormlp{\ProjC[\pdDi]\dxdfPr[\ssY]}^2+2\peneSv[(\pdDi)]]-\peneSv[(\pdDi)]-\tfrac{3}{2}\Vnormlp{\ProjC[\pdDi]\dxdfPr[\ssY]}^2
+    \geq\tfrac{1}{2}\peneSv[(\hDi)],
+  \end{multline*}
+  which shows \ref{freq:ge:strat:kn:qu:re:SrWe:ms:ii} and completes the proof.\proEnd
+\end{pro}
+
+% ....................................................................
+% <<Re event rest>>
+% ....................................................................
+\begin{lm}\label{ge:re:evrest}
+Assume that \nref{freq:ge:strat:uk:qu:as} holds true and for $\Di\in\Nz$ consider
+  $\aixEv[\Di]:=\{1/2\leq|\fedf[(s)]\hfedfmpI[(s)]|\leq3/2:\;\forall\;s\in\nset{1,\Di}\}$.
+  Then, the following statements hold.
+\begin{resListeN}[]
+\item\label{ge:re:evrest:i}
+For all $\Di,\ssE\in\Nz$ with  $\miSv[k]\leq
+(4/9)\ssE$ holds $\P(\aixEv^c)\leq \sum_{s=1}^{\Di}\P\big(|\hfedf[(s)]/\fedf[(s)]-1|>1/3\big)\leq \cst{12}\Di\exp\big(-\tfrac{\cst{13}\ssE}{\miSv[k]}\big)$.
+\item\label{ge:re:evrest:ii}
+Given  $\Di\in\Nz$ let $\ssE(\Di):=\ceil{9\miSv/4}$  then 
+$\P(\aixEv[k]^c)\leq8 (\cst{13})^{-1}\Di\ssE(\Di)^2\ssE^{-2}\wedge12\Di\ssE(\Di)\ssE^{-1}$
+holds true for all
+$\ssE\in\Nz$.
+\item\label{ge:re:evrest:iii}
+For all $\Di,\ssE\in\Nz$ with $\ssE \geq \tfrac{5}{\cst{13}}\log(\Di+2)\cmiSv\miSv$ holds $\P(\aixEv^c)\leq((\tfrac{5}{e \cst{13}})^{2}\ssE^{-2})\wedge(\tfrac{2}{e \cst{13}}\ssE^{-1})$.
+\end{resListeN}
+\end{lm}
+% ....................................................................
+% <<Proof Re event rest>>
+% ....................................................................
+\begin{pro}[Proof of \nref{ge:re:evrest}.]
+We start our proof with the observation that  
+\begin{multline*}
+\{|\hfedf[(s)]/\fedf[(s)]-1|\leq1/3\}\subseteq
+\{||\hfedf[(s)]/\fedf[(s)]|-1|\leq1/3\}\\\hfill=\{1-|\hfedf[(s)]/\fedf[(s)]|\leq1/3\text{
+  and  }|\hfedf[(s)]/\fedf[(s)]|-1\leq1/3\}
+=\{2/3\leq|\hfedf[(s)]/\fedf[(s)]|\leq4/3\}
+\end{multline*}
+Moreover, if
+$|\fedf[(s)]|^2\geq 9/(4\ssE)$, i.e., $2/3\geq1/(|\fedf[(s)]|\sqrt{\ssE})$ it follows
+\begin{multline*}
+\{|\hfedf[(s)]|^2< 1/\ssE\}=\{|\hfedf[(s)]|<
+1/\sqrt{\ssE}\}\subseteq\{|\hfedf[(s)]/\fedf[(s)]|<1/(|\fedf[(s)]|\sqrt{\ssE})\}\\
+\subseteq\{|\hfedf[(s)]/\fedf[(s)]|< 2/3\}\subseteq\{|\hfedf[(s)]/\fedf[(s)]-1|>1/3\}
+\end{multline*}
+Combining both inclusions, we get for $|\fedf[(s)]|^2\geq 9/(4\ssE)$
+\begin{multline*}
+\{|\hfedf[(s)]/\fedf[(s)]-1|\leq1/3\}\subseteq
+\{2/3\leq |\hfedf[(s)]/\fedf[(s)]|\leq4/3\text{ and
+  }|\hfedf[(s)]|^2\geq 1/\ssE\}
+\\\hfill\subseteq\{2/3\leq |\hfedf[(s)]/\fedf[(s)]|\leq2\text{ and
+  }|\hfedf[(s)]|^2\geq 1/\ssE\}\\
+=\{1/2\leq |\fedf[(s)]/\hfedf[(s)]|\leq3/2\text{ and }|\hfedf[(s)]|^2\geq 1/\ssE\}=\{1/2\leq |\fedf[(s)]\hfedfmpI[(s)]|\leq3/2\}
+\end{multline*}
+Keeping in mind that  $\iSv[s]=|\fedf[(s)]|^{-2}$ and
+$\miSv=\max\{\iSv[s],s\in\nset{1,\Di}\}$, if $\miSv\leq
+(4/9)\ssE$ then $|\fedf[(s)]|^{2}\geq \miSv^{-1}\geq9/(4\ssE)$ for all
+$s\in\nset{1,\Di}$ and hence 
+\begin{equation*}
+  \aixEv^c=\{1/2\leq
+  |\fedf[(s)]\hfedfmpI[(s)]|\leq3/2,\forall\,s\in\nset{1,\Di}\}^c\subset\bigcup_{s=1}^{\Di}\{|\hfedf[(s)]/\fedf[(s)]-1|>1/3\}
+\end{equation*}
+From \ref{freq:ge:strat:uk:qu:as:iv} in \nref{freq:ge:strat:uk:qu:as}, we obtain \ref{ge:re:evrest:i}, that is
+\begin{equation*}
+  \P(\aixEv^c)\leq
+  \sum_{s=1}^{\Di}\P\big(|\hfedf[(s)]/\fedf[(s)]-1|>1/3\big)\leq \cst{12}\Di\exp\big(-\tfrac{\cst{13}\ssE}{\miSv[m]}\big).
+\end{equation*}
+Consider \ref{ge:re:evrest:ii}. Given  $\Di\in\Nz$ and
+$\ssE(\Di):=\ceil{9\miSv/4}\in\Nz$. We distinguish for $\ssE\in\Nz$ the cases \begin{inparaenum}[i]\renewcommand{\theenumi}{\dgrau\rm(\alph{enumi})}\item\label{pro:evrest:ii:c1}
+$\ssE\geq\ssE(\Di)$
+and \item\label{pro:evrest:ii:c2}$\ssE<\ssE(\Di)$.
+\end{inparaenum}
+Consider \ref{pro:evrest:ii:c1}. Note that $ \miSv\leq (4/9)\ssE$ since
+$\ssE\geq\ssE(\Di)$, and hence \ref{ge:re:evrest:i} implies 
+\begin{multline*}
+  \P(\aixEv^c)
+  \leq\cst{12}\Di\exp\big(-\tfrac{\cst{13}\ssE}{\miSv}\big)\leq\cst{12}\Di\underbrace{\ssE^2\exp\big(-\tfrac{\cst{13}}{\miSv}\ssE\big)}_{\leq
+  (\tfrac{2*(\cst{13})^{-1}\miSv}{e})^{2}\text{ since }\ssE\geq1} \ssE^{-2}\\\leq\cst{12}\Di\underbrace{(\tfrac{(\cst{13})^{-1}*8}{9e}*9\miSv/4)^2}_{\leq 8(\cst{13})^{-1}\ssE(\Di)^2}
+\ssE^{-2}\leq 8 (\cst{13})^{-1}\Di\ssE(m)^2\ssE^{-2}.
+\end{multline*}
+Analogously, we
+have $\P(\aixEv^c)\leq \Di (\tfrac{(\cst{13})^{-1}*4}{9e}9\miSv/4) \ssE^{-1}\leq
+(6\cst{13})^{-1}\Di\ssE(\Di)\ssE^{-1}$, and thus
+$\P(\aixEv^c)\leq 8 (\cst{13})^{-1}\Di\ssE(\Di)^2\ssE^{-2}\wedge (6\cst{13})^{-1}\Di\ssE(\Di)\ssE^{-1}$
+for all $\ssE\geq\ssE(\Di)$. On the other hand side consider
+\ref{pro:evrest:ii:c2} where $\ssE<\ssE(\Di)$ implies
+$\P(\aixEv^c)\leq \ssE(\Di)^2\ssE^{-2}\wedge\ssE(\Di)\ssE^{-1}$. Combining both cases
+\ref{pro:evrest:ii:c1}-\ref{pro:evrest:ii:c2} for all
+$\ssE\in\Nz$ holds \ref{ge:re:evrest:ii}
+$\P(\aixEv[k]^c)\leq
+8 (\cst{13})^{-1}\Di\ssE(\Di)^2\ssE^{-2}\wedge12\Di\ssE(\Di)\ssE^{-1}$.
+Consider \ref{ge:re:evrest:iii}. %
+For all $\ssE,\Di\in\Nz$ with $\ssE\geq \tfrac{5}{\cst{13}}\log(\Di+2)\cmiSv\miSv\geq
+(9/4)\miSv[\Di]$ from \ref{ge:re:evrest:i} follows 
+\begin{multline*}
+\ssE^2\P(\aixEv^c)\leq \Di\ssE^2\exp\big(-\tfrac{\cst{13}\ssE}{\miSv}\big)\\
+\leq\underbrace{\tfrac{\ssE^2}{\miSv^2}\exp\big(-\tfrac{\cst{13}\ssE}{2\miSv}\big)}_{\leq(\tfrac{5}{\cst{13}e})^2\text{ since }\ssE/\miSv\geq1}\Di\miSv^2\exp\big(-\tfrac{\cst{13}\ssE}{2\miSv}\big)\\
+\leq (\tfrac{5}{\cst{13}e})^2 \Di\miSv^2\exp\big(-\tfrac{\cst{13}\ssE}{2\miSv}\big)
+\leq(\tfrac{5}{\cst{13}e})^2\exp\big(-\tfrac{\cst{13}\ssE}{2\miSv}+2\cmiSv\log(\Di+2)\big)\\
+\leq(\tfrac{5}{\cst{13}e})^2\exp\big(-\cmiSv\log(\Di+2)(\underbrace{\tfrac{\cst{13}}{2}\tfrac{\ssE}{\cmiSv\miSv\log(\Di+2)}}_{\geq\tfrac{\cst{13}}{2}\tfrac{5}{\cst{13}}>2}-2)\big)
+\leq(\tfrac{5}{\cst{13}e})^2.
+\end{multline*}
+and
+\begin{multline*}
+\ssE\P(\aixEv^c)\leq \Di\ssE\exp\big(-\tfrac{\cst{13}\ssE}{\miSv}\big)\\
+\leq\underbrace{\tfrac{\ssE}{\miSv}\exp\big(-\tfrac{\cst{13}}{2}\tfrac{\ssE}{\miSv}\big)}_{\leq\tfrac{2}{e\cst{13}}}\Di\miSv\exp\big(-\tfrac{\cst{13}\ssE}{2\miSv}\big)\\
+\leq \tfrac{2}{e\cst{13}} \Di\miSv\exp\big(-\tfrac{\cst{13}\ssE}{2\miSv}\big)
+\leq% 11226\exp\big(-\tfrac{\ssE}{144\miSv}+2\log(\Di\miSv\vee(\Di+2))\big)\\
+% =
+\tfrac{2}{e\cst{13}}\exp\big(-\tfrac{\cst{13}\ssE}{2\miSv}+\cmiSv\log(\Di+2)\big)\\
+=\tfrac{2}{e\cst{13}}\exp\big(-\cmiSv\log(\Di+2)(\underbrace{\tfrac{\cst{13}}{2}\tfrac{\ssE}{\cmiSv\miSv\log(\Di+2)}}_{\geq\tfrac{\cst{13}}{2} \tfrac{5}{\cst{13}}>2}-1)\big)
+\leq \tfrac{2}{e\cst{13}}.
+\end{multline*}
+which completes the proof.
+\proEnd\end{pro}
+% ....................................................................
+% <<Re rest>>
+% ....................................................................
+\begin{lm}\label{au:re:rest}
+Consider  
+$\hxdfPr-\dxdfPr=\sum_{s\in\nset{-\Di,\Di}}\hfedfmpI[(s)](\hfydf[(s)]-\fydf[(s)])$.
+Conditionally on $\rE_1,\dotsc,\rE_{\ssE}$ the r.v.'s
+$\rY_1,\dotsc,\rY_{\ssY}$ are \iid and we  denote by $\P_{Y \vert \epsilon}$ and $\E_{Y \vert \epsilon}$ their conditional
+ distribution and expectation, respectively. 
+Let $\eiSv[(s)]=\vert\hfedfmpI[(s)]\vert^2$,
+$\oeiSv=\tfrac{1}{\Di}\sum_{s\in\nset{1,\Di}}\eiSv[(s)]$, $\meiSv=
+  \max\{\eiSv[(s)],s\in\nset{1,\Di}\}$, $\cpen\geq1$, $\DiepenSv=\cmeiSv\Di \meiSv$
+ and $\sqrt{\cmeiSv}=\tfrac{\log (\Di\meiSv \vee (\Di+2))}{\log(\Di+2)}\geq1$.  Then there is a numerical constant $\cst{}$ such
+ that for all $\ssY\in\Nz$ and $\Di\in\nset{1,\ssY}$ holds
+  \begin{resListeN}[]
+  \item\label{au:re:rest:i} let $\Di_{\cst{3}}:=[\floor{3(\tfrac{2}{\cst{3}})^2}\vee \cst{2}]$ and $\ssY_{\cst{5}}:=15(\tfrac{1}{\cst{5}})^4$ then\\ 
+    \begin{multline*}
+    \sum_{\Di=1}^{\ssY}\E_{Y\vert \epsilon} \vectp{\VnormLp{\hxdfPr-\dxdfPr}^2 - 12\DiepenSv\ssY^{-1}}\\
+ \leq \cst{}\ssY^{-1}\big[(1\vee\meiSv[\Di_{\cst{3}}])\Di_{\cst{3}}+(1\vee\meiSv[\ssY_{\cst{5}}])\big]
+ \end{multline*}
+  \item\label{au:re:rest:ii} let
+    $\Di_{\cst{7}}:=\floor{3(\tfrac{2}{\cst{7}})^2}$ and
+    $\ssY_{\cst{8}}:=\floor{15({3/\cst{8}})^4}$ then\\
+    \begin{multline*}
+    \sum\nolimits_{\Di=1}^{\ssY}\cmeiSv \Di \meiSv\P_{Y \vert \epsilon}\big(\VnormLp{\hxdfPr-\dxdfPr}^2 \geq 12\DiepenSv\ssY^{-1}\big)\\
+ \leq\cst{6}\bigg[(1+\meiSv[\Di_{\cst{7}}]^2)\Di_{\cst{7}}^2+1+\meiSv[\ssY_{\cst{8}}]^2\ssY_{\cst{8}}^2\bigg]
+ \end{multline*}
+  \item\label{au:re:rest:iii}
+     \begin{multline*}
+ \P_{Y \vert \epsilon}\big(\VnormLp{\hxdfPr-\dxdfPr}^2 \geq 12\DiepenSv\ssY^{-1}\big)\\
+ \leq 3 \big[\exp\big(\tfrac{-\cst{11}\cmeiSv\Di}{\Vnormlp[1]{\fydf}}\big)
+     +(\cst{11})^{-2}\ssY^{-1}\big].
+ \end{multline*}
+  \end{resListeN}
+\end{lm}
+
+ \begin{pro}[Proof of \nref{au:re:rest}.]
+ Consider \ref{au:re:rest:i}.
+   Since $\cmeiSv\geq1$ for
+   $\Di\geq3(\tfrac{2}{\cst{3}})^2$ holds
+   $\tfrac{\cst{3}\sqrt{\cmeiSv}\Di}{2}-\log(\Di+2)\geq0$
+   and%
+   \begin{multline*}
+     \meiSv\exp\big(-\cst{3}\cmeiSv\Di\big)\leq
+     \exp\big(\tfrac{-\cst{3}\cmeiSv\Di}{2}\big)
+     \exp\big(-\sqrt{\cmeiSv}[\tfrac{\cst{3}\sqrt{\cmeiSv}\Di}{2}-\log(\Di+2)]\big)\\
+     \leq\exp\big(\tfrac{-\cst{3}\cmeiSv\Di}{2}\big)
+     \leq\exp\big(-\tfrac{\cst{3}}{2}\Di\big)
+   \end{multline*}
+   consequently, for
+   $\Di_{\cst{3}}:=[\floor{3(\tfrac{2}{\cst{3}})^2}\vee \cst{2}]$, exploiting
+   $\sum_{\Di\in\Nz}\exp(-\mu\Di)\leq \mu^{-1}$ follows
+   \begin{displaymath}
+     \sum_{\Di=1+\Di_{\cst{3}}}^{\ssY}\meiSv\exp\big(-\cst{3}\cmeiSv\Di\big)\leq
+     \sum_{\Di=1+\Di_{\cst{3}}}^{\ssY}\exp\big(-\tfrac{\cst{3}}{2}\Di\big)
+     \leq {\tfrac{2}{\cst{3}}}
+   \end{displaymath}
+   while
+   \begin{displaymath}
+    \sum_{\Di=1}^{\Di_{\cst{3}}}\meiSv\exp\big(-\cst{3}\cmeiSv\Di\big)\leq
+    \meiSv[\Di_{\cst{3}}]\sum_{\Di=1}^{\Di_{\cst{3}}}\exp\big(-\cst{3}\Di\big)
+    \leq \meiSv[\Di_{\cst{3}}]\tfrac{1}{\cst{3}}
+  \end{displaymath}
+  hence
+  \begin{displaymath}
+    \sum_{\Di=1}^{\ssY}\meiSv\exp\big(-\cst{3}\cmeiSv\Di\big)\leq
+    \tfrac{2}{\cst{3}}+\tfrac{\meiSv[\Di_{\ydf}]}{\cst{3}}\leq \tfrac{1}{\cst{3}}(2+\meiSv[\Di_{\ydf}])
+  \end{displaymath}
+  Using for all $ \ssY>\ssY_{\cst{5}}:=15(\tfrac{1}{\cst{5}})^4$ holds 
+  $\sqrt{n}\geq\tfrac{1}{\cst{5}}\log(n+2)$ it follows for all $\Di\in\nset{1,n}$
+  \begin{displaymath}
+    \tfrac{\Di\meiSv}{\ssY}\exp\big(-\cst{5}\sqrt{n\cmeiSv}\big)
+    \leq
+    \tfrac{1}{\ssY}\exp\big(-\sqrt{\cmeiSv}[\cst{5}\sqrt{\ssY}-\log(\Di+2)]\big)\leq \tfrac{1}{\ssY}
+  \end{displaymath}
+  consequently, 
+  \begin{equation*}
+    \sum_{\Di=1}^{\ssY}\tfrac{\Di\meiSv}{\ssY}\exp\big(-\cst{5}\sqrt{n\cmeiSv}\big)
+    \leq\sum_{\Di=1}^{\ssY}\tfrac{1}{\ssY}\leq1
+  \end{equation*}
+  while for $\ssY\leq \ssY_{\cst{5}}$ with
+  $\meiSv[\ssY]\leq\meiSv[\ssY_{\cst{5}}]$ follows
+ \begin{equation*}
+    \sum_{\Di=1}^{\ssY}\tfrac{\Di\meiSv}{\ssY}\exp\big(-\cst{5}\sqrt{\ssY\cmeiSv}\big)\leq 
+     \meiSv[\ssY]\ssY\exp\big(-\cst{5}\sqrt{\ssY}\big)\leq\ssY_{\cst{5}}\meiSv[\ssY_{\cst{5}}]
+   \end{equation*}
+  consequently, for all $\ssY\in\Nz$ holds
+  \begin{displaymath}
+  \sum_{\Di=1}^{\ssY}\tfrac{\Di\meiSv}{\ssY}\exp\big(-\cst{5}\sqrt{\ssY\cmeiSv}\big)\leq (1\vee\meiSv[\ssY_{\cst{5}}]\ssY_{\cst{5}})
+ \end{displaymath}
+ Combining the last two bounds and \nref{freq:ge:strat:uk:qu:as} \ref{freq:ge:strat:uk:qu:as:i} we
+ obtain \ref{au:re:rest:i} (keep in mind that
+ $\cst{2}\leq\Di_{\cst{3}}$ and $\ssY_{\cst{5}}=15(\tfrac{1}{\cst{5}})^4$ is a numerical constant), that is 
+ \begin{multline*}
+  \sum_{\Di=1}^{\ssY}\E_{Y\vert \epsilon} \vectp{\VnormLp{\hxdfPr-\dxdfPr}^2 - 12\DiepenSv\ssY^{-1}} \\
+ \leq \cst{}\ssY^{-1}\big[(1\vee\meiSv[\Di_{\cst{3}}])\Di_{\cst{3}}+(1\vee\meiSv[\ssY_{\cst{5}}])\big]
+ \end{multline*}
+ Consider  \ref{au:re:rest:ii}.
+ If   $\Di\geq 3(\tfrac{2}{\cst{7}})^2$ then 
+ $\Di\geq  (\tfrac{2}{\cst{7}})\log(\Di+2)$ and
+ hence
+ $\Di-(\cst{7})^{-1}\log(\Di+2)\geq(\cst{7})^{-1}\log(\Di+2)$
+ or equivalently,
+ $\cst{7}\Di-\log(\Di+2)\geq\log(\Di+2)\geq1$
+ and thus similar to \eqref{p:au:re:SrWe:ag:e2} it follows
+ \begin{multline*}
+ \Di\cmeiSv\meiSv\exp\big(-\cst{7}\cmSv\Di\big)\leq
+ \cmSv\exp\big(-\cmSv\,[\cst{7}\Di-\log(\Di+2)]\big)\\\leq
+ (\Di+2)\exp\big(-\cst{7}\Di\big)% =
+ % \\\cmSv\exp\big(-\tfrac{\cpen}{800\Vnormlp[1]{\fydf}}\cmSv\Di\big)\exp\big(-\sqrt{\cmSv}[\tfrac{\cpen\sqrt{\cmSv}}{800\Vnormlp[1]{\fydf}}\Di-\log(\Di+2)]\big)\leq\\
+ \end{multline*}
+ consequently, for $\Di_{\cst{7}}:=\floor{3(\tfrac{2}{\cst{7}})^2}$ exploiting $\sum_{\Di\in\Nz}(\Di+2)\exp(-\mu\Di)\leq \mu^{-2}+ 2\mu^{-1}$
+ follows
+ \begin{multline*}
+ \sum_{\Di=1+\Di_{\cst{7}}}^{\ssY}\Di\cmeiSv\meiSv\exp\big(-\cst{7}\cmeiSv\Di\big)\leq
+ \sum_{\Di=1+\Di_{\cst{7}}}^{\ssY}(\Di+2)\exp\big(-\cst{7}\Di\big)
+ \\\leq
+ (\cst{7})^{-2}+{\tfrac{2}{\cst{7}}}\leq \Di_{\cst{7}}^2
+ \end{multline*}
+ while  $\log(\Di\meiSv)\Ind{\{\meiSv\geq1\}}\leq
+ \tfrac{1}{e}\Di\meiSv\Ind{\{\meiSv\geq1\}}$ implies with \eqref{p:au:re:SrWe:ag:hPhi}
+ $\cmeiSv\meiSv=\cmeiSv\meiSv\Ind{\{\meiSv\geq1\}}\leq\Di\meiSv^2\Ind{\{\meiSv\geq1\}}=\Di\meiSv^2$ it follows
+ \begin{multline*}
+   \sum_{\Di=1}^{\Di_{\cst{7}}}\Di\cmeiSv\meiSv\exp\big(-\cst{7}\cmeiSv\Di\big)\leq
+   \cmeiSv[\Di_{\cst{7}}]\meiSv[\Di_{\cst{7}}]\sum_{\Di=1}^{\Di_{\cst{7}}}\Di\exp\big(-\cst{7}\Di\big)\\\leq
+   \cmeiSv[\Di_{\cst{7}}]\meiSv[\Di_{\cst{7}}](\cst{7})^{-2}\leq\meiSv[\Di_{\cst{7}}]^2\Di_{\cst{7}}^2
+ \end{multline*}
+ consequently for all $\ssY\in\Nz$ we have
+ \begin{displaymath}
+   \sum_{\Di=1}^{\ssY}\Di\cmeiSv\meiSv\exp\big(-\cst{7}\cmeiSv\Di\big)\leq(1+\meiSv[\Di_{\cst{7}}]^2)\Di_{\cst{7}}^2%\leq 2\meiSv[\Di_{\ydf}]^2\Di_{\ydf}^2
+ \end{displaymath}
+ Since  $\cmeiSv\meiSv\leq\Di\meiSv^2$,
+ and  for all $ \ssY>\ssY_{\cst{8}}:=\floor{15({3/\cst{8}})^4}$ holds $\sqrt{\ssY}\geq{3 / \cst{8}}\log(\ssY+2)$
+ \begin{multline*}
+ \Di\cmeiSv\meiSv\exp\big(-\cst{8}\sqrt{\ssY\cmeiSv}\big)\leq
+ \Di^2\meiSv^2\exp\big(-\cst{8}\sqrt{\ssY\cmeiSv}\big)\\\leq
+ \tfrac{1}{\ssY}\exp\big(-\sqrt{\cmeiSv}[\cst{8}\sqrt{\ssY}-2\log(\Di+2)]+\log(\ssY+2)\big)
+ \leq\tfrac{1}{\ssY}\exp\big(-3\sqrt{\cmeiSv}[\tfrac{\cst{8}\sqrt{\ssY}}{3}-\log(\ssY+2)]\big)
+ \\
+ \leq \tfrac{1}{\ssY}
+   \end{multline*}
+ consequently, 
+ \begin{equation*}
+ \sum_{\Di=1}^{\ssY}\Di\cmeiSv\meiSv\exp\big(-\cst{8}\sqrt{\ssY\cmeiSv}\big)\leq\sum_{\Di=1}^{\ssY}\tfrac{1}{\ssY}\leq1
+ \end{equation*}
+ On the other hand side for $\ssY\leq\ssY_{\cst{8}}$ with  $\ssY^b\exp(-a\ssY^{1/c})\leq (\tfrac{cb}{ea})^{cb}$ for all $c>0$ and $a,b\geq0$  follows
+ \begin{multline*}
+ \sum_{\Di=1}^{\ssY}\Di\cmeiSv\meiSv\exp\big(-\cst{8}\sqrt{\ssY\cmeiSv}\big)\leq\ssY^2\cmeiSv[\ssY]\meiSv[\ssY]\exp\big(-\cst{8}\sqrt{\ssY}\big)\\
+ \hfill\leq
+ \meiSv[\ssY]^2\ssY^3\exp\big(-\cst{8}\sqrt{\ssY}\big) \leq \meiSv[\ssY_{\cst{8}}]^2\big(\tfrac{3}{\cst{8}}\big)^6\leq\meiSv[\ssY_{\cst{8}}]^2\ssY_{\cst{8}}^2
+ \end{multline*}
+  consequently, for all $\ssY\in\Nz$ holds
+  \begin{displaymath}
+  \sum_{\Di=1}^{\ssY}\Di\cmeiSv\miSv\exp\big(-\cst{8}\sqrt{\ssY\cmeiSv}\big)\leq 1+\meiSv[\ssY_{\cst{8}}]^2\ssY_{\cst{8}}^2
+ \end{displaymath}
+ Combining the last two bounds and \nref{freq:ge:strat:uk:qu:as} \ref{freq:ge:strat:uk:qu:as:ii} we
+ obtain \ref{au:re:rest:ii} (keep in mind that $\ssY_{\cst{8}}=15(\cst{8})^{-4}$ is a numerical constant), that is 
+ \begin{multline*}
+ \sum_{\Di=1}^{\ssY}\cmeiSv \Di \meiSv\P_{Y \vert \epsilon}\big(\VnormLp{\hxdfPr-\dxdfPr}^2 \geq 12\DiepenSv\ssY^{-1}\big)\\
+ \leq\cst{6}\bigg[(1+\meiSv[\Di_{\cst{7}}]^2)\Di_{\cst{7}}^2+1+\meiSv[\ssY_{\cst{8}}]^2\ssY_{\cst{8}}^2\bigg]
+ \end{multline*}
+ Consider \ref{au:re:rest:iii}. Since
+ $\tfrac{\cst{11}\ssY\sqrt{\daRa{\Di}{\xdf,\eiSv}}}{\sqrt{\Di\meiSv}}\geq\cst{11}\sqrt{\ssY\cmeiSv}\geq\cst{11}\sqrt{\ssY}$
+ and $\ssY\exp(-\cst{11}\sqrt{\ssY})\leq(\cst{11})^{-2}$ 
+ from \nref{freq:ge:strat:uk:qu:as} \ref{freq:ge:strat:uk:qu:as:iii}  follows \ref{au:re:rest:iii}, that is 
+ \begin{multline*}
+ \P_{Y \vert \epsilon}\big(\VnormLp{\hxdfPr-\dxdfPr}^2 \geq 12\DiepenSv\ssY^{-1}\big)\\
+ \leq 3 \big[\exp\big(\tfrac{-\cst{11}\cmeiSv\Di}{\Vnormlp[1]{\fydf}}\big)
+     +(\cst{11})^{-2}\ssY^{-1}\big] 
+ \end{multline*}
+ which  completes the proof.\proEnd\end{pro}
+% --------------------------------------------------------------------
+% <<Proof Re ND rest>>
+% --------------------------------------------------------------------
+\begin{pro}[Proof of \nref{au:re:nd:rest}.]
+  Since $\cpen/7\geq 12$ and $\peneSv/7\geq12\DipeneSv\ssY^{-1}$,
+  $\Di\in\nset{1,n}$, by exploiting \nref{au:re:rest}
+  \ref{au:re:rest:i}, \ref{au:re:rest:ii} and \ref{au:re:rest:iii} we
+  obtain immediately the claim \ref{au:re:nd:rest1},
+  \ref{au:re:nd:rest2} and \ref{au:re:nd:rest3}, respectively, which  completes the proof.
+\proEnd\end{pro}
+% --------------------------------------------------------------------
+% <<Proof Re upper bound ag>>
+% --------------------------------------------------------------------
+\begin{pro}[Proof of \nref{au:ag:ub}.]
+  Consider firstly the aggregation using the aggregation weights
+  $\erWe[]$ as in \eqref{freq:ge:shape:uk:we}.  Combining
+  \nref{freq:ge:strat:uk:qu:as} and the upper bound given in \ref{co:agg:au:ag}
+  we obtain
+  
+ \begin{multline}\label{au:ag:ub:p1}
+   \E_{\rY \vert \rE}\Vnormlp{\widehat{\theta}^{(\eta)}-\xdf}^2\leq 3\E_{\rY \vert \rE}\Vnormlp{\hxdfPr[\pDi]-\dxdfPr[\pDi]}^2 + 3 \Vnormlp{\xdf_{\underline{0}}}^2\bias[\mDi]^2(\xdf)\\\hfill
+    +\tfrac{150}{\rWc\cpen}\Vnormlp{\xdf_{\underline{0}}}^2\Ind{\{\mDi>1\}} \exp\big(-\tfrac{3\rWc\cpen}{14}n\daRa{\mdDi}{(\xdf,\Lambda)}\big)\\\hfill
+    +3 \Vnormlp{\xdf_{\underline{0}}}^2\Ind{\{\mDi>1\}} \big[ \cst{}  \big[\exp\big(-\cst{11}\cmeiSv[\mdDi]\mdDi\big)\big] \Ind{\aixEv[\mdDi]} + \Ind{\aixEv[\mdDi]^c}\big]\\\hfill
+    +6\sum_{s\in\nset{1,\ssY}} \vert \hfedfmpI[(s)] \vert ^2 \vert \fedf[(s)]-\hfedf[(s)] \vert ^2 \vert \fxdf[(s)] \vert ^2
+    +2\sum_{s\in\nset{1,\ssY}}\Ind{\xEv^c} \vert \fxdf[(s)] \vert ^2\\
+    + \cst{}\ssY^{-1}\big[(1\vee\meiSv[\Di_{\cst{7}}]^2)\Di_{\cst{7}}^2+(1\vee\meiSv[\ssY_{\cst{8}}]^2\ssY_{\cst{8}}^2) + 3 \Vnormlp{\xdf_{\underline{0}}}^2\Ind{\{\mDi>1\}}]\ssY_{\cst{5}} + \tfrac{16}{\cpen\rWc^{2}}+ \tfrac{8}{\rWc}\big]
+  \end{multline}
+  
+ Consider
+  \begin{multline*}
+  \E_{Y \vert \epsilon}\Vnormlp{\hxdfPr[\pDi]-\dxdfPr[\pDi]}^2\\
+  =2\sum_{s=1}^{\pDi}(\hfedfmpI[(s)])^2/\ssY=2\sum_{s=1}^{\pDi}\eiSv[(s)]/\ssY=2\pDi\oeiSv[(\pDi)]/\ssY\leq2\DipeneSv\ssY^{-1},
+  \end{multline*}
+  where  by construction $\peneSv/7\geq12\DipeneSv\ssY^{-1}$ and hence
+  we have
+  $\E_{Y \vert \epsilon}\Vnormlp{\hxdfPr[\pDi]-\dxdfPr[\pDi]}^2\leq\tfrac{1}{42}\peneSv[(\pDi)]$. Moreover, exploiting
+  $\max_{s\in\nset{1,n}}\eiSv[(s)]\leq\ssE$ and $\pDi\leq\ssY$ it holds also 
+  $\E_{Y \vert \epsilon}\Vnormlp{\hxdfPr[\pDi]-\dxdfPr[\pDi]}^2\leq2\ssE$.
+Considering the event $\aixEv[\pdDi]$ and its complement
+$\aixEv[\pdDi]^c$  it follows
+$\E_{Y \vert \epsilon}\Vnormlp{\hxdfPr[\pDi]-\dxdfPr[\pDi]}^2\leq
+2\ssE\Ind{\aixEv[\pdDi]^c}+\tfrac{1}{42}\peneSv[(\pDi)]\Ind{\aixEv[\pdDi]}$.
+Taking into account the definition
+  \eqref{au:de:*Di:ag} of
+  $\pDi$ we obtain
+  $\E_{Y \vert \epsilon}\Vnormlp{\hxdfPr[\pDi]-\dxdfPr[\pDi]}^2\leq
+  2\ssE\Ind{\aixEv[\pdDi]^c}+\tfrac{1}{42}[6\Vnormlp{\ProjC[\pdDi]\dxdfPr[\ssY]}^2+4\peneSv[(\pdDi)]]\Ind{\aixEv[\pdDi]}$ 
+Thereby,
+with $\rWc\geq1$ and $\cpen\geq1$
+from \eqref{au:ag:ub:p1} follows (keep in mind that $\ssY_{\cst{8}}$ is a numerical constant)
+  \begin{multline}\label{au:ag:ub:p2}
+  \E_{Y \vert \epsilon}\Vnormlp{\widehat{\theta}^{(\eta)}-\xdf}^2\leq  \tfrac{2}{7}\peneSv[(\pdDi)]\Ind{\aixEv[\pdDi]}+\tfrac{3}{7}\Vnormlp{\ProjC[\pdDi]\dxdfPr[\ssY]}^2\Ind{\aixEv[\pdDi]}
+    +3 \Vnormlp{\xdf_{\underline{0}}}^2\bias[\mDi]^2(\xdf)\\\hfill
+    +\cst{}\Vnormlp{\xdf_{\underline{0}}}^2\Ind{\{\mDi>1\}}\big[
+    \exp\big(-\tfrac{3\rWc\cpen}{14}n\daRa{\mdDi}{(\xdf,\Lambda)}\big)
+    +
+    \exp\big(-\cst{11}\cmeiSv[\mdDi]\mdDi\big)
+    \Ind{\aixEv[\mdDi]}\big]\\ \hfill+ \cst{}\big[
+    \Vnormlp{\xdf_{\underline{0}}}^2\Ind{\{\mDi>1\}} \Ind{\aixEv[\mdDi]^c}+\ssE\Ind{\aixEv[\pdDi]^c} + \ssY^{-1}\{\Di_{\cst{7}}^2\ssE^2\Ind{\aixEv[\Di_{\cst{7}}]^c}+\ssE^2\Ind{\aixEv[\ssY_{\cst{8}}]^c}\}\big]
+    \\\hfill
+    +6\sum_{s\in\nset{1,\ssY}}\vert\hfedfmpI[(s)]\vert^2\vert\fedf[(s)]-\hfedf[(s)]\vert^2\vert\fxdf[(s)]\vert^2
+    +2\sum_{s\in\nset{1,\ssY}}\Ind{\xEv^c}\vert\fxdf[(s)]\vert^2\\
+    +\cst{}\ssY^{-1}\{(1\vee\meiSv[\Di_{\cst{7}}]^2)\Di_{\cst{7}}^2\Ind{\aixEv[\Di_{\cst{7}}]}+(1\vee\meiSv[\ssY_{\cst{8}}]^2)\Ind{\aixEv[\ssY_{\cst{8}}]}+\Vnormlp{\xdf_{\underline{0}}}^2\Ind{\{\mDi>1\}}\}
+  \end{multline}
+Employing \eqref{pro:au:erWe:e3}  and \eqref{pro:au:erWe:peneSv}
+follows $\meiSv\Ind{\aixEv[\Di]}\leq \tfrac{9}{4}\miSv$,
+$\cmeiSv\Ind{\aixEv[\Di]}\geq \tfrac{9}{100}\cmiSv$ and
+$\peneSv\Ind{\aixEv[\Di]}\leq 7\penSv$ for all $\Di\in\Nz$. Thereby,
+\eqref{au:ag:ub:p2}  implies
+  \begin{multline}\label{au:ag:ub:p3}
+  \E_{Y \vert \epsilon}\Vnormlp{\widehat{\theta}^{(\eta)}-\xdf}^2\leq  2\penSv[\pdDi] +\tfrac{3}{7}\Vnormlp{\ProjC[\pdDi]\dxdfPr[\ssY]}^2+3 \Vnormlp{\xdf_{\underline{0}}}^2\bias[\mDi]^2(\xdf)\\\hfill
+    +\cst{}\Vnormlp{\xdf_{\underline{0}}}^2\Ind{\{\mDi>1\}}\big[
+    \exp\big(-\tfrac{3\rWc\cpen}{14}n\daRa{\mdDi}{(\xdf,\Lambda)}\big)
+    +
+    \exp\big(\tfrac{-9\cst{11}\cmiSv[\mdDi]\mdDi}{100}\big)
+    \big]\\ \hfill+ \cst{}\big[
+    \Vnormlp{\xdf_{\underline{0}}}^2\Ind{\{\mDi>1\}} \Ind{\aixEv[\mdDi]^c}+\ssE\Ind{\aixEv[\pdDi]^c} + \ssY^{-1}\{\Di_{\cst{7}}^2\ssE^2\Ind{\aixEv[\Di_{\cst{7}}]^c}+\ssE^2\Ind{\aixEv[\ssY_{\cst{8}}]^c}\}\big]
+    \\\hfill
+    +6\sum_{s\in\nset{1,\ssY}}\vert\hfedfmpI[(s)]\vert^2\vert\fedf[(s)]-\hfedf[(s)]\vert^2\vert\fxdf[(s)]\vert^2
+    +2\sum_{s\in\nset{1,\ssY}}\Ind{\xEv^c}\vert\fxdf[(s)]\vert^2\\
+    +\cst{}\ssY^{-1}\{\miSv[\Di_{\cst{7}}]^2\Di_{\cst{7}}^2+\miSv[\ssY_{\cst{8}}]^2+\Vnormlp{\xdf_{\underline{0}}}^2\Ind{\{\mDi>1\}}\}
+  \end{multline}
+Exploiting \nref{ge:oSv:re} we obtain from 
+\ref{as:il}
+\begin{displaymath}
+\E\Vnormlp{\ProjC[\pdDi]\dxdfPr[\ssY]}^2\leq4\sum_{\vert s\vert\in\nsetlo{\pDi,\ssY}}\vert\fxdf[(s)]\vert^2\leq
+4\Vnormlp{\xdf_{\underline{0}}}^2\bias[\pdDi]^2(\xdf)
+\end{displaymath}
+from \ref{ge:oSv:re:iii} and $\mRa{\xdf,\Lambda}:=\sum_{s\in\Nz}\fxdf[(s)]^2[1\wedge
+\iSv[s]/\ssE]$ as defined in \eqref{oo:de:mra} 
+\begin{displaymath}
+\sum_{s\in\nset{1,\ssY}}\vert\fxdf[(s)]\vert^2\E\vert\hfedfmpI[(s)]\vert^2\vert\fedf[(s)]-\hfedf[(s)]\vert^2\leq4\cst{4}\mRa{\xdf,\Lambda}
+\end{displaymath}
+and from
+\ref{ge:oSv:re:ii}
+\begin{displaymath}
+\sum_{s\in\nset{1,n}}\P(\xEv^c)\vert\fxdf[(s)]\vert^2
+\leq4\mRa{\xdf,\Lambda}
+\end{displaymath}
+The last bounds imply together with 
+  \begin{multline}\label{au:ag:ub:p4}
+  \E\Vnormlp{\widehat{\theta}^{(\eta)}-\xdf}^2\leq
+  2\penSv[\pdDi] +\tfrac{12}{7}\Vnormlp{\xdf_{\underline{0}}}^2\bias[\pdDi]^2(\xdf)+3 \Vnormlp{\xdf_{\underline{0}}}^2\bias[\mDi]^2(\xdf)\\\hfill
+    +\cst{}\Vnormlp{\xdf_{\underline{0}}}^2\Ind{\{\mDi>1\}}\big[
+    \exp\big(-\tfrac{3\rWc\cpen}{14}n\daRa{\mdDi}{(\xdf,\Lambda)}\big)
+    +
+    \exp\big(\tfrac{-9\cst{11}\cmiSv[\mdDi]\mdDi}{100}\big)
+    \big]\\ \hfill+ \cst{}\big[
+    \Vnormlp{\xdf_{\underline{0}}}^2\Ind{\{\mDi>1\}} \P(\aixEv[\mdDi]^c)+\ssE\P(\aixEv[\pdDi]^c) + \ssY^{-1}\{\Di_{\cst{7}}^2\ssE^2\P(\aixEv[\Di_{\cst{7}}]^c)+\ssE^2\P(\aixEv[\ssY_{o}]^c)\}\big]
+    \\\hfill
+    +24\cst{4}\mRa{\xdf,\Lambda}
+    +8\mRa{\xdf,\Lambda}\\
+    +\cst{}\ssY^{-1}\{\miSv[\Di_{\cst{7}}]^2\Di_{\cst{7}}^2+\miSv[\ssY_{o}]^2+\Vnormlp{\xdf_{\underline{0}}}^2\Ind{\{\mDi>1\}}\}
+  \end{multline}
+Moreover, since $\ssY\daRa{\mdDi}{(\xdf,\Lambda)}\geq\cmiSv[\mdDi]\mdDi$. From
+\eqref{au:ag:ub:p4} with $\tfrac{3\rWc\cpen}{14}>\tfrac{9\cst{11}}{100}$,
+follows,
+  \begin{multline}\label{au:ag:ub:p5}
+  \E\Vnormlp{\widehat{\theta}^{(\eta)}-\xdf}^2\leq
+  2\penSv[\pdDi] +\tfrac{12}{7}\Vnormlp{\xdf_{\underline{0}}}^2\bias[\pdDi]^2(\xdf)+3 \Vnormlp{\xdf_{\underline{0}}}^2\bias[\mDi]^2(\xdf)\\\hfill
+    +\cst{}\Vnormlp{\xdf_{\underline{0}}}^2\Ind{\{\mDi>1\}}
+    \exp\big(\tfrac{-9\cst{11}\cmiSv[\mdDi]\mdDi}{100\Vnormlp[1]{\fydf}}\big)
+    \\ \hfill+ \cst{}\big[
+    \Vnormlp{\xdf_{\underline{0}}}^2\Ind{\{\mDi>1\}} \P(\aixEv[\mdDi]^c)+\ssE\P(\aixEv[\pdDi]^c) + \ssY^{-1}\{\Di_{\cst{7}}^2\ssE^2\P(\aixEv[\Di_{\cst{7}}]^c)+\ssE^2\P(\aixEv[\ssY_{\cst{8}}]^c)\}\big]
+    \\\hfill
+    +\cst{}\mRa{\xdf,\Lambda}
+    +\cst{}\ssY^{-1}\{\miSv[\Di_{\cst{7}}]^2\Di_{\cst{7}}^2+\miSv[\ssY_{\cst{8}}]^2+\Vnormlp{\xdf_{\underline{0}}}^2\Ind{\{\mDi>1\}}\}
+  \end{multline}
+Exploiting \nref{ge:re:evrest} \ref{ge:re:evrest:ii} there is a
+numerical constant $\cst{}$ such that for all  $\ssE,\Di\in\Nz$ holds
+$\P(\aixEv^c)\leq\cst{}\Di\miSv^2\ssE^{-2}$
+and hence, $\ssE^2\P(\aixEv[\Di_{\cst{7}}]^c)\leq
+\cst{}\Di_{\cst{7}}\miSv[\Di_{\cst{7}}]^2$ and $\ssE^2\P(\aixEv[\ssY_{\cst{8}}]^c)\leq
+\cst{}\ssY_{\cst{8}}\miSv[\ssY_{\cst{8}}]^2$, thereby from \eqref{au:ag:ub:p4}
+follows the assertion \eqref{au:ag:ub:e1}, that is, (keep in mind that $\ssY_{\cst{8}}$ is a numerical constant)
+  \begin{multline}\label{au:ag:ub:p6}
+  \E\Vnormlp{\widehat{\theta}^{(\eta)}-\xdf}^2\leq
+  2\penSv[\pdDi] +\tfrac{12}{7}\Vnormlp{\xdf_{\underline{0}}}^2\bias[\pdDi]^2(\xdf)+3 \Vnormlp{\xdf_{\underline{0}}}^2\bias[\mDi]^2(\xdf)\\\hfill
+    +\cst{}\Vnormlp{\xdf_{\underline{0}}}^2\Ind{\{\mDi>1\}}
+    \exp\big(\tfrac{-9\cst{11}\cmiSv[\mdDi]\mdDi}{100}\big)
+    + \cst{}\big[
+    \Vnormlp{\xdf_{\underline{0}}}^2\Ind{\{\mDi>1\}} \P(\aixEv[\mdDi]^c)+\ssE\P(\aixEv[\pdDi]^c) \big]
+    \\\hfill
+    +\cst{}\mRa{\xdf,\Lambda}
+    +\cst{}\ssY^{-1}\{\miSv[\Di_{\cst{7}}]^2\Di_{\cst{7}}^3+\miSv[\ssY_{\cst{8}}]^2+\Vnormlp{\xdf_{\underline{0}}}^2\Ind{\{\mDi>1\}}\}
+  \end{multline}
+  Consider secondly the aggregation using the model selection weights $\msWe[]$
+  as in \eqref{freq:ge:shape:uk:de:msWe}. Combining
+  \nref{au:re:nd:rest} and the upper bound given in \ref{co:agg:au:ms}
+  we obtain
+  \begin{multline}\label{au:ag:ub:p7}
+  \E\Vnormlp{\widehat{\theta}^{(\eta)}-\xdf}^2\leq
+  2\penSv[\pdDi] +\tfrac{12}{7}\Vnormlp{\xdf_{\underline{0}}}^2\bias[\pdDi]^2(\xdf)+3 \Vnormlp{\xdf_{\underline{0}}}^2\bias[\mDi]^2(\xdf)\\\hfill
+    +\cst{}\Vnormlp{\xdf_{\underline{0}}}^2\Ind{\{\mDi>1\}}
+    \exp\big(\tfrac{-9\cst{11}\cmiSv[\mdDi]\mdDi}{100}\big)
+    + \cst{}\big[
+    \Vnormlp{\xdf_{\underline{0}}}^2\Ind{\{\mDi>1\}} \P(\aixEv[\mdDi]^c)+\ssE\P(\aixEv[\pdDi]^c) \big]
+    \\\hfill
+    +\cst{}\mRa{\xdf,\Lambda}
+    +\cst{}\ssY^{-1}\{\miSv[\Di_{\cst{7}}]^2\Di_{\cst{7}}^3+\miSv[\ssY_{\cst{8}}]^2+\Vnormlp{\xdf_{\underline{0}}}^2\Ind{\{\mDi>1\}}\}
+  \end{multline} 
+
+From \eqref{au:ag:ub:p6} and \eqref{au:ag:ub:p7} together with
+$\ssY\daRaS{\mdDi}{\xdf,\Lambda}\miSv[\mdDi]^{-1}\geq\cmiSv[\mdDi]\mdDi$
+follows the claim \eqref{freq:ge:strat:kn:qu:ub:e1}, which  completes the proof.
+\proEnd\end{pro}
+% ....................................................................
+% <<Pro upper bound ag p>>
+% ....................................................................
+\begin{pro}[Proof of \nref{au:ag:ub:pnp}.]
+From
+\eqref{au:ag:ub:e1} follows for any $\mdDi,\pdDi\in\nset{1,n}$ and associated
+$\mDi,\pDi\in\nset{1,n}$ as defined in  \eqref{au:de:*Di:ag}%
+ \begin{multline}\label{au:ag:ub:pnp:p1}
+   \E\Vnormlp{\widehat{\theta}^{(\eta)}-\xdf}^2\leq
+  2\penSv[\pdDi] +\tfrac{12}{7}\Vnormlp{\xdf_{\underline{0}}}^2\bias[\pdDi]^2(\xdf)+3 \Vnormlp{\xdf_{\underline{0}}}^2\bias[\mDi]^2(\xdf)\\\hfill
+    +\cst{}\Vnormlp{\xdf_{\underline{0}}}^2\Ind{\{\mDi>1\}}
+    \exp\big(\tfrac{-9\cst{11}\cmiSv[\mdDi]\mdDi}{100\Vnormlp[1]{\fydf}}\big)
+    + \cst{}\big[
+    \Vnormlp{\xdf_{\underline{0}}}^2\Ind{\{\mDi>1\}} \P(\aixEv[\mdDi]^c)+\ssE\P(\aixEv[\pdDi]^c) \big]
+    \\\hfill
+    +\cst{}\mRa{\xdf,\Lambda}
+    +\cst{}\ssY^{-1}\{\miSv[\Di_{\cst{7}}]^2\Di_{\cst{7}}^3+\miSv[\ssY_{o}]^2+\Vnormlp{\xdf_{\underline{0}}}^2\Ind{\{\mDi>1\}}\}
+\end{multline}
+We destinguish the two cases \ref{au:ag:ub:pnp:p} and
+\ref{au:ag:ub:pnp:np}. Consider first \ref{au:ag:ub:pnp:p}, and hence there is $K\in\Nz_0$   with   $1\geq \bias[{[K-1] }](\xdf)>0$ and
+$\bias(\xdf)=0$ for all $\Di\geq K$.
+Consider first $K=0$, then $\bias[0](\xdf)=0$
+and hence $\Vnormlp{\xdf_{\underline{0}}}^2=0$ and $\mRa{\xdf,\Lambda}=0$.
+From \eqref{au:ag:ub:pnp:p1}
+follows 
+ \begin{equation}\label{au:ag:ub:pnp:p2}
+    \E\Vnormlp{\widehat{\theta}^{(\eta)}-\xdf}^2\leq
+  2\penSv[\pdDi] 
+    + \cst{}\ssE\P(\aixEv[\pdDi]^c) 
+    +\cst{}\ssY^{-1}\{\miSv[\Di_{\cst{7}}]^2\Di_{\cst{7}}^3+\miSv[\ssY_{o}]^2\}
+\end{equation}
+Setting  $\pdDi:=1$ it follows
+$\penSv[\pdDi]=\cpen\DipenSv[1]\ssY^{-1}=\cpen\cmSv[1]
+\miSv[1]\ssY^{-1}\leq\cpen\miSv[1]^2\ssY^{-1}$ and exploiting \nref{ge:re:evrest} \ref{ge:re:evrest:ii} there is a
+numerical constant $\cst{}$ such that for all  $\ssE\in\Nz$ holds
+$\P(\aixEv[\pdDi]^c)\leq\cst{}\miSv[1]^2\ssE^{-2}$. Thereby with numerical
+constant $\cpen\geq84$, \eqref{au:ag:ub:pnp:p2} implies for all $\ssY,\ssE\in\Nz$
+ \begin{equation}\label{au:ag:ub:pnp:p3}
+    \E\Vnormlp{\widehat{\theta}^{(\eta)}-\xdf}^2\leq
+ \cst{}\miSv[1]^2\ssE^{-1} +\cst{}\ssY^{-1}\{\miSv[1]^2+\miSv[\Di_{\cst{7}}]^2\Di_{\cst{7}}^3+\miSv[\ssY_{o}]^2\}
+\end{equation}
+Consider now $K\in\Nz$, and hence $\Vnormlp{\xdf_{\underline{0}}}^2>0$. Let 
+$ c_{\xdf}:=\tfrac{\Vnormlp{\xdf_{\underline{0}}}^2+104\cpen}{\Vnormlp{\xdf_{\underline{0}}}^2\bias[{[K-1]}]^2(\xdf)}>1$
+and $\ssY_{\xdf}:=\floor{c_{\xdf}\DipenSv[K]}\in\Nz$. We distinguish for $n\in\Nz$ the following two
+ cases, \begin{inparaenum}[i]\renewcommand{\theenumi}{\dgrau\rm(\alph{enumi})}\item\label{au:ag:ub:pnp:p:n1}
+$\ssY\in\nset{1,\ssY_{\xdf}}$ and \item\label{au:ag:ub:pnp:p:n2}
+$\ssY> \ssY_{\xdf}$. \end{inparaenum} Firstly, consider
+\ref{au:ag:ub:pnp:p:n1} with $\ssY\in\nset{1,\ssY_{\xdf}}$, then setting $\mdDi:=1$, $\pdDi:=1$ we have
+$\mDi=1$, $1\geq\bias[\mDi]$ and  $1\leq\DipenSv[1]=\cmSv[1]
+\miSv[1]\leq\miSv[1]^2$. Thereby,  from \eqref{au:ag:ub:pnp:p1} 
+follows
+ \begin{multline*}
+    \E\Vnormlp{\widehat{\theta}^{(\eta)}-\xdf}^2\leq
+  2\cpen\miSv[1]^2\ssY^{-1} +\tfrac{33}{7}\Vnormlp{\xdf_{\underline{0}}}^2 + \cst{}\big[\ssE\P(\aixEv[1]^c) \big]
+    \\\hfill
+    +\cst{}\mRa{\xdf,\Lambda}
+    +\cst{}\ssY^{-1}\{\miSv[\Di_{\cst{7}}]^2\Di_{\cst{7}}^3+\miSv[\ssY_{o}]^2\}
+  \end{multline*}
+  Exploiting \nref{ge:re:evrest} \ref{ge:re:evrest:ii} there is a
+numerical constant $\cst{}$ such that for all  $\ssE\in\Nz$ holds
+$\P(\aixEv[1]^c)\leq\cst{}\miSv[1]^2\ssE^{-2}$, which
+together with
+$\mRa{\xdf,\Lambda}\leq
+\Vnormlp{\xdf_{\underline{0}}}^2\miSv[K]\ssE^{-1}$ implies
+ \begin{multline*}
+    \E\Vnormlp{\widehat{\theta}^{(\eta)}-\xdf}^2\leq
+  2\cpen\miSv[1]^2\ssY^{-1} +\tfrac{33}{7}\Vnormlp{\xdf_{\underline{0}}}^2 +
+  \cst{}\big[\miSv[1]^2 +\Vnormlp{\xdf_{\underline{0}}}^2\miSv[K] \big]\ssE^{-1}
+    \\\hfill
+    +\cst{}\ssY^{-1}\{\miSv[\Di_{\cst{7}}]^2\Di_{\cst{7}}^3+\miSv[\ssY_{o}]^2\}
+  \end{multline*}
+Moreover, for all $\ssY\in\nset{1,\ssY_{\xdf}}$ with
+$\ssY_{\xdf}=\floor{c_{\xdf}\DipenSv[K]}$ and
+$\DipenSv[K]=K\cmSv[K] \miSv[K]\leq K^2\miSv[K]^2$ holds
+$\ssY\leq\cst{}\tfrac{(\Vnormlp{\xdf_{\underline{0}}}^2\vee1)}{\Vnormlp{\xdf_{\underline{0}}}^2\bias[{[K-1]}]^2(\xdf)}
+K^2\miSv[K]^2$ and thereby, for all $\ssY\in\nset{1,\ssY_{\xdf}}$ and
+for all $\ssE\in\Nz$
+\begin{multline}\label{au:ag:ub:pnp:p4}
+  \E\Vnormlp{\widehat{\theta}^{(\eta)}-\xdf}^2\leq
+  \cst{}\big[(\Vnormlp{\xdf_{\underline{0}}}^2\vee1)\miSv[1]^2\tfrac{K^2\miSv[K]^2}{\Vnormlp{\xdf_{\underline{0}}}^2\bias[{[K-1]}]^2(\xdf)}+\miSv[\Di_{\cst{7}}]^2\Di_{\cst{7}}^3+\miSv[\ssY_{o}]^2\big]\ssY^{-1}\\
+  +
+  \cst{}\big[\miSv[1]^2 +\Vnormlp{\xdf_{\underline{0}}}^2\miSv[K] \big]\ssE^{-1}.
+\end{multline}
+Secondly, consider \ref{au:ag:ub:pnp:p:n2}, i.e., $\ssY>
+\ssY_{\xdf}$. Setting
+$\pdDi:=K< \floor{c_{\xdf}\DipenSv[K]}=\ssY_{\xdf}$, i.e.,
+$\pdDi\in\nset{1,\ssY}$, it follows $\bias[\pdDi](\xdf)=0$ and
+$\pen[\pdDi]=\cpen\DipenSv[K]\ssY^{-1}\leq
+\cpen K^2\miSv[K]^2\ssY^{-1}$. From
+\eqref{au:ag:ub:pnp:p1} follows for all $\ssY> \ssY_{\xdf}$ thus
+\begin{multline*}
+   \E\Vnormlp{\widehat{\theta}^{(\eta)}-\xdf}^2\leq
+  3 \Vnormlp{\xdf_{\underline{0}}}^2\bias[\mDi]^2(\xdf)\\\hfill
+    +\cst{}\Vnormlp{\xdf_{\underline{0}}}^2\Ind{\{\mDi>1\}}
+    \exp\big(\tfrac{-9\cst{11}\cmiSv[\mdDi]\mdDi}{100\Vnormlp[1]{\fydf}}\big)
+    + \cst{}\big[
+    \Vnormlp{\xdf_{\underline{0}}}^2\Ind{\{\mDi>1\}} \P(\aixEv[\mdDi]^c)+\ssE\P(\aixEv[K]^c) \big]
+    \\\hfill
+    +\cst{}\mRa{\xdf,\Lambda}
+    +\cst{}\ssY^{-1}\{K^2\miSv[K]^2\ssY^{-1}+\miSv[\Di_{\cst{7}}]^2\Di_{\cst{7}}^3+\miSv[\ssY_{o}]^2+\Vnormlp{\xdf_{\underline{0}}}^2\Ind{\{\mDi>1\}}\}.
+  \end{multline*}
+Exploiting \nref{ge:re:evrest} \ref{ge:re:evrest:ii} there is a
+numerical constant $\cst{}$ such that for all  $\ssE\in\Nz$ holds
+$\P(\aixEv[K]^c)\leq\cst{}K\miSv[K]^2\ssE^{-2}$, which
+together with
+$\mRa{\xdf,\Lambda}\leq
+\Vnormlp{\xdf_{\underline{0}}}^2\miSv[K]\ssE^{-1}$ implies
+\begin{multline}\label{au:ag:ub:pnp:p5}
+  \E\Vnormlp{\widehat{\theta}^{(\eta)}-\xdf}^2\leq \cst{}\ssY^{-1}\{K^2\miSv[K]^2\ssY^{-1}+\miSv[\Di_{\cst{7}}]^2\Di_{\cst{7}}^3+\miSv[\ssY_{o}]^2+\Vnormlp{\xdf_{\underline{0}}}^2\Ind{\{\mDi>1\}}\}\\\hfill
++ 3 \Vnormlp{\xdf_{\underline{0}}}^2\bias[\mDi]^2(\xdf)
+    +\cst{}\Vnormlp{\xdf_{\underline{0}}}^2\Ind{\{\mDi>1\}}\{
+    \exp\big(\tfrac{-9\cst{11}\cmiSv[\mdDi]\mdDi}{100\Vnormlp[1]{\fydf}}\big)
+    +  \P(\aixEv[\mdDi]^c)\}
+    \\\hfill
+    +\cst{}\ssE^{-1}\{K\miSv[K]^2+ \Vnormlp{\xdf_{\underline{0}}}^2\miSv[K]\}
+  \end{multline}
+In order to control the terms
+involving $\mdDi$ and $\mDi$ we destinguish for $\ssE\in\Nz$ with
+ $\ssE(\xdf,\Lambda):=\floor{289\log(K+2)\cmiSv[K]\miSv[K]}$
+the following two cases
+cases, \begin{inparaenum}[i]\renewcommand{\theenumi}{\dgrau\rm(b-\roman{enumi})}\item\label{au:ag:ub:pnp:p:m1}
+$\ssE\in\nset{1,\ssE(\xdf,\Lambda)}$ and \item\label{au:ag:ub:pnp:p:m2}
+$\ssE>\ssE(\xdf,\Lambda)$. \end{inparaenum}
+Consider first \ref{au:ag:ub:pnp:p:m1} $\ssE\in\nset{1,\ssE(\xdf,\Lambda)}$.
+We set $\mdDi=1$ and hence
+$\mDi=1$. Thereby, with $\bias[1]^2(\xdf)\leq1$, $\log(K+2)\leq
+\tfrac{K+2}{e}\leq 2K$, $\cmiSv[\Di]\miSv[\Di]\leq K\miSv[K]^2$, and hence $\ssE(\xdf,\Lambda)\leq\cst{}K^2\miSv[K]^2$,
+from \eqref{au:ag:ub:pnp:p5} follows for all $\ssE\in\nsetro{1,\ssE(\xdf,\Lambda)}$
+\begin{multline}\label{au:ag:ub:pnp:p6}
+  \E\Vnormlp{\widehat{\theta}^{(\eta)}-\xdf}^2\leq \cst{}\ssY^{-1}\{K^2\miSv[K]^2\ssY^{-1}+\miSv[\Di_{\cst{7}}]^2\Di_{\cst{7}}^3+\miSv[\ssY_{o}]^2\}\\\hfill
+    +\cst{}\ssE^{-1}\{K\miSv[K]^2+ \Vnormlp{\xdf_{\underline{0}}}^2(K^2\miSv[K]^2+\miSv[K])\}
+  \end{multline}
+Consider now \ref{au:ag:ub:pnp:p:m2} $\ssE>\ssE(\xdf,\Lambda)$. Note that for all $\ssE> \ssE(K,\Lambda)$ the defining set of
+$\sDi{\ssE}:=\max\{\Di\in\nset{K,\ssE}:289\log(\Di+2)\cmiSv[\Di]\miSv[\Di]\leq\ssE\}$
+is not empty, where obviously for each
+$\mdDi\in\nset{K,\sDi{\ssE}}$ holds 
+$\ssE\geq289\log(\mdDi+2)\cmiSv[\mdDi]\miSv[\mdDi]$, and thus from
+\nref{ge:re:evrest} \ref{ge:re:evrest:iii} follows
+$\P(\aixEv[\mdDi]^c)\leq 53\ssE^{-1}$.
+Since also
+$\ssY> \ssY_{\xdf}:=\floor{c_{\xdf}\DipenSv[K]}$ with
+$c_{\xdf}:=\tfrac{\Vnormlp{\xdf_{\underline{0}}}^2+104\cpen}{\Vnormlp{\xdf_{\underline{0}}}^2\bias[{[K-1]}]^2(\xdf)}>1$
+the defining set of
+$\sDi{\ssY}:=\max\{\Di\in\nset{K,\ssY}:\ssY>c_{\xdf}\DipenSv\}$ is not
+empty. Consequently,  for all $\mdDi\in\nset{K,\sDi{\ssY}}$ holds $\mdDi \geq K$ and, hence 
+$\bias[\mdDi](\xdf)=0$, and
+$\daRaS{\mdDi}{\xdf,\Lambda}=\DipenSv[\mdDi]\ssY^{-1}<c_{\xdf}^{-1}=\tfrac{\Vnormlp{\xdf_{\underline{0}}}^2\bias[{[K-1]}]^2(\xdf)}{\Vnormlp{\xdf_{\underline{0}}}^2+104\cpen}$,
+it follows
+$\Vnormlp{\xdf_{\underline{0}}}^2\bias[{[K-1]}]^2(\xdf)>[\Vnormlp{\xdf_{\underline{0}}}^2+104\cpen]\daRaS{\mdDi}{\xdf,\Lambda}$
+and trivially
+$\Vnormlp{\xdf_{\underline{0}}}^2\bias[{K}]^2(\xdf)=0<[\Vnormlp{\xdf_{\underline{0}}}^2+104\cpen]\daRaS{\mdDi}{\xdf,\Lambda}$. Therefore, the definition \eqref{au:de:*Di:ag}
+implies $\mDi=K$ and hence
+$\bias[\mDi]^2(\xdf)=\bias[K]^2(\xdf)=0$. Selecting
+  $\mdDi:=\sDi{\ssY}\wedge\sDi{\ssE}$ we have 
+$\P(\aixEv[\mdDi]^c)\leq 53\ssE^{-1}$, 
+$\mDi=K$ and $\bias[\mDi]^2(\xdf)=0$, such that 
+ from  \eqref{au:ag:ub:pnp:p5} follows for all $\ssE>\ssE(\xdf,\Lambda)$
+ and $\ssY>\ssY_{\xdf,\Lambda}$
+\begin{multline}\label{au:ag:ub:pnp:p7}
+  \E\Vnormlp{\widehat{\theta}^{(\eta)}-\xdf}^2\leq \cst{}\ssY^{-1}\{K^2\miSv[K]^2\ssY^{-1}+\miSv[\Di_{\cst{7}}]^2\Di_{\cst{7}}^3+\miSv[\ssY_{o}]^2+\Vnormlp{\xdf_{\underline{0}}}^2\}\\\hfill
+    +\cst{}\Vnormlp{\xdf_{\underline{0}}}^2\{
+    \exp\big(\tfrac{-9 \cst{11}\cmiSv[\sDi{\ssY}\wedge\sDi{\ssE}]\sDi{\ssY}\wedge\sDi{\ssE}}{100\Vnormlp[1]{\fydf}}\big)\}    +\cst{}\ssE^{-1}\{K\miSv[K]^2+ \Vnormlp{\xdf_{\underline{0}}}^2\miSv[K]\}
+  \end{multline}
+Combining \eqref{au:ag:ub:pnp:p6} and \eqref{au:ag:ub:pnp:p7}
+for   the cases \ref{au:ag:ub:pnp:p:m1}
+$\ssE\in\nset{1,\ssE(\xdf,\Lambda)}$ and \ref{au:ag:ub:pnp:p:m2}
+$\ssE>\ssE(\xdf,\Lambda)$ we obtain for all $\ssY>\ssY_{\xdf,\Lambda}$ and for all $\ssE\in\Nz$
+\begin{multline}\label{au:ag:ub:pnp:p8}
+  \E\Vnormlp{\widehat{\theta}^{(\eta)}-\xdf}^2\leq
+  \cst{}\Vnormlp{\xdf_{\underline{0}}}^2\big[\ssY^{-1}\vee \ssE^{-1} \vee\exp\big(\tfrac{-9\cst{11}\cmiSv[\sDi{\ssY}\wedge\sDi{\ssE}]\sDi{\ssY}\wedge\sDi{\ssE}}{100\Vnormlp[1]{\fydf}}\big)\big]\\
++  \cst{}\ssY^{-1}\{K^2\miSv[K]^2+\miSv[\Di_{\cst{7}}]^2\Di_{\cst{7}}^3+\miSv[\ssY_{o}]^2\}
+    +\cst{}\ssE^{-1}(1\vee\Vnormlp{\xdf_{\underline{0}}}^2)K\miSv[K]^2
+  \end{multline}
+Combining \eqref{au:ag:ub:pnp:p4} and \eqref{au:ag:ub:pnp:p8} for $K\in\Nz$
+   with \ref{au:ag:ub:pnp:p:n1}
+$\ssY\in\nset{1,\ssY_{\xdf,\Lambda}}$ and \ref{au:ag:ub:pnp:p:n2}
+$\ssY>\ssY_{\xdf,\Lambda}$, respectively, and \eqref{au:ag:ub:pnp:p3}
+for $K=0$, we obtain for all $K\in\Nz_0$ and for all $\ssY,\ssE\in\Nz$
+\begin{multline}\label{au:ag:ub:pnp:p9}
+  \E\Vnormlp{\widehat{\theta}^{(\eta)}-\xdf}^2\leq
+  \cst{}\Vnormlp{\xdf_{\underline{0}}}^2\big[\ssY^{-1}\vee \ssE^{-1} \vee\exp\big(\tfrac{-9\cst{11}\cmiSv[\sDi{\ssY}\wedge\sDi{\ssE}]\sDi{\ssY}\wedge\sDi{\ssE}}{100\Vnormlp[1]{\fydf}}\big)\big]\\
++  \cst{}\ssY^{-1}\{\miSv[1]^2\{\tfrac{(\Vnormlp{\xdf_{\underline{0}}}^2\vee1)K^2\miSv[K]^2}{\Vnormlp{\xdf_{\underline{0}}}^2\bias[{[K-1]}]^2(\xdf)}\Ind{\{K\geq1\}}+\Ind{\{K=0\}}\}+\miSv[\Di_{\cst{7}}]^2\Di_{\cst{7}}^3+\miSv[\ssY_{o}]^2\}\\
++\cst{}\ssE^{-1}\{(1\vee\Vnormlp{\xdf_{\underline{0}}}^2)K\miSv[K]^2\Ind{\{K\geq1\}}+\miSv[1]^2\Ind{\{K=0\}}\}.
+  \end{multline}
+  Consider the case \ref{au:ag:ub:pnp:np}. We destinguish for $\ssE\in\Nz$ with
+ $\ssE(\Lambda):=\floor{289\log(3)\cmiSv[1]\miSv[1]}$
+the following two
+cases, \begin{inparaenum}[i]\renewcommand{\theenumi}{\dgrau\rm(\alph{enumi})}\item\label{au:ag:ub:pnp:np:m1}
+$\ssE\in\nset{1,\ssE(\Lambda)}$ and \item\label{au:ag:ub:pnp:np:m2}
+$\ssE>\ssE(\Lambda)$. \end{inparaenum}
+Consider firstly the case \ref{au:ag:ub:pnp:np:m1}
+$\ssE\in\nset{1,\ssE(\Lambda)}$. We set $\pdDi=\mdDi=1$, and hence
+$\mDi=1$, $\bias[1]^2(\xdf)\leq1$,
+$\penSv[1]\leq\cpen\miSv[1]^2\ssY^{-1}$, $\miSv[1]^2\leq \miSv[\ssY_{o}]^2$, $\ssE(\Lambda)\leq \cst{}\miSv[1]^2$ and due to
+\nref{ge:re:evrest} \ref{ge:re:evrest:ii} $\P(\aixEv[1]^c)\leq
+\cst{}\miSv[1]^2\ssE^{-2}$. Thereby, 
+ \eqref{au:ag:ub:pnp:p1} implies for all $\ssY\in\Nz$ and $\ssE\in\nset{1,\ssE(\Lambda)}$
+ \begin{multline}\label{au:ag:ub:pnp:p10}
+  %  \E\Vnormlp{\widehat{\theta}^{(\eta)}-\xdf}^2\leq
+  % 2\penSv[1] +\tfrac{12}{7}\Vnormlp{\xdf_{\underline{0}}}^2\bias[1]^2(\xdf)+3 \Vnormlp{\xdf_{\underline{0}}}^2\bias[1]^2(\xdf)\\\hfill
+  %   +\cst{}\miSv[1]^2\ssE^{-1} 
+  %   \\\hfill
+  %   +\cst{}\mRa{\xdf,\Lambda}
+  %   +\cst{}\ssY^{-1}\{\miSv[\Di_{\cst{7}}]^2\Di_{\cst{7}}^3+\miSv[\ssY_{o}]^2\}\\
+   \E\Vnormlp{\widehat{\theta}^{(\eta)}-\xdf}^2\leq
+   \cst{}\mRa{\xdf,\Lambda}
+    + \cst{}(1\vee\Vnormlp{\xdf_{\underline{0}}}^2)\miSv[1]^2\ssE^{-1}  
+    +\cst{}\{\miSv[\Di_{\cst{7}}]^2\Di_{\cst{7}}^3+\miSv[\ssY_{o}]^2\}\ssY^{-1}
+  \end{multline}
+Consider secondly \ref{au:ag:ub:pnp:np:m2}
+$\ssE>\ssE(\Lambda)$.  We set  
+$\sDi{\ssE}:=\max\{\Di\in\nset{1,\ssE}:289\log(\Di+2)\cmiSv[\Di]\miSv[\Di]\leq\ssE\}$, where the defining set containing $1$ is not
+empty. For each
+$\Di\in\nset{1,\sDi{\ssE}}$ holds 
+$\ssE\geq289\log(\Di+2)\cmiSv\miSv$, and thus from
+\nref{ge:re:evrest} \ref{ge:re:evrest:iii} follows
+$\P(\aixEv[\Di]^c)\leq 11226\ssE^{-2}$. For $\aDi{\ssY}\in\nset{1,n}$
+as in \nref{freq:ge:shape:uk:we} let
+$\pdDi:=\aDi{\ssY}\wedge\sDi{\ssE}$, where
+$\penSv[\aDi{\ssY}\wedge\sDi{\ssE}]\leq\penSv[\aDi{\ssY}]\leq \daRa{\aDi{\ssY}}{(\xdf,\Lambda)}$, then from \eqref{au:ag:ub:pnp:p1} follows
+ \begin{multline}\label{au:ag:ub:pnp:p11}
+   \E\Vnormlp{\widehat{\theta}^{(\eta)}-\xdf}^2\leq
+   2\daRa{\aDi{\ssY}}{(\xdf,\Lambda)}+\tfrac{12}{7}\Vnormlp{\xdf_{\underline{0}}}^2\bias[\aDi{\ssY}\wedge\sDi{\ssE}]^2(\xdf)
+   +3 \Vnormlp{\xdf_{\underline{0}}}^2\bias[\mDi]^2(\xdf)\\\hfill
+    +\cst{}\Vnormlp{\xdf_{\underline{0}}}^2\Ind{\{\mDi>1\}}
+    \exp\big(\tfrac{-9\cst{11}\cmiSv[\mdDi]\mdDi}{100\Vnormlp[1]{\fydf}}\big)
+    + \cst{}\big[
+    \Vnormlp{\xdf_{\underline{0}}}^2\Ind{\{\mDi>1\}} \P(\aixEv[\mdDi]^c)+\ssE^{-1} \big]
+    \\\hfill
+    +\cst{}\mRa{\xdf,\Lambda}
+    +\cst{}\ssY^{-1}\{\miSv[\Di_{\cst{7}}]^2\Di_{\cst{7}}^3+\miSv[\ssY_{o}]^2+\Vnormlp{\xdf_{\underline{0}}}^2\Ind{\{\mDi>1\}}\}
+\end{multline}
+Let
+$\sDi{\ssY}:=\argmin\{\daRa{\Di}{(\xdf,\Lambda)}\vee\exp\big(\tfrac{-\cmiSv[\Di]\Di}{\Di_{\cst{7}}}\big):\Di\in\nset{1,\ssY}\}$,
+where $\sDi{\ssY}\in\nset{\aDi{\ssY},1}$ by definition of
+$\aDi{\ssY}$. Setting  
+$\mdDi:=\sDi{\ssY}\wedge\sDi{\ssE}$ from
+\nref{ge:re:evrest} \ref{ge:re:evrest:iii} follows
+$\P(\aixEv[\mdDi]^c)\leq 53\ssE^{-1}$, while  $\mDi$ as in  definition
+\eqref{au:de:*Di:ag} satisfies    $\Vnormlp{\xdf_{\underline{0}}}^2\bias[\mDi]^2(\xdf) \leq
+  [\Vnormlp{\xdf_{\underline{0}}}^2+104\cpen]\dRa{\sDi{\ssY}\wedge\sDi{\ssE}}{\xdf,\Lambda}$,
+  where
+  \begin{multline*}
+  \dRa{\sDi{\ssY}\wedge\sDi{\ssE}}{\xdf,\Lambda}\leq\dRa{\sDi{\ssY}}{\xdf,\Lambda}+\bias[\aDi{\ssY}\wedge\sDi{\ssE}]^2(\xdf);\\
+  \dRa{\aDi{\ssY}}{\xdf,\Lambda}\leq\dRa{\sDi{\ssY}}{\xdf,\Lambda}\\
+  \text{ and }\bias[\sDi{\ssY}\wedge\sDi{\ssE}]^2(\xdf) \leq \bias[\aDi{\ssY}\wedge\sDi{\ssE}]^2(\xdf).
+  \end{multline*}
+  Thereby, we obtain for all $\ssY\in\Nz$ and $\ssE>\ssE(\Lambda)$
+ \begin{multline}\label{au:ag:ub:pnp:p12}
+   \E\Vnormlp{\widehat{\theta}^{(\eta)}-\xdf}^2\leq\cst{}(1\vee\Vnormlp{\xdf_{\underline{0}}}^2)\{\daRa{\sDi{\ssY}}{(\xdf,\Lambda)}+\bias[\aDi{\ssY}\wedge\sDi{\ssE}]^2(\xdf)\}\\\hfill
+    +\cst{}\Vnormlp{\xdf_{\underline{0}}}^2\Ind{\{\mDi>1\}}
+    \exp\big(\tfrac{-9\cst{11}\cmiSv[\sDi{\ssY}\wedge\sDi{\ssE}]\sDi{\ssY}\wedge\sDi{\ssE}}{100\Vnormlp[1]{\fydf}}\big)
+    + \cst{}\big[
+    \Vnormlp{\xdf_{\underline{0}}}^2\Ind{\{\mDi>1\}}\ssE^{-1}+\ssE^{-1} \big]
+    \\\hfill
+    +\cst{}\mRa{\xdf,\Lambda}
+    +\cst{}\ssY^{-1}\{\miSv[\Di_{\cst{7}}]^2\Di_{\cst{7}}^3+\miSv[\ssY_{o}]^2+\Vnormlp{\xdf_{\underline{0}}}^2\Ind{\{\mDi>1\}}\}
+\end{multline}
+Since $\daRa{\sDi{\ssY}}{(\xdf,\Lambda)}\geq\ssY^{-1}$ and
+$\mRa{\xdf,\Lambda}\geq\tfrac{1}{2}\Vnormlp{\xdf_{\underline{0}}}^2 \ssE^{-1}$
+ it follows  for all $\ssY\in\Nz$ and $\ssE>\ssE(\Lambda)$
+\begin{multline}\label{au:ag:ub:pnp:p13}
+  \E\Vnormlp{\widehat{\theta}^{(\eta)}-\xdf}^2\leq\cst{}(1\vee\Vnormlp{\xdf_{\underline{0}}}^2)\min_{\Di\in\nset{1,\ssY}}\{\daRa{\Di}{(\xdf,\Lambda)}\vee\exp\big(\tfrac{-\cmiSv[\Di]\Di}{\Di_{\cst{7}}}\big)\}\\\hfill
++\cst{}(1\vee\Vnormlp{\xdf_{\underline{0}}}^2)\{\bias[\aDi{\ssY}\wedge\sDi{\ssE}]^2(\xdf)\vee\exp\big(\tfrac{-\cmiSv[\sDi{\ssE}]\sDi{\ssE}}{\Di_{\cst{7}}}\big)\} \\\hfill
++\cst{}\mRa{\xdf,\Lambda}+\cst{}\ssE^{-1}+\cst{}\ssY^{-1}\{\miSv[\Di_{\cst{7}}]^2\Di_{\cst{7}}^3+\miSv[\ssY_{o}]^2\}
+\end{multline}
+Combining \eqref{au:ag:ub:pnp:p10} and \eqref{au:ag:ub:pnp:p13}
+for   the cases \ref{au:ag:ub:pnp:np:m1}
+$\ssE\in\nset{1,\ssE(\Lambda)}$ and \ref{au:ag:ub:pnp:np:m2}
+$\ssE>\ssE(\Lambda)$ we obtain for all $\ssY,\ssE\in\Nz$
+\begin{multline}\label{au:ag:ub:pnp:p14}
+    \E\Vnormlp{\widehat{\theta}^{(\eta)}-\xdf}^2\leq\cst{}(1\vee\Vnormlp{\xdf_{\underline{0}}}^2)\min_{\Di\in\nset{1,\ssY}}\{\daRa{\Di}{(\xdf,\Lambda)}\vee\exp\big(\tfrac{-\cmiSv[\Di]\Di}{\Di_{\cst{7}}}\big)\}\Ind{\{\ssE>\ssE(\Lambda)\}}\\\hfill
++\cst{}(1\vee\Vnormlp{\xdf_{\underline{0}}}^2)\{\bias[\aDi{\ssY}\wedge\sDi{\ssE}]^2(\xdf)\vee\exp\big(\tfrac{-\cmiSv[\sDi{\ssE}]\sDi{\ssE}}{\Di_{\cst{7}}}\big)\}\Ind{\{\ssE>\ssE(\Lambda)\}} \\\hfill
+ +\cst{}\mRa{\xdf,\Lambda}   + \cst{}(1\vee\Vnormlp{\xdf_{\underline{0}}}^2)\miSv[1]^2\ssE^{-1}  
+    +\cst{}\{\miSv[\Di_{\cst{7}}]^2\Di_{\cst{7}}^3+\miSv[\ssY_{o}]^2\}\ssY^{-1}
+\end{multline}
+which shows the assertion \eqref{au:ag:ub:pnp:e2} and  completes the
+proof of \nref{au:ag:ub:pnp}.\proEnd\end{pro}
+
+\subsection{Proofs for \nref{freq:ge:strat:uk:ma}}\label{pro:freq:ge:strat:uk:ma}
+\begin{te}
+ Below  we state the proofs of  \nref{au:mrb:re:SrWe:ag}. The  proof of \nref{au:mrb:re:SrWe:ag} is based on \nref{mrb:re:erWe} given first.
+\end{te}
+% ....................................................................
+% <<Re Random weights>>
+% ....................................................................
+\begin{lm}\label{mrb:re:erWe} Consider the data-driven aggregation weights
+  $\erWe[]$ as in \eqref{freq:ge:shape:uk:we}and the maximal rates
+  \nref{freq:ge:strat:kn:ma:de:rate}.
+  For any $l\in\nset{1,\ssY}$ with
+  $\daRa{l}{(\xdfCw[],\Lambda)}=[\xdfCw[(l)]\vee \DipenSv[l]\, n^{-1}]$ holds
+  \begin{resListeN}[]
+  \item\label{mrb:re:erWe:i} with
+    $\aixEv[l]:=\set{1/4\leq\iSv[s]^{-1}\eiSv[(s)]\leq9/4,\;\forall\;s\in\nset{1,l}}$ for all $k\in\nsetro{1,l}$ 
+    we have\\
+   $\erWe[(k)]\Ind{\setB{\Vnormlp{\hxdfPr[l]-\dxdfPr[l]}^2<\peneSv[(l)]/7}}\Ind{\aixEv[l]}$\\\null\hfill$\leq
+  \exp\big(\rWn\big\{[\tfrac{25}{2}\cpen+\tfrac{1}{8}\xdfCr^2]\dRa{l}{\xdfCw[],\Lambda}-\tfrac{1}{8}\Vnormlp{\xdf_{\underline{0}}}^2\bias^2(\xdf)-\tfrac{1}{50}\penSv\big\}\big)$.
+  \item\label{mrb:re:erWe:ii} with $\Vnormlp{\ProjC[l]\dxdfPr[\ssY]}^2=2\sum_{s=l+1}^{\ssY}\iSv[s]^{-1}\eiSv[(s)]\vert\fxdf[(s)]\vert^2$
+    for all $\Di\in\nsetlo{l,\ssY}$ we have\\
+    $\erWe\Ind{\setB{\Vnormlp{\hxdfPr-\dxdfPr}^2<\penSv/7}} \leq
+   \exp\big(\rWn\big\{-\tfrac{1}{2}\peneSv+\tfrac{3}{2}\Vnormlp{\ProjC[l]\dxdfPr[\ssY]}^2+\peneSv[(l)]\big\}\big)$.
+  \end{resListeN}
+\end{lm}
+% --------------------------------------------------------------------
+% <<Proof Re Random weights>> angepasst
+% --------------------------------------------------------------------
+\begin{pro}[Proof of \nref{mrb:re:erWe}.]The assertion
+  \ref{mrb:re:erWe:i} follows from \nref{re:erWe} \ref{re:erWe:i}
+  using that $\xdfCr^2\daRa{\Di}{(\xdfCw[],\Lambda)}\geq\Vnormlp{\xdf_{\underline{0}}}^2\bias^2(\xdf)$
+uniformely for all $\xdf\in\rwCxdf$ and for all
+$\Di\in\Nz$.  The assertion
+  \ref{mrb:re:erWe:ii} equals \nref{re:erWe} \ref{re:erWe:ii}.\proEnd
+\end{pro}
+% ....................................................................
+% <<Proof Re Sum Random weights>>
+% ....................................................................
+\begin{pro}[Proof of \nref{au:mrb:re:SrWe:ag}.]
+The proof follows line by line the proof of \nref{au:re:SrWe:ag} using
+\nref{mrb:re:erWe} rather than \nref{re:erWe}, and we omit the details.\proEnd  
+\end{pro}

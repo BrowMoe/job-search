@@ -1,0 +1,138 @@
+\section{Iterative procedure}\label{4}
+An additional feature of this article is to provide a Bayesian interpretation of model selection through iteration of the hierarchical prior and to use this to propose a new proof of its optimality.
+
+\subsection{Principle}
+
+Consider an integer $\eta$, greater that $1$, which is an iteration parameter.
+For $\eta = 1,$ the situation is the regular Bayesian framework, with prior $\mathds{P}_{\boldsymbol{\theta}}^{n},$ likelihood $\mathds{P}_{Y^{n} \vert \boldsymbol{\theta}}^{n}$ and observations $Y^{n}$.
+For $\eta = 2,$ the prior used, $\mathds{P}_{\boldsymbol{\theta}}^{n, (2)}$ is the posterior for $\eta = 1$, that is to say $\mathds{P}_{\boldsymbol{\theta}}^{n, (2)} = \mathds{P}_{\boldsymbol{\theta}\vert Y^{n}}^{n},$ the likelihood and observation remain unchanged and the obtained posterior is denoted  $\mathds{P}_{\boldsymbol{\theta}\vert Y^{n}}^{n, (2)}$.
+For any value of $\eta$ strictly greater than $1$, the prior distribution is given by $\mathds{P}_{\boldsymbol{\theta}}^{n, (\eta)} := \mathds{P}_{\boldsymbol{\theta}\vert Y^{n}}^{n, (\eta-1)},$ the likelihood and observation are the same as previously.
+
+This procedure gives more and more weight to the observations as the prior vanishes. The iteration parameter $\eta$ could be interpreted as a measure of the trust given to the prior distribution.
+
+A case of interest, studied in \textsc{\citet{OBJJ}} in a general setting which however does not apply here, is when one lets the iteration parameter $\eta$ tend to infinity.
+If the posterior distribution converges the limit is called self-informative Bayes carrier and denoted $\mathds{P}_{\boldsymbol{\theta}\vert Y^{n}}^{n, (\infty)}$ and if this limit distribution admits a finite first moment, we call it self-informative limit.
+
+\bigskip
+
+We prove that the contraction rate of the posterior distribution for each fixed value of $\eta$ remains unchanged, as well as the fact that the limit distribution is degenerated on a model selection estimator and provide a new proof of optimality of this estimator.
+
+\subsection{Iterated sieve prior}\label{4.2}
+
+For any $j$ and $\eta$ in $\mathds{N}^{\star}$, define $\widehat{\theta}^{(\eta)}_{j} := \frac{n \eta Y^{n}_{j} \lambda_{j}}{1 + n \eta \lambda_{j}^{2}}$ and $\sigma^{(\eta)}_{j} := \frac{1}{1 + n \eta \lambda_{j}^{2}}$.
+Then, for any $m$ in $\mathds{N}^{\star}$, if the prior chosen for $\eta=1$ is $\mathds{P}_{\boldsymbol{\theta}^{m}}$ as given in \textsc{\cref{3.1}}; after $\eta$ iterations ($1 \leq \eta < \infty$) the posterior obtained, $\mathds{P}_{\boldsymbol{\theta}^{m} \vert Y^{n}}^{n, (\eta)}$, is the Gaussian process with mean $\widehat{\theta}^{m, (\eta)} := \left( \widehat{\theta}^{(\eta)}_{j} \mathds{1}_{j \leq m} \right)_{j \in \mathds{N}^{\star}}$ and variance $\sigma^{m, (\eta)} := \left( \sigma^{(\eta)}_{j} \mathds{1}_{j \leq m} \right)_{j \in \mathds{N}^{\star}}$.
+
+\medskip
+
+Following the proofs of the results stated in \textsc{\cref{3.1}} and \textsc{\cref{3.2}} we derive the following results.
+
+\begin{cor}\label{cor1}
+For any $\theta^{\circ}$ in $\Theta$ and increasing, unbounded sequence $c_{n}$, we have
+\begin{alignat*}{3}
+& && \lim\limits_{n \rightarrow \infty} \mathds{E}_{\theta^{\circ}}^{n}&&\left[\mathds{P}_{\boldsymbol{\theta}^{m_{n}^{\circ}}\vert Y^{n}}^{n, (\eta)}\left(d^{2}\left(\theta^{\circ}, \boldsymbol{\theta}\right) \leq c_{n} \Phi_{n}^{\circ} \right)\right] = 1.
+\end{alignat*}
+\end{cor}
+
+\begin{cor}\label{cor2}
+For any increasing and unbounded sequence, we have
+\begin{alignat*}{5}
+& \lim_{n \rightarrow \infty}&& && \inf\limits_{\theta^{\circ} \in \Theta_{\mathfrak{a}}(r)} && \mathds{E}_{\theta^{\circ}}^{n}\left[\mathds{P}_{\boldsymbol{\theta}^{m_{n}^{\star}}\vert Y^{n}}^{n, (\eta)}\left(d^{2}\left(\theta^{\circ}, \boldsymbol{\theta}\right) \leq c_{n} \cdot \Psi^{\star}_{n}(\Theta_{\mathfrak{a}}(r)) \right)\right]&& = 1;
+\end{alignat*}
+\end{cor}
+
+Moreover, if one lets the number of iterations tend to infinity, we observe that the distribution degenerates around the projection estimator as defined in \textsc{\cref{2.1}}:
+\[\lim\limits_{\eta \rightarrow \infty} \mathds{P}_{\boldsymbol{\theta}^{m} \vert Y^{n}}^{n, (\eta)} = \delta_{\overline{\theta}^{m}}.\]
+
+\subsection{Iterated hierarchical prior}\label{4.3}
+
+In the adaptive case, one needs to slightly modify the prior on $M$ in order to conserve consistence as $\eta$ tends to $\infty$.
+We hence define $\mathds{P}_{M}^{n}(M = m) = \frac{\exp\left(-3 \cdot \eta \cdot \frac{m}{2} \right) \cdot \prod\limits_{j = 1}^{m} \left(\frac{1}{\sigma_{j}^{(\eta)}}\right)^{2}}{\sum\limits_{k =1}^{G_{n}} \exp\left(-3 \cdot \eta \cdot \frac{k}{2} \right) \cdot \prod\limits_{j = 1}^{k} \left(\frac{1}{\sigma_{j}^{(\eta)}}\right)^{2}}$ with $\sigma_{j}^{(\eta)}$ as defined in \textsc{\cref{4.2}}.
+
+Note that the prior depends on $\eta$, hence the interpretation of this parameter as an iteration parameter is a bit immoderate.
+
+Hence, for all $m$ in $\llbracket 1, G_{n} \rrbracket$, the posterior distribution are characterised by :
+\[\mathds{P}_{M \vert Y^{n}}^{n, (\eta)}(m) = \frac{\exp\!\!\left[- \frac{1}{2} \left( 3 m \eta - \Vert \widehat{\theta}^{m, (\eta)} \Vert_{\sigma^{m, (\eta)}}^{2} \right)\right] }{\sum\limits_{k = 1}^{G_{n}} \exp\!\!\left[ - \frac{1}{2} \left( 3 k \eta - \Vert \widehat{\theta}^{k, (\eta)} \Vert_{\sigma^{k, (\eta)}}^{2}\right) \right]},\]
+and
+\[\mathds{P}_{\boldsymbol{\theta}^{M} \vert Y^{n}}^{n, (\eta)} = \sum\limits_{m \in \mathds{N}^{\star}}\mathds{P}_{\boldsymbol{\theta}^{m} \vert Y^{n}}^{n, (\eta)} \cdot \mathds{P}_{M \vert Y^{n}}^{n, (\eta)}(m);\]
+and the posterior mean is then $\widehat{\theta}^{M, (\eta)} :=  \sum\limits_{m \in \mathds{N}^{\star}} \widehat{\theta}^{m, (\eta)} \mathds{P}_{M \vert Y^{n}}^{n, (\eta)}(m) = \left(\widehat{\theta}_{j}^{(\eta)} \cdot \mathds{P}_{M \vert Y^{n}}^{n, (\eta)} \left(M \geq j\right)\right)_{j \in \mathds{N}^{\star}}.$
+
+The posterior mean is both a shrinkage estimator as well as an aggregation estimator which aggregates optimally the posterior mean estimators of the priors of $\mathcal{G}$, giving weight $\mathds{P}_{M \vert Y^{n}}^{n, (\eta)}(m)$ to the posterior mean of $\mathds{P}_{\boldsymbol{\theta}^{m}}$.
+
+As we have seen previously with the sieve priors, the iteration procedure conserves the contraction rate.
+
+\begin{cor}\label{cor3}
+Under \textsc{\cref{as1}} and \textsc{\cref{as2}}, if, in addition $\log(G_{n})/m_{n}^{\circ} \rightarrow 0$ as $n \rightarrow \infty$ then with $D^{\circ} := D^{\circ}(\theta^{\circ}, \lambda) = \lceil 5 L/\kappa^{\circ} \rceil$ and $K^{\circ} := 10(2 \vee \Vert \theta^{\circ} \Vert^{2})L^{2}(16 \vee D^{\circ} \Lambda_{D^{\circ}})$ we have, for any $\eta$ ($1 \leq \eta < \infty$):
+\[\lim\limits_{n \rightarrow \infty} \mathds{E}_{\theta^{\circ}}^{n}\left[\mathds{P}_{\boldsymbol{\theta}^{M} \vert Y^{n}}^{n, (\eta)} \left(\left(K^{\circ}\right)^{-1} \Phi_{n}^{\circ} \leq \Vert \theta^{\circ} - \boldsymbol{\theta}^{M} \Vert_{l^{2}}^{2} \leq K^{\circ} \Phi_{n}^{\circ}\right)\right] = 1.\]
+\end{cor}
+
+\begin{cor}\label{cor4}
+Under \textsc{\cref{as1}} and \textsc{\cref{as3}}, if, in addition, $\log(G_{n})/m_{n}^{\star} \rightarrow 0$ as $n \rightarrow \infty$ then, for any $\eta$ ($1 \leq \eta < \infty$)
+\begin{itemize}
+\item for all $\theta^{\circ}$ in $\Theta_{\mathfrak{a}}(r)$, with $D^{\star} := D^{\star}(\mathfrak{a}, \lambda) = \lceil 5 L/\kappa^{\star} \rceil$ and $K^{\star} := 16\left(2 \vee r\right)L^{2}\left(16 \vee D^{\star} \Lambda_{D^{\star}}\right)\left(1 \vee r \right)$, we have
+\[\lim\limits_{n \rightarrow \infty} \mathds{E}_{\theta^{\circ}}^{n}\left[\mathds{P}_{\boldsymbol{\theta}^{M} \vert Y^{n}}^{n, (\eta)}\left(\Vert \theta^{\circ} - \boldsymbol{\theta}^{M} \Vert^{2} \leq K^{\star} \Phi_{n}^{\star}\right)\right] =1;\]
+\item for any monotonically increasing and unbounded sequence $K_{n}$ holds
+\[\lim\limits_{n \rightarrow \infty} \inf\limits_{\theta^{\circ} \in \Theta_{\mathfrak{a}}(r)} \mathds{E}_{\theta^{\circ}}^{n}\left[\mathds{P}_{\boldsymbol{\theta}^{M} \vert Y^{n}}^{n, (\eta)}\left(\Vert \theta^{\circ} - \boldsymbol{\theta}^{M} \Vert^{2} \leq K_{n} \Phi_{n}^{\star}\right)\right] =1.\]
+\end{itemize}
+\end{cor}
+
+
+Now, in this adaptive case, we consider the eventuality of letting $\eta$ tend to infinity.
+In the spirit of the frequentist model selection method presented in \textsc{\cref{2.3}}, define $\Upsilon_{\eta}(m) = - \sum\limits_{j = 1}^{m} \frac{1}{1 + \frac{\Lambda_{j}}{\eta n}} Y_{j}^{2}$ and $E_{\eta}(m) = \pen(m) + \Upsilon_{\eta}(m)$.
+
+We see that for all $m$ in $\llbracket 1, G_{n} \rrbracket$,
+\[\mathds{P}_{M\vert Y^{n}}^{n, (\eta)}(m) = \frac{1}{\sum\limits_{k = 1}^{G_{n}}\exp\!\!\left[- \frac{\eta n}{2}\left(E_{\eta}(k) - E_{\eta}(m)\right)\right]}.\]
+
+If $\eta$ tends to $+\infty$, for all $m$, $\Upsilon_{\eta}(m)$ tends to $\Upsilon(m) := -\sum\limits_{j = 1}^{m} \left(Y_{j}\right)^{2}$ and we define for all $m$, $E(m) := \pen(m) + \Upsilon(m)$.
+
+\medskip
+
+Interestingly, if we define the contrast $\Gamma$ for any sequence $\theta^{\star}$ in $\Theta$ as
+\[\Gamma\left(\theta^{\star}\right) := \sum\limits_{j = 1}^{G_{n}} \left(\theta^{\star}_{j}\right)^{2}\lambda_{j}^{2} - 2 \sum\limits_{j = 1}^{G_{n}} \theta^{\star}_{j}\lambda_{j} Y_{j},\]
+we see, by differentiating $\Gamma$ summand-wise, that $\overline{\theta}^{G_{n}}$ minimises this contrast and that $\Gamma\left(\overline{\theta}^{G_{n}}\right) = \Upsilon\left(G_{n}\right)$.
+
+\medskip
+
+If for all $k$ different from $m$, $E(k) - E(m) > 0$, then $\mathds{P}_{M\vert Y^{(n)}}^{n,(\eta)}(m)$ trivially tends to $1$ as $\eta$ tends to $\infty$. On the other hand, if there exists $k$ such that $E(k) - E(m) < 0$,  then $\mathds{P}_{M\vert Y^{n}}^{n, (\eta)}(m)$ obviously tends to $0$ as $\eta$ tends to $\infty$. So we see that, similarly to the model selection, this method only selects threshold parameters that minimise a penalised contrast.
+
+\medskip
+
+Note that for all distinct $k$ and $m$ in $\llbracket 1, G_{n} \rrbracket$, we almost surely have $E(k) - E(m) \neq 0$ since $\Upsilon(k) - \Upsilon(m)$ is a random variable with absolutely continuous distribution with respect to Lebesgue measure and hence, $\mathds{P}_{\theta^{\circ}}\!\!\left[\{\Upsilon(k) - \Upsilon(m) = \pen(k) - \pen(m)\}\right] = 0$.
+
+We hence define $\widehat{m} := \argmin\limits_{m \in \llbracket 1, G_{n} \rrbracket}\{E(m)\}$ and $\overline{\theta}^{\widehat{m}}$ the associated projection estimator. Hence, the self informative Bayes limit is $\overline{\theta}^{\widehat{m}}$ and the self informative Bayes carrier is degenerated on it: $\mathds{P}_{\boldsymbol{\theta}^{M} \vert Y^{n}}^{n, (\infty)} = \delta_{\overline{\theta}^{\widehat{m}}}$.
+
+\medskip
+
+We obtain here optimality results both for the self informative limit and self informative Bayes carrier.
+
+\begin{thm}\label{thm3}
+Consider $\overline{\theta}^{\widehat{m}}$ the frequentist estimator given by the self-informative limit.
+Under \textsc{\cref{as1}}, \textsc{\cref{as2}} and the condition that $\limsup\limits_{n \rightarrow \infty}\frac{\log\left(\frac{G_{n}^{2}}{\Phi_{n}^{\circ}}\right)}{m_{n}^{\circ}} \leq \frac{5}{9 L}$, we have
+
+\[\exists C^{\circ} \in \mathds{R}_{+}^{\star} : \forall \theta^{\circ} \in \Theta, \quad \mathds{E}_{\theta^{\circ}}^{n}\left[\Vert \overline{\theta}^{\widehat{m}} - \theta^{\circ} \Vert^{2}\right] \leq C^{\circ} \Phi_{n}^{\circ}.\]
+\end{thm}
+
+This first theorem states that, under our set of assumptions, the self-informative limit reaches the oracle rate of the projection estimators.
+
+\begin{thm}\label{thm4}
+Under \textsc{\cref{as1}}, \textsc{\cref{as2}} and the condition that $\limsup\limits_{\epsilon \rightarrow 0} \frac{\log\left(G_{n}\right)}{m_{n}^{\circ}},$ define $D^{\circ} := \left\lceil \frac{3}{\kappa^{\circ}} + 1 \right\rceil$ and $K^{\circ} := 16 L \cdot \left[9 \vee D^{\circ} \Lambda_{D^{\circ}}\right]$; then, we have for all $\theta^{\circ}$ in $\Theta$,
+\[\lim\limits_{n \rightarrow \infty} \mathds{E}_{\theta^{\circ}}^{n}\left[\mathds{P}_{\boldsymbol{\theta}^{M} \vert Y^{n}}^{n, (\infty)}\left(\left(K^{\circ}\right)^{-1} \Phi_{n}^{\circ} \leq \Vert \boldsymbol{\theta}^{M} - \theta^{\circ} \Vert^{2} \leq K^{\circ} \Phi_{n}^{\circ} \right)\right] = 1.\]
+\end{thm}
+
+This result states that the self informative Bayes carrier contracts with oracle optimal rate of the sieve priors under our set of assumptions.
+
+
+\begin{thm}\label{thm5}
+Consider $\overline{\theta}^{\widehat{m}}$ the frequentist estimator given by the self-informative limit.
+Then, under \textsc{\cref{as1}}, \textsc{\cref{as3}} and the condition that $\limsup\limits_{n \rightarrow \infty}\frac{\log\left(\frac{G_{n}^{2}}{\Phi_{n}^{\star}}\right)}{m_{n}^{\star}} < \frac{5}{9 L}$, we have
+
+\[\exists C^{\star} \in \mathds{R}_{+}^{\star} : \quad \sup\limits_{\theta^{\circ}\in \Theta}\mathds{E}_{\theta^{\circ}}^{n}\left[\Vert \overline{\theta}^{\widehat{m}} - \theta^{\circ} \Vert^{2}\right] \leq C^{\star} \Psi_{n}^{\star}.\]
+\end{thm}
+
+This result shows that the self-informative limit converges with minimax optimal rate over Sobolev's ellipsoids under our set of assumptions.
+
+\begin{thm}\label{thm6}
+Under \textsc{\cref{as1}}, \textsc{\cref{as3}} and the condition that $\limsup\limits_{n \rightarrow \infty} \frac{\log\left(G_{n}\right)}{m_{n}^{\star}},$ define $D^{\star} := \left\lceil \frac{3 \left(1 \vee L^{\circ}\right)}{\kappa^{\star}} + 1 \right\rceil$ and $K^{\star} := 9 L \left(1 \vee L^{\circ} \right) D^{\star} \Lambda_{D^{\star}}$; then, we have for all $\theta^{\circ}$ in $\Theta^{\mathfrak{a}}(r)$,
+\[\lim\limits_{n \rightarrow \infty} \mathds{E}_{\theta^{\circ}}^{n}\left[\mathds{P}_{\boldsymbol{\theta}^{M} \vert Y^{n}}^{n, (\infty)}\left(\Vert \boldsymbol{\theta}^{M} - \theta^{\circ} \Vert^{2} \leq K^{\star} \Psi_{n}^{\star} \right)\right] = 1,\]
+and, for any increasing function $K_{n}$ such that $\lim\limits_{n \rightarrow \infty} K_{n} = \infty,$
+\[\lim\limits_{n \rightarrow \infty} \sup\limits_{\theta^{\circ} \in \Theta^{\mathfrak{a}}(r)} \mathds{E}_{\theta^{\circ}}^{n}\left[\mathds{P}_{\boldsymbol{\theta}^{M} \vert Y^{n}}^{n, (\infty)}\left(\Vert \boldsymbol{\theta}^{M} - \theta^{\circ} \Vert^{2} \leq K_{n} \Psi_{n}^{\star} \right)\right] = 1.\]
+\end{thm}

@@ -1,0 +1,99 @@
+\documentclass[portrait,a0]{a0poster}
+%\documentclass[portrait,a0,posterdraft]{a0poster}
+%
+%
+%
+\usepackage[utf8]{inputenc}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\renewcommand{\familydefault}{\sfdefault} % use sans-serif font
+\usepackage{sfmath} % use sans-serif math font
+\usepackage{anyfontsize}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{natbib}
+\usepackage{yfonts}
+\usepackage{stmaryrd}
+\usepackage{float}
+\usepackage{amsthm}
+\usepackage{thmtools}
+\usepackage{enumitem}
+\DeclareMathOperator*{\argmin}{arg\,min}
+%
+%
+%
+\input{myHeader}
+\input{myDesign}
+%
+%
+%
+%
+\begin{document}
+%
+	\thispagestyle{empty}
+	%
+	\begin{tikzpicture}[remember picture, overlay]
+	%
+	% BACKGROUND
+		\fill[
+			colMainBg, 
+			inner sep=0pt, 
+			line width=0pt
+		] (current page.north east) rectangle (current page.south west); 
+	%
+	% PRE-TITLE
+		\node[
+			colPreTitleFg, 
+			fill=colPreTitleBg,
+			anchor=north,
+			align=center,
+			inner xsep=0,
+			inner ysep=\myPreTitleInnerYSep,
+			text width=\paperwidth
+		] (pretitle) at (current page.north) {
+			\myPreTitle
+		};
+	%
+	% MAIN TITLE
+		\node[
+			anchor=north,
+			align=center,
+			below=0of pretitle,
+			inner xsep=0,
+			inner ysep=0,
+			text width=\paperwidth
+		] (maintitle) {
+			\myMainTitle
+		};
+	%
+	% FOOTER
+		\node[
+			anchor=south,
+			align=center,
+			inner xsep=0,
+			inner ysep=0,
+			text width=\paperwidth
+		]  (footer) at (current page.south) {
+	 		\myFooter
+		};
+	%
+	% BODY
+		\matrix[
+			inner sep=0, 
+			column sep=\myBlockColHSpace, 
+			row sep=0cm,
+			below=\myMainTitleToBodyVSpace of maintitle,
+			ampersand replacement=\&,
+		] (m) {
+			\stepcounter{myColumnCounter};
+			\input{myContent}
+			\\
+		};
+	%	
+	\end{tikzpicture}
+	%
+\end{document}
+%
+%
+%

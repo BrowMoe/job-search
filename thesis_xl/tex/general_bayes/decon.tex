@@ -1,0 +1,160 @@
+\section{Second application example: the circular density deconvolution model}\label{BAYES_CIRCULARDECON}
+
+
+We present here the tracks for application of our Bayesian methodologies in the context of circular density deconvolution.
+Facing the challenge of non conjugation, the strategies of proof presented in \nref{2.3} are unfortunately not applicable, however, we suggest some investigation pathways.
+
+\subsection{Pseudo-Gaussian sieve priors}\label{2.5.1}
+\underline{Definition of the prior}
+
+Let be $\left(\theta^{\times}_{j}\right)_{j \in \mathds{Z}}$ in $\mathcal{S}^{+}(\mathds{Z})$ a prior mean sequence, considered as fixed.
+The Bayesian inference is then made by selecting a sequence of priors, indexed by $n$.
+In particular, the sequence of prior is determined either by the selection of a dimension parameter sequence $\left(m_{n}\right)_{n \in \mathds{N}}$ or the selection of a prior variance sequence $\left(s_{j}^{n}\right)_{j \in \mathds{N}^{*}, n \in \mathds{N}}$ in $\mathds{R}_{+}^{\mathds{N}^{*} \times \mathds{N}}$.
+The prior variance sequence is indexed by $\mathds{N}^{*}$ only as the nature of the object of interest constrains its shape (see \textsc{\autoref{hergoltz}}).
+We will hence only be interested in the distribution of the Fourier coefficients positively indexed as they entirely determine the Fourier transform.
+
+
+\begin{de}{\textsc{Sieve prior}\\}\label{de2.5.2}
+Let be $\left(\frak{s}_{j}\right)_{j \in \mathds{N}^{*}}$ a prior variance sequence independant of $n$ as well as $\left(m_{n}\right)_{n \in \mathds{N}}$ in $\mathds{N}^{\mathds{N}}$ a threshold parameter sequence.
+We then note $\left(\mathds{Q}_{\boldsymbol{f}^{m_{n}}}\right)_{n \in \mathds{N}}$ the sequence of pseudo-Gaussian process prior distributions such that, for any $n$ in $\mathds{N}$, the prior variance parameter is given by $\left(\frak{s}_{j} \mathds{1}_{\{j \leq m_{n}\}}\right)_{j \in \mathds{N}}$.
+The density is then given by
+\[\frac{d \mathds{Q}_{\boldsymbol{f}^{m_{n}}}}{d \mathds{Q}^{\circ}}(f) = \exp\left[-\frac{1}{2}\sum\limits_{j = 1}^{m_{n}} \frac{\vert \theta^{\times}_{j}\vert^{2}}{\frak{s}_{j}} + \sum\limits_{j = 1}^{m_{n}} \frac{\theta^{\times}_{j}}{\frak{s}_{j}}[f]_{j} +\Delta_{2}^{n}(f)\right].\]
+
+We note $\mathcal{G}$ the family of all sieve prior sequences.
+\end{de}
+
+
+\underline{Shape of the posterior distribution}
+
+Define the following sequences.
+\begin{de}{\textsc{Pseudo-posterior mean/variance sequences} \\}\label{de2.5.3}
+We define the two following sequences which can be seen as the posterior mean and variance of the Gaussian part of the posterior distribution:
+\begin{alignat*}{3}
+& \widehat{\theta}_{\eta, j}^{n} && := && \frac{\frac{\theta^{\times}_{j}}{\eta n} + s^{n}_{j} \overline{e}_{j}^{n} \lambda_{j}}{\frac{1}{\eta n} + s^{n}_{j} \lambda_{j}^{2}};\\
+& \sigma_{\eta, j}^{n} &&:=&& \frac{s^{n}_{j}}{1 + \eta n s^{n}_{j} \lambda_{j}^{2}}.
+\end{alignat*}
+\end{de}
+
+For any prior $\mathds{Q}_{\boldsymbol{f}}$ dominated by $\mathds{Q}^{\circ}$, Bayes' theorem tells us that the posterior $\mathds{Q}_{\boldsymbol{f}\vert Y^{n}}$ has density :
+\begin{alignat*}{3}
+&\frac{d\mathds{Q}_{\boldsymbol{f}\vert Y^{n}}}{d\mathds{Q}^{\circ}}(f, y^{n}) &&=&&\frac{\frac{d \mathds{Q}_{\boldsymbol{f}, Y^{n}}}{d \mathds{Q}^{\circ}d \mathds{P}^{\circ}}}{\frac{d \mathds{P}_{Y^{n}}}{d \mathds{P}^{\circ}}}(f, y^{n})\\
+& &&=&& \frac{\frac{d \mathds{P}_{Y^{n} \vert \boldsymbol{f}}}{d \mathds{P}^{\circ}} \cdot \frac{d \mathds{Q}_{\boldsymbol{f}}}{d \mathds{Q}^{\circ}}}{\frac{d\mathds{P}_{Y^{n}}}{d\mathds{P}^{\circ}}}(f, y^{n}).
+\end{alignat*}
+
+Calculations show that, for $\mathcal{G}$, the posterior distribution is given by
+\[\frac{d \mathds{Q}_{\boldsymbol{f}^{m^{n}}\vert Y^{n}}}{d \mathds{Q}^{\circ}}(f, y^{n}) \propto \exp\left[-\frac{1}{2}\sum\limits_{j = 1}^{m_{n}} \frac{\vert \widehat{\theta}_{\eta, j}^{n}\vert^{2}}{\sigma_{\eta, j}^{n}} + \sum\limits_{j = 1}^{m_{n}} \frac{\widehat{\theta}_{\eta, j}^{n}}{\sigma_{\eta, j}^{n}}[f]_{j} - \frac{n}{2} \Delta_{1}^{n}(f, y^{n}) +\Delta_{2}^{n}(f)\right];\]
+
+and for $\mathcal{H}$
+\[\frac{d \mathds{Q}_{\boldsymbol{f}^{s^{n}}\vert Y^{n}}}{d \mathds{Q}^{\circ}}(f, y^{n})\propto\exp\left[-\frac{1}{2}\sum\limits_{j = 1}^{\infty} \frac{\vert \widehat{\theta}_{\eta, j}^{n}\vert^{2}}{\sigma_{\eta, j}^{n}} + \sum\limits_{j = 1}^{\infty} \frac{\widehat{\theta}_{\eta, j}^{n}}{\sigma_{\eta, j}^{n}}[f]_{j} - \frac{n}{2} \Delta_{1}^{n}(f, y^{n}) +\Delta_{2}^{n}(f)\right].\]
+
+\underline{Contraction rate for non adaptive priors}
+
+From now on, we note $\widetilde{Y}^{n, s^{n}} = \left(\widetilde{Y}^{n, s^{n}}_{j}\right)_{j \in \mathds{N}^{*}}=\left(\widehat{\theta}_{\eta, j}^{n} + \sigma_{\eta, j}^{n}\xi_{j}\right)_{j \in \mathds{N}^{*}}$, the Gaussian process we try to approach; $\widetilde{\mathds{Q}}_{\boldsymbol{f}^{s^{n}} \vert Y^{n}}^{n}$ its distribution and $\mathds{E}_{\widetilde{\mathds{Q}}_{\boldsymbol{f}^{s{n}} \vert Y^{n}}^{n}}$ the expectation under this distribution.
+
+Results on the contraction of the posterior distribution could be obtained by relating the moments of the posterior distribution with those of $\widetilde{\mathds{Q}}_{\boldsymbol{f}^{s^{n}} \vert Y^{n}}^{n}$.
+
+We shall consider the following notations.
+
+\begin{nota}\label{nota2.5.1}
+For any $j$, $m$ and $n$ in $\mathds{N}^{*}$; and $[\mathfrak{u}]$ in $\mathds{R}_{+}^{\mathds{Z}}$ define
+\begin{alignat*}{12}
+& \Lambda^{[\mathfrak{u}]}_{j} &&:=&& \frac{\vert [\mathfrak{u}](j) \vert^{2}}{\vert \lambda_{j} \vert^{2}}; \quad\quad && \overline{\Lambda}^{[\mathfrak{u}]}_{m} &&:=&& \frac{1}{2m}\sum\limits_{\vert j \vert = 1}^{m} \Lambda_{j}; \quad && \Lambda^{[\mathfrak{u}]}_{(m)} &&:=&& \max\limits_{0 < j \leq m}\left\{ \Lambda_{j}\right\}; \quad && \mathfrak{b}_{m} &&:=&& \sum\limits_{j > m} \vert \theta^{\circ}_{j} \vert^{2}\\
+& && && && && && && && && && && &&\\
+& && && && && && \phi_{n}^{m_{n}}(f^{X}, [\mathfrak{u}]) && := && && \left(\frac{m_{n} \overline{\Lambda}^{[\mathfrak{u}]}_{m_{n}}}{n}\vee \mathfrak{b}_{m_{n}}^{2}\right). && && &&
+\end{alignat*}
+\end{nota}
+
+One would note that the expected error and the error variance under $\widetilde{\mathds{Q}}_{\boldsymbol{f}^{s^{n}} \vert Y^{n}}^{n}$ are then respectively given by
+\begin{alignat*}{3}
+&\mathds{E}_{\widetilde{\mathds{Q}}_{\boldsymbol{f}^{s{n}} \vert Y^{n}}^{n}}\left[\Vert [f] - \theta^{\circ} \Vert^{2}\right] &&=&& 2 \mathds{E}_{\widetilde{\mathds{Q}}_{\boldsymbol{f}^{s{n}} \vert Y^{n}}^{n}}\left[\sum\limits_{j \in \mathds{N^{*}}} \left\vert[f]_{j} - \theta^{\circ}_{j} \right\vert^{2}\right]\\
+& &&=&& 2 \sum\limits_{j \in \mathds{N^{*}}} \mathds{E}_{\widetilde{\mathds{Q}}_{\boldsymbol{f}^{s{n}} \vert Y^{n}}^{n}}\left[\left\vert[f]_{j} - \theta^{\circ}_{j} \right\vert^{2}\right]\\
+& &&=&& 2 \sum\limits_{j \in \mathds{N^{*}}} \left\{\mathds{V}_{\widetilde{\mathds{Q}}_{\boldsymbol{f}^{s{n}} \vert Y^{n}}^{n}}\left[[f]_{j} - \theta^{\circ}_{j}\right] + \vert\mathds{E}_{\widetilde{\mathds{Q}}_{\boldsymbol{f}^{s{n}} \vert Y^{n}}^{n}}\left[[f]_{j} - \theta^{\circ}_{j}\right]\vert^{2}\right\}\\
+& &&=&& 2 \sum\limits_{j \in \mathds{N^{*}}} \left\{\sigma_{\eta, j}^{n} + \left\vert\widehat{\theta}_{\eta, j}^{n} - \theta^{\circ}_{j}\right\vert^{2}\right\}\\
+& &&=&& 2 \sum\limits_{j \in \mathds{N^{*}}} \left\{\frac{s_{j}^{n}}{1 + \eta n s_{j}^{n} \lambda_{j}^{2}} + \left\vert\frac{\frac{\Lambda_{j}\left(\theta^{\times}_{j} - \theta^{\circ}_{j}\right)}{\eta n s_{j}^{n}} + \frac{\overline{e}_{j}^{n}}{\lambda_{j}}- \theta^{\circ}_{j}}{\frac{\Lambda_{j}}{\eta n s_{j}^{n}} + 1}\right\vert^{2}\right\};
+\end{alignat*}
+and
+\begin{alignat*}{3}
+&\mathds{V}_{\widetilde{\mathds{Q}}_{\boldsymbol{f}^{s{n}} \vert Y^{n}}^{n}}\left[\Vert [f] - \theta^{\circ} \Vert^{2}\right] &&=&& \mathds{V}_{\widetilde{\mathds{Q}}_{\boldsymbol{f}^{s{n}} \vert Y^{n}}^{n}}\left[\sum\limits_{j \in \mathds{N^{*}}} \left\vert[f]_{j} - \theta^{\circ}_{j} \right\vert^{2}\right]\\
+& &&=&& \sum\limits_{j \in \mathds{N^{*}}}\mathds{V}_{\widetilde{\mathds{Q}}_{\boldsymbol{f}^{s{n}} \vert Y^{n}}^{n}}\left[\left\vert[f]_{j} - \theta^{\circ}_{j} \right\vert^{2}\right]\\
+& &&=&& \sum\limits_{j \in \mathds{N^{*}}}\left\{\mathds{E}_{\widetilde{\mathds{Q}}_{\boldsymbol{f}^{s{n}} \vert Y^{n}}^{n}}\left[\left\vert[f]_{j} - \theta^{\circ}_{j} \right\vert^{4}\right] - \mathds{E}_{\widetilde{\mathds{Q}}_{\boldsymbol{f}^{s{n}} \vert Y^{n}}^{n}}\left[\left\vert[f]_{j} - \theta^{\circ}_{j} \right\vert^{2}\right]^{2}\right\}\\
+& &&=&& \sum\limits_{j \in \mathds{N^{*}}}\left\{\mathds{E}_{\widetilde{\mathds{Q}}_{\boldsymbol{f}^{s{n}} \vert Y^{n}}^{n}}\left[\left\vert[f]_{j} - \theta^{\circ}_{j} \right\vert^{4}\right] - \left(\mathds{V}_{\widetilde{\mathds{Q}}_{\boldsymbol{f}^{s{n}} \vert Y^{n}}^{n}}\left[[f]_{j} - \theta^{\circ}_{j}\right] + \vert\mathds{E}_{\widetilde{\mathds{Q}}_{\boldsymbol{f}^{s{n}} \vert Y^{n}}^{n}}\left[[f]_{j} - \theta^{\circ}_{j}\right]\vert^{2}\right)^{2}\right\}\\
+& &&=&& \sum\limits_{j \in \mathds{N^{*}}}\left\{3 \left(\sigma_{\eta, j}^{n}\right)^{2} + 6 \sigma_{\eta, j}^{n} \left\vert\widehat{\theta}_{\eta, j}^{n} - \theta^{\circ}_{j}\right\vert^{2} + \left\vert\widehat{\theta}_{\eta, j}^{n} - \theta^{\circ}_{j}\right\vert^{4} - \left(\sigma_{\eta, j}^{n} + \left\vert\widehat{\theta}_{\eta, j}^{n} - \theta^{\circ}_{j}\right\vert^{2}\right)^{2}\right\}\\
+& &&=&& 2 \sum\limits_{j \in \mathds{N^{*}}}\left\{ \left(\sigma_{\eta, j}^{n}\right)^{2} + 2 \sigma_{\eta, j}^{n} \left\vert\widehat{\theta}_{\eta, j}^{n} - \theta^{\circ}_{j}\right\vert^{2}\right\}\\
+& &&=&& 2 \sum\limits_{j \in \mathds{N^{*}}}\frac{s_{j}^{n}}{1 + \eta n s_{j}^{n} \lambda_{j}^{2}} \cdot \left\{ \left(\frac{s_{j}^{n}}{1 + \eta n s_{j}^{n} \lambda_{j}^{2}}\right) + 2 \left\vert\frac{\frac{\Lambda_{j}\left(\theta^{\times}_{j} - \theta^{\circ}_{j}\right)}{\eta n s_{j}^{n}} + \frac{\overline{e}_{j}^{n}}{\lambda_{j}}- \theta^{\circ}_{j}}{\frac{\Lambda_{j}}{\eta n s_{j}^{n}} + 1}\right\vert^{2}\right\}.
+\end{alignat*}
+
+We can also derive the expected value and the variance of those quantities under $\mathds{P}^{Y}$ :
+
+\begin{alignat*}{4}
+& \mathds{E}_{\theta^{\circ}}\left[\mathds{E}_{\widetilde{\mathds{Q}}_{\boldsymbol{f}^{s{n}} \vert Y^{n}}^{n}}\left[\Vert [f] - \theta^{\circ} \Vert^{2}\right]\right] &&=&& \mathds{E}_{\theta^{\circ}}&&\left[2 \sum\limits_{j \in \mathds{N^{*}}} \left\{\frac{s_{j}^{n}}{1 + \eta n s_{j}^{n} \lambda_{j}^{2}} + \left[\frac{\frac{\Lambda_{j}\left(\theta^{\times}_{j} - \theta^{\circ}_{j}\right)}{\eta n s_{j}^{n}} + \frac{\overline{e}_{j}^{n}}{\lambda_{j}}- \theta^{\circ}_{j}}{\frac{\Lambda_{j}}{\eta n s_{j}^{n}} + 1}\right]^{2}\right\}\right]\\
+& &&=&& 2 \sum\limits_{j \in \mathds{N^{*}}}&&\left\{ \frac{s_{j}^{n}}{1 + \eta n s_{j}^{n} \lambda_{j}^{2}} + \mathds{E}_{\theta^{\circ}}\left[ \left[\frac{\frac{\Lambda_{j}\left(\theta^{\times}_{j} - \theta^{\circ}_{j}\right)}{\eta n s_{j}^{n}} + \frac{\overline{e}_{j}^{n}}{\lambda_{j}}- \theta^{\circ}_{j}}{\frac{\Lambda_{j}}{\eta n s_{j}^{n}} + 1}\right]^{2}\right]\right\}\\
+& &&=&& 2 \sum\limits_{j \in \mathds{N^{*}}}&&\left\{ \frac{s_{j}^{n}}{1 + \eta n s_{j}^{n} \lambda_{j}^{2}} + \mathds{V}_{\theta^{\circ}}\left[\frac{\frac{\Lambda_{j}\left(\theta^{\times}_{j} - \theta^{\circ}_{j}\right)}{\eta n s_{j}^{n}} + \frac{\overline{e}_{j}^{n}}{\lambda_{j}}- \theta^{\circ}_{j}}{\frac{\Lambda_{j}}{\eta n s_{j}^{n}} + 1}\right] \right.\\
+& && && && \left.+ \mathds{E}_{\theta^{\circ}}\left[\frac{\frac{\Lambda_{j}\left(\theta^{\times}_{j} - \theta^{\circ}_{j}\right)}{\eta n s_{j}^{n}} + \frac{\overline{e}_{j}^{n}}{\lambda_{j}}- \theta^{\circ}_{j}}{\frac{\Lambda_{j}}{\eta n s_{j}^{n}} + 1}\right]^{2}\right\}\\
+& &&=&& 2 \sum\limits_{j \in \mathds{N^{*}}}&&\left\{ \frac{s_{j}^{n}}{1 + \eta n s_{j}^{n} \lambda_{j}^{2}} \right.\\
+& && && && \left.+ \frac{1}{\left(\frac{\Lambda_{j}}{\eta n s_{j}^{n}} + 1\right)^{2}}\left(\mathds{V}_{\theta^{\circ}}\left[\frac{\overline{e}_{j}^{n}}{\lambda_{j}}\right] + \left(\frac{\Lambda_{j}\left(\theta^{\times}_{j} - \theta^{\circ}_{j}\right)}{\eta n s_{j}^{n}} - \theta^{\circ}_{j} + \mathds{E}_{\theta^{\circ}}\left[\frac{\overline{e}_{j}^{n}}{\lambda_{j}}\right]\right)^{2}\right)\right\}\\
+& &&=&& 2 \sum\limits_{j \in \mathds{N^{*}}}&&\left\{ \frac{s_{j}^{n}}{1 + \eta n s_{j}^{n} \lambda_{j}^{2}} \right.\\
+& && && && \left.+ \frac{1}{\left(\frac{\Lambda_{j}}{\eta n s_{j}^{n}} + 1\right)^{2}}\left(\frac{\Lambda_{j}}{n}\left(1 - \frac{\vert \theta^{\circ}_{j} \vert^{2}}{\Lambda_{j}}\right) + \left(\frac{\Lambda_{j}\left(\theta^{\times}_{j} - \theta^{\circ}_{j}\right)}{\eta n s_{j}^{n}}\right)^{2}\right)\right\}\\
+& &&=&& 2 \sum\limits_{j \in \mathds{N^{*}}}&&\left\{ \frac{\frac{\Lambda_{j}}{\eta n}}{\frac{\Lambda_{j}}{\eta n s_{j}^{n}} + 1} \right.\\
+& && && && \left.+ \frac{1}{\left(\frac{\Lambda_{j}}{\eta n s_{j}^{n}} + 1\right)^{2}}\left(\frac{\Lambda_{j}}{n}\left(1 - \frac{\vert \theta^{\circ}_{j} \vert^{2}}{\Lambda_{j}}\right) + \left(\frac{\Lambda_{j}\left(\theta^{\times}_{j} - \theta^{\circ}_{j}\right)}{\eta n s_{j}^{n}}\right)^{2}\right)\right\}\\
+\end{alignat*}
+
+\begin{as}{\textsc{Small moment perturbations assumption}\\}\label{as2.5.1}
+Assume that for any $n$ in $\mathds{N}$, any two indexes $j_{1}, j_{2}$ in $\llbracket 1, m_{n} \rrbracket$ and natural numbers $p_{1}, p_{2} \leq 2$, we have
+\[\mathds{E}_{\boldsymbol{f}^{m_{n}}\vert Y^{n}}^{n}\left[ [\boldsymbol{f}]_{j_{1}}^{p_{1}} [\boldsymbol{f}]_{j_{2}}^{p_{2}}\right] = \mathds{E}_{\widetilde{\mathds{P}}\vert Y^{n}}^{n}\left[[\boldsymbol{f}]_{j_{1}}^{p_{1}} [\boldsymbol{f}]_{j_{2}}^{p_{2}}\right] + \mathcal{O}_{\mathds{P}^{Y}}\left(\phi_{n}^{m_{n}}(f^{X})\right).\]
+\end{as}
+
+\textcolor{red}{Goal : transforming this assumption in assumption on regularity of $\Delta_{1}^{n} + \Delta_{2}^{n}$}
+
+\begin{thm}{\textsc{Oracle contraction rate}\\}\label{thm2.5.1}
+Under \textsc{\autoref{as_moment}}, $\phi_{n}^{m_{n}}(f^{X})$ is a contraction rate for $p_{\boldsymbol{f}^{m_{n}}\vert Y^{n}}$, that is to say, for any increasing and unbounded sequence $c_{n}$
+\[\lim\limits_{n \rightarrow \infty} \mathds{E}_{f^{X}}\left[\mathds{P}_{\boldsymbol{f}^{m_{n}} \vert Y^{n}}^{n}\left(\Vert [f] - [f^{X}] \Vert^{2} \leq c_{n}\phi_{n}^{m_{n}}(f^{X}) \right)\right] = 1.\]
+\end{thm}
+
+
+\subsection{Hierarchical priors}\label{2.5.2}
+Consider a family of sequences of (non adaptive) priors, indexed by a sequence of tuning parameters $\left(m_{n}\right)_{n \in \mathds{N}}$ in some sequence of measurable spaces $\left(J^{n}, \mathcal{J}^{n}\right)$.
+Each element of this family is noted $\left(\mathds{Q}_{\boldsymbol{f}^{m}}^{n}\right)_{n \in \mathds{N}}$.
+A way to build an adaptive prior from this family is to consider $m$ as a random hyper-parameter $M$ and put a prior $\mathds{R}_{M}$ on it.
+For example, one could define $\mathds{R}_{M}$ with a density (w.r.t. some measure $\mathds{R}^{\circ}$ depending on the specific case) of the shape
+\[r_{M}(m) = \frac{\exp[- \pen(m)]}{\int\limits_{\mathcal{J}}\exp[- \pen(k)] dk};\]
+where $\pen$ is a function of the parameter $m$.
+We denote $\mathds{Q}_{\boldsymbol{f}^{M}}$ the prior distribution such that, while conditioning on the hyper-parameter, one recovers the non adaptive prior :
+\[\mathds{Q}_{\boldsymbol{f}^{M} \vert M = m}^{n} = \mathds{Q}_{\boldsymbol{f}^{m}}^{n};\]
+and conditionally on $f$, $Y$ is independent of $M$:
+\[\mathds{P}_{Y^{n}\vert f, M}^{n} = \mathds{P}_{Y^{n}\vert f}^{n}.\]
+Based on that, one can compute the posterior distribution:
+\begin{alignat*}{3}
+&\frac{d\mathds{R}_{M \vert Y^{n}}^{n}}{d\mathds{R}^{\circ}}(m, y^{n}) &&=&& \frac{\frac{d\mathds{P}_{M, Y^{n}}^{n}}{d\mathds{R}^{\circ} \, d\mathds{P}^{\circ}}(m, y^{n})}{\frac{d\mathds{P}_{Y^{n}}^{n}}{d \mathds{P}^{\circ}}(y^{n})}\\
+& &&=&&\frac{\int\limits_{\mathcal{D}([0,1[)}\frac{d\mathds{P}_{M, Y^{n}, \boldsymbol{f}^{M}}^{n}}{d\mathds{R}^{\circ} \, d\mathds{P}^{\circ} \, d\mathds{Q}^{\circ}}(m, y^{n}, f)d\mathds{Q}^{\circ}(f)}{\frac{d\mathds{P}_{Y^{n}}^{n}}{d \mathds{P}^{\circ}}(y^{n})}\\
+& &&=&&\frac{\int\limits_{\mathcal{D}([0,1[)}\frac{d\mathds{P}_{Y^{n} \vert M, \boldsymbol{f}^{M}}^{n}}{d\mathds{P}^{\circ}}(m, y^{n}, f) \, \frac{d\mathds{P}_{M, \boldsymbol{f}^{M}}^{n}}{d\mathds{R}^{\circ} \, d\mathds{Q}^{\circ}}(m, f)d\mathds{Q}^{\circ}(f)}{\frac{d\mathds{P}_{Y^{n}}^{n}}{d \mathds{P}^{\circ}}(y^{n})}\\
+& &&=&&\frac{\int\limits_{\mathcal{D}([0,1[)}\frac{d\mathds{P}_{Y^{n} \vert \boldsymbol{f}^{M}}^{n}}{d\mathds{P}^{\circ}}(y^{n}, f) \, \frac{d\mathds{P}_{\boldsymbol{f}^{M}\vert M}^{n}}{d\mathds{Q}^{\circ}}(m, f) \frac{d \mathds{R}_{M}}{d\mathds{R}^{\circ}}(m)d\mathds{Q}^{\circ}(f)}{\frac{d\mathds{P}_{Y^{n}}^{n}}{d \mathds{P}^{\circ}}(y^{n})}\\
+& &&=&&\frac{\frac{d \mathds{R}_{M}}{d\mathds{R}^{\circ}}(m) \int\limits_{\mathcal{D}([0,1[)}\frac{d\mathds{P}_{Y^{n} \vert \boldsymbol{f}}^{n}}{d\mathds{P}^{\circ}}(y^{n}, f) \, \frac{d\mathds{P}_{\boldsymbol{f}^{m}}^{n}}{d\mathds{Q}^{\circ}}(m, f) d\mathds{Q}^{\circ}(f)}{\frac{d\mathds{P}_{Y^{n}}^{n}}{d \mathds{P}^{\circ}}(y^{n})}\\
+& &&=&&\frac{d \mathds{R}_{M}}{d\mathds{R}^{\circ}}(m) \int\limits_{\mathcal{D}([0,1[)}\frac{d\mathds{P}_{\boldsymbol{f}^{m}\vert Y^{n}}^{n}}{d\mathds{Q}^{\circ}}(y^{n}, f, m) d\mathds{Q}^{\circ}(f)\\
+& &&=&&\frac{\frac{d \mathds{R}_{M}}{d\mathds{R}^{\circ}}(m) \frac{d\mathds{P}_{Y^{n} \vert M}^{n}}{d\mathds{P}^{\circ}}(y^{n}, m)}{\int\limits_{J}\frac{d \mathds{R}_{M}}{d\mathds{R}^{\circ}}(m) \frac{d\mathds{P}_{Y^{n} \vert M}^{n}}{d\mathds{P}^{\circ}}(y^{n}, m) dm};
+\end{alignat*}
+
+\begin{alignat*}{3}
+&\frac{d\mathds{Q}_{\boldsymbol{f}^{M} \vert Y^{n}}^{n}}{d\mathds{P}^{\circ}}(f, y^{n}) &&=&& \frac{\frac{d\mathds{P}_{\boldsymbol{f}^{M}, Y^{n}}^{n}}{d\mathds{Q}^{\circ} \, d\mathds{P}^{\circ}}(f, y^{n})}{\frac{d\mathds{P}_{Y^{n}}^{n}}{d \mathds{P}^{\circ}}(y^{n})}\\
+& &&=&& \frac{\int\limits_{J} \frac{d\mathds{P}_{\boldsymbol{f}^{M}, Y^{n}, M}^{n}}{d\mathds{Q}^{\circ} \, d\mathds{P}^{\circ} \, d\mathds{R}^{\circ}}(f, y^{n}, m) dm}{\frac{d\mathds{P}_{Y^{n}}^{n}}{d \mathds{P}^{\circ}}(y^{n})}\\
+& &&=&& \frac{\int\limits_{J} \frac{d\mathds{P}_{\boldsymbol{f}^{M} \vert Y^{n}, M}^{n}}{d\mathds{Q}^{\circ}}(f, y^{n}, m) \frac{d\mathds{P}_{Y^{n}, M}^{n}}{d\mathds{P}^{\circ} \, d\mathds{R}^{\circ}} dm}{\frac{d\mathds{P}_{Y^{n}}^{n}}{d \mathds{P}^{\circ}}(y^{n})}\\
+& &&=&& \frac{\int\limits_{J} \frac{d\mathds{P}_{\boldsymbol{f}^{m} \vert Y^{n}}^{n}}{d\mathds{Q}^{\circ}}(f, y^{n}, m) \frac{d\mathds{P}_{M \vert Y^{n}}^{n}}{d\mathds{R}^{\circ}} \frac{d\mathds{P}_{Y^{n}}}{d\mathds{P}^{\circ}}(Y^{n}) dm}{\frac{d\mathds{P}_{Y^{n}}^{n}}{d \mathds{P}^{\circ}}(y^{n})}\\
+& &&=&& \int\limits_{J} \frac{d\mathds{P}_{\boldsymbol{f}^{m} \vert Y^{n}}^{n}}{d\mathds{Q}^{\circ}}(f, y^{n}, m) \frac{d\mathds{P}_{M \vert Y^{n}}^{n}}{d\mathds{R}^{\circ}} dm.
+\end{alignat*}
+
+Interestingly, the posterior mean is then given by
+\begin{alignat*}{3}
+&d\mathds{E}_{\boldsymbol{f}^{M} \vert Y^{n}}^{n}[\boldsymbol{f}] &&=&& \int\limits_{J} \mathds{E}_{\boldsymbol{f}^{m} \vert Y^{n}}[\boldsymbol{f}] \frac{d\mathds{P}_{M \vert Y^{n}}^{n}}{d\mathds{R}^{\circ}}(m) dm;
+\end{alignat*}
+which is the aggregation of the posterior means obtained with the non adaptive priors where the weights are given by the posterior density of $M$.
+
+\begin{ex}{\textsc{Hierarchical sieve\\}}\label{ex2.6.1}
+One could apply this method to a subclass of sieve priors.
+Consider the sequence $\left(G_{n}\right)_{n \in \mathds{N}}$ such that for all $n$, $G_{n} = \max\left\{m \in \llbracket 1, n \rrbracket : \frac{\Lambda_{(m)}}{n} \leq \Lambda_{1}\right\}$.
+We would then consider $J^{n} = \llbracket 1, G_{n} \rrbracket$ and $\mathcal{J}^{n} = \mathcal{P}(J^{n})$ the set of all subsets of $J^{n}$ as it is a finite space.
+The considered sequences of priors are elements of $\mathcal{G}$ as described earlier.
+Hence the posterior distributions are
+\begin{alignat*}{3}
+& \frac{d\mathds{R}_{M \vert Y^{n}}^{n}}{d\mathds{R}^{\circ}}(m, y^{n}) &&=&& \exp[-\pen(m)] \int\limits_{\mathcal{D}([0,1[)}\exp\left[-\frac{1}{2}\sum\limits_{j = 1}^{m_{n}} \frac{\vert \widehat{\theta}_{\eta, j}^{n}\vert^{2}}{\sigma_{\eta, j}^{n}} + \sum\limits_{j = 1}^{m_{n}} \frac{\widehat{\theta}_{\eta, j}^{n}}{\sigma_{\eta, j}^{n}}[f]_{j} - \frac{n}{2} \Delta_{1}^{n}(f, y^{n}) +\Delta_{2}^{n}(f)\right] d\mathds{Q}^{\circ}(f);\\
+&\frac{d\mathds{Q}_{\boldsymbol{f}^{M} \vert Y^{n}}^{n}}{d\mathds{P}^{\circ}}(f, y^{n}) &&=&& \int\limits_{J} \frac{d\mathds{P}_{M \vert Y^{n}}^{n}}{d\mathds{R}^{\circ}} \exp\left[-\frac{1}{2}\sum\limits_{j = 1}^{m_{n}} \frac{\vert \widehat{\theta}_{\eta, j}^{n}\vert^{2}}{\sigma_{\eta, j}^{n}} + \sum\limits_{j = 1}^{m_{n}} \frac{\widehat{\theta}_{\eta, j}^{n}}{\sigma_{\eta, j}^{n}}[f]_{j} - \frac{n}{2} \Delta_{1}^{n}(f, y^{n}) +\Delta_{2}^{n}(f)\right] dm.
+\end{alignat*}
+\end{ex}

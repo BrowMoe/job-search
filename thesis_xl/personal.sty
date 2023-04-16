@@ -1,0 +1,86 @@
+\ProvidesPackage{personal}
+
+\def\myDegree{} % your academic degree; perhaps you need to rearrange \myDegree and \myName on page 1!
+
+\def\myName{Master in Mathematic Xavier Loizeau}
+
+\def\myBirthPlace{Nantes, France}
+
+\def\myTitle{Hierarchical Bayes and frequentist aggregation in inverse problems}
+
+\def\myZusammenfassung{In dieser Arbeit betrachten wir lineare, schlecht gestellte, statistische Probleme von zwei Standpunkten aus: Der Bayesschen und der frequentistischen Sichtweise.
+
+\medskip
+
+In der Bayesschen Betrachtung untersuchen wir zwei verschiedene Methoden zur asymptotischen Analyse von Gaußschen Sieve-Priors und ihren hierarchischen Gegenstücken.
+
+Zuerst untersuchen wir eine iterative Methode, in welcher die a-posteriori Verteilung als a-priori Verteilung verwendet wird um eine neue a-posteriori Verteilung zu berechnen. Die Likelihood und Daten bleiben dabei unverändert. Wir interessieren uns für das asymptotische Verhalten dieses Prozesses (Existenz und Bestimmung der Grenzverteilung).
+
+Im zweiten (klassischen) Ansatz untersuchen wir das Verhalten der a-posteriori Verteilung, wenn die Anzahl der Datenpunkte wächst. Unter der Annahme, dass ein wahrer Parameter existiert, interessieren wir uns dafür, ob sich die a-posteriori Verteilung um diesen Parameter mit einer optimalen Rate konzentriert.
+
+Die Ergebnisse aus beiden Fällen werden auf das inverse Gaußsche Folgenraummodell angewandt.
+
+Schließlich beweisen wir, dass durch den Mittelwert der a-posteriori Verteilung im hierarchischen Gaußschen Sieve-Prior Ansatz sowohl ein Shrinkage- als auch ein Aggregation-Schätzer gegeben ist, welcher interessante Optimalitätseigenschaften hat.
+
+
+\medskip
+
+Diese Ergebnisse über den Mittelwert der a-posteriori Verteilung von Gaußschen Sieve-Priors motivieren die Untersuchung des quadratischen Fehlers von Aggregation-Schätzern, deren Form obigen Mittelwerten von a-posteriori Verteilungen ähnelt. Wir stellen (highlight) eine Strategie vor, welche auf einer Zerlegung des Fehlers beruht. Auf diese Weise können wir für einen bekannten bzw. unbekannten Operator und für unabhängige bzw. absolut reguläre Daten optimale Konvergenzraten finden.
+
+
+Wir illustrieren diese Methode am inversen Gaußschen Folgenraummodell sowie anhand von zyklischer Dekonvolution, indem wir optimale Raten unter schwachen Annahmen beweisen.} % abstract in German is mandatory!
+
+\def\myAbstract{
+Considering a family of statistical, linear, ill-posed inverse problems, we propose their study from two perspectives, the Bayesian and frequentist paradigms.
+
+\medskip
+
+Under the Bayesian paradigm, we investigate two different asymptotic analyses for Gaussian sieve priors and their hierarchical counterpart.
+
+The first analysis is with respect to an iteration procedure, where the posterior distribution is used as a prior to compute a new posterior distribution while using the same likelihood and data.
+We are interested in the limit of the sequence of distributions generated this way, if it exists.
+
+The second analysis, more traditionally, investigates the behaviour of the posterior distribution as the  amount of data increases.
+Assuming the existence of a true parameter, one is then interested in showing that the posterior distribution contracts around the truth at an optimal rate.
+
+We illustrate all those results by their application to the inverse Gaussian sequence space model.
+
+Finally we exhibit that the posterior mean of the hierarchical Gaussian sieve prior is both a shrinkage and an aggregation estimator, with interesting optimality properties.
+
+\medskip
+
+Motivated by the last findings about posterior mean of hierarchical Gaussian sieves, we propose to investigate the quadratic risk of aggregation estimators, which shape mimics the one of the above-mentioned posterior means.
+We introduce a strategy, relying on the decomposition of the risk, which allows to obtain optimal convergence rates in the cases of known and unknown operator, for dependent as well as absolutely regular data.
+We demonstrate the use of this method on the inverse Gaussian sequence space model as well as the circular density deconvolution and obtained optimality results under mild hypotheses.
+}
+
+\def\mySupervisor{Prof. Dr. Jan Johannes}
+
+\def\myCoSupervisor{}
+
+
+\def\myAcknowledgements{
+My first thought obviously goes to my supervisor, Jan Johannes, who gave me the opportunity to follow this PhD program.
+I have been lucky to receive your guidance, as, asking for your help, I have always been sure to find patience, and attentiveness; your personal support have been primordial.
+
+\medskip
+
+For their fruitful suggestions, I would also like to thank Fabienne Comte, Claudia Schilings, Björn Sprungk, and all the members of the RTG 1953.
+I would like to mention in particular the members of the statistic group of Heidelberg University, for the welcoming and studious atmosphere they conveyed.
+
+\bigskip
+
+For their personal support I would like to thank Alexander and Jacob with whom I could always share my doubts and troubles but also learned so much; my boulering friends and in particular Marilena and Tobias who initiated me; mes amis qui, malgr\'e la distance, m'ont soutenu, je pense en particulier à Alexandre, Fabien, Marin, et Marine; mais aussi à Cindy, Lubin, Perrine, Stephane, et Sydney.
+
+\medskip
+
+Je souhaiterais \'egalement remercier ma famille qui m'a toujours porté dans mes \'etudes. Merci, donc, à mes parents, et à mes fr\`eres et s\oe ur Jacques-Henri, Claire, et Hugues, de m'avoir toujours apporté l'aide, l'environnement, l'attention, et l'affection qui m'ont permis d'arriver l\`a où je suis.
+
+\medskip
+
+Enfin, je souhaite remercier celles et ceux qui m'ont montr\'e l'exemple lors de mes \'etudes scientifiques, Jacqueline Heuz\'e, Hugues et Claire Loizeau, François Sauvageot, et, encore une fois, Jan Johannes.
+
+
+\bigskip
+
+I am grateful to the Deutsche Forschungs Gesellschaft (DFG) for their support that was accompanied with the work in the Research Training Group (RTG) 1953 ”Statistical Modelling of Complex Systems and Processes” as well as to the administration of the \textit{Faculty of Mathematics and Informatic} of the Ruprecht-Karls-Universit\"at Heidelberg.} % you may print this for administrative reasons

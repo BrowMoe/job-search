@@ -1,0 +1,100 @@
+\section{Adaptivity using a hierarchical prior}\label{BAYES_HIERARCHICAL}
+
+We denote $\P_{\boldsymbol{\theta}_{\overline{M}}}$ a so called hierarchical prior distribution, described hereafter, and $\boldsymbol{\theta}_{\overline{M}}$ a random variable following this prior.
+Define $G$, a finite element of $\mathds{M}$ (depending on $n$), acting as an upper bound for $M$ and $\pen: \llbracket 1, G \rrbracket \rightarrow \R_{+}$ a so-called penalty function.
+The threshold parameter noted $m$ for the sieve prior described in the previous section is now a $\llbracket 1, G \rrbracket$-valued random variable denoted $M$. We note $\P_{M}$ the distribution of this parameter.
+
+The density of $\P_{M}$ with respect to the counting measure is given, for any $m$ in $\llbracket 1, G \rrbracket$, by $\P_{M}(m) \propto \exp[\pen(m)] \mathds{1}_{\{ m \leq G \}}$.
+
+The dependance structure between the different quantities of the model is then the following:
+\[ \P_{\boldsymbol{\theta}_{\overline{M}} \vert M=m} = \P_{\boldsymbol{\theta}_{\overline{m}}};\quad \P_{Y^{n} \vert \boldsymbol{\theta}, M} = \P_{Y^{n} \vert \boldsymbol{\theta}}.\]
+
+The following proposition, giving an expression for the iterated posterior distribution of the threshold parameter, is obtained by direct calculus.
+
+\begin{pr}\label{PR_BAYES_HIERARCHICAL_ITERATED}
+For any $m$ in $\mathds{M}$, we use the convention $\P_{\boldsymbol{\theta}_{\overline{m}}\vert Y^{n}}^{0} = \P_{\boldsymbol{\theta}_{\overline{m}}}$, define for any $\eta$ in $\N^{\star}$, $Y^{n}$ in $\Xi^{n}$, and $m$ in $\llbracket 1, G \rrbracket$, the following quantity
+\begin{alignat*}{3}
+& \exp[\Upsilon^{\eta}(Y^{n}, m)] &&:=&& \int_{\Theta}L(\boldsymbol{\theta}, Y^{n}) \, ( \d \P_{\boldsymbol{\theta}_{\overline{m}}\vert Y^{n}}^{\eta-1})/( \d \mathds{Q}^{\circ})(m, \boldsymbol{\theta}) \d \mathds{Q}^{\circ}(\boldsymbol{\theta})\\
+& && = && \int_{\Theta} \exp\left[ - \left((1/2) \sum\nolimits_{\vert s \vert \leq m} \vert \boldsymbol{\theta}(s) \vert^{2} + \eta l(\boldsymbol{\theta}, y^{n})\right) \right]\d\mathds{Q}^{\circ}(\boldsymbol{\theta}).
+\end{alignat*}
+
+The iterated posterior distribution of the threshold parameter is given, for any $m$ in $\llbracket 1, G \rrbracket$ and $y^{n}$ in $\Xi^{n}$ by:
+\begin{alignat*}{2}
+&\P_{M \vert Y^{n}}^{\eta}&&(m, y) \propto \exp\left[\pen(m) + \eta \Upsilon^{\eta}(y^{n}, m)\right] \mathds{1}_{\{m \leq G\}}\\
+& && = \left(\sum\nolimits_{k \in \llbracket 1, G \rrbracket}\exp\left[\eta \left(\Upsilon^{\eta}(y^{n}, k) - \eta \Upsilon^{\eta}(y^{n}, m)\right) + \left(\pen(k) - \pen(m)\right)\right]\right)^{-1} \mathds{1}_{\{m \leq G\}}.
+\end{alignat*}
+\end{pr}
+
+\begin{pro}{\textsc{Proof of \nref{PR_BAYES_HIERARCHICAL_ITERATED}} \\}\label{PRO_BAYES_HIERARCHICAL_ITERATED}
+\begin{alignat*}{3}
+& \P_{M \vert Y^{n}}(m, y^{n}) &&\propto&& (\d\P_{M, Y^{n}}/\d\P^{\circ})(m, y^{n})\\
+& && \propto && \int_{\Theta}(\d\P_{M, Y^{n}, \boldsymbol{\theta}_{\overline{m}}}/\d\P^{\circ} \, d\Q^{\circ})(m, y^{n}, \theta)\d\mathds{Q}^{\circ}(\theta)\\
+& &&\propto&&\int_{\Theta}(\d\P_{Y^{n} \vert M, \boldsymbol{\theta}_{\overline{M}}}/\d\P^{\circ})(m, y^{n}, \boldsymbol{\theta}) \cdot (\d\P_{M, \boldsymbol{\theta}_{\overline{M}}}/\d\mathds{Q}^{\circ})(m, \theta)\d\mathds{Q}^{\circ}(\theta)\\
+& &&\propto&&\int_{\Theta}(\d\P_{Y^{n} \vert \boldsymbol{\theta}_{\overline{M}}}/\d\P^{\circ})(y^{n}, \theta) \cdot (\d\P_{\boldsymbol{\theta}_{\overline{M}}\vert M}/\d\mathds{Q}^{\circ})(m, \theta) \cdot \P_{M}(m)\d\mathds{Q}^{\circ}(\boldsymbol{\theta})\\
+& &&\propto&& \P_{M}(m) \cdot \int_{\Theta}(\d\P_{Y^{n} \vert \boldsymbol{\theta}_{\overline{M}}}/\d\P^{\circ})(y^{n}, \theta) \cdot (\d\P_{\boldsymbol{\theta}_{\overline{m}}}/\d\mathds{Q}^{\circ})(m, \theta) \cdot \d\mathds{Q}^{\circ}(\boldsymbol{\theta})\\
+& && = && \frac{\d\P_{M}(m) \cdot \int_{\Theta}( \d \P_{Y^{n} \vert \boldsymbol{\theta}_{\overline{m}}}/\d\P^{\circ})(y^{n}, \boldsymbol{\theta}) \cdot (\d\P_{\boldsymbol{\theta}_{\overline{m}}}/ \d\mathds{Q}^{\circ})(m, \boldsymbol{\theta}) \cdot \d\mathds{Q}^{\circ}(\boldsymbol{\theta})}{\sum\nolimits_{\vert s \vert \leq G} \P_{M}(s) \cdot \int_{\Theta}(\d\P_{Y^{n} \vert \boldsymbol{\theta}_{\overline{m}}}/\d\P^{\circ})(y^{n}, \theta) \cdot (\d\P_{\boldsymbol{\theta}_{\overline{m}}}/\d\mathds{Q}^{\circ})(s, \boldsymbol{\theta}) \d\mathds{Q}^{\circ}(\boldsymbol{\theta})}\\
+& && = && \frac{\exp[\pen(m)] \int_{\Theta_{\overline{m}}}\exp[-(1/2)(2 l(y^{n}, \boldsymbol{\theta}) + \sum\nolimits_{\vert s \vert \leq m} \vert \boldsymbol{\theta}(s) \vert^{2})] \d\mathds{Q}^{\circ}(\boldsymbol{\theta})}{\sum\nolimits_{\vert s \vert \leq G}\exp[\pen(s)] \int_{\Theta_{\overline{s}}}\exp[-(1/2)(2 l(y^{n}, \boldsymbol{\theta}) + \sum\nolimits_{\vert s' \vert \leq s} \vert \boldsymbol{\theta}(s') \vert^{2})] \d\mathds{Q}^{\circ}(\boldsymbol{\theta})}.
+\end{alignat*}
+\proEnd
+\end{pro}
+
+From this expression for the iterated posterior distribution we can deduce the self informative Bayes carrier.
+
+\begin{lm}\label{LM_BAYES_HIERARCHICAL_LIMIT}
+Note $\Upsilon(m) := \lim\nolimits_{\eta \rightarrow \infty} \Upsilon^{\eta}(y^{n}, m)$.
+
+The support of the self informative Bayes carrier for $M$ is $\argmax\nolimits_{m \leq G} \{\Upsilon(m)\}$.
+\reEnd
+\end{lm}
+
+Unfortunately, in many practical cases, the choice led by $\argmax\nolimits_{m \subset G} \{\Upsilon(y^{n}, m)\}$ is $G$ itself and leads to inconsistent or suboptimal inference (as we will show later).
+However, if one allows the prior distribution to depend on $\eta$ and to take the shape $\exp[- \eta \pen(m)] \mathds{1}_{m \subset G}$, we obtain the following result.
+
+\begin{thm}\label{THM_BAYES_HIERARCHICAL_LIMITTHRESHOLD}
+Using the modified prior which depends on $\eta$, the support of the self informative Bayes carrier for the hyper-parameter $M$ is $\argmax\nolimits_{m \subset G} \{\Upsilon(m) + \pen(m)\}$.
+\reEnd
+\end{thm}
+
+\begin{pro}{\textsc{Proof of \nref{THM_BAYES_HIERARCHICAL_LIMITTHRESHOLD}}\\}\label{PRO_BAYES_HIERARCHICAL_THRESHOLD}
+For any $m \leq G$ such that $\Upsilon(m) - \pen(m) < \max\nolimits_{k \leq G} \Upsilon(k) - \pen(k)$, there exist a value of $\eta_{\circ}$ such that, for any $\eta$ greater than $\eta_{\circ}$, $\Upsilon^{\eta}(m) + \pen(m) < \max\nolimits_{k \leq G} \Upsilon^{\eta}(k) + \pen(k)$ we can hence write
+\begin{alignat*}{3}
+& \P_{M \vert Y^{n}}^{\eta}(m) && = && (\sum\nolimits_{k \leq G}\exp\left[\eta \left(\Upsilon^{\eta}(k) - \Upsilon^{\eta}(m) + \left(\pen(k) - \pen(m)\right)\right)\right])^{-1} \mathds{1}_{\{m \leq G\}}\\
+& && \leq && (\exp\left[\eta \left(\max\nolimits_{k \leq G}\left(\Upsilon^{\eta}(k) + \pen(k)\right) - \left(\Upsilon^{\eta}(m) + \pen(m)\right)\right)\right])^{-1} \mathds{1}_{\{m \leq G\}}\\
+& && \rightarrow && 0.
+\end{alignat*}
+As $\sum_{m \in \N} \P_{M \vert Y^{n}}^{\eta}(m) = 1$ for any $\eta$, we have, thanks to the dominated convergence theorem, that for any subset $\mathds{G}$ of $\llbracket 1, G \rrbracket$ which does not intersect with $\argmax_{k \in \llbracket 1, G \rrbracket} \{\Upsilon^{\eta}(k) + \pen(k)\}$, $\P_{M \vert Y^{n}}^{\eta}(\mathds{G}) = 0$.
+\proEnd
+\end{pro}
+
+Now that we determined the posterior distribution for the hyper-parameter, we can compute the posterior distribution for $\boldsymbol{\theta}_{\overline{M}}$ itself.
+
+\begin{pr}\label{PR_BAYES_HIERARCHICAL_ITER}
+The iterated posterior distribution is given by:
+\begin{alignat*}{2}
+&(\d\mathds{Q}_{\boldsymbol{\theta}_{\overline{M}} \vert Y}^{\eta} && /\d\P^{\circ})(\boldsymbol{\theta}, y) = \sum\nolimits_{m \leq G} (\d\P_{\boldsymbol{\theta}_{\overline{M}} \vert Y}^{\eta}/\d\mathds{Q}^{\circ})(\boldsymbol{\theta}, y, m) \cdot (\d\P_{M \vert Y}^{\eta}/\d\P^{\circ})(m, y)\\
+& && = \sum\nolimits_{m \leq G} \frac{\exp\left[-\left((1/2)\sum\nolimits_{\vert s \vert \leq m} \vert \boldsymbol{\theta}(s) \vert^{2} + \eta l(\boldsymbol{\theta}, y)\right)\right] \cdot \prod\nolimits_{ \{ \vert s \vert > m \} } \delta_{0}(\boldsymbol{\theta}(s))}{\int_{\Theta_{\overline{m}}} \exp\left[-\left((1/2)\sum\nolimits_{\vert s \vert \leq m} \vert \mu(s) \vert^{2} + \eta l(\mu, y)\right)\right] \d\Q^{\circ}(\mu)}\\
+& && \cdot \frac{\exp[\pen(m) + \eta \Upsilon^{\eta}(Y, m)]}{\sum\nolimits_{j \leq G}\exp[\pen(j) + \eta \Upsilon^{\eta}(Y, j)]} \mathds{1}_{m \subset G}
+\end{alignat*}
+\reEnd
+\end{pr}
+
+\begin{pro}{\textsc{Proof for \nref{PR_BAYES_HIERARCHICAL_ITER} \\}}\label{PRO_BAYES_HIERARCHICAL_ITER}
+\begin{alignat*}{2}
+&(\d\mathds{Q}&&_{\boldsymbol{\theta}_{\overline{M}} \vert Y}/\d\P^{\circ})(\boldsymbol{\theta}, y) \propto (\d\P_{\boldsymbol{\theta}_{\overline{M}}, Y}/\d\mathds{Q}^{\circ} \d\P^{\circ})(\boldsymbol{\theta}, y)\\
+& &&\propto \sum\nolimits_{m \leq G} (\d\P_{\boldsymbol{\theta}_{\overline{M}}, Y, M}/\d\mathds{Q}^{\circ} \d\P^{\circ})(\boldsymbol{\theta}, y, m)\\
+& &&\propto \sum\nolimits_{m \leq G} (\d\P_{\boldsymbol{\theta}_{\overline{M}} \vert Y, M}/\d\mathds{Q}^{\circ})(\boldsymbol{\theta}, y, m) \cdot (\d\P_{Y, M}/\d\P^{\circ})(y, m)\\
+& &&\propto \sum\nolimits_{m \leq G} (\d\P_{\boldsymbol{\theta}_{\overline{m}} \vert Y}/\d\mathds{Q}^{\circ})(\theta, y, m) \cdot (\d\P_{M \vert Y}/\d\P^{\circ})(m, y) \cdot (\d\P_{Y}/\d\P^{\circ})(y)\\
+& &&= \sum\nolimits_{m \leq G} (\d\P_{\boldsymbol{\theta}_{\overline{m}} \vert Y}/\d\mathds{Q}^{\circ})(\theta, y, m) (\d\P_{M \vert Y}/\d\P^{\circ})(m, y).
+\end{alignat*}
+\proEnd
+\end{pro}
+
+And as a consequence, we can deduce the self informative Bayes carrier.
+
+\begin{thm}\label{THM_BAYES_HIERARCHICAL_LIMIT}
+Denote $\widehat{m} := \argmax\nolimits_{m \leq G} \{\Upsilon(Y, m) + \pen(m)\}$ then the support of the self informative Bayes carrier is contained in $\argmax\nolimits_{\theta \in \Theta_{m}, m \in \widehat{m}}\{-l(\theta, Y)\}$.
+\end{thm}
+
+We have hence seen in these two first sections investigated the behaviour of the sieve prior and its hierarchical version under the iterative asymptotic and shown that under some mild assumptions, their self informative Bayes carriers correspond to some constrained maximum likelihood estimator and penalised contrast model selection version of it respectively.
+
+We should now investigate the behaviour of these (iterated) posteriorii under the noise asymptotic and define hypotheses under which they behave properly.

@@ -1,0 +1,294 @@
+\section{Examples of inverse problems}\label{1.4}
+
+\subsection{Inverse Gaussian sequence space}\label{1.4.1}
+Consider the Gaussian process $Y(x)$, defined on $[0, 1[$ with constant volatility $\frac{1}{n}$ with $n$ in $\mathds{N}^{\star}$ and mean process $f \star g$ where $f$ and $g$ are functions from $[0, 1[$ to $\mathds{R}$.
+In short, we have $dY(x) = (f \star g)(x) dx + \frac{1}{n} dW(x)$ where $W$ is the Brownian motion.
+We want to estimate $f$ while observing a realisation of $Y$.
+We assume that $g$ is known.
+
+
+
+We denote $\theta$ and $\lambda$ respectively the Fourier transforms of $f$ and $g$ respectively.
+
+The likelihood with respect to the standard Brownian motion, noted $\P^{\circ}$, for this model can be written as follows (see \ncite{liptser2013statistics})
+\[\frac{d \P_{Y^{n} \vert f, g}^{n}}{d \P^{\circ}} \propto \exp\left[\int_{[0, 1[} \frac{1}{\sqrt{n}} (f \star g)(x) dW(x) - \frac{1}{2} \left\Vert \frac{f \star g}{\sqrt{n}} \right\Vert^{2}\right].\]
+
+We use the fact that the volatility of the process is constant and the properties of the Fourier transform to show that there exist a sequence of independent random variables with standard normal distribution such that the likelihood of the Fourier transform of the process is given by:
+\[\frac{d\P^{n}_{Y^{n} \vert (\theta, \lambda)}}{d \P^{\circ}} \propto \exp\left[ -\frac{1}{2}\sum\limits_{j \in \mathds{Z}} \frac{\left(\theta_{j} \lambda_{j} - \xi_{j}\right)^{2}}{\sqrt{n}}\right].\]
+Therefore, the Fourier transform of the observed process follows a Gaussian process indexed by $\mathds{Z}$, with mean $\theta \cdot \lambda$ and variance $\frac{1}{n}$.
+
+Note that is the volatility was not constant, we would obtain
+\[\frac{d\P^{n}_{Y^{n} \vert (\theta, \lambda)}}{d \P^{\circ}} \propto \exp\left[ -\frac{1}{2}\sum\limits_{j \in \mathds{Z}} \left((\sigma \star (\theta \lambda))_{j} - \xi_{j}\right)^{2}\right].\]
+The mean process would hence be $\sigma \star (\theta \cdot \lambda)$, which can be rewritten as an inverse problem with a non diagonal operator, more precisely a Toeplitz operator.
+We do not consider this case in this thesis.
+
+Another motivation for this model is the heat equation.
+\textcolor{red}{Heat equation + oracle rate for projection estimate + minimax rate (so all notations are introduced before moving on)}
+
+\subsection{Circular density deconvolution}\label{1.4.2}
+
+The circular deconvolution model is defined as follows: let $X$ and $\epsilon$ be circular random variables (that is to say, taking values in the unit circle, identified to the interval $[0,1[$) with respective distributions $\mathds{P}^{X}$ and $\mathds{P}^{\epsilon}$ and densities $f^{X}$ and $f^{\epsilon}$ with respect to some common and known dominating measure $\mu$ on $([0, 1[, \mathcal{A})$.
+We would hence write for any $x$ in $[0, 1[$, $f^{X}(x) = \frac{d \mathds{P}^{X}}{d \mu} (x)$ for instance.
+
+\begin{de}{\textsc{Modular addition}\\}\label{de1.4.1}
+From now on we denote by $\Box$ the modular addition on $[0,1[$. That is to say
+\[\forall (x, y) \in [0,1[^{2}, \quad x\Box y = x+y [1] = x + y - \lfloor x + y \rfloor.\]
+\end{de}
+
+The object of interest is $f^{X}$ while we only observe identically distributed replications $Y^{n} = \left(Y_{k}\right)_{k \in \llbracket 1, n \rrbracket}$ of the random variable $Y$, defined by $Y := X \Box \epsilon$.
+We note $\mathds{P}^{Y}$ the distribution of the random variable $Y$ and $f^{Y}$ its density with respect to $\mu$.
+One would notice that $\mathds{P}^{Y}$ and $f^{Y}$ are respectively given, for any $A$ in $\mathcal{A}$ and $y$ in $[0, 1[$, by $\mathds{P}^{Y}(A) = (\mathds{P}^{X} * \mathds{P}^{\epsilon})(A) = \int\limits_{[0,1[}\int\limits_{[0,1[} \mathds{1}_{A}(x \Box s)d\mathds{P}^{X}(x)d\mathds{P}^{\epsilon}(s)$ and $f^{Y}(y) = (f^{X} * f^{\epsilon})(y) = \int\limits_{0}^{1} f^{X}(y \Box (- s))f^{\epsilon}(s)d\mu(s)$.
+Indeed, for any $\mu$-measurable and $\mu$-almost surely bounded function $g$, we have
+\begin{alignat*}{3}
+&\mathds{E}\left[g(Y)\right] &&=&& \mathds{E}\left[g(X \Box \epsilon)\right]\\
+& &&=&&\int\limits_{0}^{1}\int\limits_{0}^{1} g(x \Box s) d\mathds{P}^{X}(x)d\mathds{P}^{\epsilon}(s)\\
+& &&=&&\int\limits_{0}^{1}\int\limits_{0}^{1} g(y) d\mathds{P}^{X}(y \Box (-s))d\mathds{P}^{\epsilon}(s)\\
+& &&=&&\int\limits_{0}^{1} g(y) \int\limits_{0}^{1} d\mathds{P}^{\epsilon}(s) d\mathds{P}^{X}(y \Box (-s))\\
+& &&=&&\int\limits_{0}^{1} g(y) \int\limits_{0}^{1}f^{X}(y \Box (- s)) f^{\epsilon}(s)d\mu(s) d\mu(y);
+\end{alignat*}
+one should note that the integrals above converge, according to the dominated convergence theorem.
+
+We will thus note $\mathcal{D}_{\mu}([0,1[)$ the space of densities on $[0, 1[$ with respect to $\mu$.
+Moreover we write indifferently $^{*}\cdot$ the unary operator which associates to a distribution itself convoluted with $\mathds{P}^{\epsilon}$ and the unary operator which associates to a density itself convoluted with $f^{\epsilon}$.
+That is to say, given a probability measure $\mathds{P}$ on $\left([0, 1[, \mathcal{A}\right)$, $^{*}\mathds{P}$ is such that, for any $A$ in $\mathcal{A}$, $^{*}\mathds{P}_{f}(A) = (\mathds{P}^{\epsilon}*\mathds{P}_{f})(A)$.
+And for any element $f$ of $\mathcal{D}_{\mu}([0, 1[)$, $^{*}f$ is such that, for any $x$ in $[0, 1[$, $^{*}f(x) = (f * f^{\epsilon})(x)$.
+The model can therefore at first be written $\left([0,1[^{n}, ^{*}\mathds{P}_{f}, f\in\mathcal{D}_{\mu}([0,1[) \right)$, where $\mathds{P}_{f}$ is the probability distribution with density $f$ with respect to $\mu$.
+
+\textcolor{red}{I think it should be possible to show that $\mathds{P}^{\epsilon}$ does not have to be continuous w.r.t $\mu$ and that $\mathds{P}^{Y}$ would be anyway. Hence we do not need a density for $\mathds{P}^{\epsilon}$ and we can compute the Fourier transform of the distribution anyway.}
+
+\medskip
+
+\begin{rem}{\textsc{Positive (semi-)definitiveness}\\}\label{rem1.4.1}
+A sequence/function $[f]$ from $\mathds{Z}$ to $\mathds{C}$ is positive (semi-)definite iff, for any finite subset $\left\{x_{1}, \hdots, x_{n}\right\}$, the Toeplitz matrix $A=(a_{i,j})_{(i,j) \in \llbracket 1, n \rrbracket^{2}}$ with $a_{i,j}$ defined by $[f](x_{i} - x_{j})$ is positive (semi-)definite.
+
+In particular, this requires that $[f](x) = \overline{[f](-x)}$, $[f](0) > 0$ and for all $x$, $[f](x) \leq [f](0).$
+\end{rem}
+
+\medskip
+
+Then, by denoting $\mathcal{M}([0, 1[)$ the set of all probability measures on $[0,1[$ and $\mathcal{S}^{+}(\mathds{Z})$ the set of all positive definite, complex valued, functions $[f]$ on $\mathds{Z}$ with $[f](0)=1$, we define the Fourier transform.
+
+\begin{de}{\textsc{Fourier transform of measures}\\}\label{de1.4.2}
+We denote by $\mathcal{F}$ the Fourier transform operator on measures :
+\begin{alignat*}{4}
+&\mathcal{F} : \quad && \mathcal{M}([0, 1[) &&\rightarrow&& \mathcal{S}^{+}(\mathds{Z})\\
+& && \nu && \mapsto && \left(j \mapsto \int\limits_{0}^{1} \exp\left[- 2 i \pi j x\right] d\nu(x)\right).
+\end{alignat*}
+\end{de}
+
+\begin{nota}{\textsc{Fourier basis functions}\\}\label{nota1.4.1}
+As we will operate in the frequency domain for most of the remaining note, it is convenient to use the following notation for the orthonormal basis used in Fourier transform :
+\[\forall j \in \mathds{Z}, \forall x \in [0, 1[, \quad e_{j}(x) := \exp[- 2 i \pi j x].\]
+\end{nota}
+
+\begin{rmk}\label{rmk1.4.1}
+It is convenient to note that for any $x$ and $s$ in $[0, 1[$ and $j$ in $\mathds{Z}$, we have $e_{j}[x \Box s] = e_{j}[x]e_{j}[s]$, due to the periodicity of the complex exponential function.
+\end{rmk}
+
+As we are interested in densities of probability distributions dominated by a common measure $\mu$ we define the Fourier transform with respect to $\mu$.
+
+\begin{de}{\textsc{Fourier transform of densities}\\}\label{de1.4.3}
+We denote by $\mathcal{F}_{\mu}$ the Fourier transform operator of densities with respect to the measure $\mu$ :
+\begin{alignat*}{4}
+&\mathcal{F}_{\mu} : \quad && \mathcal{D}_{\mu}([0,1[) &&\rightarrow&& \mathcal{S}^{+}(\mathds{Z})\\
+& && f && \mapsto && \left(j \mapsto \int\limits_{0}^{1} e_{j}(x) f(x) d\mu(x)\right).
+\end{alignat*}
+\end{de}
+
+\begin{nota}{\textsc{Fourier transform of useful functions}\\}\label{nota1.4.2}
+From now on we adopt the following notations for the functions which will appear regularly :
+\begin{alignat*}{4}
+&\forall j \in \mathds{Z}, && \theta^{\circ}_{j} := \mathcal{F}_{\mu}(f^{X})(j);\\
+& && \lambda_{j} := \mathcal{F}_{\mu}(f^{\epsilon})(j);\\
+&\forall f \in \mathcal{D}_{\mu}([0, 1[), \forall j \in \mathds{Z}, \quad && [f](j) := \mathcal{F}_{\mu}(f)(j).\\
+\end{alignat*}
+\end{nota}
+
+Obviously, we have
+\begin{alignat*}{4}
+&\forall j \in \mathds{Z}, && \mathcal{F}(f^{Y})(j)&&=&&\int\limits_{0}^{1} e_{j}(y) \mathds{P}^{Y}(dy)\\
+& && &&=&&\int\limits_{0}^{1}\int\limits_{0}^{1} e_{j}(x \Box s) \mathds{P}^{X}(dx)\mathds{P}^{\epsilon}(ds)\\
+& && &&=&&\int\limits_{0}^{1}e_{j}(s)\int\limits_{0}^{1} e_{j}(x) \mathds{P}^{X}(dx)\mathds{P}^{\epsilon}(ds)\\
+& && &&=&&\int\limits_{0}^{1}e_{j}(s)\mathds{P}^{\epsilon}(ds)\int\limits_{0}^{1} e_{j}(x)\mathds{P}^{X}(dx)\\
+& && &&=&&\mathcal{F}(\mathds{P}^{\epsilon})(j) \mathcal{F}(\mathds{P}^{X})(j)\\
+%& && &&=&&\int\limits_{0}^{1} \exp\left[- 2 i \pi j y\right] f^{Y}(y)\mu(dy)\\
+& && &&=&&\int\limits_{0}^{1} f^{\epsilon}(s) e_{j}(s) d\mu(s) \int\limits_{0}^{1} e_{j}(x) f^{X}(x)\mu(dx)\\
+& && &&=&&\mathcal{F}_{\mu}(f^{\epsilon})(j) \mathcal{F}_{\mu}(f^{X})(j)\\
+& && &&=&& \theta^{\circ}_{j} \lambda_{j}
+\end{alignat*}
+so the Fourier transform, exchanges convolution with point-wise product.
+
+\medskip
+
+The following theorem, which is a special case of Bochner's theorem, allows us to formulate an inverse for the Fourier transform.
+
+\begin{thm}{\textsc{Herglotz's representation theorem}\\}\label{thm1.4.1}
+A function $[f]$ from $\mathds{Z}$ to $\mathds{C}$ with $[f](0) = 1$ is semi-definite positive iff there exist $\mu$ in $\mathcal{M}([0, 1[)$ such that for all $j$ in $\mathds{Z}$, we have
+\[[f](j) = \int\limits_{[0, 1[} \exp[- 2 i \pi j x] d\mu(x).\]
+\end{thm}
+
+The properties of the set $\mathcal{S}^{+}(\mathds{Z})$ can be interpreted as follow :
+
+\begin{alignat*}{5}
+& && \mathcal{F}(f)(j)&&=&& \overline{\mathcal{F}(f^{Y})(-j)}&& \quad f \text{ is real valued;}\\ 
+& && \mathcal{F}(f)(0) &&=&& 1&& \quad f \text{ integrates at }1;\\
+\end{alignat*}
+and $\mathcal{F}(f)$ positive semi-definitive implies the positivity of $f$.
+
+The Fourier transform being bijective, one can safely write its inversion and we have, for any function $[f]$ in $\mathcal{S}^{+}$ :
+\begin{alignat*}{4}
+&\forall A \in \mathcal{A},&& \quad \mathcal{F}^{-1}[f](A) &&=&& \int\limits_{A}\sum\limits_{j \in \mathds{Z}} [f](j)e_{j}(x)dx;\\
+&\forall x \in [0, 1[,&& \quad \mathcal{F}_{\mu}^{-1}[f](x) &&=&& \sum\limits_{j \in \mathds{Z}} [f](j)e_{j}(x).
+\end{alignat*}
+
+However, in the most general case, the above mentioned series do not necessarily converge and one would need to consider the densities on our model as Schwartz distributions (see \ncite{Bill86}).
+We avoid this difficulty by assuming the considered distributions dominated by the Lebesgue measure.
+We hence drop the $\mu$ index from now on (and, for example note $\mathcal{D}([0,1[)$ instead of $\mathcal{D}_{\mu}([0, 1)$).
+
+We will hence consider the model written in these terms : $\left([0, 1[^{n}, \mathds{P}_{[f]}, f \in \mathcal{S}^{+}(\mathds{Z})\right)$; where $\mathds{P}_{[f]}$ is the distribution which admits the density with respect to $\mu$ which Fourier transform is $[f]$.
+
+\medskip
+
+As a concluding note for this section, let us mention the risk we will use to formulate optimality of the different inference methods described there after.
+For a given, strictly positive real number, we define the usual scalar product on $\mathcal{D}([0,1[)$ :
+
+\begin{de}{\textsc{Scalar product $\langle \cdot \vert \cdot\rangle_{L^{2}}$ on $\mathcal{D}([0,1[)$}\\}\label{de1.4.4}
+We define the scalar product
+\begin{alignat*}{4}
+& \langle \cdot \vert \cdot \rangle_{L^{2}} : && \quad \mathcal{D}([0,1[) \times \mathcal{D}([0,1[) && \rightarrow && \overline{\mathds{R}}.\\
+& && \quad (f, g) && \mapsto && \int\limits_{[0, 1[} f(x) \overline{g(x)} dx
+\end{alignat*}
+\end{de}
+
+We obtain with this scalar product the natural $L^{2}$ norm :
+\begin{de}{\textsc{$L^{2}$-norm $\Vert \cdot \Vert_{L^{2}}$ on $\mathcal{D}([0,1[)$}\\}\label{de1.4.5}
+We define the norm
+\begin{alignat*}{4}
+& \Vert \cdot \Vert_{L^{2}} : && \mathcal{D}([0,1[) && \rightarrow && \overline{\mathds{R}_{+}}.\\
+& && f && \mapsto && \langle f \vert f \rangle_{L^{2}}^{1/2} = \left(\int\limits_{[0, 1[} \vert f(x)\vert^{2} dx\right)^{1/2}
+\end{alignat*}
+\end{de}
+
+For statistical inference it is generally necessary to assume that the objects of interest have finite norm.
+We hence define the space $\mathds{L}^{2}$:
+\begin{de}{\textsc{Space $\mathds{L}^{2}$ of functions}\\}\label{de1.4.6}
+We define the set
+\[\mathds{L}^{2} := \left\{f \in \mathcal{D}([0, 1[) : \Vert f \Vert_{L^{2}} < \infty \right\}.\]
+\end{de}
+
+It is common to consider the larger family of norms $\Vert \cdot \Vert_{L^{p}}$ for any number $p$ in $[1, \infty]$ which however do not define an inner product space :
+\begin{de}{\textsc{$L^{p}$-norm $\Vert \cdot \Vert_{L^{p}}$ on $\mathcal{D}([0,1[)$}\\}\label{de1.4.7}
+We define the norm
+\begin{alignat*}{4}
+& \Vert \cdot \Vert_{L^{p}} : && \mathcal{D}([0,1[) && \rightarrow && \overline{\mathds{R}_{+}}.\\
+& && f && \mapsto && \left(\int\limits_{[0, 1[} \vert f(x)\vert^{p} dx\right)^{1/p}
+\end{alignat*}
+\end{de}
+
+Obviously one can define the associated spaces:
+\begin{de}{\textsc{Space $\mathds{L}^{p}$ of functions}\\}\label{de1.4.8}
+We define the set
+\[\mathds{L}^{p} := \left\{f \in \mathcal{D}([0, 1[) : \Vert f \Vert_{L^{p}} < \infty \right\}.\]
+\end{de}
+
+A last kind of norm which is of interest are the weighted norms.
+Using a weighted norm as loss function allows to give more interest to some specific features of the functions (high or low frequencies for example).
+\begin{de}{\textsc{$L^{p}_{\mathfrak{u}}$-norm $\Vert \cdot \Vert_{L^{p}_{\mathfrak{u}}}$ on $\mathcal{D}([0,1[)$}\\}\label{de1.4.9}
+Consider a distribution $\mathfrak{u}$ from $[0,1[$ to $\mathds{R}$.
+We define the norm
+\begin{alignat*}{4}
+& \Vert \cdot \Vert_{L^{r}_{\mathfrak{u}}} : && \mathcal{D}([0,1[) && \rightarrow && \overline{\mathds{R}_{+}}.\\
+& && f && \mapsto && \left(\int\limits_{[0, 1[} \vert (f*\mathfrak{u})(x)\vert^{p} dx\right)^{1/p}
+\end{alignat*}
+In particular, if $\mathfrak{u}$ is the Dirac distribution in $0$, we find the definition of $\Vert \cdot \Vert_{L^{p}}$.
+\end{de}
+
+We finally define the associated spaces:
+\begin{de}{\textsc{Space $\mathds{L}_{\mathfrak{u}}^{p}$ of functions}\\}\label{de1.4.10}
+We define the set
+\[\mathds{L}_{\mathfrak{u}}^{p} := \left\{f \in \mathcal{D}([0, 1[) : \Vert f \Vert_{L_{\mathfrak{u}}^{p}} < \infty \right\}.\]
+\end{de}
+
+Given that we use $\mathcal{S}^{+}(\mathds{Z})$ as a parameter space, it is interesting to compare the norms defined above to norms on this space.
+
+For this purpose, we introduce the dot product for sequences.
+\begin{de}{\textsc{Product $\cdot$ on $\mathcal{S}^{+}(\mathds{Z})$}\\}\label{de1.4.11}
+We define the bi-linear operator
+\begin{alignat*}{4}
+& \cdot : && \quad \mathcal{S}^{+}(\mathds{Z})^{2} &&\rightarrow&& \mathcal{S}^{+}(\mathds{Z})\\
+& && ([f], [g]) && \mapsto && [f]\cdot[g] := \left(j \mapsto [f](j)[g](j)\right).
+\end{alignat*}
+\end{de}
+
+We will also use the inner product of $\mathcal{S}^{+}(\mathds{Z})$
+\begin{de}{\textsc{Inner product $\left\langle \cdot \vert \cdot \right\rangle_{l^{2}}$ on $\mathcal{S}^{+}(\mathds{Z})$}\\}\label{de1.4.12}
+We define the operator
+\begin{alignat*}{4}
+& \left\langle \cdot \vert \cdot \right\rangle_{l^{2}} : && \quad \mathcal{S}^{+}(\mathds{Z})^{2} &&\rightarrow&& \overline{\mathds{C}}\\
+& && ([f], [g]) && \mapsto && \sum\limits_{j \in \mathds{Z}} ([f]\cdot\overline{[g]})(j).
+\end{alignat*}
+\end{de}
+
+This leads to the natural $l^{2}$-norm
+\begin{de}{\textsc{$l^{2}$-norm $\Vert \cdot \Vert_{l^{2}}$ on $\mathcal{S}^{+}(\mathds{Z})$}\\}\label{de1.4.13}
+We define the norm
+\begin{alignat*}{4}
+& \Vert \cdot \Vert_{l^{2}} : && \quad \mathcal{S}^{+}(\mathds{Z}) &&\rightarrow&& \overline{\mathds{R}_{+}}\\
+& &&\quad [f] && \mapsto && \left(\sum\limits_{j \in \mathds{Z}} \vert[f](j)\vert^{2}\right)^{1/2}.
+\end{alignat*}
+\end{de}
+
+It is common to consider the larger family of norms $\Vert \cdot \Vert_{l^{p}}$ for any number $p$ in $[1, \infty]$ which however do not define an inner product space :
+\begin{de}{\textsc{$l^{p}$-norm $\Vert \cdot \Vert_{l^{p}}$ on $\mathcal{S}^{+}(\mathds{Z})$}\\}\label{de1.4.14}
+We define the norm
+\begin{alignat*}{4}
+& \Vert \cdot \Vert_{l^{p}} : && \mathcal{S}^{+}(\mathds{Z}) && \rightarrow && \overline{\mathds{R}_{+}}.\\
+& && f && \mapsto && \left(\sum\limits_{j \in \mathds{Z}} \vert [f](j) \vert^{p}\right)^{1/p}
+\end{alignat*}
+\end{de}
+
+A last kind of norm which is of interest are the weighted norms.
+Using a weighted norm as loss function allows to give more interest to some specific features of the functions (high or low frequencies for example).
+\begin{de}{\textsc{$l^{p}_{\mathfrak{u}}$-norm $\Vert \cdot \Vert_{l^{p}_{\mathfrak{u}}}$ on $\mathcal{S}^{+}(\mathds{Z})$}\\}\label{de1.4.15}
+Consider an element $[\mathfrak{u}]$ of $\mathcal{S}^{+}(\mathds{Z})$.
+We define the norm
+\begin{alignat*}{4}
+& \Vert \cdot \Vert_{l^{p}_{[\mathfrak{u}]}} : && \mathcal{S}^{+}(\mathds{Z}) && \rightarrow && \mathds{R}_{+}.\\
+& && [f] && \mapsto && \left(\sum\limits_{j \in \mathds{Z}} \vert ([f]\cdot[\mathfrak{u}])(j)\vert^{p} dx\right)^{1/p}
+\end{alignat*}
+In particular, if $[\mathfrak{u}]$ is the sequence constantly equal to $1$, we find the definition of $\Vert \cdot \Vert_{l^{p}}$.
+\end{de}
+
+As previously, we define the spaces associated with these norms:
+\begin{de}{\textsc{Spaces $\mathcal{L}^{2}, \mathcal{L}^{p}, \mathcal{L}_{[\mathfrak{u}]}^{p}$ of functions}\\}\label{de1.4.16}
+We define the sets
+\begin{alignat*}{3}
+&\mathcal{L}^{2} &&:=&& \left\{[f] \in \mathcal{S}^{+}(\mathds{Z}) : \Vert [f] \Vert_{l^{2}} < \infty \right\};\\
+&\mathcal{L}_{\mathfrak{u}}^{p} &&:=&& \left\{[f] \in \mathcal{S}^{+}(\mathds{Z}) : \Vert [f] \Vert_{l^{p}} < \infty \right\};\\
+&\mathcal{L}_{[\mathfrak{u}]}^{p} &&:=&& \left\{[f] \in \mathcal{S}^{+}(\mathds{Z}) : \Vert [f] \Vert_{l_{[\mathfrak{u}]}^{p}} < \infty \right\}.
+\end{alignat*}
+\end{de}
+
+We have, for any $p$ in $[1 ,\infty]$ and $f$ in $\mathcal{D}([0, 1[)$.
+\begin{alignat*}{3}
+&\Vert f \Vert^{r}_{\mathfrak{u}} &&=&& \left(\int\limits_{[0, 1[} \vert (f*\mathfrak{u})(x)\vert^{p} dx\right)^{1/p}\\
+& &&=&& \left(\int\limits_{[0, 1[} \left\vert \sum\limits_{j \in \mathds{Z}}([f]\cdot [\mathfrak{u}])(j) \cdot e_{j}(x)\right\vert^{p} dx\right)^{1/p}\\
+& &&\leq&& \left(\int\limits_{[0, 1[} \sum\limits_{j \in \mathds{Z}}\left((\vert[f]\cdot [\mathfrak{u}])(j)\vert \cdot \vert e_{j}(x)\vert\right)^{p} dx\right)^{1/p}\\
+& &&\leq&& \left(\sum\limits_{j \in \mathds{Z}}\vert ([f]\cdot[\mathfrak{u}])(j)\vert^{p}\int\limits_{[0, 1[} \vert e_{j}(x)\vert^{r} dx\right)^{1/p}\\
+& &&\leq&& \left(\sum\limits_{j \in \mathds{Z}}\vert ([f] \cdot [\mathfrak{u}])(j)\vert^{p}\cdot 1\right)^{1/p}\\
+& &&\leq&& \Vert[f]\cdot [\mathfrak{u}]\Vert_{l^{p}}\\
+& &&\leq&& \Vert[f]\Vert_{l^{p}_{[\mathfrak{u}]}}.
+\end{alignat*}
+
+For the specific case of $p=2$, the theorem of Plancherel holds and we have
+\begin{alignat*}{3}
+&\Vert f \Vert^{2}_{\mathfrak{u}} &&=&& \Vert f * \mathfrak{u} \Vert^{2}\\
+& &&=&& \Vert [f] \cdot [\mathfrak{u}]\Vert_{l^{2}}\\
+& &&=&& \Vert [f] \Vert_{l_{[\mathfrak{u}]}^{2}}.
+\end{alignat*}
+
+We hence assume from now on that the parameter of interest has finite norm.
+
+\begin{as}\label{as1.4.1}
+The parameter of interest $\theta^{\circ}$ is in $\mathcal{L}_{[\mathfrak{u}]}^{p}$.
+\end{as}

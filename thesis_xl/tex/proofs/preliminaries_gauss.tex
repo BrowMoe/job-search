@@ -1,0 +1,15 @@
+\begin{lm}\label{lmA.1.1}
+Let $\{X_{j}\}_{j \geq 1}$ be independent and normally distributed random variables with real mean $\alpha_{j}$ and standard deviation $\beta_{j} \geq 0$. For $m \in \mathds{N}$, set $S_{m} := \sum \limits_{j = 1}^{m} X_{j}^{2}$ and consider $v_{m} \geq \sum\limits_{j = 1}^{m} \beta_{j}^{2}, t_{m} \geq \max \limits_{1 \leq j \leq m} \beta_{j}^{2}$ and $r_{m} \geq \sum\limits_{j = 1}^{m} \alpha_{j}^{2}$.
+Then for all $c \geq 0$, we have
+\begin{alignat*}{3}
+&\sup\limits_{m \geq 1} \exp\left[\frac{c (c \wedge 1) (v_{m} + 2 r_{m})}{4 t_{m}}\right]\mathds{P}\left(S_{m} - \mathds{E}[S_{m}] \leq - c (v_{m} + 2 r_{m})\right) &&\leq&& 1; \\
+&\sup\limits_{m \geq 1} \exp\left[\frac{c (c \wedge 1) (v_{m} + 2 r_{m})}{4 t_{m}}\right]\mathds{P}\left(S_{m} - \mathds{E}[S_{m}] \geq \frac{3 c}{2} (v_{m} + 2 r_{m})\right) &&\leq&& 1.
+\end{alignat*}
+\end{lm}
+
+\begin{lm}\label{lmA.1.2}
+Let $\{X_{j}\}_{j \geq 1}$ be independent and normally distributed random variables with real mean $\alpha_{j}$ and standard deviation $\beta_{j} \geq 0$. For $m \in \mathds{N}$, set $S_{m} := \sum \limits_{j = 1}^{m} X_{j}^{2}$ and consider $v_{m} \geq \sum\limits_{j = 1}^{m} \beta_{j}^{2}, t_{m} \geq \max \limits_{1 \leq j \leq m} \beta_{j}^{2}$ and $r_{m} \geq \sum\limits_{j = 1}^{m} \alpha_{j}^{2}$.
+Then for all $c \geq 0$, we have
+\[\sup\limits_{m \geq 1}(6 t_{m})^{-1} \exp\left[\frac{c (v_{m} + 2 r_{m})}{4 t_{m}}\right] \mathds{E}\left[S_{m} - \mathds{E}[S_{m}] - \frac{3}{2} c (v_{m} + 2 r_{m})\right]_{+} \leq 1\]
+with $(a)_{+} := (a \vee 0).$
+\end{lm}

@@ -1,0 +1,145 @@
+\section{Intermediate results}
+
+The proof of this theorem is mainly based on the one of \nref{THM3.4.1}.
+However, we need an altered version of \nref{DED.3.1} and \nref{PRD.3.2}.
+\begin{de}\label{DEC.4.1}
+Define the following quantities :
+\begin{alignat*}{3}
+& G_{n}^{-} &&:=&& \min\left\{m \in \llbracket 1, m_{n}^{\circ} \rrbracket : \quad \mathfrak{b}_{m}^{2} \leq 244 \mathfrak{b}_{0}^{2} \Phi^{\circ}_{n}\right\},\\
+& G_{n}^{+} &&:=&& \max \left\{m \in \llbracket m_{n}^{\circ}, n \rrbracket : \psi_{n} m \Lambda_{m} \leq \frac{59}{2} n \mathfrak{b}_{0}^{2} \Phi_{n}^{\circ} \right\}.
+\end{alignat*}
+\end{de}
+
+\begin{pr}\label{PRD.4.1}
+For any $n$ and $\eta$ in $\N$, with $\eta \geq 118 K$, we have
+\begin{alignat}{3}
+& \E_{\theta^{\circ}}^{n}\left[\P_{M \vert Y^{n}}^{n, (\eta)}\left(\llbracket 0, G^{-}_{n} - 1 \rrbracket\right)\right] && \leq && 4 m^{\circ}_{n} \exp\left[- K \left(\frac{2 \psi_{n} m^{\circ}_{n} \overline{\Lambda}_{m^{\circ}_{n}}}{\Lambda_{m^{\circ}_{n}} \Vert \theta^{\circ} \Vert_{l^{2}} \Vert \lambda \Vert_{l^{2}}} \wedge \sqrt{n \psi_{n}}\right)\right]\label{EQD.20}\\
+& \E_{\theta^{\circ}}^{n}\left[\P_{M \vert Y^{n}}^{n, (\eta)}\left(\llbracket G^{+}_{n} + 1, n \rrbracket\right)\right] && \leq && C_{\lambda, \theta^{\circ}} \exp\left[- K \left(2 \frac{\psi_{n} m^{\circ}_{n} \overline{\Lambda}_{m^{\circ}_{n}}}{\Lambda_{(m^{\circ}_{n})}\Vert \theta^{\circ} \Vert_{l^{2}} \Vert \lambda \Vert_{l^{2}}} \wedge \sqrt{n \psi_{n}}\right)\right]\label{EQD.21}
+\end{alignat}
+\end{pr}
+
+\begin{pr}\label{PRD.4.2}
+\begin{alignat}{2}
+& \sum\limits_{0 < \vert j \vert \leq n} && \Lambda_{j} \E_{\theta^{\circ}}^{n}\left[\left(\lambda_{j} \overline{\theta}_{j} - \lambda_{j} \theta^{\circ}_{j}\right)^{2} \P_{M \vert Y^{n}}^{n, (\eta)}\left(\llbracket \vert j \vert, n \rrbracket\right)\right]\notag \\
+& && \leq 28 \mathfrak{b}_{0}^{2} \Phi^{\circ}_{n} + \frac{1}{n} 12 C_{\lambda, \theta^{\circ}} \exp\left[- K \left(\frac{\psi_{n} 2 m^{\dagger}_{n}}{\Vert \lambda \Vert_{l^{2}} \Vert \theta^{\circ} \Vert_{l^{2}}} \wedge \sqrt{n \psi_{n}}\right) + \log\left(\psi_{n} n \Lambda_{n}\right)\right]\label{EQD.22}\\
+& \sum\limits_{0 < \vert j \vert \leq n} && \left(\theta^{\circ}_{j}\right)^{2} \E_{\theta^{\circ}}^{n}\left[\P_{M \vert Y^{n}}^{n, (\eta)}\left(\llbracket 0, j-1 \rrbracket \right)\right] + \sum\limits_{ \vert j \vert > n} \left( \theta^{\circ}_{j}\right)^{2}\notag\\
+& && \leq 59 \mathfrak{b}_{0}^{2} \Phi^{\dagger}_{n} + \frac{1}{n} 4 C_{\lambda, \theta^{\circ}} \exp\left[- K \left(\frac{\psi_{n} 2 m^{\circ}_{n}}{\Vert \lambda \Vert_{l^{2}} \Vert \theta^{\circ} \Vert_{l^{2}}} \wedge \sqrt{n \psi_{n}}\right) + \log\left(n m^{\dagger}_{n}\right)\right]\label{EQD.23}
+\end{alignat}
+\end{pr}
+
+\section{Detailed proofs}
+
+\begin{pro}{\textsc{Proof of \nref{PRD.4.1}} \\}\label{PROD.4.1}
+
+Building upon \nref{EQD.15}, consider $m$ in $\N$ such that $m < m^{\circ}_{n}$.
+Set $\Delta^{\star}_{m, m^{\circ}_{n}} = \Lambda_{(m^{\circ}_{n})}$ and $\delta^{\star}_{m, m^{\circ}_{n}} = m^{\circ}_{n}\overline{\Lambda}_{m^{\circ}_{n}}$, $\pen(k) = \kappa m \overline{\Lambda}_{m} \psi_{n}$, $\Phi^{\circ}_{n} = \left[\mathfrak{b}_{m^{\circ}_{n}}^{2}\mathfrak{b}_{0}^{2} \vee 2 \frac{m^{\circ}_{n} \overline{\Lambda}_{m^{\circ}_{n}}}{n} \psi_{n}\right]$, and finishing with $\kappa = \frac{47}{8}$,  such that they verify the hypotheses of \nref{PRD.3.1} and we obtain
+
+\begin{alignat}{4}
+& \E_{\theta^{\circ}}^{n}\left[\P_{M \vert Y^{n}}^{n, (\eta)}(m)\right] && \leq && \exp&&\left[\frac{\eta n}{2} \left(- \frac{3}{4} \mathfrak{b}_{m}^{2}(\theta^{\circ}) + \frac{63}{4} \frac{\psi_{n} m^{\circ}_{n} \overline{\Lambda_{m^{\circ}_{n}}}}{n} + \left(\frac{3}{4} \mathfrak{b}_{0}^{2}(\theta^{\circ}) + \kappa\right) \Phi^{\circ}_{n}\right)\right] +\notag\\
+& && && && 3 \exp\left[ -K \left(\frac{\psi_{n} 2 m^{\circ}_{n}\overline{\Lambda_{m^{\circ}_{n}}}}{\Lambda_{(m^{\circ}_{n})} \Vert \lambda \Vert_{l^{2}} \Vert \theta^{\circ} \Vert_{l^{2}}} \wedge \sqrt{n \psi_{n}} \right)\right]\notag\\
+& && \leq &&\exp&&\left[\frac{\eta n}{8} \left(- 3 \mathfrak{b}_{m}^{2}(\theta^{\circ}) + \frac{179}{2} \mathfrak{b}_{0}^{2}(\theta^{\circ}) \Phi^{\circ}_{n}\right)\right] +\notag\\
+& && && && 3 \exp\left[ -K \left(\frac{\psi_{n} 2 m^{\circ}_{n}\overline{\Lambda_{m^{\circ}_{n}}}}{\Lambda_{(m^{\circ}_{n})} \Vert \lambda \Vert_{l^{2}} \Vert \theta^{\circ} \Vert_{l^{2}}} \wedge \sqrt{n \psi_{n}} \right)\right].\label{EQD.24}
+\end{alignat}
+
+\medskip
+
+Building upon \nref{EQD.18}, consider $m$ in $\N$ such that $m > m^{\circ}_{n}$, for any $k$ we set $\pen(k) = \kappa k \overline{\Lambda}_{k} \psi_{n}$, and $\kappa = \frac{47}{8}$, we obtain
+
+\begin{alignat}{3}
+& \E_{\theta^{\circ}}^{n}\left[\P_{M \vert Y^{n}}^{n, (\eta)}(m)\right] && \leq && \exp\left[\frac{n \eta}{2}\left(\left(2 \kappa + \frac{5}{4} \mathfrak{b}_{0}^{2}(\theta^{\circ})\right) \Phi^{\circ}_{n} + \psi_{n} \frac{m \overline{\Lambda}_{m}}{n}\left(\frac{39}{4} - 2 \kappa \right) - \frac{5}{4} \mathfrak{b}_{m}^{2}(\theta^{\circ})\right)\right] +\notag\\
+& && && 3 \exp\left[ -K \left(\frac{\psi_{n} \delta^{\star}_{m, l}}{\Delta^{\star}_{m, l} \Vert \lambda \Vert_{l^{2}} \Vert \theta^{\circ} \Vert_{l^{2}}} \wedge \sqrt{n \psi_{n}} \right)\right]\notag\\
+& && \leq && \exp\left[\frac{n \eta}{2}\left(\frac{57}{8} \mathfrak{b}_{0}^{2}(\theta^{\circ}) \Phi^{\circ}_{n} - 2 \psi_{n} \frac{m \overline{\Lambda}_{m}}{n}\right)\right] +\notag\\
+& && && 3 \exp\left[ -K \left(\frac{\psi_{n} 2 m\overline{\Lambda_{m}}}{\Lambda_{(m)} \Vert \lambda \Vert_{l^{2}} \Vert \theta^{\circ} \Vert_{l^{2}}} \wedge \sqrt{n \psi_{n}} \right)\right]\label{EQD.25}.
+\end{alignat}
+
+\bigskip
+
+We will now conclude using the definitions of $G^{-}_{n}$ and $G^{+}_{n}$.
+
+Consider \nref{EQD.20}.
+As for all $m < G^{-}_{n}$, we have $\mathfrak{b}_{m}^{2}(\theta^{\circ}) > 244 \Phi^{\circ}_{n} \mathfrak{b}_{0}^{2}(\theta^{\circ})$ and using \nref{EQD.24}
+\begin{alignat*}{3}
+& \E_{\theta^{\circ}}^{n}\left[\P_{M \vert Y^{n}}^{n, (\eta)}\left(\llbracket 0, G^{-}_{n} - 1 \rrbracket\right)\right] && \leq && G^{-}_{n} \exp\left[- \frac{\mathfrak{b}_{0}^{2}(\theta^{\circ}) n \Phi^{\circ}_{n}}{2} \right] + 3 G^{-}_{n} \exp\left[ -K \left(\frac{\psi_{n} 2 m^{\circ}_{n}\overline{\Lambda_{m^{\circ}_{n}}}}{\Lambda_{(m^{\circ}_{n})} \Vert \lambda \Vert_{l^{2}} \Vert \theta^{\circ} \Vert_{l^{2}}} \wedge \sqrt{n \psi_{n}} \right)\right]\\
+& && \leq && 4 m^{\circ}_{n} \exp\left[ -K \left(\frac{\psi_{n} 2 m^{\circ}_{n}\overline{\Lambda_{m^{\circ}_{n}}}}{\Lambda_{(m^{\circ}_{n})} \Vert \lambda \Vert_{l^{2}} \Vert \theta^{\circ} \Vert_{l^{2}}} \wedge \sqrt{n \psi_{n}} \right)\right].
+\end{alignat*}
+
+Now for \nref{EQD.21}.
+As for all $m > G^{+}_{n}$, we have $\psi_{n} m \overline{\Lambda}_{m} > n \Phi^{\circ}_{n} \mathfrak{b}_{0}^{2} \cdot \frac{59}{2}$, fixing $\eta > 59 \cdot 2 \cdot K > \frac{59 \cdot 2 \cdot K}{\Lambda_{(G^{+}_{n}) \cdot \left\Vert \lambda \right\Vert \cdot \left\Vert \theta^{\circ} \right\Vert}}$ and using \nref{EQD.25}
+
+\begin{alignat*}{3}
+& \E_{\theta^{\circ}}^{n}&& &&\left[\P_{M \vert Y^{n}}^{n, (\eta)}\left(\llbracket G^{+}_{n} + 1, n \rrbracket\right)\right]\\
+& && \leq && \sum\limits_{G^{+} < m \leq n}\exp\left[\frac{n \eta}{2}\left(\frac{57}{8} \mathfrak{b}_{0}^{2}(\theta^{\circ}) \Phi^{\circ}_{n} - 2 \psi_{n} \frac{m \overline{\Lambda}_{m}}{n}\right)\right] +\notag\\
+& && && 3 \sum\limits_{G^{+} < m \leq n} \exp\left[ -K \left(\frac{\psi_{n} 2 m\overline{\Lambda_{m}}}{\Lambda_{(m)} \Vert \lambda \Vert_{l^{2}} \Vert \theta^{\circ} \Vert_{l^{2}}} \wedge \sqrt{n \psi_{n}} \right)\right]\\
+& && \leq && \sum\limits_{G^{+} < m \leq n} \exp\left[\eta\left(-\frac{\mathfrak{b}_{0}^{2}(\theta^{\circ}) n \Phi^{\circ}_{n}}{2} - \frac{\psi_{n} m \overline{\Lambda}_{m}}{2}\right)\right] +\notag\\
+& && && \exp\left[ -K \left(\frac{\psi_{n} 2 G^{+}_{n} \overline{\Lambda_{G^{+}_{n}}}}{\Lambda_{(G^{+}_{n})} \Vert \lambda \Vert_{l^{2}} \Vert \theta^{\circ} \Vert_{l^{2}}} \wedge \sqrt{n \psi_{n}} \right)\right]\cdot \sum\limits_{G^{+} < m \leq n} \frac{\exp\left[ -K \left(\frac{\psi_{n} 2 m\overline{\Lambda_{m}}}{\Lambda_{(m)} \Vert \lambda \Vert_{l^{2}} \Vert \theta^{\circ} \Vert_{l^{2}}} \wedge \sqrt{n \psi_{n}} \right)\right]}{\exp\left[ -K \left(\frac{\psi_{n} 2 G^{+}_{n} \overline{\Lambda_{G^{+}_{n}}}}{\Lambda_{(G^{+}_{n})} \Vert \lambda \Vert_{l^{2}} \Vert \theta^{\circ} \Vert_{l^{2}}} \wedge \sqrt{n \psi_{n}} \right)\right]}\\
+& && \leq && \exp\left[-\frac{\eta \mathfrak{b}_{0}^{2}(\theta^{\circ}) n \Phi^{\circ}_{n}}{2}\right]\sum\limits_{G^{+} < m \leq n} \exp\left[- \frac{\eta \psi_{n} m \overline{\Lambda}_{m}}{2}\right] +\\
+& && && \exp\left[ -K \left(\frac{\psi_{n} 2 G^{+}_{n} \overline{\Lambda_{G^{+}_{n}}}}{\Lambda_{(G^{+}_{n})} \Vert \lambda \Vert_{l^{2}} \Vert \theta^{\circ} \Vert_{l^{2}}} \wedge \sqrt{n \psi_{n}} \right)\right]\cdot \sum\limits_{1 < m \leq n} \exp\left[ -K \left(\frac{\psi_{n} 2 m\overline{\Lambda_{m}}}{\Lambda_{(m)} \Vert \lambda \Vert_{l^{2}} \Vert \theta^{\circ} \Vert_{l^{2}}} \wedge \sqrt{n \psi_{n}} \right)\right]\\
+& && \leq &&  C_{\lambda, \theta^{\circ}} \exp\left[ -K \left(\frac{\psi_{n} 2 G^{+}_{n} \overline{\Lambda_{G^{+}_{n}}}}{\Lambda_{(G^{+}_{n})} \Vert \lambda \Vert_{l^{2}} \Vert \theta^{\circ} \Vert_{l^{2}}} \wedge \sqrt{n \psi_{n}} \right)\right].
+\end{alignat*}
+
+Which completes the proof.
+
+\qedsymbol
+\end{pro}
+
+\begin{pro}{\textsc{Proof of \nref{PRD.4.2}} \\}\label{PROD.4.2}
+
+Begin with \nref{EQD.22}.
+
+We use this first decomposition in order to use \nref{EQD.21} and \nref{PRD.3.1}
+\begin{alignat*}{2}
+& \sum\limits_{0 < \vert j \vert \leq n} && \Lambda_{j} \left(\lambda_{j} \overline{\theta}_{j} - \lambda_{j} \theta^{\circ}_{j}\right)^{2} \P_{M \vert Y^{n}}^{n, (\eta)}\left(\llbracket \vert j \vert, n \rrbracket\right)\\
+& && \leq \sum\limits_{0 < \vert j \vert \leq G^{+}_{n}} \Lambda_{j} \left(\lambda_{j} \overline{\theta}_{j} - \lambda_{j} \theta^{\circ}_{j}\right)^{2} + \sum\limits_{G^{+}_{n} < \vert j \vert \leq n} \Lambda_{j} \left(\lambda_{j} \overline{\theta}_{j} - \lambda_{j} \theta^{\circ}_{j}\right)^{2} \P_{M \vert Y^{n}}^{n, (\eta)}\left(\llbracket G^{+}_{n} + 1, n \rrbracket\right)\\
+& && \leq \left\Vert \Pi_{G^{+}_{n}}\left(\theta^{\circ} - \overline{\theta}\right) \right\Vert_{l^{2}}^{2} + \left\Vert \Pi_{G^{+}_{n}, n}\left(\theta^{\circ} - \overline{\theta}\right)\right\Vert_{l^{2}}^{2} \P_{M \vert Y^{n}}^{n, (\eta)}\left(\llbracket G^{+}_{n} + 1, n \rrbracket\right)\\
+\end{alignat*}
+
+Considering the result from \nref{PRD.3.1}, and, hence, taking $\delta^{\star}_{G^{+}_{n}, n} \geq \sum\limits_{G^{+}_{n} \leq \vert j \vert \leq n} \Lambda_{j}$, we obtain
+
+\begin{alignat*}{3}
+& \sum\limits_{0 < \vert j \vert \leq n} && && \Lambda_{j} \left(\lambda_{j} \overline{\theta}_{j} - \lambda_{j} \theta^{\circ}_{j}\right)^{2} \P_{M \vert Y^{n}}^{n, (\eta)}\left(\llbracket \vert j \vert, n \rrbracket\right)\\
+& && \leq && \left\Vert \Pi_{G^{+}_{n}}\left(\theta^{\circ} - \overline{\theta}\right) \right\Vert_{l^{2}}^{2} + \left(\sup\limits_{t \in \mathds{B}_{G^{+}_{n}, n}} \left\vert \left\langle t \vert \overline{\theta} - \theta^{\circ} \right\rangle_{l^{2}}\right\vert^{2} - 6 \frac{\psi_{n} \delta^{\star}_{G^{+}_{n}, n}}{n} \right)_{+} +\\
+& && && 6 \frac{\psi_{n} \delta^{\star}_{G^{+}_{n}, n}}{n} \P_{M \vert Y^{n}}^{n, (\eta)}\left(\llbracket G^{+}_{n} + 1, n \rrbracket\right)
+\end{alignat*}
+
+We can hence use \nref{EQD.21} and \nref{EQD.1} to obtain
+
+\begin{alignat*}{3}
+& \sum\limits_{0 < \vert j \vert \leq n} && && \Lambda_{j} \E_{\theta^{\circ}}^{n}\left[\left(\lambda_{j} \overline{\theta}_{j} - \lambda_{j} \theta^{\circ}_{j}\right)^{2} \P_{M \vert Y^{n}}^{n, (\eta)}\left(\llbracket \vert j \vert, n \rrbracket\right)\right]\notag \\
+& && \leq && \frac{2 G^{+}_{n} \overline{\Lambda}_{G^{+}_{n}}}{n} +\notag\\
+& && && C \left\{\frac{\Vert \lambda \Vert_{l^{2}} \Vert \theta^{\circ} \Vert_{l^{2}} \Delta^{\star}_{G^{+}_{n}, n}}{n} \exp\left[ -\frac{\psi_{n} \delta^{\star}_{G^{+}_{n}, n}}{6 \Vert \lambda \Vert_{l^{2}} \Vert \theta^{\circ} \Vert_{l^{2}} \Delta^{\star}_{G^{+}_{n}, n}} \right] + \frac{\delta^{\star}_{G^{+}_{n}, n}}{n^{2}} \exp\left[- K \sqrt{n \psi_{n}}\right]\right\} +\notag \\
+& && && 6 \frac{\psi_{n} \delta^{\star}_{G^{+}_{n}, n}}{n}C_{\lambda, \theta^{\circ}} \exp\left[- K \left(2 \frac{\psi_{n} m^{\circ}_{n} \overline{\Lambda}_{m^{\circ}_{n}}}{\Lambda_{(m^{\circ}_{n})}\Vert \theta^{\circ} \Vert_{l^{2}} \Vert \lambda \Vert_{l^{2}}} \wedge \sqrt{n \psi_{n}}\right)\right].
+\end{alignat*}
+
+Using the definition of $G^{+}_{n}$ and taking $\Delta^{\star}_{G^{+}_{n}, n} = \Lambda_{(n)}$ and $\delta^{\star}_{G^{+}_{n}, n} = 2 n \overline{\Lambda}_{n}$ and the constraints $C_{\lambda, \theta^{\circ}} \geq C \left[\Vert \lambda \Vert_{l^{2}} \Vert \theta^{\circ} \Vert_{l^{2}} \vee 1\right]$ we obtain
+
+\begin{alignat*}{3}
+& \sum\limits_{0 < \vert j \vert \leq n} && && \Lambda_{j} \E_{\theta^{\circ}}^{n}\left[\left(\lambda_{j} \overline{\theta}_{j} - \lambda_{j} \theta^{\circ}_{j}\right)^{2} \P_{M \vert Y^{n}}^{n, (\eta)}\left(\llbracket \vert j \vert, n \rrbracket\right)\right]\notag \\
+& && \leq && 28 \mathfrak{b}_{0}^{2}(\theta^{\circ}) \Phi^{\dagger}_{n} +\notag\\
+& && && \frac{1}{n} \left\{ C \Vert \lambda \Vert_{l^{2}} \Vert \theta^{\circ} \Vert_{l^{2}} \Lambda_{(n)} \exp\left[ -\frac{\psi_{n} 2 n \overline{\Lambda}_{n}}{6 \Vert \lambda \Vert_{l^{2}} \Vert \theta^{\circ} \Vert_{l^{2}} \Lambda_{(n)}} \right] + 2 \overline{\Lambda}_{n} \exp\left[- K \sqrt{n \psi_{n}}\right]\right\} +\notag \\
+& && && 6 \psi_{n} 2 \overline{\Lambda}_{n} C_{\lambda, \theta^{\circ}} \exp\left[- K \left(2 \frac{\psi_{n} m^{\circ}_{n} \overline{\Lambda}_{m^{\circ}_{n}}}{\Lambda_{(m^{\circ}_{n})}\Vert \theta^{\circ} \Vert_{l^{2}} \Vert \lambda \Vert_{l^{2}}} \wedge \sqrt{n \psi_{n}}\right)\right]\\
+& && \leq && 28 \mathfrak{b}_{0}^{2}(\theta^{\circ}) \Phi^{\dagger}_{n} +\notag\\
+& && && \frac{1}{n} C_{\lambda, \theta^{\circ}} 12 \psi_{n} n \Lambda_{(n)} C_{\lambda, \theta^{\circ}} \exp\left[- K \left(2 \frac{\psi_{n} m^{\circ}_{n} \overline{\Lambda}_{m^{\circ}_{n}}}{\Lambda_{(m^{\circ}_{n})}\Vert \theta^{\circ} \Vert_{l^{2}} \Vert \lambda \Vert_{l^{2}}} \wedge \sqrt{n \psi_{n}}\right)\right];
+\end{alignat*}
+which proves the statement.
+
+\bigskip
+
+Consider now \nref{EQD.23}.
+
+We split the sum in a similar manner:
+ 
+\begin{alignat*}{2}
+& \sum\limits_{0 < \vert j \vert \leq n} && \left(\theta^{\circ}_{j}\right)^{2} \E_{\theta^{\circ}}^{n}\left[\P_{M \vert Y^{n}}^{n, (\eta)}\left(\llbracket 0, j-1 \rrbracket \right)\right] + \sum\limits_{ \vert j \vert > n} \left( \theta^{\circ}_{j}\right)^{2}\\
+& && \leq \sum\limits_{j \in \llbracket 1, G^{-}_{n} \rrbracket} \vert \theta^{\circ}_{j}\vert^{2} \E_{\theta^{\circ}}^{n}\left[\P_{M \vert Y^{n}}^{n, (\eta)}\left(\llbracket 1, \vert j \vert-1 \rrbracket\right)\right] + \sum\limits_{\vert j \vert \in \llbracket G^{-}_{n} + 1, n\rrbracket} \vert \theta^{\circ}_{j} \vert^{2} + \sum\limits_{\vert j \vert > n} \vert \theta^{\circ}_{j} \vert^{2}\\
+& && \leq \left\Vert \theta^{\circ} \right\Vert_{l^{2}}^{2} \E_{\theta^{\circ}}^{n}\left[\P_{M \vert Y^{n}}^{n, (\eta)}\left(\llbracket 0, G^{-}_{n} + 1\rrbracket\right)\right] + \mathfrak{b}_{G^{-}_{n}}^{2}(\theta^{\circ})
+\end{alignat*}
+
+So we now use \nref{EQD.20},
+\begin{alignat*}{2}
+& \sum\limits_{0 < \vert j \vert \leq n} && \left(\theta^{\circ}_{j}\right)^{2} \E_{\theta^{\circ}}^{n}\left[\P_{M \vert Y^{n}}^{n, (\eta)}\left(\llbracket 0, j-1 \rrbracket \right)\right] + \sum\limits_{ \vert j \vert > n} \left( \theta^{\circ}_{j}\right)^{2}\\
+& && \leq \mathfrak{b}_{G^{-}_{n}}^{2}(\theta^{\circ}) + \frac{1}{n} \left\Vert \theta^{\circ}\right\Vert_{l^{2}}^{2} 4 m^{\circ}_{n} \exp\left[- K \left(\frac{2 \psi_{n} m^{\circ}_{n} \overline{\Lambda}_{m^{\circ}_{n}}}{\Lambda_{m^{\circ}_{n}} \Vert \theta^{\circ} \Vert_{l^{2}} \Vert \lambda \Vert_{l^{2}}} \wedge \sqrt{n \psi_{n}}\right)\right]
+\end{alignat*}
+The proof is completed using the definition of $G^{-}_{n}$.
+
+\qedsymbol
+\end{pro}

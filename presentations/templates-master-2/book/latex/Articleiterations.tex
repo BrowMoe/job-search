@@ -1,0 +1,86 @@
+\documentclass[a4paper,11pt]{book}
+\synctex=1
+
+\usepackage{graphicx}
+% put all the other packages here:
+
+\usepackage{command}
+\usepackage{packages}
+\usepackage{style}
+\usepackage{personal}
+\usepackage{theorem}
+\usepackage{hyperref} 
+
+\begin{document}
+
+\input{./tex/title.tex}
+%
+\tableofcontents
+\input{./tex/table_of_notations.tex}
+%
+\chapter{Introduction}\label{1}
+\input{./tex/introduction/inverse_problems.tex}
+\input{./tex/introduction/frequentist_approach.tex}
+\input{./tex/introduction/bayesian_approach.tex}
+\input{./tex/introduction/example.tex}
+%
+\chapter{Bayesian interpretation of penalised contrast model selection}\label{2}
+%
+In this chapter, we consider the family of Bayesian methods described as "Gaussian sieve priors" in \nref{1.3.2} as well as an adaptive variant of these priors, the hierarchical sieve priors where the threshold parameter is a random variable with a specified prior distribution.
+We study their behaviour under two asymptotic, respectively described in \nref{1.3.3} and \nref{1.3.5}.
+%
+In \nref{2.1} we consider the self informative Bayes carrier of Gaussian sieve priors under continuity assumptions for the likelihood and show that its support is contained in the maximum likelihood set.
+Then, in \nref{2.2} we show that the distribution of the hyper-parameter in the hierarchical prior contracts around the set of maximisers of a penalised contrast criterion.
+This section highlights a new link between Bayesian adaptive estimation and the frequentist penalised contrast model selection.
+%
+\medskip
+%
+In \nref{2.3}, while considering the noise asymptotic, we line out two strategies of proof which allow to obtain contraction rates. The first relies on posterior moment bounding and which, up to our knowledge, is new; the second is specific to the hierarchical sieve prior and is similar to the one used in \ncite{JJASRS}.
+In \nref{2.4} we apply this strategies to the specific inverse Gaussian sequence space model.
+Doing so, we obtain exact contraction rate for the (iterated) Gaussian sieve prior using the first scheme of proof; and the iterated hierarchical prior using the second.
+This yields optimality for sieve priors with properly chosen threshold parameter; as well as for penalised contrast model selection; and for any iterated version of the hierarchical prior we consider.
+The most interesting point of this subsection is the novel way to show optimality of the penalised contrast model selection.
+%
+\medskip
+%
+In \nref{2.5} we inquire the use of the discussed method to the circular deconvolution model and show that a direct use of those methods is not possible in this context.
+We give nonetheless some tracks for a fix.
+%
+\medskip
+%
+Finally, we conclude this chapter with a note about the shape of the posterior mean of the hierarchical prior, motivating the shape of the frequentist estimators we use in \nref{3}.
+%
+\input{./tex/general_bayes/sieve.tex}
+\input{./tex/general_bayes/hierarchical.tex}
+\input{./tex/general_bayes/general.tex}
+\input{./tex/general_bayes/model.tex}
+\input{./tex/general_bayes/decon.tex}
+\input{./tex/general_bayes/post_mean.tex}
+%
+\chapter{Minimax and oracle optimal adaptive aggregation}\label{3}
+We inquire in this chapter the properties of aggregation estimators as introduced in \nref{2.6}.
+We introduce first a skim of proof for oracle and minimax optimality of this kind of estimator before applying it to the inverse Gaussian sequence space and the circular deconvolution models respectively introduced in \nref{1.4.1} and \nref{1.4.2}, including in presence of dependance and partially known operator.
+%
+\input{./tex/freq/gauss_known.tex}
+\input{./tex/freq/gauss_unknown.tex}
+%
+\input{./tex/freq/deconvolution_iid_known.tex}
+\input{./tex/freq/deconvolution_beta_known.tex}
+\input{./tex/freq/deconvolution_iid_unknown.tex}
+\input{./tex/freq/deconvolution_beta_unknown.tex}
+%
+\appendix
+%
+\chapter{Simulation skim}\label{A}
+\chapter{R Code}\label{B}
+%
+\bibliography{biblio.bib}{}
+\nocite{*}
+\bibliographystyle{apalike}
+%
+
+\end{document}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

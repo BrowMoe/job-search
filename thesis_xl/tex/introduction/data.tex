@@ -1,0 +1,275 @@
+\section{Data types}\label{INTRO_DATA}
+
+In the previous section we gave details about the nature of the object we want to estimate, $f$; the object which we gather information about, $g$; as well as the operator which links them, $T$, that is to say, $g = T(f)$.
+However, we only loosely mentioned the data $Y$ which we gather and the estimate $\widehat{g}$ of $g$ it allows us to construct.
+Throughout this thesis our data will be regarded as $\Xi$-indexed stochastic processes for which we give the definition hereafter.
+
+\begin{de}
+Given a probability space $(\Omega, \mathcal{A}, \P)$, let be $\mathcal{B}$, the Borel sigma-algebra on $\mathds{K}$.
+Consider a family of $\mathds{K}$-valued random variables indexed by $\Xi$, say $\{X(x), x \in \Xi \}$, that is to say, for any $x$ in $\Xi$, $X(x)$ is a measurable mapping from $(\Omega, \mathcal{A})$ to $(\mathds{K}, \mathcal{B})$.
+Then we call $\Xi$-indexed stochastic process the mapping $X : (\Omega, \mathcal{A}) \rightarrow (\mathds{K}^{\Xi}, \mathcal{B}^{\otimes \Xi}), \quad \omega \mapsto (X(x)(\omega))_{x \in \Xi}$.
+\assEnd
+\end{de}
+
+Hence, to ease the study of stochastic processes we introduce the following notations for $(\mathds{K}, \mathcal{B})$-valued random variables.
+
+\begin{de}
+For any $z$ in $\mathds{K}$, let us denote $\overline{z}$ its complex conjugate, hence for $\mathds{K} = \R$ we have $z = \overline{z}$.
+For any random variable $X : (\Omega, \mathcal{A}) \to (\mathds{K}, \mathcal{B})$, let $\P_{X}$ be the measure on $(\mathds{K}, \mathcal{B})$ given, for any $B$ in $\mathcal{B}$ , by $\P_{X}(B) = \P(X^{-1}(B))$.
+The set $\mathds{L}^{2}(\Omega)$ of square integrable random variables can be defined by $\{X : (\Omega, \mathcal{A}) \to (\mathds{K}, \mathcal{B}), \int_{\mathds{K}} \vert t \vert^{2} \d \P_{X}(t) < \infty\}$.
+On this set, the expectation, variance, and covariance operators $\E$, $\V$, and $\Cov$ can properly be defined and are given by 
+\begin{alignat*}{10}
+& \E &&: && \mathds{L}^{2}(\Omega) && \to && \mathds{K}; \quad && \V && : && \mathds{L}^{2}(\Omega) && \to && \R_{+};\\
+& && && X && \mapsto && \int_{\mathds{K}} t \d\P_{X}(t) \quad && && && X && \mapsto && \E[\vert X \vert^{2}] - \vert \E[X] \vert^{2} \\
+& \Cov && : &&  (\mathds{L}^{2}(\Omega))^{2} && \to && \mathds{R}; && && && && &&\\
+& && && (X, Z) && \mapsto && \E[X\overline{Z}] - \E[X] \E[\overline{Z}]&& && && && &&
+ \end{alignat*}
+where the integrals are in the sense of Lebesgue.
+\medskip
+
+Given a family of probability distributions indexed by $\Xi$, denoted $(\P_{x})_{x \in \Xi}$, a function $S$ defined on $\mathds{K}$, and $x$ in $\Xi$, we denote $\E_{x}[S(X)] = \int_{\mathds{K}} f(s) \d \P_{x}(s)$ and $\V_{x}[S(X)] = \E_{x}[\vert S(X) \vert^{2}] - \vert \E_{x}[S(X)] \vert^{2}$, the expected value and variance of the random variable $S(X)$ if $X$ admits $\P_{x}$ as a distribution.
+\assEnd
+\end{de}
+
+We can now formulate properly the notion of mean process and covariance process for a stochastic process.
+
+\begin{de}
+Given a $\Xi$-indexed stochastic process, say $X = (X(x))_{x \in \Xi}$, such that, for any $x$ in $\Xi$, $X(x)$ is an element of $\mathds{L}^{2}(\Omega)$.
+Then, the mean function of $X$ is the mapping from $\Xi$ to $\mathds{K}$, such that given by $\E[X] = (\Xi \rightarrow \mathds{K}, \quad x \mapsto \E[X(x)])$, and the covariance operator is given by by $\Cov[X] = (\Xi^{2} \rightarrow \mathds{K}), \quad (x, y) \mapsto \Cov(X(x), X(y))$.
+\assEnd
+\end{de}
+
+Keeping those definitions in mind, we will consider two configurations for our data.
+One when $T$ is known and we have at hand a sample allowing to estimate $T(f)$ and the other when $T$ is unknown and we have two samples at hand, one to estimate $T$ and the other to estimate $T(f)$.
+
+In any case, considering the models which we will use as illustrations as well as the technics we will use, introducing the following hypotheses and notations will be of great use.
+
+\begin{de}
+Let $\mathds{F}$ be either $\N$ or $\mathds{Z}$ which will we will refer to as frequency domain.
+Then, let $\mathcal{U} := (e_{s})_{s \in \mathds{F}}$ be an orthonormal system of $\Xi$ indexed by $\mathds{F}$, that is to say a family of elements of $\Xi$ such that for any two elements of $\mathds{F}$, $s_{1}$ and $s_{2}$, we have $\langle e_{s_{1}} \vert e_{s_{2}} \rangle_{\Xi} = \mathds{1}_{\{s_{1} = s_{2}\}}$ where for any assertion $A$, $\mathds{1}_{A}$ stands for the function of $A$ which is equal to $1$ if $A$ is true and $0$ otherwise.
+In addition, denote by $\mu$ the counting measure on $\mathds{F}$.
+We denote $\mathds{U}$ the linear space spanned by $\mathcal{U}$.
+\assEnd
+\end{de}
+
+\begin{rmk}
+One could consider the case where $\mathds{F}$ is $\R$ and use the Lebesgue measure as $\mu$, however, such considerations are beyond the scope of this thesis.
+\end{rmk}
+
+In the examples considered in this thesis the following hypothesis holds true.
+
+\begin{as}
+The parameter of interest $f$ lies in $\mathds{U}$.
+\assEnd
+\end{as}
+
+
+Once we found such an infinite dimensional linear subspace of $\Xi$ for which we have an orthonormal basis we can consider the generalised Fourier transform and base our inference on the Fourier space.
+It is in this perspective that we give the following definitions.
+
+\begin{de}
+Denote $\Theta$ the space of mappings from $\mathds{F}$ onto $\mathds{K}$.
+Equipped with the usual addition $+ : \Theta^{2} \rightarrow \Theta, \quad ([x], [y]) \mapsto ([x] + [y]: s \mapsto [x](s) + [y](s))$ and external product $\cdot : \mathds{K} \times \Theta \rightarrow \Theta, \quad(a, [y]) \mapsto (a \cdot [y]: s \mapsto a \cdot [y](s))$ it is a linear vector space.
+In addition, defining the conjugate of $[x]$, $\overline{[x]}$ such that for any $s$ in $\mathds{F}$ we have $\overline{[x]}(s) = \overline{[x](s)}$, we may define the following inner product: $\langle \cdot \vert \cdot \rangle_{\Theta} : ([x], [y]) \mapsto \langle [x] \vert [y] \rangle_{\Theta} = \sum_{s \in \mathds{F}} [x](s) \cdot \overline{[y]}(s)$.
+Hence $(\Theta, \langle \cdot \vert \cdot \rangle_{\Theta})$ is an Hilbert space.
+\assEnd
+\end{de}
+
+With those objects at hand, we define the generalised Fourier transform on $\Xi$.
+
+\begin{de}
+Define the generalised Fourier transform linear operator
+$\mathcal{F}$ by $\mathcal{F} : \mathds{U} \rightarrow \Theta, \quad x \mapsto \mathcal{F}(x) := (s \mapsto ([x](s) := \langle x \vert e_{s} \rangle_{\Xi}))$.
+We see that $\mathcal{F}$ is a unitary linear mapping between Hilbert spaces and we should highlight that its conjugate (which is hence also its inverse) is given by
+$\mathcal{F}^{\star} : \Theta \rightarrow \Xi; \quad [x] \mapsto \sum_{s \in \mathds{F}}[x](s) e_{s}$.
+\assEnd
+\end{de}
+
+With those definitions at hand we formulate the following hypothesis about $T$.
+
+\begin{as}\label{INTRO_DATA_DIAGONAL}
+We assume that, for any $s$ in $\mathds{F}$, there exist an element of $\mathds{K} \setminus \{0\}$, say $\lambda(s)$ such that $\langle T(e_{s}) \vert e_{s} \rangle_{\Xi} = \lambda(s)$.
+In other words, $(e_{s})_{s \in \mathds{F}}$ diagonalises $T$ and we have, for any $x$ in $\mathds{U}$ that $T(x) = \int_{\mathds{F}} \lambda(s) [x](s) e_{s} \, \text{d}\mu(s)$.
+\assEnd
+\end{as}
+
+Following naturally from the definitions and hypotheses we just introduced, we will use the following notations.
+
+\begin{de}
+Let $\theta^{\circ}$, $\lambda$, and $\phi$ be the elements of $\Theta$ such that for any $s$ in $\mathds{F}$ we have
+\[\theta^{\circ}(s) := \mathcal{F}(f)(s); \quad \lambda(s) := \langle T(e_{s}) \vert e_{s} \rangle_{\Xi}; \quad \phi(s) := \mathcal{F}(T(f))(s) = \mathcal{F}(g)(s).\]
+
+In addition let $h$ be the element of $\Xi$ such that $h := \mathcal{F}^{\star}(\lambda)$.
+\assEnd
+\end{de}
+
+Notice that, as $g = T(f)$, for any $s$ in $\mathds{F}$, we have $\phi(s) = \theta^{\circ}(s) \lambda(s)$.
+
+Considering a $\Xi$-indexed stochastic process $(Y(x))_{x \in \Xi}$, and in particular its sub-process $(Y(e_{s}))_{s \in \mathds{F}}$, which is hence a $\mathds{F}$-indexed stochastic process, we can define a distribution on $\Xi$ considering the random variable $X: (\Omega, \mathcal{A}) \to (\Xi, \mathcal{B}), \quad \omega \mapsto \mathcal{F}^{\star}((Y(e_{s})(\omega))_{s \in \mathds{F}})$.
+Reciprocally, considering a $\Xi$-valued random variable $X$, one can define a $\Xi$-indexed stochastic process $(Y(x))_{x \in \Xi}$ where, for any $x$ in $\Xi$, $Y(x)$ is the random variable defined by $Y(x) = \langle X \vert x \rangle_{\Xi}$ and in particular one can define the $\mathds{F}$-indexed process $(Y(s))_{s \in \mathds{F}}$ where $Y(s) = \mathcal{F}(X)(s)$.
+One can then notice that for any $x$ in $\Xi$, $Y(x) = \langle X \vert x \rangle_{\Xi} = \sum_{s \in \mathds{F}} \overline{[x]}(s) \langle X \vert e_{s} \rangle_{\Xi} = \sum_{s \in \mathds{F}} \overline{[x]}(s) Y(s)$.
+
+We can now give a more precise shape for our observations which will come in two flavours described in the two following subsections.
+
+
+\subsection{Ill-posed inverse problem with known operator}\label{INTRO_DATA_KNOWN}
+In this first case, given a sequence of $\Xi$-valued random variables indexed by $\mathds{Z}$, say $(Y_{p})_{p \in \mathds{Z}}$ and an integer integer $n$, our observation $Y^{n}$ is assumed to be $(Y_{p})_{p \in \llbracket 1, n \rrbracket}$, where, for any two $a$ and $b$ in $\mathds{Z}$, $\llbracket a, b \rrbracket$ stands for $[a, b] \cap \mathds{Z}$.
+That is, there exists a $\sigma$-algebra $\mathcal{B}$ on $\Xi$ such that, for any $p$ in $\mathds{Z}$, $Y_{p}$ is a measurable mapping from $(\Omega, \mathcal{A})$ to $(\Xi, \mathcal{B})$.
+Then, $\Omega \rightarrow \mathds{K}^{\Xi \times \mathds{Z}}, \quad \omega \mapsto (\langle Y_{p} \vert x \rangle_{\Xi})_{p \in \mathds{Z}, x \in \Xi}$ is a stochastic process on $\Xi \times \mathds{Z}$.
+
+The inference on $f$ is then based on the following assumption.
+
+\begin{de}
+Consider $(Y_{p})_{p \in \mathds{Z}}$, a $\Xi$-valued stochastic process.
+It is called strictly stationary if, for any $r$ in $\mathds{Z}$, $q$ in $\N$, and $(p_{i})_{i \in \llbracket 1, q \rrbracket}$ in $\mathds{Z}^{q}$, the vectors of random variables $(Y_{p_{i}})_{i \in \llbracket 1, q \rrbracket}$ and $(Y_{p_{i} + r})_{i \in \llbracket 1, q \rrbracket}$ are identically distributed.
+In such a process, the marginals are obviously identically distributed and we denote $\P_{Y} := \P \circ Y_{0}^{-1}$ the distribution of the marginals.
+\assEnd
+\end{de}
+
+\begin{as}\label{AS_INTRO_DATA_KNOWN}
+Assume that the operator $T$ is known and $(Y_{p})_{p \in \mathds{Z}}$ is strictly stationary.
+In addition, assume that the distribution of $Y$ belongs to a family indexed by $\Xi$, denoted $(\P_{x})_{x \in \Xi}$ and that $Y \sim \P_{g}$ where, for any $(\Xi, \mathcal{B})$-valued random variable $X$ and measure $\Q$ on $(\Xi, \mathcal{B})$, $X \sim \Q$ means that for any $B$ in $\mathcal{B}$, $\P \circ X^{-1}(B) = \Q(B)$.
+We assume that for any $z$ in $\Xi$ and random variable $Z$ such that $Z \sim \P_{z}$, we have for any $y$ in $\Xi$, $\E[\vert \langle Z \vert y \rangle_{\Xi} \vert^{2}] < \infty$; and, in particular, $\E[ \langle Z \vert y \rangle_{\Xi} ] = \langle z \vert y \rangle_{\Xi}$.
+\assEnd
+\end{as}
+
+A direct consequence of this hypothesis is that for any $s$ in $\mathds{F}$, we have $\E[ \langle Y \vert e_{s} \rangle_{\Xi}] = \langle g \vert e_{s}\rangle_{\Xi}  = \phi(s)$.
+Due to the invertible nature of $\mathcal{F}$, we will indifferently denote $(\P_{x})_{x \in \mathds{U}}$ and $(\P_{[x]})_{[x] \in \Theta}$ with the identification, for any $x$ in $\mathds{U}$, $\P_{x} = \P_{\mathcal{F}(x)}$.
+In particular, we have $\P_{g} = \P_{\phi}$, $\P_{f} = \P_{\theta^{\circ}}$, and $\P_{h} = \P_{\lambda}$.
+Generally, we will denote $Y$, $X$, and $\epsilon$, random variables with respective distributions $\P_{g}$, $\P_{f}$, and $\P_{h}$ or equivalently $\P_{\phi}$, $\P_{\theta^{\circ}}$, and $\P_{\lambda}$.
+
+\subsection{Ill-posed inverse problem with unknown operator}\label{INTRO_DATA_UNKNOWN}
+Similarly to the previous case, we still observe replications $(Y_{p})_{p \in \llbracket 1, n \rrbracket}$ of a stochastic process $Y$, however, we also observe replications $(\epsilon_{q})_{q \in \llbracket 1, n_{\lambda} \rrbracket}$ of a second $\Xi$-valued stochastic process $\epsilon$.
+This second set of observation is used to estimate $T$ which is not considered as known anymore.
+\begin{as}\label{AS_INTRO_DATA_UNKNOWN}
+Assume that $(Y_{p})_{p \in \mathds{Z}}$ and $(\epsilon_{p})_{p \in \mathds{Z}}$ are strictly stationary.
+In addition, assume that the distributions of the marginals in $(Y_{p})_{p \in \mathds{Z}}$ and $(\epsilon_{p})_{p \in \mathds{Z}}$ belong to a family indexed by $\Xi$, denoted $(\P_{x})_{x \in \Xi}$ such that, for any $p$ in $\mathds{Z}$, $Y_{p} \sim \P_{g}$ and $\epsilon_{p} \sim \P_{h}$.
+\assEnd
+\end{as}
+
+\subsection{Independent data}\label{INTRO_DATA_INDEPENDENT}
+In the two previous subsections, we have described the mean function of the two processes we observe.
+However, we haven't discussed the covariance operator, except by assuming that the diagonal is finite.
+
+We will consider two assumptions for the dependence structure.
+The first is independence.
+
+\begin{as}\label{AS_INTRO_DATA_INDEPENDENT}
+We assume that, for any $m$ in $\N$, and vector $(p_{q})_{q \in \llbracket 1, m \rrbracket}$ in $\mathds{Z}^{m}$, $Y_{p_{q}}$ is an independent vector.
+That is to say, for any $(B_{q})_{q \in \llbracket 1, m \rrbracket}$ in $\mathcal{B}^{m}$, $\P(\cap_{q = 1}^{m} Y_{p_{q}}^{-1}(B_{q})) = \prod_{q = 1}^{m} \P(Y_{p_{q}}^{-1}(B_{q}))$.
+\assEnd
+\end{as}
+
+Among other things, this implies that for any $p$ and $q$, with $p \neq q$ in $\mathds{Z}$ and $x$ and $y$ in $\Xi$, $\E[\langle Y_{p} \vert x \rangle_{\Xi} \cdot \langle Y_{q} \vert y \rangle_{\Xi}] = \E[\langle Y_{p} \vert x \rangle_{\Xi}] \cdot \E[\langle Y_{q} \vert y \rangle_{\Xi}]$ which also implies $\V[\langle Y_{p} \vert x \rangle_{\Xi} + \langle Y_{q} \vert y \rangle_{\Xi}] = \V[\langle Y_{p} \vert x \rangle_{\Xi}] + \V[\langle Y_{q} \vert y \rangle_{\Xi}]$.
+
+In this case, $(Y_{p})_{p \in \mathds{Z}}$ is a sequence of independent identically distributed (i.i.d.) random variables.
+
+\subsection{Absolutely regular process}\label{INTRO_DATA_REGULAR}\label{DEPENDENTDATA}
+
+Even though the independence assumption is widely spread, it is also limiting as, in practice, dependent data arise often.
+Hence, the inference based on dependent data gathered a lot of interest in the past and it appears clearly that one should limit the degree of dependence which is permitted in order to obtain theoretical results as well as technics which perform properly.
+
+We hence first introduce the notion of beta mixing coefficients which allows a quantification of dependence.
+
+\begin{de}{\textsc{$\beta$-mixing coefficients} \\}\label{DE_BETAMIXING_INTRO_DATA_REGULAR}
+Let $\left(\Omega, \mathcal{A}, \P\right)$ be a probability space and $\mathcal{U}$ and $\mathcal{V}$ be two sub $\sigma$-algebras of $\mathcal{A}$.
+Then, we define the $\beta$-mixing coefficient of $\mathcal{U}$ and $\mathcal{V}$:
+\[\beta(\mathcal{U}, \mathcal{V}) := \frac{1}{2} \sup\nolimits_{(U_{j})_{j \in I}(V_{j})_{j \in J}}\left\{\sum\nolimits_{j \in J}\sum\nolimits_{k \in I} \vert \P(U_{j})\P(V_{k}) - \P(U_{j} \cap V_{k}) \vert \right\}\]
+where the $\sup$ is taken over all possible finite partition of $\Omega$ which are respectively $\mathcal{U}$ and $\mathcal{V}$ measurable.
+
+In addition for two random variables $Z_{1}$ and $Z_{2}$ we note $\sigma(Z_{1})$ and $\sigma(Z_{2})$ the $\sigma$-algebra they generate and $\beta\left(Z_{1}, Z_{2}\right) = \beta\left(\sigma(Z_{1}), \sigma(Z_{2})\right)$.
+\assEnd
+\end{de}
+
+With this definition at hand, one can define an absolutely regular process which is a stochastic process for which the beta mixing coefficients fade for increasingly distant observations.
+
+\begin{de}{\textsc{Absolutely regular process} \\}\label{DE_ABSOLUTELYREGULAR_INTRO_DATA_REGULAR}
+Consider a stochastic process $(Z_{p})_{p \in \mathds{Z}}$.
+Denote, for any $p$ in $\N$, by $\mathcal{F}^{-}_{p} := \sigma\left((Z_{q})_{q \leq p}\right)$ and $\mathcal{F}^{+}_{p} := \sigma\left((Z_{q})_{q \geq p}\right)$.
+The stochastic process $(Z_{p})_{p \in \mathds{Z}}$ is said to be absolutely regular if
+\[\lim\nolimits_{p \rightarrow \infty} \beta(\mathcal{F}_{0}^{-}, \mathcal{F}_{p}^{+}) = 0.\]
+\assEnd
+\end{de}
+
+An interesting result using this definition, which can be found in this form in \ncite{AsinJohannes2016} and is adapted from \textsc{Theorem 2.1} in \ncite{viennet1997inequalities}, links the $\beta$-mixing coefficients of a stochastic process and its variance.
+
+\begin{lm}\label{LMI_INTRO_DATA_REGULAR}
+Let $(Z_{p})_{p \in \Z}$ be a $\R$-valued, strictly stationary, stochastic process.
+There exists a sequence $(b_{p})_{p \in \N}$ of measurable functions from $\R$ to $[0, 1]$ with, for any $p$ in $\N$, $\E[b_{p}(Z_{0})] = \beta(Z_{0}, Z_{p})$ such that, for any measurable function $x$ such that $\E[\vert x(Z_{0}) \vert^{2}] < \infty$ and any integer $n$, we have $\V[\sum_{p = 1}^{n} x(Z_{p})] \leq n \E[\vert x(Z_{0}) \vert^{2} (1 + 4 \sum_{p = 1}^{n - 1} b_{p}(Z_{0}))]$.
+\reEnd
+\end{lm}
+
+Notice that, in this lemma, if $x$ is a bounded function, say $\Vert x \Vert_{\infty} := \sup_{t \in \R} \vert x(t) \vert^{2} \leq 1$, then we obtain $\V[\sum_{p = 1}^{n} x(Z_{p})] \leq n \E[1 + 4 \sum_{p = 1}^{n - 1} b_{p}(Z_{0})]$.
+In our context, $x$ will generally be an element of a function basis, such as the complex exponential trigonometric basis, which is hence indeed bounded.
+Notice that the bound we obtain here depends on the sequence of $\beta$-coefficients which are generally unknown and their estimation is a challenging task.
+Hence, while this bound is sufficient to obtain convergence rates for non adaptive estimators (as it will be formulated explicitly further), it is in general necessary to give a stronger hypothesis on the observation process in order to obtain properties for sophisticated adaptive methods.
+In this optic, let's introduce the following space of functions.
+
+\begin{de}\label{DE_FUNCSPACE_INTRO_DATA_REGULAR}
+Given $q \geq 2$, a non negative sequence $\omega = \left(\omega_{p}\right)_{p \in \N}$ and a probability measure $\P$, let $\mathcal{L}(q, \omega, \P)$ be the set of functions $b : \R \rightarrow \overline{\R_{+}}$ such that there exists a sequence $(b_{p})_{p \in \N}$ of measurable functions $b_{p}: \R \rightarrow [0, 1]$ with $b_{0}: x \mapsto 1$ and, for any random variable $Z$ such that $Z \sim \P$, we have $\E[b_{p}(Z)] \leq \omega_{p}$ satisfying $b = \sum\nolimits_{p = 0}^{\infty} (p + 1)^{q - 2} b_{p}$.
+\assEnd
+\end{de}
+
+One can easily see that a sufficient condition for elements of $\mathcal{L}(q, \omega, \P)$ to be non-negative $\P$-integrable functions is $\sum\nolimits_{p = 0}^{\infty} (p - 1)^{q-2} \omega_{p} < \infty$.
+Combined with \nref{LMI_INTRO_DATA_REGULAR}, we obtain the following lemma.
+
+\begin{lm}\label{LMII_INTRO_DATA_REGULAR}\label{LM_DEPENDENTDATA_VARIANCEBOUNDII}
+Let $(Z_{p})_{p \in \Z}$ be a $\R$-valued, strictly stationary, stochastic process with common marginal distribution $\P_{Y}$.
+Denote $(\omega_{p})_{p \in \N}$ the sequence of $\beta$-mixing coefficients.
+There exists a function $b$ in $\mathcal{L}(2, \omega, \P_{Y})$ such that, for any measurable function $x$ such that $\E[\vert x(Y_{0}) \vert^{2}] < \infty$ and any integer $n$, we have $\V[\sum_{p = 1}^{n} x(Z_{p})] \leq 4 n \E[\vert x(Z_{0}) \vert^{2} b(Z_{0}))]$.
+
+
+Alternatively, assuming, for $r$ and $q$ exponents as in Hölder's inequality, that $\beta_{p}$ tends to $0$ as $p$ tends to $\infty$ with $\omega_{0} = 1$ and that, for some $r$, $\sum\nolimits_{p \in \N} (p+1)^{r-1} \beta_{p} < \infty$ then, we have
+\[\E\left[\left\vert x(Z_{0})\right\vert^{2} b(Z_{0})\right] \leq \E\left[\left\vert x(Z_{0})\right\vert^{2q}\right]^{1/q} \left(r \sum\nolimits_{p \in \N} (p+1)^{r-1} \beta_{p}\right)^{1/r}.\]
+\reEnd
+\end{lm}
+
+Notice, once again, that with $\Vert x \Vert_{\infty} = 1$ we have $\V[\sum_{p = 1}^{n} x(Z_{p})] \leq 4 n \sum_{p \in \N} \beta(Z_{0}, Z_{p})$ which implies, jointly with the assumption "$\sum_{p \in \N} \beta(Z_{0}, Z_{p}) < \infty$",  there exists a constant $\cst{}$ such that $\V[\sum_{p = 1}^{n} x(Z_{p})] \leq \cst{} n$.
+Notice, though, that this bound would depend on a constant related to the $\beta$-mixing coefficients.
+It hence allows to show that for sequences $\beta(Z_{0}, Z_{p})$ decreasing sufficiently fast, the oracle or minimax risk is the same as for independent sequences, however, it remains unsuitable for the study of adaptive methods.
+
+We hence present a third inequality which relies on the following assumption, regularly used in the study of such processes, for example in \ncite{AsinJohannes2016, AsinJohannes2017, bosq2012nonparametric}.
+
+\begin{as}\label{AS_MARGINS_INTRO_DATA_REGULAR}
+Considering a $[0, 1]$-valued stochastic process $(Z_{p})_{p \in \mathds{Z}}$, assume that for any $p$, the joint distribution $\P_{Z_{0}, Z_{p}}$ of $Z_{0}$ and $Z_{p}$ admits a density denoted $x_{Z_{0}, Z_{p}}$ which is square integrable.
+Denote the $L^{2}$-norm for functions of two variables by
+$\left\Vert x_{Z_{0}, Z_{p}}\right\Vert_{L^{2, 2}}^{2} := \int\int_{\mathds{K}^{2}} \vert x_{Z_{0}, Z_{p}}(t_{0}, t_{p})\vert^{2} \d t_{0} \d t_{p}$ and for any $t_{0}$ and $t_{p}$ in $[0, 1]$ set $(x \otimes x)(t_{0}, t_{p}) = x(t_{0}) \cdot x(t_{p})$.
+Then, we assume $\gamma_{x} := \sup\nolimits_{p \geq 1} \Vert x_{Z_{0}^{n}, Z_{p}^{n}} - x \otimes x \Vert_{L^{2, 2}} < \infty$.
+\assEnd
+\end{as}
+
+\begin{lm}\label{LM_DEPENDENTDATA_VARIANCEBOUNDIII}
+Let the process $(Z_{p})_{p \in \N}$ be a strictly stationary process with associated sequence of mixing coefficients $\left(\beta(Z_{0}, Z_{p})\right)_{p \in \N}$ verifying \nref{AS_MARGINS_INTRO_DATA_REGULAR} and a sequence of functions $e_{s}$ from $[0, 1]$ to $\mathds{K}$ such that $\Vert e_{s} \Vert_{L^{\infty}} = 1$.
+Then, for any $n \geq 1$; $m$ and $l$ in $\mathds{N}$ with $m \leq l$ and $K \in \llbracket 0, n-1\rrbracket$, it holds
+\begin{multline*}
+\sum\nolimits_{m \leq \vert s \vert \leq l} \V\left[\sum\nolimits_{p = 1}^{n} e_{s}(Z_{p})\right]\\
+\leq n 2 (l-m+1) \left\{1 + 2\left[\gamma_{x} K(l-m+1)^{-1/2} + 2 \sum\nolimits_{p = K + 1}^{n - 1} \beta(Z_{0}, Z_{p})\right]\right\}.
+\end{multline*}
+Moreover, as $\sum\nolimits_{p \in \mathds{N}} \beta(Z_{0}, Z_{p})$ is finite, we have $\lim\nolimits_{K \rightarrow \infty} \sum\nolimits_{p = K + 1}^{\infty} \beta(Z_{0}, Z_{p}) = 0$, so we can find $K^{\circ}$ in $\N$ such that for any $K$ greater than $K^{\circ}$, $\sum\nolimits_{p = K + 1}^{\infty} \beta(Z_{0}, Z_{p}) \leq \frac{1}{4}$.
+We can take $K = \frac{\sqrt{l - m + 1}}{4 \gamma_{x}}$ and assuming that this choice is greater than $K^{\circ}$, we have
+\[\sum\nolimits_{m \leq \vert s \vert \leq l} \V\left[\sum\nolimits_{p = 1}^{n} e_{s}(Z_{p})\right] \leq 4 n (l-m+1).\]
+\reEnd
+\end{lm}
+
+Contrarily to the previous lemmata, this one exhibits an upper bound for the variance which does not involve the sum of mixing coefficients which allows to design a data driven estimator which does not requires knowledge of them.
+Finally, to use this last lemma properly, we will need one last result, which can be found in \ncite{viennet1997inequalities}.
+\begin{lm}\label{AS_DEPENDENTDATA_RICHSPACE}
+Assume that the universe is rich enough in the sense that there exist a sequence of random variables with uniform distribution on $[0,1]$ which is independent of $(Z_{p})_{p \in \mathds{Z}}$.
+
+Then, there exist a sequence $(Z_{p}^{\perp})_{p \in \mathds{Z}}$ satisfying the following properties.
+For any positive integer $w$ and for any strictly positive integer $q$, define the sets $(I_{q, p}^{e})_{p \in \llbracket 1, w\rrbracket} := \llbracket 2(q-1) w + 1, (2q - 1) w\rrbracket$ and $\left(I_{q, p}^{o}\right)_{p \in \llbracket 1, w \rrbracket} := \llbracket (2q-1) w + 1, 2q w\rrbracket$.
+
+Define for any $q$ in $\mathds{Z}$ the vectors of random variables $E_{q} := (Z_{I_{q, p}^{e}}^{n})_{p \in \llbracket 1, w \rrbracket}$;
+
+$O_{q} := (Z_{I_{q, p}^{o}}^{n})_{p \in \llbracket 1, w \rrbracket}$; and their counterparts $E_{q}^{\perp} := (Z_{I_{q, p}^{e}}^{n, \perp})_{p \in \llbracket 1, w \rrbracket}$ and $O_{q}^{\perp} := (Z_{I_{q, p}^{o}}^{n, \perp})_{p \in \llbracket 1, w \rrbracket}$.
+
+Then, $\left(Z^{\perp}_{p}\right)_{p \in \N}$ satisfies:
+\begin{itemize}
+\item for any integer $q$, $E^{\perp}_{q}$, $E_{q}$, $O^{\perp}_{q}$, and $O_{q}$ are identically distributed;
+\item for any integer $q$, $\P_{\theta^{\circ}}^{n}\left(E_{q} \neq E^{\perp}_{q}\right) \leq \beta_{w}$ and $\P_{\theta^{\circ}}^{n}\left(O_{q} \neq O^{\perp}_{q}\right) \leq \beta_{w}$;
+\item $\left(E^{\perp}_{q}\right)_{q \in \mathds{Z}}$ are independent and identically distributed and $\left(O^{\perp}_{q}\right)_{q \in \mathds{Z}}$ as well.
+\end{itemize}
+\reEnd
+\end{lm}
+Note that, even though this is the only quantification of dependence we will consider in this thesis, many other have been considered and overviews can be found in \ncite{bosq2012nonparametric, bradley2005basic}.
+

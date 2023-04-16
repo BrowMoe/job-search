@@ -1,0 +1,616 @@
+% ====================================================================
+%                                                                 
+%
+%	2015 12 ERCIM Tagung London
+%
+% %%ts latex start%%[2016-05-20 Fri 03:32]%%ts latex end%%
+% ====================================================================
+\documentclass[english,fleqn]{beamer}%,a4paper,handout
+\synctex=1
+
+\usepackage[english]{babel}
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
+%\usepackage[T1]{fontenc}
+\usepackage{autofe}
+
+
+% ====================================================================
+% <<Schalter-Handout>>
+% ====================================================================
+% 
+% 1 - VL
+% 2 - handout
+\newcounter{VL}
+\setcounter{VL}{1}
+\newcommand{\bframeVL}[2]{\ifthenelse{\value{VL} = 1}{%
+\begin{frame}<#1>% VL
+}{% 
+\begin{frame}<#2>% handout
+}}
+\newcommand{\frameVL}[2]{\ifthenelse{\value{VL} = 1}{#1}{#2}}
+
+
+
+% ====================================================================
+% <<MetaPost-Spiele>>
+% ====================================================================
+\usepackage{ifpdf}
+\usepackage{graphicx} 
+\ifpdf
+\DeclareGraphicsRule{*}{mps}{*}{}
+\else
+% Recent LaTeX versions donât require the next line
+% \DeclareGraphicsRule{*}{eps}{*}{}
+\fi
+
+
+
+
+%%%% positionieren von text
+\usepackage[absolute,overlay]{textpos}
+%\setlength{\TPHorizModule}{1mm} 
+%\setlength{\TPVertModule}{\TPHorizModule} 
+%\textblockorigin{1mm}{1mm}
+
+ 
+% Jan
+%\usepackage{ILPwuO-abrev-package}
+\usepackage{bayes_abbrev}
+\usepackage{multirow}
+\usepackage[all]{xy}
+\renewcommand{\1}{\mathbbm{1}}
+%\RequirePackage{color,calc}
+%\usepackage[active]{srcltx}
+\usepackage{BeamerColor}
+\RequirePackage{paralist}
+%\usepackage{enumitem}
+
+
+% --------------------------------------------------------------------
+% <<Def Farben>>
+% --------------------------------------------------------------------
+
+%\definecolor{dgreen}{rgb}{0,0.6,0}
+\definecolor{dgreen}{rgb}{0,0.45,0}
+\definecolor{dblue}{rgb}{0,0,0.9}
+\definecolor{dred}{rgb}{1,0.0,0}
+\definecolor{dgold}{rgb}{0.5,0.3,0.0}
+\definecolor{dvio}{rgb}{0.6,0.3,0.5}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{dbraun}{rgb}{.5,0.2,0}
+\definecolor{wfugold}{rgb}{0.60,0.48,0.19}
+
+\newcommand{\dr}{\color{dred}}
+\newcommand{\db}{\color{dblue}}
+\newcommand{\dg}{\color{dgreen}}
+\newcommand{\dy}{\color{dgold}}
+\newcommand{\dv}{\color{dvio}}
+\newcommand{\dshadow}{\color{white!85!black}}
+\newcommand{\dnav}{\color{white!78!black}}
+\newcommand{\dgrau}{\color{gray}}
+\newcommand{\dbraun}{\color{dbraun}}
+\newcommand{\dw}{\color{white}}
+\newcommand{\ds}{\color{black}}
+\newcommand{\rudicolor}{\color{wfugold}}%gold4 isbagray
+\newcommand{\mycolor}{wfugold}%gold4 isbagray
+
+\newcommand{\dbonly}[1]{\only<#1>\db}
+\newcommand{\dronly}[1]{\only<#1>\dr}
+\newcommand{\dyonly}[1]{\only<#1>\dy}
+\newcommand{\dgonly}[1]{\only<#1>\dg}
+\newcommand{\dwonly}[1]{\only<#1>\dw}
+\newcommand{\dsonly}[1]{\only<#1>\ds}
+\newcommand{\dshonly}[1]{\only<#1>\dshadow}
+\newcommand{\dgronly}[1]{\only<#1>\dgrau}
+\newcommand{\dbronly}[1]{\only<#1>\dbraun}
+
+
+
+
+\newtheoremstyle{mydefi}% name
+  {}%      Space above
+  {}%      Space below
+  {\it}%         Body font
+  {}%         Indent amount (empty = no indent, \parindent = para indent)
+  {\color{dblue}}% Thm head font
+  {.}%        Punctuation after thm head
+  {.5ex}%     Space after thm head: " " = normal interword space;     % \newline = linebreak
+  {}%         Thm head spec (can be left empty, meaning `normal')
+
+\newtheoremstyle{mynote}% name
+     {-2ex}%      Space above
+     {-2ex}%      Space below
+     {}%         Body font
+     {}%         Indent amount (empty = no indent, \parindent = para indent)
+     {\color{dgreen}\itshape}% Thm head font
+     {.}%        Punctuation after thm head
+     { }%     Space after thm head: " " = normal interword space;
+           %       \newline = linebreak
+     {}%         Thm head spec (can be left empty, meaning `normal')
+
+\newtheoremstyle{myex}% name
+  {}%      Space above
+  {}%      Space below
+  {\it}%         Body font
+  {}%         Indent amount (empty = no indent, \parindent = para indent)
+  {\color{dgreen}}% Thm head font
+  {.}%        Punctuation after thm head
+  {  }%     Space after thm head: " " = normal interword space;     
+     %  \newline = linebreak
+  {}%         Thm head spec (can be left empty, meaning `normal')
+
+% --------------------------------------------------------------------
+% <<Def Theorem>>
+% --------------------------------------------------------------------
+
+
+  \newtheorem{theo}{Théorème}[section] 
+  \theoremstyle{mydefi}
+   \newtheorem{defi}{Définition}[section] 
+   \newtheorem*{defi*}{Définition} 
+   \theoremstyle{mynote}
+    \newtheorem{ex}{Exemple}[section] 
+   \newtheorem*{ex*}{Exemple} 
+ 
+ %   \theoremstyle{example}
+  
+
+
+
+\mode<presentation>
+{
+\useinnertheme{default}
+%\definecolor{beamer@blendedblue}{rgb}{1,0,0}
+\definecolor{beamer@blendedblue}{rgb}{0,.45,0}
+\useoutertheme{infolines}
+ 
+\mode<presentation>
+\setbeamercolor*{palette primary}{use=structure,fg=structure.fg!90!black,bg=white}
+\setbeamercolor*{palette secondary}{use=structure,fg=white,bg=structure.fg!75!black}
+\setbeamercolor*{palette tertiary}{use=structure,fg=white,bg=structure.fg!50!black}
+\setbeamercolor*{palette quaternary}{fg=white,bg=black}
+
+\setbeamercolor*{sidebar}{use=structure,bg=structure.fg}
+  
+\setbeamercolor*{palette sidebar primary}{use=structure,fg=structure.fg!10}
+\setbeamercolor*{palette sidebar secondary}{fg=white}
+\setbeamercolor*{palette sidebar tertiary}{use=structure,fg=structure.fg!50}
+\setbeamercolor*{palette sidebar quaternary}{fg=white}
+
+\setbeamercolor*{titlelike}{parent=palette primary}
+
+\setbeamercolor*{separation line}{}
+\setbeamercolor*{fine separation line}{}
+
+
+\setbeamercolor{block title}{use=structure,fg=structure.fg!75!black,bg=black!10!white}
+\setbeamercolor{block title alerted}{use=alerted text,fg=white,bg=alerted text.fg!75!black}
+\setbeamercolor{block title example}{use=example text,fg=example text.fg!75!black,bg=black!5!white}
+
+\setbeamercolor{block body}{parent=normal text,use=block title,bg=block title.bg}
+\setbeamercolor{block body alerted}{parent=normal text,use=block title alerted,bg=block title alerted.bg!10!bg}
+\setbeamercolor{block body example}{parent=normal text,use=block title example,bg=block title example.bg}
+
+%\setbeamercolor*{section in toc}{fg=structure.fg!75!black}
+\setbeamercolor*{section in toc}{fg=white!25!black}
+\setbeamercolor*{subsection in toc}{fg=white!25!black}
+%\setbeamertemplate{sections/subsections in toc}[square] %circle, ball,  square,  unnumbered, numbered
+
+\setbeamertemplate{section in toc}[ball unnumbered]
+\setbeamertemplate{subsection in toc}[ball unnumbered]
+\setbeamertemplate{sections/subsections in toc}[sections unnumbered] % subsections numberedAchtung Subsection nummeriert aber nicht section
+
+\setbeamertemplate{theorems}[ams style]
+\setbeamertemplate{footline}[frame number]
+
+\setbeamertemplate{caption}[numbered]
+
+\setbeamertemplate{navigation symbols}{}
+
+\setbeamertemplate{headline} 
+{% 
+% \begin{beamercolorbox}[ht=2.5ex,dp=1.5ex]{section in head/foot} 
+% \hspace*{1ex}\insertsection\hfill\insertsubsection\hspace*{1ex}
+% \end{beamercolorbox}% 
+} 
+
+\mode
+<all>
+  %\setbeamercovered{invisible}
+ %\setbeamercovered{transparent}
+   % oder auch nicht
+}
+
+
+%%%% Einstellen der Listenzeichen kann im Dokument geaendert werden
+
+%\setbeamertemplate{itemize item}[triangle,circle,square]
+%\setbeamertemplate{itemize subitem}[circle] 
+%\setbeamertemplate{itemize subsubitem}[circle]
+%\setbeamertemplate{enumerate item}[triangle,circle,square]
+%\setbeamertemplate{enumerate subitem}[circle] 
+%\setbeamertemplate{enumerate subsubitem}[circle]
+
+% ====================================================================
+% <<Titel>>
+% ====================================================================
+
+\title[Adaptive  Bayesian estimation in iGSSM] % (optional, nur bei langen Titeln ntig)
+{\sc Adaptive  Bayesian estimation\\ in indirect Gaussian sequence space models} 
+
+%\subtitle{Minimax-optimal estimation and adaptation} % (optional)
+
+\lecture{Adaptive  Bayesian estimation in iGSSM}{se1}
+
+\author[Jan {\sc Johannes}] % (optional, nur bei vielen Autoren)
+{{Jan {\sc Johannes}}}
+% - Der \inst{?} Befehl sollte nur verwendet werden, wenn die Autoren
+%   unterschiedlichen Instituten angehren.
+
+\institute[RKU Heidelberg] % (optional, aber oft ntig)
+{\ds Ruprecht-Karls-Universität Heidelberg\\[1ex]}
+
+\date[Vortrag] % (optional)
+{\dy\normalsize  Statistics seminar\\[.5ex]   ISBA, Louvain-la-Neuve,
+  May 2016\\[5ex]} 
+
+
+\subject{Statistique}
+
+% ====================================================================
+% <<AtBeginSection>>
+% ====================================================================
+\AtBeginSection[]
+{
+\addtocounter{framenumber}{-1}
+\setbeamertemplate{headline} 
+{% 
+% \begin{beamercolorbox}[ht=2.5ex,dp=1.5ex]{section in head/foot} 
+% \hspace*{1ex}\insertlecture\hfill
+% \end{beamercolorbox}% 
+} 
+\setbeamertemplate{footline} 
+{% 
+\begin{beamercolorbox}[ht=2.5ex,dp=1.5ex]{footbox} 
+%\hspace*{2ex} Jan \textbf{\sc Johannes} (UCL)\hfill\hspace*{2ex}
+\end{beamercolorbox}% 
+} 
+\begin{frame}<beamer>\frametitle{Outline}
+    \tableofcontents[sectionstyle=show/shaded,subsectionstyle=show/show/hide]%[currentsection]
+\end{frame}
+\setbeamertemplate{headline} 
+{% 
+\begin{beamercolorbox}[ht=2.5ex,dp=1.5ex]{section in head/foot} 
+%\hspace*{1ex}\insertlecture\hfill\insertsection\hspace*{1ex}
+\end{beamercolorbox}% 
+} 
+\setbeamertemplate{footline} 
+{% 
+\begin{beamercolorbox}[ht=2.5ex,dp=1.5ex]{footbox} 
+%\hspace*{2ex} Jan \textbf{\sc Johannes} (UCL)\hfill\bf\insertframenumber/\inserttotalframenumber\hspace*{2ex}
+\hspace*{2ex}\dnav\insertsection\hfill\bf\insertframenumber/\inserttotalframenumber\hspace*{2ex}
+\end{beamercolorbox}% 
+} 
+}
+
+% ====================================================================
+% <<AtBeginSubsection>>
+% ====================================================================
+\AtBeginSubsection[]
+{
+\addtocounter{framenumber}{-1}
+\setbeamertemplate{headline} 
+{% 
+% \begin{beamercolorbox}[ht=2.5ex,dp=1.5ex]{section in head/foot} 
+% \hspace*{1ex}\insertlecture\hfill\insertsection\hspace*{1ex}
+% \end{beamercolorbox}% 
+} 
+\setbeamertemplate{footline} 
+{% 
+\begin{beamercolorbox}[ht=2.5ex,dp=1.5ex]{footbox} 
+%\hspace*{2ex} Jan \textbf{\sc Johannes} (UCL)\hfill\hspace*{2ex}
+\end{beamercolorbox}% 
+} 
+\begin{frame}<beamer>\frametitle{Outline}
+    \tableofcontents[sectionstyle=show/shaded,subsectionstyle=show/shaded/hide]%[currentsection,currentsubsection]
+\end{frame}
+\setbeamertemplate{headline} 
+{% 
+% \begin{beamercolorbox}[ht=2.5ex,dp=1.5ex]{section in head/foot} 
+% \hspace*{1ex}\insertlecture\hfill\insertsubsection\hspace*{1ex}
+% \end{beamercolorbox}% 
+} 
+\setbeamertemplate{footline} 
+{% 
+\begin{beamercolorbox}[ht=2.5ex,dp=1.5ex]{footbox} 
+%\hspace*{2ex} Jan \textbf{\sc Johannes} (UCL)\hfill\bf\insertframenumber/\inserttotalframenumber\hspace*{2ex}
+\hspace*{2ex} \dnav\insertsubsection\hfill\bf\insertframenumber/\inserttotalframenumber\hspace*{2ex}
+\end{beamercolorbox}% 
+} 
+}
+% --------------------------------------------------------------------
+% <<Def Boxen>>
+% --------------------------------------------------------------------
+
+
+\setbeamercolor{myshadowbox}{bg=white!85!black,fg=black}
+
+\newcommand{\mysbox}[1]{\begin{beamercolorbox}[wd=\textwidth,leftskip=0ex, rightskip=0ex,colsep=.5ex,colsep*=.5ex,center]{myshadowbox}\begin{minipage}[t]{.95\textwidth}#1\end{minipage}\end{beamercolorbox}}
+\newcommand{\mysboxinvisible}[2]{\invisible<#1>{\begin{beamercolorbox}[wd=\textwidth,leftskip=0ex, rightskip=0ex,colsep=.5ex,colsep*=.5ex,center]{myshadowbox}\begin{minipage}[t]{.95\textwidth}#2\end{minipage}\end{beamercolorbox}}}
+\newcommand{\mysboxonly}[2]{\only<#1>{\begin{beamercolorbox}[wd=\textwidth,leftskip=0ex, rightskip=0ex,colsep=.5ex,colsep*=.5ex,center]{myshadowbox}\begin{minipage}[t]{.95\textwidth}#2\end{minipage}\end{beamercolorbox}}}
+
+
+\setbeamercolor{mywhiteshadowbox}{bg=white!95!black,fg=black}
+
+\newcommand{\mywsbox}[1]{\begin{beamercolorbox}[wd=\textwidth,leftskip=0ex, rightskip=0ex,colsep=.5ex,colsep*=.5ex,center]{mywhiteshadowbox}\begin{minipage}[t]{.95\textwidth}#1\end{minipage}\end{beamercolorbox}}
+\newcommand{\mywsboxinvisible}[2]{\invisible<#1>{\begin{beamercolorbox}[wd=\textwidth,leftskip=0ex, rightskip=0ex,colsep=.5ex,colsep*=.5ex,center]{mywhiteshadowbox}\begin{minipage}[t]{.95\textwidth}#2\end{minipage}\end{beamercolorbox}}}
+\newcommand{\mywsboxonly}[2]{\only<#1>{\begin{beamercolorbox}[wd=\textwidth,leftskip=0ex, rightskip=0ex,colsep=.5ex,colsep*=.5ex,center]{mywhiteshadowbox}\begin{minipage}[t]{.95\textwidth}#2\end{minipage}\end{beamercolorbox}}}
+
+\setbeamercolor{mywhitebox}{bg=white,fg=black}
+\newcommand{\mywbox}[1]{\begin{beamercolorbox}[wd=\textwidth,leftskip=0ex,rightskip=0ex,colsep=.5ex,center]{mywhitebox}\begin{minipage}[t]{.95\textwidth}#1\end{minipage}\end{beamercolorbox}}
+\newcommand{\mywboxinvisible}[2]{\mbox{\invisible<#1>{\begin{beamercolorbox}[wd=\textwidth,leftskip=0ex, rightskip=0ex,colsep=.5ex,colsep*=.5ex,center]{mywhitebox}\begin{minipage}[t]{.95\textwidth}#2\end{minipage}\end{beamercolorbox}}}}
+\newcommand{\mywboxonly}[2]{\only<#1>{\begin{beamercolorbox}[wd=\textwidth,leftskip=0ex, rightskip=0ex,colsep=.5ex,colsep*=.5ex,center]{mywhitebox}\begin{minipage}[t]{.95\textwidth}#2\end{minipage}\end{beamercolorbox}}}
+
+\newcommand{\blex}[1]{\mysbox{{\dg\it Exemple.} #1}}
+\newcommand{\bIl}[1]{\mysbox{{\dg\it Illustration.} #1}}
+\newcommand{\bIlInv}[2]{\mysboxinvisible{#1}{{\dg\it Illustration.} #2}}
+
+
+\begin{document}
+\hypertarget{FiPa}{}
+% ====================================================================
+% <<Titlepage>>
+% ====================================================================
+\setbeamertemplate{headline} 
+{% 
+\begin{beamercolorbox}[ht=2.5ex,dp=1.5ex]{section in head/foot} 
+% \hspace*{1ex}\insertlecture\hfill\insertsubsection\hspace*{1ex}
+\end{beamercolorbox}% 
+} 
+\setbeamertemplate{footline} 
+{% 
+\begin{beamercolorbox}[ht=2.5ex,dp=1.5ex]{footbox} 
+%\hspace*{2ex} Jan \textbf{\sc Johannes} (UCL)\hfill\bf\insertframenumber/\inserttotalframenumber\hspace*{2ex}
+\end{beamercolorbox}% 
+}
+\begin{frame}
+\begin{overlayarea}{\textwidth}{.1\textheight}%
+\end{overlayarea}
+\begin{overlayarea}{\textwidth}{.74\textheight}%
+  \titlepage
+\end{overlayarea}
+\begin{overlayarea}{\textwidth}{.1\textheight}%
+{\begin{minipage}[t]{.11\textwidth}\hfill\null
+% \includegraphics[scale=.35]{./Images/ensai_logo_transparent.png}
+\end{minipage}}
+\hfill{\dgrau\small joint work with Anna Simoni and Rudolf  Schenk}\hfill
+{\begin{minipage}[t]{.11\textwidth}
+\includegraphics[scale=.23]{./Images/siegel_uni_hd_gross.png}
+\end{minipage}}
+\end{overlayarea}
+\end{frame}
+
+% \setbeamertemplate{footline} 
+% {% 
+% \begin{beamercolorbox}[ht=2.5ex,dp=1.5ex]{footbox} 
+% \hspace*{2ex} Jan \textbf{\sc Johannes} (UCL)\hfill\bf\insertframenumber/\inserttotalframenumber\hspace*{2ex}
+% \end{beamercolorbox}% 
+% }
+
+% \setbeamertemplate{headline}
+% {%
+% \begin{beamercolorbox}[ht=2.5ex,dp=1.5ex]{section in head/foot} 
+% \hspace*{1ex}\insertlecture\hfill
+% \end{beamercolorbox}% 
+% }
+
+\setbeamertemplate{footline} 
+{% 
+\begin{beamercolorbox}[ht=2.5ex,dp=1.5ex]{footbox} 
+%\hspace*{2ex} Jan \textbf{\sc Johannes} (UCL)
+%\hfill\dnav\bf\insertframenumber/\inserttotalframenumber\hspace*{2ex}
+\end{beamercolorbox}% 
+}
+
+% % ====================================================================
+% % <<Intro>>
+% % ====================================================================
+% %\setcounter{framenumber}{0}
+%\input{./_1Intro.tex} % Rahmen
+
+
+% ====================================================================
+% <<Outline>>
+% ====================================================================
+\addtocounter{framenumber}{-1}
+\setbeamertemplate{headline} 
+{% 
+% \begin{beamercolorbox}[ht=2.5ex,dp=1.5ex]{section in head/foot} 
+% \hspace*{1ex}\insertlecture\hfill
+% \end{beamercolorbox}% 
+} 
+\setbeamertemplate{footline} 
+{% 
+\begin{beamercolorbox}[ht=2.5ex,dp=1.5ex]{footbox} 
+%\hspace*{2ex} Jan \textbf{\sc Johannes} (UCL)\hfill\hspace*{2ex}
+\end{beamercolorbox}% 
+} 
+\begin{frame}
+  \frametitle{Outline}
+  \tableofcontents[sectionstyle=show,subsectionstyle=hide]%[currentsection]
+  % Die Option [pausesections] knnte ntzlich sein.
+\end{frame}
+\setbeamertemplate{footline} 
+{% 
+\begin{beamercolorbox}[ht=2.5ex,dp=1.5ex]{footbox} 
+%\hspace*{2ex} Jan \textbf{\sc Johannes} (UCL)\hfill\bf\insertframenumber/\inserttotalframenumber\hspace*{2ex}
+\hspace*{2ex} \dnav\hfill\bf\insertframenumber/\inserttotalframenumber\hspace*{2ex}
+\end{beamercolorbox}% 
+} 
+
+
+\newenvironment{DBliste}
+{\begin{list}{\db\raisebox{0.2ex}{$\diamondsuit$}}
+{\setlength{\itemsep}{1em}\setlength{\topsep}{0.5em}
+ \setlength{\labelsep}{2ex}\setlength{\leftmargin}{4em}}}
+{\end{list}}
+
+% ====================================================================
+% <<Inhalt>>
+% ====================================================================
+\setcounter{framenumber}{0}
+
+% --------------------------------------------------------------------
+% <<Intro>>
+% --------------------------------------------------------------------
+\section{Introduction}
+\input{./_1Intro.tex} % Rahmen
+
+% --------------------------------------------------------------------
+% <<Model>>
+% --------------------------------------------------------------------
+\section{Frequentist perspective reviewed}
+\input{_2Model.tex}
+% --------------------------------------------------------------------
+% <<Bayes>>
+% --------------------------------------------------------------------
+\section{Posterior concentration}
+\input{_3Bayes.tex}
+% --------------------------------------------------------------------
+% <<Adaptive>>
+% --------------------------------------------------------------------
+\section{Adaptive posterior concentration}
+\input{_4Adaptive.tex}
+% --------------------------------------------------------------------
+% <<Adaptive BE>>
+% --------------------------------------------------------------------
+\section{Adaptive Bayes estimator}
+\input{_5AdaptiveBE.tex}
+% --------------------------------------------------------------------
+% <<Extensions>>
+% --------------------------------------------------------------------
+\section{Perspectives and conclusion}
+\input{_6Extensions.tex}
+% --------------------------------------------------------------------
+% <<Summary>>
+% --------------------------------------------------------------------
+\subsection{Conclusion}
+\begin{frame}
+  \frametitle{Conclusion}
+  \begin{rudiListeS}[\setListeL{5ex}{0ex}{5ex}{5ex}] 
+  \item Summary
+  \begin{rudiListeB}[\setListeL{1ex}{2ex}{2ex}{3ex}] 
+\item  {\rudicolor oracle} and {\rudicolor minimax} optimal concentration rates in an indirect sequence space
+model
+  \item<2-> hierarchical prior leading to {\rudicolor oracle} and {\rudicolor minimax} optimal concentration
+    rates and a fully-data driven Bayes estimate that is {\rudicolor
+      oracle} and  {\rudicolor minimax} optimal in an indirect sequence space
+model
+\end{rudiListeB}
+\item<3-> Extensions
+  \begin{rudiListeB}[\setListeL{1ex}{2ex}{2ex}{3ex}] 
+\item<3-> additional noise: $X_j=\lambda_j+\text{noise}$
+\item<4-> non-diagonal inverse problems with noise in the operator
+%\item<5-> efficient simulation algorithms for the posterior distribution 
+\end{rudiListeB}
+\end{rudiListeS}
+\end{frame}
+
+
+% --------------------------------------------------------------------
+% <<References>>
+% --------------------------------------------------------------------
+\begin{frame}
+  \frametitle{References}
+     %\nocite{Jo07}
+{\small{\begin{thebibliography}{10}       
+\beamertemplatearticlebibitems
+% \bibitem{[1]}\dg {M. Hoffmann, J. Rousseau  and  J. Schmidt-Hieber} (2015) {\ds\it On adpative posterior concentration rates.} 
+% {\ds The Annals of Statistics, 43:5,2259--2295}
+
+
+% % \bibitem{[1]}\dg {J. Arbel, G. Gayraud and J. Rousseau} (2013) {\ds\it Bayesian optimal adaptive estimation using a sieve prior.}
+% % {\ds Scandinavian Jounral of Statistics, 40:549--570}
+
+ 
+% \bibitem{[3]}\dg  {I. Castillo} (2008) 
+% {\ds \it Lower bounds for posterior rates with Gaussian process
+%   priors.}
+% {\ds Electronic Journal of Statistics, 2:1281-1299}
+
+% \bibitem{[4]}\dg {S. Ghosal, J.K. Ghosh and  A.W. Van Der Vaart} (2000)
+% {\ds\it Convergence rates of posterior distributions.}
+% {\ds The Annals of Statistics 28(2):500–531}
+
+\bibitem{[5]}\dg {J.J., A. Simoni and  R. Schenk} (2015)
+{\ds\it Adaptive  Bayesian estimation in indirect  Gaussian sequence space models.}
+{\ds Discussion paper (arXiv:1502.00184)}
+
+% \bibitem{[6]}\dg {J.J. and M. Schwarz} (2013), 
+% {\ds\it Adaptive Gaussian inverse regression with partially unknown  operator.}
+% {\ds Communications in Statistics - Theory and Methods, 42(7):1343-1362}
+%       \end{thebibliography}}}
+
+% \bibitem{[1]} {\sc Arbel, Gayraud \& Rousseau} (2013)
+% \newblock{Bayesian optimal adaptive estimation using a sieve prior.}
+% \newblock{Discussion paper on arXiv}
+
+% \bibitem{[3]}  {\sc Castillo} (2008) 
+% \newblock{Lower bounds for posterior rates with Gaussian process  priors.}
+% \newblock{Electronic Journal of Statistics, 2, 1281-1299}
+
+% \bibitem{[4]} {\sc Ghosal, Ghosh \&  van der Vaart} (2000)
+% \newblock{Convergence rates of posterior distributions.}
+% \newblock{Annals of Statistics 28, 2 , 500–531}
+
+% \bibitem{[5]} {\sc Johannes, Schenk \& Simoni} (2014)
+% \newblock{Adaptive  Bayesian estimation in Gaussian sequence space
+%   models.}
+% \newblock{Discussion paper (in preparation)}
+
+% \bibitem{[6]} {\sc Johannes \& Schwarz} (2013), 
+% \newblock{Adaptive Gaussian inverse regression with partially unknown  operator.}
+% \newblock{Communications in Statistics - Theory and Methods, 42(7):1343-1362, 2013}
+\end{thebibliography}}}
+\end{frame}
+
+
+\begin{frame}
+\vfill
+\centerline{\Large \dr Thank you for your attention.}
+\vfill  
+\end{frame}
+
+
+
+
+\setbeamertemplate{footline} 
+{% 
+\begin{beamercolorbox}[ht=2.5ex,dp=1.5ex]{footbox} 
+%\hspace*{2ex} Jan \textbf{\sc Johannes} (UCL)\hfill\hspace*{2ex}
+\end{beamercolorbox}% 
+} 
+
+\begin{frame}
+\begin{overlayarea}{\textwidth}{.1\textheight}%
+\end{overlayarea}
+\begin{overlayarea}{\textwidth}{.74\textheight}%
+  \titlepage
+\end{overlayarea}
+\begin{overlayarea}{\textwidth}{.1\textheight}%
+{\begin{minipage}[t]{.11\textwidth}\hfill\null
+% \includegraphics[scale=.35]{./Images/ensai_logo_transparent.png}
+\end{minipage}}
+\hfill{\dgrau\small joint work with Anna Simoni and Rudolf  Schenk}\hfill
+{\begin{minipage}[t]{.11\textwidth}
+\includegraphics[scale=.23]{./Images/siegel_uni_hd_gross.png}
+\end{minipage}}
+\end{overlayarea}
+\end{frame}
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

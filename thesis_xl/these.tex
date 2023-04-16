@@ -1,0 +1,217 @@
+\documentclass[a4paper,11pt]{book}
+\synctex=1
+
+\usepackage{graphicx}
+% put all the other packages here:
+
+
+\usepackage{packages}
+\usepackage{ACDE-abrev-package}
+\usepackage{command}
+\usepackage{style}
+\usepackage{personal}
+\usepackage{theorem}
+\usepackage{hyperref} 
+
+\begin{document}
+\frontmatter
+\input{./tex/title.tex}
+%
+\tableofcontents
+%
+%
+\mainmatter
+
+\pagestyle{fancy}
+\chapter*{Introduction}\label{INTRO}
+As the interests of scientific research become more and more complex, the complexity of measuring quantities related to those interests also increases.
+In an attempt to rise to this challenge, we design equally complex systems, which output vast amounts of data which are only remotely linked to the phenomenon of interest and fundamentally random.
+In such a context, it is urging to design statistical methods which are fit to leverage such data.
+We hence propose here a study of linear statistical ill-posed inverse problems, a family of models which may arise in the framework we just described, and investigate statistical methods for estimation within them.
+
+\medskip
+
+In \nref{BACKGROUND}, we provide a brief overview of the theory of linear statistical ill-posed inverse problems.
+To do so, we begin, in \nref{INTRO_INVERSEPROBLEMS}, by presenting a definition of those models and some of their most common hypotheses and difficulties.
+
+As we are interested in the case of random data for inverse problems, we present in \nref{INTRO_DATA} the notion of stochastic process, a general formulation for the data when considering the statistical version of linear ill-posed inverse problems.
+In particular, we will consider four flavours for those; when the data are either independent or when they form an absolutely regular process; and when we suppose that the operator of the inverse problem is known or when we need to observe a second set of data to learn about the operator.
+
+We will consider the study of those models under the two paradigms of Bayesian and frequentist inference.
+We will hence introduce those two approaches.
+First the frequentist approach in \nref{INTRO_FREQ} where we will introduce the notion of estimator as well as notions of decision theory used to quantify the quality of an estimator and to define notions of optimality.
+We then proceed with the Bayesian approach in \nref{INTRO_BAYES} where we give a short reminder of necessary conditions for the posterior distribution to exist in a satisfying sense; we then introduce an iteration procedure which allows to define non-informative priors; and we present the way in which we will quantify the quality of posterior distribution thanks to the pragmatic Bayesian approach.
+
+We conclude this overview with the introduction of the two models we will use to illustrate our methods, namely, the inverse Gaussian sequence space in \nref{INTRO_IGSSM}, as well as the circular density deconvolution in \nref{INTRO_CIRCULARDECONVOLUTION}. 
+
+\medskip
+
+While considering the Bayesian paradigm in \nref{BAYES}, we propose the study of inverse problems using Gaussian process sieve priors as well as their hierarchical counterpart where the threshold is a random variable.
+
+We investigate two different asymptotic analyses.
+The first asymptotic faces the difficulty to justify the choice of a particular prior in the non-parametric context, when prior information can be little reliable.
+We then study a non informative prior obtained by an iteration of the posterior where a posterior distribution is used as a new prior, used with the same data and likelihood, to compute a new posterior distribution, over and over again.
+This procedure generates a family of posterior distributions, giving more and more weight to the observations while the prior information fades away.
+If it exists, the distribution obtained when this iteration parameter tends to infinity is called self informative Bayes carrier while its mean is called self informative limit.
+We show in \nref{BAYES_SIEVE} that, under a continuity assumption for the likelihood, the self informative Bayes carrier for Gaussian sieves is supported by the set of maximisers of the likelihood.
+For the hierarchical sieves, we show in \nref{BAYES_HIERARCHICAL} that the self informative Bayes carrier of the threshold parameter is supported by the set of minimisers of a penalised contrast, which shows a link between this method and the frequentist estimation via penalised contrast minimisation.
+
+The second asymptotic, more traditionally, investigates the behaviour of the posterior distribution as the quality (or amount) of the data increases.
+Considering the classical notion of posterior contraction rate and uniform contraction rate, we present in \nref{BAYES_STRATEGIES} two technics to compute upper bounds for them.
+The first, presented in \nref{BAYES_STRATEGIES_MOMENT} relies on the computation of the posterior moments of the distance between the true parameter and the random parameter and it allows us to show optimal bound for the Gaussian sieve in the case of the inverse Gaussian sequence space model.
+The second, presented in \nref{BAYES_STRATEGIES_EXPO} is specific to the hierarchical Gaussian sieve and relies on a decomposition of the posterior risk.
+We then proceed to show in \nref{BAYES_GAUSS} that those methods may apply in the context of the inverse Gaussian sequence space model.
+All those contraction results are obtained for all values of the iteration parameter, including in the limiting case and hence give us a proof for the optimality of the penalised contrast minimisation estimator in terms of convergence in probability.
+
+Finally we exhibit in \nref{BAYES_POSTMEAN} that the posterior mean of the hierarchical Gaussian sieve prior is both a shrinkage and an aggregation estimator, with interesting optimality properties.
+
+\medskip
+
+Motivated by the last findings about posterior mean of hierarchical Gaussian sieves, we propose in \nref{FREQ} to investigate the quadratic risk of a family of aggregation estimators, which shape, presented in \nref{freq:ge:shape} mimics the one of the above-mentioned posterior means.
+In \nref{freq:ge:strat} we highlight a strategy, relying on the decomposition of the risk, which allows to obtain optimal convergence rates in the cases of known and unknown operator, for dependent as well as absolutely regular data.
+Finally, we apply this strategy the the inverse Gaussian sequence space model in \nref{FREQ_IGSSM}, both in the known operator case (\nref{freq:igssm:kn}), and the unknown operator case (\nref{{freq:igssm:uk}}); and to the circular density deconvolution model in \nref{FREQ_CIRCULARDECONVOLUTION}, in the known operator with independent data case (\nref{ak:rb}), known operator and absolutely regular process data case (\nref{FREQ_CIRCDECONV_KNOWN_BETA}), and to the case of an unknown operator (\nref{FREQ_DECONV_UNKNOWN}).
+
+\chapter{Background and review}\label{BACKGROUND}
+As stated in the introduction, we propose in this thesis to consider the problem of parameter estimation in the context of statistical ill-posed linear inverse problems under two different paradigms, the frequentist and the Bayesian paradigm respectively.
+As a consequence, it is suitable to define with precision this family of problem and those two paradigms.
+That is what we aim to do in the following chapter with the following section structure.
+
+\medskip
+
+In \nref{INTRO_INVERSEPROBLEMS}, we give a brief formulation of linear inverse problems and the difficulties that arise as a consequence of their specific structure.
+We then present in \nref{INTRO_DATA} the notion of stochastic process which generalises the type of data we will consider in our examples. We also formulate how the stochastic processes we will observe relate to the parameters of inverse problems as well as the different dependence structures we might consider.
+
+\medskip
+
+We then move on to consider the frequentist paradigm in \nref{INTRO_FREQ}. 
+At first we consider the notion of estimator and, in particular, a form of estimators that arises naturally with our data.
+Referring back to the specificities of inverse problems, we highlight the importance of so called regularisation methods, and give particular interest to the family regularisation by dimension reduction which we will use throughout the thesis.
+Notions of decision theory which let us define what is a satisfying estimator are then presented and we illustrate those notions with their application in our context.
+
+\medskip
+
+In \nref{INTRO_BAYES} we consider the Bayesian paradigm .
+After briefly introducing the keystones of this paradigm, we give some examples of widely used prior distributions for stochastic processes.
+We will then consider a generalisation of the posterior distribution through an iteration procedure previously introduced in \ncite{OBJJ}.
+Underlining the need for a quantification of the quality of such methods, we then consider what is nowadays referred to as "frequentist Bayesian" or "pragmatic Bayesian" approach which allows to define some notions of optimality for prior choices.
+We conclude this subsection by presenting some major results obtained in this theory.
+
+\medskip
+
+Finally, we conclude this overview with two models which illustrate the notions of this overview and which we will study in the following chapter.
+The first is the inverse Gaussian Sequence Space Model (iGSSM) in \nref{INTRO_IGSSM} and the second is the circular probability density deconvolution \nref{INTRO_CIRCULARDECONVOLUTION}.
+
+\input{./tex/introduction/inverse_problems.tex}
+\input{./tex/introduction/data.tex}
+\input{./tex/introduction/frequentist_approach.tex}
+\input{./tex/introduction/bayesian_approach.tex}
+\input{./tex/introduction/iGSSM.tex}
+\input{./tex/introduction/circular_deconvolution.tex}
+
+\chapter{Bayesian interpretation of model selection}\label{BAYES}
+
+In this chapter, we consider the family of Bayesian methods described as "Gaussian sieve priors" in \nref{INTRO_BAYES_PRIOR} as well as an adaptive variant of these priors, the hierarchical sieve priors where the threshold parameter is a random variable with a specified prior distribution.
+We study their behaviour under two asymptotic, respectively described in \nref{INTRO_BAYES_PRAGMATIC} and \nref{INTRO_BAYES_ITERATIVE}.
+
+In \nref{BAYES_SIEVE} we consider the self informative Bayes carrier of Gaussian sieve priors under continuity assumptions for the likelihood and show that its support is contained in the maximum likelihood set.
+Then, in \nref{BAYES_HIERARCHICAL} we show that the distribution of the hyper-parameter in the hierarchical prior contracts around the set of maximisers of a penalised contrast criterion.
+This section highlights a new link between Bayesian adaptive estimation and the frequentist penalised contrast model selection.
+
+In \nref{BAYES_STRATEGIES}, while considering the noise asymptotic, we line out two strategies of proof which allow to obtain contraction rates. The first relies on posterior moment bounding, it is easy to apply and we give examples where the obtained bounds are optimal, however, it requires analytical expressions for the posterior moments, which are not often available for the sophisticated priors used in non-parametric Bayes methods; the second is specific to the hierarchical sieve prior and is similar to the one used in \ncite{JJASRS}, we generalise it to the self informative Bayes carrier where the posterior distribution is supported by a null-measure set.
+In \nref{BAYES_GAUSS} we apply this strategies to the specific inverse Gaussian sequence space model.
+Doing so, we obtain exact contraction rate for the (iterated) Gaussian sieve prior using the first scheme of proof; and the iterated hierarchical prior using the second.
+This yields optimality for sieve priors with properly chosen threshold parameter; as well as for penalised contrast model selection; and for any iterated version of the hierarchical prior we consider.
+
+Finally, we conclude this chapter in \nref{BAYES_POSTMEAN} with a note about the shape of the posterior mean of the hierarchical prior, motivating the shape of the frequentist estimators we use in \nref{FREQ}.
+
+\input{./tex/general_bayes/sieve.tex}
+\input{./tex/general_bayes/hierarchical.tex}
+\input{./tex/general_bayes/general.tex}
+\input{./tex/general_bayes/model.tex}
+%\input{./tex/general_bayes/decon.tex}
+\input{./tex/general_bayes/post_mean.tex}
+%%
+\chapter{Minimax and oracle optimal adaptive aggregation}\label{FREQ}
+We inquire in this chapter the properties of aggregation estimators as introduced in \nref{BAYES_POSTMEAN}.
+We introduce first a skim of proof for oracle and minimax optimality of this kind of estimator before applying it to the inverse Gaussian sequence space and the circular deconvolution models respectively introduced in \nref{INTRO_IGSSM} and \nref{INTRO_CIRCULARDECONVOLUTION}, including in presence of dependance and partially known operator.
+
+Remind that we are interested in the estimation of an element $f$ of a Hilbert space $(\Xi, \langle \cdot \vert \cdot \rangle_{\Xi})$, in an optimal manner with respect to the norm $\Vert \cdot \Vert_{\Xi}$ induced by the inner product.
+Considering an index set $\mathds{F} = \Z \text{or} \N$; an orthonormal system $(e_{s})_{s \in \mathds{F}}$ in $(\Xi, \langle \cdot \vert \cdot \rangle_{\Xi})$; and the space of $\mathds{F}$-indexed, $\mathds{K}(= \C \text{or} \R)$-valued sequences $\Theta$ we defined the generalised Fourier transform $\mathcal{F}: \Xi \to \Theta, x \mapsto [x] = (\langle x \vert e_{s} \rangle_{\Xi})_{s \in \mathds{F}}$.
+
+We then let $T$ be a linear operator from $\Xi$ to itself such that, for any $s$ in $\mathds{F}$, there exists $\lambda(s)$ in $\mathds{K} \setminus \{0\}$ such that $T(e_{s}) = \lambda(s) e_{s}$ and we denote $g := T(f)$; $h := \mathcal{F}^{\star}((\lambda(s))_{s \in \mathds{F}})$; $\theta^{\circ} := \mathcal{F}(f)$; and $\phi := \fourier(g)$.
+
+Under \nref{AS_INTRO_DATA_KNOWN}, we define a strictly stationary stochastic process $Y = (Y_{p})_{p \in \Z}$ in which for any $p$ in $\Z$, $Y_{p}$ is a $\Xi$ indexed stochastic process verifying, for any $x$ and $y$ in $\Xi$, $\E[Y_{p}(x)] = \langle g \vert x \rangle_{\Xi}$ and $\Cov(Y_{p}(x), Y_{p}(y)) = \langle x \vert y \rangle_{\Xi}$.
+In particular for any $s$ and $s'$ in $\mathds{F}$ we have $\E[Y_{p}(e_{s})] = \phi(s)$ and $\Cov(Y_{p}(e_{s}), Y_{p}(e_{s'})) = \mathds{1}_{\{s = s'\}}$.
+We then assume to observe the sub-vector $Y^{n} = (Y_{p})_{p \in \llbracket 1, n \rrbracket}$ of $Y$.
+Under \nref{AS_INTRO_DATA_UNKNOWN}, in addition to observing $Y^{n}$, we define  a strictly stationary stochastic process $\epsilon = (\epsilon_{p})_{p \in \Z}$ in which for any $p$ in $\Z$, $\epsilon_{p}$ is a $\Xi$ indexed stochastic process verifying, for any $x$ and $y$ in $\Xi$, $\E[\epsilon_{p}(x)] = \langle h \vert x \rangle_{\Xi}$ and $\Cov(\epsilon_{p}(x), \epsilon_{p}(y)) = \langle x \vert y \rangle_{\Xi}$.
+In particular for any $s$ and $s'$ in $\mathds{F}$ we have $\E[\epsilon_{p}(e_{s})] = \lambda(s)$ and $\Cov(\epsilon_{p}(e_{s}), \epsilon_{p}(e_{s'})) = \mathds{1}_{\{s = s'\}}$.
+We then assumed to observe the sub-vector $\epsilon^{n_{\lambda}} = (\epsilon_{p})_{p \in \llbracket 1, n_{\lambda} \rrbracket}$ of $\epsilon$.
+
+Then, we pointed out that, for each $s$, a naive estimator for $\phi(s)$ is $\phi_{n}(s) = n^{-1} \sum\nolimits_{p = 1}^{n} Y_{p}(e_{s})$, and hence an estimator for $\theta^{\circ}(s)$ could be, under \nref{AS_INTRO_DATA_KNOWN}, $\theta_{n}(s) = \phi_{n}(s) \lambda(s)^{-1}$ as we assumed $\lambda(s) \neq 0$, and, under \nref{AS_INTRO_DATA_UNKNOWN}, we define $\lambda_{n_{\lambda}}(s) = n_{\lambda}^{-1} \sum\nolimits_{p = 1}^{n_{\lambda}} \epsilon_{p}(e_{s})$, $\lambda_{n_{\lambda}}^{+}(s) = \lambda_{n_{\lambda}}(s)^{-1} \mathds{1}_{\{\lambda_{n_{\lambda}}(s) > n_{\lambda}^{-1}\}}$, and $\theta_{n, n_{\lambda}}(s) = \phi_{n}(s) \lambda_{n_{\lambda}}^{+}(s)$.
+Defining the sieve family
+
+$(\mathds{F}_{m})_{m \in \N} = (\{ s \in \mathds{F}: \vert s \vert \leq m\})_{m \in \N}$, we then introduced the families of projection estimators $(\phi_{n, \overline{m}})_{m \in \N}) =  ((\phi_{n}(s) \mathds{1}_{\{\vert s \vert \leq m\}})_{s \in \mathds{F}})_{m \in \N}$, and $(\theta_{n, \overline{m}})_{m \in \N} = ((\theta_{n}(s) \mathds{1}_{\{\vert s \vert \leq m\}})_{s \in \mathds{F}})_{m \in \N}$ under \nref{AS_INTRO_DATA_KNOWN} or $(\theta_{n, n_{\lambda}, \overline{m}})_{m \in \N} = ((\theta_{n, n_{\lambda}}(s) \mathds{1}_{\{\vert s \vert \leq m\}})_{s \in \mathds{F}})_{m \in \N}$ under \nref{AS_INTRO_DATA_UNKNOWN}.
+
+We then presented the oracle and minimax risk for those projection estimators and highlighted that taking their inverse Fourier transform would give an estimator of $f$ with the same quadratic risk, thanks to Plancherel theorem.
+We also highlighted that the optimal choice for the threshold parameter $m$ depends either on $\theta^{\circ}$ itself or on its regularity class in the minimax case.
+This dependence justifies the need for data-driven methods such as the penalised contrast minimisation.
+Interestingly, we saw in the last chapter that this method could be seen, from the Bayesian point of view, as the self informative limit of a family of hierarchical sieve priors and used this fact to prove its optimality in terms of speed of convergence in probability.
+The posterior mean of those hierarchical sieve priors has been expressed both as an aggregation and as a shrinkage estimator and we will mimic this structure in this chapter.
+This allows us to suggest a proof strategy for optimality of such estimators and apply it to our two example models.
+
+
+\input{./tex/freq/general.tex}
+%%
+\section{Inverse Gaussian sequence space model}\label{FREQ_IGSSM}\label{FREQ_GAUSS}
+\input{./tex/freq/gauss/gauss.tex}
+%%
+\section{Circular deconvolution model}\label{FREQ_CIRCULARDECONVOLUTION}
+\input{./tex/freq/circular_deconvolution/circular_deconvolution.tex}
+
+\appendix
+
+
+\chapter{Proof for \textsc{\nref{BAYES_GAUSS_CONTRACT_HIERARCHICAL}}}\label{PROOF_BAYES_IGSSM}
+\section{Proof of \nref{THM_BAYES_IGSSM_KNOWN_IID_ORACLE_NP}}\label{PROOF_BAYES_IGSSM_KNOWN_IID_ORACLE_NP}
+\input{./tex/proofs/bayes_igssm_known_iid_oracle_np.tex}
+\section{Proof of \nref{THM_BAYES_IGSSM_KNOWN_IID_MINIMAX_NP}}\label{PROOF_BAYES_IGSSM_KNOWN_IID_MINIMAX_NP}
+\input{./tex/proofs/bayes_igssm_known_iid_minimax_np.tex}
+%
+\chapter{Proof for \nref{FREQ_STRATEGY}}\label{pro:freq:strat}
+\input{./tex/proofs/preliminaries.tex}
+
+%\chapter{Proof for \nref{FREQ_GAUSS}}\label{PROOF_FREQ_IGSSM}
+%\input{./tex/proofs/freq_igssm_known_iid_oracle_np.tex}
+%\input{./tex/proofs/freq_igssm_known_iid_minimax_np.tex}
+
+
+\chapter{Proofs for \nref{FREQ_CIRCULARDECONVOLUTION}}\label{a:prel}
+\input{./tex/proofs/preliminaries_circ.tex}
+
+%\chapter{Proof for \nref{ak:rb}}\label{PROOF_FREQ_CIRCDECONV_KNOWN_IID_ORACLE_P}\label{a:ak}
+%\input{./tex/proofs/freq_circdeconv_known_iid_oracle_p.tex}
+%\chapter{Proof for \nref{THM_FREQ_CIRCDECONV_KNOWN_IID_ORACLE_NP}}\label{PROOF_FREQ_CIRCDECONV_KNOWN_IID_ORACLE_NP}
+%\input{./tex/proofs/freq_circdeconv_known_iid_oracle_np.tex}
+
+%\chapter{Proof for \textsc{\nref{FREQ_CIRCDECONV_KNOWN_BETA}}}\label{PROOF_FREQ_CIRCDECONV_KNOWN_BETA_ORACLE_NP}
+%\input{./tex/proofs/freq_circdeconv_known_beta_oracle_np.tex}
+%\chapter{Proof for \nref{FREQ_DECONV_UNKNOWN}}\label{PROOF_FREQ_CIRCDECONV_UNKNOWN_IID_ORACLE_P}\label{a:au}
+%\input{./tex/proofs/freq_circdeconv_unknown_iid_oracle_p.tex}
+%\chapter{Proofs of \nref{THM_FREQ_CIRCDECONV_UNKNOWN_IID_ORACLE_NP}}\label{PROOF_FREQ_CIRCDECONV_UNKNOWN_IID_ORACLE_NP}
+%\input{./tex/proofs/freq_circdeconv_unknown_iid_oracle_np.tex}
+%\chapter{Simulation skim}\label{SIMULATION}
+%% \input{./tex/simulation_skim/simulations.tex}
+
+%
+%\input{./tex/table_of_notations.tex}
+
+\bibliography{biblio.bib}{}
+\nocite{*}
+\bibliographystyle{apalike}
+%
+
+\end{document}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

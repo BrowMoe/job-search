@@ -1,0 +1,22 @@
+\ProvidesPackage{title}
+
+%\newcommand{\1}{
+%	\setbeamertemplate{background}{
+%		\includegraphics[width=\paperwidth,height=\paperheight]{img/CRUK/CRUK Grand Challenge Rosetta slide cover}
+%		\tikz[overlay] \fill[fill opacity=0,fill=white] (0,0) rectangle (-\paperwidth,\paperheight);
+%	}
+%}
+
+%% Title page
+\setbeamertemplate{title page}{
+	{
+		\usebackgroundtemplate{\includegraphics[width=\paperwidth]{img/CRUK/CRUK Grand Challenge Rosetta slide cover}}
+		\put(0,-110.7pt){%
+			\begin{minipage}[b][45mm][t]{226mm}
+				\titlefont{\inserttitle\par}
+				\subtitlefont{\insertsubtitle\par}
+				\authorfont{\insertauthor , \insertdate}
+			\end{minipage}
+		}
+	}
+}

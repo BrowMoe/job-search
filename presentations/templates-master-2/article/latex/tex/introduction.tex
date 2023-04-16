@@ -1,0 +1,73 @@
+\section{Introduction}\label{1}
+\subsection{The inverse Gaussian sequence space model and notations in use}\label{1.1}
+
+In the following article, we focus on the inverse gaussian sequence space model.
+
+This model is defined as follow: let $\left(\theta^{\circ}_{j}\right)_{j \in \mathds{N}^{\star}}$ be a square summable sequence of unknown real numbers which we want to estimate ; $\left(\lambda_{j}\right)_{j \in \mathds{N}^{\star}}$, a sequence of known real numbers to be interpreted as Eigen values of a known diagonal linear operator, $n$ a natural integer which represents the noise level, and $(\boldsymbol{\xi}_{j})_{j \in \mathds{N}^{\star}}$ be a sequence of independent and identically distributed random variables ($iid$) with normal standard distribution (for all $j$, $\xi_{j} \sim_{iid} \mathcal{N}(0,1)$).
+Then, we observe the sequence $\left(Y^{n}_{j}\right)_{j \in \mathds{N}^{\star}}$, defined by :
+\[\forall j \in \mathds{N}^{\star}, \quad Y_{j}^{n} = \lambda_{j} \cdot \theta^{\circ}_{j} + \frac{1}{\sqrt{n}} \boldsymbol{\xi}_{j}.\]
+Note that the elements of the sequence $\left(Y_{j}^{n}\right)_{j \in \mathds{N}^{\star}}$ sequence are not identically distributed and that for all $j$ in $\mathds{N}^{\star}, \, Y_{j}^{n}$ follows $\mathcal{N}(\lambda_{j} \cdot \theta^{\circ}_{j}, \frac{1}{n})$, however, they are independent.
+
+In the following, we will denote $\mathds{P}_{\theta^{\circ}}^{n}$ the distribution of $Y^{n}$ and $\mathds{E}_{\theta^{\circ}}^{n}$ the expectation under this distribution.
+Obviously, these two objects depend on $n$ and $\theta^{\circ}.$
+
+\subsection{Metrics and Sobolev's ellipsoids}\label{1.2}
+
+We will from now on note $\Theta$ the set of square summable sequences of real numbers: $\Theta := \left\{\theta \in \mathds{R}^{\mathds{N}^{\star}}: \sum\limits_{j \in \mathds{N}^{\star}} \theta_{j}^{2} < \infty \right\}$.
+
+A natural norm on $\Theta$ is the $L^{2}$-norm, denoted $\Vert \cdot \Vert$ and defined as the application which associates to any $\theta$ in $\Theta$ the positive, finite, real number $\Vert \theta \Vert = \sqrt{\sum\limits_{j \in \mathds{N}^{\star}} \theta_{j}^{2}}$.
+
+Alternatively one can consider weighted norms. For any positive, non-increasing sequence of real numbers $a$, define the set $\Theta_{a}:=\left\{\theta \in \mathds{R}^{\mathds{N}^{\star}} : \sum\limits_{j \in \mathds{N}^{\star}} \theta_{j}^{2}/a_{j} < \infty \right\}$. We define the $a$-weighted norm over $\Theta_{a}$ as the application which to any $\theta$ in $\Theta_{a}$ associates $\Vert \theta \Vert_{a} = \sqrt{\sum\limits_{j \in \mathds{N}^{\star}} \theta_{j}^{2} / a_{j} }$.
+
+\medskip
+
+Common sets over which to consider minimax optimality (see \textsc{\cref{2.2}} and \textsc{\cref{3.2}}) are Sobolev's ellipsoids.
+Define a positive non-increasing sequence $\left(\mathfrak{a}_{j}\right)_{j \in \mathds{N}^{\star}} \in \mathds{R}_{+}^{\mathds{N}^{\star}}$ such that $\mathfrak{a}_{1} = 1$ and $\lim\limits_{j \rightarrow \infty} \mathfrak{a}_{j} = 0$ and $r$ a real constant.
+Then we have $\Theta_{\mathfrak{a}}(r) = \left\{\theta \in \Theta_{\mathfrak{a}} : \Vert \theta \Vert_{\mathfrak{a}} \leq r \right\}.$
+
+\subsection{Definitions and set of assumptions}\label{1.3}
+
+We introduce further objects which appear to have a meaningful role subsequently.
+
+\begin{de}\label{de1}
+We define for all $m$ in $\mathds{N}^{\star}$
+\begin{alignat*}{6}
+&\mathfrak{b}_{m} &&:= \sum\limits_{j > m} \left(\theta^{\circ}_{j}\right)^{2}; \quad && \Lambda_{m} &&:= \frac{1}{\lambda_{m}^{2}} ; \quad &&\overline{\Lambda}_{m} &&:= \frac{1}{m} \sum\limits_{j = 1}^{m} \Lambda_{j};\\
+& \Phi_{n}^{m} &&:= \left[\mathfrak{b}_{m} \vee \frac{m \overline{\Lambda}_{m}}{n}\right]; \quad && m_{n}^{\circ} &&:= m_{n}^{\circ}(\theta^{\circ}, \lambda) =\argmin\limits_{m \in \mathds{N}^{\star}}\left\{\Phi_{n}^{m}\right\}; \quad && \Phi_{n}^{\circ} &&:= \Phi_{n}^{\circ}(\theta^{\circ}, \lambda) = \Phi_{n}^{m^{\circ}_{n}};\\
+& \Psi_{n}^{m} &&:= \left[\mathfrak{a}_{m} \vee \frac{m \overline{\Lambda_{m}}}{n}\right]; \quad && m_{n}^{\star} &&:= m_{n}^{\star}(\mathfrak{a}, \lambda) = \argmin\limits_{m \in \mathds{N}^{\star}} \left\{\Psi_{n}^{m}\right\}; \quad && \Psi_{n}^{\star} &&:= \Psi_{n}^{\star}(\mathfrak{a}, \lambda) = \Psi_{n}^{m_{n}^{\star}}.
+\end{alignat*}
+\end{de}
+We will see in \textsc{\cref{2.1}} that $\mathfrak{b}_{m}$ is the bias for a projection estimator and $m \cdot \overline{\Lambda}_{m}/n$ is its variance, moreover, we show in \textsc{\cref{3.1}} and \textsc{\cref{3.2}} that $\Phi_{n}^{\circ}$ and $\Psi_{n}^{\star}$ are respectively oracle and minimax optimal contraction rates.
+
+To prove results about the adaptive methods we study in \textsc{\cref{3.3}} and \textsc{\cref{4.3}}, the following assumptions on the model are required.
+
+\begin{as}\label{as1}
+Suppose that $\lambda$ is monotonically and polynomially decreasing, that is, there exist $c$ in $[1, \infty[$ and $a$ in $\mathds{R}_{+}$ such that
+\[\forall j \in \mathds{N}^{\star}, \quad \frac{1}{c} j^{-a} \leq \lambda_{j} \leq c j^{-a}.\]
+\end{as}
+
+This assumption assures that there exist a constant $L := L(\lambda)$ in $[1, \infty[$, independent of $\theta^{\circ}$ such that for any sequence $\left(m_{n}\right)_{n \in \mathds{N}^{\star}}$ 
+\[\sup\limits_{n \in \mathds{N}^{\star}} \frac{m_{n} \Lambda_{m_{n}}}{n \Phi_{n}^{m_{n}}} \leq \sup\limits_{n \in \mathds{N}^{\star}} \Lambda_{m_{n}}/\overline{\Lambda}_{m_{n}} \leq L.\]
+
+\begin{as}\label{as2}
+Let $\theta^{\circ}$ and $\lambda$ be such that there exists $n^{\circ}$ in $\mathds{N}^{\star}$
+\[0 < \kappa^{\circ} := \kappa^{\circ}(\theta^{\circ}, \lambda) := \inf\limits_{n \geq n^{\circ}} \left\{\left(\Phi_{n}^{\circ}\right)^{-1} \left[\mathfrak{b}_{m_{n}^{\circ}} \wedge \frac{m_{n}^{\circ} \overline{\Lambda}_{m_{n}^{\circ}}}{n}\right]\right\} \leq 1\]
+\end{as}
+
+\begin{as}\label{as3}
+Let $\mathfrak{a}$ and $\lambda$ be sequences such that there exists $n^{\star}$ in $\mathds{N}^{\star}$
+\[0 < \kappa^{\star} := \kappa^{\star}(\mathfrak{a}, \lambda) := \inf\limits_{n > n^{\star}} \left\{\left(\Phi_{n}^{\star}\right)^{-1}\left[\mathfrak{a}_{m_{n}^{\star}} \wedge \frac{m_{n}^{\star} \overline{\Lambda}_{m_{n}^{\star}}}{n}\right]\right\} \leq 1.\]
+\end{as}
+
+Unfortunately, these assumptions, though only required in the adaptive case, rule out the possibility of a severely ill-posed problem as well as the possibility of a "parametric model" (in the sense of all entries of $\theta^{\circ}$ canceling after a certain index).
+
+\subsection{Main results of this article}\label{1.4}
+
+An important feature of this article is showing that $\Phi_{n}^{\circ}$ and $\Psi_{n}^{\star}$ are respectively oracle (for a family of sieve priors) and minimax (over Sobolev's ellipsoids) optimal contraction rates as defined in \textsc{\cref{3.1}} and \textsc{\cref{3.2}}. In \textsc{\cref{4.3}}, we exhibit a family of fully data-driven Bayesian methods which, under some hypotheses reach these rates of contraction and which posterior means are optimal estimators as formulated in \textsc{\cref{2.1}} and \textsc{\cref{2.2}}.
+In addition, the family of Bayesian methods we consider is indexed by a so-called iteration parameter and we show that, if one lets this iteration parameter tend to infinity, then, the posterior distribution is concentrating on the well known projection estimator with model selection by penalised contrast. By doing so, we are able to proof optimality of this estimator in a novel way.
+
+\bigskip
+
+The main novelties of this article reside on the general formulation we adopt for Bayesian optimality; the influence on the contraction rate of iteration parameter we use to generate the family of Bayesian methods (first introduced in \textsc{\citet{OBJJ}}) hasn't been studied yet, up to our knowledge and the strategy to proof the rates of contraction in the non-adaptive case, though simple, seems new.
+
+The study of contraction rates under the $L^{2}$-norm remains marginal despite major contributions such as \textcolor{red}{JJASRS, Nickl},... As well as the absence of a log-loss term. However, for those two points this article could not push further the results obtained in \textsc{\citet{JJASRS}}, therefore, in the adaptive case, we formulated some of their hypotheses on a stronger way to simplify our proofs, however, a similar set of assumptions could be used.

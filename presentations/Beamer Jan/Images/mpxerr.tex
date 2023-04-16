@@ -1,0 +1,38 @@
+\gdef\mpxshipout{\shipout\hbox\bgroup
+  \setbox0=\hbox\bgroup}
+\gdef\stopmpxshipout{\egroup  \dimen0=\ht0 \advance\dimen0\dp0
+  \dimen1=\ht0 \dimen2=\dp0
+  \setbox0=\hbox\bgroup
+    \box0
+    \ifnum\dimen0>0 \vrule width1sp height\dimen1 depth\dimen2 
+    \else \vrule width1sp height1sp depth0sp\relax
+    \fi\egroup
+  \ht0=0pt \dp0=0pt \box0 \egroup}
+\mpxshipout% line 26 ./inv-gssm-minimax.mp
+$\Theta$%
+\stopmpxshipout
+\mpxshipout% line 29 ./inv-gssm-minimax.mp
+$\theta_0^\circ_0$%
+\stopmpxshipout
+\mpxshipout% line 31 ./inv-gssm-minimax.mp
+$\theta_1^\circ$%
+\stopmpxshipout
+\mpxshipout% line 33 ./inv-gssm-minimax.mp
+$\theta_2^\circ_0$%
+\stopmpxshipout
+\mpxshipout% line 35 ./inv-gssm-minimax.mp
+$\theta_3^\circ$%
+\stopmpxshipout
+\mpxshipout% line 37 ./inv-gssm-minimax.mp
+$\theta_4^\circ_0$%
+\stopmpxshipout
+\mpxshipout% line 39 ./inv-gssm-minimax.mp
+$\theta_5^\circ$%
+\stopmpxshipout
+\mpxshipout% line 41 ./inv-gssm-minimax.mp
+$\theta_6^\circ_0$%
+\stopmpxshipout
+\mpxshipout% line 43 ./inv-gssm-minimax.mp
+$\theta_7^\circ$%
+\stopmpxshipout
+\end{document}

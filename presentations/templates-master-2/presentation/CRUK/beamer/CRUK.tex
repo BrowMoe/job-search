@@ -1,0 +1,78 @@
+\documentclass[aspectratio=169]{beamer}
+
+
+%-------------------------------------------------------
+% USED PACKAGES
+%-------------------------------------------------------
+\usepackage{packages}
+
+%-------------------------------------------------------
+% OVERALL TEMPLATE
+%-------------------------------------------------------
+%\usetheme[]{CRUK}
+\usetheme[]{CRUKprime}
+%-------------------------------------------------------
+% LAYOUT OF THE TITLE PAGE
+%-------------------------------------------------------
+%\usepackage{title}
+%\usepackage{style}
+
+%-------------------------------------------------------
+% COLOURS, MATH OPERATORS,...
+%-------------------------------------------------------
+\usepackage{command}
+
+%-------------------------------------------------------
+% ENVIRONMENTS
+%-------------------------------------------------------
+\usepackage{theorem}
+%\setbeamertemplate{frametitle continuation}[from second]
+
+%-------------------------------------------------------
+% INFORMATION IN THE TITLE PAGE
+%-------------------------------------------------------
+\usepackage{title_information}
+
+%-------------------------------------------------------
+% THE BODY OF THE PRESENTATION
+%-------------------------------------------------------
+
+\begin{document}
+%-------------------------------------------------------
+% THE TITLEPAGE
+%-------------------------------------------------------
+{
+  \usebackgroundtemplate{\includegraphics[width=\paperwidth]{img/CRUK/CRUK_Grand_Challenge_Rosetta_slide_cover.jpg}}
+  \begin{frame}
+    \titlepage
+  \end{frame}
+}
+  
+\AtBeginSection[]{
+\begin{frame}[noframenumbering]{Contents}
+\setcounter{tocdepth}{2}
+\tableofcontents[sectionstyle=show/shaded, subsectionstyle=show/show/hide]
+\end{frame}
+}
+
+\begin{frame}{Contents}
+\setcounter{tocdepth}{2}
+\tableofcontents
+\end{frame}
+%
+%-------------------------------------------------------
+\section{Title of the first section}
+%-------------------------------------------------------
+\input{tex/section1.tex}
+
+%-------------------------------------------------------
+\section{Title of the second section}
+%-------------------------------------------------------
+\input{tex/section2.tex}
+
+\beamerdefaultoverlayspecification{}
+\begin{frame}<beamer:0>
+\bibliography{iGSSM}
+\end{frame}
+\bibliographystyle{plainnat}
+\end{document}

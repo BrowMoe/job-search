@@ -1,0 +1,104 @@
+% This is the outer theme file of the Feather theme.
+% Copyright (c) 2014 by Lilyana Vaskova Vankova <lilqna.v@gmail.com>
+%
+% This program is free software: you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation, either version 3 of the License, or
+% (at your option) any later version.
+%
+% This program is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+%
+% You can find the GNU General Public License at <http://www.gnu.org/licenses/>.
+
+%----------------------------------------------------------------------------------------------------------------------------------
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamerthemeCRUKprime}[18/09/2019 v1.0.0 The CRUK Beamer Theme]
+
+\beamertemplatenavigationsymbolsempty
+\hypersetup{colorlinks=false}
+\graphicspath{{img/}}
+\setbeamersize{text margin left=0mm,text margin right=0mm, sidebar width left = 10mm, sidebar width right = 10mm} 
+%----------------------------------------------------------------------------------------------------------------------------------
+\definecolor{CRUKblack}{rgb}{0.0, 0.0, 0.0}
+\definecolor{CRUKwhite}{rgb}{255, 255, 255}
+\definecolor{CRUKblue}{HTML}{2E008B}
+\definecolor{CRUKgrey}{HTML}{808080}
+
+\newfontfamily\Calibri{Calibri Light}
+\newfontfamily\Calibrihead{Calibri Light}
+
+\setbeamercolor{title}{fg = CRUKwhite, bg = CRUKwhite}
+\setbeamercolor{author}{fg = CRUKwhite, bg = CRUKwhite}
+\setbeamercolor{titlelike}{fg = CRUKblue, bg = CRUKwhite}
+\setbeamercolor{frametitle}{fg = CRUKblue, bg = CRUKwhite}
+\setbeamercolor{section in toc}{fg = CRUKgrey, bg = CRUKwhite}
+\setbeamercolor{subsection in toc}{fg = CRUKgrey, bg = CRUKwhite}
+\setbeamercolor{normal text}{fg = CRUKblack, bg = CRUKwhite}
+
+
+\setbeamerfont{title}{size = {\fontsize{25pt}{40pt}}, family = \Calibrihead}
+\setbeamerfont{titlelike}{size = {\fontsize{25pt}{40pt}}, family = \Calibrihead}
+\setbeamerfont{subtitle}{size = {\fontsize{13}{13}}, family = \Calibrihead}
+\setbeamerfont{author}{size = {\fontsize{10}{10}}, family = \Calibri}
+\setbeamerfont{institute}{size = {\fontsize{8}{8}}, family = \Calibri}
+\setbeamerfont{frametitle}{size = {\fontsize{23pt}{23pt}}, family = \Calibrihead}
+\setbeamerfont{section in toc}{size = {\fontsize{13}{13}}, family = \Calibrihead}
+\setbeamerfont{subsection in toc}{size = {\fontsize{10}{10}}, family = \Calibrihead}
+\setbeamerfont{normal text}{size = {\fontsize{13}{13}}, family = \Calibri}
+\setbeamerfont{caption}{size = {\fontsize{13}{13}}, family = \Calibri}
+
+\AtBeginDocument{\usebeamerfont{normal text}}
+\setmainfont{Calibri Light}
+
+\setbeamertemplate{frametitle}{
+	\vspace{20pt}
+    \expandafter\uppercase\expandafter\insertframetitle
+}
+
+%% Title page
+\setbeamertemplate{title page}{
+	\begin{columns}
+		\begin{column}{.5\paperwidth}
+			\vbox to .8\textheight{	
+				\vfill
+				
+				\centering
+				{\usebeamercolor[fg]{title}{\usebeamerfont{title}{\inserttitle}}\par
+				
+				\vfill
+			
+				\usebeamerfont{subtitle}\usebeamercolor[fg]{title}\insertsubtitle\par
+	
+				\vfill
+			
+				\usebeamerfont{author}\usebeamercolor[fg]{author}\insertauthor, \par
+			
+				\usebeamerfont{institute}\usebeamercolor[fg]{author}\insertinstitute \par
+				
+				\vfill
+				
+				\usebeamerfont{author}\usebeamercolor[fg]{author} \insertdate \par
+			}
+				
+				\vfill
+			}
+		\end{column}
+		\begin{column}{.5\paperwidth}
+		\end{column}
+	\end{columns}
+}
+	
+% Footer
+\usebackgroundtemplate%
+{%
+\vbox to \paperheight{
+\vfill
+\includegraphics[width=\paperwidth]{img/CRUK/CRUK_Grand_Challenge_Rosetta_footer.jpg} %your picture
+    }%
+}
+
+\mode<all>

@@ -1,0 +1,365 @@
+%
+%
+%
+% LENGTHS
+%
+\newlength{\myTopToPretitleVSpace}
+\setlength{\myTopToPretitleVSpace}{0mm}
+\newlength{\myPreTitleInnerYSep}
+\setlength{\myPreTitleInnerYSep}{15mm}
+\newlength{\preTitleSpaceLength}
+\setlength{\preTitleSpaceLength}{8mm}
+\newlength{\myMainTitleInnerYSep}
+\setlength{\myMainTitleInnerYSep}{15mm}
+\newlength{\myMainTitleFooterHeight}
+\setlength{\myMainTitleFooterHeight}{5mm}
+\newlength{\myMainTitleToBodyVSpace}
+\setlength{\myMainTitleToBodyVSpace}{25mm}
+\newlength{\myFooterHeaderHeight}
+\setlength{\myFooterHeaderHeight}{5mm}
+\newlength{\myFooterBodyInnerYSep}
+\setlength{\myFooterBodyInnerYSep}{10mm}
+\newlength{\myFooterBodyColumnSize}
+\setlength{\myFooterBodyColumnSize}{400mm}
+\newlength{\myBlockColHSpace}
+\setlength{\myBlockColHSpace}{15mm}
+\newlength{\myBlockToBlockVSpace}
+\setlength{\myBlockToBlockVSpace}{15mm}
+\newlength{\myBlockTitleToBodyVSpace}
+\setlength{\myBlockTitleToBodyVSpace}{0mm}
+\newlength{\myBlockInnerXSep}
+\setlength{\myBlockInnerXSep}{0mm}
+\newlength{\myBlockInnerYSep}
+\setlength{\myBlockInnerYSep}{0mm}
+\newlength{\myBlockBodyInnerXSep}
+\setlength{\myBlockBodyInnerXSep}{10mm}
+\newlength{\myBlockBodyInnerYSep}
+\setlength{\myBlockBodyInnerYSep}{10mm}
+\newlength{\myBlockTextWidth}
+\setlength{\myBlockTextWidth}{385mm}
+%
+%
+%
+% COLORS
+%
+\definecolor{colorBg}{HTML}{FFFFFF}
+\definecolor{RTGblue}{HTML}{003466}
+\definecolor{RTGred}{HTML}{C80B33}
+\definecolor{RTGgray}{HTML}{3C3C3C}
+\definecolor{RTGlightgray}{HTML}{DCDCDC}
+\colorlet{colMainBg}{RTGlightgray}
+\colorlet{colPreTitleBg}{colorBg}
+\colorlet{colPreTitleFg}{RTGgray}
+\colorlet{colMainTitleBg}{RTGblue}
+\colorlet{colMainTitleFg}{white}
+\colorlet{colFooterBodyBg}{RTGblue}
+\colorlet{colFooterBodyFg}{white}
+\colorlet{colFooterHeaderBg}{RTGred}
+\colorlet{colFooterHeaderFg}{white}
+\colorlet{colBlockBg}{RTGlightgray}
+\colorlet{colBlockFg}{black}
+\colorlet{colBlockTitleBg}{RTGblue}
+\colorlet{colBlockTitleFg}{white}
+\colorlet{colBlockBodyBg}{white}
+\colorlet{colBlockBodyFg}{RTGgray}
+%
+%
+%
+% FONT STYLE
+%
+% available font sizes:
+%\tiny          12pt
+%\scriptsize    14.4pt
+%\footnotesize  17.28pt
+%\small         20.74pt
+%\normalsize    24.88pt
+%\large         29.86pt
+%\Large         35.83pt
+%\LARGE         43pt
+%\huge          51.6pt
+%\Huge          61.92pt
+%\veryHuge      74.3pt
+%\VeryHuge      89.16pt
+%\VERYHuge      107p
+\newcommand*{\fsPreTitle}{\fontsize{74.3}{89}\selectfont\bf}
+\newcommand*{\fsPreTitleRTG}{\LARGE\bf}
+\newcommand*{\fsMainTitle}{\Huge}
+\newcommand*{\fsName}{\LARGE\bf}
+\newcommand*{\fsSuperv}{\LARGE}
+\newcommand*{\fsBlockTitle}{\LARGE\bf}
+\newcommand*{\fsBlockBody}{\normalsize}
+\newcommand*{\fsFooterLeft}{\Large}
+\newcommand*{\fsFooterRight}{\LARGE\bf}
+%
+%
+%
+% PRETITLE: a block for the pre-title at the very top
+%
+\newcommand{\myPreTitle}{%
+	\vspace*{\myTopToPretitleVSpace}\\
+	\begin{minipage}[c]{18cm}
+		\centering
+		\includegraphics[height=5cm]{logoMAt} 
+		%\includegraphics[height=7cm]{logoMA} 
+	\end{minipage}
+	\begin{minipage}[c]{40cm}%
+		\centering%
+		{\fsPreTitle%
+		\spaceskip=0.25em
+		Statistical Modeling of\\Complex Systems and Processes\par}
+	\end{minipage}
+	\hspace*{-1cm}
+	\begin{minipage}[c]{18cm}
+		\centering
+		\includegraphics[height=7cm]{logoHDt} 
+		%\includegraphics[height=7cm]{logoHD} 
+	\end{minipage}%
+}
+%
+%
+%
+% MAINTITLE: a block for the title and name
+%
+\newcommand{\myMainTitle}{%
+	\begin{tikzpicture}[]
+		\node[
+			colMainTitleFg,
+			fill=colMainTitleBg,
+			anchor=north,
+			align=center,
+			inner xsep=0,
+			inner ysep=\myMainTitleInnerYSep,
+		] (mainTitleBody) {%
+			{\fsMainTitle%
+			\spaceskip=0.25em%
+			\myTitle}%
+			\\%
+			\vspace*{10mm}%
+			{\fsName%
+			\spaceskip=0.25em%
+			\myName}%
+			\\%
+			\vspace*{10mm}%
+			{\fsSuperv%
+				\spaceskip=0.25em%
+				Supervisors: \mySuperv}%
+		};
+		\node[
+			fill=RTGred,
+			anchor=north,
+			align=center,
+			inner xsep=0,
+			inner ysep=0,
+			minimum height=\myMainTitleFooterHeight,
+			below =0of mainTitleBody,
+		] (mainTitleFooter) {};
+	\end{tikzpicture}
+}
+%
+%
+%
+% FOOTER: block at the very bottom of the poster
+%
+\newcommand{\myFooter}{%
+	\begin{tikzpicture}[]
+		\node[
+			colFooterBodyFg,
+			fill=colFooterBodyBg,
+			anchor=south,
+			align=center,
+			inner xsep=0,
+			inner ysep=\myFooterBodyInnerYSep,
+		] (footerBody) {
+			\begin{minipage}[c]{\myFooterBodyColumnSize}
+				\fsFooterLeft
+				Supported by\hspace{0.5em}
+				\includegraphics[height=15mm]{logoDFG}
+			\end{minipage}
+			\begin{minipage}[c]{\myFooterBodyColumnSize}
+				\flushright
+				\fsFooterRight
+				RTG 1953
+			\end{minipage}	
+		};
+		\node[
+			colFooterHeaderFg,
+			fill=colFooterHeaderBg,
+			anchor=south,
+			align=center,
+			inner xsep=0,
+			inner ysep=0,
+			minimum height=\myFooterHeaderHeight,
+			above =0of footerBody,
+		] (footerHeader) {};
+	\end{tikzpicture}
+}
+%
+%
+%
+% INNERBLOCK: Content of a Block: BlockTitle, BlockBody
+%
+\newcommand{\myInnerBlock}[2]{%
+	\begin{tikzpicture}[]
+	\ifx&#1&
+	\node[
+	colBlockBodyFg,
+	fill=colBlockBodyBg,
+	anchor=center,
+	align=justify,
+	inner xsep=\myBlockBodyInnerXSep,
+	inner ysep=\myBlockBodyInnerYSep,
+	text width=\myBlockTextWidth-2.*\myBlockInnerXSep-2.*\myBlockBodyInnerXSep,
+	] (body) {%
+		\fsBlockBody%
+		#2%
+		\par%
+	};
+	\else
+	\node[
+	colBlockTitleFg,
+	fill=colBlockTitleBg,
+	anchor=center,
+	align=center,
+	inner xsep=\myBlockBodyInnerXSep,
+	inner ysep=0mm,
+	text width=\myBlockTextWidth-2.*\myBlockInnerXSep-2.*\myBlockBodyInnerXSep,
+	] (title) at (0,0) {%
+		\vspace*{12mm}%
+		\\%
+		\fsBlockTitle%
+		\spaceskip=0.25em
+		#1%
+		\vspace*{10mm}%
+	};
+	\node[
+	colBlockBodyFg,
+	fill=colBlockBodyBg,
+	anchor=center,
+	align=justify,
+	inner xsep=\myBlockBodyInnerXSep,
+	inner ysep=\myBlockBodyInnerYSep,
+	text width=\myBlockTextWidth-2.*\myBlockInnerXSep-2.*\myBlockBodyInnerXSep,
+	below =\myBlockTitleToBodyVSpace of title
+	] (body) {%
+		\fsBlockBody%
+		#2%
+		\par%
+	};
+	\fi
+	\end{tikzpicture}
+}
+%
+%
+%
+% BLOCKSTYLE: style for blocks, which surround BlockTitle and BlockBody
+%
+\tikzset{BlockStyle/.style={%
+		colBlockFg,
+		fill=colBlockBg,
+		anchor=north west,
+		inner sep=0,
+		rectangle, 
+		text width=\myBlockTextWidth-2.*\myBlockInnerXSep,
+		inner xsep=\myBlockInnerXSep,
+		inner ysep=\myBlockInnerYSep,
+	}
+}
+%
+%
+%
+% BLOCK: command for placing a new block below the previous one
+%
+\newcounter{myColumnCounter}
+\newcounter{myBlockCounter}[myColumnCounter]
+%
+\newcommand{\myFirstBlock}[2]{%
+	\node[%
+		BlockStyle,
+	] (a) {%
+		\myInnerBlock{#1}{#2}%
+	};%
+}%
+%
+\newcommand{\myFurtherBlock}[2]{%
+	\node[%
+		BlockStyle,
+		below =\myBlockToBlockVSpace of a,
+	] (a) {%
+		\myInnerBlock{#1}{#2}%
+	};%
+}%
+%
+\newcommand{\myBlock}[2]{%
+	\ifnum\themyBlockCounter=0%
+		\myFirstBlock{#1}{#2}%
+	\else%
+		\myFurtherBlock{#1}{#2}%
+	\fi%
+	\stepcounter{myBlockCounter}%
+}
+%
+%
+%
+% THEOREM STYLES
+%
+\declaretheoremstyle[
+	bodyfont=\normalfont,
+	postfoothook={\vspace*{30pt}},
+	preheadhook={},
+	mdframed={
+		backgroundcolor = RTGlightgray!40!white,
+		innertopmargin = 20pt,
+		innerbottommargin = 20pt,
+		innerrightmargin = 20pt,
+		innerleftmargin = 20pt,
+		skipabove = 30pt,
+		skipbelow = 30pt,
+		leftmargin = 30pt,
+		rightmargin = 30pt,
+		%		roundcorner = 0pt,
+		%		topline = true,
+		%		bottomline = true,
+		leftline = false,
+		rightline = false,
+		%		hidealllines = true,
+		linewidth = 5pt,
+		%		innerlinewidth = 5pt,
+		%		middlelinewidth = 6pt,	
+		%		outerlinewidth = 2pt,
+		linecolor = RTGred,
+		%		innerlinecolor = orange,
+		%		middlelinecolor = green,	
+		%		outerlinecolor = RTGblue,
+		%		fontcolor = black,
+		%		font = ?,
+		%		shadow = true,
+		%		shadowsize = 8pt,
+		%		shadowcolor = black!50,
+		%		frametitle = {Title},
+		%		frametitle<Option...>,
+		%		%\mdfsubtitle{SubTitle}
+		%		subtitle<Option...>,
+		%		tikzsetting = {},
+		%		align =center,
+		%		extra = {},		
+	}]{redHLineStyle}
+%
+%
+% numbered
+\declaretheorem[style=redHLineStyle,name=Definition]{definition}
+\declaretheorem[style=redHLineStyle,name=Lemma,numberlike=definition]{lemma}
+\declaretheorem[style=redHLineStyle,name=Theorem,numberlike=definition]{theorem}
+\declaretheorem[style=redHLineStyle,name=Corollary,numberlike=definition]{corollary}
+\declaretheorem[style=redHLineStyle,name=Remark,numberlike=definition]{remark}
+\declaretheorem[style=redHLineStyle,name=Example,numberlike=definition]{example}
+%
+% no numbering
+\declaretheorem[style=redHLineStyle,name=Definition,numbered=no]{definition*}
+\declaretheorem[style=redHLineStyle,name=Lemma,numbered=no]{lemma*}
+\declaretheorem[style=redHLineStyle,name=Theorem,numbered=no]{theorem*}
+\declaretheorem[style=redHLineStyle,name=Corollary,numbered=no]{corollary*}
+\declaretheorem[style=redHLineStyle,name=Remark,numbered=no]{remark*}
+\declaretheorem[style=redHLineStyle,name=Example,numbered=no]{example*}
+%
+%
+%

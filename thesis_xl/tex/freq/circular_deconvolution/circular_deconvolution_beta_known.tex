@@ -1,0 +1,341 @@
+\subsection{Absolutely regular process and and known noise density}\label{FREQ_CIRCDECONV_KNOWN_BETA}
+
+We now replace the independence assumption \nref{AS_INTRO_DATA_INDEPENDENT} by the absolute regularity assumption \nref{AS_MARGINS_INTRO_DATA_REGULAR}, that is, we recall
+\begin{as*}
+Considering the process of observations $(Y_{p})_{p \in \mathds{Z}}$, assume that for any $p$, the joint distribution $\P_{Y_{0}, Y_{p}}$ of $Y_{0}$ and $Y_{p}$ admits a density denoted $g_{Y_{0}, Y_{p}}$ which is square integrable.
+Denote $\Vert x \Vert_{L^{2, 2}}^{2} := \int\int_{[0, 1]^{2}} \vert x(t, t')\vert^{2} \d t \d t'$ the $L^{2}$-norm for functions of two variables and for any $t$ and $t'$ in $[0, 1]$ set $(x \otimes x)(t, t') = x(t) \cdot x(t')$.
+Then, we assume $\gamma_{g} := \sup\nolimits_{p \geq 1} \Vert g_{Y_{0}^{n}, Y_{p}^{n}} - g \otimes g \Vert_{L^{2, 2}} < \infty$.
+\assEnd
+\end{as*}
+
+Under this assumption we will use \nref{LM_DEPENDENTDATA_VARIANCEBOUNDIII}, which is
+\begin{lm*}
+Let the process of observations $(Y_{p})_{p \in \N}$ be a strictly stationary process with associated sequence of mixing coefficients $ (\beta(Y_{0}, Y_{p}) )_{p \in \N}$.
+Under \nref{AS_MARGINS_INTRO_DATA_REGULAR}, for any $n \geq 1$; $m$ and $l$ in $\mathds{N}$ with $m \leq l$ and $K \in \llbracket 0, n-1\rrbracket$, it holds
+\begin{multline*}
+\sum\nolimits_{m \leq \vert s \vert \leq l} \V [\sum\nolimits_{p = 1}^{n} e_{s}(Y_{p}) ]\\
+    \leq n 2 (l-m+1)  \{1 + 2 [\gamma_{g} K(l-m+1)^{-1/2} + 2 \sum\nolimits_{p = K + 1}^{n - 1} \beta(Y_{0}, Y_{p}) ] \}.
+\end{multline*}
+Moreover, as $\sum\nolimits_{p \in \mathds{N}} \beta(Y_{0}, Y_{p})$ is finite, we have $\lim\nolimits_{K  arrow \infty} \sum\nolimits_{p = K + 1}^{\infty} \beta(Y_{0}, Y_{p}) = 0$, so we can find $K^{\circ}$ in $\N$ such that for any $K$ greater than $K^{\circ}$, $\sum\nolimits_{p = K + 1}^{\infty} \beta(Y_{0}, Y_{p}) \leq \tfrac{1}{4}$.
+We can take $K = \tfrac{\sqrt{l - m + 1}}{4 \gamma_{g}}$ and assuming that this choice is greater than $K^{\circ}$, we have
+\[\sum\nolimits_{m \leq \vert s \vert \leq l} \V [\sum\nolimits_{p = 1}^{n} e_{s}(Y_{p}) ] \leq 4 n (l-m+1).\]
+\reEnd
+\end{lm*}
+
+And we will also use \nref{AS_DEPENDENTDATA_RICHSPACE}, recalled bellow.
+\begin{lm*}
+Assume that the universe is rich enough in the sense that there exist a sequence of random variables with uniform distribution on $[0,1]$ which is independent of $(Y_{p})_{p \in \mathds{Z}}$.
+
+Then, there exist a sequence $(Y_{p}^{\perp})_{p \in \mathds{Z}}$ satisfying the following properties.
+For any positive integer $w$ and for any strictly positive integer $q$, define the sets $(I_{q, p}^{e})_{p \in \llbracket 1, w\rrbracket} := \llbracket 2(q-1) w + 1, (2q - 1) w\rrbracket$ and $ (I_{q, p}^{o} )_{p \in \llbracket 1, w \rrbracket} := \llbracket (2q-1) w + 1, 2q w\rrbracket$.
+
+Define for any $q$ in $\mathds{Z}$ the vectors of random variables $E_{q} := (Y_{I_{q, p}^{e}}^{n})_{p \in \llbracket 1, w \rrbracket}$; $O_{q} := (Y_{I_{q, p}^{o}}^{n})_{p \in \llbracket 1, w \rrbracket}$; and their counterparts $E_{q}^{\perp} := (Y_{I_{q, p}^{e}}^{n, \perp})_{p \in \llbracket 1, w \rrbracket}$ and $O_{q}^{\perp} := (Y_{I_{q, p}^{o}}^{n, \perp})_{p \in \llbracket 1, w \rrbracket}$.
+
+Then, $ (Y^{\perp}_{p} )_{p \in \Z}$ satisfies:
+\begin{itemize}
+\item for any integer $q$, $E^{\perp}_{q}$, $E_{q}$, $O^{\perp}_{q}$, and $O_{q}$ are identically distributed;
+\item for any integer $q$, $\P (E_{q} \neq E^{\perp}_{q} ) \leq \beta_{w}$ and $\P (O_{q} \neq O^{\perp}_{q} ) \leq \beta_{w}$;
+\item $ (E^{\perp}_{q} )_{q \in \mathds{Z}}$ are independent and identically distributed and $ (O^{\perp}_{q} )_{q \in \mathds{Z}}$ as well.
+\end{itemize}
+\reEnd
+\end{lm*}
+
+\subsubsection{Shape of the estimator}
+
+Note that we will use the same estimator as previously and hence no knowledge about $(\beta_{p})_{w \in \Z}$ is required.
+We recall here the shape of the estimator.
+\begin{de*}
+We first define so-called contrast $\Upsilon$ and penalisation $\pen^{\Lambda}$ sequences, which allow us to define weight $\P_{M}^{(\eta)}$ on the nested sieve space (here $(\llbracket 0, m \rrbracket)_{m \in \N}$)
+\begin{multline*}
+\Upsilon : \mathds{N} \to \R_{+}, \quad m \mapsto \Upsilon(m); \qquad \pen^{\Lambda} : \N \to \R_{-}, \quad m \mapsto \pen^{\Lambda}(m);\\
+\P_{M}^{(\eta)} : \N \to \R_{+}, \quad m \mapsto \tfrac{\exp[\eta n (\Upsilon(m) + \pen^{\Lambda}(m))]}{\sum\nolimits_{k = 0}^{n} \exp[\eta n (\Upsilon(k) + \pen^{\Lambda}(k))]} \mathds{1}_{m \leq n}.
+\end{multline*}
+Notice that letting $\eta$ tend to $\infty$ in the previous definition gives rise to the penalised contrast model selection estimator,
+\begin{equation*}
+  \tDi:=\argmin\nolimits_{\Di\in\nset{1,\ssY}} \big\{\Upsilon(m) + \penSv\big\}
+\end{equation*}
+which corresponds to the following weights
+\begin{equation*}
+  \lim\nolimits_{\rWc\to\infty}\rWe=\dirac[\tDi](\{\Di\})=:\msWe.
+\end{equation*}
+Here, we will use the following shape for $\Upsilon$ and $\pen^{\Lambda}$, for $\cpen := 84$
+\begin{alignat*}{4}
+  & \Upsilon(m) && := && \Vert \theta_{n, \overline{m}} \Vert_{l^{2}}^{2};  \quad && \cmiSv := \tfrac{\log^{2}(\Di\miSv \vee(\Di+2))}{\log^{2}(\Di+2)}\geq1;\\
+  & \DipenSv && := && \cmiSv \Di \miSv; \quad && \penSv:= \penD.
+  \end{alignat*}
+  \assEnd
+\end{de*}
+
+\subsubsection{Oracle optimality}
+We will use the same technic as previously.
+Let us hence recall the rate which we use.
+\begin{de*}
+Remind that we defined for any $\theta$ in $\Theta$ and $\Di$ in $\N$ the following term $\b_{m}^{2}(\theta) = \Vert \theta_{\underline{m}} \Vert_{l^{2}}/\Vert \theta_{\underline{0}} \Vert_{l^{2}} \leq 1$.
+We then define a family of sequences $(\daRa{\Di}{(\xdf)})_{\Di \in \N} := (\daRa{\Di}{(\xdf,\Lambda)})_{\Di \in \N} = [\b_{m}^{2}(\theta^{\circ}) \vee \penSv/\cpen]$.
+We intend to prove that the specific choice
+\begin{multline*}
+\aDi{\ssY}(\xdf):=\argmin\Nset[\Di\in\Nz]{\daRa{\Di}{(\xdf)}}\in\nset{1,\ssY}; \\
+\naRa{(\xdf)}:=\naRa{(\xdf,\Lambda)}:=\min\Nset[\Di\in\Nz]{\daRa{\Di}{(\xdf)}}
+\end{multline*}
+with $\daRa{\aDi{\ssY}}{(\xdf,\Lambda)}=\naRa{(\xdf,\Lambda)}$ defines an upper bound for the convergence rate of the aggregation estimators.
+\assEnd
+\end{de*}
+
+Verifying our hypotheses is technically more demanding than in the independent case, we hence give some more details in this section.
+
+As previously, we will apply Talagrand's inequalities presented in \nref{LM_TALAGRAND}.
+However, due to the dependence structure of our data, they cannot be applied directly and we first use \nref{AS_DEPENDENTDATA_RICHSPACE}.
+It allows us to obtain the following result.
+
+\begin{lm}\label{LM_FREQ_CIRCDECONV_KNOWN_BETA_ORACLE_NP_SPLITBETA}
+For any integer $k$ and $l$ such that $k \leq l$, define for any $t$ in $\mathds{B}_{k, l}$ the functional $\overline{\nu}_{t} =  \langle t \vert \theta_{n} - \theta^{\circ} \rangle_{l^{2}}$.
+Under \nref{AS_DEPENDENTDATA_RICHSPACE}, we define
+\begin{alignat*}{3}
+& \overline{\nu}^{e, \perp}_{t} && = && r^{-1} \sum\nolimits_{q = 1}^{r}  (v_{t}(E^{\perp}_{q}) - \E [v_{t}(E^{\perp}_{q}) ] );\quad v_{t}(E^{\perp}_{q}) = s^{-1} \sum\nolimits_{p = 1}^{s} \nu_{t}(E^{\perp}_{q, p});\\
+& \nu_{t}(E^{\perp}_{q, p}) && = && \sum\nolimits_{k \leq \vert s \vert \leq l}  (t(s)\overline{\lambda(s)}^{-1} e_{s}(E^{\perp}_{q, p}) ).
+\end{alignat*}
+Then, for any sequence $ (C_{n} )_{n \in \N}$, we have the following inequalities:
+\begin{alignat}{3}
+& \E  [  (\sup\nolimits_{t \in \mathds{B}_{k, l}}  \vert \langle t \vert \theta_{n} - \theta^{\circ} \rangle_{l^{2}}  \vert^{2} - C_{n}  )_{+}  ] && \leq && 2 \cdot \E [  (\sup\nolimits_{t \in \mathds{B}_{k, l}} \vert \overline{\nu}^{e, \perp}_{t} \vert^{2} - C_{n}  )_{+}  ] \notag\\
+& && && + 2 \cdot \E [ \sup\nolimits_{t \in \mathds{B}_{k, l}} \vert \overline{\nu}^{e, \perp}_{t} - \overline{\nu}^{e}_{t} \vert^{2}  ]\label{EQ1_LM_FREQ_CIRCDECONV_KNOWN_BETA_ORACLE_NP_SPLITBETA}\\
+&\P(\sup\nolimits_{t \in \mathds{B}_{k, l}} \vert \langle t \vert \theta_{n} - \theta^{\circ}\rangle_{l^{2}} \vert \geq C_{n}) && \leq && 2\P(\sup\nolimits_{t \in \mathds{B}_{k, l}} \vert \overline{\nu}_{t}^{e, \perp} \vert \geq C_{n})\notag\\
+& && &&+2\sum_{q = 1}^{r}\P(\{E_{q}^{\perp} \neq E_{q}\})\label{EQ2_LM_FREQ_CIRCDECONV_KNOWN_BETA_ORACLE_NP_SPLITBETA}
+%& \P (\sup\nolimits_{t \in \mathds{B}_{m, l}}  \vert  \langle t \vert \theta_{n} - \theta^{\circ} \rangle_{l^{2}}  \vert \geq C_{n} ) && \leq && \P (\sup\nolimits_{t \in \mathds{B}_{m, l}}  \vert \overline{\nu}_{t}^{e, \perp}  \vert \geq C_{n}  )\notag\\
+%& && && + 3 \P (\overline{\nu}_{t}^{e} \neq \overline{\nu}_{t}^{e, \perp} )\label{EQ2_LM_FREQ_CIRCDECONV_KNOWN_BETA_ORACLE_NP_SPLITBETA}
+\end{alignat}
+\reEnd
+\end{lm}
+
+We now apply \nref{LM_TALAGRAND} in the respective first parts of \nref{EQ1_LM_FREQ_CIRCDECONV_KNOWN_BETA_ORACLE_NP_SPLITBETA} and \nref{EQ2_LM_FREQ_CIRCDECONV_KNOWN_BETA_ORACLE_NP_SPLITBETA}.
+
+\begin{lm}\label{LM_FREQ_CIRCDECONV_KNOWN_BETA_ORACLE_NP_TALAGRAND}
+For any integers $k$ and $l$ with $k < l$; consider a triplet $h^{2}$, $H^{2}$ and $v$ verifying
+\begin{alignat*}{3}
+& h^{2} && \geq &&\sum\nolimits_{k \leq \vert s \vert \leq l} \Lambda(s);\quad H^{2} \geq n^{-1}\Lambda_{+}(l)(l-k+1)( \cmiSv + 1);\\
+& v && \geq &&4w^{-1} \sqrt{m} \Lambda_{+}(m) \sqrt{2 \Vert \phi \Vert_{l^{1}} \sum\nolimits_{p = 1}^{\infty} (p + 1)\beta_{p}};
+\end{alignat*}
+then, under \nref{AS_MARGINS_INTRO_DATA_REGULAR}, for any $C > 0$, we have:
+\begin{alignat}{3}
+& \E [ (\sup\nolimits_{t \in \mathds{B}_{k, l}}\vert \overline{\nu}^{e, \perp}_{t} \vert^{2} - 6 H^{2} )_{+} ] && \leq && C [\tfrac{v}{r} \exp (\tfrac{-r H^{2}}{6 v} ) + \tfrac{h^{2}}{r^{2}} \exp (\tfrac{- r H}{100 h} ) ];\label{EQ1_LM_FREQ_CIRCDECONV_KNOWN_BETA_ORACLE_NP_TALAGRAND}\\
+& \P (\sup\nolimits_{t \in \mathds{B}_{k, l}} \vert \overline{\nu}^{e, \perp}_{t} \vert \geq 6 H^{2} ) && \leq && 3  (\exp [- \tfrac{r H^{2}}{400 v} ] + \exp [ \tfrac{-r H}{100 h} ] )\label{EQ2_LM_FREQ_CIRCDECONV_KNOWN_BETA_ORACLE_NP_TALAGRAND}.
+\end{alignat}
+\reEnd
+\end{lm}
+
+Considering the results we obtained in \nref{LM_FREQ_CIRCDECONV_KNOWN_BETA_ORACLE_NP_TALAGRAND} and \nref{LM_FREQ_CIRCDECONV_KNOWN_BETA_ORACLE_NP_SPLITBETA} we obtain by combining \ref{EQ1_LM_FREQ_CIRCDECONV_KNOWN_BETA_ORACLE_NP_SPLITBETA} and \ref{EQ1_LM_FREQ_CIRCDECONV_KNOWN_BETA_ORACLE_NP_TALAGRAND}, using the fact that $\delta_{\Lambda}(m) \geq 1$, we select
+\begin{multline*}
+l = 1; \quad k = m; \quad h^{2} = m \Lambda_{+}(m) \geq m \Lambda_{\circ}(m);\\
+v = 4w^{-1} \sqrt{m} \Lambda_{+}(m) \sqrt{2 \Vert \phi \Vert_{l^{1}} \sum\nolimits_{p = 1}^{\infty} (p + 1)\beta_{p}};\\
+H^{2} = 2 \Delta_{\Lambda}(m) n^{-1} = n^{-1} m \Lambda_{+}(m) (2\delta_{\Lambda}(m))\geq n^{-1} \Lambda_{+}(m) m (\delta_{\Lambda}(m) + 1);
+\end{multline*}
+then, given the constant $\cst{\beta, \phi} := \sqrt{2 \Vert \phi \Vert_{l^{1}} \sum_{p = 1}^{\infty} (p + 1)\beta_{p}}$ we have
+\begin{alignat*}{3}
+& \E [ (\Vert \theta_{n, \overline{m}} - \theta^{\circ}_{\overline{m}} \Vert_{l^{2}}^{2} - 12 n^{-1}\Lambda_{+}(m)m \cmiSv )_{+} ] && \leq && C [\cst{\beta, \phi} \tfrac{8 \sqrt{m} \Lambda_{+}(m)}{n} \exp (\tfrac{- \sqrt{m} \cmiSv}{24 \cst{\beta, \phi}} )\\
+& && &&+ \tfrac{m \Lambda_{+}(m)}{r^{2}} \exp (\tfrac{- \sqrt{2 n \cmiSv}}{200 w} ) ];
+\end{alignat*}
+
+and by combining \ref{EQ2_LM_FREQ_CIRCDECONV_KNOWN_BETA_ORACLE_NP_SPLITBETA} and \nref{EQ2_LM_FREQ_CIRCDECONV_KNOWN_BETA_ORACLE_NP_TALAGRAND}
+
+\begin{equation*}
+\P (\Vert \theta_{n, \overline{m}} - \theta^{\circ}_{\overline{m}} \Vert_{l^{2}}^{2} \geq 12 n^{-1}\Lambda_{+}(m)m\cmiSv ) \leq 3 (\exp [- \tfrac{\sqrt{m}\cmiSv}{1600 \cst{\beta, \phi}} ] + \exp [ \tfrac{- \sqrt{n\cmiSv}}{100 w} ];
+\end{equation*}
+
+and if we chose
+\begin{multline*}
+l = 1; \quad k = m; \quad h^{2} = m \Lambda_{+}(m) \geq m \Lambda_{\circ}(m); \quad v = 4w^{-1} \sqrt{m} \Lambda_{+}(m) \sqrt{2 \Vert \phi \Vert_{l^{1}} \sum\nolimits_{p = 1}^{\infty} (p + 1)\beta_{p}};\\
+H^{2} = 2 \mathfrak{R}_{n}^{m}(\theta^{\circ}, \Lambda) = 2 [\b_{m}^{2}(\theta^{\circ}) \vee \delta_{\Lambda}(m) m \Lambda_{+}(m) n^{-1}] \geq n^{-1} \Lambda_{+}(m) m (\delta_{\Lambda}(m) + 1);
+\end{multline*}
+we obtain
+
+\begin{alignat*}{3}
+& \P (\Vert \theta_{n, \overline{m}} - \theta^{\circ}_{\overline{m}} \Vert_{l^{2}}^{2} \geq 12\daRa{\Di}{(\xdf,\Lambda)}) && \leq && 3  (\exp [- \tfrac{n \mathfrak{R}_{n}^{m}(\theta^{\circ}, \Lambda)}{1600 \sqrt{m} \Lambda_{+}(m) \cst{\beta, \phi}} ]\\
+& && && + \exp [ \tfrac{-n \sqrt{2 \mathfrak{R}_{n}^{m}(\theta^{\circ}, \Lambda)}}{200 w \sqrt{m \Lambda_{+}(m)}} ] )
+\end{alignat*}
+
+From this we deduce the following lemma.
+\newpage
+\begin{lm}
+For any $n$ in $\N$ we have
+\begin{multline}\label{freq:circ:beta:exp}
+\sum_{m = 1}^{n}\E [ (\Vert \theta_{n, \overline{m}} - \theta^{\circ}_{\overline{m}} \Vert_{l^{2}}^{2} - \pen^{\Lambda}/7 )_{+} ] \\
+\leq C n^{-1} [\cst{\beta, \phi} 8 \sum_{m = 1}^{n}\sqrt{m} \Lambda_{+}(m) \exp (\tfrac{- \sqrt{m} \cmiSv}{24 \cst{\beta, \phi}} ) + \tfrac{4 q}{r} \sum_{m = 1}^{n} m \Lambda_{+}(m) \exp (\tfrac{- \sqrt{2 n \cmiSv}}{200 w} ) ]
+\end{multline}
+\begin{multline}\label{freq:circ:beta:prob1}
+\sum_{m = 1}^{n} \tfrac{\pen^{\Lambda}(m)}{7} \P (\Vert \theta_{n, \overline{m}} - \theta^{\circ}_{\overline{m}} \Vert_{l^{2}}^{2} \geq \pen^{\Lambda}(m)/7 )\\
+\leq 3 (\sum_{m = 1}^{n} \tfrac{\pen^{\Lambda}(m)}{7} \exp [- \tfrac{\sqrt{m}\cmiSv}{1600 \cst{\beta, \phi}} ] + \sum_{m = 1}^{n} \tfrac{\pen^{\Lambda}(m)}{7} \exp [ \tfrac{- \sqrt{n\cmiSv}}{100 w} ]
+\end{multline}
+\begin{multline}\label{freq:circ:beta:prob2}
+\P (\Vert \theta_{n, \overline{m_{-}^{\dagger}}} - \theta^{\circ}_{\overline{m_{-}^{\dagger}}} \Vert_{l^{2}}^{2} \geq 12\daRa{\Di}{(\xdf,\Lambda)})\\
+\leq 3  (\exp [- \tfrac{n \mathfrak{R}_{n}^{m}(\theta^{\circ}, \Lambda)}{1600 \sqrt{m} \Lambda_{+}(m) \cst{\beta, \phi}} ] + \exp [ \tfrac{-n \sqrt{2 \mathfrak{R}_{n}^{m}(\theta^{\circ}, \Lambda)}}{200 w \sqrt{m \Lambda_{+}(m)}} ] 
+\end{multline}
+\reEnd
+\end{lm}
+
+We finally control the respective second parts of \ref{EQ1_LM_FREQ_CIRCDECONV_KNOWN_BETA_ORACLE_NP_SPLITBETA} and \ref{EQ2_LM_FREQ_CIRCDECONV_KNOWN_BETA_ORACLE_NP_SPLITBETA} using the properties of \nref{DEPENDENTDATA}.
+
+\begin{lm}\label{LM_FREQ_CIRCDECONV_KNOWN_BETA_ORACLE_NP_BLOCKDIFF}
+For any integers $k$ and $l$ with $k \leq l$
+\begin{alignat}{3}
+& \E [\sup\nolimits_{t \in \mathds{B}_{k, l}}  \vert \overline{\nu}^{e, \perp}_{t} - \overline{\nu}^{e}_{t}  \vert^{2}  ] && \leq && 2 r \beta_{w} \sum\nolimits_{k \leq \vert s \vert \leq l}\Lambda(s);\label{EQ1_LM_FREQ_CIRCDECONV_KNOWN_BETA_ORACLE_NP_BLOCKDIFF}\\
+& \sum_{q = 1}^{r}\P(\{E_{q}^{\perp} \neq E_{q}\}) && \leq && r \beta_{w}.\label{EQ2_LM_FREQ_CIRCDECONV_KNOWN_BETA_ORACLE_NP_BLOCKDIFF}
+%& \P (\overline{\nu}_{t}^{e} \neq \overline{\nu}_{t}^{e, \perp} ) && \leq && 2r\beta_{s}.
+\end{alignat}
+\reEnd
+\end{lm}
+
+%Hence combining this last lemma with \ref{freq:circ:beta:exp}, \ref{freq:circ:beta:prob1}, and \ref{freq:circ:beta:prob2} we obtain
+%
+%\begin{multline*}
+%\E  [  \Vert \theta_{n, \overline{m}} - \theta^{\circ}_{\overline{m}} \Vert_{l^{2}}^{2} - 12 \Delta_{\Lambda}(m) n^{-1} )_{+}]\\
+%\leq 2 C [\tfrac{\Lambda_{+}(m) \Vert \theta^{\circ} \Vert_{l^{2}} \cdot \Vert \lambda \Vert_{l^{2}}}{r} \exp (\tfrac{- r n^{-1} m \delta_{\Lambda}(m))}{3 \Vert \theta^{\circ} \Vert_{l^{2}} \cdot \Vert \lambda \Vert_{l^{2}}} ) + \tfrac{m \Lambda_{+}(m)}{r^{2}} \exp (\tfrac{- r \sqrt{\delta_{\Lambda}(m)}}{50 \sqrt{2n}} ) ]\\
+%+ 4 r \beta_{w} m \Lambda_{\circ}(m);
+%\end{multline*}
+%
+%\begin{multline*}
+%\P(\Vert \theta_{n, \overline{m}} - \theta^{\circ}_{\overline{m}} \Vert_{l^{2}}^{2} \geq 12 \Delta_{\Lambda}(m) n^{-1})\leq 6 (\exp [- \tfrac{r n^{-1} m \delta_{\Lambda}(m)}{200 \Vert \theta^{\circ} \Vert_{l^{2}} \cdot \Vert \lambda \Vert_{l^{2}}} ] + \exp [ \tfrac{-r \sqrt{\delta_{\Lambda}(m)}}{50 \sqrt{2 n}} ] ) + 2r \beta_{w};
+%\end{multline*}
+%
+%and
+%
+%\begin{multline}\label{freq:circ:beta:prob2}
+%\P(\Vert \theta_{n, \overline{m}} - \theta^{\circ}_{\overline{m}} \Vert_{l^{2}}^{2} \geq 6 \mathfrak{R}_{n}^{m}(\theta^{\circ}, \Lambda))\\
+%\leq 6 (\exp [- \tfrac{r \mathfrak{R}_{n}^{m}(\theta^{\circ}, \Lambda)}{200 \Lambda_{+}(m) \Vert \theta^{\circ} \Vert_{l^{2}} \cdot \Vert \lambda \Vert_{l^{2}}} ] + \exp [ \tfrac{-r \sqrt{\mathfrak{R}_{n}^{m}(\theta^{\circ}, \Lambda)}}{50 \sqrt{2 m \Lambda_{+}(m)}} ] ) + 2r \beta_{w}.
+%\end{multline}
+
+We see that, in order to avoid a degradation of the rate, we need to make a stronger assumption on the sequence $\beta_{w}$.
+A sufficient condition is suggested hereafter.
+
+\begin{as}\label{freq:circ:kn:beta:as}
+Assume that the sequence of mixing coefficients $(\beta_{w})_{w \in \N}$ is such that there exists a numerical constant $\cst{}$ such that for all $n$ in $\N$ and $m$ in $\llbracket 1, n \rrbracket$ we have
+\[n^{2} \penSv \beta_{w} \leq \cst{}.\]
+\assEnd
+\end{as}
+
+Under this assumption, the main claim follows.
+% ....................................................................
+% <<Re upper bound ag p np>>
+% ....................................................................
+\begin{thm}
+Assume that \nref{freq:circ:kn:beta:as} holds true and consider the penalty sequence $\penSv:=\penD$, $\Di\in\nset{1,n}$, as in \nref{freq:ge:shape:kn:de:pen:oo} with numerical constant $\cpen \geq 84$.
+Let $\txdfAg[{\erWe[]}]=\sum_{\Di=1}^{\ssY}\We\txdfPr$ be an aggregation of the orthogonal series estimators, using either aggregation weights $\rWe[]$ as in \eqref{freq:ge:shape:kn:we}, or model selection weights $\msWe[]$ as in \eqref{freq:ge:shape:kn:de:msWe}.
+\begin{Liste}[]
+\item[{\dgrau\bfseries{(p)}}]Assume there is $K\in\Nz$
+  with   $1\geq \bias[{[K-1] }](\xdf)>0$ and $\bias[\Di](\xdf)=0$. For
+  $K>0$ let
+  $ c_{\xdf}:=\tfrac{\Vnormlp{\xdf_{\underline{0}}}^2+4\cpen}{\Vnormlp{\xdf_{\underline{0}}}^2\bias[{[K-1]}]^2(\xdf)}>1$ and
+  $\ssY_{\xdf}:=\gauss{c_{\xdf}\DipenSv[K]}\in\Nz$. If
+  $\ssY\in\nset{1,\ssY_{\xdf}}$ then set $\sDi{\ssY}:=\Di_{\cst{3}}\log(\ssY)$, and otherwise if
+  $\ssY>\ssY_{\xdf}$ then set
+  $\sDi{\ssY}:=\max\{\Di\in\nset{K,\ssY}:\ssY>c_{\xdf}\DipenSv\}$
+  where the defining set contains $K$ and thus is not empty.
+There is a finite constant $\cst{\xdf,\Lambda}$
+given in \eqref{ak:ag:ub:pnp:p7} depending only on $\xdf$ and $\Lambda$ such that for all $n\in\Nz$ holds
+\begin{equation}
+  \nRi{\txdfAg[{\erWe[]}]}{\xdf,\Lambda}
+  % \E\Vnormlp{\txdfAg[{\erWe[]}]-\xdf}^2
+  \leq
+  \cst{}\Vnormlp{\xdf_{\underline{0}}}^2\big[
+  \ssY^{-1}\vee\exp\big(-2\cmiSv[\sDi{\ssY}]\sDi{\ssY}\big)\big]
+  + \cst{\xdf,\Lambda}\ssY^{-1}.
+\end{equation}
+\item[{\dgrau\bfseries{(np)}}] Assume that
+  $\bias(\xdf)>0$ for all  $\Di\in\Nz$.
+There is a finite finite constant $\cst{\xdf,\Lambda}$ given in
+\eqref{ak:ag:ub:pnp:p8} depending only $\xdf$ and $\Lambda$ such that for all
+$\ssY\in\Nz$  holds 
+ \begin{equation}
+   \nRi{\txdfAg[{\erWe[]}]}{\xdf,\Lambda}
+   % \E\Vnormlp{\txdfAg[{\erWe[]}]-\xdf}^2
+    \leq 
+   \cst{}(\Vnormlp{\xdf_{\underline{0}}}^2\vee1)\min_{\Di\in\nset{1,\ssY}}\big[\dRa{\Di}{\xdf,\Lambda}\vee\exp\big(-2\cmiSv\Di\big)\big]\\
+   +\cst{\xdf,\Lambda}\ssY^{-1}.
+\end{equation}
+\end{Liste} 
+\reEnd 
+\end{thm}
+
+\begin{cor}
+  Let $\cpen \geq 84$.
+  \begin{Liste}[]
+  \item[{\dgrau\bfseries{(p)}}]
+    If in addition
+    \begin{inparaenum}\item[{{\dgrau\bfseries(A1)}}]
+      there is $\ssY_{\xdf,\Lambda}\in\Nz$ such that
+      $\cmiSv[\sDi{\ssY}]\sDi{\ssY}\geq (\log\ssY)/2$ for all
+      $\ssY\geq \ssY_{\xdf,\Lambda}$
+    \end{inparaenum}
+    holds true, then there is a constant $\cst{\xdf,\Lambda}$ depending
+    only on $\xdf$ and $\Lambda$ such that for all $n\in\Nz$ holds
+    $\nRi{\txdfAg[{\erWe[]}]}{\xdf,\Lambda} \leq
+    \cst{\xdf,\Lambda}\ssY^{-1}$.
+  \item[{\dgrau\bfseries{(np)}}]
+    If in addition
+    \begin{inparaenum}\item[{{\dgrau\bfseries(A2)}}]
+      there is  $\ssY_{\xdf,\Lambda}\in\Nz$ such that
+      $\aDi{\ssY}(\xdf)\cmSv[\aDi{\ssY}(\xdf)]\geq \vert \log\naRa{(\xdf,\Lambda)} \vert/2 $
+      for all $\ssY\geq \ssY_{\xdf,\Lambda}$
+    \end{inparaenum}
+    holds true, then there is a constant $\cst{\xdf,\Lambda}$ depending
+    only on $\xdf$ and $\Lambda$ such that $\nRi{\txdfAg[{\erWe[]}]}{\xdf,\Lambda}
+    \leq \cst{\xdf,\Lambda}\naRa{(\xdf,\Lambda)}$ for all $n\in\Nz$ holds true.
+  \end{Liste} 
+    \reEnd 
+\end{cor}
+
+Note that \nref{freq:circ:kn:beta:as} adds a strong constraint on the dependence compared to the basic definition of the absolutely regular processes.
+It would be of interest to investigate the convergence rate of our estimator when this hypothesis is relaxed.
+It is however beyong the scope of this thesis.
+
+\subsubsection{Maximal risk bounds of the aggregated estimator}
+% --------------------------------------------------------------------
+% <<Text Definition AG {p \vert m}Di>>
+% --------------------------------------------------------------------
+We now give interest to the maximal risk over Sobolev's ellipsoids.
+We aim to apply \nref{ak:ag:ub:pnp:mm} which allows to show that the sequences defined hereafter are upper bounds for the maximal risk of our estimators.
+\begin{de*}
+  Let be the following family of sequences,
+  $\daRa{\Di}{(\xdfCw[])}:=\daRa{\Di}{(\xdfCw[],\Lambda)}:=[\xdfCw^2\vee \DipenSv\,\ssY^{-1}]$.
+Considering the following specific case, we aim to show that it describes an upper bound for the maximal risk over $\rwCxdf$ for our aggregation estimator,
+    $\aDi{\ssY}(\xdfCw[]):=\argmin\Nset[\Di\in\Nz]{\daRa{\Di}{(\xdfCw[],\Lambda)}}\in\nset{1,\ssY}$\\
+    $\naRa{(\xdfCw[])}:=\naRa{(\xdfCw[],\Lambda)}:=\min\Nset[\Di\in\Nz]{\daRa{\Di}{(\xdfCw[],\Lambda)}}$
+    with $\daRa{\aDi{\ssY}(\xdfCw[])}{(\xdfCw[],\Lambda)}=\naRa{(\xdfCw[],\Lambda)}$
+\assEnd
+\end{de*}
+
+The hypotheses to apply \nref{ak:ag:ub:pnp:mm} are the same as for \nref{freq:ge:strat:kn:qu:pnp} and hence we directly obtain the following result.
+
+\begin{thm}
+Assume that \nref{freq:circ:kn:beta:as} holds true and consider the penalty sequence $\penSv:=\penD$, $\Di\in\nset{1,n}$, as in \nref{freq:ge:shape:kn:de:pen:oo}.
+Let $\txdfAg[{\erWe[]}]=\sum_{\Di=1}^{\ssY} \We\txdfPr$ be an aggregation of the orthogonal series estimators using either aggregation weights $\rWe[]$ as in \eqref{freq:ge:shape:kn:we} or model selection weights $\msWe[]$ as in \eqref{freq:ge:shape:uk:we}. % Let $\Di_{\edf,\xdfCr}:=\floor{3(800\Vnorm[{\xdfCw[]}]{\edf}\xdfCr)^2}$ and
+    % $ \ssY_{o}:=15({300})^4$.
+There is a finite constant $\cst{\xdfCw[],\xdfCr,\Lambda}$ given in
+\eqref{ak:ag:ub:pnp:p8} depending only on $\xdfCw[]$, $\xdfCr$ and $\Lambda$ such that for all
+$\ssY\in\Nz$ and for all $\sDi{\ssY}\in\nset{\aDi{\ssY}(\xdfCw[]),\ssY}$  with
+ $\aDi{\ssY}(\xdfCw[])\in\nset{1,n}$ as in \nref{freq:ge:strat:kn:ma:de:rate} holds 
+ \begin{equation}
+ \nRi{\txdfAg[{\erWe[]}]}{\rwCxdf,\Lambda}
+   %\sup_{\xdf\in\rwCxdf}\E\Vnormlp{\txdfAg[{\erWe[]}]-\xdf}^2% \leq
+    \leq 
+   \cst{}(\xdfCr^2\vee1)\min_{\Di\in\nset{1,\ssY}}\big[\daRa{\Di}{(\xdfCw[],\Lambda)}\vee\exp\big(-2\cmiSv\Di\big)]\big)\big]
+   +\cst{\xdfCw[],\xdfCr,\Lambda}\ssY^{-1}.
+\end{equation}
+\reEnd
+\end{thm}
+
+\begin{cor}
+  Let the assumptions of \nref{ak:ag:ub:pnp:mm} be satisfied.  If in
+  addition
+  \begin{inparaenum}\item[{{\dgrau\bfseries(A)}}]
+    there is $\ssY_{\xdfCw[],\xdfCr,\Lambda}\in\Nz$  such that
+    $\aDi{\ssY}({\xdfCw[]})\cmSv[\aDi{\ssY}({\xdfCw[]})]\geq \vert \log\naRa{(\xdfCw[])} \vert/2 $
+    for all $\ssY\geq \ssY_{\xdfCw[],\xdfCr,\Lambda}$
+  \end{inparaenum}
+  holds true, then there is a constant $\cst{\xdfCw[],\xdfCr,\Lambda}$
+  depending only on $\rwCxdf$ and $\Lambda$ such that
+  $ \nRi{\txdfAg[{\erWe[]}]}{\rwCxdf,\Lambda} \leq
+  \cst{\xdfCw[],\xdfCr,\Lambda}\naRa{(\xdfCw[],\Lambda)}$ for all $n\in\Nz$
+  holds true.
+  \reEnd
+\end{cor}
+
+Note that once again \nref{freq:circ:kn:beta:as} is required to obtain the result.

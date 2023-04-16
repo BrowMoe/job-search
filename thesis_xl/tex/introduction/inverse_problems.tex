@@ -1,0 +1,112 @@
+\section{Inverse problems}\label{INTRO_INVERSEPROBLEMS}
+\textit{We introduce here some fundamentals of inverse problem theory. This section builds upon results which can be found, for example, in \ncite{engle1996regularization}}.
+
+Consider the situation when one wishes to estimate an object, say $f$ belonging to a space $\Xi$.
+The object $f$ will be referred to as "parameter of interest" and the space $\Xi$ as "parameter space".
+We assume that this parameter has some influence on a system which we are able to observe.
+Hence, recording observation of this system allows us to learn about this parameter.
+These observations will be referred to as "data" and denoted by $Y$.
+Our ability to learn in such a way is central as it underpins our ability to understand the behaviour of a system, to predict it and to influence it.
+This is a wide family of problems and we shall give more precision about the specific subfamily we consider.
+
+We will give particular interest to inverse problems, a family of models where one wants to infer on $f$ but the data we observe comes from a system led by a different parameter $g$ which can be written $g := T(f)$ where $T$ is an mapping from $\Xi$ to itself.
+
+These models gathered interest for a long time due to their numerous applications, theoretical physics, astrophysics, medical imaging, econometrics, or acoustics are just a few of the countless examples of such applications.
+Many of those models have the particularity to be ill-posed in the sense of \citet{cite:hadamard}.
+That is to say, if we build an estimator $\widehat{g}$ of $g = T(f)$ from the data $Y$ and try to apply the inverse $T^{-1}$ of $T$ to this estimator in order to estimate $f$, one of the following problems might arise:
+\begin{itemize}
+\item non existence (the equation $T(x) = \widehat{g}$ does not have a solution);
+\item non unicity (the equation $T(x) = \widehat{g}$ has multiple solutions);
+\item non stability (the solutions to the equations $T(x) = \widehat{g}$ does not depend continuously on $\widehat{g}$).
+\end{itemize}
+
+Though Hadamard thought that inverse problems do not arise in practical situations and that problems of our realm only are of the well-posed kind.
+Evolution of science proved him wrong and ill-posed problems now have many applications.
+The specific challenges they represent has since gathered ever increasing interest.
+We will use two examples throughout this thesis, respectively introduced in \nref{INTRO_IGSSM} and \nref{INTRO_CIRCULARDECONVOLUTION}.
+
+\bigskip
+
+From now on, we will assume that $\Xi$ is an infinite dimensional vector space on $\mathds{K}$ (standing for either $\R$ or $\mathds{C}$), equipped with a norm $\Vert \cdot \Vert_{\Xi}$ which is derived from an inner product $\langle \cdot \vert \cdot \rangle_{\Xi}$ and $\Xi$ is hence an infinite dimensional Hilbert space.
+We denote by $\mathcal{L}(\Xi)$ the set of bounded endomorphisms on $\Xi$, that is to say linear operators $S$ from $\Xi$ onto itself such that there exists $M$ in $\R_{+}$ verifying, for any $x$ in $\Xi$, the following inequality $\Vert S(x) \Vert_{\Xi} \leq M \Vert x \Vert_{\Xi}$.
+In addition, we denote, for any $S$ in $\mathcal{L}(\Xi)$, $\mathcal{D}(S)$ its definition domain, $\mathcal{R}(S)$ its range, and $\mathcal{N}(S)$ its kernel.
+Assume, from now on, that $T$ is an element of $\mathcal{L}(\Xi)$.
+
+In this case, the following property gives us sufficient and necessary conditions under which the two first forms of ill-posedness do not happen.
+
+\begin{pr*}
+For any $S$ in $\mathcal{L}(\Xi)$, and any element $x$ of $\Xi$, there exists an unique solution to the equation $S(y) = \widehat{S(x)}$ for any estimate $\widehat{S(x)}$ of $S(x)$ in $\Xi$ if and only if
+\item[\mylabel{BACKGROUND_INVERSEPROBLEMS_EXISTENCE}{\dgrau{\bfseries{(existence): }}}] $\widehat{S(x)}$ belongs to the range $\mathcal{R}(S)$ of $S$;
+\item[\mylabel{BACKGROUND_INVERSEPROBLEMS_UNIQUENESS}{\dgrau\bfseries{(uniqueness): }}] the operator $S$ is injective, i.e. $\mathcal{N}(S) = \{0\}$.
+\reEnd
+\end{pr*}
+
+In the case where the existence condition is not fulfilled, one would look for an approximate solution $\widetilde{f}$ minimising an objective function which could be the distance with respect to $\Vert \cdot \Vert_{\Xi}$, that is to say, if it exists, $\widetilde{f} \in \argmin_{x \in \mathcal{D}(T)}\Vert T(x) - \widehat{g} \Vert_{\Xi}$.
+If the uniqueness condition is not fulfilled then we can look for the solution with minimal norm, once again, assuming that it exists.
+
+We will see that the orthogonal projection operators, with respect to $\langle \cdot \vert \cdot \rangle_{\Xi}$, plays an important role.
+Indeed, one can show how the last property relates to the  orthogonal projection onto the closure of the range of $T$, $\overline{\mathcal{R}}(T)$.
+First introduce the following notations.
+
+\begin{de}
+For any $S$ in $\mathcal{L}(\Xi)$, denote by $S^{\star}$ its adjoint operator with respect to $\langle \cdot \vert \cdot \rangle_{\Xi}$, that is to say the unique operator such that for any $x$ and $y$ in $\Xi$ we have $ \langle S(x) \vert y \rangle_{\Xi} = \langle x \vert S^{\star}(y) \rangle_{\Xi}$.
+For any subspace $\mathds{U}$ of $\Xi$, denote by $\Pi_{\mathds{U}}$ the orthogonal projection onto $\mathds{U}$ with respect to $\langle \cdot \vert \cdot \rangle_{\Xi}$.
+\assEnd
+\end{de}
+
+We can now formulate the following property linking the distance minimising criteria with the orthogonal projection onto the closure of the range of $T$.
+
+\begin{pr*}
+For any $S$ in $\mathcal{L}(\Xi)$; any element $x$ of $\Xi$; any estimate $\widehat{S(x)}$ of $S(x)$ in $\Xi$; and any estimate $\widetilde{x}$ of $x$ which lies within $\mathcal{D}(S)$, the following assertions are equivalent:
+\item[\mylabel{BACKGROUND_INVERSEPROBLEMS_PROJECTION_i}{\dgrau{\bfseries{i (distance to the target minimisation)}}}]: $\widetilde{x}$ minimises the function $y \mapsto \Vert \widehat{S(x)} - S(y) \Vert_{\Xi}$;
+\item[\mylabel{BACKGROUND_INVERSEPROBLEMS_PROJECTION_ii}{\dgrau\bfseries{ii}}]: $\Pi_{\overline{R}(S)}(\widehat{S(x)}) = S(\widetilde{x})$;
+\item[\mylabel{BACKGROUND_INVERSEPROBLEMS_PROJECTION_iii}{\dgrau\bfseries{iii (normal equation)}}]: $S^{\star}(\widehat{S(x)}) = S^{\star}(S(\widetilde{x}))$.
+\reEnd
+\end{pr*}
+
+Given those considerations, it is naturally that one defines the generalised inverse (also called pseudo inverse or Moore-Penrose inverse).
+
+\begin{de}
+For any linear subspace $\mathds{U}$ of $\Xi$, denote $\mathds{U}^{\perp}$ its orthogonal complement with respect to $\langle \cdot \vert \cdot \rangle_{\Xi}$ that is $\mathds{U}^{\perp} := \{x \in \Xi: \forall u \in \mathds{U}, \langle x \vert u \rangle_{\Xi} = 0\}$.
+Moreover, denote $\oplus$ the direct sum binary operator.
+Then, for any linear operator $S$, define its generalised inverse $S^{+}$ as the unique linear extension of $S^{-1}: \mathcal{R}(S) \rightarrow \mathcal{N}(S)^{\perp}$ to the domain $\mathcal{D}(S^{+}) := \mathcal{R}(S) \oplus \mathcal{R}(S)^{\perp}$ with $\mathcal{N}(S^{+}) = \mathcal{R}(S)^{\perp}$ satisfying for any $x$ in $\mathcal{D}(S^{+})$ the equality $S^{+}(x) := S^{-1}(\Pi_{\overline{\mathcal{R}}(S)}(x))$.
+\assEnd
+\end{de}
+
+One should note that the generalised inverse has the following important properties.
+
+\begin{rmk}
+For any $S$ in $\mathcal{L}(\Xi)$, the following equalities stand: $S S^{+} S = S$, $S^{+} S S^{+} = S^{+}$, $S^{+} S = \Pi_{\mathcal{N}(S)^{\perp}}$ and for any $x$ in $\mathcal{D}(S^{+})$, $S S^{+}(x) = \Pi_{\overline{\mathcal{R}}(S)}(x)$.
+In addition, one should notice that if $S$ is injective, so is $S^{\star}S$ and as a consequence, $S^{\star}S : \Xi \rightarrow \mathcal{R}(S^{\star}S)$ is invertible which implies that for any $x$ in $\mathcal{R}(S) \oplus \mathcal{R}(S)^{\perp}$ we have that $(S^{\star} S)^{+} S^{\star} x$ is the unique solution of \ref{BACKGROUND_INVERSEPROBLEMS_PROJECTION_iii} which implies that $S^{-1}(\Pi_{\overline{\mathcal{R}}(S)}x) = \{S^{+} x\} = \{(S^{\star} S)^{+} S^{\star} x\}$.
+Moreover, if $S$ is invertible, $S^{+}$ and $S^{-1}$ coincide.
+\remEnd
+\end{rmk}
+
+We hence see that the Moore-Penrose inverse offers a solution to the two first sources of ill-posedness.
+
+\begin{pr*}
+For any linear operator $S$ from $\Xi$ onto itself and $x$ in $\mathcal{D}(S^{+})$, $S^{+}(x)$ is an element of $S^{-1}(\Pi_{\overline{R}(S)} x)$ and, hence fulfils \ref{BACKGROUND_INVERSEPROBLEMS_PROJECTION_i}.
+Moreover, $S^{+}(x)$ is the unique element fulfilling this condition with minimal $\Vert \cdot \Vert_{\Xi}$-norm, that is $\Vert S^{+} x \Vert_{\Xi} = \inf \{\Vert h \Vert_{\Xi}: h \in S^{-1}(\Pi_{\overline{\mathcal{R}}(S)} x)\}$.
+\reEnd
+\end{pr*}
+
+We will work under a set of assumptions where the two first kinds of ill-posedness do not happen.
+However, we give more attention to the third source of ill-posedness.
+The next property gives a general condition under which it occurs.
+
+\begin{pr*}
+Let $\Xi$ be infinite dimensional and $S$ be an injective compact linear operator from $\Xi$ onto itself.
+Then $\inf_{h \in \Xi} \{\Vert S(h) \Vert_{\Xi}: \Vert h \Vert_{\Xi} = 1 \} = 0$ which implies that $S^{-1}$ (and hence $S^{+}$) are not continuous.
+\reEnd
+\end{pr*}
+
+This discontinuity property highlights the need to define a so called regularised version of the Moore-Penrose inverse.
+Indeed, it implies that there exists $\epsilon$ in $\R_{+}^{\star}$ such that for any $\delta$ in $\R_{+}^{\star}$, there exists a couple $(x, y)$ of elements of $\Xi$ with $\Vert x - y \Vert_{\Xi} \leq \delta$, such that $\Vert S^{+}(x) - S^{+}(y) \Vert_{\Xi} \geq \epsilon$.
+Taking $x = g$ and $(y_{n})_{n \in \N} = (\widehat{g}_{n})_{n \in \N}$ a sequence of estimators, it means that even if $(\widehat{g}_{n})_{n \in \N}$ is a consistent sequence of estimations for $g$, $S^{+}(\widehat{g})$ would still not be a consistent estimator of $f$.
+
+\medskip
+
+We will see later in this overview that depending on the approach one uses, the strategy to overcome this difficulty will not be the same.
+Namely, in the frequentist paradigm, one introduces the notion of regularisation in order to define a continuous approximation of $T^{+}$ whereas in the Bayesian paradigm, this regularisation occurs naturally in this derivation of the posterior distribution.
+
+To make this clearer, we will first introduce the shape that our data will take.

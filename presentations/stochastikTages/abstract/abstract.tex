@@ -1,0 +1,81 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath,amssymb}
+\setlength{\textwidth}{16cm}
+\setlength{\textheight}{21cm}
+\setlength{\hoffset}{-1.4cm}
+\setlength{\parindent}{0cm}
+
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{times}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{cleveref}[2012/02/15]
+
+
+\usepackage{natbib}
+% BIBLIOGRAPHY
+\renewcommand{\cite}{\citet}
+\bibliographystyle{abbrvnat}
+
+\crefformat{footnote}{#2\footnotemark[#1]#3}
+
+\begin{document}
+\thispagestyle{empty}
+\begin{center}
+{\large 
+	{ \sc A family of adaptive Bayesian methods for statistical ill-posed inverse problems}}
+
+\bigskip
+
+\underline{Xavier {\sc Loizeau}},\\ Ruprecht-Karls-Universität Heidelberg\\[1ex]
+
+\bigskip
+
+$13^{th}$ German Probability and Statistics Days - February/March 2018  
+
+\end{center}
+
+\bigskip
+
+\begin{abstract}
+Consider an infinite dimensional parameter space $\Theta$ and a linear operator $\lambda$ mapping $\Theta$ to itself.
+Given a family of sample distributions $\left(\mathbb{P}_{\theta}^{\epsilon}\right)_{\theta \in \Theta}$, with noise level $\epsilon$, we consider the estimation of $\theta^{\circ}$ in $\Theta$ while observing $Y^{\epsilon}$ from $\mathbb{P}_{\lambda \theta^{\circ}}^{\epsilon}$ using a Bayesian point of view.
+
+\medskip
+
+Studying the asymptotic as $\epsilon$ tends to $0$, we first introduce the notion of oracle optimal concentration over a family of prior distributions which does not rely on a comparison to a frequentist oracle optimal convergence rate.
+
+\medskip
+
+Considering a statistical ill-posed inverse problem, a family of sieve prior distributions is then introduced.
+It is indexed by a tuning parameter which has to be chosen.
+We show that Bayesian oracle optimality is achieved if the tuning parameter is chosen optimally, which requiers knowledge of the true parameter.
+Hence, a hierarchical approach is used to construct a fully data driven prior from this family.
+
+\medskip
+
+Facing the difficulty to justify the choice of a particular prior in the non-parametric context, we then study a non informative prior obtained by iteration of the posterior.
+This procedure generates a family of posterior distributions, giving more and more weight to the observations while the prior information fades away.
+We show that, interestingly, each element of the family conserves the oracle optimality property and that, as the number of iteration tends to infinite, the posterior distribution degenerates to the so called model selection frequentist estimator, providing a new proof for its optimality.
+
+\medskip
+
+Three examples are used all along the presentation; namely, the inverse Gaussian sequence space model, the circular deconvolution and the real line deconvolution.
+We can see in those three examples that the estimate given by the posterior mean optimally aggregates so called projection estimators and does not require to split the sample.
+
+
+
+\end{abstract}
+%\vfill
+%\bibliography{Decon-Bib}
+\end{document}
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

@@ -1,0 +1,54 @@
+\subsection{Circular deconvolution with beta mixing data and known noise density}\label{FREQ_CIRCDECONV_KNOWN_BETA}
+
+Considering the positive results obtained in the previous section, we are now interested in generalising those results to the situation where our observations are not a sequence of independent identically distributed variables anymore but may suffer from dependence.
+
+\begin{as}{\textsc{Strictly stationary, absolutely regular process} \\}\label{AS_FREQ_CIRCDECONV_KNOWN_BETA_STRICTLYSTA}
+We assume in this section that the process of observations $(Y_{p})_{p \in \mathds{Z}}$ is strictly stationary and absolutely regular as described in \nref{DEPENDENTDATA}.
+\end{as}
+
+\begin{as}{\textsc{Rich space} \\}\label{AS_FREQ_CIRCDECONV_KNOWN_BETA_RICHSPACE}
+We assume in this section that the process of observations $(Y_{p})_{p \in \mathds{Z}}$ is strictly stationary and absolutely regular as described in \nref{DEPENDENTDATA}.
+\end{as}
+
+\begin{as}\label{AS_FREQ_CIRCDECONV_KNOWN_BETA_JOINT}
+Assume that, for any integer $p$, the joint distribution $\P_{Y_{0}, Y_{p} \vert \theta^{\circ}}$ of $Y_{0}$ and $Y_{p}$ admits a density $f_{Y_{0}, Y_{p}}$ which is square integrable.
+
+Let $\Vert f_{Y_{0}, Y_{p}} \Vert_{L^{2}}^{2} := \int_{0}^{1} \int_{0}^{1} \vert f_{Y_{0}, Y_{p}}(x, y)\vert^{2}dx \, dy < \infty$ with a slight abuse of notations.
+If we denote further by $h \otimes g : [0, 1]^{2} \rightarrow \R$ the bivariate function $[h \otimes g](x, y) := h(x) g(y)$ then let assume $\gamma_{f} := \sup\limits_{p \geq 1} \Vert f_{Y_{0}^{n}, Y_{p}^{n}\vert \theta^{\circ}} - f_{Y_{0}^{n}\vert \theta^{\circ}} \otimes f_{Y_{0}^{n}\vert \theta^{\circ}} \Vert_{L^{2}} < \infty$.
+
+Assume in addition $\sum\limits_{p = 1}^{\infty} \beta(Y_{0}, Y_{p}) < \infty$ and $\gamma := \sup\limits_{\theta^{\circ} \in \Theta(\mathfrak{a}, r)} \gamma_{\theta} < \infty$
+\end{as}
+
+As in the posterior mean of hierarchical sieves, we define a weight sequence, corresponding to the posterior distribution of the threshold parameter.
+
+\begin{de}{\textsc{Weight sequence} \\}\label{DE_FREQ_CIRCDECONV_KNOWN_BETA_WEIGHT}
+\end{de}
+
+With those definitions at hand, we are able to define an estimator that reproduces the structure of the posterior mean of iterated hierarchical sieves.
+
+\begin{de}{\textsc{Aggregation/shrinkage estimator} \\}\label{DE_FREQ_CIRCDECONV_KNOWN_BETA_AGGREGEST}
+Using the notations we just introduced, we define, for any strictly positive integer $\eta$ the shrinkage/aggregation estimator $\widehat{\theta}^{(\eta)}$ such that, for any $j$ in $\mathds{Z}$
+\begin{alignat*}{3}
+& \widehat{\theta}^{(\eta)}_{j} && := && \P_{M \vert Y^{n}}^{n, (\eta)}(\llbracket \vert j \vert, n \rrbracket) \overline{\theta}_{j};\\
+& \widehat{\theta}^{\eta} && := && \sum\limits_{j = 1}^{n} \P_{M \vert Y^{n}}^{n, (\eta)}(j) \overline{\theta}^{j}.
+\end{alignat*}
+\end{de}
+
+As previously, one can notice that, as $\eta$ tends to infinity, this estimator converges to the penalised contrast maximiser projection estimator with penalty function $\pen$ and contrast $\Upsilon$.
+
+\medskip
+
+Using the method described in \nref{FREQ_STRATEGY}, we are able to show that, for any $\theta^{\circ}$, the sequence defined hereafter is a convergence rate.
+
+\begin{de}{\textsc{Convergence rate} \\}\label{DE_FREQ_CIRCDECONV_KNOWN_BETA_CONVRATE}
+\end{de}
+
+More precisely, we obtain the following theorem, for which the proof is given in \nref{PRO_FREQ_CIRCDECONV_KNOWN_BETA_ORACLE_NP}.
+
+\begin{thm}\label{THM_FREQ_CIRCDECONV_KNOWN_BETA_ORACLE_NP}
+\end{thm}
+
+Comparison with the oracle rate of projection estimators reveals that in many cases, we obtain an oracle optimal estimator.
+
+\begin{il}\label{IL_FREQ_CIRCDECONV_KNOWN_BETA_RATE}
+\end{il}

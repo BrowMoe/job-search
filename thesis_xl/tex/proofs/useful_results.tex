@@ -1,0 +1,80 @@
+%\section{Lemmata for circular deconvolution}
+%
+%The following lemma, Talagrand's inequality, allows to derive upper bounds for empirical processes  both in expectation and probability and will be used throughout the proofs concerning circular density deconvolution.
+%This version of the inequality can be found in \textcolor{red}{Johannes et al.}
+%
+%% --------------------------------------------------------------------
+%% <<Lemma \ref{re:tal}>>
+%% --------------------------------------------------------------------
+%\begin{lm}\label{re:tal}\label{LM_TALAGRAND}
+%Let $\left(Y_{p}\right)_{p \in \llbracket 1, n \llbracket}$ be independent $\mathds{Y}$-valued random variables, $\mathds{B}$ be a countable space and $S$ be a space of measurable functions from $\left(\mathds{Y}, \mathcal{Y}\right)$ to $\left(\R, \mathcal{B}(\R)\right)$ indexed by $\mathds{B}$.
+%For any $t$ in $\mathds{B}$, consider $\nu_{t}$, the function belonging to $S$ indexed by $t$ and define $\overline{\nu_{t}} := \frac{1}{n} \sum_{p = 1}^{n} \nu_{t}(Y_{p}) - \mathds{E}\left[\nu_{t}(Y_{p})\right]$.
+%Then, with $K := ({\sqrt{2}-1})/({21\sqrt{2}})$ and any numerical constants verifying $\lambda > 0$, and $C>0$ and $h$, $H$ and $v$ verifying
+%\begin{equation*}
+%	\sup_{t \in \mathds{B}}\sup_{y \in \mathds{Y}}\left\vert \nu_{t}(y)\right\vert \leq h,\qquad \E\left[\sup_{t \in \mathds{B}}\left\vert \overline{\nu_{t}}\right\vert \right]\leq H,\qquad \sup_{t \in \mathds{B}} \frac{1}{n} \sum_{p = 1}^{n} \V\left[\nu_{t}(Y_{p})\right]\leq v.
+%\end{equation*}
+%we have
+%\begin{align}
+%	 &\E\left[\left(\sup_{t \in \mathds{B}} \left\vert \overline{\nu_{t}} \right\vert^{2}-6 H^2\right)_{+}\right]\leq C \left[\frac{v}{n}\exp\left(\frac{-n H^2}{6 v}\right)+\frac{h^{2}}{n^{2}}\exp\left(\frac{-K n H}{h}\right) \right]\label{re:tal:e1} \\
+%	&\P\left(\sup_{t \in \mathds{B}}\left\vert \overline{\nu_{t}} \right\vert \geq 2 H + \lambda\right) \leq 3 \exp\left[-K n \left( \frac{\lambda^{2}}{v} \wedge \frac{\lambda}{h} \right)\right]\leq 3 \left(\exp\left[\frac{- K n \lambda^{2}}{v}\right] + \exp\left[\frac{-Kn\lambda}{h}\right])\right)\label{re:tal:e2}
+%\end{align}
+%\end{lm}
+%% --------------------------------------------------------------------
+%% <<Remark Talagrand>>
+%% --------------------------------------------------------------------
+%In particular, we will use the specific form this lemma takes with a specific choice for $\lambda$ and with bounds for $K$ which will not influence the convergence rate, as specified in the next remark.
+%\begin{rmk}
+%Setting $\lambda=\sqrt{2}(\sqrt{3}-\sqrt{2}) H =\frac{(\sqrt{6}-\sqrt{4})(\sqrt{6}+\sqrt{4})}{(\sqrt{6}+\sqrt{4})}H = \frac{\sqrt{2}}{(\sqrt{3}+\sqrt{2})}H$, and hence $\sqrt{2}\sqrt{3} H = \sqrt{2}\sqrt{2}H + \sqrt{2}(\sqrt{3}-\sqrt{2}) H$ together with $K\frac{2}{(\sqrt{3}+\sqrt{2})^2}=\frac{(\sqrt{2}-1)}{(21\sqrt{2})}\frac{2}{(\sqrt{3}+\sqrt{2})^2}=\frac{(2-\sqrt{2})}{21(\sqrt{3}+\sqrt{2})^2}\geq\frac{1}{400}$
+%and
+%$K\frac{\sqrt{2}}{(\sqrt{3}+\sqrt{2})}=\frac{\sqrt{2}-1}{21(\sqrt{3}+\sqrt{2})}\geq\frac{1}{200}$
+%and $K\geq \frac{1}{100}$ implies
+%\begin{align}
+%	 &\E\left[\left(\sup_{t \in \mathds{B}}\left\vert \overline{\nu_{t}}\right\vert^{2}- 6 H^{2}\right)_{+}\right] \leq C \left[\frac{v}{n}\exp\left(\frac{-n H^{2}}{6 v}\right)+\frac{h^{2}}{n^{2}}\exp\left(\frac{-n H}{100 h}\right) \right]\label{re:tal:e3} \\
+%	&\P\left(\sup_{t \in \mathds{B}} \left\vert \overline{\nu_{t}} \right\vert^{2} \geq 6 H^{2}\right) \leq 3 \left(\exp\left[\frac{-n H^{2}}{400 v}\right]+\exp\left[\frac{-n H}{200 h}\right]\right).\label{re:tal:e4}
+%\end{align}
+%\remEnd
+%\end{rmk}
+%
+%We show here how Talagrand's inequality may be linked to our model.
+%% --------------------------------------------------------------------
+%% <<Remark Talagrand>>
+%% --------------------------------------------------------------------
+%\begin{rmk}\label{rem:re:tal}
+%Remind the notation of the unit ball for any $m$ in $\N$,
+%
+%$\mathds{B}_{\overline{m}}:=\left\{h \in \mathds{L}^{2} : \forall x \in \mathds{T}, \left\vert x \right\vert > m, h(x) = 0 \vee \left\Vert h \right\Vert_{L^{2}} \leq 1\right\}$.
+%Note that $\mathds{B}_{\overline{m}}$ is contained in the linear subspace $\mathds{U}_{\overline{m}} = \Span\left\{ e_{j}, \left\vert j \right\vert \in \llbracket 1, m \rrbracket \right\}$.
+%Defining for any $t$ in $\mathds{B}_{\overline{m}}$ the function $\nu_{t}(Y)=\sum_{|j|\in\nset{1, m}}\frac{\overline{\left[t\right]}_{j}}{\lambda_{j}} e_{j}(-Y)$ we have $\E_{\theta^{\circ}}^{n}\left[\nu_{t}(Y)\right] = \sum_{\left\vert j \right\vert \in \llbracket 1, m \rrbracket} \frac{\overline{\left[t\right]}_{j}}{\lambda_{j}} \phi_{j}$, hence, keeping in mind the notations from \nref{LM_TALAGRAND} we have $\overline{\nu_{t}}=\frac{1}{n}\sum_{p = 1}^{n}\sum_{\left\vert j \right\vert \in \llbracket 1,m \rrbracket} \frac{\overline{\left[t\right]}_{j}}{\lambda_{j}} (e_{j}(-Y_{p})-\phi_{j})$ and keeping in mind that $\overline{\left[t\right]}_{j}=\left\langle e_{j} \vert t \right\rangle_{L^{2}}$ we have
+%\begin{multline*}
+%\left\Vert f_{n, \overline{m}} - f_{\overline{m}} \right\Vert=\sup_{t \in \mathds{B}_{\overline{m}}}\left\vert \left\langle t \vert f_{n, \overline{m}} - f_{\overline{m}} \right\rangle_{L^{2}} \right\vert^{2}=\sup_{t \in \mathds{B}_{\overline{m}}} \left\vert \sum_{\vert j \vert \in \llbracket 1, m \rrbracket}\frac{\overline{\left[t\right]}_{j}}{\lambda_{j}} \left(\phi_{n, j} - \phi_{j}\right) \right\vert^{2}\\
+%=\sup_{t \in \mathds{B}_{\overline{m}}} \left\vert \sum_{\vert j \vert \in \llbracket 1, m \rrbracket} \frac{1}{\lambda_{j}} \left\{\frac{1}{n}\sum_{p = 1}^{n}(e_{j}(-Y_{p}) - \phi_{j})\right\}\overline{\left[t\right]}_{j}\right\vert^{2} = \sup_{t \in \mathds{B}_{\overline{m}}}\left\vert\overline{\nu_{t}}\right\vert^{2}.
+%\end{multline*}
+%
+%Note that, the unit ball $\mathds{B}_{\overline{m}}$ is not a countable set of functions, however, it contains a countable dense subset, say $\mathds{B}$, since $\mathds{L}^2$ is separable, and it is straightforward to see that $\sup_{t \in \mathds{B}_{\overline{m}}} \left\vert \overline{\nu_{t}}\right\vert^{2}=\sup_{t \in \mathds{B}} \left\vert \overline{\nu_{t}}\right\vert^2$.
+%
+%The last identity will be used to link the contraction of the hyper-parameter and convergence of the projection estimators to Talagrand's inequality.
+%
+%\remEnd
+%\end{rmk}
+
+\section{Commonly used inequalities}
+
+\begin{lm}{\textsc{Young's inequality} \\}\label{A.3.1}
+Consider $p$, $q$, and $r$, three real numbers greater than 1 such that $\frac{1}{p} + \frac{1}{q} = 1 + \frac{1}{r}$; as well as $x$ and $y$, respectively in $\mathcal{L}^{p}$ and $\mathcal{L}^{q}$.
+Then,
+\[\left\Vert x \star y\right\Vert_{r} \leq \Vert f \Vert_{p} \cdot \Vert g \Vert_{q}.\]
+\end{lm}
+
+\begin{lm}{\textsc{Cauchy Schwarz inequality} \\}\label{A.3.2}
+Let be $x$ and $y$ in an inner product space (e.g. $\mathcal{L}^{2}$), then we have
+\[\vert \langle x \vert y \rangle \vert^{2} \leq \Vert x \Vert^{2} \cdot \Vert y \Vert^{2}.\]
+\end{lm}
+
+\begin{lm}{\textsc{Hölder's inequality} \\}\label{A.3.3}
+Let $p$ and $q$ be elements of $[1, \infty]$ such that $\frac{1}{p} + \frac{1}{q} = 1$. Then, for any measurable complex-valued functions $f$ and $g$,
+\[\Vert f \cdot g \Vert_{L^{1}} = \Vert f \Vert_{L^{p}} \cdot \Vert g \Vert_{L^{q}}\]
+\end{lm}
+
+\begin{lm}{\textsc{Chebyshev's inequality} \\}\label{A.3.4}
+Let $X$ be a random variable with finite expectation $\E[ X ]$ and finite, strictly positive variance $\V[X]$. Then for any real number $\alpha$ we have $\P(\vert X - \E[X] \vert \geq \alpha \sqrt{\V[X]}) \leq 1/ \alpha^{2}$
+\end{lm}

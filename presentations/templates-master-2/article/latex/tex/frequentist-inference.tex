@@ -1,0 +1,42 @@
+\section{Frequentist inference}\label{2}
+We briefly introduce here the principles of oracle and minimax optimal rates of convergence by taking the example of a family of projections estimators which appear to have an important meaning in \textsc{\cref{4}}.
+
+From a frequentist point of view, one would observe a realisation $Y^{n}$ from $\mathds{P}_{\theta^{\circ}}^{n}$ for some $\theta^{\circ}$ in $\Theta$ and they then would like to infer on $\theta^{\circ}$.
+To do so, the estimation procedure consists in considering an estimator, that is to say a mapping from the space of observation to the parameter space, generally depending on $n$, and proving that this application fulfils optimality conditions such as minimising a risk.
+
+In the \textsc{\cref{4.3}} we give results about the well known rate of convergence in $L^{2}$ norm.
+However it makes sense to remind here the definition of the rate of convergence in distribution which plays an important role in \textsc{\cref{3.1}} and \textsc{\cref{3.2}} to define rates of contraction.
+
+\subsection{Oracle optimality}\label{2.1}
+For any $j$ in $\mathds{N}^{\star}$, a natural estimator for $\theta^{\circ}_{j}$ is $\overline{\theta}_{j} := Y_{j}/\lambda_{j}$ as it is unbiased ($\mathds{E}_{\theta^{\circ}}^{n}\left[\overline{\theta}_{j}\right] = \theta^{\circ}_{j}$) and its variance is $\mathds{V}_{\theta^{\circ}}^{n}\left[\overline{\theta}_{j}\right] = \Lambda_{j}/n$.
+
+In this context, by projection estimators, one refers to the family of estimators of $\theta^{\circ}$ defined by $\mathcal{F}:=\left\{\overline{\theta}^{m} := \left(\overline{\theta}^{m}_{j}\right)_{j \in \mathds{N}^{\star}} = \left(\overline{\theta}_{j} \mathds{1}_{j \leq m}\right)_{j \in \mathds{N}^{\star}} m \in \mathds{N}^{\star}\right\}$.
+
+\medskip
+
+We say that, for any $\theta^{\circ}$ in $\Theta$, the sequence $\Phi_{n}^{\circ}$, as defined in \textsc{\cref{de1}}, is the oracle optimal rate of convergence in probability for the family of estimators $\mathcal{F}$ at $\theta^{\circ}$ because, for any increasing (arbitrarily slowly) and unbounded sequence $(c_{n})_{n \in \mathds{N}^{\star}}$
+
+\[\lim\limits_{n \rightarrow \infty} \sup\limits_{\overline{\theta}^{m_{n}}\in \mathcal{F}} \mathds{P}_{\theta^{\circ}}^{n}\left[d^{2}\left(\theta^{\circ}, \overline{\theta}^{m_{n}}\right) \leq c_{n}^{-1} \Phi_{n}^{\circ} \right] = 0;\]
+and, with $m_{n}^{\circ}$ as in \textsc{\cref{de1}},
+\[\lim\limits_{n \rightarrow \infty} \mathds{P}_{\theta^{\circ}}^{n}\left[d^{2}\left(\theta^{\circ}, \overline{\theta}^{m_{n}^{\circ}}\right) \leq c_{n} \cdot \Phi_{n}^{\circ} \right] = 1.\]
+
+We therefore call $\overline{\theta}^{m_{n}^{\circ}}$ oracle optimal.
+One should notice, though, that $m_{n}^{\circ}$ depends on $\theta^{\circ}$ and is hence, not at hand in practice and one should define a data-driven way to select this parameter which conserves this optimality property.
+
+\subsection{Minimax optimality}\label{2.2}
+
+Another form of optimality gathering a lot of interest is the minimax optimality.
+
+In a frequentist framework, $\Psi_{n}^{\star}$, as defined in \textsc{\cref{de1}}, is called minimax optimal convergence rate over $\Theta_{\mathfrak{a}}(r)$ as, for any increasing unbounded sequence $\left(c_{n}\right)_{n \in \mathds{N}}$ and with $m_{n}^{\star}$ as in \textsc{\cref{de1}},
+\begin{alignat*}{4}
+& \lim\limits_{n \rightarrow \infty} && \sup\limits_{\widehat{\theta}} &&\inf\limits_{\theta^{\circ} \in \Theta_{\mathfrak{a}}(r)} \mathds{P}_{\theta^{\circ}}^{n}\left[d^{2}(\theta^{\circ}, \widehat{\theta}) \leq c_{n}^{-1} \Psi_{n}^{\star}\right] &&= 0 ;\\
+& \lim\limits_{n \rightarrow \infty} && &&\inf\limits_{\theta^{\circ} \in \Theta_{\mathfrak{a}}(r)} \mathds{P}_{\theta^{\circ}}^{n}\left[d^{2}(\theta^{\circ}, \overline{\theta}^{m_{n}^{\star}}) \leq c_{n} \Psi_{n}^{\star} \right] && = 1;
+\end{alignat*}
+where $\sup\limits_{\widehat{\theta}}$ is taken over all possible estimators.
+Any estimator which reaches the minimax optimal rate of convergence, such as $\overline{\theta}^{m_{n}^{\star}}$ in this example, is called minimax optimal.
+As in the oracle case, one should note that $m_{n}^{\star}$ in not available as it depends on $\Theta_{\mathfrak{a}}(r)$ and it is of interest to define a data-driven selection procedure for the parameter $m$ which yields oracle and minimax optimality  of the obtained estimator.
+
+\subsection{Model selection}\label{2.3}
+A popular way to select the parameter $m$ is the so-called model selection via penalised contrast.
+By properly choosing two functions $\pen : \mathds{N}^{\star} \rightarrow \mathds{R}_{+}$ and $\Upsilon : \mathds{N}^{\star} \rightarrow \mathds{R}_{+}$ respectively penalising the complexity of the chosen model (and hence increasing with $m$) and the loss of information by the cut-off (and hence decreasing with $m$), which do not depend on $\theta^{\circ}$ nor $\Theta^{\mathfrak{a}}(r)$ but can depend on $Y^{n}$, one can adaptively select the cut-off parameter as $\widehat{m}:=\argmin_{m \in \llbracket 1, n \rrbracket}(\pen(m) + \Upsilon(m))$.
+We here justify by a Bayesian approach the choice $\pen(m) = 3 m / n$ and $\Upsilon(m) = -\sum\limits_{j = 1}^{m} Y_{j}^{2}$ and show in a novel way that it leads to minimax and oracle optimal estimation.

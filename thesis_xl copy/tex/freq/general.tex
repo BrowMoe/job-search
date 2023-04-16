@@ -1,0 +1,51 @@
+\section{Strategy of proof for optimality of aggregation estimator}\label{FREQ_STRATEGY}
+
+As stated in \nref{BAYES_POSTMEAN}, the posterior mean obtained while using a hierarchical sieve prior has the shape
+
+
+\begin{alignat*}{3}
+&\omega^{(\eta)}_{m} && := && \P_{M \vert Y}^{\eta}(M = m)\\
+& && = && \frac{\exp\left[-\eta\left(\pen(m) + \Upsilon(y, m)\right)\right]}{\sum\limits_{j \subset G}\exp\left[- \eta \left(\pen(j) + \Upsilon(y, j)\right)\right]} \mathds{1}_{m \subset G}\\
+& && = && \frac{\mathds{1}_{m \subset G}}{\sum\limits_{j \subset G}\exp\left[-\eta \left\{\left(\Upsilon(y, j) - \Upsilon(y, m)\right) + \left(\pen(j) - \pen(m)\right)\right\}\right]};\\
+& \widetilde{\theta}_{j}^{(\eta)} && = && \E_{\boldsymbol{\theta}^{j} \vert Y^{n}}^{(\eta)}\left[\boldsymbol{\theta}^{j}\right]_{j};\\
+& \widehat{\theta}^{\eta} && := && \E_{\boldsymbol{\theta}^{M}\vert Y^{n}}^{\eta}\left[\boldsymbol{\theta}^{M}\right]\\
+& && = && \sum\limits_{m \in G} \omega^{(\eta)}_{m} \E_{\boldsymbol{\theta}^{m} \vert Y^{n}}^{\eta} \left[ \boldsymbol{\theta}^{m} \right]\\
+& && = && \left(\sum\limits_{m: j \in m}\omega^{(\eta)}_{m} \widetilde{\theta}^{(\eta)}_{j}\right)_{j \in \mathds{F}}.
+\end{alignat*}
+
+Hence, we see that, for each model, by providing a sequence of estimators $\left(\widetilde{\theta}^{(\eta)}_{j}\right)_{j \in \mathds{F}}$; and two functions $\pen$ and $\Upsilon$; we define a family of adaptive estimators indexed by $\eta$.
+
+\medskip
+
+We are here interested in the convergence properties of estimators of this kind, in particular their potential oracle and minimax optimality.
+
+We have the following shape for the risk:
+
+\begin{alignat*}{3}
+& \E_{\theta^{\circ}}^{n}\left[\left\Vert \widehat{\theta}^{\eta} - \theta^{\circ} \right\Vert^{2}\right] && = && \E_{\theta^{\circ}}^{n}\left[\sum\limits_{j \in \mathds{F}} \left\vert \widehat{\theta}^{\eta} - \theta^{\circ} \right\vert^{2}\right]\\
+& && = && \E_{\theta^{\circ}}^{n}\left[\sum\limits_{j \in \mathds{F}} \left\vert \omega_{j} \widetilde{\theta}^{(\eta)}_{j} - \theta_{j}^{\circ} \right\vert^{2}\right]\\
+& && = && \E_{\theta^{\circ}}^{n}\left[\sum\limits_{j \in G_{n}} \left\vert \omega_{j} \widetilde{\theta}^{(\eta)}_{j} - \theta_{j}^{\circ} \right\vert^{2} \right] + \sum\limits_{j \notin G_{n}} \left\vert \theta^{\circ}_{j} \right\vert^{2}\\
+& && = && \E_{\theta^{\circ}}^{n}\left[\sum\limits_{j \in G_{n}} \left\vert \omega_{j}\left(\widetilde{\theta}^{(\eta)}_{j} - \theta_{j}^{\circ}\right) - (1 - \omega_{j}) \theta_{j}^{\circ}\right\vert^{2} \right] + \sum\limits_{j \notin G_{n}} \left\vert \theta^{\circ}_{j} \right\vert^{2}\\
+& && \leq && \underbrace{\sum\limits_{j \in G_{n}} \E_{\theta^{\circ}}^{n}\left[\left\vert \omega_{j}\left(\widetilde{\theta}^{(\eta)}_{j} - \theta_{j}^{\circ}\right)\right\vert^{2}\right]}_{=: A} + \underbrace{\sum\limits_{j \in G_{n}} \E_{\theta^{\circ}}^{n}\left[\left\vert(1 - \omega_{j}) \theta_{j}^{\circ}\right\vert^{2} \right]}_{ =: B} + \underbrace{\sum\limits_{j \notin G_{n}} \left\vert \theta^{\circ}_{j} \right\vert^{2}}_{=: C}
+\end{alignat*}
+
+
+\begin{alignat*}{3}
+& A && = && \sum\limits_{j \in G_{n}} \E_{\theta^{\circ}}^{n}\left[\omega_{j}^{2} \left\vert \widetilde{\theta}^{(\eta)}_{j} - \theta_{j}^{\circ}\right\vert^{2}\right]\\
+\end{alignat*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

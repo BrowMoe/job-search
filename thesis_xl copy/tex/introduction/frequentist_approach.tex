@@ -1,0 +1,383 @@
+\section{Frequentist approach}\label{INTRO_FREQ}
+
+\subsection{Estimation}\label{INTRO_FREQ_ESTIMATION}
+\begin{itemize}
+\item (M/Z-estimation);
+\item projection; \textcolor{red}{Introduce notation for subspaces of the shape $\mathds{B}_{k,l}$ as well as operators $\Pi_{k,l}$}
+\item kernel smoother...
+\end{itemize}
+
+\subsection{Decision theory}\label{INTRO_FREQ_DECISION}
+
+As we have seen previously, for a given model, one could chose among a variety of estimators.
+This choice is in general not obvious and decision theory can be used to help in this process.
+
+\medskip
+
+In order to apply decision theory in our context one needs to define some objects.
+
+
+\begin{Liste}[]
+\item[\mylabel{INTRO_FREQ_DECISION_LOSSFUNCION}{\bfseries{The loss function} $l: (\{\mathds{Y} \rightarrow \Theta\} \times \mathds{Y} \times \Theta) \rightarrow \R_{+}$:}]
+
+this function represents the error made by using a certain estimator $\widehat{\theta}$ while estimating a true parameter $\fxdf$ when the data at hand is $Y$.
+
+A natural choice would be to consider a distance on $\Theta$, say $d: \Theta \times \Theta \rightarrow \R_{+}$ and to define
+\begin{alignat*}{4}
+& l :&& \{\mathds{Y} \rightarrow \Theta\} \times \mathds{Y} \times \Theta && \rightarrow && \R_{+}\\
+&    && (\widehat{\theta}, Y, \fxdf)                             && \mapsto     && d(\widehat{\theta}(Y), \fxdf).
+\end{alignat*}
+
+\medskip
+
+As an example, in the functional parameter space case we describe in \nref{INTRO_INVERSE_STATMOD} one could consider the following objects.
+
+\begin{de}{\textsc{Product $\cdot$ on $\Theta$}\\}\label{DE_INTRO_FREQ_PRODUCTTHETA}
+We define the bi-linear operator
+\begin{alignat*}{4}
+& \cdot : && \quad \Theta^{2} && \rightarrow && \Theta \\
+& && (\theta, \theta') && \mapsto && \theta \cdot \theta' := \left(j \mapsto \theta_{j} \theta'_{j}\right)_{j \in \mathds{F}}.
+\end{alignat*}
+\end{de}
+
+With this definition at hand we can define the inner product of $\Theta$
+\begin{de}{\textsc{Inner product $\left\langle \cdot \vert \cdot \right\rangle_{l^{2}}$ on $\Theta$}\\}\label{DE_INTRO_FREQ_SCALARTHETA}
+We define the operator
+\begin{alignat*}{4}
+& \left\langle \cdot \vert \cdot \right\rangle_{l^{2}} : && \quad \Theta^{2} &&\rightarrow&& \overline{\mathds{C}}\\
+& && (\theta, \theta') && \mapsto && \int\limits_{j \in \mathds{F}} (\theta \cdot \overline{\theta'})_{j} dj.
+\end{alignat*}
+\end{de}
+
+This leads to the natural $l^{2}$-norm
+\begin{de}{\textsc{$l^{2}$-norm $\Vert \cdot \Vert_{l^{2}}$ on $\Theta$}\\}\label{DE_INTRO_FREQ_L2THETA}
+We define the norm
+\begin{alignat*}{4}
+& \Vert \cdot \Vert_{l^{2}} : && \quad \Theta && \rightarrow && \overline{\mathds{R}_{+}}\\
+& &&\quad \theta && \mapsto && \sqrt{\left\langle \theta \vert \theta \right\rangle_{l^{2}}} = \left(\int\limits_{j \in \mathds{F}} \vert \theta_{j}\vert^{2} dj\right)^{1/2}.
+\end{alignat*}
+\end{de}
+
+It is common to consider the larger family of norms $\Vert \cdot \Vert_{l^{p}}$ for any number $p$ in $[1, \infty]$ which however do not define an inner product space for $p \neq 2$ (they do not verify the parallelogram inequality):
+\begin{de}{\textsc{$l^{p}$-norm $\Vert \cdot \Vert_{l^{p}}$ on $\Theta$}\\}\label{DE_INTRO_FREQ_LPTHETA}
+We define the norm
+\begin{alignat*}{4}
+& \Vert \cdot \Vert_{l^{p}} : && \Theta && \rightarrow && \overline{\mathds{R}_{+}}.\\
+& && \theta && \mapsto && \left(\int\limits_{j \in \mathds{F}} \vert \theta_{j} \vert^{p} \, dj\right)^{1/p}
+\end{alignat*}
+\end{de}
+
+A last kind of norm which is of interest are the weighted norms.
+Using a weighted norm as loss function allows to give more interest to some specific features of the functions (high or low frequencies for example).
+\begin{de}{\textsc{$l^{p}_{\mathfrak{u}}$-norm $\Vert \cdot \Vert_{l^{p}_{\mathfrak{u}}}$ on $\Theta$}\\}\label{DE_INTRO_FREQ_LPUTHETA}
+Consider an element $[\mathfrak{u}]$ of $\Theta$.
+We define the norm
+\begin{alignat*}{4}
+& \Vert \cdot \Vert_{l^{p}_{[\mathfrak{u}]}} : && \Theta && \rightarrow && \mathds{R}_{+}.\\
+& && \theta && \mapsto && \left(\int\limits_{j \in \mathds{F}} \vert (\theta \cdot [\mathfrak{u}])_{j}\vert^{p} dj\right)^{1/p}
+\end{alignat*}
+In particular, if $[\mathfrak{u}]$ is the sequence constantly equal to $1$, we find the definition of $\Vert \cdot \Vert_{l^{p}}$.
+\end{de}
+
+In order to apply decision theory, we have to assume that the objects we try to estimate belongs to the space where out loss function is finite, for which we give the following notations.
+\begin{de}{\textsc{Spaces $\mathcal{L}^{2}, \mathcal{L}^{p}, \mathcal{L}_{[\mathfrak{u}]}^{p}$ of functions}\\}\label{DE_INTRO_FREQ_SPACELTHETA}
+We define the sets
+\begin{alignat*}{3}
+&\mathcal{L}^{2} &&:=&& \left\{\theta \in \Theta) : \Vert \theta \Vert_{l^{2}} < \infty \right\};\\
+&\mathcal{L}_{\mathfrak{u}}^{p} &&:=&& \left\{\theta \in \Theta : \Vert \theta \Vert_{l^{p}} < \infty \right\};\\
+&\mathcal{L}_{[\mathfrak{u}]}^{p} &&:=&& \left\{\theta \in \Theta : \Vert \theta \Vert_{l_{[\mathfrak{u}]}^{p}} < \infty \right\}.
+\end{alignat*}
+\end{de}
+
+\bigskip
+
+However, we stated in \nref{INTRO_INVERSE_STATMOD} that our interest in the space $\Theta$ is justified by its duality with the function space $\Xi$.
+It is hence of interest to consider norms on $\Xi$ and inquire their link with those on $\Theta$ before proceeding.
+
+As with $\Theta$ we start by defining an inner product:
+
+\begin{de}{\textsc{Scalar product $\langle \cdot \vert \cdot\rangle_{L^{2}}$ on $\Xi$}\\}\label{DE_INTRO_FREQ_SCALARXI}
+We define the scalar product
+\begin{alignat*}{4}
+& \langle \cdot \vert \cdot \rangle_{L^{2}} : && \quad \Xi \times \Xi && \rightarrow && \overline{\mathds{R}}.\\
+& && \quad (f, g) && \mapsto && \int\limits_{\mathds{T}} f(x) \overline{g(x)} dx
+\end{alignat*}
+\end{de}
+
+We obtain with this scalar product the natural $L^{2}$ norm :
+\begin{de}{\textsc{$L^{2}$-norm $\Vert \cdot \Vert_{L^{2}}$ on $\Xi$}\\}\label{DE_INTRO_FREQ_L2XI}
+We define the norm
+\begin{alignat*}{4}
+& \Vert \cdot \Vert_{L^{2}} : && \Xi && \rightarrow && \overline{\mathds{R}_{+}}.\\
+& && f && \mapsto && \langle f \vert f \rangle_{L^{2}}^{1/2} = \left(\int\limits_{\mathds{T}} \vert f(x)\vert^{2} dx\right)^{1/2}
+\end{alignat*}
+\end{de}
+
+For statistical inference it is generally necessary to assume that the objects of interest have finite norm.
+We hence define the space $\mathds{L}^{2}$:
+\begin{de}{\textsc{Space $\mathds{L}^{2}$ of functions}\\}\label{DE_INTRO_FREQ_SPACEL2XI}
+We define the set
+\[\mathds{L}^{2} := \left\{f \in \Xi : \Vert f \Vert_{L^{2}} < \infty \right\}.\]
+\end{de}
+
+It is common to consider the larger family of norms $\Vert \cdot \Vert_{L^{p}}$ for any number $p$ in $[1, \infty]$ which however do not define an inner product space :
+\begin{de}{\textsc{$L^{p}$-norm $\Vert \cdot \Vert_{L^{p}}$ on $\Xi$}\\}\label{DE_INTRO_FREQ_LPXI}
+We define the norm
+\begin{alignat*}{4}
+& \Vert \cdot \Vert_{L^{p}} : && \Xi && \rightarrow && \overline{\mathds{R}_{+}}.\\
+& && f && \mapsto && \left(\int\limits_{\mathds{T}} \vert f(x)\vert^{p} dx\right)^{1/p}
+\end{alignat*}
+\end{de}
+
+Obviously one can define the associated spaces:
+\begin{de}{\textsc{Space $\mathds{L}^{p}$ of functions}\\}\label{DE_INTRO_FREQ_SPACELPXI}
+We define the set
+\[\mathds{L}^{p} := \left\{f \in \Xi : \Vert f \Vert_{L^{p}} < \infty \right\}.\]
+\end{de}
+
+A last kind of norm which is of interest are the weighted norms.
+Using a weighted norm as loss function allows to give more interest to some specific features of the functions (high or low frequencies for example).
+To do so, we need to define the convolution operator on $\Xi$.
+
+\begin{de}{\textsc{Product $\star$ on $\Xi$}\\}\label{DE_INTRO_FREQ_CONVOLXI}
+We define the bi-linear operator
+\begin{alignat*}{5}
+& \star && : && \Xi^{2} && \rightarrow && \Xi \\
+& && && (f, g) && \mapsto && \left(t \mapsto \int\limits_{s \in \mathds{T}} f(s) \cdot g(t-s) ds\right).
+\end{alignat*}
+\end{de}
+
+With this definition at hand we obtain the following norm.
+
+\begin{de}{\textsc{$L^{p}_{\mathfrak{u}}$-norm $\Vert \cdot \Vert_{L^{p}_{\mathfrak{u}}}$ on $\Xi$}\\}\label{DE_INTRO_FREQ_LPUXI}
+Consider a distribution $\mathfrak{u}$ from $\mathds{T}$ to $\mathds{D}$.
+We define the norm
+\begin{alignat*}{4}
+& \Vert \cdot \Vert_{L^{r}_{\mathfrak{u}}} : && \Xi && \rightarrow && \overline{\mathds{R}_{+}}.\\
+& && f && \mapsto && \left(\int\limits_{\mathds{T}} \vert (f \star \mathfrak{u})(x)\vert^{p} dx\right)^{1/p}
+\end{alignat*}
+In particular, if $\mathfrak{u}$ is the Dirac distribution in $0$, we find the definition of $\Vert \cdot \Vert_{L^{p}}$.
+\end{de}
+
+We finally define the associated spaces:
+\begin{de}{\textsc{Space $\mathds{L}_{\mathfrak{u}}^{p}$ of functions}\\}\label{DE_INTRO_FREQ_SPACELPUXI}
+We define the set
+\[\mathds{L}_{\mathfrak{u}}^{p} := \left\{f \in \Xi) : \Vert f \Vert_{L_{\mathfrak{u}}^{p}} < \infty \right\}.\]
+\end{de}
+
+We have, for any $p$ in $[1 ,\infty]$ and $f$ in $\Xi$.
+\begin{alignat*}{3}
+&\Vert f \Vert^{r}_{\mathfrak{u}} &&=&& \left(\int\limits_{\mathds{T}} \vert (f\star\mathfrak{u})(x)\vert^{p} dx\right)^{1/p}\\
+& &&=&& \left(\int\limits_{\mathds{T}} \left\vert \int\limits_{j \in \mathds{F}}([f]\cdot [\mathfrak{u}])(j) \cdot e_{j}(x) dj\right\vert^{p} dx\right)^{1/p}\\
+& &&\leq&& \left(\int\limits_{\mathds{T}} \int\limits_{j \in \mathds{F}}\left((\vert[f]\cdot [\mathfrak{u}])(j)\vert \cdot \vert e_{j}(x)\vert\right)^{p} dj \, dx\right)^{1/p}\\
+& &&\leq&& \left(\int\limits_{j \in \mathds{F}}\vert ([f]\cdot[\mathfrak{u}])(j)\vert^{p}\int\limits_{[0, 1[} \vert e_{j}(x)\vert^{r} dx \, dj\right)^{1/p}\\
+& &&\leq&& \left(\int\limits_{j \in \mathds{F}}\vert ([f] \cdot [\mathfrak{u}])(j)\vert^{p} dj \cdot 1\right)^{1/p}\\
+& &&\leq&& \Vert[f]\cdot [\mathfrak{u}]\Vert_{l^{p}}\\
+& &&\leq&& \Vert[f]\Vert_{l^{p}_{[\mathfrak{u}]}}.
+\end{alignat*}
+
+For the specific case of $p=2$, the theorem of Plancherel holds and we have
+\begin{alignat*}{3}
+&\Vert f \Vert^{2}_{\mathfrak{u}} &&=&& \Vert f \star \mathfrak{u} \Vert^{2}\\
+& &&=&& \Vert [f] \cdot [\mathfrak{u}]\Vert_{l^{2}}\\
+& &&=&& \Vert [f] \Vert_{l_{[\mathfrak{u}]}^{2}}.
+\end{alignat*}
+
+\bigskip
+
+We can hence conclude that applying decision theory to $\theta$ while using the $l^{2}$-norm naturally gives results on $f$.
+We cannot say as much concerning other types of norms.
+
+We hence assume from now on that the parameter of interest has finite norm.
+
+\begin{as}\label{AS_INTRO_FREQ_DECISION_THETAL2}
+The parameter of interest $\fxdf$ is in $\mathcal{L}^{2}$.
+\end{as}
+
+\item[\mylabel{INTRO_FREQ_DECISION_RISKFUNCION}{ \bfseries{The risk function} $\left(\mathcal{R}_{n} : (\{\mathds{Y} \rightarrow \Theta\} \times \Theta) \rightarrow \R_{+}\right)_{n \in \N}$}]
+
+One can notice the the loss function defined previously depends on the observation and, as such, is a random object that cannot, in general be optimised over the choice of estimator.
+
+A way to overcome this limitation is considering a so called risk function such as the expected loss function.
+
+\begin{de}{\textsc{Expected loss risk function}\\}\label{DE_INTRO_FREQ_DECISION_RISKFUNCTION_EXPECTEDLOSS}
+We define the sequence of functions
+\begin{alignat*}{5}
+& \mathcal{R}_{n} && : && (\mathds{Y} \rightarrow \Theta) \times \Theta && \rightarrow && \R_{+}\\
+& && && (\widehat{\theta}, \fxdf) && \mapsto && \E_{\theta^{\circ}}^{n}\left[l(\widehat{\theta}, Y, \fxdf)\right].
+\end{alignat*}
+\end{de}
+
+In particular, the mean square error, will be of particular interest throughout this thesis.
+
+\begin{de}{\textsc{Mean square error}\\}\label{DE_INTRO_FREQ_DECISION_RISKFUNCTION_MEANSQUAREERROR}
+We denote the risk function associated with the $l_{2}$-loss in the following fashion:
+\begin{alignat*}{5}
+& \Phi_{n} && : && (\mathds{Y} \rightarrow \Theta) \times \Theta && \rightarrow && \R_{+}\\
+& && && (\widehat{\theta}, \fxdf) && \mapsto && \E_{\theta^{\circ}}^{n}\left[\left\Vert \widehat{\theta}(Y) - \fxdf)\right\Vert^{2}_{l_{2}}\right].
+\end{alignat*}
+\end{de}
+
+\begin{ex}{\textsc{Projection estimator} \\}\label{EX_INTRO_FREQ_DECISION_RISKFUNCTION_MSEPROJ}
+If one considers a projection estimator, as in \nref{INTRO_FREQ_ESTIMATION}, one can carry the following computations out for any $m$ subset of $\mathds{F}$:
+
+\begin{alignat*}{3}
+& \Phi_{n}(\overline{\theta}^{m}, \fxdf) && = && \mathds{E}_{\theta^{\circ}}^{n}\left[\Vert \overline{\theta}^{m} - \fxdf \Vert_{l^{2}}^{2} \right]\\
+& && = && \mathds{E}_{\theta^{\circ}}^{n}\left[\int\limits_{j \in \mathds{F}} \left\vert \overline{\theta}^{m}_{j} - \fxdf_{j} \right\vert^{2} \, dj \right]\\
+& &&=&&\int\limits_{m} \mathds{E}_{\theta^{\circ}}^{n}\left[ \left\vert \overline{\theta}^{m}_{j} - \fxdf_{j} \right\vert^{2} \right] dj + \int\limits_{\mathds{F} \setminus m} \left\vert \fxdf_{j} \right\vert^{2} \, dj\\
+& &&=&&\int\limits_{m} \left(\mathds{V}_{\theta^{\circ}}^{n}\left[ \overline{\theta}^{m}_{j} - \fxdf_{j} \right] + \left\vert \mathds{E}_{\theta^{\circ}}^{n}\left[\overline{\theta}^{m}_{j} - \fxdf_{j}\right]\right\vert^{2} \right) \, dj + \int\limits_{\mathds{F} \setminus m} \left\vert \fxdf_{j} \right\vert^{2} \, dj\\
+& &&=&&\int\limits_{m} \left(\mathds{V}_{\theta^{\circ}}^{n}\left[ \overline{\theta}^{m}_{j}\right] + \left\vert \mathds{E}_{\theta^{\circ}}^{n}\left[\overline{\theta}^{m}_{j}\right] - \fxdf_{j} \right\vert^{2} \right) \, dj + \int\limits_{\mathds{F} \setminus m} \left\vert \fxdf_{j} \right\vert^{2} \, dj.
+\end{alignat*}
+
+We hence define for any $m$ $V_{m}^{n} := \int\limits_{m} \left(\mathds{V}_{\theta^{\circ}}^{n}\left[ \overline{\theta}^{m}_{j}\right] + \left\vert \mathds{E}_{\theta^{\circ}}^{n}\left[\overline{\theta}^{m}_{j}\right] - \fxdf_{j} \right\vert^{2} \right) \, dj$ and note that
+\[\left[V_{m}^{n} \vee \mathfrak{b}_{m}^{2}\right] \leq \Phi_{n}(\overline{\theta}^{m}, \fxdf) \leq 2 \left[V_{m}^{n} \vee \mathfrak{b}_{m}^{2}\right].\]
+
+This fact is important as we are mostly interested in the convergence rate which is defined up to a constant and $\left[V_{m}^{n} \vee \mathfrak{b}_{m}^{2}\right]$ is easier to control by distinguishing the values of $m$ for which the bias dominates from those for which the variance is the leading factor.
+\end{ex}
+
+\begin{de}{\textsc{Mean square error for projection estimators}\\}\label{DE_INTRO_FREQ_DECISION_RISKFUNCTION_MSEPROJ}
+We denote the risk function associated with the $l_{2}$-loss for the projection estimator with threshold $m$ by:
+\begin{alignat*}{5}
+& \Phi^{m}_{n} && : && \Theta && \rightarrow && \R_{+}\\
+& && && \fxdf && \mapsto && \left[V_{m}^{n} \vee \mathfrak{b}_{m}^{2}\right].
+\end{alignat*}
+\end{de}
+
+The risk function hence allows us to quantify the performance of an estimator independently of the random observation.
+
+
+Alternatively, one can consider the probability to exceed a certain loss.
+
+\begin{de}{\textsc{Threshold overcome probability risk function}\\}\label{DE_INTRO_FREQ_DECISION_RISKFUNCTION_THRESHOLDOVERCOME}
+We define the sequence of functions
+\begin{alignat*}{5}
+& \mathfrak{R}_{n} && : && (\mathds{Y} \rightarrow \Theta) \times \Theta \times \R_{+} && \rightarrow && \R_{+}\\
+& && && (\widehat{\theta}, \fxdf, a && \mapsto && \P_{\theta^{\circ}}^{n}\left(l(\widehat{\theta}, Y, \fxdf) \geq a \right).
+\end{alignat*}
+\end{de}
+
+In general, one is interested in the asymptotic behaviour of $\mathcal{R}$ or $\mathfrak{R}$ (and then replacing $a$ by a sequence $(a_{n})_{n \in \N}$) when $n$ tends to infinity.
+In particular, for a given estimator $\widehat{\theta}$ and a fixed value $\fxdf$ of the parameter of interest, the sequence $\mathcal{R}_{n}(\widehat{\theta}, \fxdf)$ is called convergence rate of $\widehat{\theta}$ at $\fxdf$ and if $\mathfrak{R}_{n}(\widehat{\theta}, \fxdf, a_{n})$ tends to $0$ as $n$ tends to infinity, $a_{n}$ is called speed of convergence in probability of $\widehat{\theta}$ at $\fxdf$.
+If this sequence tends to zero, the estimator is called consistent.
+
+\medskip
+
+While it is technically feasible to minimise the risk function over $\widehat{\theta}$ for each $\fxdf$, the result will be discountenancing as the minimisers will invariably be functions almost surely equal to $\fxdf$ itself which brilliantly yields a loss function equal to $0$, independently of the observation and hence a risk function equal to $0$.
+Our goal being to estimate $\fxdf$, it is obvious that such an estimator is not at hand.
+
+We are interested in this thesis in two formulations of optimality which allow to overcome this limitation.
+
+\item[\mylabel{INTRO_FREQ_DECISION_ORACLEOPT}{ \bfseries{Oracle optimality}}]
+
+\textcolor{red}{Introduce $\mathfrak{o}_{n}$, $\mathcal{O}_{n}$, $\mathfrak{o}_{\P}$, $\mathcal{O}_{\P}$, $\asymp$,... here}
+
+Consider $\mathcal{E}$, a family of estimators.
+
+\begin{de}{\textsc{Oracle convergence rate} \\}\label{DE_INTRO_FREQ_DECISION_ORACLEOPT_CONVRATE}
+A sequence of functions $\left(\mathcal{R}_{\mathcal{E}, n} : \Theta \rightarrow \R_{+}\right)_{n \in \N}$ is called oracle risk for the family of estimators $\mathcal{E}$ if there exist a constant $C$ in $[1, \infty[$ such that, for any $\fxdf$ in $\Theta$, and all $n$, we have:
+\[\mathcal{R}_{\mathcal{E}, n}(\fxdf) \leq C \cdot \inf\limits_{\widehat{\theta} \in \mathcal{E}} \mathcal{R}_{n}(\widehat{\theta}, \fxdf).\]
+\end{de}
+
+\begin{de}{\textsc{Exact oracle convergence rate, oracle optimal estimator} \\}\label{DE_INTRO_FREQ_DECISION_ORACLEOPT_EXACTCONVRATE}
+A sequence of functions $\mathcal{R}^{\circ}_{\mathcal{E}, n} : \Theta \rightarrow \R_{+}$ is called exact oracle convergence rate for the family of estimators $\mathcal{E}$ if, in addition to being an oracle convergence rate, there exist an element $\widehat{\theta}$ of $\mathcal{E}$ such that, for any $\fxdf$ in $\Theta$ and $n$ in $\N$, we have:
+\[\mathcal{R}^{\circ}_{\mathcal{E}, n}(\fxdf) \geq C^{-1} \cdot \mathcal{R}_{n}(\widehat{\theta}, \fxdf).\]
+An estimator such as $\widehat{\theta}$ is called oracle optimal.
+\end{de}
+
+We carry on with the projection estimators example.
+
+\begin{de}{\textsc{Oracle optimal quadratic risk convergence rate for projection estimators} \\}\label{DE_INTRO_FREQ_DECISION_ORACLEOPT_OPTPROJ}
+Define $m^{\circ}_{n} \in \argmin\limits_{m \subset \mathds{F}}\left\{\Phi^{m}(\fxdf)\right\}$, then the sequence $\Phi_{n}^{\circ} := \Phi_{n}^{m_{n}^{\circ}}$ is an exact oracle convergence rate and the projection estimator $\overline{\theta}^{m_{n}^{\circ}}$ is an oracle optimal estimator.
+\end{de}
+
+We see that, given a family of estimators, oracle optimality defines the best element of this family. However, this requires to restrict ourselves to a family of estimator.
+
+\item[\mylabel{INTRO_FREQ_DECISION_MINIMAXOPT}{ \bfseries{Minimax optimality}}]
+
+An alternative to oracle optimality is minimax optimality.
+
+\begin{de}{\textsc{Maximal convergence rate} \\}\label{DE_INTRO_FREQ_DECISION_MINIMAXOPT_MAXRATE}
+Considering a subset $\widetilde{\Theta}$ of $\Theta$, and an estimator $\widetilde{\theta}$, we call "maximal convergence rate of $\widetilde{\theta}$ over $\widetilde{\Theta}$" the sequence indexed by n defined by
+\[\mathcal{R}_{\widetilde{\Theta}, n}(\widetilde{\theta}) := \sup\limits_{\fxdf \in \widetilde{\Theta}} \mathcal{R}_{n}(\widetilde{\theta}, \fxdf).\]
+\end{de}
+
+\begin{de}{\textsc{Minimax optimal convergence rate} \\}\label{DE_INTRO_FREQ_DECISION_MINIMAXOPT_OPTRATE}
+Considering a subset $\widetilde{\Theta}$ of $\Theta$, a sequence $\mathcal{R}_{\widetilde{\Theta}, n}^{\star}$ is called minimax convergence rate if there exist a constant $C$ greater than $1$ such that, for any $n$ in $\N$ 
+\[\mathcal{R}_{\widetilde{\Theta}, n}^{\star} \leq C \cdot \inf\limits_{\widetilde{\theta} \in \left\{\mathds{Y} \rightarrow \Theta\right\}} \mathcal{R}_{\widetilde{\Theta}, n}(\widetilde{\theta}).\]
+
+Moreover, $\mathcal{R}_{\widetilde{\Theta}, n}^{\star}$ is called minimax optimal convergence rate if there exists some estimator $\widehat{\theta}$ such that
+\[\mathcal{R}_{\widetilde{\Theta}, n}^{\star} \geq C^{-1} \cdot \mathcal{R}_{\widetilde{\Theta}, n}(\widehat{\theta}).\]
+
+An estimator such as $\widehat{\theta}$ is called minimax optimal.
+\end{de}
+In this definition, be aware that the infimum is taken over all possible estimator of $\fxdf$.
+
+An example of space which we use in this thesis as $\widetilde{\Theta}$ are Sobolev's ellipsoids.
+\begin{de}{\textsc{Sobolev's ellipsoids} \\}\label{DE_INTRO_FREQ_DECISION_MINIMAXOPT_SOBOL}
+Given a constant $r$ in $\R_{+}$, and a positive, decreasing sequence of numbers smaller than $1$, $\left(\mathfrak{a}_{j}\right)_{j \in \mathds{F}}$, we define the Sobolev's ellipsoid $\Theta(\mathfrak{a}, r)$ by
+\[\Theta(\mathfrak{a}, r) := \left\{\theta \in \Theta: \Vert \theta \Vert_{\mathfrak{a}} \leq r \right\}.\]
+\end{de}
+
+Those ellipsoid are interesting as they can directly be related to classes of regularity for the counterpart space $\Xi$.
+
+On those spaces, the projection estimators yield the following maximal convergence rate.
+
+\begin{de}{\textsc{Maximal convergence rate of projection estimators over Sobolev's ellipsoids} \\}\label{DE_INTRO_FREQ_DECISION_MINIMAXOPT_OPTPROJ}
+Start by highlighting the following fact:
+\[\mathfrak{b}_{m}^{2} = \int_{\mathds{F} \setminus m} \vert \theta_{j} \vert^{2} dj = \int_{\mathds{F} \setminus m} \frac{\mathfrak{a}_{j}}{\mathfrak{a}_{j}}\vert \theta_{j} \vert^{2} dj \leq \max\limits_{j \notin m}\{\mathfrak{a}_{j}\}\int_{\mathds{F} \setminus m} \frac{\vert \theta_{j} \vert^{2}}{\mathfrak{a}_{j}} dj \leq r \max\limits_{j \notin m}\{\mathfrak{a}_{j}\}.\]
+Hence we can write:
+\[\mathcal{R}_{\Theta(\mathfrak{a}, r)}(\overline{\theta}^{m}) \leq \sup\limits_{\fxdf \in \Theta(\mathfrak{a}, r)} \Phi_{n}^{m} \leq \sup\limits_{\fxdf \in \Theta(\mathfrak{a}, r)} \left[V_{m}^{n} \vee \mathfrak{b}_{m}^{2} \right] \leq  \sup\limits_{\fxdf \in \Theta(\mathfrak{a}, r)} \left[V_{m}^{n} \vee r \max\limits_{j \notin m}\{\mathfrak{a}_{j}\} \right] \leq \]
+$\left[ V_{m}^{n} \vee \mathfrak{a}_{m} \right]$
+\end{de}
+
+\textcolor{red}{COMPLETE HERE}
+\end{Liste}
+
+
+The minimax optimal and the oracle optimal rates depend in the true parameter $f$ and the operator $T$ and, hence in their respective counterpart $\fxdf$ and $\fedf$.
+Some typical behaviours of $\fxdf$ and $\fedf$ are often considered in order to compare upper bounds obtained in theorems with the optimal rates as the comparison is not always obvious.
+
+In particular, throughout this thesis, we shall distinguish the following two cases for $\fxdf$, respectively called parametric and non-parametric which commonly lead to very different behaviour of the optimal rates:
+\begin{Liste}[]
+\item[\mylabel{oo:xdf:p}{\dgrau\bfseries{(p)}}] there exist a finite subset $K$ of $\mathds{F}$ such that, for any subset $K'$ of K, $\bias[K'](\fxdf) > 0$ and $\bias[K](\fxdf) = 0$;
+\item[\mylabel{oo:xdf:np}{\dgrau\bfseries{(np)}}] for all finite subset $K$ of $\mathds{F}$, $\bias[K](\fxdf)>0$.
+\end{Liste}
+
+Note that the Fourier series expansion of the function of interest $\xdf$ is, in case \ref{oo:xdf:p}, \textit{finite}, i.e., $\xdf=\sum_{j\in K}\fxdf[j]\bas_j$
+for some finite subset $K$ of $\mathds{F}$ while in the opposite case
+\ref{oo:xdf:np}, it is \textit{infinite}, i.e., not finite.
+
+\begin{il}\label{IL_INTRO_FREQ_DECISION}
+The upper bounds we give will be discussed in such "numerical discussions" where we consider the following typical behaviours of $\fxdf$ and $\fedf$ and give an equivalent to the upper bound in terms of an explicit function of $n$.
+
+Regarding the operator eigen-values $\fedf$, we consider the following two cases, respectively called ordinary smooth and super-smooth:
+\begin{Liste}[]
+\item[\mylabel{il:edf:o}{\dg\bfseries{(o)}}] there exists a strictly positive real number $a$ such that $\iSv[\Di]\sim \Di^{2a}$, then $\Di \oiSv\sim\Di^{2a+1}$ and $\miSv\sim\Di^{2a}$;
+\item[\mylabel{il:edf:s}{\dg\bfseries{(s)}}] there exists a strictly positive real number $a$ such that $\iSv[\Di]\sim \exp(\Di^{2a})$, then $\Di \oiSv\sim \Di^{-(1-2a)_+}\exp(\Di^{2a})$ and $\miSv\sim \exp(\Di^{2a})$.
+  \end{Liste}
+
+As for the parameter of interest $\fxdf$, we express the typical behaviours in terms of its tails i.e., $\left(\bias[\Di](\fxdf)\right)_{\Di \in \mathds{F}} = \Vnormlp{\ProjC[\Di] \fxdf}$, we distinguish the cases \ref{oo:xdf:p} and \ref{oo:xdf:np}, and with \ref{oo:xdf:np} distinguish the super smooth and ordinary smooth for the parameter of interest.
+\begin{Liste}[]
+\item[\mylabel{il:xdf:o}{\dg\bfseries{(o)}}] there exists a strictly positive real number $p$ such that $\bias^2(\fxdf)\sim \Di^{-2p}$;
+\item[\mylabel{il:xdf:s}{\dg\bfseries{(s)}}] there exists a strictly positive real number $p$ such that $\bias^2(\fxdf)\sim
+  \exp(-\Di^{2p})$.
+\end{Liste}
+
+We consider the following situations: in the cases \begin{inparaenum}[i]
+\item[\mylabel{il:po}{\dg\bfseries{[p-o]}}] and \item[\mylabel{il:ps}{\dg\bfseries{[p-s]}}] the parameter of interest has a finite representation \ref{oo:xdf:p} and the operator is either ordinary smooth \ref{il:edf:o} or super smooth \ref{il:edf:s}.
+In the cases \item[\mylabel{il:oo}{\dg\bfseries{[o-o]}}] and \item[\mylabel{il:os}{\dg\bfseries{[o-s]}}] the parameter of interest is ordinary smooth \ref{il:xdf:o} and the operator is either ordinary smooth \ref{il:edf:o} or super smooth \ref{il:edf:s}.
+Case \item[\mylabel{il:so}{\dg\bfseries{[s-o]}}] is the opposite of case \ref{il:os}.
+\end{inparaenum}
+\ilEnd
+\end{il}
+
+While the names given here to the typical cases may seem arbitrary, we shall justify them through the examples treated in this thesis where the decaying rate of $\fxdf$ and $\fedf$ respectively can be interpreted in terms of function smoothness.
+
+The particular interest for these different cases will also appear natural as the behaviour of the optimal rate will be considerably different in our examples; moreover, this phenomenon is observed in many statistical models, also outside of our field of interest.
+
+\subsection{Adaptivity}\label{INTRO_FREQ_ADAPTIVITY}
+\begin{itemize}
+\item penalised contrast
+\item Lepski
+\item ...
+\end{itemize}

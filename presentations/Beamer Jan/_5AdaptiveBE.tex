@@ -1,0 +1,92 @@
+% ======================================================================================================================
+%                                                                 
+% Title: Adaptive Bayes estimator
+% Author: Jan JOHANNES, Ensai, Rue Blaise Pascal - BP 37203, 35172 Bruz Cedex, France
+% Email: jan.johannes@ensai.fr
+% Date: %%ts latex start%%[2016-05-20 Fri 01:30]%%ts latex end%%
+% Main-TeX-File: 2015-01-Paris-Vortrag in der form "Name"
+%
+% ======================================================================================================================
+% --------------------------------------------------------------------
+% <<AdaptiveBE-F1>>
+% --------------------------------------------------------------------
+\bframeVL{2,4}{4}
+  \frametitle{Adaptive data-driven Bayes estimator}
+% \begin{rudiListeS}[\setListeL{2ex}{0ex}{5ex}{5ex}]
+%   \item
+    Common Bayes estimator $\hSo=\suite{\hSo}=\Ex[\RvDiRvSo\vert\ObSo]$ given by
+% \begin{drListeT}[\setListeL{1ex}{1ex}{2ex}{0ex}] 
+%  \item<2->
+\begin{equation*}
+\hSo_j=\PoEr{j}P_{\RvDi|\ObSo}(j\leq \RvDi\leq \DiMa)\Ind{1\leq j\leq\DiMa}
+\end{equation*}
+% $.
+% \end{drListeT}
+%\end{rudiListeS}
+\hfill\\[5ex]
+\mysboxinvisible{-1}{{\dr\sc Theorem.} Under A1, A4, A5 and $\log (\DiMa/\treRa)/\treDi=o(1)$ holds\\[1.5ex]
+\hspace*{1ex}\mbox{$\Ex_{\TrSo} \normV{\hSo-\TrSo}^2\lesssim \treRa(\TrSo) = \min_{\Di\geq 1}\eRa^{\Di}(\TrSo)$.}}
+\hfill\\[3ex]
+\mysboxinvisible{-2}{{\dr\sc Theorem.} Under A1, A3, A4 and $\log(\DiMa/\oeRa)/\oeDi=o(1)$ holds\\[1.5ex]
+\hspace*{1ex}\mbox{$\sup_{\TrSo\in\cwSo}\Ex_{\TrSo} \normV{\hSo-\TrSo}^2\lesssim \oeRa=\min_{\Di\geq 1}\sup_{\TrSo\in\cwSo}\eRa^{\Di}(\TrSo)$}}
+\end{frame}
+% --------------------------------------------------------------------
+% <<AdaptiveBE-F2>>
+% --------------------------------------------------------------------
+\bframeVL{1-3}{3}[label=Diff]
+  \frametitle{Diffuse hierarchical prior}
+\begin{overlayarea}{\textwidth}{\textheight}
+The posterior weights under a diffuse prior for $\RvSo$ satisfy
+\begin{equation*}
+p_{\RvDi|\ObSo}(\Di)=\only<1>{\frac{\exp\bigg(\frac{1}{2}\big\{\sum_{j=1}^{\Di}(\ObSoNoL\Evs_{j})^{-1}(\ObSo_j/\Ev_j)^2-3C_{\Ev}\Di\big\}\bigg)}{\sum_{k=1}^{\DiMa}\exp\bigg(\frac{1}{2}\big\{\sum_{j=1}^{k}(\ObSoNoL\Evs_{j})^{-1}(\ObSo_j/\Ev_j)^2-3C_{\Ev}k\big\}\bigg)}}
+\only<2->{\frac{\exp\bigg(-\frac{1}{2\ObSoNoL}\big\{-\normV{Y^{\Di}}^2+3C_{\Ev}\ObSoNoL\Di\big\}\bigg)}{\sum_{k=1}^{\DiMa}\exp\bigg(-\frac{1}{2\ObSoNoL}\big\{-\normV{Y^{k}}^2+3C_{\Ev}\ObSoNoL   k\big\}\bigg)}}
+\end{equation*}
+\invisible<1>{where  % $\normV{\theta}^2_{\ObSoNoL\Evs}:=\sum_{j\geq1}(\ObSoNoL\Evs_{j})^{-1}(\theta_j)^2$
+  % and
+  $Y^k:=(Y_j\Ind{1\leq j\leq k})_{j\in\Nz}$ for $k\in\Nz$.}\\[4ex]
+\invisible<-2>{The adaptive Bayes estimator
+  $\hSo=\suite{\hSo}=\Ex[\RvDiRvSo\vert\ObSo]$ is given by
+  \begin{equation*}
+    \hSo_j = \big(1-\sum_{\Di=1}^{j-1}p_{\RvDi|\ObSo}(\Di)\big)\times\frac{Y_j}{\Ev_j}\times\Ind{1\leq j\leq \DiMa}.
+  \end{equation*}}
+\end{overlayarea}
+\end{frame}
+% \bframeVL{1-3}{3}
+%   \frametitle{Diffuse hierarchical prior}
+% The posterior weights under a diffuse prior for $\RvSo$ satisfy
+% \begin{equation*}
+% p_{\RvDi|\ObSo}(\Di)=\only<1>{\frac{\exp\bigg(\frac{1}{2}\big\{\sum_{j=1}^{\Di}(\ObSoNoL\Evs_{j})^{-1}(\ObSo_j/\Ev_j)^2-3C_{\Ev}\Di\big\}\bigg)}{\sum_{k=1}^{\DiMa}\exp\bigg(\frac{1}{2}\big\{\sum_{j=1}^{k}(\ObSoNoL\Evs_{j})^{-1}(\ObSo_j/\Ev_j)^2-3C_{\Ev}k\big\}\bigg)}}
+% \only<2->{\frac{\exp\bigg(-\frac{1}{2}\big\{-\normV{(Y/\Ev)^{\Di}}^2_{\ObSoNoL\Evs}+3C_{\Ev}\Di\big\}\bigg)}{\sum_{k=1}^{\DiMa}\exp\bigg(-\frac{1}{2}\big\{-\normV{(Y/\Ev)^{k}}^2_{\ObSoNoL\Evs}+3C_{\Ev}k\big\}\bigg)}}
+% \end{equation*}
+% \invisible<1>{where  $\normV{\theta}^2_{\ObSoNoL\Evs}:=\sum_{j\geq1}(\ObSoNoL\Evs_{j})^{-1}(\theta_j)^2$
+%   and $(Y/\Ev)^k:=(Y_j/\Ev_j\Ind{1\leq j\leq k})_{j\in\Nz}$.}\\[4ex]
+% \invisible<-2>{The adaptive Bayes estimator
+%   $\hSo=\suite{\hSo}=\Ex[\RvDiRvSo\vert\ObSo]$ is given by
+%   \begin{equation*}
+%     \hSo_j = \big(1-\sum_{k=1}^{j-1}p_{\RvDi|\ObSo}(\Di)\big)\times\frac{Y_j}{\Ev_j}\times\Ind{1\leq j\leq \DiMa}.
+%   \end{equation*}}
+% \end{frame}
+% % --------------------------------------------------------------------
+% % <<AdaptiveBE-F2>>
+% % --------------------------------------------------------------------
+% \bframeVL{1-3}{3}
+%   \frametitle{Data-driven shrinked projection estimator}
+% Consider weights
+% \begin{equation*}
+% w_{\Di}^{\ObSo}:=\frac{\exp\bigg(-\frac{1}{2\ObSoNoL}\big\{-\normV{(Y/\Ev)^{\Di}}^2+3C_{\Ev}\ObSoNoL\Di\oEvs\big\}\bigg)}{\sum_{k=1}^{\DiMa}\exp\bigg(-\frac{1}{2\ObSoNoL}\big\{-\normV{(Y/\Ev)^{k}}^2+3C_{\Ev}\ObSoNoL k\oEvs[k]\big\}\bigg)}
+% \end{equation*}
+% \hfill\\[1ex]
+% \invisible<-1>{and the data-driven shrinked projection estimator
+%   $\hSo=\suite{\hSo}$ given by
+%   \begin{equation*}
+%     \hSo_j = \big(1-\sum_{k=1}^{j-1}w_{\Di}^{\ObSo}\big)\times\frac{Y_j}{\Ev_j}\times\Ind{1\leq j\leq \DiMa}.
+%   \end{equation*}}
+% \\[1ex]
+% \invisible<-2>{{\dg Open question:}  oracle/minimax optimality up to a constant?}
+% \end{frame}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "_2016-02-CIRM-Marseille"
+%%% End:

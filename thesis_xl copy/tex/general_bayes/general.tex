@@ -1,0 +1,243 @@
+\section{Proof strategies for contraction rates}\label{BAYES_STRATEGIES}
+
+In this section, we depict two proof strategies for contraction rates.
+They will be used in the next sections to compute contraction rates for sieve and hierarchical sieve priors respectively.
+
+The first proof relies on moment bounding of the random variable $\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert$.
+The second proof relies on the use of exponential concentration inequalities.
+
+\subsection{A moment control based method for contraction rate computation}\label{BAYES_STRATEGIES_MOMENT}
+
+In this section we outline a method to prove contraction rates which requires to bound properly some moments of the posterior distribution.
+We later use this method in the case of the inverse Gaussian sequence space with a sieve prior.
+Provided that bounds are available for the required moments, this method barely needs any other assumption on the model.
+Moreover, it appears that, in the example we display here, it leads to the same rate as the frequentist optimal convergence rate without a logarithmic loss as it is often the case with popular methods.
+
+A limitation is that moments of posterior distributions are not always explicitly available, in particular for non conjugate prior.
+A consequence is that we were not able to use this method for the deconvolution model nor for computation of contraction rate of the hierarchical prior.
+
+However, we believe that the method could be generalised to wider cases, for example using convergence of distribution in Wasserstein distance implying convergence of moments.
+
+A similar method to obtain lower bounds is described in annex.
+Unfortunately, it could not be used in any practical case here.
+
+\bigskip
+
+For all this section, $\Phi_{n}$ is the sequence which we want to prove to be a contraction rate; it is in general a function of $\theta^{\circ}$ but we do not make this dependence appear in this section as it has no influence on the proof.
+
+\begin{lm}\label{LM_BAYES_STRATEGIES_UPPEREXPEC}{\textsc{Upper bound for posterior expectation}\\}
+Assume $\max\left\{ \E^{n}_{\theta^{\circ}}\left[\E^{n}_{\boldsymbol{\theta} \vert Y^{n}}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert\right]\right], \sqrt{\V^{n}_{\theta^{\circ}}\left[ \E^{n}_{\boldsymbol{\theta} \vert Y^{n}}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert\right]\right]} \right\} \in \mathcal{O}(\Phi_{n})$.
+Then, for any increasing unbounded sequence $c_{n}$, we have:
+\[\lim\limits_{n \rightarrow \infty} \mathds{P}_{\theta^{\circ}}^{n}\left(\E_{\boldsymbol{\theta} \vert Y^{n}}^{n}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert \right] \geq c_{n}\Phi_{n}\right) = 0.\]
+\end{lm}
+
+\begin{pro}\label{PRO_BAYES_STRATEGIES_UPPEREXPEC}{\textsc{Proof of \nref{LM_BAYES_STRATEGIES_UPPEREXPEC}}\\}
+Define the sequence of random variables $\mathcal{S}_{n} := \frac{\E_{\boldsymbol{\theta} \vert Y^{n}}^{n}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert \right] - \E^{n}_{\theta^{\circ}}\left[\E_{\boldsymbol{\theta} \vert Y^{n}}^{n}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert \right]\right]}{\sqrt{\V^{n}_{\theta^{\circ}}\left[\E_{\boldsymbol{\theta} \vert Y^{n}}^{n}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert \right]\right]}}$.
+This is a sequence of random variables with common expectation $0$ and variance $1$ and, as such, their distributions form a sequence of tight measures.
+Hence, for any increasing unbounded sequence $c_{n}$ and $K_{n} := \E^{n}_{\theta^{\circ}}\left[\E_{\boldsymbol{\theta} \vert Y^{n}}^{n}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert \right]\right] + c_{n} \sqrt{\V^{n}_{\theta^{\circ}}\left[\E_{\boldsymbol{\theta} \vert Y^{n}}^{n}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert \right]\right]}$ we can write
+\begin{alignat*}{3}
+& \mathds{P}_{\theta^{\circ}}^{n}\left(\E_{\boldsymbol{\theta} \vert Y^{n}}^{n}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert \right] \geq K_{n}\right) && = && \mathds{P}_{\theta^{\circ}}^{n}\left(S_{n} \geq \frac{K_{n} - \E^{n}_{\theta^{\circ}}\left[\E_{\boldsymbol{\theta} \vert Y^{n}}^{n}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert \right]\right]}{\sqrt{\V^{n}_{\theta^{\circ}}\left[\E_{\boldsymbol{\theta} \vert Y^{n}}^{n}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert \right]\right]}}\right)\\
+& &&=&& \mathds{P}_{\theta^{\circ}}^{n}\left(S_{n} \geq c_{n}\right)
+\end{alignat*}
+which tends to $0$ as $S_{n}$ is tight.
+\qedsymbol
+\end{pro}
+
+\begin{lm}\label{LM_BAYES_STRATEGIES_UPPERVAR}{\textsc{Upper bound for posterior variance}\\}
+Assume $\max\left\{ \E^{n}_{\theta^{\circ}}\left[\sqrt{\V^{n}_{\boldsymbol{\theta} \vert Y^{n}}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert\right]}\right], \sqrt{\V^{n}_{\theta^{\circ}}\left[ \sqrt{\V^{n}_{\boldsymbol{\theta} \vert Y^{n}}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert\right]}\right]} \right\} \in \mathcal{O}(\Phi_{n})$.
+Then, for any increasing unbounded sequence $c_{n}$, we have:
+\[\lim\limits_{n \rightarrow \infty} \mathds{P}_{\theta^{\circ}}^{n}\left(\sqrt{\V_{\boldsymbol{\theta} \vert Y^{n}}^{n}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert \right]} \geq c_{n}\Phi_{n}\right) = 0.\]
+\end{lm}
+
+\begin{pro}\label{PRO_BAYES_STRATEGIES_UPPERVAR}{\textsc{Proof of \nref{LM_BAYES_STRATEGIES_UPPERVAR}}\\}
+Define the sequence of random variables $\mathcal{S}_{n} := \frac{\sqrt{\V_{\boldsymbol{\theta} \vert Y^{n}}^{n}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert \right]} - \E^{n}_{\theta^{\circ}}\left[\sqrt{\V_{\boldsymbol{\theta} \vert Y^{n}}^{n}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert \right]}\right]}{\sqrt{\V^{n}_{\theta^{\circ}}\left[\sqrt{\V_{\boldsymbol{\theta} \vert Y^{n}}^{n}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert \right]}\right]}}$.
+This is a sequence of random variables with common expectation $0$ and variance $1$ and, as such, their distributions for a sequence of tight measures.
+Hence, for any increasing unbounded sequence $c_{n}$ and $K_{n} := \E^{n}_{\theta^{\circ}}\left[\sqrt{\V_{\boldsymbol{\theta} \vert Y^{n}}^{n}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert \right]}\right] + c_{n} \sqrt{\V^{n}_{\theta^{\circ}}\left[\sqrt{\V_{\boldsymbol{\theta} \vert Y^{n}}^{n}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert \right]}\right]}$ we can write
+\begin{alignat*}{3}
+& \mathds{P}_{\theta^{\circ}}^{n}\left(\sqrt{\V_{\boldsymbol{\theta} \vert Y^{n}}^{n}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert \right]} \geq K_{n}\right) && = && \mathds{P}_{\theta^{\circ}}^{n}\left(S_{n} \geq \frac{K_{n} - \E^{n}_{\theta^{\circ}}\left[\sqrt{\V_{\boldsymbol{\theta} \vert Y^{n}}^{n}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert \right]}\right]}{\sqrt{\V^{n}_{\theta^{\circ}}\left[\sqrt{\V_{\boldsymbol{\theta} \vert Y^{n}}^{n}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert \right]}\right]}}\right)\\
+& &&=&& \mathds{P}_{\theta^{\circ}}^{n}\left(S_{n} \geq c_{n}\right)
+\end{alignat*}
+which tends to $0$ as $S_{n}$ is tight.
+\qedsymbol
+\end{pro}
+
+\begin{thm}\label{THM_BAYES_STRATEGIES_MOMENT}{\textsc{Upper bound}\\}
+Under the hypotheses of \nref{LM_BAYES_STRATEGIES_UPPEREXPEC} and \nref{LM_BAYES_STRATEGIES_UPPERVAR} we have for any increasing unbounded sequence $c_{n}$
+\[\lim\limits_{n \rightarrow \infty} \E_{\theta^{\circ}}^{n}\left[\mathds{P}^{n}_{\boldsymbol{\theta} \vert Y^{n}}\left(\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert > c_{n}\Phi_{n} \right)\right] = 0.\]
+\end{thm}
+
+\begin{pro}\label{PRO_BAYES_STRATEGIES_MOMENT}{\textsc{Proof of \nref{THM_BAYES_STRATEGIES_MOMENT}}\\}
+Define the tight sequence of random variables $S_{n} := \frac{\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert - \E^{n}_{\boldsymbol{\theta} \vert Y^{n}}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert\right]}{\sqrt{\V^{n}_{\boldsymbol{\theta} \vert Y^{n}}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert\right]}}$.
+We consider the sequence of events $\Omega_{n} := \left\{\left\{\E^{n}_{\boldsymbol{\theta} \vert Y^{n}}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert\right] \geq c_{n} \Phi_{n}\right\} \cap \left\{\sqrt{\V^{n}_{\boldsymbol{\theta} \vert Y^{n}}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert\right]} \geq c_{n} \Phi_{n}\right\}\right\}$.
+We have $\mathds{P}^{n}_{\theta^{\circ}}(\Omega_{n}) \leq \max\left(\mathds{P}^{n}_{\theta^{\circ}}\left(\left\{\E_{\boldsymbol{\theta} \vert Y^{n}}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert\right] \geq c_{n} \Phi_{n}\right\}\right), \mathds{P}^{n}_{\theta^{\circ}}\left(\left\{\sqrt{\V^{n}_{\boldsymbol{\theta} \vert Y^{n}}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert\right]} \geq c_{n} \Phi_{n}\right\}\right)\right)$ which hence tends to $0$.
+Hence, for $K_{n} := c_{n} \Phi_{n} (1 + c_{n})$, we can write
+\begin{alignat*}{3}
+& \E_{\theta^{\circ}}^{n}\left[\mathds{P}^{n}_{\boldsymbol{\theta} \vert Y^{n}}\left(\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert > K_{n} \right)\right] && = && \E_{\theta^{\circ}}^{n}\left[\mathds{P}^{n}_{\boldsymbol{\theta} \vert Y^{n}}\left(S_{n} > \frac{K_{n} - \E^{n}_{\boldsymbol{\theta} \vert Y^{n}}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert\right]}{\sqrt{\V^{n}_{\boldsymbol{\theta} \vert Y^{n}}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert\right]}} \right)\right]\\
+& && = && \E_{\theta^{\circ}}^{n}\left[\mathds{1}_{\Omega_{n}}\mathds{P}^{n}_{\boldsymbol{\theta} \vert Y^{n}}\left(S_{n} > \frac{K_{n} - \E^{n}_{\boldsymbol{\theta} \vert Y^{n}}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert\right]}{\sqrt{\V^{n}_{\boldsymbol{\theta} \vert Y^{n}}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert\right]}} \right)\right]\\
+& && && + \E_{\theta^{\circ}}^{n}\left[\mathds{1}_{\Omega_{n}^{c}}\mathds{P}^{n}_{\boldsymbol{\theta} \vert Y^{n}}\left(S_{n} > \frac{K_{n} - \E^{n}_{\boldsymbol{\theta} \vert Y^{n}}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert\right]}{\sqrt{\V^{n}_{\boldsymbol{\theta} \vert Y^{n}}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert\right]}} \right)\right]\\
+& && \leq && \mathds{P}_{\theta^{\circ}}^{n}\left(\Omega_{n}\right) + \mathds{P}^{n}_{\theta^{\circ}}\left(\Omega_{n}^{c}\right) \cdot \E_{\theta^{\circ}}^{n}\left[\mathds{P}^{n}_{\boldsymbol{\theta} \vert Y^{n}}\left(S_{n} > \frac{K_{n} - c_{n} \Phi_{n}}{c_{n} \Phi_{n}} \right)\right]\\
+& && \leq && \mathds{P}_{\theta^{\circ}}^{n}\left(\Omega_{n}\right) + \E_{\theta^{\circ}}^{n}\left[\mathds{P}^{n}_{\boldsymbol{\theta} \vert Y^{n}}\left(S_{n} > c_{n} \right)\right].
+\end{alignat*}
+We can conclude as $S_{n}$ is a tight sequence, $c_{n}$ tends to infinity and $\mathds{P}_{\theta^{\circ}}^{n}\left(\Omega_{n}\right)$ tends to $0$.
+\qedsymbol
+\end{pro}
+
+\subsection{An exponential concentration inequality based proof for contraction rates of hierarchical sieve priors}\label{BAYES_STRATEGIES_EXPO}
+
+We give here the structure of the proof we use to prove the optimality of the (finally) iterated hierarchical sieve prior.
+This method takes advantage of the structure of the hierarchical prior and the additive form of the $l^{2}$ norm.
+It is similar to the one used in \ncite{JJASRS}.
+
+\begin{as}{\textsc{Non asymptotic loading of small sets} \\}\label{AS_BAYES_STRATEGIES_EXPO_SMALLSET}
+There exist a sequence of sets $G^{-}_{n} \subset G^{\circ}_{n}$ and a sequence of real numbers $K_{A, n}$ such that the sequence of events $\mathcal{A}_{m, n} := \{\Upsilon^{\eta}(y, G^{\circ}_{n} \setminus m) < K_{A, n}\}$ verifies
+\begin{alignat*}{3}
+& \sum\limits_{m \subset G^{-}_{n}} \exp\left[\eta\left(K_{A, n} - (\pen(m) - \pen(G^{\circ}_{n}))\right)\right] && \in && \mathfrak{o}_{n}(1)\\
+& \sum\limits_{m \subset G^{-}_{n}}\mathds{P}_{\theta^{\circ}}^{n}\left[ \mathcal{A}_{m, n}^{c}\right] && \in && \mathfrak{o}_{n}(1)\\
+\end{alignat*}
+\end{as}
+
+\begin{as}{\textsc{Non asymptotic loading of large sets} \\}\label{AS_BAYES_STRATEGIES_EXPO_LARGESET}
+There exist a sequence of sets $G^{+}_{n} \supset G^{\circ}_{n}$ and a sequence of real numbers $K_{B, n}$ such that the sequence of events $\mathcal{B}_{m, n} := \{\Upsilon^{\eta}(y, m \setminus G^{\circ}_{n}) < K_{B, n}\}$ verifies
+\begin{alignat*}{3}
+& \sum\limits_{m \subset G^{-}_{n}} \exp\left[\eta\left(K_{B, n} - (\pen(m) - \pen(G^{\circ}_{n}))\right)\right] && \in && \mathfrak{o}_{n}(1)\\
+& \sum\limits_{m \subset G^{-}_{n}}\mathds{P}_{\theta^{\circ}}^{n}\left[ \mathcal{B}_{m}^{c}\right] && \in && \mathfrak{o}_{n}(1)\\
+\end{alignat*}
+\end{as}
+
+\begin{as}{\textsc{Optimal contraction of proper sieves} \\}\label{AS_BAYES_STRATEGIES_EXPO_OPT}
+With the notations of \nref{AS_BAYES_STRATEGIES_EXPO_SMALLSET} and \nref{AS_BAYES_STRATEGIES_EXPO_LARGESET} assume
+\[\sum\limits_{G^{-}_{n} \subset m \subset G^{+}_{n}} \E_{\theta^{\circ}}^{n}\left[\P_{\boldsymbol{\theta}^{m} \vert Y^{n}}^{n, (\eta)} \left(\left\Vert \boldsymbol{\theta}^{m} - \theta^{\circ}_{j} \right\Vert_{l^{2}}^{2} > \Phi_{n}\right)\right] \in \mathfrak{o}_{n}(1)\]
+\end{as}
+
+Note that those assumptions are generally obtained using concentration inequalities such as the one displayed in \nref{USEFULRESULTS}.
+
+\begin{thm}{\textsc{Contraction rate for iterated posterior of hierarchical Gaussian sieve priors} \\}\label{THM_BAYES_STRATEGIES_EXPO}
+Under \nref{AS_BAYES_STRATEGIES_EXPO_SMALLSET}, \nref{AS_BAYES_STRATEGIES_EXPO_LARGESET}, and \nref{AS_BAYES_STRATEGIES_EXPO_SMALLSET}, for any $\eta$ in $\llbracket 1, \infty \llbracket$ there exists a constant $K$ such that
+\[\lim\limits_{n \rightarrow \infty} \E_{\theta^{\circ}}^{n} \left[\P_{\boldsymbol{\theta}^{M} \vert Y^{n}}^{n, (\eta)}\left(\left\Vert \boldsymbol{\theta}^{M} - \theta^{\circ} \right\Vert_{l^{2}}^{2} \geq K \Phi_{n}\right)\right] = 0.\]
+\end{thm}
+
+\begin{pro}{\textsc{Proof of \nref{THM_BAYES_STRATEGIES_EXPO}} \\}\label{PRO_BAYES_STRATEGIES_EXPO}
+First, notice that we have the following decomposition:
+\begin{alignat*}{3}
+& \E_{\theta^{\circ}}^{n}\left[\P^{n, (\eta)}_{\boldsymbol{\theta}^{M} \vert Y^{n}}\left(\left\Vert  \boldsymbol{\theta}^{M} - \theta^{\circ}\right\Vert_{l^{2}}^{2} > \Phi_{n} \right)\right] && = && \E_{\theta^{\circ}}^{n}\left[\sum\limits_{m \subset G_{n}}\P^{n, (\eta)}_{\boldsymbol{\theta}^{M} \vert Y^{n}}\left(\left\{\left\Vert  \boldsymbol{\theta}^{M} - \theta^{\circ}\right\Vert_{l^{2}}^{2} > \Phi_{n}\right\} \cap \left\{ M = m \right\} \right)\right]\\
+& && = && \sum\limits_{m \subset G_{n}}\E_{\theta^{\circ}}^{n}\left[\P^{n, (\eta)}_{\boldsymbol{\theta}^{M} \vert Y^{n}, M = m}\left(\left\{\left\Vert  \boldsymbol{\theta}^{M} - \theta^{\circ}\right\Vert_{l^{2}}^{2} > \Phi_{n}\right\}\right) \cdot \mathds{P}_{M \vert Y^{n}}^{n, (\eta)}\left(M = m\right)\right]\\
+& && = && \sum\limits_{m \subset G_{n}}\E_{\theta^{\circ}}^{n}\left[\P^{n, (\eta)}_{\boldsymbol{\theta}^{m} \vert Y^{n}}\left(\left\{\left\Vert  \boldsymbol{\theta}^{m} - \theta^{\circ}\right\Vert_{l^{2}}^{2} > \Phi_{n}\right\}\right) \cdot \mathds{P}_{M \vert Y^{n}}^{n, (\eta)}\left(M = m\right)\right]\\.
+\end{alignat*}
+
+Then, for any three subsets $G^{\circ}_{n}$, $G^{+}_{n}$ and $G^{-}_{n}$ with $G^{-}_{n} \subset G^{\circ}_{n} \subset G^{+}_{n} \subset G_{n}$, we have
+
+\begin{alignat*}{4}
+& \E_{\theta^{\circ}}^{n}\left[\P^{n, (\eta)}_{\boldsymbol{\theta}^{M} \vert Y^{n}}\left(\left\Vert  \boldsymbol{\theta} - \theta^{\circ}\right\Vert_{l^{2}}^{2} > \Phi_{n} \right)\right] && \leq && \sum\limits_{m \subset G^{-}_{n}}\E_{\theta^{\circ}}^{n} &&\left[\mathds{P}_{M \vert Y^{n}}^{n, (\eta)}\left(M = m\right)\right] + \sum\limits_{m \supset G^{+}_{n}}\E_{\theta^{\circ}}^{n}\left[\mathds{P}_{M \vert Y^{n}}^{n, (\eta)}\left(M = m\right)\right]\\
+& && && && +  \sum\limits_{G^{-}_{n} \subset m \subset G^{+}_{n}}\E_{\theta^{\circ}}^{n}\left[\P^{n, (\eta)}_{\boldsymbol{\theta}^{m} \vert Y^{n}}\left(\left\{\left\Vert  \boldsymbol{\theta}^{m} - \theta^{\circ}\right\Vert_{l^{2}}^{2} > \Phi_{n}\right\}\right)\right]\\
+& && \leq && &&\underbrace{\E_{\theta^{\circ}}^{n}\left[\mathds{P}_{M \vert Y^{n}}^{n, (\eta)}\left(M \subset G^{-}_{n}\right)\right]}_{=: A} + \underbrace{\E_{\theta^{\circ}}^{n}\left[\mathds{P}_{M \vert Y^{n}}^{n, (\eta)}\left(M \supset G^{+}_{n}\right)\right]}_{=: B}\\
+& && && && +  \sum\limits_{G^{-}_{n} \subset m \subset G^{+}_{n}}\underbrace{\E_{\theta^{\circ}}^{n}\left[\P^{n, (\eta)}_{\boldsymbol{\theta}^{m} \vert Y^{n}}\left(\left\{\left\Vert  \boldsymbol{\theta}^{m} - \theta^{\circ}\right\Vert_{l^{2}}^{2} > \Phi_{n}\right\}\right)\right]}_{=:C_{m}}
+\end{alignat*}
+
+The goal is then to control the three sums using concentration inequalities.
+
+We begin with $A$, where the conclusion is given by \nref{AS_BAYES_STRATEGIES_EXPO_LARGESET}:
+\begin{alignat*}{4}
+& A && = && \sum\limits_{m \subset G^{-}_{n}} && \mathds{E}_{\theta^{\circ}}^{n}\left[\frac{\exp\left[\eta\left(-\pen(m) + \Upsilon^{\eta}(y, m)\right)\right]}{\sum\limits_{j \subset G}\exp\left[\eta \left(- \pen(j) + \Upsilon^{\eta}(y, j)\right)\right]} \mathds{1}_{\mathcal{A}_{m}}\right] + \\
+& && && && \mathds{E}_{\theta^{\circ}}^{n}\left[\frac{\exp\left[\eta\left(-\pen(m) + \Upsilon^{\eta}(y, m)\right)\right]}{\sum\limits_{j \subset G}\exp\left[\eta \left(- \pen(j) + \Upsilon^{\eta}(y, j)\right)\right]} \mathds{1}_{\mathcal{A}_{m}^{c}}\right]\\
+& && \leq && \sum\limits_{m \subset G^{-}_{n}} && \mathds{E}_{\theta^{\circ}}^{n}\left[\exp\left[\eta\left(\left(\Upsilon^{\eta}(y, G^{\circ}_{n}) - \Upsilon^{\eta}(y, m)\right) - (\pen(m) - \pen(G^{\circ}_{n}))\right)\right] \mathds{1}_{\mathcal{A}_{m}}\right] + \\
+& && && && \mathds{P}_{\theta^{\circ}}^{n}\left[ \mathcal{A}_{m}^{c}\right]\\
+& && \leq && \sum\limits_{m \subset G^{-}_{n}} && \mathds{E}_{\theta^{\circ}}^{n}\left[\exp\left[\eta\left(\Upsilon^{\eta}(y, G^{\circ}_{n} \setminus m) - (\pen(m) - \pen(G^{\circ}_{n}))\right)\right] \mathds{1}_{\mathcal{A}_{m}}\right] + \mathds{P}_{\theta^{\circ}}^{n}\left[ \mathcal{A}_{m}^{c}\right]\\
+& && \leq && \sum\limits_{m \subset G^{-}_{n}} && \exp\left[\eta\left(K_{A, n} - (\pen(m) - \pen(G^{\circ}_{n}))\right)\right] + \mathds{P}_{\theta^{\circ}}^{n}\left[ \mathcal{A}_{m}^{c}\right]\\
+& && \in && \mathfrak{o}_{n}(1)
+\end{alignat*}
+
+\medskip
+
+We process similarly for $B$, where the conclusion is given by \nref{AS_BAYES_STRATEGIES_EXPO_LARGESET}:
+\begin{alignat*}{4}
+& B && = && \sum\limits_{m \supset G^{+}_{n}} && \mathds{E}_{\theta^{\circ}}^{n}\left[\frac{\exp\left[\eta\left(-\pen(m) + \Upsilon^{\eta}(y, m)\right)\right]}{\sum\limits_{j \subset G}\exp\left[\eta \left(- \pen(j) + \Upsilon^{\eta}(y, j)\right)\right]} \mathds{1}_{\mathcal{B}_{m}}\right] + \\
+& && && && \mathds{E}_{\theta^{\circ}}^{n}\left[\frac{\exp\left[\eta\left(-\pen(m) + \Upsilon^{\eta}(y, m)\right)\right]}{\sum\limits_{j \subset G}\exp\left[\eta \left(- \pen(j) + \Upsilon^{\eta}(y, j)\right)\right]} \mathds{1}_{\mathcal{B}_{m}^{c}}\right]\\
+& && \leq && \sum\limits_{m \supset G^{+}_{n}} && \mathds{E}_{\theta^{\circ}}^{n}\left[\exp\left[\eta\left(\left(\Upsilon^{\eta}(y, G^{\circ}_{n}) - \Upsilon^{\eta}(y, m)\right) - (\pen(m) - \pen(G^{\circ}_{n}))\right)\right] \mathds{1}_{\mathcal{B}_{m}}\right] + \\
+& && && && \mathds{P}_{\theta^{\circ}}^{n}\left[ \mathcal{B}_{m}^{c}\right]\\
+& && \leq && \sum\limits_{m \supset G^{+}_{n}} && \mathds{E}_{\theta^{\circ}}^{n}\left[\exp\left[\eta\left(- \Upsilon^{\eta}(y, m \setminus G^{\circ}_{n}) - (\pen(m) - \pen(G^{\circ}_{n}))\right)\right] \mathds{1}_{\mathcal{B}_{m}}\right] + \mathds{P}_{\theta^{\circ}}^{n}\left[ \mathcal{B}_{m}^{c}\right]\\
+& && \leq && \sum\limits_{m \supset G^{+}_{n}} && \exp\left[\eta\left(K_{B, n} - (\pen(m) - \pen(G^{\circ}_{n}))\right)\right] + \mathds{P}_{\theta^{\circ}}^{n}\left[ \mathcal{B}_{m}^{c}\right]\\
+& && \in && \mathfrak{o}_{n}(1)
+\end{alignat*}
+
+\medskip
+
+Finally, $C_{m}$ is directly controlled by \nref{AS_BAYES_STRATEGIES_EXPO_OPT}.
+
+\qedsymbol
+\end{pro}
+
+\subsection{An exponential concentration inequality based proof for contraction rates of self informative Bayes carrier of hierarchical sieve priors}\label{BAYES_STRATEGIES_EXPOLIM}
+
+In the previous section, we described the kind of proof used in \ncite{JJASRS} and argued that it can also be used with a finitely iterated posterior.
+We present here an adaptation of this scheme for the self informative Bayes carrier.
+The main subtlety lies in the fact that the hyper-parameter only loads extrema of a penalised contrast function.
+
+\begin{as}{\textsc{Non asymptotic loading of small sets, revisited} \\}\label{AS_BAYES_STRATEGIES_EXPOLIM_SMALLSET}
+There exist a sequence of sets $G^{-}_{n} \subset G^{\circ}_{n}$ such that
+\[\sum\limits_{m \subset G^{-}_{n}} \P_{\theta^{\circ}}^{n}\left(- \Upsilon(G^{\circ}_{n} \setminus m, Y^{n}) < \pen(G^{\circ}_{n} - \pen(m))\right) \in \mathfrak{o}_{n}(1)\]
+\end{as}
+
+\begin{as}{\textsc{Non asymptotic loading of large sets, revisited} \\}\label{AS_BAYES_STRATEGIES_EXPOLIM_LARGESET}
+There exist a sequence of sets $G^{+}_{n} \supset G^{\circ}_{n}$ such that
+\[\sum\limits_{m \supset G^{+}_{n}} \P_{\theta^{\circ}}^{n}\left(\Upsilon(m \setminus G^{\circ}_{n}, Y^{n}) < \pen(G^{\circ}_{n} - \pen(m))\right) \in \mathfrak{o}_{n}(1)\]
+\end{as}
+
+\begin{as}{\textsc{Optimal contraction of proper sieves, revisited} \\}\label{AS_BAYES_STRATEGIES_EXPOLIM_OPT}
+With the notations of \nref{AS_BAYES_STRATEGIES_EXPOLIM_SMALLSET} and \nref{AS_BAYES_STRATEGIES_EXPOLIM_LARGESET} assume
+\[\sum\limits_{G^{-}_{n} \subset m \subset G^{+}_{n}} \P_{\theta^{\circ}}^{n}\left[\left\Vert \overline{\theta}^{m} - \theta^{\circ}_{j} \right\Vert_{l^{2}}^{2} > \Phi_{n}\right] \in \mathfrak{o}_{n}(1)\]
+\end{as}
+
+Note that those assumptions are generally obtained using concentration inequalities such as the one displayed in \nref{USEFULRESULTS}.
+
+\begin{thm}{\textsc{Contraction rate for iterated posterior of hierarchical Gaussian sieve priors} \\}\label{THM_BAYES_STRATEGIES_EXPOLIM}
+Under \nref{AS_BAYES_STRATEGIES_EXPOLIM_SMALLSET}, \nref{AS_BAYES_STRATEGIES_EXPOLIM_LARGESET}, and \nref{AS_BAYES_STRATEGIES_EXPOLIM_OPT}, there exists a constant $K$ such that
+\[\lim\limits_{n \rightarrow \infty} \E_{\theta^{\circ}}^{n} \left[\P_{\boldsymbol{\theta}^{M} \vert Y^{n}}^{n, (\infty)}\left(\left\Vert \boldsymbol{\theta}^{M} - \theta^{\circ} \right\Vert_{l^{2}}^{2} \geq K \Phi_{n}\right)\right] = 0.\]
+\end{thm}
+
+\begin{pro}{\textsc{Proof of \nref{THM_BAYES_STRATEGIES_EXPOLIM}} \\}\label{PRO_BAYES_STRATEGIES_EXPOLIM}
+We start the proof in a similar fashion to \nref{THM_BAYES_STRATEGIES_EXPO}:
+\begin{alignat*}{3}
+& \E_{\theta^{\circ}}^{n}\left[\P^{n, (\infty)}_{\boldsymbol{\theta}^{M} \vert Y^{n}}\left(\left\Vert  \boldsymbol{\theta}^{M} - \theta^{\circ}\right\Vert_{l^{2}}^{2} > \Phi_{n} \right)\right] && = && \E_{\theta^{\circ}}^{n}\left[\sum\limits_{m \subset G_{n}}\P^{n, (\infty)}_{\boldsymbol{\theta}^{M} \vert Y^{n}}\left(\left\{\left\Vert  \boldsymbol{\theta}^{M} - \theta^{\circ}\right\Vert_{l^{2}}^{2} > \Phi_{n}\right\} \cap \left\{ M = m \right\} \right)\right]\\
+& && = && \sum\limits_{m \subset G_{n}}\E_{\theta^{\circ}}^{n}\left[\P^{n, (\infty)}_{\boldsymbol{\theta}^{M} \vert Y^{n}, M = m}\left(\left\{\left\Vert  \boldsymbol{\theta}^{M} - \theta^{\circ}\right\Vert_{l^{2}}^{2} > \Phi_{n}\right\}\right) \cdot \mathds{P}_{M \vert Y^{n}}^{n, (\infty)}\left(M = m\right)\right]\\
+& && = && \sum\limits_{m \subset G_{n}}\E_{\theta^{\circ}}^{n}\left[\P^{n, (\infty)}_{\boldsymbol{\theta}^{m} \vert Y^{n}}\left(\left\{\left\Vert  \boldsymbol{\theta}^{m} - \theta^{\circ}\right\Vert_{l^{2}}^{2} > \Phi_{n}\right\}\right) \cdot \mathds{P}_{M \vert Y^{n}}^{n, (\infty)}\left(M = m\right)\right]\\.
+\end{alignat*}
+
+Then, for any three subsets $G^{\circ}_{n}$, $G^{+}_{n}$ and $G^{-}_{n}$ with $G^{-}_{n} \subset G^{\circ}_{n} \subset G^{+}_{n} \subset G_{n}$, we have
+
+\begin{alignat*}{4}
+& \E_{\theta^{\circ}}^{n}\left[\P^{n, (\infty)}_{\boldsymbol{\theta}^{M} \vert Y^{n}}\left(\left\Vert  \boldsymbol{\theta} - \theta^{\circ}\right\Vert_{l^{2}}^{2} > \Phi_{n} \right)\right] && \leq && \sum\limits_{m \subset G^{-}_{n}}\E_{\theta^{\circ}}^{n} &&\left[\mathds{P}_{M \vert Y^{n}}^{n, (\infty)}\left(M = m\right)\right] + \sum\limits_{m \supset G^{+}_{n}}\E_{\theta^{\circ}}^{n}\left[\mathds{P}_{M \vert Y^{n}}^{n, (\infty)}\left(M = m\right)\right]\\
+& && && && +  \sum\limits_{G^{-}_{n} \subset m \subset G^{+}_{n}}\E_{\theta^{\circ}}^{n}\left[\P^{n, (\infty)}_{\boldsymbol{\theta}^{m} \vert Y^{n}}\left(\left\{\left\Vert  \boldsymbol{\theta}^{m} - \theta^{\circ}\right\Vert_{l^{2}}^{2} > \Phi_{n}\right\}\right)\right]\\
+& && \leq && &&\underbrace{\E_{\theta^{\circ}}^{n}\left[\mathds{P}_{M \vert Y^{n}}^{n, (\eta)}\left(M \subset G^{-}_{n}\right)\right]}_{=: A} + \underbrace{\E_{\theta^{\circ}}^{n}\left[\mathds{P}_{M \vert Y^{n}}^{n, (\eta)}\left(M \supset G^{+}_{n}\right)\right]}_{=: B}\\
+& && && && +  \sum\limits_{G^{-}_{n} \subset m \subset G^{+}_{n}}\underbrace{\E_{\theta^{\circ}}^{n}\left[\P^{n, (\eta)}_{\boldsymbol{\theta}^{m} \vert Y^{n}}\left(\left\{\left\Vert  \boldsymbol{\theta}^{m} - \theta^{\circ}\right\Vert_{l^{2}}^{2} > \Phi_{n}\right\}\right)\right]}_{=:C_{m}}
+\end{alignat*}
+
+The goal is then to control the three sums using concentration inequalities.
+
+We begin with $A$, the conclusion is given by \nref{AS_BAYES_STRATEGIES_EXPOLIM_SMALLSET}:
+
+\begin{alignat*}{3}
+& A && = && \P_{\theta^{\circ}}^{n}\left[ \forall l \supset G^{-}_{n}, \pen(\widehat{m}) + \Upsilon(\widehat{m}, Y) < \pen(l) + \Upsilon(l, Y) \right]\\
+& && \leq && \P_{\theta^{\circ}}^{n}\left[ \exists m \subset G^{-}_{n}, \pen(m) + \Upsilon(m, Y) < \pen(G^{\circ}_{n}) + \Upsilon(G^{\circ}_{n}, Y) \right]\\
+& && \leq && \sum\limits_{m \subset G^{-}_{n}}\P_{\theta^{\circ}}^{n}\left[\pen(m) + \Upsilon(m, Y) < \pen(G^{\circ}_{n}) + \Upsilon(G^{\circ}_{n}, Y) \right]\\
+& && \leq && \sum\limits_{m \subset G^{-}_{n}}\P_{\theta^{\circ}}^{n}\left[- \Upsilon(G^{\circ}_{n} \setminus m, Y) < \pen(G^{\circ}_{n}) - \pen(m)\right]\\
+& && \in && \mathfrak{o}_{n}(1).
+\end{alignat*}
+
+\medskip
+
+We process similarly for $B$, the conclusion is given by \nref{AS_BAYES_STRATEGIES_EXPOLIM_LARGESET}:
+
+\begin{alignat*}{4}
+& B && = && \P_{\theta^{\circ}}^{n}\left[ \forall l \subset G^{+}_{n}, \pen(\widehat{m}) + \Upsilon(\widehat{m}, Y) < \pen(l) + \Upsilon(l, Y) \right]\\
+& && \leq && \P_{\theta^{\circ}}^{n}\left[ \exists m \supset G^{+}_{n}, \pen(m) + \Upsilon(m, Y) < \pen(G^{\circ}_{n}) + \Upsilon(G^{\circ}_{n}, Y) \right]\\
+& && \leq && \sum\limits_{m \supset G^{+}_{n}}\P_{\theta^{\circ}}^{n}\left[\pen(m) + \Upsilon(m, Y) < \pen(G^{\circ}_{n}) + \Upsilon(G^{\circ}_{n}, Y) \right]\\
+& && \leq && \sum\limits_{m \supset G^{+}_{n}}\P_{\theta^{\circ}}^{n}\left[\Upsilon(m \setminus G^{\circ}_{n}, Y) < \pen(G^{\circ}_{n}) - \pen(m)\right]\\
+& && \in && \mathfrak{o}_{n}(1).
+\end{alignat*}
+
+\medskip
+
+Finally, $C_{m}$ is directly controlled by \nref{AS_BAYES_STRATEGIES_EXPOLIM_OPT}.
+
+\qedsymbol
+\end{pro}

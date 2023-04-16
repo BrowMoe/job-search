@@ -1,0 +1,32 @@
+syntax: glob
+# R daten und history
+.RData
+.Rhistory
+# Backup files Emacs
+*~
+\#*
+.\#*
+# Mac OS X Finder files
+.DS_Store
+# Emacs folders
+*/auto
+auto
+# Latex output files
+*.aux
+*.log
+*.nav
+*.out
+*.snm
+*.gz
+*.toc
+*.bbl
+*.blg
+*.idx
+*.ilg
+*.ind
+# Ausgaben in der Wurzel
+_2016-05-LLN-Vortrag.pdf
+*.dvi
+*.ps
+#Backup Dateien
+*.backup

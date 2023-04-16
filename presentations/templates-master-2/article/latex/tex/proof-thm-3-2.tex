@@ -1,0 +1,38 @@
+\section{Proof of \textsc{\cref{thm2}}}
+\subsection{Proof for the lower bound}
+
+We have already shown that, for any prior $\mathds{P}_{\boldsymbol{\theta}}$, there exist an estimator $\widehat{\theta}$ such that, for any $\theta^{\circ}$ in $\Theta$ and sequence $\Phi_{n}$,
+\[\lim\limits_{n \rightarrow \infty} \mathds{E}_{\theta^{\circ}}^{n} \left[\mathds{P}_{\boldsymbol{\theta}\vert Y^{n} }\left(\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert^{2} \leq \Phi_{n}\right)\right] = 1 \Rightarrow \lim\limits_{n \rightarrow \infty}\mathds{P}_{\theta^{\circ}}^{n}\left(\Vert \widehat{\theta} - \theta^{\circ} \Vert \leq \Phi_{n}\right) = 1.\]
+
+This implies that for any prior $\mathds{P}_{\boldsymbol{\theta}}$ there exist an estimator $\widehat{\theta}$ such that, for any sequences $\mathfrak{a}_{j}$ and $\Psi_{n}$ and real number $r$,
+
+\[\lim\limits_{n \rightarrow \infty} \inf\limits_{\theta^{\circ} \in \Theta^{\mathfrak{a}}(r)} \mathds{E}_{\theta^{\circ}}^{n} \left[\mathds{P}_{\boldsymbol{\theta}\vert Y^{n} }\left(\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert^{2} \leq \Psi_{n}\right)\right] = 1 \Rightarrow \lim\limits_{n \rightarrow \infty} \inf\limits_{\theta^{\circ} \in \Theta^{\mathfrak{a}}(r)}\mathds{P}_{\theta^{\circ}}^{n}\left(\Vert \widehat{\theta} - \theta^{\circ} \Vert \leq \Psi_{n}\right) = 1.\]
+
+Which leads to the conclusion
+\[\lim\limits_{n \rightarrow \infty} \sup\limits_{\mathds{P}_{\boldsymbol{\theta}}} \inf\limits_{\theta^{\circ} \in \Theta^{\mathfrak{a}}(r)} \mathds{E}_{\theta^{\circ}}^{n} \left[\mathds{P}_{\boldsymbol{\theta}\vert Y^{n} }\left(\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert^{2} \leq \Psi_{n}\right)\right] = 1 \Rightarrow \lim\limits_{n \rightarrow \infty} \sup\limits_{\widehat{\theta}} \inf\limits_{\theta^{\circ} \in \Theta^{\mathfrak{a}}(r)}\mathds{P}_{\theta^{\circ}}^{n}\left(\Vert \widehat{\theta} - \theta^{\circ} \Vert \leq \Psi_{n}\right) = 1.\]
+
+\subsection{Proof for the upper bound}
+
+%
+%$\mathbb{Q}_{\boldsymbol{\theta}}^{n}$ an arbitrary prior from $\mathcal{P}_{n}$ and define $S_{m} := \Vert \boldsymbol{\theta} - \theta^{\circ} \Vert^{2}$.
+%We are looking for a sequence $\left(K_{n}\right)_{n \in \mathbb{N}}$ such that
+%\[\lim\limits_{n \rightarrow \infty} \inf\limits_{\theta^{\circ} \in \Theta_{\textgoth{a}}(r)} \mathbb{E}_{\theta^{\circ}}^{n}\left[\mathbb{Q}_{\boldsymbol{\theta} \vert Y^{n}}^{n}\left(S_{m} \leq K_{n}\right)\right] = 1.\]
+%In this perspective, we can write
+%\begin{alignat*}{5}
+%&\inf\limits_{\theta^{\circ} \in \Theta_{\textgoth{a}}(r)} && \mathbb{E}_{\theta^{\circ}}^{n}\left[\mathbb{Q}_{\boldsymbol{\theta} \vert Y^{n}}^{n}\left(S_{m} \leq K_{n}\right)\right] && = && \inf\limits_{\theta^{\circ} \in \Theta_{\textgoth{a}}(r)} && \mathbb{E}_{\theta^{\circ}}^{n}\left[\mathbb{Q}_{\boldsymbol{\theta} \vert Y^{n}}^{n}\left(\frac{S^{m} - \mathbb{E}_{\boldsymbol{\theta} \vert Y^{n}}^{n} \left[S^{m}\right]}{\mathbb{V}_{\boldsymbol{\theta} \vert Y^{n}}^{n} \left[S^{m}\right]} \leq \frac{K_{n} - \mathbb{E}_{\boldsymbol{\theta} \vert Y^{n}}^{n} \left[S^{m}\right]}{\mathbb{V}_{\boldsymbol{\theta} \vert Y^{n}}^{n} \left[S^{m}\right]}\right)\right].
+%\end{alignat*}
+%
+%We hence now note $\mathcal{S} := \frac{S^{m} - \mathbb{E}_{\boldsymbol{\theta} \vert Y^{n}}^{n} \left[S^{m}\right]}{\mathbb{V}_{\boldsymbol{\theta} \vert Y^{n}}^{n} \left[S^{m}\right]}.$
+%With the notation $\widehat{\theta} = \left(\widehat{\theta}_{j}\right)_{j \in \mathbb{N}}:= \left(\mathbb{E}_{\boldsymbol{\theta}\vert Y^{n}}^{n}\left[\boldsymbol{\theta}_{j}\right]\right)_{j \in \mathbb{N}}$ and by using Fubini-Tonelli we have $\mathbb{E}_{\boldsymbol{\theta} \vert Y^{n}}^{n}\left[S_{m}\right] = \sum\limits_{j \in \mathbb{N}} \mathbb{V}_{\boldsymbol{\theta}\vert Y^{n}}^{n} \left[\boldsymbol{\theta}_{j}\right] + \Vert \widehat{\theta} - \theta^{\circ} \Vert^{2}$.
+%
+%\bigskip
+%
+%Define, for any increasing and unbounded sequence $\left(c_{n}\right)_{n \in \mathbb{N}}$ the event $\Omega_{n} := \left\{\Vert \widehat{\theta} - \theta^{\circ} \Vert^{2} \geq c_{n}^{-1} \cdot \Phi_{n}^{\star}\right\}.$
+%Then, as $\widehat{\theta}$ is an estimator and that $\Phi_{n}^{\star}$ is the minimax optimal speed of convergence for estimators over $\Theta_{\textgoth{a}}(r),$ we have $\lim\limits_{n \rightarrow \infty}\inf\limits_{\theta \in \Theta_{\textgoth{a}}(r)} \mathbb{P}_{\theta^{\circ}}\left(\Omega_{n}^{c}\right) = \lim\limits_{n \rightarrow \infty}\inf\limits_{\theta \in \Theta_{\textgoth{a}}(r)} \mathbb{P}_{\theta^{\circ}}\left(\Vert \widehat{\theta} - \theta^{\circ} \Vert^{2} \leq c_{n}^{-1} \cdot \Phi_{n}^{\star}\right) = 0.$
+%
+%Hence we can conclude by
+%\begin{alignat*}{7}
+%&\lim\limits_{n \rightarrow \infty} && \inf\limits_{\theta^{\circ} \in \Theta_{\textgoth{a}}(r)} && \mathbb{E}_{\theta^{\circ}}^{n}\left[\mathbb{Q}_{\boldsymbol{\theta} \vert Y^{n}}^{n}\left(S_{m} \leq K_{n}\right)\right] &&=&& \lim\limits_{n \rightarrow \infty} && \inf\limits_{\theta^{\circ} \in \Theta_{\textgoth{a}}(r)} && \mathbb{E}_{\theta^{\circ}}^{n}\left[\mathbb{Q}_{\boldsymbol{\theta} \vert Y^{n}}^{n}\left(\mathcal{S} \leq \frac{K_{n} - \mathbb{E}_{\boldsymbol{\theta} \vert Y^{n}}^{n} \left[S^{m}\right]}{\mathbb{V}_{\boldsymbol{\theta} \vert Y^{n}}^{n} \left[S^{m}\right]}\right)\right]\\
+%& && && &&\leq && \lim\limits_{n \rightarrow \infty} && \inf\limits_{\theta^{\circ} \in \Theta_{\textgoth{a}}(r)} && \left\{\mathbb{E}_{\theta^{\circ}}^{n}\left[ \mathds{1}_{\Omega_{n}}\mathbb{Q}_{\boldsymbol{\theta} \vert Y^{n}}^{n}\left(\mathcal{S} \leq \frac{K_{n} - \mathbb{E}_{\boldsymbol{\theta} \vert Y^{n}}^{n} \left[S^{m}\right]}{\mathbb{V}_{\boldsymbol{\theta} \vert Y^{n}}^{n} \left[S^{m}\right]}\right)\right] + \mathbb{P}_{\theta^{\circ}}\left(\Omega_{n}^{c}\right)\right\}\\
+%& && && &&\leq && \lim\limits_{n \rightarrow \infty} && \inf\limits_{\theta^{\circ} \in \Theta_{\textgoth{a}}(r)} && \left\{\mathbb{E}_{\theta^{\circ}}^{n}\left[\mathbb{Q}_{\boldsymbol{\theta} \vert Y^{n}}^{n}\left(\mathcal{S} \leq \frac{K_{n} - \sum\limits_{j \in \mathbb{N}} \mathbb{V}_{\boldsymbol{\theta} \vert Y^{n}}^{n} \left[\boldsymbol{\theta}_{j}\right] - c_{n}^{-1} \cdot \Phi_{n}^{\star}}{\mathbb{V}_{\boldsymbol{\theta} \vert Y^{n}}^{n} \left[S^{m}\right]}\right)\right] + \mathbb{P}_{\theta^{\circ}}\left(\Omega_{n}^{c}\right)\right\}\\
+%\end{alignat*}

@@ -1,0 +1,279 @@
+\section{Proof for \textsc{\cref{thm3}}}
+
+Central results to proof the remaining theorems are the following.
+\begin{lm}\label{lm3}
+Let $\{X_{j}\}_{j \geq 1}$ be independent and normally distributed random variables with real mean $\alpha_{j}$ and standard deviation $\beta_{j} \geq 0$. For $m \in \mathds{N}$, set $S_{m} := \sum \limits_{j = 1}^{m} X_{j}^{2}$ and consider $v_{m} \geq \sum\limits_{j = 1}^{m} \beta_{j}^{2}, t_{m} \geq \max \limits_{1 \leq j \leq m} \beta_{j}^{2}$ and $r_{m} \geq \sum\limits_{j = 1}^{m} \alpha_{j}^{2}$.
+Then for all $c \geq 0$, we have
+\begin{alignat*}{3}
+&\sup\limits_{m \geq 1} \exp\left[\frac{c (c \wedge 1) (v_{m} + 2 r_{m})}{4 t_{m}}\right]\mathds{P}\left(S_{m} - \mathds{E}[S_{m}] \leq - c (v_{m} + 2 r_{m})\right) &&\leq&& 1; \\
+&\sup\limits_{m \geq 1} \exp\left[\frac{c (c \wedge 1) (v_{m} + 2 r_{m})}{4 t_{m}}\right]\mathds{P}\left(S_{m} - \mathds{E}[S_{m}] \geq \frac{3 c}{2} (v_{m} + 2 r_{m})\right) &&\leq&& 1.
+\end{alignat*}
+\end{lm}
+
+\begin{lm}\label{lm4}
+Let $\{X_{j}\}_{j \geq 1}$ be independent and normally distributed random variables with real mean $\alpha_{j}$ and standard deviation $\beta_{j} \geq 0$. For $m \in \mathds{N}$, set $S_{m} := \sum \limits_{j = 1}^{m} X_{j}^{2}$ and consider $v_{m} \geq \sum\limits_{j = 1}^{m} \beta_{j}^{2}, t_{m} \geq \max \limits_{1 \leq j \leq m} \beta_{j}^{2}$ and $r_{m} \geq \sum\limits_{j = 1}^{m} \alpha_{j}^{2}$.
+Then for all $c \geq 0$, we have
+\[\sup\limits_{m \geq 1}(6 t_{m})^{-1} \exp\left[\frac{c (v_{m} + 2 r_{m})}{4 t_{m}}\right] \mathds{E}\left[S_{m} - \mathds{E}[S_{m}] - \frac{3}{2} c (v_{m} + 2 r_{m})\right]_{+} \leq 1\]
+with $(a)_{+} := (a \vee 0).$
+\end{lm}
+
+This proof being more complex, we will split it into several parts.
+
+\begin{de}\label{de2}
+Define the following quantities :
+\begin{alignat*}{3}
+& G_{n}^{-} &&:=&& \min\left\{m \in \llbracket 1, m_{n}^{\circ} \rrbracket : \quad \mathfrak{b}_{m} \leq 9 L \Phi_{n}^{\circ}\right\},\\
+& G_{n}^{+} &&:=&& \max \left\{m \in \llbracket m_{n}^{\circ}, G_{n} \rrbracket : \frac{\left( m - m_{n}^{\circ} \right)}{n} \leq 3 \Lambda_{m_{n}^{\circ}}^{-1} \Phi_{n}^{\circ}\right\}.
+\end{alignat*}
+\end{de}
+
+\begin{pr}\label{pr1}
+Under \textsc{\cref{as1}}, we have the following concentration inequalities for the threshold hyper parameter :
+\begin{alignat*}{3}
+& \mathds{P}_{\theta^{\circ}}^{n}\left[M > G_{n}^{+}\right] &&\leq&& \exp\left[- \frac{5 m_{n}^{\circ}}{9 L} + \log \left(G_{n}\right)\right],\\
+& \mathds{P}_{\theta^{\circ}}^{n}\left[M < G_{n}^{-}\right] &&\leq&& \exp\left[- \frac{7 m_{n}^{\circ}}{9} + \log \left(G_{n}\right)\right].
+\end{alignat*}
+\end{pr}
+
+\subsection{Proof for \textsc{\cref{pr1}}}
+
+First, let's proof the first inequality.
+Use the fact that : 
+\begin{alignat*}{3}
+& \mathds{P}_{\theta^{\circ}}\left[G_{n}^{+} < \widehat{m} \leq G_{n}\right]
+&&=&& \mathds{P}_{\theta^{\circ}} \left[\forall l \in \llbracket 1, G_{n}^{+}\rrbracket, \quad \frac{3 \widehat{m}}{n} - \sum\limits_{j=1}^{\widehat{m}} Y_{j}^{2} < \frac{3 l}{n} - \sum\limits_{j=1}^{l} Y_{j}^{2} \right]\\
+& &&\leq&& \mathds{P}_{\theta^{\circ}}\left[\exists m \in \llbracket G_{n}^{+} + 1, G_{n}\rrbracket : \quad \frac{3 m}{n} - \sum\limits_{j=1}^{m} Y_{j}^{2} < \frac{3 m_{n}^{\circ}}{n} - \sum\limits_{j=1}^{m_{n}^{\circ}} Y_{j}^{2} \right]\\
+& &&\leq&& \sum\limits_{m = G_{n}^{+} + 1}^{G_{n}} \mathds{P}_{\theta^{\circ}}\left[\frac{3 m}{n} - \sum\limits_{j=1}^{m} Y_{j}^{2} < \frac{3 m_{n}^{\circ}}{n} - \sum\limits_{j=1}^{m_{n}^{\circ}} Y_{j}^{2}\right]\\
+& &&\leq&& \sum\limits_{m = G_{n}^{+} + 1}^{G_{n}} \mathds{P}_{\theta^{\circ}}\left[0 < \frac{3 \left(m_{n}^{\circ} - m \right)}{n} + \sum\limits_{j = m_{n}^{\circ} + 1}^{m} Y_{j}^{2}\right]
+\end{alignat*}
+
+We will now use \textsc{\cref{lm3}}. For this purpose, define then for all $m$ in $\llbracket G_{n}^{+} + 1, G_{n} \rrbracket$ : $S_{m} := \sum\limits_{j = m_{n}^{\circ} + 1}^{m} Y_{j}^{2}$, we then have $\mu_{m} := \mathds{E}_{\theta^{\circ}}^{n}\left[S_{m}\right] = \frac{m- m_{n}^{\circ}}{n} + \sum\limits_{j = m_{n}^{\circ} + 1}^{m} \left(\theta^{\circ}_{j}\lambda_{j}\right)^{2}$, $\alpha_{j}^{2} := \mathds{E}_{\theta^{\circ}}^{n}\left[Y_{j}\right]^{2} =  \left(\theta^{\circ}_{j}\lambda_{j}\right)^{2}$ and $\beta_{j}^{2} := \mathds{V}_{\theta^{\circ}}^{n}\left[Y_{j}\right] = \frac{1}{n}$.
+
+Now, using that $\lambda$ is monotonically decreasing and $\mathfrak{b}_{m_{n}^{\circ}} \leq \Phi_{n}^{\circ}$, we note
+\begin{alignat*}{4}
+&\sum\limits_{j = m_{n}^{\circ} + 1}^{m} \alpha_{j}^{2} &&=&& \sum\limits_{j = m_{n}^{\circ} + 1}^{m}\left(\theta^{\circ}_{j}\lambda_{j}\right)^{2} &&\\
+& &&\leq&& \Lambda_{m_{n}^{\circ}}^{-1} \sum\limits_{j = m_{n}^{\circ} + 1}^{m}\left(\theta^{\circ}_{j}\right)^{2} &&\\
+& &&\leq&& \Lambda_{m_{n}^{\circ}}^{-1} \mathfrak{b}_{m_{n}^{\circ}} &&\\
+& &&\leq&& \Lambda_{m_{n}^{\circ}}^{-1} \Phi_{n}^{\circ} &&=: r_{m}\\
+&\sum\limits_{j = m_{n}^{\circ}}^{m} \beta_{j}^{2} &&=&& \frac{m - m_{n}^{\circ}}{n} &&=: v_{m}\\
+& \max\limits_{j \in \llbracket m_{n}^{\circ}, m \rrbracket} \beta_{j} && = && \frac{1}{n} &&=: t_{m}
+\end{alignat*}
+
+Hence, we have, for all $m$ in $\llbracket G_{n}^{+}, G_{n}\rrbracket$
+\begin{alignat*}{3}
+&\mathds{P}_{\theta^{\circ}}^{n}\left[\sum\limits_{j = m_{n}^{\circ} + 1}^{m} Y_{j}^{2} - 3\frac{m - m_{n}^{\circ}}{n} > 0\right] && = &&\mathds{P}_{\theta^{\circ}}^{n}\left[S_{m} - \frac{m - m_{n}^{\circ}}{n} > 2 \frac{m - m_{n}^{\circ}}{n}\right]\\
+& &&=&& \mathds{P}_{\theta^{\circ}}^{n}\left[S_{m} - \frac{m - m_{n}^{\circ}}{n} - \sum\limits_{j = m_{n}^{\circ} + 1}^{m} \left(\theta^{\circ}_{j}\lambda_{j}\right)^{2} > 2 \frac{m - m_{n}^{\circ}}{n} - \sum\limits_{j = m_{n}^{\circ} + 1}^{m} \left(\theta^{\circ}_{j}\lambda_{j}\right)^{2}\right]\\
+& &&\leq&& \mathds{P}_{\theta^{\circ}}^{n}\left[S_{m} - \mu_{m} > 2 \frac{m - m_{n}^{\circ}}{n} - \Lambda_{m_{n}^{\circ}}^{-1} \mathfrak{b}_{m_{n}^{\circ}}\right].
+\end{alignat*}
+
+Using the definition of $G_{n}^{+},$ we have $\frac{m - m_{n}^{\circ}}{n} > 3 \Lambda_{m_{n}^{\circ}}^{-1}\Phi_{n}^{\circ}.$
+
+Hence, we can write, using \textsc{\cref{as1}} and \textsc{\cref{lm3}} with $c = 2/3$ :
+
+\begin{alignat*}{3}
+& \mathds{P}_{\theta^{\circ}}^{n}\left[\sum\limits_{j = m_{n}^{\circ}}^{m} Y_{j}^{2} -  3 \frac{m - m_{n}^{\circ}}{n} > 0\right] && \leq && \mathds{P}_{\theta^{\circ}}^{n}\left[S_{m} - \mu_{m} > \frac{m - m_{n}^{\circ}}{n} + 2 \Lambda_{m_{n}^{\circ}}^{-1} \Phi_{n}^{\circ}\right]\\
+& &&\leq&& \mathds{P}_{\theta^{\circ}}^{n}\left[S_{m} - \mu_{m} > v_{m} + 2 r_{m}\right]\\
+& &&\leq&& \exp\left[- n \frac{\frac{m - m_{n}^{\circ}}{n} + 2 \Lambda_{m_{n}^{\circ}}^{-1} \Phi_{n}^{\circ}}{9}\right]\\
+& &&\leq&& \exp\left[- n \frac{5 \Lambda_{m_{n}^{\circ}}^{-1} \Phi_{n}^{\circ}}{9}\right]\\
+& &&\leq&& \exp\left[- \frac{5 m_{n}^{\circ}}{9 L}\right].
+\end{alignat*}
+
+Finally we can conclude that
+\[\mathds{P}_{\theta^{\circ}}^{n}\left[G_{n}^{+} < \widehat{m} \leq G_{n}\right] \leq \exp\left[- \frac{5 m_{n}^{\circ}}{9 L} + \log\left(G_{n}\right)\right].\]
+
+\bigskip
+
+We now prove the second inequality.
+
+We begin by writing the same kind of inclusion of events as for the first inequality :
+\begin{alignat*}{3}
+& \mathds{P}_{\theta^{\circ}}^{n} \left[1 \leq \widehat{m} < G_{n}^{-}\right] &&=&& \mathds{P}_{\theta^{\circ}}^{n} \left[ \forall m \in \llbracket G_{n}^{-}, G_{n} \rrbracket, \quad \Upsilon\left(\widehat{m}\right) + \pen\left(\widehat{m}\right) < \Upsilon\left(m\right) + \pen\left(m\right)\right]\\
+& &&\leq&& \mathds{P}_{\theta^{\circ}} \left[ \exists m \in \llbracket 1, G_{n}^{-} -1 \rrbracket, \quad \Upsilon\left(m\right) + \pen\left(m\right) < \gamma\left(m_{n}^{\circ}\right) + \pen\left(m_{n}^{\circ}\right)\right]\\
+& &&\leq&& \sum\limits_{m = 1}^{G_{n}^{-}} \mathds{P}_{\theta^{\circ}}^{n} \left[\Upsilon\left(m\right) + \pen\left(m\right) < \Upsilon\left(m_{n}^{\circ}\right) + \pen\left(m_{n}^{\circ}\right)\right]\\
+& &&\leq&& \sum\limits_{m = 1}^{G_{n}^{-}} \mathds{P}_{\theta^{\circ}}^{n} \left[\sum\limits_{j = m + 1}^{m_{n}^{\circ}} Y_{j}^{2} < 3 \frac{m_{n}^{\circ} - m}{n} \right].
+\end{alignat*}
+
+The \textsc{\cref{lm3}} steps in again.
+Define $S_{m} := \sum\limits_{j = m + 1}^{m_{n}^{\circ}} Y_{j}^{2}$ and we want to control the concentration of this sum, hence we take the following notations :
+\begin{alignat*}{3}
+& \mu_{m} &&:=&& \mathds{E}_{\theta^{\circ}}\left[S_{m}\right]\\
+& &&=&& \frac{m_{n}^{\circ} - m}{n} + \sum\limits_{j = m+1}^{m_{n}^{\circ}}\left(\theta^{\circ}_{j}\lambda_{j}\right)^{2}\\
+&r_{m} &&:=&& \sum\limits_{j = m+1}^{m_{n}^{\circ}}\left(\theta^{\circ}_{j}\lambda_{j}\right)^{2}\\
+&v_{m} &&:=&& \frac{m_{n}^{\circ} - m}{n}\\
+&t_{m} &&:=&& \frac{1}{n}.
+\end{alignat*}
+
+Hence, we have,  using \textsc{\cref{as1}}
+\textcolor{red}{Constant last line: obtained $3L$ now obtain $5L$}
+\begin{alignat*}{3}
+&\mathds{P}_{\theta^{\circ}}^{n}\left[S_{m} < 3 \frac{m_{n}^{\circ} - m}{n}\right] &&=&& \mathds{P}_{\theta^{\circ}}^{n}\left[S_{m} - \mu_{m} < 3 \frac{m_{n}^{\circ} - m}{n} - \frac{m_{n}^{\circ} - m}{n} - \sum\limits_{j = m+1}^{m_{n}^{\circ}}\left(\theta^{\circ}_{j}\lambda_{j}\right)^{2}\right]\\
+& && = &&\mathds{P}_{\theta^{\circ}}^{n}\left[S_{m} - \mu_{m} < 3 \frac{m_{n}^{\circ} - m}{n} - \frac{2}{3}\frac{m_{n}^{\circ} - m}{n} - \frac{1}{3}\sum\limits_{j = m+1}^{m_{n}^{\circ}}\left(\theta^{\circ}_{j}\lambda_{j}\right)^{2} - \frac{1}{3} \left[v_{m} + 2 r_{m}\right]\right]\\
+& &&\leq&& \mathds{P}_{\theta^{\circ}}^{n}\left[S_{m} - \mu_{m} < 3 \frac{m_{n}^{\circ} - m}{n} - \frac{2}{3}\frac{m_{n}^{\circ} - m}{n} - \frac{1}{3} \Lambda_{m_{n}^{\circ}}^{-1}\sum\limits_{j = m+1}^{m_{n}^{\circ}}\left(\theta^{\circ}_{j}\right)^{2} - \frac{1}{3} \left[v_{m} + 2 r_{m}\right]\right]\\
+& &&\leq&& \mathds{P}_{\theta^{\circ}}^{n}\left[S_{m} - \mu_{m} <  - \frac{1}{3} \left[v_{m} + 2 r_{m}\right] + \frac{7}{3} \frac{m_{n}^{\circ}}{n} + \frac{1}{3} \Lambda_{m_{n}^{\circ}}^{-1} \mathfrak{b}_{m_{n}^{\circ}} - \frac{1}{3} \Lambda_{m_{n}^{\circ}}^{-1} \mathfrak{b}_{m}\right]\\
+& &&\leq&& \mathds{P}_{\theta^{\circ}}^{n}\left[S_{m} - \mu_{m} < - \frac{1}{3} \left[v_{m} + 2 r_{m}\right] + 3 L \Phi_{n}^{\circ} \Lambda_{m_{n}^{\circ}}^{-1} - \frac{1}{3}\Lambda_{m_{n}^{\circ}}^{-1} \mathfrak{b}_{m}\right]\\
+\end{alignat*}
+
+now, using the definition of $G_{n}^{-}$, we have $\mathfrak{b}_{m} > 9 L \Phi_{n}^{\circ}$ so, using \textsc{\cref{lm3}} \textcolor{red}{after checking constant: $9L$ or $15 L$}
+
+\begin{alignat*}{3}
+&\mathds{P}_{\theta^{\circ}}^{n}\left[S_{m} < 3 \frac{m_{n}^{\circ} - m}{n}\right] && \leq && \mathds{P}_{\theta^{\circ}}^{n}\left[S_{m} - \mu_{m} < - \frac{1}{3} \left[v_{m} + 2 r_{m}\right]\right]\\
+& &&\leq&& \exp\left[- n\frac{\frac{m_{n}^{\circ} - m}{n} + 2 \sum\limits_{j = m + 1}^{m_{n}^{\circ}}\left(\theta^{\circ}_{j}\lambda_{j}\right)^{2}}{36}\right]\\
+& &&\leq&& \exp\left[- n\frac{\frac{m_{n}^{\circ} - m}{n} + 2 \Lambda_{m_{n}^{\circ}}^{-1} \mathfrak{b}_{m} - 2 \Lambda_{m_{n}^{\circ}}^{-1} \mathfrak{b}_{m_{n}^{\circ}}}{36}\right]\\
+& &&\leq&& \exp\left[- n \frac{16 L \Phi_{n}^{\circ} \Lambda_{m_{n}^{\circ}}^{-1}}{36}\right]\\
+& &&\leq&& \exp \left[ - \frac{4 m_{n}^{\circ}}{9} \right]
+\end{alignat*}
+\textcolor{red}{after checking constant: $16L$ or $28 L$ => $4/9$ or $7/9$}
+
+Which in turn implies
+
+\[\mathds{P}_{\theta^{\circ}}^{\circ} \left[1 \leq \widehat{m} < G_{n}^{-}\right] \leq \exp \left[ - \frac{4 m_{n}^{\circ}}{9} + \log\left(G_{n}\right)\right].\]
+
+\subsection{Proof of the the final statement}
+
+The $L^{2}$ risk can be written :
+\[\mathds{E}_{\theta^{\circ}}^{n}\left[\left\Vert \overline{\theta}^{\widehat{m}} - \theta^{\circ} \right\Vert^{2}\right] = \mathds{E}_{\theta^{\circ}}^{n}\left[\sum\limits_{j = 1}^{G_{n}} \left( \overline{\theta}^{\widehat{m}}_{j} - \theta^{\circ}_{j} \right)^{2}\right] + \mathds{E}_{\theta^{\circ}}^{n}\left[\sum\limits_{j = G_{n} + 1}^{\infty} \left(\theta^{\circ}_{j}\right)^{2}\right].\]
+Together with
+\[\forall j \in \llbracket 1, G_{n} \rrbracket, \quad \overline{\theta}^{\widehat{m}}_{j} - \theta^{\circ}_{j} = \left(\frac{Y_{j}}{\lambda_{j}} - \theta^{\circ}_{j}\right) \mathds{1}_{\{\widehat{m} \in \llbracket j, G_{n} \rrbracket\}} + \theta^{\circ}_{j} \mathds{1}_{\{\widehat{m} \in \llbracket 1, j-1 \rrbracket\}},\]
+implies that
+
+\begin{alignat*}{3}
+& \mathds{E}_{\theta^{\circ}}^{n}\left[\left\Vert \overline{\theta}^{\widehat{m}} - \theta^{\circ} \right\Vert^{2}\right] &&\leq&& \underbrace{\sum\limits_{j = 1}^{G_{n}}\mathds{E}_{\theta^{\circ}}^{n}\left[\left(\frac{Y_{j}}{\lambda_{j}} - \theta^{\circ}_{j}\right)^{2} \mathds{1}_{\{\widehat{m} \in \llbracket j, G_{n} \rrbracket\}}\right]}_{=: A}\\
+& && && + \underbrace{\sum\limits_{j = 1}^{G_{n}}\mathds{E}_{\theta^{\circ}}^{n}\left[\left(\theta^{\circ}_{j}\right)^{2} \mathds{1}_{\{\widehat{m} \in \llbracket 1, j-1 \rrbracket\}}\right]}_{=: B}+ \underbrace{\sum\limits_{j = G_{n} + 1}^{\infty}\mathds{E}_{\theta^{\circ}}^{n}\left[\left( \theta^{\circ}_{j}\right)^{2}\right]}_{=: C}.
+\end{alignat*}
+
+\bigskip
+
+We will now control each of the three parts of the sum using \textsc{\cref{lm4}} and \textsc{\cref{pr1}}.
+
+\bigskip
+
+First, consider $A$ and let be some positive real number $p$ to be specified later.
+
+Then we can write
+\begin{alignat*}{3}
+& A && \leq && \sum\limits_{j = 1}^{G_{n}^{+}} \mathds{E}_{\theta^{\circ}}^{n}\left[\left(\frac{Y_{j}}{\lambda_{j}} - \theta^{\circ}_{j}\right)^{2}\right] + \sum\limits_{j = G_{n}^{+} + 1}^{G_{n}} \mathds{E}_{\theta^{\circ}}^{n} \left[ \left(\frac{Y_{j}}{\lambda_{j}} - \theta^{\circ}_{j} \right)^{2} \mathds{1}_{\{\widehat{m} \in \llbracket j, G_{n} \rrbracket\}}\right]\\
+& &&\leq&& \sum\limits_{j = 1}^{G_{n}^{+}} \mathds{E}_{\theta^{\circ}}^{n}\left[\left(\frac{Y_{j}}{\lambda_{j}} - \theta^{\circ}_{j}\right)^{2}\right] + \sum\limits_{j = G_{n}^{+} + 1}^{G_{n}} \mathds{E}_{\theta^{\circ}}^{n} \left[ \left(\frac{Y_{j}}{\lambda_{j}} - \theta^{\circ}_{j} \right)^{2} \mathds{1}_{\{\widehat{m} \in \llbracket G_{n}^{+}+1, G_{n} \rrbracket\}}\right]\\
+& &&\leq&& \sum\limits_{j = 1}^{G_{n}^{+}} \mathds{E}_{\theta^{\circ}}^{n}\left[\left(\frac{Y_{j}}{\lambda_{j}} - \theta^{\circ}_{j}\right)^{2}\right] + \sum\limits_{j = G_{n}^{+} + 1}^{G_{n}} \mathds{E}_{\theta^{\circ}}^{n} \left[ \left(\frac{Y_{j}}{\lambda_{j}} - \theta^{\circ}_{j} \right)^{2} \mathds{1}_{\{\widehat{m} \in \llbracket G_{n}^{+}+1, G_{n} \rrbracket\}}\right] \\
+& && && - p\mathds{E}_{\theta^{\circ}}^{n}\left[\mathds{1}_{\{\widehat{m} \in \llbracket G_{n}^{+}+1, G_{n} \rrbracket}\right] + p \mathds{E}_{\theta^{\circ}}^{n}\left[\mathds{1}_{\{\widehat{m} \in \llbracket G_{n}^{+}+1, G_{n} \rrbracket}\right]\\
+& &&\leq&& \sum\limits_{j = 1}^{G_{n}^{+}} \mathds{E}_{\theta^{\circ}}^{n}\left[\left(\frac{Y_{j}}{\lambda_{j}} - \theta^{\circ}_{j}\right)^{2}\right] + \mathds{E}_{\theta^{\circ}}^{n} \left[ \left( \sum\limits_{j = G_{n}^{+} + 1}^{G_{n}}\left(\frac{Y_{j}}{\lambda_{j}} - \theta^{\circ}_{j} \right)^{2} - p\right) \mathds{1}_{\{\widehat{m} \in \llbracket G_{n}^{+}+1, G_{n} \rrbracket\}}\right]\\
+& && &&+ p \mathds{E}_{\theta^{\circ}}^{n}\left[\mathds{1}_{\{\widehat{m} \in \llbracket G_{n}^{+}+1, G_{n} \rrbracket}\right]\\
+& &&\leq&& \underbrace{\sum\limits_{j = 1}^{G_{n}^{+}} \mathds{E}_{\theta^{\circ}}^{n}\left[\left(\frac{Y_{j}}{\lambda_{j}} - \theta^{\circ}_{j}\right)^{2}\right]}_{=: A_{3}} + \underbrace{\mathds{E}_{\theta^{\circ}}^{n}\left[ \left(\sum\limits_{j = G_{n}^{+} + 1}^{G_{n}}\left(\frac{Y_{j}}{\lambda_{j}} - \theta^{\circ}_{j} \right)^{2} - p\right)_{+}\right]}_{=: A_{1}} + \underbrace{p \mathds{E}_{\theta^{\circ}}^{n}\left[\mathds{1}_{\{\widehat{m} \in \llbracket G_{n}^{+}+1, G_{n} \rrbracket}\right]}_{=: A_{2}} .
+\end{alignat*}
+
+\medskip
+
+First, we will control $A_{1}$ using \textsc{\cref{lm4}}.
+
+The goal is to give $p$ a value that is large enough to control this object but small enough so $p \cdot \mathds{P}_{\theta^{\circ}}^{n} \left[G_{n}^{+} < \widehat{m} \leq G_{n}\right]$ is still for the most $\Phi_{n}^{\circ}$.
+
+Define $S_{n} := \sum\limits_{j = G_{n}^{+} + 1}^{G_{n}}\left(\frac{Y_{j}}{\lambda_{j}} - \theta^{\circ}_{j}\right)^{2}.$
+
+We have, for all $j$ in $\llbracket G_{n}^{+} + 1, G_{n} \rrbracket$,
+\[ \frac{Y_{j}}{\lambda_{j}} - \theta^{\circ}_{j} \sim \mathcal{N}\left(0, \frac{\Lambda_{j}}{n} \right), \]
+so $\mathds{E}_{\theta^{\circ}}^{n}\left[S_{n}\right] = \frac{1}{n} \sum\limits_{j = G_{n}^{+} + 1}^{G_{n}} \Lambda_{j}$.
+
+And define, using the definition of $G_{n}$ and $\textsc{\cref{as1}}$
+\begin{alignat*}{3}
+& t_{m} &&:=&& \Lambda_{1} \geq \frac{\Lambda_{G_{n}}}{n} \geq \max\limits_{j \in \llbracket G_{n}^{+} + 1, G_{n} \rrbracket} \frac{\Lambda_{j}}{n}\\
+& v_{m} && := && G_{n} \Lambda_{1} \geq \frac{G_{n} \Lambda_{G_{n}}}{n} \geq  \frac{1}{n} \sum\limits_{j = G_{n}^{+} + 1}^{G_{n}} \Lambda_{j}.
+\end{alignat*}
+
+We can take $p = \mathds{E}_{\theta^{\circ}}^{n}\left[S_{n}\right] + 3 v_{m}$ which gives, using the definition of $G_{n}^{+}$ and $G_{n} > G_{n}^{+}$
+\begin{alignat*}{3}
+& A_{1} && = && \mathds{E}_{\theta^{\circ}}^{n}\left[\left(S_{n} - \mathds{E}_{\theta^{\circ}}^{n}\left[S_{n}\right] - 3 v_{m}\right)_{+}\right]\\
+& &&\leq&& 6 \Lambda_{1} \exp\left[- \frac{G_{n}}{2}\right]\\
+& &&\leq&& 6 \Lambda_{1} \exp\left[- \frac{n G_{n}}{2n}\right]\\
+& &&\leq&& 6 \Lambda_{1} \exp\left[- n \frac{3 \Lambda_{m_{n}^{\circ}}^{-1} \Phi_{n}^{\circ}}{2} - \frac{m_{n}^{\circ}}{2}\right]\\
+& A_{1} && \leq && 6 \Lambda_{1} \exp\left[- \frac{2 m_{n}^{\circ}}{L}\right].
+\end{alignat*}
+
+\medskip
+
+Thanks to \textsc{\cref{pr1}} it is easily shown that
+\[A_{2} < 4 \Lambda_{1} \exp\left[-\frac{5 m_{n}^{\circ}}{9 L} + 2 \log \left(G_{n}\right)\right].\]
+
+\medskip
+
+Finally, we control $A_{3}.$
+Using the definition of $G_{n}^{+}$ we have
+
+\begin{alignat*}{3}
+& A_{3} &&=&& \sum\limits_{j = 1}^{G_{n}^{+}} \mathds{E}_{\theta^{\circ}}^{n}\left[\left(\overline{\theta}_{j} - \theta^{\circ}_{j}\right)^{2}\right]\\
+& &&=&& \sum\limits_{j = 1}^{G_{n}^{+}} \frac{\Lambda_{j}}{n}\\
+& &&=&& \frac{1}{n} G_{n}^{+} \overline{\Lambda}_{G_{n}^{+}}\\
+&A_{3} &&\leq&& \frac{\overline{\Lambda}_{G_{n}^{+}}}{\Lambda_{m_{n}^{\circ}}} 3 \Phi_{n}^{\circ}.
+\end{alignat*}
+
+Note that, using \textsc{\cref{as2}} and the definition of $G_{n}^{+}$, we have that $\frac{\overline{\Lambda}_{G_{n}^{+}}}{\Lambda_{m_{n}^{\circ}}}$ is bounded for $n$ large enough; indeed with $D^{\circ} := \left\lceil \frac{3}{\kappa^{\circ}} + 1\right\rceil$,
+
+\begin{alignat*}{3}
+& G_{n}^{+} && \leq && \frac{3 n \Phi_{n}^{\circ}}{\Lambda_{m_{n}^{\circ}}} + m_{n}^{\circ} \leq \frac{3 n m_{n}^{\circ} \overline{\Lambda}_{m_{n}^{\circ}}}{\Lambda_{m_{n}^{\circ}} n \kappa^{\circ}} + m_{n}^{\circ} \leq \left(\frac{3}{\kappa^{\circ}} + 1\right) m_{n}^{\circ} \leq D^{\circ} m_{n}^{\circ}\\ 
+& &&\Rightarrow&& \frac{\overline{\Lambda}_{G_{n}^{+}}}{\Lambda_{m_{n}^{\circ}}}\leq \frac{\overline{\Lambda}_{D^{\circ} \cdot m_{n}^{\circ}}}{\Lambda_{D^{\circ} \cdot m_{n}^{\circ}}} \cdot \frac{\Lambda_{D^{\circ} \cdot m_{n}^{\circ}}}{\Lambda_{m_{n}^{\circ}}} \leq \Lambda_{D^{\circ}}.
+\end{alignat*}
+
+\medskip
+
+Hence, we have
+\[A \leq 6 \Lambda_{1} \exp\left[- \frac{2 m_{n}^{\circ}}{L}\right] + 4 \Lambda_{1} \exp\left[-\frac{5 m_{n}^{\circ}}{9 L} + 2 \log \left(G_{n}\right)\right] +  \Lambda_{D^{\circ}} 3 \Phi_{n}^{\circ}.\]
+
+\bigskip
+
+Now we control $B$ We use a decomposition similar to the one used for $A$ :
+\begin{alignat*}{3}
+& B && \leq && \sum\limits_{j = G_{n}^{-} + 1}^{G_{n}} \left(\theta^{\circ}_{j}\right)^{2} + \sum\limits_{j = 1}^{G_{n}^{-}} \mathds{E}_{\theta^{\circ}}^{n}\left[\left(\theta^{\circ}_{j}\right)^{2} \mathds{1}_{\left\{\widehat{m} \in \llbracket 1, j - 1 \rrbracket\right\}}\right]\\
+& && \leq && \sum\limits_{j = G_{n}^{-} + 1}^{G_{n}} \left(\theta^{\circ}_{j} \right)^{2} + \sum\limits_{j = 1}^{G_{n}^{-}} \mathds{E}_{\theta^{\circ}}^{n}\left[\left(\theta^{\circ}_{j}\right)^{2} \mathds{1}_{\left\{\widehat{m} \in \llbracket 1, G_{n}^{-} - 1 \rrbracket\right\}}\right]\\
+& B && \leq && \underbrace{\sum\limits_{j = G_{n}^{-} + 1}^{G_{n}} \left(\theta^{\circ}_{j}\right)^{2}}_{=: B_{1}} + \underbrace{\sum\limits_{j = 1}^{G_{n}^{-}} \left(\theta^{\circ}_{j}\right)^{2} \mathds{P}_{\theta^{\circ}}^{n}\left[1 \leq \widehat{m} < G_{n}^{-}\right]}_{=: B_{2}}.
+\end{alignat*}
+
+\medskip
+
+First, notice that $B_{1} + C = \mathfrak{b}_{G_{n}^{-}} \leq 9 L \Phi_{n}^{\circ}$ by the definition of $G_{n}^{-}.$
+
+\medskip
+
+To control $B_{2},$ we use the fact that $\theta^{\circ}$ is square summable and the \textsc{\cref{pr1}} :
+ 
+\begin{alignat*}{3}
+& B_{2} &&=&& \mathds{P}_{\theta^{\circ}}^{n}\left[1 \leq \widehat{m} < G_{n}^{-}\right] \sum\limits_{j = 1}^{G_{n}^{-}} \left(\theta^{\circ}_{j}\right)^{2} \\
+& &&\leq&& \exp\left[-\frac{7 m_{n}^{\circ}}{9} + \log\left(G_{n}\right)\right] \cdot \Vert \theta^{\circ} \Vert^{2}.
+%& &&\leq&& \exp\left[-\frac{7 m_{\epsilon}^{\circ}}{9} + \log\left(G_{\epsilon}\right)\right] \cdot \mathfrak{a}_{1}\sum\limits_{j = 1}^{G_{\epsilon}^{-}} \frac{1}{\mathfrak{a}_{j}}\left(\theta^{\circ}_{j} - \theta^{\times}_{j}\right)^{2}\\
+%& &&\leq&& \exp\left[-\frac{7 m_{\epsilon}^{\circ}}{9} + \log\left(G_{\epsilon}\right)\right] \cdot \mathfrak{a}_{1}L^{\circ}\\
+ \end{alignat*}
+
+\medskip
+
+So we have
+\[B + C \leq 9 L \Phi_{n}^{\circ} + \Vert \theta^{\circ} \Vert^{2} \cdot \exp\left[-\frac{7 m_{n}^{\circ}}{9} + \log\left(G_{n}\right)\right].\]
+
+\bigskip
+
+Which leads to :
+\begin{alignat*}{3}
+&\mathds{E}_{\theta^{\circ}}^{n}\left[\left\Vert \overline{\theta}^{\widehat{m}} - \theta^{\circ} \right\Vert^{2}\right] &&\leq&& 3 \left( \Lambda_{D^{\circ}} + 3 L \right) \Phi_{n}^{\circ} +\\
+& && &&\left(6 \Lambda_{1} \exp\left[- \frac{2 m_{n}^{\circ}}{L} - \log\left(\Phi_{n}^{\circ}\right)\right] + 4 \Lambda_{1} \exp\left[-\frac{5 m_{n}^{\circ}}{9 L} + \log \left(\frac{G_{n}^{2}}{\Phi_{n}^{\circ}}\right)\right] \right.\\
+& && && \left. + \Vert \theta^{\circ} \Vert^{2} \cdot \exp\left[-\frac{7 m_{n}^{\circ}}{9} + \log\left(\frac{G_{n}}{\Phi_{n}^{\circ}}\right)\right]\right) \Phi_{n}^{\circ},\\
+\end{alignat*}
+
+which proves that there exist $C$ such that, for $n$ large enough,
+\[\mathds{E}_{\theta^{\circ}}^{n}\left[\left\Vert \overline{\theta}^{\widehat{m}} - \theta^{\circ} \right\Vert^{2}\right] \leq C \Phi_{n}^{\circ}.\]
+
+%\bigskip
+%To conclude, in the case where there are more than one minima to the penalised contrast (note $\widehat{m}_{min}$ and $\widehat{m}_{max}$ the smallest and the greatest minimising values and $\overline{\theta}^{\widehat{m}_{min}}$ and $\overline{\theta}^{\widehat{m}_{max}}$ the associated projection estimators), we can use the following inequality :
+%
+%\begin{alignat*}{3}
+%& \Vert \overline{\theta} - \theta^{\circ} \Vert^{2} && = && \Vert \overline{\theta}^{\widehat{m}_{min}} - \theta^{\circ, \widehat{m}_{min}} \Vert^{2} + \mathfrak{b}_{\widehat{m}_{max}}^{2} + \sum\limits_{j = \widehat{m}_{min} + 1}^{\widehat{m}_{max}} \left(\overline{\theta}_{j} - \theta^{\circ}_{j}\right)^{2}\\
+%& &&\leq&& \Vert \overline{\theta}^{\widehat{m}_{min}} - \theta^{\circ, \widehat{m}_{min}} \Vert^{2} + \mathfrak{b}_{\widehat{m}_{max}}^{2} + \sum\limits_{j = \widehat{m}_{min} + 1}^{\widehat{m}_{max}} \max\left(\left(\overline{\theta}_{j}^{\widehat{m}_{max}} - \theta^{\circ}_{j}\right)^{2}, \left(\overline{\theta}_{j}^{\widehat{m}_{min}} - \theta^{\circ}_{j}\right)^{2}\right)\\
+%& &&\leq&& \Vert \overline{\theta}^{\widehat{m}_{min}} - \theta^{\circ, \widehat{m}_{min}} \Vert_{l_{2}}^{2} + \mathfrak{b}_{\widehat{m}_{max}}^{2} + \sum\limits_{j = \widehat{m}_{min} + 1}^{\widehat{m}_{max}} \left(\left(\overline{\theta}_{j}^{\widehat{m}_{max}} - \theta^{\circ}_{j}\right)^{2} + \left(\overline{\theta}_{j}^{\widehat{m}_{min}} - \theta^{\circ}_{j}\right)^{2}\right)\\
+%& &&\leq&& \Vert \overline{\theta}^{\widehat{m}_{min}} - \theta^{\circ} \Vert^{2} + \Vert \overline{\theta}^{\widehat{m}_{max}} - \theta^{\circ} \Vert^{2}.
+%\end{alignat*}
+%
+%And we conclude with
+%
+%\begin{alignat*}{3}
+%& \mathds{E}_{\theta^{\circ}}\left[\Vert \overline{\theta} - \theta^{\circ}\Vert^{2}\right] && \leq && \mathds{E}_{\theta^{\circ}}\left[\Vert \overline{\theta}^{\widehat{m}_{min}} - \theta^{\circ} \Vert^{2} + \Vert \overline{\theta}^{\widehat{m}_{max}} - \theta^{\circ} \Vert^{2}\right] \\
+%& &&\leq&& \mathds{E}_{\theta^{\circ}}\left[\Vert \overline{\theta}^{\widehat{m}_{min}} - \theta^{\circ} \Vert^{2} \right]+ \mathds{E}_{\theta^{\circ}}^{n}\left[\Vert \overline{\theta}^{\widehat{m}_{max}} - \theta^{\circ} \Vert^{2}\right]\\
+%& &&\leq&& 2 C \Phi_{n}^{\circ}
+%\end{alignat*}
+%and we set $C^{\circ} := 2C.$
+%
+%Note that this inequality has the interest to proof that any convex combination of some minimax optimal estimators is also a minimax optimal estimator.

@@ -1,0 +1,125 @@
+\documentclass[a4paper,11pt]{book}
+\synctex=1
+
+\usepackage{graphicx}
+% put all the other packages here:
+
+
+\usepackage{packages}
+\usepackage{ACDE-abrev-package}
+\usepackage{command}
+\usepackage{style}
+\usepackage{personal}
+\usepackage{theorem}
+\usepackage{hyperref} 
+
+\begin{document}
+\frontmatter
+\input{./tex/title.tex}
+%
+\tableofcontents
+%
+%
+\mainmatter
+
+\pagestyle{fancy}
+\chapter{Introduction}\label{INTRO}
+\input{./tex/introduction/inverse_problems.tex}
+\input{./tex/introduction/frequentist_approach.tex}
+\input{./tex/introduction/bayesian_approach.tex}
+\input{./tex/introduction/iGSSM.tex}
+\input{./tex/introduction/circular_deconvolution.tex}
+
+\chapter{Bayesian interpretation of penalised contrast model selection}\label{BAYES}
+
+In this chapter, we consider the family of Bayesian methods described as "Gaussian sieve priors" in \nref{INTRO_BAYES_PRIOR} as well as an adaptive variant of these priors, the hierarchical sieve priors where the threshold parameter is a random variable with a specified prior distribution.
+We study their behaviour under two asymptotic, respectively described in \nref{INTRO_BAYES_PRAGMATIC} and \nref{INTRO_BAYES_ITERATIVE}.
+
+In \nref{BAYES_SIEVE} we consider the self informative Bayes carrier of Gaussian sieve priors under continuity assumptions for the likelihood and show that its support is contained in the maximum likelihood set.
+Then, in \nref{BAYES_HIERARCHICAL} we show that the distribution of the hyper-parameter in the hierarchical prior contracts around the set of maximisers of a penalised contrast criterion.
+This section highlights a new link between Bayesian adaptive estimation and the frequentist penalised contrast model selection.
+
+\medskip
+
+In \nref{BAYES_STRATEGIES}, while considering the noise asymptotic, we line out two strategies of proof which allow to obtain contraction rates. The first relies on posterior moment bounding and which, up to our knowledge, is new; the second is specific to the hierarchical sieve prior and is similar to the one used in \ncite{JJASRS}.
+In \nref{BAYES_GAUSS} we apply this strategies to the specific inverse Gaussian sequence space model.
+Doing so, we obtain exact contraction rate for the (iterated) Gaussian sieve prior using the first scheme of proof; and the iterated hierarchical prior using the second.
+This yields optimality for sieve priors with properly chosen threshold parameter; as well as for penalised contrast model selection; and for any iterated version of the hierarchical prior we consider.
+The most interesting point of this subsection is the novel way to show optimality of the penalised contrast model selection.
+
+ \medskip
+%
+% In \nref{BAYES_CIRCULARDECON} we inquire the use of the discussed method to the circular deconvolution model and show that a direct use of those methods is not possible in this context.
+% We give nonetheless some tracks for a fix.
+
+\medskip
+
+Finally, we conclude this chapter in \nref{BAYES_POSTMEAN} with a note about the shape of the posterior mean of the hierarchical prior, motivating the shape of the frequentist estimators we use in \nref{FREQ}.
+
+\input{./tex/general_bayes/sieve.tex}
+\input{./tex/general_bayes/hierarchical.tex}
+\input{./tex/general_bayes/general.tex}
+\input{./tex/general_bayes/model.tex}
+%\input{./tex/general_bayes/decon.tex}
+\input{./tex/general_bayes/post_mean.tex}
+%%
+\chapter{Minimax and oracle optimal adaptive aggregation}\label{FREQ}
+We inquire in this chapter the properties of aggregation estimators as introduced in \nref{BAYES_POSTMEAN}.
+We introduce first a skim of proof for oracle and minimax optimality of this kind of estimator before applying it to the inverse Gaussian sequence space and the circular deconvolution models respectively introduced in \nref{INTRO_IGSSM} and \nref{INTRO_CIRCULARDECONVOLUTION}, including in presence of dependance and partially known operator.
+
+\input{./tex/freq/general.tex}
+%%
+\input{./tex/freq/gauss_known.tex}
+\input{./tex/freq/gauss_unknown.tex}
+%%
+\input{./tex/freq/deconvolution_iid_known.tex}
+\input{./tex/freq/deconvolution_beta_known.tex}
+\input{./tex/freq/deconvolution_iid_unknown.tex}
+%\input{./tex/freq/deconvolution_beta_unknown.tex}
+%%
+\appendix
+%%%
+\chapter{Useful results}\label{USEFULRESULTS}
+\input{./tex/proofs/useful_results.tex}
+%
+\chapter{Dependent data}\label{DEPENDENTDATA}
+\input{./tex/proofs/dependent_data.tex}
+%
+\chapter{Proof of \textsc{\nref{THM_BAYES_IGSSM_KNOWN_IID_ORACLE_NP}}}\label{PRO_BAYES_IGSSM_KNOWN_IID_ORACLE_NP}
+\input{./tex/proofs/bayes_igssm_known_iid_oracle_np.tex}
+\chapter{Proof of \textsc{\nref{THM_BAYES_IGSSM_KNOWN_IID_MINIMAX_NP}}}\label{PRO_BAYES_IGSSM_KNOWN_IID_MINIMAX_NP}
+\input{./tex/proofs/bayes_igssm_known_iid_minimax_np.tex}
+%
+\chapter{Proof for \nref{THM_FREQ_IGSSM_KNOWN_IID_ORACLE_NP}}\label{PRO_FREQ_IGSSM_KNOWN_IID_ORACLE_NP}
+\input{./tex/proofs/freq_igssm_known_iid_oracle_np.tex}
+\chapter{Proof for \nref{THM_FREQ_IGSSM_KNOWN_IID_MINIMAX_NP}}\label{PRO_FREQ_IGSSM_KNOWN_IID_MINIMAX_NP}
+\input{./tex/proofs/freq_igssm_known_iid_minimax_np.tex}
+\chapter{Proof for \nref{THM_FREQ_CIRCDECONV_KNOWN_IID_ORACLE_P}}\label{PRO_FREQ_CIRCDECONV_KNOWN_IID_ORACLE_P}
+\input{./tex/proofs/freq_circdeconv_known_iid_oracle_p.tex}
+\chapter{Proof for \nref{THM_FREQ_CIRCDECONV_KNOWN_IID_ORACLE_NP}}\label{PRO_FREQ_CIRCDECONV_KNOWN_IID_ORACLE_NP}
+\input{./tex/proofs/freq_circdeconv_known_iid_oracle_np.tex}
+\chapter{Proof for \nref{THM_FREQ_CIRCDECONV_KNOWN_IID_ORACLE_NP_FAST}}\label{PRO_FREQ_CIRCDECONV_KNOWN_IID_ORACLE_NP_FAST}
+\input{./tex/proofs/freq_circdeconv_known_iid_oracle_np_fast.tex}
+\chapter{Proof for \textsc{\nref{THM_FREQ_CIRCDECONV_KNOWN_BETA_ORACLE_NP}}}\label{PRO_FREQ_CIRCDECONV_KNOWN_BETA_ORACLE_NP}
+\input{./tex/proofs/freq_circdeconv_known_beta_oracle_np.tex}
+\chapter{Proof for \nref{THM_FREQ_CIRCDECONV_UNKNOWN_IID_ORACLE_P}}\label{PRO_FREQ_CIRCDECONV_UNKNOWN_IID_ORACLE_P}
+\input{./tex/proofs/freq_circdeconv_unknown_iid_oracle_p.tex}
+\chapter{Proofs of \nref{THM_FREQ_CIRCDECONV_UNKNOWN_IID_ORACLE_NP}}\label{PRO_FREQ_CIRCDECONV_UNKNOWN_IID_ORACLE_NP}
+\input{./tex/proofs/freq_circdeconv_unknown_iid_oracle_np.tex}
+\chapter{Simulation skim}\label{SIMULATION}
+%% \input{./tex/simulation_skim/simulations.tex}
+%
+\chapter{R Code}\label{CODE}
+%
+%\input{./tex/table_of_notations.tex}
+
+\bibliography{biblio.bib}{}
+\nocite{*}
+\bibliographystyle{apalike}
+%
+
+\end{document}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

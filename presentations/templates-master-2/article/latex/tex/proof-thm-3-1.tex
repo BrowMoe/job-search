@@ -1,0 +1,220 @@
+\section{Proof for \textsc{\cref{thm1}}}
+\subsection{Proof of the lower bound}
+
+We want to find a sequence $\left(K_{n}\right)_{n \in \mathds{N}}$ (for short, $K_{n}$) converging to $0$ such that
+\[\lim\limits_{n \rightarrow \infty} \mathds{E}_{\theta^{\circ}}^{n}\left[\mathds{P}_{\theta^{m_{n}}\vert Y^{n}}^{n}\left(\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert^{2} \geq K_{n}\right)\right] > 0.\]
+
+For any $n$, we define $S^{m_{n}} := \sum_{j=1}^{m_{n}} \left(\boldsymbol{\theta} - \theta^{\circ}\right)^{2}$. Therefore we have : 
+\[\mathds{E}_{\theta^{\circ}}^{n}\left[\mathds{P}_{\theta^{m_{n}}\vert Y^{n}}^{n}\left(\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert^{2} \geq K_{n}\right)\right] = \mathds{E}_{\theta^{\circ}}^{n}\left[\mathds{P}_{\theta^{m_{n}}\vert Y^{n}}^{n}\left(S^{m_{n}} \geq K_{n} - \mathfrak{b}_{m_{n}}\right)\right].\]
+
+By definition, $S^{m_{n}}$ has strictly positive, finite variance. We define $\mathcal{S}^{m_{n}} := \frac{S^{m_{n}}}{\sqrt{\mathds{V}_{\boldsymbol{\theta}\vert Y^{n}}^{n}[S^{m_{n}}]}}.$
+The sequence of random variables defined this way has variance $1$ and is almost surely positive.
+Hence, for any $\omega$, there exist a constant $d$ strictly positive such that $\mathds{P}_{\theta^{m_{n}}\vert Y^{n}}^{n}\left(\mathcal{S}^{m_{n}} \geq d\right)>0$.
+Moreover we have :
+
+\[\mathds{E}_{\theta^{\circ}}^{n}\left[\mathds{P}_{\theta^{m_{n}}\vert Y^{n}}^{n}\left(\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert^{2} \geq K_{n}\right)\right] = \mathds{E}_{\theta^{\circ}}^{n}\left[\mathds{P}_{\theta^{m_{n}}\vert Y^{n}}^{n}\left(\mathcal{S}^{m_{n}} \geq \frac{K_{n} - \mathfrak{b}_{m_{n}}^{2}}{\sqrt{\mathds{V}_{\boldsymbol{\theta}^{m_{n}} \vert Y^{n}}^{n}\left[S^{m_{n}}\right]}}\right)\right].\]
+
+We now control the convergence in probability of $\mathds{V}_{\boldsymbol{\theta}^{m} \vert Y^{n}}^{n}\left[\mathcal{S}^{m_{n}}\right]$ which is given by
+\[\mathds{V}_{\boldsymbol{\theta}^{m_{n}} \vert Y^{n}}^{n}\left[S^{m_{n}}\right] = 2 \sum\limits_{j = 1}^{m_{n}} \left(\frac{\Lambda_{j}}{n \eta}\cdot \frac{1}{\frac{\Lambda_{j}}{n \eta} + 1}\right)^{2}\left(1 + 2 \frac{\left(- \theta^{\circ}_{j} + \eta \sqrt{n} \xi_{j} \lambda_{j}\right)^{2}}{\frac{\eta n}{\Lambda_{j}}\left(\frac{\Lambda_{j}}{\eta n} + 1\right)}\right).\]
+
+We now control the stochastic part of this object.
+
+\textcolor{blue}{
+Define for some sequence $(u_{n})_{n \in \mathds{N}}$, tending to $0$, the event $\Omega_{m_{n}} := \left\{\mathds{V}_{\boldsymbol{\theta}^{m_{n}} \vert Y^{n}}^{n}\left[S^{m_{n}}\right] \geq u_{n}\right\}.$
+Which gives
+\begin{alignat*}{3}
+& \Omega_{m_{n}} && = && \left\{2 \sum\limits_{j = 1}^{m_{n}} \left(\frac{\Lambda_{j}}{n \eta}\cdot \frac{1}{\frac{\Lambda_{j}}{n \eta} + 1}\right)^{2}\left(1 + 2 \frac{\left(- \theta^{\circ}_{j} + \eta \sqrt{n} \xi_{j} \lambda_{j}\right)^{2}}{\frac{\eta n}{\Lambda_{j}}\left(\frac{\Lambda_{j}}{\eta n} + 1\right)}\right) \geq u_{n}\right\}\\
+& && = && \left\{\sum\limits_{j = 1}^{m_{n}} \left(\frac{\Lambda_{j}}{n \eta}\cdot \frac{1}{\frac{\Lambda_{j}}{n \eta} + 1}\right)^{3}\left(- \theta^{\circ}_{j} + \eta \sqrt{n} \xi_{j} \lambda_{j}\right)^{2} \geq \frac{u_{n}}{4} - \frac{1}{2}\sum\limits_{j = 1}^{m_{n}} \left(\frac{\Lambda_{j}}{n \eta}\cdot \frac{1}{\frac{\Lambda_{j}}{n \eta} + 1}\right)^{2}\right\}\\
+\end{alignat*}
+In the same spirit as previously, we define the sequence of random variables $T^{m_{n}} := \sum\limits_{j = 1}^{m_{n}} \left(\frac{\Lambda_{j}}{n \eta}\cdot \frac{1}{\frac{\Lambda_{j}}{n \eta} + 1}\right)^{3}\left(- \theta^{\circ}_{j} + \eta \sqrt{n} \xi_{j} \lambda_{j}\right)^{2}.$
+We have
+\[\mathds{V}_{\boldsymbol{\theta}^{m_{n}} \vert Y^{n}}^{n}\left[T^{m_{n}}\right] = 2 \sum\limits_{j = 1}^{m_{n}} \frac{1}{1 + \frac{\Lambda_{j}}{\eta n}}\frac{\Lambda_{j}^{4}}{n^{4} \eta^{2}}\left[1 + 2 \frac{\Lambda_{j}}{\eta^{2} n} \left(\theta^{\circ}_{j}\right)^{2}\right]\]
+and the sequence of random variables $\mathcal{T}^{m_{n}} := \frac{T^{m_{n}}}{\sqrt{\mathds{V}_{\boldsymbol{\theta}^{m_{n}} \vert Y^{n}}^{n}\left[T^{m_{n}}\right]}}$ has variance $1$ and is almost surely positive.
+Therefore, $\mathds{P}_{\theta^{\circ}}^{n}(\Omega_{m_{n}}) = \mathds{P}_{\theta^{\circ}}^{n}\left(\mathcal{T}^{m_{n}} \geq \frac{\frac{u_{n}}{4} -  \frac{1}{2}\sum\limits_{j = 1}^{m_{n}} \left(\frac{\Lambda_{j}}{n \eta}\cdot \frac{1}{\frac{\Lambda_{j}}{n \eta} + 1}\right)^{2}}{\sqrt{\mathds{V}_{\boldsymbol{\theta}^{m_{n}} \vert Y^{n}}^{n}\left[T^{m_{n}}\right]}}\right)$.
+Consider any strictly positive constant $c$ such that $\lim\limits_{n \rightarrow \infty} \mathds{P}_{\theta^{\circ}}^{n}\left(\mathcal{T}^{m_{n}} \geq c\right) > 0$.
+Then, if
+\begin{alignat*}{3}
+&u_{n} &&=&& 4 \cdot c \cdot \sqrt{\mathds{V}_{\boldsymbol{\theta}^{m_{n}} \vert Y^{n}}^{n}\left[T^{m_{n}}\right]} + 2 \sum\limits_{j = 1}^{m_{n}}\left(\frac{\Lambda_{j}}{n \eta} \cdot \frac{1}{\frac{\Lambda_{j}}{\eta n} + 1}\right)^{2}\\
+& &&=&& 4 \cdot c \cdot \sqrt{2 \sum\limits_{j = 1}^{m_{n}} \frac{1}{1 + \frac{\Lambda_{j}}{\eta n}}\frac{\Lambda_{j}^{4}}{n^{4} \eta^{2}}\left[1 + 2 \frac{\Lambda_{j}}{\eta^{2} n} \left(\theta^{\circ}_{j}\right)^{2}\right]} + 2 \sum\limits_{j = 1}^{m_{n}}\left(\frac{\Lambda_{j}}{n \eta} \cdot \frac{1}{\frac{\Lambda_{j}}{\eta n} + 1}\right)^{2},
+\end{alignat*}
+we obtain $\mathds{P}_{\theta^{\circ}}^{n}(\Omega_{m_{n}}) \geq \mathds{P}_{\theta^{\circ}}^{n}\left(\mathcal{T}^{m_{n}} \geq c \right) > 0$.
+}
+
+\medskip
+
+We can now conclude about the posterior contraction by defining
+\begin{alignat*}{3}
+&K_{n} &&:=&& \mathfrak{b}_{m_{n}}^{2} + d \cdot \sqrt{u_{n}}\\
+& &&=&& \mathcal{O}\left(\frac{m_{n} \overline{\Lambda}_{m_{n}}}{n \eta} \vee \mathfrak{b}_{m_{n}}^{2}\right)
+\end{alignat*}
+
+
+Indeed :
+\begin{alignat*}{3}
+&\mathds{E}_{\theta^{\circ}}^{n}\left[\mathds{Q}_{\theta^{m^{\circ}}\vert Y^{n}}^{n}\left(\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert^{2} \geq K_{n}\right)\right] && = &&\mathds{E}_{\theta^{\circ}}^{n}\left[\mathds{1}_{\Omega_{m_{n}}}\mathds{Q}_{\theta^{m^{\circ}}\vert Y^{n}}^{n}\left(\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert^{2} \geq K_{n}\right)\right]\\
+& && && + \mathds{E}_{\theta^{\circ}}^{n}\left[\mathds{1}_{\Omega_{m_{n}}^{c}}\mathds{Q}_{\theta^{m^{\circ}}\vert Y^{n}}^{n}\left(\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert^{2} \geq K_{n}\right)\right]\\
+& &&\geq &&\mathds{E}_{\theta^{\circ}}^{n}\left[\mathds{1}_{\{\mathds{V}_{\boldsymbol{\theta}^{m_{n}} \vert Y^{n}}^{n}\left[S^{m_{n}}\right] \geq u_{n}\}}\mathds{Q}_{\theta^{m^{\circ}}\vert Y^{n}}^{n}\left(\mathcal{S}^{m_{n}} \geq \frac{K_{n} - \mathfrak{b}_{m_{n}}^{2}}{\sqrt{\mathds{V}_{\boldsymbol{\theta}^{m_{n}} \vert Y^{n}}^{n}\left[S^{m_{n}}\right]}}\right)\right]\\
+& &&\geq &&\mathds{E}_{\theta^{\circ}}^{n}\left[\mathds{1}_{\{\mathds{V}_{\boldsymbol{\theta}^{m_{n}} \vert Y^{n}}^{n}\left[S^{m_{n}}\right] \geq u_{n}\}}\mathds{Q}_{\theta^{m^{\circ}}\vert Y^{n}}^{n}\left(\mathcal{S}^{m_{n}} \geq \frac{K_{n} - \mathfrak{b}_{m_{n}}^{2}}{\sqrt{u_{n}}}\right)\right]\\
+& &&\geq &&\mathds{P}_{\theta^{\circ}}^{n}(\Omega_{m_{n}})\cdot\mathds{E}_{\theta^{\circ}}^{n}\left[\mathds{Q}_{\theta^{m^{\circ}}\vert Y^{n}}^{n}\left(\mathcal{S}^{m_{n}} \geq \frac{K_{n} - \mathfrak{b}_{m_{n}}^{2}}{\sqrt{u_{n}}}\right)\right]\\
+& &&\geq &&\mathds{P}_{\theta^{\circ}}^{n}(\Omega_{m_{n}})\cdot\mathds{E}_{\theta^{\circ}}^{n}\left[\mathds{Q}_{\theta^{m^{\circ}}\vert Y^{n}}^{n}\left(\mathcal{S}^{m_{n}} \geq d \right)\right]\\
+& && > && 0
+\end{alignat*}
+
+\textcolor{red}{ Not sure about the last step: we have existance of $d$ for any $\omega$, is it enough to justify existence of $d$ such that the expected probability is not $0$? If not, would $d_{n} \rightarrow 0$ work?}
+
+
+
+
+
+%This proof follows of \textsc{\citet{ghosal2000convergence}}.
+%
+%Consider a sequence of prior distributions $\mathds{P}_{\boldsymbol{\theta}}^{n}$.
+%Suppose that for a sequence $\left(\Phi_{n}(\theta^{\circ})\right)_{n \in \mathds{N}},$ we have
+%\[\liminf\limits_{n \rightarrow \infty}\mathds{E}_{\theta^{\circ}}^{n}\left[\mathds{P}_{\boldsymbol{\theta}\vert Y^{n}}^{n}\left( \boldsymbol{\theta} \in \left\{\theta : \Vert \theta - \theta^{\circ} \Vert^{2} \geq \Phi_{n}(\theta^{\circ})\right\}\right)\right] = 0.\]
+%Consider then the Bayes estimator with maximal posterior probability for his $\Phi_{n}(\theta^{\circ})-$neighborhood, that is to say
+%\[\widetilde{\theta}:= \argmax\limits_{\widetilde{\theta} \in \Theta}\left\{\mathds{P}_{\boldsymbol{\theta}\vert Y^{n}}\left(\boldsymbol{\theta} \in\left\{\theta \in \Theta : \Vert \theta - \widetilde{\theta} \Vert^{2} \leq \Phi_{n}\left(\theta^{\circ}\right)\right\}\right)\right\}.\]
+%
+%By definition of this estimator and hypothesis on $\Phi_{n}(\theta^{\circ})$, we have
+%\begin{alignat*}{5}
+%& &&\mathds{P}_{\boldsymbol{\theta}\vert Y^{n}}^{n}\left(\boldsymbol{\theta} \in \left\{\theta : \Vert \theta - \widetilde{\theta} \Vert \leq \Phi_{n}(\theta^{\circ})\right\}\right) &&\geq&& &&\mathds{P}_{\boldsymbol{\theta}\vert Y^{n}}^{n}\left(\boldsymbol{\theta} \in \left\{\theta : \Vert \theta - \theta^{\circ} \Vert \leq \Phi_{n}(\theta^{\circ})\right\}\right)\\
+%& \mathds{E}_{\theta^{\circ}} && \left[\mathds{P}_{\boldsymbol{\theta}\vert Y^{n}}^{n}\left(\boldsymbol{\theta} \in \left\{\theta : \Vert \theta - \widetilde{\theta} \Vert \leq \Phi_{n}(\theta^{\circ})\right\}\right)\right] &&\geq&& \mathds{E}_{\theta^{\circ}}&& \left[\mathds{P}_{\boldsymbol{\theta}\vert Y^{n}}^{n}\left(\boldsymbol{\theta} \in \left\{\theta : \Vert \theta - \theta^{\circ} \Vert \leq \Phi_{n}(\theta^{\circ})\right\}\right)\right]
+%\end{alignat*}
+%The later term admitting, by hypothesis, $1$ as a $\limsup$, the former also has to.
+%
+%Therefore, we can easily show that those two balls have a non empty intersection :
+%\begin{alignat*}{3}
+%&\liminf\limits_{n \rightarrow \infty}&& \mathds{P}_{\theta^{\circ}}^{n} &&\left(\left\{ Y^{n} : \left\{\theta:\Vert\theta - \widetilde{\theta}\Vert^{2} \leq \Phi_{n}(\theta^{\circ})\right\} \cap \left\{\theta:\Vert\theta - \theta^{\circ}\Vert^{2} \leq \Phi_{n}(\theta^{\circ})\right\} = \emptyset \right\} \right)\\
+%& && \leq \liminf\limits_{n \rightarrow \infty} \mathds{P}_{\theta^{\circ}}^{n}&&\left(\left\{ Y^{n} : \mathds{P}_{\boldsymbol{\theta}\vert Y^{n}}\left(\left\{\boldsymbol{\theta}:\Vert\boldsymbol{\theta} - \widetilde{\theta}\Vert^{2} \leq \Phi_{n}(\theta^{\circ})\right\} \cup \left\{\boldsymbol{\theta}:\Vert\boldsymbol{\theta} - \theta^{\circ}\Vert^{2} \leq \Phi_{n}(\theta^{\circ})\right\}\right) \right.\right. \\
+%& && &&\left. \left.= \mathds{P}_{\boldsymbol{\theta}\vert Y^{n}}\left(\left\{\boldsymbol{\theta}:\Vert\boldsymbol{\theta} - \widetilde{\theta}\Vert^{2} \leq \Phi_{n}(\theta^{\circ})\right\}\right) + \mathds{P}_{\boldsymbol{\theta}\vert Y^{n}}\left(\left\{\boldsymbol{\theta}:\Vert\boldsymbol{\theta} - \theta^{\circ}\Vert^{2} \leq \Phi_{n}(\theta^{\circ})\right\}\right) \right\}\right)\\
+%& && \leq \liminf\limits_{n \rightarrow \infty}\mathds{P}_{\theta^{\circ}}^{n} && \left(\mathds{P}_{\boldsymbol{\theta}\vert Y^{n}}\left(\left\{\boldsymbol{\theta}:\Vert\theta - \widetilde{\theta}\Vert^{2} \leq \Phi_{n}(\theta^{\circ})\right\}\right) + \mathds{P}_{\boldsymbol{\theta}\vert Y^{n}}\left(\left\{\boldsymbol{\theta}:\Vert\theta - \theta^{\circ}\Vert^{2} \leq \Phi_{n}(\theta^{\circ})\right\}\right) \leq 1\right)\\
+%& && \leq \liminf\limits_{n \rightarrow \infty}\mathds{P}_{\theta^{\circ}}^{n} && \left( \underbrace{\mathds{P}_{\boldsymbol{\theta}\vert Y^{n}}\left(\left\{\boldsymbol{\theta}:\Vert\theta - \widetilde{\theta}\Vert^{2} \leq \Phi_{n}(\theta^{\circ})\right\}\right)}_{P(Y^{n})} \leq \frac{1}{2}\right)\\
+%& &&=0. &&
+%\end{alignat*}
+%
+%Indeed, assume $\liminf\limits_{n \rightarrow \infty}\mathds{P}_{\theta^{\circ}}^{n} \left( P(Y^{n}) \leq \frac{1}{2}\right) > 0$. Then
+%\begin{alignat*}{3}
+%& \mathds{E}_{\theta^{\circ}}^{n}[P(Y^{n})] && = && \int\limits_{0}^{1} P(Y^{n}) d\mathds{P}_{\theta^{\circ}}(Y^{n})\\
+%& &&=&& \int\limits_{0}^{1/2} P(Y^{n}) d\mathds{P}_{\theta^{\circ}}(Y^{n}) + \int\limits_{1/2}^{1} P(Y^{n}) d\mathds{P}_{\theta^{\circ}}(Y^{n})\\
+%& && \leq&& (1/2) \mathds{P}_{\theta^{\circ}}(P(Y^{n}) < 1/2) + 1 - \mathds{P}_{\theta^{\circ}}(P(Y^{n}) < 1/2)\\
+%& && \leq && (-1/2)\mathds{P}_{\theta^{\circ}}(P(Y^{n}) < 1/2) + 1\\
+%& && < && 1
+%\end{alignat*}
+%which contradicts what we have proven just before.
+%
+%We can then conclude that the constructed estimator has at least $2 \Phi_{n}(\theta^{\circ})$ speed of convergence :
+%\begin{alignat*}{3}
+%&\limsup\limits_{n \rightarrow \infty} \mathds{P}_{\theta^{\circ}}^{n}\left(\left\{\left\Vert \theta^{\circ} - \widetilde{\theta}\right\Vert \leq 2 \Phi_{n}(\theta^{\circ})\right\}\right) &&\geq&&  \limsup\limits_{n \rightarrow \infty} \mathds{P}_{\theta^{\circ}}^{n}\left(\left\{\exists \theta \in \Theta : \left\Vert \theta^{\circ} - \theta\right\Vert + \left\Vert \widetilde{\theta} - \theta \right\Vert \leq 2 \Phi_{n}(\theta^{\circ})\right\}\right)\\
+%& &&\geq &&  \limsup\limits_{n \rightarrow \infty} \mathds{P}_{\theta^{\circ}}^{n}\left(\left\{\exists \theta \in \Theta : \left\Vert \theta^{\circ} - \theta\right\Vert \leq \Phi_{n}(\theta^{\circ}) \wedge \left\Vert \widetilde{\theta} - \theta \right\Vert \leq \Phi_{n}(\theta^{\circ})\right\}\right)\\
+%& && = && 1.
+%\end{alignat*}
+%
+%Therefore, any sequence such that $\limsup\limits_{n \rightarrow \infty} \mathds{P}_{\theta^{\circ}}^{n}\left(\left\{\left\Vert \theta^{\circ} - \widetilde{\theta}\right\Vert \leq 2 \phi_{n}\right\}\right) < 1$ cannot be a a posterior contraction rate.
+%
+%\bigskip
+%
+%Note that, in our case, the posterior mean estimator matches with the estimator considered throughout this proof.
+%Indeed, for any $\widetilde{\theta}$ in $\Theta$, $m$ in $\mathds{N}$ and $k$ in $\llbracket 1, m \rrbracket$, we define $\theta^{\underline{m}} = (0, \hdots, 0, \theta_{m+1}, \hdots)$, $\theta_{\vert k}^{m} = (\theta_{1}, \hdots, \theta_{k-1}, \theta_{k+1}, \hdots, \theta_{m}, 0, \hdots)$
+%
+%\begin{alignat*}{3}
+%&\mathds{P} && = &&\mathds{P}_{\boldsymbol{\theta}\vert Y^{n}} \left(\left\{\theta \in \Theta : \Vert \theta - \widetilde{\theta} \Vert^{2} \leq \Phi_{n}\left(\theta^{\circ}\right)\right\}\right)\\
+%& &&=&& \int\limits_{\theta: \Vert \theta - \widetilde{\theta} \Vert \leq \Phi_{n}(\theta^{\circ})} \prod\limits_{j = 1}^{m} \frac{1}{\sqrt{2 \pi \sigma_{j}^{2}}}\exp\left[-\sum\limits_{j = 1}^{m}\frac{(\theta_{j} - \widehat{\theta}_{j})^{2}}{2 \sigma_{j}^{2}}\right] \cdot \prod_{j > m}\delta_{0}(\theta) d\theta\\
+%& &&\propto&& \int\limits_{\mu: \Vert \sigma \mu + \widehat{\theta}^{m} - \widetilde{\theta} \Vert \leq \Phi_{n}(\theta^{\circ})} \exp\left[-\sum\limits_{j = 1}^{m}\frac{\mu^{2}}{2}\right] \cdot \prod_{j > m}\delta_{0}(\mu) d\mu\\
+%& &&\propto&& \int\limits_{\mu: \Vert \sigma \mu^{m} + \widehat{\theta}^{m} - \widetilde{\theta} \Vert \leq \Phi_{n}(\theta^{\circ}) - \Vert \widetilde{\theta}^{\underline{m}}\Vert^{2}} \exp\left[-\sum\limits_{j = 1}^{m}\frac{\mu^{2}}{2}\right] d\mu^{m}\\
+%& &&\propto&& \int\limits_{\mu: \Vert \sigma\mu_{\vert k}^{m} + \widehat{\theta}_{\vert k}^{m} - \widetilde{\theta}_{\vert k}^{m}\Vert^{2} \leq \Phi_{n}(\theta^{\circ}) - \Vert \widetilde{\theta}^{\underline{m}}\Vert^{2}} \exp\left[-\sum\limits_{j = 1, j \neq k}^{m}\frac{\mu_{j}^{2}}{2}\right] \\
+%& && &&\cdot \mathds{P}_{\mathcal{N}(0,1)}\left[\mu_{k} \in \left[\pm\frac{\sqrt{\Phi_{n}(\theta^{\circ}) - \Vert \widetilde{\theta}^{\underline{m}}\Vert^{2} - \Vert \sigma\mu_{\vert k}^{m} + \widehat{\theta}_{\vert k}^{m} - \widetilde{\theta}_{\vert k}^{m}\Vert^{2}}}{\sigma_{k}} +\frac{\widetilde{\theta}_{k} - \widehat{\theta}_{k}}{\sigma_{k}}\right]\right].
+%\end{alignat*}
+%
+%Note that, for any $k$ and any $\widetilde{\theta}$
+%\[\widetilde{\theta}_{k} \mapsto \exp\left[-\sum\limits_{j = 1, j \neq k}^{m}\frac{\mu_{j}^{2}}{2}\right] \cdot \mathds{P}_{\mathcal{N}(0,1)}\left[\mu_{k} \in \left[\pm\frac{\sqrt{\Phi_{n}(\theta^{\circ}) - \Vert \widetilde{\theta}^{\underline{m}}\Vert^{2} - \Vert \sigma\mu_{\vert k}^{m} + \widehat{\theta}_{\vert k}^{m} - \widetilde{\theta}_{\vert k}^{m}\Vert^{2}}}{\sigma_{k}} +\frac{\widetilde{\theta}_{k} - \widehat{\theta}_{k}}{\sigma_{k}}\right]\right]\]
+%is differentiable and bounded by
+%\[\widetilde{\theta}_{k} \mapsto \exp\left[-\sum\limits_{j = 1, j \neq k}^{m}\frac{\mu_{j}^{2}}{2}\right].\]
+%
+%Therefore, the theorem of derivation under integral sign applies and
+%
+%\begin{alignat*}{3}
+%& \frac{\partial \mathds{P}}{\partial \widetilde{\theta}_{k}} &&\propto&& \int\limits_{\mu: \Vert \sigma\mu_{\vert k}^{m} + \widehat{\theta}_{\vert k}^{m} - \widetilde{\theta}_{\vert k}^{m}\Vert^{2} \leq \Phi_{n}(\theta^{\circ}) - \Vert \widetilde{\theta}^{\underline{m}}\Vert^{2}} \exp\left[-\sum\limits_{j = 1, j \neq k}^{m}\frac{\mu_{j}^{2}}{2}\right] \\
+%& && &&\cdot \frac{\partial\mathds{P}_{\mathcal{N}(0,1)}\left[\mu_{k} \in \left[\pm\frac{\sqrt{\Phi_{n}(\theta^{\circ}) - \Vert \widetilde{\theta}^{\underline{m}}\Vert^{2} - \Vert \sigma\mu_{\vert k}^{m} + \widehat{\theta}_{\vert k}^{m} - \widetilde{\theta}_{\vert k}^{m}\Vert^{2}}}{\sigma_{k}} +\frac{\widetilde{\theta}_{k} - \widehat{\theta}_{k}}{\sigma_{k}}\right]\right]}{\partial \widetilde{\theta}_{k}} d\mu_{\vert k}\\
+%& &&\propto&&\int\limits_{\mu: \Vert \sigma\mu_{\vert k}^{m} + \widehat{\theta}_{\vert k}^{m} - \widetilde{\theta}_{\vert k}^{m}\Vert^{2} \leq \Phi_{n}(\theta^{\circ}) - \Vert \widetilde{\theta}^{\underline{m}}\Vert^{2}} \exp\left[-\sum\limits_{j = 1, j \neq k}^{m}\frac{\mu_{j}^{2}}{2}\right] \\
+%& && &&\cdot \left(f_{\mathcal{N}(0,1)}\left(\frac{\sqrt{\Phi_{n}(\theta^{\circ}) - \Vert \widetilde{\theta}^{\underline{m}}\Vert^{2} - \Vert \sigma\mu_{\vert k}^{m} + \widehat{\theta}_{\vert k}^{m} - \widetilde{\theta}_{\vert k}^{m}\Vert^{2}}}{\sigma_{k}} +\frac{\widetilde{\theta}_{k} - \widehat{\theta}_{k}}{\sigma_{k}}\right)\right. \\
+%& && &&\left. - f_{\mathcal{N}(0,1)}\left(\frac{-\sqrt{\Phi_{n}(\theta^{\circ}) - \Vert \widetilde{\theta}^{\underline{m}}\Vert^{2} - \Vert \sigma\mu_{\vert k}^{m} + \widehat{\theta}_{\vert k}^{m} - \widetilde{\theta}_{\vert k}^{m}\Vert^{2}}}{\sigma_{k}} +\frac{\widetilde{\theta}_{k} - \widehat{\theta}_{k}}{\sigma_{k}}\right)\right) d\mu_{\vert k}.
+%\end{alignat*}
+%This derivative only cancels when $\widetilde{\theta}_{k} = \widehat{\theta}_{k}$.
+%Moreover this function is positive and integrable over $\mathds{R}^{m}$ and hence admits a global maximum.
+%We therefore have a global maximum.
+%
+%
+%\begin{alignat*}{3}
+%\argmax\limits_{\widetilde{\theta} \in \Theta}\left\{\mathds{P}_{\boldsymbol{\theta}\vert Y^{n}}\left(\left\{\theta \in \Theta : \Vert \theta - \widetilde{\theta} \Vert^{2} \leq \Phi_{n}\left(\theta^{\circ}\right)\right\}\right)\right\} = \mathds{E}_{\boldsymbol{\theta}^{m_{n}}\vert Y^{n}}^{n}[\theta].
+%\end{alignat*}
+
+\subsection{Proof for the upper bound}
+
+We want to find a sequence $\left(K_{n}\right)_{n \in \mathds{N}}$ (for short, $K_{n}$) converging to $0$ such that
+\[\lim\limits_{n \rightarrow \infty} \mathds{E}_{\theta^{\circ}}^{n}\left[\mathds{P}_{\theta^{m_{n}}\vert Y^{n}}^{n}\left(\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert^{2} \geq K_{n}\right)\right] = 0.\]
+
+For any $n$, we define $S^{m_{n}} := \sum_{j=1}^{m_{n}} \left(\boldsymbol{\theta} - \theta^{\circ}\right)^{2}$. Therefore we have : 
+\[\mathds{E}_{\theta^{\circ}}^{n}\left[\mathds{P}_{\theta^{m_{n}}\vert Y^{n}}^{n}\left(\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert^{2} \geq K_{n}\right)\right] = \mathds{E}_{\theta^{\circ}}^{n}\left[\mathds{P}_{\theta^{m_{n}}\vert Y^{n}}^{n}\left(S^{m_{n}} \geq K_{n} - \mathfrak{b}_{m_{n}}\right)\right].\]
+
+By definition, $S^{m_{n}}$ has finite expectation and strictly positive, finite variance. We define $\mathcal{S}^{m_{n}} := \frac{S^{m_{n}} - \mathds{E}_{\boldsymbol{\theta} \vert Y^{n}}^{n}\left[S^{m_{n}}\right]}{\sqrt{\mathds{V}_{\boldsymbol{\theta}\vert Y^{n}}^{n}[S^{m_{n}}]}}.$ The sequence of random variables defined this way is tight as their expectations are all equal to $0$ and their variances to $1$. We now have to look for a contraction rate for this new family of random variables as we have :
+
+\[\mathds{E}_{\theta^{\circ}}^{n}\left[\mathds{P}_{\theta^{m_{n}}\vert Y^{n}}^{n}\left(\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert^{2} \geq K_{n}\right)\right] = \mathds{E}_{\theta^{\circ}}^{n}\left[\mathds{P}_{\theta^{m_{n}}\vert Y^{n}}^{n}\left(\mathcal{S}^{m_{n}} \geq \frac{K_{n} - \mathfrak{b}_{m_{n}}^{2} - \mathds{E}_{\boldsymbol{\theta}^{m_{n}} \vert Y^{n}}^{n}\left[S^{m_{n}}\right]}{\sqrt{\mathds{V}_{\boldsymbol{\theta}^{m_{n}} \vert Y^{n}}^{n}\left[S^{m_{n}}\right]}}\right)\right].\]
+
+We now control the convergence in probability of $\mathds{E}_{\boldsymbol{\theta}^{m} \vert Y^{n}}^{n}\left[\mathcal{S}^{m_{n}}\right]$ and $\mathds{V}_{\boldsymbol{\theta}^{m} \vert Y^{n}}^{n}\left[\mathcal{S}^{m_{n}}\right]$ which are given by
+\begin{alignat*}{3}
+&\mathds{E}_{\boldsymbol{\theta}^{m_{n}} \vert Y^{n}}^{n}\left[S^{m_{n}}\right] &&=&& \sum\limits_{j = 1}^{m_{n}} \frac{\Lambda_{j}}{n \eta}\cdot \left(\frac{1}{\frac{\Lambda_{j}}{n \eta} + 1}\right)\left(1 + \frac{\left(- \theta^{\circ}_{j} + \eta \sqrt{n} \xi_{j} \lambda_{j}\right)^{2}}{\frac{\eta n}{\Lambda_{j}}\left(\frac{\Lambda_{j}}{\eta n} + 1\right)}\right)\\
+& && \leq && \sum\limits_{j = 1}^{m_{n}} \frac{\Lambda_{j}}{n \eta} + \sum\limits_{j = 1}^{m_{n}} \frac{\Lambda_{j}^{2}}{n^{2} \eta^{2}}\left(- \theta^{\circ}_{j} + \eta \sqrt{n} \xi_{j} \lambda_{j}\right)^{2};\\
+&\mathds{V}_{\boldsymbol{\theta}^{m_{n}} \vert Y^{n}}^{n}\left[S^{m_{n}}\right] &&=&& 2 \sum\limits_{j = 1}^{m_{n}} \left(\frac{\Lambda_{j}}{n \eta}\cdot \frac{1}{\frac{\Lambda_{j}}{n \eta} + 1}\right)^{2}\left(1 + 2 \frac{\left(- \theta^{\circ}_{j} + \eta \sqrt{n} \xi_{j} \lambda_{j}\right)^{2}}{\frac{\eta n}{\Lambda_{j}}\left(\frac{\Lambda_{j}}{\eta n} + 1\right)}\right)\\
+& &&\leq && 2 \sum\limits_{j = 1}^{m_{n}} \frac{\Lambda_{j}^{2}}{n^{2} \eta^{2}} + 4 \sum\limits_{j = 1}^{m_{n}} \frac{\Lambda_{j}^{3}}{n^{3} \eta^{3}} \left(- \theta^{\circ}_{j} + \eta \sqrt{n} \xi_{j} \lambda_{j}\right)^{2}.
+\end{alignat*}
+
+We now control the stochastic parts of those moments.
+
+\textcolor{blue}{
+Define for some sequence $(u_{n})_{n \in \mathds{N}}$ , tending to $0$ and any deterministic sequence $(a_{j})$ the event $\Omega_{m_{n}} := \left\{\sum\limits_{j=1}^{m_{n}}a_{j}\left(- \theta^{\circ}_{j} + \eta \sqrt{n} \xi_{j} \lambda_{j}\right)^{2} \leq u_{n}\right\}.$\\
+Obviously, $\Omega_{m_{n}}^{c} = \left\{\sum\limits_{j=1}^{m_{n}} a_{j} \left( - \theta^{\circ}_{j} + \eta \sqrt{n} \xi_{j} \lambda_{j}\right)^{2} \geq u_{n}\right\}$ has probability
+\[\mathds{P}_{\theta^{\circ}}^{n}\left(\Omega_{m_{n}}^{c}\right) = \mathds{P}_{\theta^{\circ}}^{n}\left(\sum\limits_{j=1}^{m_{n}}\left(- \theta^{\circ}_{j} + \eta \sqrt{n} \xi_{j} \lambda_{j}\right)^{2} \geq u_{n}\right).\]
+In the same spirit as previously, we define the sequence of random variables $T^{m_{n}} := \sum\limits_{j=1}^{m_{n}}a_{j}\left(- \theta^{\circ}_{j} + \eta \sqrt{n} \xi_{j} \lambda_{j}\right)^{2}.$
+We have
+\begin{alignat*}{3}
+&\mathds{E}_{\boldsymbol{\theta}^{m_{n}} \vert Y^{n}}^{n}\left[T^{m_{n}}\right] &&=&& \sum\limits_{j = 1}^{m_{n}} a_{j} \frac{\eta^{2} n}{\Lambda_{j}} \left[1 + \frac{\Lambda_{j}}{n \eta^{2}} \left(\theta^{\circ}_{j} \right)^{2}\right]\\
+& &&\leq&& \sum\limits_{j = 1}^{m_{n}} a_{j} \frac{\eta^{2} n}{\Lambda_{j}} \left[1 + \frac{\Lambda_{1}}{\eta^{2}} \left(\theta^{\circ}_{j}\right)^{2}\right];\\
+&\mathds{V}_{\boldsymbol{\theta}^{m_{n}} \vert Y^{n}}^{n}\left[T^{m_{n}}\right] &&=&& 2 \sum\limits_{j = 1}^{m_{n}} a_{j}^{2} \left(\frac{\eta^{2} n}{\Lambda_{j}}\right)^{2} \left[1 + 4 \frac{\Lambda_{j}}{\eta^{2} n} \left(\theta^{\circ}_{j}\right)^{2}\right]\\
+& &&\leq&& 2 \sum\limits_{j = 1}^{m_{n}} a_{j}^{2} \left(\frac{\eta^{2} n}{\Lambda_{j}}\right)^{2} \left[1 + 4 \frac{\Lambda_{1}}{\eta^{2}} \left(\theta^{\circ}_{j}\right)^{2}\right];
+\end{alignat*}
+and the sequence of random variables $\mathcal{T}^{m_{n}} := \frac{T^{m_{n}} - \mathds{E}_{\boldsymbol{\theta}^{m_{n}} \vert Y^{n}}^{n}\left[T^{m_{n}}\right]}{\sqrt{\mathds{V}_{\boldsymbol{\theta}^{m_{n}} \vert Y^{n}}^{n}\left[T^{m_{n}}\right]}}$ is tight.
+Therefore, $\mathds{P}_{\theta^{\circ}}^{n}\left(\sum\limits_{j=1}^{m_{n}}\left(- \theta^{\circ}_{j} + \eta \sqrt{n} \xi_{j} \lambda_{j}\right)^{2} \geq u_{n}\right) = \mathds{P}_{\theta^{\circ}}^{n}\left(\mathcal{T}^{m_{n}} \geq \frac{u_{n} - \mathds{E}_{\boldsymbol{\theta}^{m_{n}} \vert Y^{n}}^{n}\left[T^{m_{n}}\right]}{\sqrt{\mathds{V}_{\boldsymbol{\theta}^{m_{n}} \vert Y^{n}}^{n}\left[T^{m_{n}}\right]}}\right)$.
+Consider any sequence $(c_{n})$ diverging to infinity.
+Then if
+\begin{alignat*}{3}
+&u_{n} &&=&& \sqrt{\mathds{V}_{\boldsymbol{\theta}^{m_{n}} \vert Y^{n}}^{n}\left[T^{m_{n}}\right]} c_{n} + \mathds{E}_{\boldsymbol{\theta}^{m_{n}} \vert Y^{n}}^{n}\left[T^{m_{n}}\right]\\
+& &&=&& c_{n} \cdot \sqrt{2 \sum\limits_{j = 1}^{m_{n}} a_{j}^{2} \left(\frac{\eta^{2} n}{\Lambda_{j}}\right)^{2} \left[1 + 4 \frac{\Lambda_{j}}{\eta^{2} n} \left(\theta^{\circ}_{j} \right)^{2}\right]} + \sum\limits_{j = 1}^{m_{n}} a_{j} \frac{\eta^{2} n}{\Lambda_{j}} \left[1 + \frac{\Lambda_{j}}{n \eta^{2}} \left(\theta^{\circ}_{j} \right)^{2}\right].
+\end{alignat*}
+Then $\mathds{P}_{\theta^{\circ}}^{n}(\Omega_{m_{n}}^{c}) \leq  \mathds{P}_{\theta^{\circ}}^{n}\left(\mathcal{T}^{m_{n}} \geq c_{n}\right) \rightarrow 0$ as $\mathcal{T}^{m_{n}}$ is tight.
+}
+
+\medskip
+
+We can now conclude about the posterior contraction by defining
+\begin{alignat*}{3}
+&K_{n} &&:=&& \mathfrak{b}_{m_{n}}^{2} +  \sum\limits_{j = 1}^{m_{n}} \frac{\Lambda_{j}}{n \eta}\cdot \left(\frac{1}{\frac{\Lambda_{j}}{n \eta} + 1}\right)\left(1 + \frac{u_{n}}{\frac{\eta n}{\Lambda_{j}}\left(\frac{\Lambda_{j}}{\eta n} + 1\right)}\right)\\
+& && && + c_{n} \cdot \sqrt{2 \sum\limits_{j = 1}^{m_{n}} \left(\frac{\Lambda_{j}}{n \eta}\cdot \frac{1}{\frac{\Lambda_{j}}{n \eta} + 1}\right)^{2}\left\{1 + 2 \frac{u_{n}}{\frac{\eta n}{\Lambda_{j}}\left(\frac{\Lambda_{j}}{\eta n} + 1\right)}\right\}}\\
+& &&=&& \mathcal{O}\left(c_{n} \cdot \frac{m_{n} \overline{\Lambda}_{m_{n}}}{n \eta} \vee \mathfrak{b}_{m_{n}}^{2}\right)
+\end{alignat*}
+
+
+Indeed :
+\begin{alignat*}{3}
+&\mathds{E}_{\theta^{\circ}}^{n}\left[\mathds{Q}_{\theta^{m^{\circ}}\vert Y^{n}}^{n}\left(\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert^{2} \geq K_{n}\right)\right] &&\leq &&\mathds{E}_{\theta^{\circ}}^{n}\left[\mathds{1}_{\Omega{n}}\mathds{Q}_{\theta^{m^{\circ}}\vert Y^{n}}^{n}\left(\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert^{2} \geq K_{n}\right)\right] + \mathds{P}_{\theta^{\circ}}(\Omega{n}^{c})\\
+& &&\leq &&\mathds{E}_{\theta^{\circ}}^{n}\left[\mathds{Q}_{\theta^{m^{\circ}}\vert Y^{n}}^{n}\left(\mathcal{S}^{m_{n}} \geq c_{n} \right)\right] + \mathds{P}_{\theta^{\circ}}(\Omega_{n}^{c})\\
+\end{alignat*}
+Which tends to $0$ as $\mathcal{S}^{m_{n}}$ is a tight sequence of random variables.
+One could notice that if $\eta$ diverges to infinity, the sequence $c_{n}$ cancels and we recover the frequentist $L_{2}$ rate of convergence.
+
+%
+%\subsection{Proof of \textsc{\autoref{thm2}}}
+%\begin{pro}\label{pro2}
+%We want to find $\left(G_{n}^{+}\right)_{n \in \mathds{N}}$ in $\bigotimes\limits_{n \in \mathds{N}}\left\llbracket 1, G_{n}\right\rrbracket$ such that $\lim\limits_{n \rightarrow \infty} \mathds{E}_{\theta^{\circ}}^{n}\left[\mathds{P}_{M \vert Y^{n}}^{n}\left(M \geq G_{n}^{+}\right)\right] = 0.$
+%We define $\left(S_{n}\right)_{n \in \mathds{N}} := \left(\frac{M - \mathds{E}_{M \vert Y^{n}}^{n} \left[M\right]}{\mathds{V}_{M \vert Y^{n}}^{n} \left[M\right]}\right)_{n \in \mathds{N}}$ which is a sequence of tight random variables.
+%We have $\mathds{E}_{\theta^{\circ}}^{n}\left[\mathds{P}_{M \vert Y^{n}}^{n}\left(M \geq G_{n}^{+}\right)\right] = \mathds{E}_{\theta^{\circ}}^{n}\left[\mathds{P}_{M \vert Y^{n}}^{n}\left(S_{n} \geq \frac{G_{n}^{+} - \mathds{E}_{M \vert Y^{n}}^{n} \left[M\right]}{\mathds{V}_{M \vert Y^{n}}^{n} \left[M\right]}\right)\right]$.
+%Therefore we want to define $G_{n}^{+}$ in such a way that $\lim\limits_{n \rightarrow \infty} \frac{G_{n}^{+} - \mathds{E}_{M \vert Y^{n}}^{n} \left[M\right]}{\mathds{V}_{M \vert Y^{n}}^{n} \left[M\right]} = \infty$ with high probability.
+%\end{pro}

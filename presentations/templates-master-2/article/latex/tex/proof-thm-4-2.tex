@@ -1,0 +1,147 @@
+\section{Proof of \textsc{\cref{thm4}}}
+
+To prove this theorem we need a stronger statement about the contraction rate for fixed $m$.
+
+\begin{pr}\label{pr2}
+Under \textsc{\cref{as1}}, we have, for all $m$ in $\llbracket 1, G_{n} \rrbracket$
+\begin{alignat*}{3}
+&\mathds{P}_{\theta^{\circ}}^{n}\left[\left\Vert \overline{\theta}^{m} - \theta^{\circ} \right\Vert^{2} < \frac{1}{2}\left[\mathfrak{b}_{m} \vee \frac{m \overline{\Lambda}_{m}}{n}\right]\right] &&\leq&& \exp\left[-\frac{m}{16 L}\right],\\
+&\mathds{P}_{\theta^{\circ}}^{n}\left[\left\Vert \overline{\theta}^{m} - \theta^{\circ} \right\Vert^{2} > 4 \left[\mathfrak{b}_{m} \vee \frac{m \overline{\Lambda}_{m}}{n}\right]\right] &&\leq&& \exp\left[-\frac{m}{9 L}\right].
+\end{alignat*}
+\end{pr}
+
+\subsection{Proof of \textsc{\cref{pr2}}}
+Let be $m$ in $\llbracket 1, G_{n} \rrbracket$ and note that
+\[\Vert \overline{\theta}^{m} - \theta^{\circ} \Vert^{2} = \sum\limits_{j = 1}^{m} \left(\frac{Y_{j}}{\lambda_{j}} - \theta^{\circ}_{j}\right)^{2} + \mathfrak{b}_{m}.\]
+
+We will use \textsc{\cref{lm3}}; therefor define 
+\begin{alignat*}{6}
+& &&S_{m} &&:=&& \sum\limits_{j = 1}^{m} \left(\frac{Y_{j}}{\lambda_{j}} - \theta^{\circ}_{j}\right)^{2}&& &&,\\
+& &&\mu_{m}&&:=&&\mathds{E}_{\theta^{\circ}}^{n}\left[S_{m}\right] &&=&& \frac{m \overline{\Lambda}_{m}}{n},\\
+& \forall j \in \llbracket 1, m \rrbracket \quad && \beta_{j}^{2} &&:=&& \mathds{V}_{\theta^{\circ}}^{n}\left[\frac{Y_{j}}{\lambda_{j}} - \theta^{\circ}_{j}\right] &&=&& \frac{\Lambda_{j}}{n},\\
+& \forall j \in \llbracket 1, m \rrbracket \quad && \alpha_{j}^{2} &&:=&& \mathds{E}_{\theta^{\circ}}^{n}\left[\frac{Y_{j}}{\lambda_{j}} - \theta^{\circ}_{j}\right] &&=&& 0,\\
+& && v_{m} &&:=&& \sum\limits_{j = 1}^{m}\beta_{j}^{2} &&=&& \frac{m \overline{\Lambda}_{m}}{n},\\
+& && t_{m} &&:=&& \max\limits_{j \in \llbracket 1, m \rrbracket}\beta_{j}^{2} &&=&& \frac{\Lambda_{m}}{n}.
+\end{alignat*}
+
+We then control the concentration of $S_{m}$, first from above :
+\begin{alignat*}{3}
+& \exp\left[- \frac{m}{16 L}\right] && \geq && \exp\left[- \frac{n m \overline{\Lambda}_{m}}{16 n \Lambda_{m}}\right]\\
+& && \geq && \mathds{P}_{\theta^{\circ}}^{n}\left[S_{m} - \mu_{m} \leq -\frac{1}{2} \frac{m \overline{\Lambda}_{m}}{n}\right]\\
+& && \geq && \mathds{P}_{\theta^{\circ}}^{n}\left[S_{m} \leq \frac{1}{2} \frac{m \overline{\Lambda}_{m}}{n}\right]\\
+& && \geq && \mathds{P}_{\theta^{\circ}}^{n}\left[S_{m} + \mathfrak{b}_{m} \leq \frac{1}{2} \frac{m \overline{\Lambda}_{m}}{n} + \mathfrak{b}_{m} \right]\\
+& && \geq && \mathds{P}_{\theta^{\circ}}^{n}\left[S_{m} + \mathfrak{b}_{m} \leq \frac{1}{2} \left(\frac{m \overline{\Lambda}_{m}}{n} + \mathfrak{b}_{m}\right) \right]\\
+& && \geq && \mathds{P}_{\theta^{\circ}}^{n}\left[S_{m} + \mathfrak{b}_{m} \leq \frac{1}{2} \left[\frac{m \overline{\Lambda}_{m}}{n} \vee \mathfrak{b}_{m}\right] \right] ;
+\end{alignat*}
+then from bellow :
+\begin{alignat*}{3}
+& \exp\left[- \frac{m}{9 L}\right] && \geq && \exp\left[- \frac{n m \overline{\Lambda}_{m}}{9 n \Lambda_{m}}\right]\\
+& && \geq && \mathds{P}_{\theta^{\circ}}^{n}\left[S_{m} - \mu_{m} \geq \frac{ m \overline{\Lambda}_{m}}{n}\right]\\
+& && \geq && \mathds{P}_{\theta^{\circ}}^{n}\left[S_{m} \geq 2 \frac{m \overline{\Lambda}_{m}}{n}\right]\\
+& && \geq && \mathds{P}_{\theta^{\circ}}^{n}\left[S_{m} + \mathfrak{b}_{m} \geq 2 \frac{m \overline{\Lambda}_{m}}{n} + \mathfrak{b}_{m} \right]\\
+& && \geq && \mathds{P}_{\theta^{\circ}}^{n}\left[S_{m} + \mathfrak{b}_{m} \geq 2 \left(\frac{m \overline{\Lambda}_{m}}{n} + \mathfrak{b}_{m}\right) \right]\\
+& && \geq && \mathds{P}_{\theta^{\circ}}^{n}\left[S_{m} + \mathfrak{b}_{m} \geq 4 \left[\frac{m \overline{\Lambda}_{m}}{n} \vee \mathfrak{b}_{m}\right] \right].
+\end{alignat*}
+
+\subsection{Proof of the complete statement}
+
+By the the total probability formula, we have :
+\begin{alignat*}{2}
+& \mathds{E}_{\theta^{\circ}}^{n} && \left[\mathds{P}_{\boldsymbol{\theta}^{M}\vert Y^{n}}^{n, (\infty)}\left(\left(K^{\circ}\right)^{-1}\Phi_{n}^{\circ} \leq \Vert \boldsymbol{\theta}^{M} - \theta^{\circ} \Vert ^{2} \leq K^{\circ} \Phi_{n}^{\circ}\right)\right]\\
+& &&= 1 - \underbrace{\mathds{E}_{\theta^{\circ}}^{n}\left[\mathds{P}_{\boldsymbol{\theta}^{M}\vert Y^{n}}^{n, (\infty)}\left(\left(K^{\circ}\right)^{-1}\Phi_{n}^{\circ} > \Vert \boldsymbol{\theta}^{M} - \theta^{\circ} \Vert ^{2} \right)\right]}_{=: A} - \underbrace{\mathds{E}_{\theta^{\circ}}^{n}\left[\mathds{P}_{\boldsymbol{\theta}^{M}\vert Y^{n}}^{n, (\infty)}\left(K^{\circ} \Phi_{n}^{\circ} < \Vert \boldsymbol{\theta}^{M} - \theta^{\circ} \Vert ^{2}\right)\right]}_{B}.
+\end{alignat*}
+
+Hence, we will control $A$ and $B$ separately.
+
+\medskip
+
+We first control $A$ :
+
+\begin{alignat*}{4}
+& A && = && \sum\limits_{m = 1}^{G_{n}} && \mathds{E}_{\theta^{\circ}}^{n}\left[\mathds{P}_{\boldsymbol{\theta}^{M} \vert Y^{n}}^{n, (\infty)}\left(\left\{\left(K^{\circ}\right)^{-1} \Phi_{n}^{\circ} > \Vert \boldsymbol{\theta}^{M} - \theta^{\circ} \Vert^{2}\right\} \cap \left\{M = m\right\}\right)\right]\\
+& && \leq && \sum\limits_{m = 1}^{G_{n}^{-} - 1} && \mathds{E}_{\theta^{\circ}}^{n}\left[\mathds{P}_{M \vert Y^{n}}^{n, (\infty)}\left(\left\{M = m\right\}\right)\right] + \sum\limits_{m = G_{n}^{+} + 1}^{G_{n}} \mathds{E}_{\theta^{\circ}}^{n}\left[\mathds{P}_{M \vert Y}^{n, (\infty)}\left(\left\{M = m\right\}\right)\right]\\
+& && && &&+ \sum\limits_{m = G_{n}^{-}}^{G_{n}^{+}} \mathds{E}_{\theta^{\circ}}^{n}\left[\mathds{P}_{\boldsymbol{\theta}^{M}\vert Y, M = m}^{n, (\infty)}\left(\left\{\left(K^{\circ}\right)^{-1} \Phi_{n}^{\circ} > \Vert \boldsymbol{\theta}^{M} - \theta^{\circ} \Vert^{2}\right\}\right)\right]\\
+& &&\leq&& &&\underbrace{\sum\limits_{m = 1}^{G_{n}^{-} - 1} \mathds{P}_{\theta^{\circ}}^{n}\left[\left\{\widehat{m} = m\right\}\right]}_{=: A_{1}} + \underbrace{\sum\limits_{m = G_{n}^{+} + 1}^{G_{n}} \mathds{P}_{\theta^{\circ}}^{n}\left[\left\{\widehat{m} = m\right\}\right]}_{=: A_{2}} + \sum\limits_{m = G_{n}^{-}}^{G_{n}^{+}} \underbrace{\mathds{P}_{\theta^{\circ}}^{n}\left[\left\{\left(K^{\circ}\right)^{-1} \Phi_{n}^{\circ} > \left\Vert \overline{\theta}^{m} - \theta^{\circ} \right\Vert^{2}\right\}\right]}_{=: A_{3, m}}.
+\end{alignat*}
+
+While $A_{1}$ and $A_{2}$ can respectively be controlled thanks to \textsc{\cref{pr1}} by
+\begin{alignat*}{3}
+& A_{1} &&\leq && \exp\left[-\frac{5 m_{n}^{\circ}}{9 L} + \log\left(G_{n}\right)\right]\\
+& A_{2} && \leq && \exp\left[-\frac{7 m_{n}^{\circ}}{9} + \log\left(G_{n}\right)\right],
+\end{alignat*}
+we now have to control $\sum\limits_{m = G_{n}^{-}}^{G_{n}^{+}}A_{3, m}$.
+
+Thanks to \textsc{\cref{pr2}}, we have that, for all $m$ in $\llbracket 1, G_{n} \rrbracket$ :
+\[\mathds{P}_{\theta^{\circ}}^{n}\left[\left\{\left\Vert \overline{\theta}^{m} - \theta^{\circ}\right\Vert^{2} < \frac{1}{2} \left[\mathfrak{b}_{m} \vee \frac{m \overline{\Lambda}_{m}}{n}\right]\right\}\right] \leq \exp\left[-\frac{m}{16 L}\right].\]
+
+\medskip
+
+Moreover, by definition of $\Phi_{n}^{\circ}$, we have for all $m$ in $\llbracket G_{n}^{-}, G_{n}^{+}\rrbracket$ that $\Phi_{n}^{\circ} \leq \left[\mathfrak{b}_{m} \vee \frac{m \overline{\Lambda}_{m}}{n}\right],$ which implies, with $K^{\circ} \geq 16 L,$
+\begin{alignat*}{3}
+& \mathds{P}_{\theta^{\circ}}^{n}\left[\left\{\left\Vert \overline{\theta}^{m} - \theta^{\circ}\right\Vert^{2} < \left(K^{\circ}\right)^{-1} \Phi_{n}^{\circ}\right\}\right] && \leq && \mathds{P}_{\theta^{\circ}}^{n}\left[\left\{\left\Vert \overline{\theta}^{m} - \theta^{\circ}\right\Vert^{2} < \frac{1}{2} \left[\mathfrak{b}_{m} \vee \frac{m \overline{\Lambda}_{m}}{n}\right]\right\}\right]\\
+& && \leq && \exp\left[-\frac{m}{K^{\circ}}\right].
+\end{alignat*}
+
+This allows us to conclude that
+\begin{alignat*}{3}
+& \sum\limits_{m = G_{n}^{-}}^{G_{n}^{+}} A_{3, m} && \leq && \sum\limits_{m = G_{n}^{-}}^{G_{n}^{+}} \exp\left[-\frac{m}{K^{\circ}}\right]\\
+& && \leq && \sum\limits_{m = G_{n}^{-}}^{\infty} \exp\left[-\frac{m}{K^{\circ}}\right]\\
+& && \leq && \int\limits_{m = G_{n}^{-}-1}^{\infty} \exp\left[-\frac{m}{K^{\circ}}\right] dm\\
+& && \leq && \left[K^{\circ} \exp\left[-\frac{m}{K^{\circ}}\right]\right]_{G_{n}^{-}-1}^{\infty} dm\\
+& && \leq && K^{\circ} \exp\left[-\frac{G_{n}^{-} - 1}{K^{\circ}}\right]
+\end{alignat*}
+
+\bigskip
+
+We now control $B$ :
+\begin{alignat*}{4}
+& B && = && \sum\limits_{m = 1}^{G_{n}} && \mathds{E}_{\theta^{\circ}}^{n}\left[\mathds{P}_{\boldsymbol{\theta}^{M} \vert Y^{n}}^{n, (\infty)}\left(\left\{K^{\circ} \Phi_{n}^{\circ} < \Vert \boldsymbol{\theta}^{M} - \theta^{\circ} \Vert^{2}\right\} \cap \left\{M = m\right\}\right)\right]\\
+& && \leq && \sum\limits_{m = 1}^{G_{n}^{-} - 1} && \mathds{E}_{\theta^{\circ}}^{n}\left[\mathds{P}_{\boldsymbol{\theta}^{M} \vert Y^{n}}^{n, (\infty)}\left(\left\{M = m\right\}\right)\right] + \sum\limits_{m = G_{n}^{+} + 1}^{G_{n}} \mathds{E}_{\theta^{\circ}}^{n}\left[\mathds{P}_{M\vert Y^{n}}^{n, (\infty)}\left(\left\{M = m\right\}\right)\right]\\
+& && && && + \sum\limits_{m = G_{n}^{-}}^{G_{n}^{+}} \mathds{E}_{\theta^{\circ}}^{n}\left[\mathds{P}_{\boldsymbol{\theta}^{M}\vert Y, M = m}^{n, (\infty)}\left(\left\{K^{\circ} \Phi_{n}^{\circ} < \Vert \boldsymbol{\theta}^{M} - \theta^{\circ} \Vert^{2}\right\}\right)\right]\\
+& && \leq && && \underbrace{\sum\limits_{m = 1}^{G_{n}^{-} - 1} \mathds{P}_{\theta^{\circ}}^{n}\left[\left\{\widehat{m} = m\right\}\right]}_{=: B_{1}} + \underbrace{\sum\limits_{m = G_{n}^{+} + 1}^{G_{n}} \mathds{P}_{\theta^{\circ}}^{n}\left[\left\{\widehat{m} = m\right\}\right]}_{=: B_{2}} + \sum\limits_{m = G_{n}^{-}}^{G_{n}^{+}} \underbrace{\mathds{P}_{\theta^{\circ}}^{n}\left[\left\{K^{\circ} \Phi_{n}^{\circ} < \left\Vert \overline{\theta}^{m} - \theta^{\circ} \right\Vert^{2}\right\}\right]}_{=: B_{3, m}}.
+\end{alignat*}
+
+\medskip
+
+As previously, $B_{1}$ and $B_{2}$ are controlled in \textsc{\cref{pr1}}.
+Hence, we now control $\sum\limits_{m = G_{n}^{-}}^{G_{n}^{+}} B_{3, m}.$
+
+\medskip
+
+Using \textsc{\cref{pr2}} again, we have that, for all $m$ in $\llbracket 1, G_{n} \rrbracket$ :
+\[\mathds{P}_{\theta^{\circ}}^{n}\left[\left\{\Vert \overline{\theta}^{m} - \theta^{\circ}\Vert_{l_{2}}^{2} > 4 \left[\mathfrak{b}_{m} \vee \frac{m \overline{\Lambda}_{m}}{n}\right]\right\}\right] \leq \exp\left[-\frac{m}{9 L}\right].\]
+
+In addition to that, thanks to the definitions of $G_{n}^{-}$ and $G_{n}^{+}$, the monotonicity of $\mathfrak{b}_{m}$ and $\frac{m \overline{\Lambda}_{m}}{n}$, on the one hand we have, for all $m$ in $\llbracket G_{n}^{-}, m_{n}^{\circ} \rrbracket$ :
+\begin{alignat*}{3}
+& \frac{m \overline{\Lambda}_{m}}{n} &&\leq&& \frac{m_{n}^{\circ} \overline{\Lambda}_{m_{n}^{\circ}}}{n} \leq \Phi_{n}^{\circ},\\
+&\mathfrak{b}_{m} &&\leq&& 9 L \Phi_{n}^{\circ} ;
+\end{alignat*}
+and on the other hand, thanks to \textsc{\cref{as2}}, with $D^{\circ} := \left\lceil \frac{3}{\kappa^{\circ}} + 1 \right\rceil$, then we have for  all $m$ in $\llbracket m_{n}^{\circ}, G_{n}^{+} \rrbracket$ :
+
+\begin{alignat*}{3}
+& m && \leq && \frac{3 \Phi_{n}^{\circ} n}{\Lambda_{m_{n}^{\circ}}} + m_{n}^{\circ} \leq \frac{3 n m_{n}^{\circ} \overline{\Lambda}_{m_{n}^{\circ}}}{\Lambda_{m_{n}^{\circ}} n \kappa^{\circ}} + m_{n}^{\circ} \leq \left(\frac{3}{\kappa^{\circ}} + 1\right) m_{n}^{\circ} \leq D^{\circ} m_{n}^{\circ},\\ 
+& \mathfrak{b}_{m} && \leq && \mathfrak{b}_{m_{n}^{\circ}} \leq \Phi_{n}^{\circ}.
+\end{alignat*}
+
+Using $m \leq D^{\circ} m_{n}^{\circ}$ and \textsc{\cref{as1}} we have
+\[\overline{\Lambda}_{m} \leq \Lambda_{m} \leq \Lambda_{D^{\circ} m_{n}^{\circ}} \leq \Lambda_{D^{\circ}} \Lambda_{m_{n}^{\circ}} \leq \Lambda_{D^{\circ}} L \overline{\Lambda}_{m_{n}^{\circ}}.\]
+
+So finally we have for all $m$ in $\llbracket G_{n}^{-}, G_{n}^{+}\rrbracket$, with $K^{\circ} \geq 4L \cdot \left[9 \vee D^{\circ} \Lambda_{D^{\circ}}\right]$ :
+\begin{alignat*}{3}
+& \mathfrak{b}_{m} && \leq && 9 L \Phi_{n}^{\circ},\\
+& \frac{m \overline{\Lambda}_{m}}{n} && \leq && D^{\circ} \Lambda_{D^{\circ}} L \cdot \frac{m_{n}^{\circ} \overline{\Lambda}_{m_{n}^{\circ}}}{n} \leq D^{\circ} \Lambda_{D^{\circ}} L \cdot \Phi_{n}^{\circ},\\
+& \left[\mathfrak{b}_{m} \vee \frac{m \overline{\Lambda}_{m}}{n}\right] && \leq && L \left[9 \vee D^{\circ} \Lambda_{D^{\circ}}\right] \Phi_{n}^{\circ},\\
+& 4 \left[\mathfrak{b}_{m} \vee \frac{m \overline{\Lambda}_{m}}{n}\right] && \leq && K^{\circ} \Phi_{n}^{\circ}.\\
+\end{alignat*}
+
+Which leads us to the upper bound \textcolor{red}{LES DEUX FORMULES DE SOMME D'exp NE SEMBLENT PAS EN ACCORD ?}
+\[\sum\limits_{m = G_{n}^{-}}^{G_{n}^{+}}B_{3, m} \leq \sum\limits_{m = G_{n}^{-}}^{G_{n}^{+}} \exp\left[- \frac{m}{9 L}\right] \leq 18L \exp\left[-\frac{G_{n}^{-}}{9 L}\right].\]
+
+\bigskip
+
+Finally, we can conclude :
+
+\begin{alignat*}{2}
+& \mathds{E}_{\theta^{\circ}}^{n} && \left[\mathds{P}_{\boldsymbol{\theta}^{M}\vert Y^{n}}^{n, (\infty)}\left(\left(K^{\circ}\right)^{-1}\Phi_{n}^{\circ} \leq \Vert \boldsymbol{\theta}^{M} - \theta^{\circ} \Vert ^{2} \leq K^{\circ} \Phi_{n}^{\circ}\right)\right]\\
+& && \geq 1 - 2 \exp\left[- \frac{5 m_{n}^{\circ}}{9 L} + \log\left(G_{n}\right)\right] - 2 \exp\left[- \frac{7 m_{n}^{\circ}}{9} + \log\left(G_{n}\right)\right] - 2 K^{\circ} \exp\left[- \frac{G_{n}^{-}}{K^{\circ}}\right] - 18 L \exp\left[- \frac{G_{n}^{-}}{9L}\right].
+\end{alignat*}

@@ -1,0 +1,261 @@
+\section{Intermediate results}
+
+\begin{pr}\label{prB.2.1}
+Under \textsc{\cref{AS_BAYES_GAUSS_CONTRACT_HIERARCHICAL_LAMBDA}}, we have, for all $m$ in $\llbracket 1, G_{n} \rrbracket$ and $c$ greater than $\frac{3}{2}$,
+\[\mathds{P}_{\theta^{\circ}}^{n}\left[\left\Vert \overline{\theta}^{m} - \theta^{\circ} \right\Vert^{2} > 4 c \left[\mathfrak{b}_{m} \vee \frac{m \overline{\Lambda}_{m}}{n}\right]\right] \leq \exp\left[-\frac{c m}{6 L}\right].\]
+\end{pr}
+
+\begin{de}\label{deB.2.1}
+Define the following quantities :
+\begin{alignat*}{3}
+&G_{n}^{\star-} && := && \min\left\{m \in \llbracket 1, m_{n}^{\star} \rrbracket : \quad \mathfrak{b}_{m} \leq 9 \left(1 \vee r\right) L \Phi_{n}^{\star}\right\},\\
+& G_{n}^{\star+} && := && \max \left\{m \in \llbracket m_{n}^{\star}, G_{n} \rrbracket : \frac{m - m_{n}^{\star}}{n} \leq 3 \Lambda_{m_{n}^{\star}}^{-1} \left(1 \vee r \right) \Phi_{n}^{\star}\right\}.
+\end{alignat*}
+\end{de}
+
+\begin{pr}\label{prB.2.2}
+Under \textsc{\cref{AS_BAYES_GAUSS_CONTRACT_HIERARCHICAL_LAMBDA}}, we have the following concentration inequalities for the threshold hyper parameter :
+\begin{alignat*}{3}
+& \mathds{P}_{\theta^{\circ}}^{n}\left[\widehat{m} > G_{n}^{\star+}\right] && \leq && \exp\left[- \frac{5 \left(1 \vee r\right) m_{n}^{\star}}{9 L} + \log \left(G_{n}\right)\right],\\
+& \mathds{P}_{\theta^{\circ}}^{n}\left[\widehat{m} < G_{n}^{\star-}\right] && \leq && \exp\left[- \frac{7 \left(1 \vee r\right) m_{n}^{\star}}{9} + \log \left(G_{n}\right)\right].
+\end{alignat*}
+\end{pr}
+
+\section{Detailed proofs}
+
+\begin{pro}{\textsc{Proof of \nref{prB.2.1}} \\}\label{proB.2.1}
+Let be $m$ in $\llbracket 1, G_{n} \rrbracket$ and note that
+\[\Vert \overline{\theta}^{m} - \theta^{\circ} \Vert^{2} = \sum\limits_{j = 1}^{m} \left(\frac{Y_{j}}{\lambda_{j}} - \theta^{\circ}_{j}\right)^{2} + \mathfrak{b}_{m},\]
+hence, we will use \textsc{\cref{lmA.1.1}}.
+
+We then define 
+\begin{alignat*}{4}
+& && S_{m} && := && \sum\limits_{j = 1}^{m} \left(\frac{Y_{j}}{\lambda_{j}} - \theta^{\circ}_{j}\right)^{2},\\
+& && \mu_{m} && := && \mathds{E}_{\theta^{\circ}}^{n}\left[S_{m}\right] = \frac{m \overline{\Lambda}_{m}}{n},\\
+& \forall j \in \llbracket 1, m \rrbracket \quad && \beta_{j}^{2} && := && \mathds{V}_{\theta^{\circ}}^{n}\left[\frac{Y_{j}}{\lambda_{j}} - \theta^{\circ}_{j}\right] = \frac{\Lambda_{j}}{n},\\
+& \forall j \in \llbracket 1, m \rrbracket \quad && \alpha_{j}^{2} && := && \mathds{E}_{\theta^{\circ}}^{n}\left[\frac{Y_{j}}{\lambda_{j}} - \theta^{\circ}_{j}\right] = 0,\\
+& && v_{m} && := && \sum\limits_{j = 1}^{m}\beta_{j}^{2} = \frac{m \overline{\Lambda}_{m}}{n},\\
+& && t_{m} && := && \max\limits_{j \in \llbracket 1, m \rrbracket}\beta_{j}^{2} = \frac{\Lambda_{m}}{n}.
+\end{alignat*}
+
+We then control the concentration of $S_{m}$, define $c$ a constant greater than $\frac{3}{2}$.
+With the following facts
+\begin{itemize}
+\item for any $a$ and $b$ in $\R_{+}$ we have $a \vee b \geq \frac{1}{2} \left(a + b\right)$
+\item $c > 1$
+\item \nref{lmA.1.1}
+\end{itemize}
+
+\begin{alignat*}{3}
+& \mathds{P}_{\theta^{\circ}}^{n}\left[S_{m} + \mathfrak{b}_{m} \geq 4 c \left(\frac{m \overline{\Lambda}_{m}}{n} \vee \mathfrak{b}_{m}\right) \right] && \leq && \mathds{P}_{\theta^{\circ}}^{n}\left[S_{m} + \mathfrak{b}_{m} \geq 2 c \frac{m \overline{\Lambda}_{m}}{n} + \mathfrak{b}_{m} \right]\\
+& && \leq && \mathds{P}_{\theta^{\circ}}^{n}\left[S_{m} \geq 2 c \frac{m \overline{\Lambda}_{m}}{n}\right]\\
+& && \leq && \mathds{P}_{\theta^{\circ}}^{n}\left[S_{m} - \mu_{m} \geq c \frac{m \overline{\Lambda}_{m}}{n}\right]\\
+& && \leq && \exp\left[- \frac{c n m \overline{\Lambda}_{m}}{6 n \Lambda_{m}}\right]\\
+& && \leq && \exp\left[- \frac{c m}{6 L}\right].
+\end{alignat*}
+\end{pro}
+
+\begin{pro}{\textsc{Proof of \textsc{\cref{prB.2.2}}} \\}
+First, let's proof the first inequality.
+Use the fact that : 
+\begin{alignat*}{2}
+& \mathds{P}_{\theta^{\circ}}^{n}&&\left[G_{n}^{\star +} < \widehat{m} \leq G_{n}\right] \\
+& &&= \mathds{P}_{\theta^{\circ}}^{n} \left[\forall l \in \llbracket 1, G_{n}^{\star+}\rrbracket, \quad \frac{3 \widehat{m}}{n} - \sum\limits_{j=1}^{\widehat{m}} Y_{j}^{2} < \frac{3 l}{n} - \sum\limits_{j=1}^{l} Y_{j}^{2} \right]\\
+& && \leq \mathds{P}_{\theta^{\circ}}^{n}\left[\exists m \in \llbracket G_{n}^{\star+} + 1, G_{n}\rrbracket : \quad \frac{3 m}{n} - \sum\limits_{j=1}^{m} Y_{j}^{2} < \frac{3 m_{n}^{\star}}{n} - \sum\limits_{j=1}^{m_{n}^{\star}} Y_{j}^{2} \right]\\
+& && \leq \sum\limits_{m = G_{n}^{\star+} + 1}^{G_{n}} \mathds{P}_{\theta^{\circ}}^{n}\left[\frac{3 m}{n} - \sum\limits_{j=1}^{m} Y_{j}^{2} < \frac{3 m_{n}^{\star}}{n} - \sum\limits_{j=1}^{m_{n}^{\star}} Y_{j}^{2}\right]\\
+& && \leq \sum\limits_{m = G_{n}^{\star+} + 1}^{G_{n}} \mathds{P}_{\theta^{\circ}}^{n}\left[0 <  3 \frac{m_{n}^{\star} - m}{n} + \sum\limits_{j = m_{n}^{\star} + 1}^{m} Y_{j}^{2}\right]
+\end{alignat*}
+
+We will now use \textsc{\cref{lmA.1.1}}. For this purpose, define then for all $m$ in $\llbracket G_{n}^{\star+} + 1, G_{n} \rrbracket$ : $S_{m} := \sum\limits_{j = m_{n}^{\star} + 1}^{m} Y_{j}^{2}$, we then have $\mu_{m} := \mathds{E}_{\theta^{\circ}}^{n}\left[S_{m}\right] = \frac{m- m_{n}^{\star}}{n} + \sum\limits_{j = m_{n}^{\star} + 1}^{m} \left(\theta^{\circ}_{j}\lambda_{j}\right)^{2}$, $\alpha_{j}^{2} := \mathds{E}_{\theta^{\circ}}^{n}\left[Y_{j}\right]^{2} =  \left(\theta^{\circ}_{j}\lambda_{j}\right)^{2}$ and $\beta_{j}^{2} := \mathds{V}_{\theta^{\circ}}^{n}\left[Y_{j}\right] = \frac{1}{n}$.
+
+Now we note, using the definition of $\Theta^{\mathfrak{a}}(r)$
+\begin{alignat*}{5}
+& \sum\limits_{j = m_{n}^{\star} + 1}^{m} \alpha_{j}^{2} && = && \sum\limits_{j = m_{n}^{\star} + 1}^{m}\left(\theta^{\circ}_{j}\lambda_{j}\right)^{2}&& && \\
+& && \leq && \Lambda_{m_{n}^{\star}}^{-1} \sum\limits_{j = m_{n}^{\star} + 1}^{m}\left(\theta^{\circ}_{j}\right)^{2} && && \\
+& && \leq && \Lambda_{m_{n}^{\star}}^{-1} \mathfrak{b}_{m_{n}^{\star}} && &&\\
+& && \leq && \Lambda_{m_{n}^{\star}}^{-1} \left( 1 \vee r\right) \Phi_{n}^{\star} && =: && r_{m}\\
+& \sum\limits_{j = m_{n}^{\star}}^{m} \beta_{j}^{2} && = && \frac{m - m_{n}^{\star}}{n} && =: && v_{m}\\
+& \max\limits_{j \in \llbracket m_{n}^{\star}, m \rrbracket} \beta_{j} && = && \frac{1}{n} && =: && t_{m}.
+\end{alignat*}
+
+Hence, we have, for all $m$ in $\llbracket G_{n}^{\star+} + 1, G_{n}\rrbracket$
+\begin{alignat*}{2}
+& \mathds{P}_{\theta^{\circ}}^{n}&&\left[\sum\limits_{j = m_{n}^{\star} + 1}^{m} Y_{j}^{2} - 3 \frac{m - m_{n}^{\star}}{n} > 0\right]\\
+& && = \mathds{P}_{\theta^{\circ}}^{n}\left[S_{m} - \frac{m - m_{n}^{\star}}{n} > 2 \frac{m - m_{n}^{\star}}{n}\right]\\
+& && = \mathds{P}_{\theta^{\circ}}^{n}\left[S_{m} - \frac{m - m_{n}^{\star}}{n} - \sum\limits_{j = m_{n}^{\star} + 1}^{m} \left(\theta^{\circ}_{j}\lambda_{j}\right)^{2} > 2 \frac{m - m_{n}^{\star}}{n} - \sum\limits_{j = m_{n}^{\star} + 1}^{m} \left(\theta^{\circ}_{j}\lambda_{j}\right)^{2}\right]\\
+& && \leq \mathds{P}_{\theta^{\circ}}^{n}\left[S_{m} - \mu_{m} > 2 \frac{m - m_{n}^{\star}}{n} - \Lambda_{m_{n}^{\star}}^{-1} \mathfrak{b}_{m_{n}^{\star}}\right]\\
+& && \leq \mathds{P}_{\theta^{\circ}}^{n}\left[S_{m} - \mu_{m} > 2 \frac{m - m_{n}^{\star}}{n} - \Lambda_{m_{n}^{\star}}^{-1} \left(1 \vee r\right) \Phi_{n}^{\star} \right].
+\end{alignat*}
+
+Using the definition of $G_{n}^{\star+},$ we have $\frac{m - m_{n}^{\star}}{n} > 3 \Lambda_{m_{n}^{\star}}^{-1}\left(1 \vee r\right) \Phi_{n}^{\star}.$
+
+Hence, we can write :
+
+\begin{alignat*}{2}
+& \mathds{P}_{\theta^{\circ}}^{n}&&\left[\sum\limits_{j = m_{n}^{\star}}^{m} Y_{j}^{2} - 3 \frac{m - m_{n}^{\star}}{n} > 0\right]\\
+& &&\leq \mathds{P}_{\theta^{\circ}}^{n}\left[S_{m} - \mu_{m} > \frac{m - m_{n}^{\star}}{n} + 2 \Lambda_{m_{n}^{\star}}^{-1} \left(1 \vee r \right) \Phi_{n}^{\star}\right]\\
+& &&\leq \mathds{P}_{\theta^{\circ}}^{n}\left[S_{m} - \mu_{m} > v_{m} + 2 r_{m}\right]\\
+& &&\leq \exp\left[- n\frac{\frac{m - m_{n}^{\star}}{n} + 2 \Lambda_{m_{n}^{\star}}^{-1} \left(1 \vee r\right) \Phi_{n}^{\star}}{9}\right]\\
+& &&\leq \exp\left[- n \frac{5 \Lambda_{m_{n}^{\star}}^{-1} \left( 1 \vee r\right) \Phi_{n}^{\star}}{9}\right]\\
+& &&\leq \exp\left[- \frac{5 \left( 1 \vee r\right) m_{n}^{\star}}{9 L}\right].
+\end{alignat*}
+
+Finally we can conclude that
+\[\mathds{P}_{\theta^{\circ}}^{n}\left[G_{n}^{\star+} < \widehat{m} \leq G_{n}\right] \leq \exp\left[- \frac{5 \left( 1 \vee r\right) m_{n}^{\star}}{9 L} + \log\left(G_{n}\right)\right].\]
+
+\bigskip
+
+We now prove the second inequality.
+
+We begin by writing the same kind of inclusion of events as for the first inequality :
+\begin{alignat*}{3}
+& \mathds{P}_{\theta^{\circ}}^{n} \left[1 \leq \widehat{m} < G_{n}^{\star-}\right] && = && \mathds{P}_{\theta^{\circ}}^{n} \left[ \forall m \in \llbracket G_{n}^{-}, G_{n} \rrbracket, \quad 3 \frac{\widehat{m}}{n} - \sum\limits_{j = 1}^{\widehat{m}} Y_{j}^{2} < 3 \frac{m}{n} - \sum\limits_{j = 1}^{m} Y_{j}^{2}\right]\\
+& && \leq && \mathds{P}_{\theta^{\circ}}^{n} \left[ \exists m \in \llbracket 1, G_{n}^{\star-} -1 \rrbracket, \quad 3 \frac{m}{n} - \sum\limits_{j = 1}^{m} Y_{j}^{2} < 3 \frac{m_{n}^{\star}}{n} - \sum\limits_{j = 1}^{m_{n}^{\star}} Y_{j}^{2}\right]\\
+& && \leq && \sum\limits_{m = 1}^{G_{n}^{\star-}} \mathds{P}_{\theta^{\circ}}^{n} \left[3 \frac{m}{n} - \sum\limits_{j = 1}^{m} Y_{j}^{2} < 3 \frac{m_{n}^{\star}}{n} - \sum\limits_{j = 1}^{m_{n}^{\star}} Y_{j}^{2}\right]\\
+& && \leq && \sum\limits_{m = 1}^{G_{n}^{\star-}} \mathds{P}_{\theta^{\circ}}^{n}\left[\sum\limits_{j = m + 1}^{m_{n}^{\star}} Y_{j}^{2} < 3 \frac{m_{n}^{\star} - m}{n} \right].
+\end{alignat*}
+
+The \textsc{\cref{lmA.1.1}} steps in again, define $S_{m} := \sum\limits_{j = m + 1}^{m_{n}^{\star}} Y_{j}^{2}$ and we want to control the concentration of this sum, hence we take the following notations :
+
+\begin{alignat*}{3}
+& \mu_{m} && := && \mathds{E}_{\theta^{\circ}}^{n}\left[S_{m}\right]\\
+& && = && \frac{m_{n}^{\star} - m}{n} + \sum\limits_{j = m+1}^{m_{n}^{\star}}\left(\theta^{\circ}_{j}\lambda_{j}\right)^{2}\\
+& r_{m} && := && \sum\limits_{j = m+1}^{m_{n}^{\star}}\left(\theta^{\circ}_{j}\lambda_{j}\right)^{2}\\
+& v_{m} && := && \frac{m_{n}^{\star} - m}{n}\\
+& t_{m} && := && \frac{1}{n}.
+\end{alignat*}
+
+Hence, we have
+
+\begin{alignat*}{2}
+& \mathds{P}_{\theta^{\circ}}^{n} && \left[S_{m} < 3 \frac{m_{n}^{\star} - m}{n}\right] \\
+& && = \mathds{P}_{\theta^{\circ}}^{n}\left[S_{m} - \mu_{m} < 3 \frac{m_{n}^{\star} - m}{n} - \frac{m_{n}^{\star} - m}{n} - \sum\limits_{j = m+1}^{m_{n}^{\star}}\left(\theta^{\circ}_{j}\lambda_{j}\right)^{2}\right]\\
+& && = \mathds{P}_{\theta^{\circ}}^{n}\left[S_{m} - \mu_{m} < 3 \frac{m_{n}^{\star} - m}{n} - \frac{2}{3} \frac{m_{n}^{\star} - m}{n} - \frac{1}{3}\sum\limits_{j = m+1}^{m_{n}^{\star}}\left(\theta^{\circ}_{j}\lambda_{j}\right)^{2} - \frac{1}{3} \left[v_{m} + 2 r_{m}\right]\right]\\
+& && \leq \mathds{P}_{\theta^{\circ}}^{n}\left[S_{m} - \mu_{m} < \frac{7}{3} \frac{m_{n}^{\star} - m}{n} - \frac{1}{3} \Lambda_{m_{n}^{\star}}^{-1}\sum\limits_{j = m+1}^{m_{n}^{\star}}\left(\theta^{\circ}_{j}\right)^{2} - \frac{1}{3} \left[v_{m} + 2 r_{m}\right]\right]\\
+& && \leq \mathds{P}_{\theta^{\circ}}^{n}\left[S_{m} - \mu_{m} <  - \frac{1}{3} \left[v_{m} + 2 r_{m}\right] + \frac{7}{3} \frac{m_{n}^{\star}}{n} + \frac{1}{3} \Lambda_{m_{n}^{\star}}^{-1}\mathfrak{b}_{m_{n}^{\star}} - \frac{1}{3} \Lambda_{m_{n}^{\star}}^{-1}\mathfrak{b}_{m}\right]\\
+& && \leq \mathds{P}_{\theta^{\circ}}^{n}\left[S_{m} - \mu_{m} < - \frac{1}{3} \left[v_{m} + 2 r_{m}\right] + 3 \left(1 \vee r\right) \Phi_{n}^{\star} \overline{\Lambda}_{m_{n}^{\star}}^{-1} - \frac{1}{3}\Lambda_{m_{n}^{\star}}^{-1}\mathfrak{b}_{m}\right]
+\end{alignat*}
+
+now, using the definition of $G_{n}^{-}$, we have $\mathfrak{b}_{m} > 9 L \left(1 \vee r\right)\Phi_{n}^{\star}$ so
+
+\begin{alignat*}{2}
+& \mathds{P}_{\theta^{\circ}}^{n}&&\left[S_{m} < 3 \frac{m_{n}^{\star} - m}{n}\right]\\
+& && \leq \mathds{P}_{\theta^{\circ}}^{n}\left[S_{m} - \mu_{m} < - \frac{1}{3} \left[v_{m} + 2 r_{m}\right]\right]\\
+& && \leq \exp\left[- \frac{n}{36}\left(\frac{m_{n}^{\star} - m}{n} + 2 \sum\limits_{j = m + 1}^{m_{n}^{\star}}\left(\theta^{\circ}_{j}\lambda_{j}\right)^{2}\right)\right]\\
+& && \leq \exp\left[- n \frac{\frac{m_{n}^{\star} - m}{n} + 2 \Lambda_{m_{n}^{\star}}^{-1}\mathfrak{b}_{m} - 2 \Lambda_{m_{n}^{\star}}^{-1}\mathfrak{b}_{m_{n}^{\star}}}{36}\right]\\
+& && \leq \exp\left[- n\frac{16 L \left(1 \vee r\right) \Phi_{n}^{\star} \Lambda_{m_{n}^{\star}}^{-1}}{36}\right]\\
+& && \leq \exp \left[ - \frac{4 \left(1 \vee r\right)m_{n}^{\star}}{9} \right]
+\end{alignat*}
+
+Which in turn implies
+
+\[\mathds{P}_{\theta^{\circ}}^{n}\left[1 \leq \widehat{m} < G_{n}^{\star-}\right] \leq \exp\left[ - \frac{4 \left(1 \vee r\right) m_{n}^{\star}}{9} + \log\left(G_{n}\right)\right].\]
+\end{pro}
+
+\begin{pro}{\textsc{Proof of \nref{THM_BAYES_IGSSM_KNOWN_IID_MINIMAX_NP}} \\}\label{proB.2.3}
+By the the total probability formula, we have :
+\begin{alignat*}{2}
+& \mathds{E}_{\theta^{\circ}}^{n}&&\left[\mathds{P}_{\boldsymbol{\theta}^{M}\vert Y^{n}}^{n, (\infty)}\left(\Vert \boldsymbol{\theta}^{M} - \theta^{\circ} \Vert ^{2} \leq K^{\star} \Phi_{n}^{\star}\right)\right]\\
+& = && 1 - \mathds{E}_{\theta^{\circ}}^{n}\left[\mathds{P}_{\boldsymbol{\theta}^{M}\vert Y^{n}}^{n, (\infty)}\left(K^{\star} \Phi_{n}^{\star} < \Vert \boldsymbol{\theta}^{M} - \theta^{\circ} \Vert^{2}\right)\right].
+\end{alignat*}
+
+Hence, we will control $\mathds{E}_{\theta^{\circ}}^{n}\left[\mathds{P}_{\boldsymbol{\theta}^{M}\vert Y^{n}}^{n, (\infty)}\left(K^{\star} \Phi_{n}^{\star} < \Vert \boldsymbol{\theta}^{M} - \theta^{\circ} \Vert ^{2}\right)\right]$.
+
+We can write :
+\begin{alignat*}{2}
+& \mathds{E}_{\theta^{\circ}}^{n} && \left[\mathds{P}_{\boldsymbol{\theta}^{M}\vert Y^{n}}^{n, (\infty)}\left(K^{\star} \Phi_{n}^{\star} < \Vert \boldsymbol{\theta} - \theta^{\circ} \Vert ^{2}\right)\right] = \sum\limits_{m = 1}^{G_{n}} \mathds{E}_{\theta^{\circ}}^{n}\left[\mathds{P}_{\boldsymbol{\theta}^{M} \vert Y^{n}}^{n, (\infty)}\left(\left\{K^{\star} \Phi_{n}^{\star} < \Vert \boldsymbol{\theta}^{M} - \theta^{\circ} \Vert^{2}\right\} \cap \left\{M = m\right\}\right)\right]\\
+& && \leq \sum\limits_{m = 1}^{G_{n}^{\star-} - 1} \mathds{E}_{\theta^{\circ}}^{n}\left[\mathds{P}_{M \vert Y^{n}}^{n, (\infty)}\left(\left\{M = m\right\}\right)\right] + \sum\limits_{m = G_{n}^{\star+} + 1}^{G_{n}} \mathds{E}_{\theta^{\circ}}^{n}\left[\mathds{P}_{\boldsymbol{\theta}^{M} \vert Y^{n}}^{n, (\infty)}\left(\left\{M = m\right\}\right)\right]\\
+& && + \sum\limits_{m = G_{n}^{\star-}}^{G_{n}^{\star+}} \mathds{E}_{\theta^{\circ}}^{n}\left[\mathds{P}_{\boldsymbol{\theta}^{M}\vert Y, M = m}^{n, (\infty)}\left(\left\{K^{\star} \Phi_{n}^{\star} < \Vert \boldsymbol{\theta}^{M} - \theta^{\circ} \Vert^{2}\right\}\right)\right]\\
+& && \leq \underbrace{\sum\limits_{m = 1}^{G_{n}^{\star-} - 1} \mathds{P}_{\theta^{\circ}}^{n}\left[\left\{\widehat{m} = m\right\}\right]}_{=: A} + \underbrace{\sum\limits_{m = G_{n}^{\star+} + 1}^{G_{n}} \mathds{P}_{\theta^{\circ}}^{n}\left[\left\{\widehat{m} = m\right\}\right]}_{=: B} + \sum\limits_{m = G_{n}^{\star-}}^{G_{n}^{\star+}} \underbrace{\mathds{P}_{\theta^{\circ}}^{n}\left[\left\{K^{\star} \Phi_{n}^{\star} < \left\Vert \overline{\theta}^{m} - \theta^{\circ} \right\Vert^{2}\right\}\right]}_{=: C_{m}}.
+\end{alignat*}
+
+\medskip
+
+We control $A$ and $B$ using \textsc{\cref{prB.2.2}}.
+
+Hence, we now control $\sum\limits_{m = G_{n}^{\star-}}^{G_{n}^{\star+}} C_{m}.$
+
+\medskip
+
+Using \nref{AS_BAYES_GAUSS_CONTRACT_HIERARCHICAL_MINIMAX} we have
+\[\left[a_{m_{n}^{\star}} \wedge \frac{m_{n}^{\star} \Lambda_{m_{n}^{\star}}}{n}\right] \leq \Phi_{n}^{\star} \leq  \frac{\left[a_{m_{n}^{\star}} \wedge \frac{m_{n}^{\star} \Lambda_{m_{n}^{\star}}}{n}\right]}{\kappa^{\star}}.\]
+
+Hence, for any $m$ in $\llbracket m_{n}^{\star}, G_{n}^{\star+} \rrbracket$ we have, using the definition of $G_{n}^{\star +}$
+\begin{alignat*}{3}
+& m && \leq && 3 \Lambda_{m_{n}^{\star}}^{-1} (1 \vee r) \Phi_{n}^{\star} n + m_{n}^{\star}\\
+& && \leq && \frac{3 (1 \vee r) n}{\Lambda_{m_{n}^{\star}} \kappa^{\star}} \left[\mathfrak{a}_{m_{n}^{\star}} \wedge \frac{m_{n}^{\star} \overline{\Lambda_{m_{n}^{\star}}}}{n}\right] + m_{n}^{\star}\\
+& && \leq && 3 \frac{(1 \vee r)}{\kappa^{\star}} \frac{m_{n}^{\star} \overline{\Lambda_{m_{n}^{\star}}}}{\Lambda_{m_{n}^{\star}}} + m_{n}^{\star}\\
+& && \leq && \left( \frac{3 (1 \vee r)}{\kappa^{\star} L} + 1\right) m_{n}^{\star}\\
+& && \leq && D^{\star} m_{n}^{\star};
+\end{alignat*}
+and 
+\begin{alignat*}{3}
+& \overline{\Lambda_{m}} && \leq && \Lambda_{m}\\
+& && \leq && \Lambda_{D^{\star} m_{n}^{\star}}\\
+& && \leq && \Lambda_{D^{\star}} \Lambda_{m_{n}^{\star}}\\
+& && \leq && \Lambda_{D^{\star}} L \overline{\Lambda_{m_{n}^{\star}}};
+\end{alignat*}
+which give together
+\[\frac{m \overline{\Lambda_{m}}}{n} \leq D^{\star} \Lambda_{D^{\star}} L \frac{m_{n}^{\star} \Lambda_{m_{n}^{\star}}}{n} \leq D^{\star} \Lambda_{D^{\star}} L \Phi_{n}^{\star};\]
+moreover, we have
+\[\mathfrak{b}_{m}^{2} \leq \mathfrak{b}_{m_{n}^{\star}}^{2} \leq \Phi_{n}^{\star}\]
+which leads to the conclusion
+\[\left[\mathfrak{b}_{m} \vee \frac{m \overline{\Lambda}_{m}}{n}\right] \leq D^{\star} \Lambda_{D^{\star}} \left( 1 \vee r\right) \Phi_{n}^{\star}.\]
+
+On the other hand, for and $m$ in $\llbracket G_{n}^{\star -}, m_{n}^{\star} \rrbracket$, the definition of $G_{n}^{\star -}$ directly gives us
+\[\left[\mathfrak{b}_{m} \vee \frac{m \overline{\Lambda}_{m}}{n}\right] \leq 9 L \left(1 \vee r\right) \Phi_{n}^{\star}.\]
+
+Using \textsc{\cref{prB.2.1}}, we have that, for all $m$ in $\llbracket G_{n}^{\star-}, G_{n}^{\star+} \rrbracket$ and $c$ greater than $\frac{3}{2}$ :
+\[\mathds{P}_{\theta^{\circ}}^{n}\left[\left\{\Vert \overline{\theta}^{m} - \theta^{\circ}\Vert^{2} > 4c \left(9 L \vee D^{\star} \Lambda_{D^{\star}}\right) \left(1 \vee r\right) \Phi_{n}^{\star}\right\}\right] \leq \exp\left[-\frac{c m}{6 L}\right].\]
+
+Hence, we set $K^{\star} := 6 \left(9L \vee D^{\star} \Lambda_{D^{\star}}\right) \left(1 \vee r\right),$ which leads us to the upper bound:
+\[\sum\limits_{m = G_{n}^{\star-}}^{G_{n}^{\star+}}C_{m} \leq \sum\limits_{m = G_{n}^{\star-}}^{G_{n}^{\star+}} \exp\left[- \frac{3 m}{8 L}\right] \leq 4 L \exp\left[-\frac{G_{n}^{\star-}}{4 L}\right].\]
+
+\bigskip
+
+Finally, we can conclude :
+
+\begin{alignat*}{2}
+& \mathds{E}_{\theta^{\circ}}^{n} && \left[\mathds{P}_{\boldsymbol{\theta}^{M}\vert Y^{n}}^{n, (\infty)}\left(\Vert \boldsymbol{\theta}^{M} - \theta^{\circ} \Vert ^{2} \leq K^{\star} \Phi_{n}^{\star}\right)\right]\\
+& && \geq 1 - \exp\left[- \frac{5 (1 \vee r) m_{n}^{\star}}{9 L} + \log\left(G_{n}\right)\right] - \exp\left[- \frac{7 (1 \vee r) m_{n}^{\star}}{9} + \log\left(G_{n}\right)\right] - 4 L \exp\left[- \frac{G_{n}^{\star-}}{4L}\right].
+\end{alignat*}
+
+This proves the first part of the theorem for any $\theta^{\circ}$ such that $G_{n}^{\star-}$ tends to infinity when $n$ tends to $\infty$.
+In the opposite case, it means that there exist $n^{\circ}$ such that for all $n$ larger than $n^{\circ}$, $G_{n}^{\star-} = G_{n^{\circ}}^{\star-}.$
+This means that $n \mapsto \mathfrak{b}_{G_{n}^{\star-}}$ is constant function for $n$ larger that $n^{\circ}$ but, by definition of $G_{n}^{\star-}$, we also have $\mathfrak{b}_{G_{n}^{\star-}} \leq 9 \left(1 \vee r\right) L \Phi_{n}^{\star} \rightarrow 0$ which leads to the conclusion that for all $m$ greater than $G_{n^{\circ}}^{\star-}$, $\mathfrak{b}_{m} = 0.$
+Hence, for all $m$ greater than $G_{n^{\circ}}^{\star-}$, we can write
+\[\frac{K^{\star} \cdot \Phi_{n}^{\star}}{\left[\mathfrak{b}_{m} \vee \frac{m \overline{\Lambda}_{m}}{n} \right]} = \frac{ K^{\star} \Phi_{n}^{\star}}{\left[\frac{m \overline{\Lambda}_{m}}{n} \right]} \geq \frac{K^{\star} \frac{m_{n}^{\star} \overline{\Lambda}_{m_{n}^{\star}}}{n}}{\left[\frac{m \overline{\Lambda}_{m}}{n} \right]} \geq \frac{K^{\star} m_{n}^{\star}}{L m} \geq 9 D^{\star} \Lambda_{D^{\star}} \left(1 \vee r\right) \frac{m_{n}^{\star}}{m} \geq 1.\]
+
+Hence, we set $c := \frac{9}{4} D^{\star} \Lambda_{D^{\star}} \left(1 \vee r\right) \frac{m_{n}^{\star}}{m}$ and can write in this case for all $n$ larger than $n^{\circ}$ :
+
+\begin{alignat*}{3}
+& \sum\limits_{m = G_{n}^{\star-}}^{G_{n}^{\star+}} \mathds{P}_{\theta^{\circ}}^{n}\left[K^{\star} \Phi_{n}^{\star} < \left\Vert \overline{\theta}^{m} - \theta^{\circ} \right\Vert^{2}\right] && \leq && \sum\limits_{m = G_{n}^{\star-}}^{G_{n}^{\star+}} \mathds{P}_{\theta^{\circ}}^{n}\left[ 4c \left[\mathfrak{b}_{m} \vee \frac{m \overline{\Lambda}_{m}}{n}\right] < \left\Vert \overline{\theta}^{m} - \theta^{\circ} \right\Vert^{2}\right]\\
+& && \leq && \sum\limits_{m = G_{n}^{\star-}}^{G_{n}^{\star+}} \exp\left[-\frac{c m}{6 L}\right]\\
+& && \leq && \sum\limits_{m = G_{n}^{\star-}}^{G_{n}^{\star+}} \exp\left[-\frac{3 D^{\star} \Lambda_{D^{\star}} \left(1 \vee r\right) m_{n}^{\star}}{8 L}\right] \\
+& && \leq && \exp\left[-\frac{3 D^{\star} \Lambda_{D^{\star}} \left(1 \vee r \right) m_{n}^{\star}}{ 8L} + \log\left(G_{n}\right)\right].
+\end{alignat*}
+
+We can hence conclude that
+\begin{alignat*}{2}
+& \mathds{E}_{\theta^{\circ}}^{n}&&\left[\mathds{P}_{\boldsymbol{\theta}^{M}\vert Y^{n}}^{n, (\infty)}\left(\Vert \boldsymbol{\theta}^{M} - \theta^{\circ} \Vert ^{2} \leq K^{\star} \Phi_{n}^{\star}\right)\right] > 1 - \exp\left[-\frac{3 D^{\star} \Lambda_{D^{\star}} \left(1 \vee r\right) m_{n}^{\star}}{8 L} + \log\left(G_{n}\right)\right]\\
+& &&- \exp\left[- \frac{5 m_{n}^{\star}}{9 L} + \log\left(G_{n}\right)\right] - \exp\left[- \frac{7 m_{n}^{\star}}{9} + \log\left(G_{n}\right)\right].
+\end{alignat*}
+
+
+Hence, we have shown here that $\Phi_{n}^{\star}$ is an upper bound for the contraction rate under the quadratic risk.
+We will now use this to prove that it is also for the maximal risk.
+
+\medskip
+
+Note that $K^{\star} \, \Phi_{n}^{\star} \geq 4 \left[\mathfrak{b}_{m} \vee \frac{m \overline{\Lambda}_{m}}{n}\right]$ for all $m$ in $\llbracket G_{n}^{\star-}, G_{n}^{\star+} \rrbracket$.
+Hence, for any increasing function $K_{n}$ such that $\lim\limits_{n \rightarrow \infty} K_{n} = \infty,$ we have
+\[K_{n} \Phi_{n}^{\star} \geq 4 \frac{K_{n}}{K^{\star}} \left[\mathfrak{b}_{m} \vee \frac{m \overline{\Lambda}_{m}}{n}\right].\]
+So, if we define $\tilde{n}^{\circ},$ the smallest integer such that $\frac{K_{n}}{K^{\star}} \geq 1$, we can apply \textsc{\cref{prB.2.1}} and we have
+\begin{alignat*}{3}
+& \sum\limits_{m = G_{n}^{\star -}}^{G_{n}^{\star +}} \mathds{P}_{\theta^{\circ}}^{n}\left[K_{n} \Phi_{n}^{\star} < \left\Vert \overline{\theta}^{m} - \theta^{\circ} \right\Vert^{2}\right] && \leq && \sum\limits_{m = G_{n}^{\star-}}^{G_{n}^{\star+}} \mathds{P}_{\theta^{\circ}}^{n}\left[4 \frac{K_{n}}{K^{\star}} \left[\mathfrak{b}_{m} \vee \frac{m \overline{\Lambda}_{m}}{n}\right] < \left\Vert \overline{\theta}^{m} - \theta^{\circ} \right\Vert^{2}\right] \\
+& && \leq && \sum\limits_{m = G_{n}^{\star-}}^{G_{n}^{\star+}} \exp\left[-\frac{4 K_{n} m}{9 K^{\star} L}\right]\\
+& && \leq && \exp\left[-\frac{4 K_{n}}{9 K^{\star} L}\right].
+\end{alignat*}
+
+We hence here have a uniform upper bound for the maximal risk which concludes the proof.
+\end{pro}

@@ -1,0 +1,124 @@
+\section{Iterated Gaussian sieve prior}\label{BAYES_SIEVE}
+
+We consider in this part a statistical model with a functional parameter space as described in \nref{INTRO_DATA}.
+We adopt a sieve prior as described in \nref{INTRO_BAYES_PRIOR} and first give interest to the iteration asymptotic presented in \nref{INTRO_BAYES_ITERATIVE}.
+
+We assume the existence of a function $l: (\Theta, \mathcal{B}) \times (\Theta^{n}, \mathcal{B}^{\otimes n}) arrow \R$ such that the likelihood with respect to some reference measures $\P^{\circ}$ is given by: $L(\boldsymbol{\theta}, y^{n}) \propto \exp[-l(\boldsymbol{\theta}, y^{n})]$.
+
+Then, the family of Gaussian sieve priors is indexed by a threshold parameter $m$ in $\mathds{M}$($= \N$ for our examples), and we denote by $\P_{\boldsymbol{\theta}_{\overline{m}}}$ the element of this family with index $m$; moreover, we denote $\boldsymbol{\theta}_{\overline{m}}$ a random variable following this distribution. 
+There exists a reference measure $\Q^{\circ}$ such that the Gaussian sieve prior with threshold parameter $m$ admits a density of the shape
+$d\P_{\boldsymbol{\theta}_{\overline{m}}}/d\Q^{\circ}(\boldsymbol{\theta}) \propto \exp[-(1/2)\sum_{\vert s \vert \leq m} \vert \boldsymbol{\theta}(s) \vert^{2} ] \cdot \prod_{\vert s \vert > m} \delta_{0}(\boldsymbol{\theta}(s))$.
+
+Denote by $\Theta_{\overline{m}}$ the set $\{\theta \in \Theta : \forall s \in \mathds{F}_{\underline{m}}, \theta(s) = 0\}$.
+Bayes' theorem gives the following shape for the iterated posterior distribution:
+\begin{alignat*}{2}
+& (\d&&\P_{\boldsymbol{\theta}_{\overline{m}}\vert Y^{n}}^{\eta}/\d\Q^{\circ})(\boldsymbol{\theta}, Y^{n}) \propto \exp[-((1/2)\sum\nolimits_{\vert s \vert \leq m} \vert \boldsymbol{\theta}(s) \vert^{2} + \eta l(\boldsymbol{\theta}, y^{n}))] \cdot \prod\nolimits_{\vert s \vert > m} \delta_{0}(\boldsymbol{\theta}(s))\\
+& && = \frac{\prod_{\vert s \vert > m} \delta_{0}(\boldsymbol{\theta}(s))}{\int_{\Theta_{m}} \exp[-(1/2)\sum_{\vert s \vert \leq m} (\vert \mu(s) \vert^{2} - \vert \boldsymbol{\theta}(s) \vert^{2})]\exp[-\eta(l(\mu, y^{n}) - l(\boldsymbol{\theta}, y^{n}))] \d\Q^{\circ}(\mu)}.
+\end{alignat*}
+We then place ourselves under the assumption of a continuous likelihood to obtain the self informative Bayes carrier.
+
+\begin{as}\label{AS_BAYES_SIEVE_CONTINUOUS}
+Assume that for any $m$ in $\mathds{M}$ and $y$ in $\Xi^{n}$, $\Theta_{\overline{m}} arrow \R_{+}, \theta \mapsto l(\theta, y^{n})$ is continuous.
+\assEnd
+\end{as}
+
+The use of a threshold parameter brings us back to the study of a parametric model and we obtain the following result.
+
+\begin{thm}\label{THM_BAYES_SIEVE_SELF_INFORMATIVE}
+Assuming that $\mathds{M} = \N$ and \nref{AS_BAYES_SIEVE_CONTINUOUS}, the support of the Bayesian carrier is contained in the set of minimisers of $\theta \mapsto l(\theta, y^{n})$ under the constraint $\theta \in \Theta_{\overline{m}}$.
+\reEnd
+\end{thm}
+
+\begin{pro}[Proof of \nref{THM_BAYES_SIEVE_SELF_INFORMATIVE}.]\label{PRO_BAYES_SIEVE_SELF_INFORMATIVE}
+Let's remind that the definition of continuity gives us:
+\[\forall \theta \in \Theta_{\overline{m}}, \forall \epsilon \in \R_{+}^{\star}, \exists \delta \in \R_{+}^{\star} : \forall \mu \in \Theta_{\overline{m}}, \Vert \mu - \theta \Vert < \delta arrow \vert l(\mu, y^{n}) - l(\theta, y^{n}) \vert < \epsilon.\]
+Then, for any $B$ in $\mathcal{B}$ such that $\inf\nolimits_{\theta \in B} l(\theta, y) > \inf\nolimits_{\mu \in \Theta_{m}} l(\mu, y)$, there exist $\delta$ in $\R_{+}^{\star}$ and a ball $\mathcal{E}$ of $\Theta_{m}$ of radius $\delta$ such that, $\sup\nolimits_{\mu \in \mathcal{E}} l(\mu, y^{n}) < \inf\nolimits_{\theta \in B}l(\theta, y^{n})$ and hence $\sup\nolimits_{\mu \in \mathcal{E}}l(\mu, y^{n}) - \inf\nolimits_{\theta \in B}l(\theta, y^{n}) < 0$.
+
+Hence, we can write
+\begin{multline*}
+ \P_{\boldsymbol{\theta}_{\overline{m}}\vert Y^{n}}^{\eta}(B) = 
+\int_{B}(
+	(
+		\prod\nolimits_{\vert s \vert > m} \delta_{0}(\boldsymbol{\theta}(s))
+	)
+	\cdot (
+		\int_{\Theta_{\overline{m}}} \exp
+		[-(1/2)\sum\nolimits_{\vert s \vert \leq m}
+			(
+				\vert \mu(s) \vert^{2} - \vert \boldsymbol{\theta}(s) \vert^{2}
+			)
+		]
+\\
+		\cdot \exp
+		[
+			-\eta
+			(
+				l(\mu, y^{n}) - l(\boldsymbol{\theta}, y^{n})
+			)
+		] \, \d \Q^{\circ}(\mu)
+	)^{-1}
+) \, \d \Q^{\circ}(\boldsymbol{\theta})\\
+% \leq \int_{B}
+%(
+%	(
+%		\prod\nolimits_{\vert s \vert > m} \delta_{0}(\boldsymbol{\theta}(s))
+%	) \cdot
+%	(
+%		\exp
+%		[
+%			-\eta
+%			(
+%				\sup\nolimits_{\mu \in \mathcal{E}} l(\mu, y^{n}) - \inf\nolimits_{\mu \in B}l(\mu, y^{n})
+%			)
+%		]
+%\\ 
+%		\cdot \int_{\mathcal{E}} \exp
+%		[
+%			-(1/2)\sum\nolimits_{\vert s \vert \leq m}
+%			(
+%				\vert \mu(s) \vert^{2} - \vert \boldsymbol{\theta}(s) \vert^{2}
+%			)
+%		] \, \d \Q^{\circ}(\mu)
+%	)^{-1}
+%)\, \text{d} \boldsymbol{\theta}\\
+ \leq (
+	\exp
+	[
+		-\eta
+		(
+			\sup\nolimits_{\mu \in \mathcal{E}} l(\mu, y^{n}) - \inf\nolimits_{\mu \in B} l(\mu, y^{n})
+		)
+	]
+)^{-1}\\
+ \cdot \int_{B}
+(
+	(
+		\prod\nolimits_{\vert s \vert > m} \delta_{0}(\boldsymbol{\theta}(s)) \exp
+		[
+			-(1/2)\sum\nolimits_{\vert s \vert \leq m} \vert \boldsymbol{\theta}(s) \vert^{2}
+		]
+	)
+\\
+	\cdot
+	(
+		\int\nolimits_{\mathcal{E}}
+		\exp
+		[
+			-(1/2)\sum\nolimits_{\vert s \vert \leq m} \vert \mu(s) \vert^{2}
+		] \, \d \Q^{\circ}(\mu)
+	)^{-1}
+)
+\, \text{d} \boldsymbol{\theta} \to 0.
+\end{multline*}
+\proEnd
+\end{pro}
+
+We have hence showed that under the iteration asymptotic, the posterior distribution contracts itself on maximisers of the likelihood, constrained by $\theta(s) = 0$ for any $\vert s \vert > m$.
+
+We will see that, while considering the noise asymptotic, the choice of the threshold is determinant for the quality of the estimation.
+The choice of the threshold for the projection estimators and for sieve priors should be led in a similar fashion, that is, balancing the bias (information lost for values of $s$ greater than $m$) and the variance (noise incorporated in the estimation for values of $s$ which are smaller than $m$).
+As stated previously, the ideal choice of this parameter is however dependent on the parameter of interest and hence not available.
+It is hence important to inquire adaptive methods for the selection of this parameter.
+Some methods for the frequentist estimation were outlined in the introduction such as the penalised contrast model selection.
+In the next section, we introduce the hierarchical sieve prior which consists in modelling the threshold parameter as a random variable.
+We will show that by selecting the prior distribution for this hyper-parameter properly, the iteration asymptotic gives a Bayesian interpretation to the penalised contrast model selection.

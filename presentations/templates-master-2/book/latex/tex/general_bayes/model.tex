@@ -1,0 +1,210 @@
+\section{First application example: the inverse Gaussian sequence space model}\label{2.4}
+
+In this section, we consider the inverse Gaussian sequence space model and use the methodology described in \nref{2.3} to compute upper bounds of the Gaussian sieve priors described in \nref{2.1} when applied to this specific model.
+Doing so, we will notice that it gives us, for a very general case, the same speed as the convergence rate of projection estimators and that, by choosing properly the threshold parameter, we reach the oracle rate of convergence as well as the minimax optimal rate, \textbf{without a $\boldsymbol{\log}$-loss}.
+
+Then, using a methodology similar to \ncite{JJASRS} we show that under some regularity conditions, the iterated hierarchical prior leads to optimal posterior contraction rate.
+As a consequence, we can conclude about the oracle and minimax optimality of the penalised contrast model selection estimator with a new strategy of proof.
+
+\subsection{Contraction rate for sieve priors}\label{2.4.2}
+Considering this model, we use a Gaussian sieve prior for $\theta$ as described in \nref{2.1} and inquire the behaviour of the posterior distribution under the asymptotic $n \rightarrow \infty$.
+To sum up our setting we have:
+\begin{alignat*}{4}
+& \text{noise level:} \quad && n && \in && \N; \\
+& \text{parameter of interest:} \quad && \theta^{\circ} = (\theta^{\circ}_{j})_{j \in \N} && \in && \mathds{L}^{2}(\R^{\N}); \\
+& \text{convolution operator:} \quad && \lambda = (\lambda_{j})_{j \in \N} && \in && \R^{\N}; \\
+& \text{noise sequence:} \quad && \xi = (\xi_{j})_{j \in \N} && \sim_{i.i.d.} && \mathcal{N}(0, 1); \\
+& \text{observation:} \quad && Y^{n} = (Y_{j}^{n})_{j \in \N} && = && \theta^{\circ}_{j} \lambda_{j} + \frac{1}{\sqrt{n}} \xi_{j}; \\
+& \text{threshold sequence:} \quad && m_{n} && \in && \N^{\N}; \\
+& \text{prior guess} \quad && \boldsymbol{\theta}^{m_{n}} = (\boldsymbol{\theta}^{m_{n}}_{j})_{j \in \N} && \sim && \mathcal{N}(0, 1) \mathds{1}_{j \leq m_{n}} + \delta_{0} \mathds{1}_{j < m_{n}}. \\
+\end{alignat*}
+
+We are in a conjugated case and the iterated posterior is easily derived.
+Define for any $j$ in $\N$ and $\eta$ in $\N^{\star}$ the quantities
+
+\[\widehat{\theta}^{(\eta)}_{j} := \frac{n \eta Y^{n}_{j} \lambda_{j}}{1 + n \eta \lambda_{j}^{2}}; \quad \sigma^{(\eta)}_{j} := \frac{1}{1 + n \eta \lambda_{j}^{2}}.\]
+Then, for any $j$ in $\N$, the posterior distribution of $\boldsymbol{\theta}_{j}$ after $\eta$ iterations is given by
+\[\boldsymbol{\theta}_{j} \vert Y^{n, \eta} \sim \mathcal{N}(\widehat{\theta}^{(\eta)}_{j}, \sigma^{(\eta)}_{j}) \mathds{1}_{j \leq m_{n}} + \delta_{0}(\boldsymbol{\theta}_{j}) \mathds{1}_{j > m_{n}}.\]
+
+According to \nref{2.1}, for $n$ fixed, if $\eta$ tends to infinity, the posterior distribution contracts around the maximiser of the constrained likelihood.
+Considering the limits of $\widehat{\theta}^{(\eta)}_{j}$ and $\sigma^{(\eta)}_{j}$ as $\eta$ tells us that this maximiser is the projection estimator $\overline{\theta}^{m_{n}} = (\overline{\theta}^{m_{n}}_{j})_{j \in \N} = (\frac{Y_{j}}{\lambda_{j}} \mathds{1}_{j \leq m_{n}})_{j \in \N}$.
+
+\medskip
+
+We can then compute the quantities appearing in \nref{2.3} which gives the following results.
+
+\begin{cor}\label{cor2.4.1}
+For any $\theta^{\circ}$ in $\Theta$ and increasing, unbounded sequence $c_{n}$, we have
+\begin{alignat*}{3}
+& && \lim\limits_{n \rightarrow \infty} \E_{\theta^{\circ}}^{n}&&\left[\P_{\boldsymbol{\theta}^{m_{n}}\vert Y^{n}}^{n, (\eta)}\left(d^{2}\left(\theta^{\circ}, \boldsymbol{\theta}^{m_{n}}\right) \leq c_{n} \Phi^{m_{n}}_{n} \right)\right] = 1.
+\end{alignat*}
+\end{cor}
+
+\begin{pro}\label{pro2.4.1}
+We want to find a sequence $\left(K_{n}\right)_{n \in \mathds{N}}$ (for short, $K_{n}$) converging to $0$ such that
+\[\lim\limits_{n \rightarrow \infty} \E_{\theta^{\circ}}^{n}\left[\P_{\boldsymbol{\theta}^{m_{n}}\vert Y^{n}}^{n}\left(\Vert \boldsymbol{\theta}^{m_{n}} - \theta^{\circ} \Vert^{2} \geq K_{n}\right)\right] = 0.\]
+
+For any $n$, we define $S^{m_{n}} := \sum_{j=1}^{m_{n}} \left(\boldsymbol{\theta}^{m_{n}} - \theta^{\circ}\right)^{2}$. Therefore we have : 
+\[\E_{\theta^{\circ}}^{n}\left[\P_{\boldsymbol{\theta}^{m_{n}}\vert Y^{n}}^{n}\left(\Vert \boldsymbol{\theta}^{m_{n}} - \theta^{\circ} \Vert^{2} \geq K_{n}\right)\right] = \E_{\theta^{\circ}}^{n}\left[\P_{\boldsymbol{\theta}^{m_{n}}\vert Y^{n}}^{n}\left(S^{m_{n}} \geq K_{n} - \mathfrak{b}_{m_{n}}\right)\right].\]
+
+By definition, $S^{m_{n}}$ has finite expectation and strictly positive, finite variance. We define $\mathcal{S}^{m_{n}} := \frac{S^{m_{n}} - \E_{\boldsymbol{\theta}^{m_{n}} \vert Y^{n}}^{n}\left[S^{m_{n}}\right]}{\sqrt{\V_{\boldsymbol{\theta}^{m_{n}}\vert Y^{n}}^{n}[S^{m_{n}}]}}.$ The sequence of random variables defined this way is tight as their expectations are all equal to $0$ and their variances to $1$. We now have to look for a contraction rate for this new family of random variables as we have :
+
+\[\E_{\theta^{\circ}}^{n}\left[\P_{\boldsymbol{\theta}^{m_{n}}\vert Y^{n}}^{n}\left(\Vert \boldsymbol{\theta}^{m_{n}} - \theta^{\circ} \Vert^{2} \geq K_{n}\right)\right] = \E_{\theta^{\circ}}^{n}\left[\P_{\boldsymbol{\theta}^{m_{n}}\vert Y^{n}}^{n}\left(\mathcal{S}^{m_{n}} \geq \frac{K_{n} - \mathfrak{b}_{m_{n}}^{2} - \E_{\boldsymbol{\theta}^{m_{n}} \vert Y^{n}}^{n}\left[S^{m_{n}}\right]}{\sqrt{\V_{\boldsymbol{\theta}^{m_{n}} \vert Y^{n}}^{n}\left[S^{m_{n}}\right]}}\right)\right].\]
+
+We now control the convergence in probability of $\E_{\boldsymbol{\theta}^{m_{n}} \vert Y^{n}}^{n}\left[\mathcal{S}^{m_{n}}\right]$ and $\V_{\boldsymbol{\theta}^{m_{n}} \vert Y^{n}}^{n}\left[\mathcal{S}^{m_{n}}\right]$ which are given by
+\begin{alignat*}{3}
+&\E_{\boldsymbol{\theta}^{m_{n}} \vert Y^{n}}^{n}\left[S^{m_{n}}\right] &&=&& \sum\limits_{j = 1}^{m_{n}} \frac{\Lambda_{j}}{n \eta}\cdot \left(\frac{1}{\frac{\Lambda_{j}}{n \eta} + 1}\right)\left(1 + \frac{\left(- \theta^{\circ}_{j} + \eta \sqrt{n} \xi_{j} \lambda_{j}\right)^{2}}{\frac{\eta n}{\Lambda_{j}}\left(\frac{\Lambda_{j}}{\eta n} + 1\right)}\right)\\
+& && \leq && \sum\limits_{j = 1}^{m_{n}} \frac{\Lambda_{j}}{n \eta} + \sum\limits_{j = 1}^{m_{n}} \frac{\Lambda_{j}^{2}}{n^{2} \eta^{2}}\left(- \theta^{\circ}_{j} + \eta \sqrt{n} \xi_{j} \lambda_{j}\right)^{2};\\
+&\V_{\boldsymbol{\theta}^{m_{n}} \vert Y^{n}}^{n}\left[S^{m_{n}}\right] &&=&& 2 \sum\limits_{j = 1}^{m_{n}} \left(\frac{\Lambda_{j}}{n \eta}\cdot \frac{1}{\frac{\Lambda_{j}}{n \eta} + 1}\right)^{2}\left(1 + 2 \frac{\left(- \theta^{\circ}_{j} + \eta \sqrt{n} \xi_{j} \lambda_{j}\right)^{2}}{\frac{\eta n}{\Lambda_{j}}\left(\frac{\Lambda_{j}}{\eta n} + 1\right)}\right)\\
+& &&\leq && 2 \sum\limits_{j = 1}^{m_{n}} \frac{\Lambda_{j}^{2}}{n^{2} \eta^{2}} + 4 \sum\limits_{j = 1}^{m_{n}} \frac{\Lambda_{j}^{3}}{n^{3} \eta^{3}} \left(- \theta^{\circ}_{j} + \eta \sqrt{n} \xi_{j} \lambda_{j}\right)^{2}.
+\end{alignat*}
+
+We now control the stochastic parts of those moments.
+
+\textcolor{blue}{
+Define for some sequence $(u_{n})_{n \in \mathds{N}}$ , tending to $0$ and any deterministic sequence $(a_{j})$ the event $\Omega_{m_{n}} := \left\{\sum\limits_{j=1}^{m_{n}}a_{j}\left(- \theta^{\circ}_{j} + \eta \sqrt{n} \xi_{j} \lambda_{j}\right)^{2} \leq u_{n}\right\}.$\\
+Obviously, $\Omega_{m_{n}}^{c} = \left\{\sum\limits_{j=1}^{m_{n}} a_{j} \left( - \theta^{\circ}_{j} + \eta \sqrt{n} \xi_{j} \lambda_{j}\right)^{2} \geq u_{n}\right\}$ has probability
+\[\P_{\theta^{\circ}}^{n}\left(\Omega_{m_{n}}^{c}\right) = \P_{\theta^{\circ}}^{n}\left(\sum\limits_{j=1}^{m_{n}}\left(- \theta^{\circ}_{j} + \eta \sqrt{n} \xi_{j} \lambda_{j}\right)^{2} \geq u_{n}\right).\]
+In the same spirit as previously, we define the sequence of random variables $T^{m_{n}} := \sum\limits_{j=1}^{m_{n}}a_{j}\left(- \theta^{\circ}_{j} + \eta \sqrt{n} \xi_{j} \lambda_{j}\right)^{2}.$
+We have
+\begin{alignat*}{3}
+&\E_{\boldsymbol{\theta}^{m_{n}} \vert Y^{n}}^{n}\left[T^{m_{n}}\right] &&=&& \sum\limits_{j = 1}^{m_{n}} a_{j} \frac{\eta^{2} n}{\Lambda_{j}} \left[1 + \frac{\Lambda_{j}}{n \eta^{2}} \left(\theta^{\circ}_{j} \right)^{2}\right]\\
+& &&\leq&& \sum\limits_{j = 1}^{m_{n}} a_{j} \frac{\eta^{2} n}{\Lambda_{j}} \left[1 + \frac{\Lambda_{1}}{\eta^{2}} \left(\theta^{\circ}_{j}\right)^{2}\right];\\
+&\V_{\boldsymbol{\theta}^{m_{n}} \vert Y^{n}}^{n}\left[T^{m_{n}}\right] &&=&& 2 \sum\limits_{j = 1}^{m_{n}} a_{j}^{2} \left(\frac{\eta^{2} n}{\Lambda_{j}}\right)^{2} \left[1 + 4 \frac{\Lambda_{j}}{\eta^{2} n} \left(\theta^{\circ}_{j}\right)^{2}\right]\\
+& &&\leq&& 2 \sum\limits_{j = 1}^{m_{n}} a_{j}^{2} \left(\frac{\eta^{2} n}{\Lambda_{j}}\right)^{2} \left[1 + 4 \frac{\Lambda_{1}}{\eta^{2}} \left(\theta^{\circ}_{j}\right)^{2}\right];
+\end{alignat*}
+and the sequence of random variables $\mathcal{T}^{m_{n}} := \frac{T^{m_{n}} - \E_{\boldsymbol{\theta}^{m_{n}} \vert Y^{n}}^{n}\left[T^{m_{n}}\right]}{\sqrt{\V_{\boldsymbol{\theta}^{m_{n}} \vert Y^{n}}^{n}\left[T^{m_{n}}\right]}}$ is tight.
+Therefore, $\P_{\theta^{\circ}}^{n}\left(\sum\limits_{j=1}^{m_{n}}\left(- \theta^{\circ}_{j} + \eta \sqrt{n} \xi_{j} \lambda_{j}\right)^{2} \geq u_{n}\right) = \P_{\theta^{\circ}}^{n}\left(\mathcal{T}^{m_{n}} \geq \frac{u_{n} - \E_{\boldsymbol{\theta}^{m_{n}} \vert Y^{n}}^{n}\left[T^{m_{n}}\right]}{\sqrt{\V_{\boldsymbol{\theta}^{m_{n}} \vert Y^{n}}^{n}\left[T^{m_{n}}\right]}}\right)$.
+Consider any sequence $(c_{n})$ diverging to infinity.
+Then if
+\begin{alignat*}{3}
+&u_{n} &&=&& \sqrt{\V_{\boldsymbol{\theta}^{m_{n}} \vert Y^{n}}^{n}\left[T^{m_{n}}\right]} c_{n} + \E_{\boldsymbol{\theta}^{m_{n}} \vert Y^{n}}^{n}\left[T^{m_{n}}\right]\\
+& &&=&& c_{n} \cdot \sqrt{2 \sum\limits_{j = 1}^{m_{n}} a_{j}^{2} \left(\frac{\eta^{2} n}{\Lambda_{j}}\right)^{2} \left[1 + 4 \frac{\Lambda_{j}}{\eta^{2} n} \left(\theta^{\circ}_{j} \right)^{2}\right]} + \sum\limits_{j = 1}^{m_{n}} a_{j} \frac{\eta^{2} n}{\Lambda_{j}} \left[1 + \frac{\Lambda_{j}}{n \eta^{2}} \left(\theta^{\circ}_{j} \right)^{2}\right].
+\end{alignat*}
+Then $\P_{\theta^{\circ}}^{n}(\Omega_{m_{n}}^{c}) \leq  \P_{\theta^{\circ}}^{n}\left(\mathcal{T}^{m_{n}} \geq c_{n}\right) \rightarrow 0$ as $\mathcal{T}^{m_{n}}$ is tight.
+}
+
+\medskip
+
+We can now conclude about the posterior contraction by defining
+\begin{alignat*}{3}
+&K_{n} &&:=&& \mathfrak{b}_{m_{n}}^{2} +  \sum\limits_{j = 1}^{m_{n}} \frac{\Lambda_{j}}{n \eta}\cdot \left(\frac{1}{\frac{\Lambda_{j}}{n \eta} + 1}\right)\left(1 + \frac{u_{n}}{\frac{\eta n}{\Lambda_{j}}\left(\frac{\Lambda_{j}}{\eta n} + 1\right)}\right)\\
+& && && + c_{n} \cdot \sqrt{2 \sum\limits_{j = 1}^{m_{n}} \left(\frac{\Lambda_{j}}{n \eta}\cdot \frac{1}{\frac{\Lambda_{j}}{n \eta} + 1}\right)^{2}\left\{1 + 2 \frac{u_{n}}{\frac{\eta n}{\Lambda_{j}}\left(\frac{\Lambda_{j}}{\eta n} + 1\right)}\right\}}\\
+& &&=&& \mathcal{O}\left(c_{n} \cdot \frac{m_{n} \overline{\Lambda}_{m_{n}}}{n \eta} \vee \mathfrak{b}_{m_{n}}^{2}\right)
+\end{alignat*}
+
+
+Indeed :
+\begin{alignat*}{3}
+&\E_{\theta^{\circ}}^{n}\left[\P_{\boldsymbol{\theta}^{m_{n}}\vert Y^{n}}^{n}\left(\Vert \boldsymbol{\theta}^{m_{n}} - \theta^{\circ} \Vert^{2} \geq K_{n}\right)\right] && \leq &&\E_{\theta^{\circ}}^{n}\left[\mathds{1}_{\Omega{n}}\P_{\theta^{m_{n}} \vert Y^{n}}^{n}\left(\Vert \boldsymbol{\theta}^{m_{n}} - \theta^{\circ} \Vert^{2} \geq K_{n}\right)\right] + \P_{\theta^{\circ}}(\Omega{n}^{c})\\
+& &&\leq &&\E_{\theta^{\circ}}^{n}\left[\P_{\theta^{m_{n}}\vert Y^{n}}^{n}\left(\mathcal{S}^{m_{n}} \geq c_{n} \right)\right] + \P_{\theta^{\circ}}(\Omega_{n}^{c})\\
+\end{alignat*}
+Which tends to $0$ as $\mathcal{S}^{m_{n}}$ is a tight sequence of random variables.
+One could notice that if $\eta$ diverges to infinity, the sequence $c_{n}$ cancels and we recover the frequentist $\mathds{L}_{2}$ rate of convergence for projection estimators.
+\end{pro}
+
+Notice that if one selects $m_{n} = m_{n}^{\circ}$ we obtain the oracle rate of convergence of projection estimators.
+
+
+
+
+\begin{cor}\label{cor2}
+For any increasing and unbounded sequence, we have
+\begin{alignat*}{5}
+& \lim_{n \rightarrow \infty}&& && \inf\limits_{\theta^{\circ} \in \Theta_{\mathfrak{a}}(r)} && \E_{\theta^{\circ}}^{n}\left[\P_{\boldsymbol{\theta}^{m_{n}^{\star}}\vert Y^{n}}^{n, (\eta)}\left(d^{2}\left(\theta^{\circ}, \boldsymbol{\theta}\right) \leq c_{n} \cdot \Psi^{\star}_{n}(\Theta_{\mathfrak{a}}(r)) \right)\right]&& = 1;
+\end{alignat*}
+\end{cor}
+
+Moreover, if one lets the number of iterations tend to infinity, we observe that the distribution degenerates around the projection estimator as defined in \textsc{\cref{2.1}}:
+\[\lim\limits_{\eta \rightarrow \infty} \P_{\boldsymbol{\theta}^{m} \vert Y^{n}}^{n, (\eta)} = \delta_{\overline{\theta}^{m}}.\]
+
+
+\subsection{Contraction rate for the hierarchical prior}\label{2.4.3}
+
+Let be $G_{n} := \max\left\{m \in \llbracket 1, n \rrbracket : \Lambda_{m} / n \leq \Lambda_{1}\right\}$.
+We give the following specific shape to the prior for the threshold parameter $\P_{M}^{n}(M = m) = \frac{\exp\left(-3 \cdot \eta \cdot \frac{m}{2} \right) \cdot \prod\limits_{j = 1}^{m} \left(\frac{1}{\sigma_{j}^{(\eta)}}\right)^{2}}{\sum\limits_{k =1}^{G_{n}} \exp\left(-3 \cdot \eta \cdot \frac{k}{2} \right) \cdot \prod\limits_{j = 1}^{k} \left(\frac{1}{\sigma_{j}^{(\eta)}}\right)^{2}}$ with $\sigma_{j}^{(\eta)}$ as defined in \textsc{\cref{2.4.2}}.
+
+Hence, for all $m$ in $\llbracket 1, G_{n} \rrbracket$, the posterior distribution are characterised by :
+\[\P_{M \vert Y^{n}}^{n, (\eta)}(m) = \frac{\exp\!\!\left[- \frac{1}{2} \left( 3 m \eta - \Vert \widehat{\theta}^{m, (\eta)} \Vert_{\sigma^{m, (\eta)}}^{2} \right)\right] }{\sum\limits_{k = 1}^{G_{n}} \exp\!\!\left[ - \frac{1}{2} \left( 3 k \eta - \Vert \widehat{\theta}^{k, (\eta)} \Vert_{\sigma^{k, (\eta)}}^{2}\right) \right]},\]
+and
+\[\P_{\boldsymbol{\theta}^{M} \vert Y^{n}}^{n, (\eta)} = \sum\limits_{m \in \mathds{N}^{\star}}\P_{\boldsymbol{\theta}^{m} \vert Y^{n}}^{n, (\eta)} \cdot \P_{M \vert Y^{n}}^{n, (\eta)}(m);\]
+and the posterior mean is then $\widehat{\theta}^{M, (\eta)} :=  \sum\limits_{m \in \mathds{N}^{\star}} \widehat{\theta}^{m, (\eta)} \P_{M \vert Y^{n}}^{n, (\eta)}(m) = \left(\widehat{\theta}_{j}^{(\eta)} \cdot \P_{M \vert Y^{n}}^{n, (\eta)} \left(M \geq j\right)\right)_{j \in \mathds{N}^{\star}}.$
+
+As we have seen previously with the sieve priors, the iteration procedure conserves the contraction rate.
+
+\begin{cor}\label{cor3}
+Under \textsc{\cref{as1}} and \textsc{\cref{as2}}, if, in addition $\log(G_{n})/m_{n}^{\circ} \rightarrow 0$ as $n \rightarrow \infty$ then with $D^{\circ} := D^{\circ}(\theta^{\circ}, \lambda) = \lceil 5 L/\kappa^{\circ} \rceil$ and $K^{\circ} := 10(2 \vee \Vert \theta^{\circ} \Vert^{2})L^{2}(16 \vee D^{\circ} \Lambda_{D^{\circ}})$ we have, for any $\eta$ ($1 \leq \eta < \infty$):
+\[\lim\limits_{n \rightarrow \infty} \E_{\theta^{\circ}}^{n}\left[\P_{\boldsymbol{\theta}^{M} \vert Y^{n}}^{n, (\eta)} \left(\left(K^{\circ}\right)^{-1} \Phi_{n}^{\circ} \leq \Vert \theta^{\circ} - \boldsymbol{\theta}^{M} \Vert_{l^{2}}^{2} \leq K^{\circ} \Phi_{n}^{\circ}\right)\right] = 1.\]
+\end{cor}
+
+\begin{cor}\label{cor4}
+Under \textsc{\cref{as1}} and \textsc{\cref{as3}}, if, in addition, $\log(G_{n})/m_{n}^{\star} \rightarrow 0$ as $n \rightarrow \infty$ then, for any $\eta$ ($1 \leq \eta < \infty$)
+\begin{itemize}
+\item for all $\theta^{\circ}$ in $\Theta_{\mathfrak{a}}(r)$, with $D^{\star} := D^{\star}(\mathfrak{a}, \lambda) = \lceil 5 L/\kappa^{\star} \rceil$ and $K^{\star} := 16\left(2 \vee r\right)L^{2}\left(16 \vee D^{\star} \Lambda_{D^{\star}}\right)\left(1 \vee r \right)$, we have
+\[\lim\limits_{n \rightarrow \infty} \E_{\theta^{\circ}}^{n}\left[\P_{\boldsymbol{\theta}^{M} \vert Y^{n}}^{n, (\eta)}\left(\Vert \theta^{\circ} - \boldsymbol{\theta}^{M} \Vert^{2} \leq K^{\star} \Phi_{n}^{\star}\right)\right] =1;\]
+\item for any monotonically increasing and unbounded sequence $K_{n}$ holds
+\[\lim\limits_{n \rightarrow \infty} \inf\limits_{\theta^{\circ} \in \Theta_{\mathfrak{a}}(r)} \E_{\theta^{\circ}}^{n}\left[\P_{\boldsymbol{\theta}^{M} \vert Y^{n}}^{n, (\eta)}\left(\Vert \theta^{\circ} - \boldsymbol{\theta}^{M} \Vert^{2} \leq K_{n} \Phi_{n}^{\star}\right)\right] =1.\]
+\end{itemize}
+\end{cor}
+
+
+Now, in this adaptive case, we consider the eventuality of letting $\eta$ tend to infinity.
+In the spirit of the frequentist model selection method presented in \textsc{\cref{2.3}}, define $\Upsilon_{\eta}(m) = - \sum\limits_{j = 1}^{m} \frac{1}{1 + \frac{\Lambda_{j}}{\eta n}} Y_{j}^{2}$ and $E_{\eta}(m) = \pen(m) + \Upsilon_{\eta}(m)$.
+
+We see that for all $m$ in $\llbracket 1, G_{n} \rrbracket$,
+\[\P_{M\vert Y^{n}}^{n, (\eta)}(m) = \frac{1}{\sum\limits_{k = 1}^{G_{n}}\exp\!\!\left[- \frac{\eta n}{2}\left(E_{\eta}(k) - E_{\eta}(m)\right)\right]}.\]
+
+If $\eta$ tends to $+\infty$, for all $m$, $\Upsilon_{\eta}(m)$ tends to $\Upsilon(m) := -\sum\limits_{j = 1}^{m} \left(Y_{j}\right)^{2}$ and we define for all $m$, $E(m) := \pen(m) + \Upsilon(m)$.
+
+\medskip
+
+Interestingly, if we define the contrast $\Gamma$ for any sequence $\theta^{\star}$ in $\Theta$ as
+\[\Gamma\left(\theta^{\star}\right) := \sum\limits_{j = 1}^{G_{n}} \left(\theta^{\star}_{j}\right)^{2}\lambda_{j}^{2} - 2 \sum\limits_{j = 1}^{G_{n}} \theta^{\star}_{j}\lambda_{j} Y_{j},\]
+we see, by differentiating $\Gamma$ summand-wise, that $\overline{\theta}^{G_{n}}$ minimises this contrast and that $\Gamma\left(\overline{\theta}^{G_{n}}\right) = \Upsilon\left(G_{n}\right)$.
+
+\medskip
+
+If for all $k$ different from $m$, $E(k) - E(m) > 0$, then $\P_{M\vert Y^{(n)}}^{n,(\eta)}(m)$ trivially tends to $1$ as $\eta$ tends to $\infty$. On the other hand, if there exists $k$ such that $E(k) - E(m) < 0$,  then $\P_{M\vert Y^{n}}^{n, (\eta)}(m)$ obviously tends to $0$ as $\eta$ tends to $\infty$. So we see that, similarly to the model selection, this method only selects threshold parameters that minimise a penalised contrast.
+
+\medskip
+
+Note that for all distinct $k$ and $m$ in $\llbracket 1, G_{n} \rrbracket$, we almost surely have $E(k) - E(m) \neq 0$ since $\Upsilon(k) - \Upsilon(m)$ is a random variable with absolutely continuous distribution with respect to Lebesgue measure and hence, $\P_{\theta^{\circ}}\!\!\left[\{\Upsilon(k) - \Upsilon(m) = \pen(k) - \pen(m)\}\right] = 0$.
+
+We hence define $\widehat{m} := \argmin\limits_{m \in \llbracket 1, G_{n} \rrbracket}\{E(m)\}$ and $\overline{\theta}^{\widehat{m}}$ the associated projection estimator. Hence, the self informative Bayes limit is $\overline{\theta}^{\widehat{m}}$ and the self informative Bayes carrier is degenerated on it: $\P_{\boldsymbol{\theta}^{M} \vert Y^{n}}^{n, (\infty)} = \delta_{\overline{\theta}^{\widehat{m}}}$.
+
+\medskip
+
+We obtain here optimality results both for the self informative limit and self informative Bayes carrier.
+
+\begin{thm}\label{thm3}
+Consider $\overline{\theta}^{\widehat{m}}$ the frequentist estimator given by the self-informative limit.
+Under \textsc{\cref{as1}}, \textsc{\cref{as2}} and the condition that $\limsup\limits_{n \rightarrow \infty}\frac{\log\left(\frac{G_{n}^{2}}{\Phi_{n}^{\circ}}\right)}{m_{n}^{\circ}} \leq \frac{5}{9 L}$, we have
+
+\[\exists C^{\circ} \in \mathds{R}_{+}^{\star} : \forall \theta^{\circ} \in \Theta, \quad \E_{\theta^{\circ}}^{n}\left[\Vert \overline{\theta}^{\widehat{m}} - \theta^{\circ} \Vert^{2}\right] \leq C^{\circ} \Phi_{n}^{\circ}.\]
+\end{thm}
+
+This first theorem states that, under our set of assumptions, the self-informative limit reaches the oracle rate of the projection estimators.
+
+\begin{thm}\label{thm4}
+Under \textsc{\cref{as1}}, \textsc{\cref{as2}} and the condition that $\limsup\limits_{\epsilon \rightarrow 0} \frac{\log\left(G_{n}\right)}{m_{n}^{\circ}},$ define $D^{\circ} := \left\lceil \frac{3}{\kappa^{\circ}} + 1 \right\rceil$ and $K^{\circ} := 16 L \cdot \left[9 \vee D^{\circ} \Lambda_{D^{\circ}}\right]$; then, we have for all $\theta^{\circ}$ in $\Theta$,
+\[\lim\limits_{n \rightarrow \infty} \E_{\theta^{\circ}}^{n}\left[\P_{\boldsymbol{\theta}^{M} \vert Y^{n}}^{n, (\infty)}\left(\left(K^{\circ}\right)^{-1} \Phi_{n}^{\circ} \leq \Vert \boldsymbol{\theta}^{M} - \theta^{\circ} \Vert^{2} \leq K^{\circ} \Phi_{n}^{\circ} \right)\right] = 1.\]
+\end{thm}
+
+This result states that the self informative Bayes carrier contracts with oracle optimal rate of the sieve priors under our set of assumptions.
+
+
+\begin{thm}\label{thm5}
+Consider $\overline{\theta}^{\widehat{m}}$ the frequentist estimator given by the self-informative limit.
+Then, under \textsc{\cref{as1}}, \textsc{\cref{as3}} and the condition that $\limsup\limits_{n \rightarrow \infty}\frac{\log\left(\frac{G_{n}^{2}}{\Phi_{n}^{\star}}\right)}{m_{n}^{\star}} < \frac{5}{9 L}$, we have
+
+\[\exists C^{\star} \in \mathds{R}_{+}^{\star} : \quad \sup\limits_{\theta^{\circ}\in \Theta}\E_{\theta^{\circ}}^{n}\left[\Vert \overline{\theta}^{\widehat{m}} - \theta^{\circ} \Vert^{2}\right] \leq C^{\star} \Psi_{n}^{\star}.\]
+\end{thm}
+
+This result shows that the self-informative limit converges with minimax optimal rate over Sobolev's ellipsoids under our set of assumptions.
+
+\begin{thm}\label{thm6}
+Under \textsc{\cref{as1}}, \textsc{\cref{as3}} and the condition that $\limsup\limits_{n \rightarrow \infty} \frac{\log\left(G_{n}\right)}{m_{n}^{\star}},$ define $D^{\star} := \left\lceil \frac{3 \left(1 \vee L^{\circ}\right)}{\kappa^{\star}} + 1 \right\rceil$ and $K^{\star} := 9 L \left(1 \vee L^{\circ} \right) D^{\star} \Lambda_{D^{\star}}$; then, we have for all $\theta^{\circ}$ in $\Theta^{\mathfrak{a}}(r)$,
+\[\lim\limits_{n \rightarrow \infty} \E_{\theta^{\circ}}^{n}\left[\P_{\boldsymbol{\theta}^{M} \vert Y^{n}}^{n, (\infty)}\left(\Vert \boldsymbol{\theta}^{M} - \theta^{\circ} \Vert^{2} \leq K^{\star} \Psi_{n}^{\star} \right)\right] = 1,\]
+and, for any increasing function $K_{n}$ such that $\lim\limits_{n \rightarrow \infty} K_{n} = \infty,$
+\[\lim\limits_{n \rightarrow \infty} \sup\limits_{\theta^{\circ} \in \Theta^{\mathfrak{a}}(r)} \E_{\theta^{\circ}}^{n}\left[\P_{\boldsymbol{\theta}^{M} \vert Y^{n}}^{n, (\infty)}\left(\Vert \boldsymbol{\theta}^{M} - \theta^{\circ} \Vert^{2} \leq K_{n} \Psi_{n}^{\star} \right)\right] = 1.\]
+\end{thm}

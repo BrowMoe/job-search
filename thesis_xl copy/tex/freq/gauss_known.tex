@@ -1,0 +1,21 @@
+\section{Inverse Gaussian sequence space model}\label{FREQ_IGSSM_KNOWN}
+
+This result states that the self informative Bayes carrier contracts with oracle optimal rate of the sieve priors under our set of assumptions.
+
+\begin{thm}\label{THM_FREQ_IGSSM_KNOWN_IID_ORACLE_NP}
+Consider $\overline{\theta}^{\widehat{m}}$ the frequentist estimator given by the self-informative limit.
+Under \nref{AS_BAYES_GAUSS_CONTRACT_HIERARCHICAL_LAMBDA}, \nref{AS_BAYES_GAUSS_CONTRACT_HIERARCHICAL_ORACLE} and the condition that $\limsup\limits_{n \rightarrow \infty}\frac{\log\left(\frac{G_{n}^{2}}{\Phi_{n}^{\circ}}\right)}{m_{n}^{\circ}} \leq \frac{5}{9 L}$, we have
+
+\[\exists C^{\circ} \in \mathds{R}_{+}^{\star} : \forall \theta^{\circ} \in \Theta, \quad \E_{\theta^{\circ}}^{n}\left[\Vert \overline{\theta}^{\widehat{m}} - \theta^{\circ} \Vert^{2}\right] \leq C^{\circ} \Phi_{n}^{\circ}.\]
+\end{thm}
+
+We obtain here optimality results both for the self informative limit and self informative Bayes carrier.
+
+\begin{thm}\label{THM_FREQ_IGSSM_KNOWN_IID_MINIMAX_NP}
+Consider $\overline{\theta}^{\widehat{m}}$ the frequentist estimator given by the self-informative limit.
+Then, under \nref{AS_BAYES_GAUSS_CONTRACT_HIERARCHICAL_LAMBDA}, \nref{AS_BAYES_GAUSS_CONTRACT_HIERARCHICAL_MINIMAX} and the condition that $\limsup\limits_{n \rightarrow \infty}\frac{\log\left(\frac{G_{n}^{2}}{\Phi_{n}^{\star}}\right)}{m_{n}^{\star}} < \frac{5}{9 L}$, we have
+
+\[\exists C^{\star} \in \mathds{R}_{+}^{\star} : \quad \sup\limits_{\theta^{\circ}\in \Theta}\E_{\theta^{\circ}}^{n}\left[\Vert \overline{\theta}^{\widehat{m}} - \theta^{\circ} \Vert^{2}\right] \leq C^{\star} \Psi_{n}^{\star}.\]
+\end{thm}
+
+

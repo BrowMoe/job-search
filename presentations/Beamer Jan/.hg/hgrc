@@ -1,0 +1,8 @@
+[ui]
+username = Jan JOHANNES <johannes@math.uni-heidelberg.de>
+[phases]
+new-commit = draft
+[paths]
+default = ssh://hg_jj_rku_pap/jj/F/V/2016-05-LLN/2016-05-LLN-Vortrag
+[hooks]
+update.create = ./.parse_latex.py

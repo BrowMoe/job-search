@@ -1,0 +1,118 @@
+Let us remind that, for this specific model, we consider $Y$, a Gaussian process defined on $[0, 1[$ with constant volatility $1$ and mean process $g = f \star h$, where $f$ and $g$ are functions from $[0, 1[$ to $\R$.
+This can be written $dY_{p}(x) = (f \star h)(x) \, \text{d}x + \text{d}W(x)$ where $W$ is the Brownian motion.
+We are interested in estimating $f$ while considering $h$ as known and observing $\left(Y_{p}\right)_{p \in \llbracket 1, n \rrbracket}$ which are independent and identically distributed realisations of $Y$.
+
+Hence using the complex exponential basis $(e_{j})_{j \in \mathds{Z}} = \left(\exp\left[2 \imath \pi j \bullet \right]\right)_{j \in \mathds{Z}}$, we have
+\begin{alignat*}{15}
+& \theta^{\circ} && : && \mathds{Z} && \rightarrow && \mathds{C} \quad && \lambda && : && \mathds{Z} && \rightarrow && \mathds{C} \quad && \phi && : && \mathds{Z} && \rightarrow && \mathds{C} \\
+& && && j && \mapsto && \mathcal{F}(f)(j) = \left\langle f \vert e_{j} \right\rangle_{L^{2}}; \quad && && && j && \mapsto && \mathcal{F}(h)(j) = \left\langle h \vert e_{j} \right\rangle_{L^{2}}; \quad && && && j && \mapsto && \mathcal{F}(g)(j) = \left\langle f \star h \vert e_{j} \right\rangle_{L^{2}};\\
+\end{alignat*}
+and quite obviously, we have $\phi(j) =  \theta^{\circ}(j) \cdot \lambda(j)$ for any $j$ in $\mathds{Z}$.
+We assume, from now on that for any $j$ in $\mathds{Z}$, $\lambda(j)$ is not null.
+
+We can hence define the empirical processes
+\begin{alignat*}{10}
+& \phi_{n} && : && \mathds{Z} && \rightarrow && \mathds{C} \quad && \theta_{n} && : && \mathds{Z} && \rightarrow && \mathds{C} \\
+& && && j && \mapsto && \frac{1}{n} \sum\limits_{p = 1}^{n} \left\langle Y_{p} \vert e_{j} \right\rangle_{L^{2}}; \quad && && && j && \mapsto && \frac{1}{\lambda(j)} \phi_{n}(j).
+\end{alignat*}
+
+One should notice that for any $j$ in $\mathds{Z}$
+\begin{alignat*}{3}
+& \phi_{n}(j) && = && \frac{1}{n} \sum\limits_{p = 1}^{n} \int_{0}^{1} e_{j}(x) \, \text{d}Y_{p}(x)\\
+& && = && \frac{1}{n} \sum\limits_{p = 1}^{n} \left(\int_{0}^{1} e_{j}(x) \, (f \star h)(x)  \, \text{d}x +  \, \int_{0}^{1} e_{j}(x) \text{d}W(x)\right) \\
+& && = && \theta^{\circ}(j) \cdot \lambda(j) + \frac{1}{n} \sum\limits_{p = 1}^{n} \xi_{p}(j);
+\end{alignat*}
+where $\left(\xi_{p}(j)\right)_{p \in \llbracket 1, p \rrbracket, j \in \N}$ are independent identically distributed Gaussian random variables with mean $0$, and variance $1$ and for any $j$ in $\N$ we have $\xi(j) = \overline{\xi(-j)}$ almost surely where $\overline{a}$ stands for the conjugate of the complex number $a$.
+
+Hence we see that for any $j$ and $n$ we have $\E_{\phi}^{n}\left[\phi_{n}(j)\right] = \theta^{\circ}(j) \cdot \lambda(j)$ and $\V_{\phi}^{n}\left[\phi_{n}(j)\right] = 1/n$ and considering $\theta_{n}$ we obtain $\E_{\phi}^{n}\left[\theta_{n}(j)\right] = \theta^{\circ}(j)$ and $\V_{\phi}^{n}\left[\theta_{n}(j)\right] = \Lambda(j) / n$ where, as previously, $\Lambda(j) = \vert \lambda(j) \vert^{2}$.
+This leads us, for any $m$ in $\N$, to $\E_{\phi}^{n}\left[\Vert \theta_{n, \overline{m}} - \theta^{\circ} \Vert_{l^{2}}^{2}\right] = \E_{\phi}^{n}\left[\sum_{j \in \mathds{Z}} \vert \theta_{n, \overline{m}}(j) - \theta^{\circ}(j) \vert^{2} \right] = \sum_{j \in \mathds{Z}} \V_{\phi}^{n}\left[\theta_{n, \overline{m}}(j) \right] + \vert \E_{\phi}^{n}\left[ \theta_{n, \overline{m}}(j) \right] - \theta^{\circ}(j) \vert^{2} = 2 \cdot \sum\limits_{j = 0}^{m} \Lambda(j) / n + \mathfrak{b}_{m}^{2}(\theta^{\circ}) \leq \left[ 2 \cdot m \Lambda_{\circ}(m) / n \vee \mathfrak{b}_{m}^{2}(\theta^{\circ}) \right]  =: \Phi_{n, \overline{m}}(\theta^{\circ}, \lambda)$ where $\Lambda_{\circ}(m) = \sum_{j = 1}^{m} \Lambda(j)$.
+
+With $m^{\circ}_{n} = \argmin_{m \in \mathds{N}} \Phi_{n, \overline{m}}(\theta^{\circ}, \lambda)$ we have the oracle rate for projection estimators $\Phi_{n}^{\circ}(\theta^{\circ}, \lambda) = \Phi_{n, \overline{m^{\circ}_{n}}}(\theta^{\circ}, \lambda)$.
+
+One can see that over the Sobolev ellipsoid $\Theta_{\mathfrak{a}}(r)$, with $\mathfrak{a}$ a monotonically decreasing sequence and $r$ a strictly positive real number, we have $\Phi_{n, \overline{m}}(\theta^{\circ}, \lambda) = \left[ 2 \cdot m \Lambda_{\circ}(m) / n \vee \mathfrak{b}_{m}^{2}(\theta^{\circ}) \right] = \left[ 2 \cdot m \Lambda_{\circ}(m) / n \vee 2 \sum_{j = 1}^{m} \mathfrak{a}(j) \frac{\vert \theta^{\circ}(j) \vert^{2}}{\mathfrak{a}(j)} \right] \leq \left[ 2 \cdot m \Lambda_{\circ}(m) / n \vee 2 \mathfrak{a}(m) r \right] \leq 2 \left( 1 \vee r \right) \left[ m \Lambda_{\circ}(m) / n \vee \mathfrak{a}(m) \right]$ so we set $m^{\star}(\Theta_{\mathfrak{a}}(r)) := \argmin_{m \in \N}\left\{\left[ m \Lambda_{\circ}(m) / n \vee \mathfrak{a}(m) \right]\right\}$ and $\Phi^{\star}(\Theta_{\mathfrak{a}}(r)) := \left[ m^{\star} \Lambda_{\circ}(m^{\star}) / n \vee \mathfrak{a}(m^{\star}) \right]$.
+
+\subsection{Specific form of the estimator}
+
+In \nref{FREQ_STRATEGY} we gave a general form for an aggregation estimator.
+In this model, we define $G$ to be, as in \nref{BAYES_GAUSS_HIERARCHICAL}, $\max\{m \in \llbracket 1, n \rrbracket : \Lambda_{+}(m)/n \leq \Lambda(1)\}$ and the weight function will be
+
+\begin{alignat*}{3}
+& \Upsilon\left((Y_{p})_{p \in \llbracket 1, n \rrbracket}, m\right) && = && n \Vert \phi_{n, \overline{m}} \Vert_{l^{2}}^{2}; \\
+& \pen(m) && = && - 3 m;\\
+& p_{M \vert Y}^{n, (\eta)}\left((Y_{p})_{p \in \llbracket 1, n \rrbracket}, m \right) && = && \frac{\exp\left[\eta \left(n \sum_{j = 1}^{m} \vert \phi_{n}(j) \vert^{2} - 3 m\right)\right]}{\sum_{k = 0}^{G} \exp\left[\eta \left(n \sum_{j = 1}^{k} \vert \phi_{n}(j) \vert^{2} - 3 k\right)\right]};
+\end{alignat*}
+
+which leads to the following estimator for $\theta^{\circ}$
+\[\widehat{\theta}^{(\eta)}(j) = \theta_{n}(j) \P_{M \vert Y}^{n, (\eta)}(M \geq \vert j \vert) = \theta_{n}(j) \sum_{m = \vert j \vert}^{G} \frac{\exp\left[\eta \left(n \sum_{l = 1}^{m} \vert \phi_{n}(l) \vert^{2} - 3 m\right)\right]}{\sum_{k = 0}^{G} \exp\left[\eta \left(n \sum_{l = 1}^{k} \vert \phi_{n}(l) \vert^{2} - 3 k\right)\right]}.\]
+
+
+\subsection{Convergence results}
+In this section we provide two convergence results for the aggregation estimators we just built by using the decomposition presented in \nref{FREQ_STRATEGY}.
+
+In this context and keeping the same notations, we will use \nref{lmA.1.1} and \nref{lmA.1.2} to control the different terms of the upper bound and it will hence motive our choices for $m^{\bullet}_{-}$, $m^{\bullet}_{+}$, $C$ and $\mathcal{A}_{k, l}$.
+
+Remind the two lemmata.
+
+\begin{lm*}
+Let $\{X_{j}\}_{j \geq 1}$ be independent and normally distributed random variables with real mean $\alpha_{j}$ and standard deviation $\beta_{j} \geq 0$. For $m \in \mathds{N}$, set $S_{m} := \sum \limits_{j = 1}^{m} X_{j}^{2}$ and consider $v_{m} \geq \sum\limits_{j = 1}^{m} \beta_{j}^{2}, t_{m} \geq \max \limits_{1 \leq j \leq m} \beta_{j}^{2}$ and $r_{m} \geq \sum\limits_{j = 1}^{m} \alpha_{j}^{2}$.
+Then for all $c \geq 0$, we have
+\begin{alignat*}{3}
+&\sup\limits_{m \geq 1} \exp\left[\frac{c (c \wedge 1) (v_{m} + 2 r_{m})}{4 t_{m}}\right]\mathds{P}\left(S_{m} - \mathds{E}[S_{m}] \leq - c (v_{m} + 2 r_{m})\right) &&\leq&& 1; \\
+&\sup\limits_{m \geq 1} \exp\left[\frac{c (c \wedge 1) (v_{m} + 2 r_{m})}{4 t_{m}}\right]\mathds{P}\left(S_{m} - \mathds{E}[S_{m}] \geq \frac{3 c}{2} (v_{m} + 2 r_{m})\right) &&\leq&& 1.
+\end{alignat*}
+\end{lm*}
+
+\begin{lm*}
+Let $\{X_{j}\}_{j \geq 1}$ be independent and normally distributed random variables with real mean $\alpha_{j}$ and standard deviation $\beta_{j} \geq 0$. For $m \in \mathds{N}$, set $S_{m} := \sum \limits_{j = 1}^{m} X_{j}^{2}$ and consider $v_{m} \geq \sum\limits_{j = 1}^{m} \beta_{j}^{2}, t_{m} \geq \max \limits_{1 \leq j \leq m} \beta_{j}^{2}$ and $r_{m} \geq \sum\limits_{j = 1}^{m} \alpha_{j}^{2}$.
+Then for all $c \geq 0$, we have
+\[\sup\limits_{m \geq 1}(6 t_{m})^{-1} \exp\left[\frac{c (v_{m} + 2 r_{m})}{4 t_{m}}\right] \mathds{E}\left[S_{m} - \mathds{E}[S_{m}] - \frac{3}{2} c (v_{m} + 2 r_{m})\right]_{+} \leq 1\]
+with $(a)_{+} := (a \vee 0).$
+\end{lm*}
+
+In our case, we have
+\[\Vert \Pi_{\underline{m^{\bullet}_{+}}, \overline{G}}(\theta_{n} - \theta^{\circ}) \Vert_{l^{2}}^{2} = \sum_{j = m^{\bullet}_{+} + 1}^{G} \vert \theta^{\circ}(j) + \frac{1}{n \lambda(j)} \sum_{p = 1}^{n} \xi_{p}(j)\vert^{2}\]
+
+
+$m^{\bullet}_{-} := \min\{m \in \llbracket 1, m^{\circ}_{n} \rrbracket : \mathfrak{b}_{m}^{2}(\theta^{\circ}) \leq 9 L \Phi^{\circ}(\theta^{\circ})\}$; $m^{\bullet}_{+} := \max\{m \in \llbracket m^{\circ}, G \rrbracket : (m - m^{\circ})/n \leq 3 \Lambda_{+}(m^{\circ})^{-1} \Phi^{\circ}_{n}(\theta^{\circ})\}$; for any $k$ and $l$ with $k \leq l$, $C_{k, l} := \sum_{j = k + 1}^{l} \Lambda(j)/n +  3 l \Lambda(1)$ and finally, $\mathcal{A}_{k, l} = \{\}$.
+
+With this choice, we have the following results
+
+\begin{alignat*}{3}
+& \int_{-m^{\bullet}_{+}}^{m^{\bullet}_{+}} \V_{\phi}^{n}\left[ \theta_{n}(s) \right] + \left\vert \E_{\phi}^{n}\left[ \theta_{n}(s) \right] - \theta^{\circ}(s) \right\vert^{2} \, \text{d}s && = && 2 \sum\nolimits_{j = 0}^{m^{\bullet}_{+}} \Lambda(j)/n \\
+& \mathfrak{b}_{m^{\bullet}_{-}}^{2}(\theta^{\circ}) && \leq && 9 L \Phi^{\circ}(\theta^{\circ})\\
+& \E_{\phi}^{n}\left[ \left(\left\Vert \Pi_{\underline{m^{\bullet}_{+}}, \overline{G}}(\theta_{n} - \theta^{\circ}) \right\Vert_{l^{2}}^{2} - C\right)_{+}\right] && = && \E_{\phi}^{n}\left[ \left(\sum\nolimits_{j = m^{\bullet}_{+}}^{G} (\vert \theta_{n}(j) - \theta^{\circ}(j) \vert^{2} - \Lambda(j)/n) \right.\right.\\
+& && && \left.\left. +  3 G \Lambda(1)\right)_{+}\right]
+\end{alignat*}
+
+
+
+
+
+
+\begin{alignat*}{2}
+& \E_{\phi}^{n}&& \left[ \left\Vert \widehat{\theta}^{(\eta)} - \theta^{\circ} \right\Vert_{l^{2}}^{2}\right]\\
+& && \leq 2  + 2 \\
+& && + 2  \\
+& && + 2 C \sum_{m = m^{\bullet}_{+}}^{G} \E_{\phi}^{n}\left[\exp\left[- \eta \left(\Upsilon(Y, m^{\bullet}) - \Upsilon(Y, m) + \pen(m^{\bullet}) - \pen(m) \right)\right] \mathds{1}_{\mathcal{A}_{m, m^{\bullet}}} \right]\\
+& && + 2 C \sum_{m = m^{\bullet}_{+}}^{G} \P_{\phi}\left(\mathds{1}_{\mathcal{A}_{m, m^{\bullet}}^{c}}\right) \\
+& && + 2 \left\Vert \Pi_{\overline{m^{\bullet}_{n}}} \, \theta^{\circ} \right\Vert_{l^{2}}^{2} \sum_{m = 1}^{m^{\bullet}_{-}} \E_{\phi}^{n}\left[\exp\left[- \eta \left(\Upsilon(Y, m^{\bullet}) - \Upsilon(Y, m) + \pen(m^{\bullet}) - \pen(m) \right)\right] \mathds{1}_{\mathcal{A}_{m, m^{\bullet}}} \right]\\
+& &&+ 2 \left\Vert \Pi_{\overline{m^{\bullet}_{n}}} \, \theta^{\circ} \right\Vert_{l^{2}}^{2} \sum_{m = 1}^{m^{\bullet}_{-}} \P_{\phi}\left(\mathds{1}_{\mathcal{A}_{m, m^{\bullet}}^{c}}\right).
+\end{alignat*}
+
+\begin{thm}\label{THM_FREQ_IGSSM_KNOWN_IID_ORACLE_NP}
+Consider $\overline{\theta}^{\widehat{m}}$ the frequentist estimator given by the self-informative limit.
+Under \nref{AS_BAYES_GAUSS_CONTRACT_HIERARCHICAL_LAMBDA}, \nref{AS_BAYES_GAUSS_CONTRACT_HIERARCHICAL_ORACLE} and the condition that $\limsup\limits_{n \rightarrow \infty}\frac{\log\left(\frac{G_{n}^{2}}{\Phi_{n}^{\circ}}\right)}{m_{n}^{\circ}} \leq \frac{5}{9 L}$, we have
+
+\[\exists C^{\circ} \in \mathds{R}_{+}^{\star} : \forall \theta^{\circ} \in \Theta, \quad \E_{\theta^{\circ}}^{n}\left[\Vert \overline{\theta}^{\widehat{m}} - \theta^{\circ} \Vert^{2}\right] \leq C^{\circ} \Phi_{n}^{\circ}.\]
+\end{thm}
+
+We obtain here optimality results both for the self informative limit and self informative Bayes carrier.
+
+\begin{thm}\label{THM_FREQ_IGSSM_KNOWN_IID_MINIMAX_NP}
+Consider $\overline{\theta}^{\widehat{m}}$ the frequentist estimator given by the self-informative limit.
+Then, under \nref{AS_BAYES_GAUSS_CONTRACT_HIERARCHICAL_LAMBDA}, \nref{AS_BAYES_GAUSS_CONTRACT_HIERARCHICAL_MINIMAX} and the condition that $\limsup\limits_{n \rightarrow \infty}\frac{\log\left(\frac{G_{n}^{2}}{\Phi_{n}^{\star}}\right)}{m_{n}^{\star}} < \frac{5}{9 L}$, we have
+
+\[\exists C^{\star} \in \mathds{R}_{+}^{\star} : \quad \sup\limits_{\theta^{\circ}\in \Theta}\E_{\theta^{\circ}}^{n}\left[\Vert \overline{\theta}^{\widehat{m}} - \theta^{\circ} \Vert^{2}\right] \leq C^{\star} \Psi_{n}^{\star}.\]
+\end{thm}
+
+

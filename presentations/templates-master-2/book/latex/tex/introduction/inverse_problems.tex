@@ -1,0 +1,84 @@
+\section{Statistical ill-posed inverse problems}\label{1.1}
+
+\subsection{Statistical model}\label{1.1.1}
+
+Consider a measurable observation space $(\mathds{Y}, \mathcal{Y})$, a parameter space $\Xi$ and a family of probability distribution on $(\mathds{Y}, \mathcal{Y})$ indexed by $\Xi$, which we denote $(\P_{Y \vert f})_{f \in \Xi}$.
+That is to say, for any $f$ in $\Xi$, $\P_{Y \vert f}$ is a probability measure.
+
+\bigskip
+
+Throughout this thesis, we are interested in the estimation of the parameter $f$, under the two paradigmata of frequentist and Bayesian statistics, specified hereafter, and the quantification of the quality of such estimations.
+
+From a frequentist point of view, one specifies a measurable application from $\mathds{Y}$ to $\Xi$, called estimator.
+Ideally, an estimator solely depends of the observations and needs no knowledge whatsoever about the parameter of interest in order to be implemented properly.
+Once this application specified the duty of the statistician is to study properties such as consistency, rate of convergence, and asymptotic distribution of the estimator.
+These properties are presented in more details in \nref{1.2}.
+
+\medskip
+
+In the Bayesian paradigm, one defines a $\sigma$-algebra $\mathcal{B}$ on $\Xi$ and a probability distribution $\P_{\boldsymbol{f}}$ on $(\Xi, \mathcal{B})$ called prior distribution which represents the prior knowledge about the parameter, for example gathered by experts or prior experiments.
+One is then interested in the posterior distribution, that is, the distribution of the parameter of interest given the observations.
+From a purely Bayesian point of view, being able to define a prior distribution on $\Xi$ and compute (or approach) the posterior distribution is all that is needed as one does not assume existence of a true underlying parameter.
+However, from a frequentist Bayesian (also called pragmatic Bayesian) approach, described in details in \nref{1.3}, one assumes existence of a true parameter and wonders if the posterior distribution contracts around this true parameter.
+
+\bigskip
+
+We are particularly interested in a specific class of models where $\Xi$ is a subset of a function (or sequence) space.
+More specifically, let $\mathds{T}$ and $\mathds{D}$ be a subsets of $\R$.
+Denote $\Vert \cdot \Vert$ a norm on the space of functions $\mathds{T} \rightarrow \mathds{D}$.
+Then $\Xi$ is the space of functions $\{f : \mathds{T} \rightarrow \mathds{D}, \Vert f \Vert < \infty\}$.
+
+\bigskip
+
+We will assume moreover that there exist a measure $\P^{\circ}$ on $(\mathds{Y}, \mathcal{Y})$ dominating the family $(\P_{Y \vert f})_{f \in \Xi}$ and we denote $L : \left(\Xi \times \mathds{Y}, \mathcal{B} \otimes \mathcal{Y}\right) \rightarrow \left(\overline{\R}_{+}, \mathcal{B}(\R)\right)$ the likelihood with respect to $\P^{\circ}$:
+\[\frac{\mathds{P}_{Y \vert f}}{\P^{\circ}}(f, y) = L(f, y).\]
+
+\subsection{(Compact operator)}\label{1.1.2}
+We will give particular interest to inverse problems, a family of models where one wants to infer on a parameter $f$ but the data we observe is generated through the distribution with parameter $T(f)$ where $T$ is an operator from $\Xi$ to itself.
+
+Hence we have:
+
+\begin{alignat*}{6}
+& T && : && \Xi && \rightarrow && \Xi && ; \\
+& && && f && \rightarrow && T(f) && \\
+& && && Y && \sim && \P_{Y \vert T(f)} &&.
+\end{alignat*}
+
+These models gathered interest for a long time because many of them have the particularity to be ill-posed in the sense of \citet{cite:hadamard}.
+That is to say, if we build an estimator $\widehat{T(f)}$ of $T(f)$ from the data $Y$ and try to apply $T^{-1}$ to this estimator in order to estimate $f$, one of the following problems might arise:
+\begin{itemize}
+\item non existence (the equation $T(x) = \widehat{T(f)}$ does not have a solution);
+\item non unicity (the equation $T(x) = \widehat{T(f)}$ has multiple solutions);
+\item non stability (the solutions to the equations $T(x) = \widehat{T(f)}$ and $T(x) = \widehat{T(f)} + \epsilon$ are arbitrary far for $\epsilon$ arbitrary small with respect to $\Vert \cdot \Vert$).
+\end{itemize}
+
+More-Penrose inverse.
+
+Self adjoint.
+
+Orthogonal basis of eigen functions  -> notation $(e_{j})_{j \in \mathds{F}}, \left(\lambda_{j}\right)_{j \in \mathds{F}}$.
+
+$\mathcal{F}$ the application $\Xi \rightarrow \Theta, f \mapsto \theta = (\langle f \vert e_{j} \rangle)_{j \in \mathds{F}}$.
+$\mathcal{F}^{-1}$ the application $\Theta \rightarrow \Xi, \theta \mapsto f = (\int_{j \in \mathds{F}} \theta_{j} e_{j}(x))_{x \in \mathds{T}}$.
+Plancherel theorem.
+$\P_{Y \vert \theta}$, $\P_{\boldsymbol{\theta}}$, $L(\theta, y)$
+
+Compactness, $\lambda_{j} \rightarrow 0$ -> inverse unbounded (condition 3 not check).
+$\mathcal{F}(T(f)) = \lambda \theta$
+
+\subsection{Ill-posed inverse problem with known operator}\label{1.1.3}
+$e_{j}$ and $\lambda_{j}$ known
+
+\subsection{Ill-posed inverse problem with partially known operator}\label{1.1.4}
+$e_{j}$ known but only an estimator $\widehat{\lambda_{j}}$ of $\lambda_{j}$ is available.
+
+\subsection{(Ill-posed inverse problem with unknown operator)}\label{1.1.5}
+$e_{j}$ and $\lambda_{j}$ estimated.
+
+\subsection{Popular regularisation methods}\label{1.1.8}
+\begin{itemize}
+\item spectral cut-off
+\item Tikhonov
+\item entropy minimisation
+\item ...?
+\end{itemize}

@@ -1,0 +1,296 @@
+\section{Application to the inverse Gaussian sequence space model}\label{BAYES_GAUSS}
+
+In this section, we consider the inverse Gaussian sequence space model as introduced in \nref{INTRO_IGSSM_DE}.
+First, we investigate about the self informative Bayes limit/carrier of (hierarchical) Gaussian sieve priors using the technics presented in \nref{THM_BAYES_SIEVE_SELF_INFORMATIVE}, \nref{THM_BAYES_HIERARCHICAL_LIMITTHRESHOLD} and \nref{THM_BAYES_HIERARCHICAL_LIMIT}.
+Then, we use the methodology described in \nref{BAYES_STRATEGIES_MOMENT} to compute upper bounds of the Gaussian sieve priors described in \nref{BAYES_SIEVE} when applied to this specific model.
+Doing so, we will notice that it gives us, for a general case, the same speed as the convergence rate of projection estimators and that, by choosing properly the threshold parameter, we reach the oracle rate of convergence as well as the minimax optimal rate, \textbf{without a} $\boldsymbol{\log}$\textbf{-loss}.
+However, we also see that this strategy cannot be applied to the hierarchical priors we are interested in.
+Hence, we then use the strategy exposed in \nref{BAYES_STRATEGIES_EXPO} and show that under some regularity conditions, the iterated hierarchical prior leads to optimal posterior contraction rate.
+As a consequence, we can conclude about the oracle and minimax speed of convergence of the penalised contrast model selection estimator with a new strategy of proof.
+
+\subsection{Self informative Bayes carrier for Gaussian sieve in iGSSM}\label{BAYES_GAUSS_SELFINFORM}
+We first consider the asymptotic $\eta \rightarrow \infty$ for the Gaussian sieve prior.
+
+\begin{thm}\label{THM_BAYES_GAUSS_SELFINFORM}
+For a Gaussian sieve prior with threshold parameter $m$, the self informative Bayes carrier is the singleton given by:
+$\theta_{n, \overline{m}} = \left(\theta_{n, \overline{m}}(s)\right)_{s \in \N} = \left(\phi_{n}(s)\lambda^{-1}(s) \mathds{1}_{\vert s \vert \leq m}\right)_{s \in \N}$.
+\reEnd
+\end{thm}
+
+\begin{pro}{\textsc{Proof of \nref{THM_BAYES_GAUSS_SELFINFORM}} \\}\label{PRO_BAYES_GAUSS_SELFINFORM}
+In this model, we explicitly have that $\mathds{M} = \N$; in addition, for any $\theta$ in $\Theta_{\overline{m}}$, and $\phi_{n}$ in $\Theta$, there exists $C$ only depending on $\phi_{n}$ and $n$ such that,
+\[l(\theta, \phi_{n}) = -n^{-1/2}\left(\sum\nolimits_{s \leq m} \phi_{n}(s) \lambda(s) \theta(s) - \sum\nolimits_{s \leq m} \Lambda(s)^{-1} \theta(s)^{2}/2 \right) + C;\]
+which is continuous with respect to $\theta$; therefore, \nref{AS_BAYES_SIEVE_CONTINUOUS} is verified.
+
+We can hence apply \nref{THM_BAYES_SIEVE_SELF_INFORMATIVE} which proves that the support of the self informative Bayes carrier is contained in the set of maximisers of $l(\theta, \phi_{n})$ which is obviously the singleton $\{\left(\theta_{n}(s)\lambda^{-1}(s) \mathds{1}_{\vert s \vert \leq m}\right)_{s \in \N}\}$.
+\proEnd
+\end{pro}
+
+As an alternative, one could have noticed that the prior and likelihood are conjugated.
+
+Define for any $s$ in $\N$ and $\eta$ in $\N^{\star}$ the quantities
+\[\widetilde{\theta}^{(\eta)}(s) := (n \eta \phi_{n}(s) \lambda(s))/(1 + n \eta \lambda(s)^{2}); \quad \sigma^{(\eta)}(s) := (1 + n \eta \lambda(s)^{2})^{-1}.\]
+Then, for any $s$ in $\N$, the posterior distribution of $\boldsymbol{\theta}(s)$ after $\eta$ iterations is given by
+\[\P_{\boldsymbol{\theta}(s) \vert \phi_{n}}^{(\eta)} = \mathcal{N}(\widetilde{\theta}^{(\eta)}(s), \sigma^{(\eta)}(s)) \mathds{1}_{\vert s \vert \leq m} + \delta_{0}(\boldsymbol{\theta}(s)) \mathds{1}_{\vert s \vert > m}.\]
+Considering the respective limits of $\widetilde{\theta}^{(\eta)}(s)$ and $\sigma^{(\eta)}(s)$ as $\eta$ tends to $\infty$ for any $s$ in $\N$ coincides with our previous statement.
+
+\subsection{Contraction rate for Gaussian sieve in iGSSM}\label{BAYES_GAUSS_CONTRACT}
+We now investigate the behaviour of the Gaussian sieve prior applied to iGSSM as $n$ tends to $\infty$.
+In this context, it is interesting to let $\eta$ and $m$ depend on $n$; we hence note $\eta_{n}$ and $m_{n}$.
+
+\medskip
+
+First consider the strategy exposed in \nref{BAYES_STRATEGIES_MOMENT}.
+To apply it, we will place ourselves under the following hypothesis that apparently limits the possible choices for the threshold parameter.
+In practice, the thresholds which are left aside would be too large and are known to lead to a poor estimation performance.
+
+\begin{as}\label{AS_BAYES_GAUSS_CONTRACT_THRESHOLD}
+Assume that $m_{n}$ and $\eta_{n}$ are chosen in such a way that either of
+\begin{itemize}
+\item $\sum\nolimits_{s \leq m_{n}} \Lambda(s)n^{-1} \in \mathcal{O}_{n}(1)$
+\item $\sum\nolimits_{ s \leq m_{n}} (\Lambda(s) \vert\theta^{\circ}(s)\vert)^{2}(n \eta_{n})^{-2} \in \mathcal{O}_{n}\left(\sum\nolimits_{ s \leq m_{n}} \Lambda(s) n^{-1}\right)$ and
+
+$\sum\nolimits_{ s \leq m_{n}} (\Lambda(s)^{3/2} \left\vert\theta^{\circ}(s)\right\vert)(n^{3/2} \eta_{n})^{-1} \in \mathcal{O}_{n}\left(\sum\nolimits_{ s \leq m_{n}} \Lambda(s)n^{-1}\right)$
+\end{itemize}
+stand true.
+\assEnd
+\end{as}
+
+We illustrate this hypothesis under the typical behaviours of $\theta$ and $\lambda$
+
+\begin{il}
+Consider the first inclusion $\sum\nolimits_{s \leq m_{n}} \Lambda(s)/n \in \mathcal{O}_{n}(1)$.
+
+Notice that \ref{oo:xdf:p} and \ref{oo:xdf:np} have no influence here.
+\begin{Liste}[]
+\item[\ref{il:po}, \ref{il:oo}, and \ref{il:so}] we have $\sum\nolimits_{s \leq m_{n}} \Lambda(s)/n = n^{-1} m \Lambda_{\circ}(m_{n}) \approx n^{-1} m_{n}^{2 a + 1}$ and hence the first inclusion is equivalent to $m_{n} \in \mathcal{O}_{n}(n^{1/(2 a + 1)})$.
+\item[\ref{il:ps}, and \ref{il:os}] we have $\sum\nolimits_{s \leq m_{n}} \Lambda(s)/n = n^{-1} m \Lambda_{\circ}(m_{n}) \approx n^{-1} m_{n}^{-(1 -2a)_{+}} \exp[m_{n}^{2a}]$ and hence the first inclusion is equivalent to $m_{n} \in \mathcal{O}_{n}(\log(n)^{1/(2 a)})$.
+\end{Liste}
+In the second inclusion, $\sum\nolimits_{s \leq m_{n}} (\Lambda(s) \vert\theta^{\circ}(s)\vert)^{2}/(n \eta_{n})^{2} \in \mathcal{O}\left(\sum\nolimits_{ s \leq m_{n}} \Lambda(s)/n\right)$, the regularity of $\theta$ also intervenes.
+Notice that, under \ref{il:oo} and \ref{il:os}, $\sum\nolimits_{s \leq m_{n}} \Lambda(s)/n \approx n^{-1} m_{n}^{2 a + 1}$ while under \ref{il:so} we have $\sum\nolimits_{s \leq m_{n}} \Lambda(s)/n \approx n^{-1} m_{n}^{-(1 -2a)_{+}} \exp[m_{n}^{2a}]$.
+\begin{Liste}[]
+\item[\ref{oo:xdf:p}] $\sum\nolimits_{s \leq m_{n}} (\Lambda(s) \vert\theta^{\circ}(s)\vert)^{2}/(n \eta_{n})^{2} \leq \sum\nolimits_{s \leq K} (\Lambda(s) \vert\theta^{\circ}(s)\vert)^{2}/(n \eta_{n})^{2} \in \mathfrak{o}_{n}(n^{-1})$ and hence the inclusion is always verified.
+\item[\ref{oo:xdf:np}] We now have to distinguish the different regularities of $\theta$ and $\lambda$.
+In any case, notice that $\sum\nolimits_{s \leq m_{n}} (\Lambda(s) \vert\theta^{\circ}(s)\vert)^{2}/(n \eta_{n})^{2} \leq (n \eta_{n})^{-2} \sum\nolimits_{s \leq m_{n}} \Lambda(s)^{2} \cdot (\Vert \theta^{\circ} \Vert_{l^{2}}^{2} - \b_{m}^{2}(\theta^{\circ}))$
+\begin{Liste}[]
+\item[\ref{il:oo}] $(n \eta_{n})^{-2} \sum\limits_{s \leq m_{n}} \Lambda(s)^{2} \cdot \sum\limits_{s \leq m_{n}} \vert\theta^{\circ}(s)\vert^{2} \approx (n \eta_{n})^{-2} \cdot m^{4a + 1}$ implies $m_{n} \in \mathcal{O}_{n}(n^{1/(2a)} \eta_{n}^{1/a})$;
+\item[\ref{il:os}] $(n \eta_{n})^{-2} \sum\limits_{s \leq m_{n}} \Lambda(s)^{2} \cdot \sum\limits_{s \leq m_{n}} \vert\theta^{\circ}(s)\vert^{2} \approx (n \eta_{n})^{-2} m^{-(1 - 4a)_{+}} \exp[m^{4 a}]$ implies $m_{n} \in \mathcal{O}_{n}(\log(n \eta_{n}^{2})^{1/(4a)})$;
+\item[\ref{il:so}] $(n \eta_{n})^{-2} \sum\limits_{s \leq m_{n}} \Lambda(s)^{2} \cdot \sum\limits_{s \leq m_{n}} \vert\theta^{\circ}(s)\vert^{2} \approx (n \eta_{n})^{-2} \cdot m^{4a + 1}$ implies $m_{n} \in \mathcal{O}_{n}(n^{1/(2a)} \eta_{n}^{1/a})$.
+\end{Liste}
+\end{Liste}
+Finally, for the third inclusion $\sum\nolimits_{ s \leq m_{n}} (\Lambda(s)^{3/2} \left\vert\theta^{\circ}(s)\right\vert)/(n^{3/2} \eta_{n}) \in \mathcal{O}\left(\sum\nolimits_{ s \leq m_{n}} \Lambda(s)/n\right)$ notice that we have $\sum\nolimits_{ s \leq m_{n}} (\Lambda(s)^{3/2} \left\vert\theta^{\circ}(s)\right\vert)/(n^{3/2} \eta_{n}) \leq (n^{3/2} \eta_{n})^{-1} \cdot \sum\nolimits_{ s \leq m_{n}} \Lambda(s)^{3} \cdot (\Vert \theta^{\circ} \Vert_{l^{2}}^{2} - \b_{m_{n}}^{2}(\theta^{\circ}))$.
+Under \ref{il:oo} and \ref{il:os}, $\sum\nolimits_{s \leq m_{n}} \Lambda(s)/n \approx n^{-1} m_{n}^{2 a + 1}$ while under \ref{il:so} we have $\sum\nolimits_{s \leq m_{n}} \Lambda(s)/n \approx n^{-1} m_{n}^{-(1 -2a)_{+}} \exp[m_{n}^{2a}]$.
+\begin{Liste}[]
+\item[\ref{oo:xdf:p}] $\sum\nolimits_{ s \leq m_{n}} (\Lambda(s)^{3/2} \left\vert\theta^{\circ}(s)\right\vert)/(n^{3/2} \eta_{n}) \leq (n^{3/2} \eta_{n})^{-1}\sum\nolimits_{ s \leq K} (\Lambda(s)^{3/2} \left\vert\theta^{\circ}(s)\right\vert) \in \mathfrak{o}_{n}(n^{-1})$ and hence the inclusion is always verified.
+\item[\ref{oo:xdf:np}] We now have to distinguish the different regularities of $\theta$ and $\lambda$.
+\begin{Liste}[]
+\item[\ref{il:oo}] $(n^{3/2} \eta_{n})^{-1} \cdot \sum\nolimits_{ s \leq m_{n}} \Lambda(s)^{3} \cdot (\Vert \theta^{\circ} \Vert_{l^{2}}^{2} - \b_{m_{n}}^{2}(\theta^{\circ})) \approx (n^{3/2} \eta_{n})^{-1} \cdot m^{6 a + 1}$ implies $m_{n} \in \mathcal{O}_{n}((\eta_{n} \sqrt{n})^{1/(4a)})$;
+\item[\ref{il:os}] $(n^{3/2} \eta_{n})^{-1} \cdot \sum\nolimits_{ s \leq m_{n}} \Lambda(s)^{3} \cdot (\Vert \theta^{\circ} \Vert_{l^{2}}^{2} - \b_{m_{n}}^{2}(\theta^{\circ})) \approx (n^{3/2} \eta_{n})^{-1} \cdot m^{-(1 - 6a)_{+}} \exp[m^{6a}]$ implies $m_{n} \in \mathcal{O}_{n}(\log(\sqrt{n} \eta_{n})1{1/(6a)})$;
+\item[\ref{il:so}] $(n^{3/2} \eta_{n})^{-1} \cdot \sum\nolimits_{ s \leq m_{n}} \Lambda(s)^{3} \cdot (\Vert \theta^{\circ} \Vert_{l^{2}}^{2} - \b_{m_{n}}^{2}(\theta^{\circ})) \approx (n^{3/2} \eta_{n})^{-1} \cdot m^{6 a + 1}$ implies $m_{n} \in \mathcal{O}_{n}((\eta_{n} \sqrt{n})^{1/(4a)})$.
+\end{Liste}
+\end{Liste}
+\ilEnd
+\end{il}
+We see that in any case, one can chose the sequence $(\eta_{n})_{n \in \N}$ in such a way that the condition is weaker that $m_{n} \in \mathcal{O}_{n}(n)$; unfortunately, this choice generally depends on the ill-posedness parameter $a$ and adaptively chosing $\eta$ is not considered here.
+
+Under this hypothesis we can obtain the contraction rate we hoped for.
+
+\begin{cor}\label{COR_BAYES_GAUSS_CONTRACT_SIEVE}
+Under \nref{AS_BAYES_GAUSS_CONTRACT_THRESHOLD}, for any $\theta^{\circ}$ in $\Theta$ and increasing, unbounded sequence $c_{n}$, we have
+\begin{alignat*}{3}
+& && \lim\nolimits_{n \rightarrow \infty} \E&&\left[\P_{\boldsymbol{\theta}_{\overline{m_{n}}}\vert \phi_{n}}^{(\eta)}\left(\left\Vert \theta^{\circ} - \boldsymbol{\theta}_{\overline{m_{n}}}\right\Vert_{l^{2}}^{2} \leq c_{n} \Phi^{m_{n}}_{n} \right)\right] = 1.
+\end{alignat*}
+\reEnd
+\end{cor}
+
+\begin{pro}{\textsc{Proof of \nref{COR_BAYES_GAUSS_CONTRACT_SIEVE}}\\}\label{PRO_BAYES_GAUSS_CONTRACT_SIEVE}
+Remind that, for any $s$ in $\N$, $\phi_{n}(s) = \phi(s) + n^{-1/2} \xi(s)$, where $(\xi(s))_{s \in \N}$ is an \iid Gaussian white noise process.
+We will apply \nref{THM_BAYES_STRATEGIES_MOMENT} and hence need to show:
+\begin{alignat*}{3}
+& \E\left[\E_{\boldsymbol{\theta} \vert \phi_{n}}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert_{l^{2}}^{2}\right]\right] && \in && \mathcal{O}_{n}(\Phi_{n}^{m_{n}}); \quad \V\left[\E_{\boldsymbol{\theta}\vert \phi_{n}}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert_{l^{2}}^{2}\right]\right]^{1/2} \in \mathcal{O}_{n}(\Phi_{n}^{m_{n}});\\
+&\E\left[\V_{\boldsymbol{\theta}\vert \phi_{n}}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert_{l^{2}}^{2}\right]^{1/2}\right] && \in && \mathcal{O}_{n}(\Phi_{n}^{m_{n}}); \quad \V\left[\V_{\boldsymbol{\theta}\vert \phi_{n}}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert_{l^{2}}^{2}\right]^{1/2}\right]^{1/2} \in \mathcal{O}_{n}(\Phi_{n}^{m_{n}}).
+\end{alignat*}
+We use the fact that $\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert_{l^{2}}^{2} = \sum\nolimits_{\vert s \vert \leq m_{n}} \left( \boldsymbol{\theta}(s) - \theta^{\circ}(s)\right)^{2} + \mathfrak{b}_{m_{n}}^{2}(\theta^{\circ})$ and that we know the distribution of $\boldsymbol{\theta}(s)$.
+This gives us the expectation and variance of the posterior distribution of $\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert_{l^{2}}^{2}$.
+We use in addition $(1 + \Lambda(s)/(n \eta_{n}))^{-1} \leq 1$ to obtain upper bounds for these quantities.
+\begin{alignat*}{2}
+&\E &&_{\boldsymbol{\theta}_{\overline{m_{n}}} \vert \phi_{n}}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert_{l^{2}}^{2}\right] = \sum\limits_{\vert s \vert \leq m_{n}} \left(\frac{\Lambda(s)/(n \eta_{n})}{\Lambda(s)/(n \eta_{n}) + 1}\right)\left(1 + \frac{\left(- \theta^{\circ}(s) + \eta_{n} \sqrt{n} \xi(s) \lambda(s)\right)^{2}}{(\eta_{n} n)/\Lambda(s) + 1}\right) + \mathfrak{b}_{m_{n}}^{2}\\
+& && \leq \sum\limits_{\vert s \vert \leq m_{n}} (\Lambda(s)/n \eta_{n}) + \sum\nolimits_{\vert s \vert \leq m_{n}} (\Lambda(s)/(n \eta_{n}))^{2}\left(- \theta^{\circ}(s) + \eta_{n} \sqrt{n} \xi(s) \lambda(s)\right)^{2} + \mathfrak{b}_{m_{n}}^{2}(\theta^{\circ});
+\end{alignat*}
+\begin{alignat*}{2}
+&\V&&_{\boldsymbol{\theta}_{\overline{m_{n}}} \vert \phi_{n}}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert_{l^{2}}^{2}\right] = 2 \sum\limits_{\vert s \vert \leq m_{n}} \left(\frac{\Lambda(s)/(n \eta_{n})}{\Lambda(s)/(n \eta_{n}) + 1}\right)^{2}\left(1 + 2 \frac{\left(- \theta^{\circ}(s) + \eta_{n} \sqrt{n} \xi(s) \lambda(s)\right)^{2}}{(\eta_{n} n)/\Lambda(s) + 1}\right)\\
+& &&\leq 2 \sum\nolimits_{\vert s \vert \leq m_{n}} (\Lambda(s)/(n \eta_{n}))^{2} + 4 \sum\nolimits_{\vert s \vert \leq m_{n}} (\Lambda(s)/(n \eta_{n}))^{3} \left(- \theta^{\circ}(s) + \eta_{n} \sqrt{n} \xi(s) \lambda(s)\right)^{2}.
+\end{alignat*}
+In addition, we use the sub-additivity of the square root to obtain this upper bound:
+\begin{alignat*}{1}
+& \V_{\boldsymbol{\theta}_{\overline{m_{n}}} \vert \phi_{n}}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert_{l^{2}}^{2}\right]^{1/2}\\
+& \leq \sqrt{2} \sum\nolimits_{\vert s \vert \leq m_{n}} \Lambda(s)/(n \eta_{n}) + 2 \sum\nolimits_{\vert s \vert \leq m_{n}} (\Lambda(s)/(n \eta_{n}))^{3/2} \left\vert- \theta^{\circ}(s) + \eta_{n} \sqrt{n} \xi(s) \lambda(s)\right\vert.
+\end{alignat*}
+Using linearity of the expectation and the standard Gaussian distribution of $\xi_{j}$ we have:
+\begin{alignat*}{2}
+&\E&&\left[\E_{\boldsymbol{\theta}_{\overline{m_{n}}} \vert \phi_{n}}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert_{l^{2}}^{2}\right]\right]\\
+& &&\leq \sum\nolimits_{\vert s \vert \leq m_{n}} \Lambda(s)/(n \eta_{n}) + \sum\nolimits_{\vert s \vert \leq m_{n}} \Lambda(s)/n + \sum\nolimits_{\vert s \vert \leq m_{n}}(\Lambda(s)/(n \eta_{n}))^{2} \left\vert \theta^{\circ}(s) \right\vert^{2} + \mathfrak{b}_{m_{n}}^{2}(\theta^{\circ}).
+\end{alignat*}
+The same properties give us this bound:
+\begin{alignat*}{3}
+&\V\left[\E_{\boldsymbol{\theta}_{\overline{m_{n}}} \vert \phi_{n}}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert_{l^{2}}^{2}\right]\right] &&\leq&& 2 \sum\nolimits_{\vert s \vert \leq m_{n}} (\Lambda(s)/n)^{2} + 4 \sum\nolimits_{\vert s \vert \leq m_{n}}(\Lambda(s)^{3}/(\eta_{n}^{2} n^{3})) \left\vert\theta^{\circ}(s)\right\vert^{2};
+\end{alignat*}
+and we use the sub-additivity of the square root in addition:
+\begin{alignat*}{3}
+&\V\left[\E_{\boldsymbol{\theta}_{\overline{m_{n}}} \vert \phi_{n}}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert_{l^{2}}^{2}\right]\right]^{1/2} &&\leq&& \sqrt{2}\sum\nolimits_{\vert s \vert \leq m_{n}} (\Lambda(s)/n) + 2 \sum\nolimits_{\vert s \vert \leq m_{n}}(\Lambda(s)^{3/2}/(\eta_{n} n^{3/2})) \left\vert\theta^{\circ}(s)\right\vert.\\
+\end{alignat*}
+To control the moments of the posterior variance, we use the properties of the folded Gaussian random variables:
+\begin{alignat*}{2}
+&\E&&\left[\V_{\boldsymbol{\theta}_{\overline{m_{n}}} \vert \phi_{n}}\left[\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert_{l^{2}}^{2}\right]^{1/2}\right]\\
+%& && \leq \sqrt{2} \sum\nolimits_{\vert s \vert \leq m_{n}} (\Lambda(s)/(n \eta_{n})) + 2 \sum\nolimits_{\vert s \vert \leq m_{n}} (\Lambda(s)/(n \eta_{n}))^{3/2} \E\left[\left\vert- \theta^{\circ}(s) + \eta_{n} \sqrt{n} \xi(s) \lambda(s)\right\vert\right]\\
+%& && \leq \sqrt{2} \sum\nolimits_{\vert s \vert \leq m_{n}} (\Lambda(s)/(n \eta_{n})) + 2 \sum\nolimits_{\vert s \vert \leq m_{n}} (\Lambda(s)/(n \eta_{n}))^{3/2} \left(\eta_{n} \vert \lambda(s) \vert (2/\pi)^{1/2} \exp\left[-(\left\vert\theta(s)^{\circ}\right\vert^{2} \Lambda(s))/(2 \eta_{n}^{2})\right]\right.\\
+%& && \left.+ \vert \theta(s)^{\circ} \vert \erf\left\{\vert \theta^{\circ}(s)\vert / (\sqrt{2} \eta_{n} \vert \lambda(s)\vert )\right\}\right)\\
+& && \leq \sqrt{2} \sum\limits_{\vert s \vert \leq m_{n}} \Lambda(s)/(n \eta_{n}) + 2 \sum\limits_{\vert s \vert \leq m_{n}} (2/(\pi \cdot n^{3} \eta_{n}))^{1/2}\Lambda(s) \exp\left[-(\left(\theta^{\circ}(s)\right)^{2} \Lambda(s))/(2 \eta_{n}^{2})\right]\\
+& && + \sum\nolimits_{\vert s \vert \leq m_{n}}(\Lambda(s)/(n \eta_{n}))^{3/2}\vert\theta^{\circ}(s)\vert;
+\end{alignat*}
+\[\V\left[\V_{\boldsymbol{\theta}_{\overline{m_{n}}} \vert \phi_{n}}\left[\Vert \boldsymbol{\theta}_{\overline{m_{n}}} - \theta^{\circ} \Vert_{l^{2}}^{2}\right]^{1/2}\right] \leq 2 \sum\nolimits_{\vert s \vert \leq m_{n}} (\Lambda(s)/(n \eta_{n}))^{3} \cdot \left[ \left\vert\theta^{\circ}(s)\right\vert^{2} + \eta_{n}^{2}/\Lambda(s)\right];\]
+\begin{alignat*}{2}
+&\V&&\left[\V_{\boldsymbol{\theta}_{\overline{m_{n}}} \vert \phi_{n}}\left[\Vert \boldsymbol{\theta}_{\overline{m_{n}}} - \theta^{\circ} \Vert_{l^{2}}^{2}\right]^{1/2}\right]^{1/2}\\
+& && \leq \sqrt{2} \sum\nolimits_{\vert s \vert \leq m_{n}} ((\Lambda(s)^{3}\left\vert\theta^{\circ}(s)\right\vert^{2})(n \eta_{n})^{-3})^{2} + \sum\nolimits_{\vert s \vert \leq m_{n}} \Lambda(s)/(n^{3} \eta_{n})^{1/2}.
+\end{alignat*}
+Using \nref{AS_BAYES_GAUSS_CONTRACT_THRESHOLD}, the leading term in each of these bounds is for the most of order $\Phi_{n}^{m_{n}}$ and hence, we can apply \nref{THM_BAYES_STRATEGIES_MOMENT} which proves the statement.
+\proEnd
+\end{pro}
+
+Notice that if one selects $m_{n} = m_{n}^{\circ}$ we obtain the oracle rate of convergence of projection estimators.
+
+\begin{cor}\label{COR_BAYES_GAUSS_CONTRACT_ORACLESIEVE}
+For any $\theta^{\circ}$ in $\Theta$ and increasing, unbounded sequence $c_{n}$, we have
+\begin{alignat*}{3}
+& && \lim\nolimits_{n \rightarrow \infty} \E&&\left[\P_{\boldsymbol{\theta}_{\overline{m_{n}^{\circ}}}\vert \phi_{n}}^{(\eta)}\left(\left\Vert \theta^{\circ} - \boldsymbol{\theta}_{\overline{m_{n}^{\circ}}}\right\Vert_{l^{2}}^{2} \leq c_{n} \Phi^{\circ}_{n} \right)\right] = 1.
+\end{alignat*}
+\reEnd
+\end{cor}
+
+We have hence seen that Gaussian sieve priors contract around the true parameter at the same rate as the projection estimator with identical threshold parameter contract and that, in particular, the best Gaussian sieve prior contracts at the oracle convergence rate of the projection estimators.
+
+\subsection{Self informative Bayes carrier for the hierarchical prior}\label{BAYES_GAUSS_HIERARCHICAL}
+In this subsection, we propose an analytical shape for a hierarchical Gaussian sieve prior to use in the context of an inverse Gaussian sequence space model.
+
+We doubly justify this choice, first by showing that the self informative limit is a penalised contrast maximiser projection estimator and, in the next subsection, that this choice yields good contraction properties.
+
+\medskip
+
+First remind that for any $s$ in $\N$, we have:
+\[\widetilde{\theta}^{(\eta)}(s) = (n \eta \phi_{n}(s) \lambda(s)) \cdot (1 + n \eta \lambda(s)^{2})^{-1}; \text{ and }\quad \sigma^{(\eta)}(s) = (1 + n \eta \vert \lambda(s)\vert^{2})^{-1};\]
+and define for any $m$ in $\N$ the notations
+\[\sigma^{(\eta)}_{\overline{m}} := (\sigma^{(\eta)}(s) \mathds{1}_{\{s \leq m\}})_{s \in \N}; \text{ and }\quad \widetilde{\theta}^{(\eta)}_{\overline{m}} := (\widetilde{\theta}^{(\eta)}(s) \mathds{1}_{\{ s \leq m\}})_{s \in \N}.\]
+
+Then, we define, for any $m$ in $\N$, the quantity $\Lambda_{+}(m) := \max_{ s \leq m} \{\Lambda(s)\}$.
+We then take $G_{n} := \max\left\{m \in \llbracket 1, n \rrbracket : \Lambda_{+}(m) / n \leq \Lambda(0)\right\}$.
+
+For any $m$ in $\N$, we make the following choice for the prior distribution of $M$
+\[\P_{M}(\{m\}) \propto \exp\left[-\eta/2 \left(3 m + \sum\nolimits_{s = 0}^{m} \log(\sigma^{\eta}(s))\right) \right].\]
+
+Using the notations of \nref{BAYES_HIERARCHICAL} (and keeping in mind the notation for weighted norms given in \nref{INTRO_FREQ_DECISION_LOSSFUNCION} in the context of Sobolev's ellipsoid, and the convention "$0/0 = 0$"), we have 
+\begin{alignat*}{3}
+& \pen(m) && = && (\eta/2)\left(3 m + \sum\nolimits_{s = 0}^{m} \log(\sigma^{(\eta)}(s))\right);\\
+& \Upsilon^{\eta}(Y, m) && = && \sum\nolimits_{s = 0}^{m} n \vert \phi_{n}(s) \vert^{2}\left(\Lambda(s)(n \eta)^{-1} + 1\right)^{-1} + (1/2) \sum\nolimits_{s = 0}^{m} \log(\sigma^{(\eta)}(s)).
+\end{alignat*}
+
+Which leads us to the iterated prior of the hyper-parameter:
+
+\[\P_{M \vert \phi_{n}}^{(\eta)}(m) \propto \exp\!\!\left[- (\eta/2)\left( 3 m - n \sum\nolimits_{s \leq m} \vert 
+\phi_{n}(s)\vert^{2}(\Lambda(s)(n \eta)^{-1} + 1)^{-1} \right) \right].\]
+
+We can hence simplify our notation in the following way: $\pen(m) = 3 m$ and $\Upsilon^{\eta}(Y, m) = \sum\nolimits_{s \leq m} n \vert \phi_{n}(s) \vert^{2}(\Lambda(s)(n \eta)^{-1} + 1)^{-1}$.
+Let us remind that the iterated distribution for $\boldsymbol{\theta}_{\overline{M}}\vert \phi_{n}$ is given by $\P_{\boldsymbol{\theta}_{\overline{M}} \vert \phi_{n}}^{(\eta)} = \sum\nolimits_{m \in \mathds{N}}\P_{\boldsymbol{\theta}_{\overline{m}} \vert \phi_{n}}^{(\eta)} \cdot \P_{M \vert \phi_{n}}^{(\eta)}(m)$.
+Hence, according to \nref{THM_BAYES_HIERARCHICAL_LIMIT}, the self informative limit for the hyper-parameter is $\widehat{m} := \argmin_{m \leq G_{n}} \{3 m - n \sum\nolimits_{s \leq m}\vert \phi_{n}(s) \vert^{2}\}$; and the self informative Bayes limit for $\boldsymbol{\theta}_{\overline{M}}$ is the associated projection estimator $\theta_{n, \overline{m}}$.
+
+\medskip
+
+Note that, defining for any $m$ in $\llbracket 1, G_{n} \rrbracket$ the quantity $E(m) = 3 m - n \sum\nolimits_{s \leq m}\vert \phi_{n}(s) \vert^{2}$; for all distinct $k$ and $m$ in $\llbracket 1, G_{n} \rrbracket$, we almost surely have $E(k) - E(m) \neq 0$ since $\Upsilon(k) - \Upsilon(m)$ is a random variable with absolutely continuous distribution with respect to Lebesgue measure and hence, $\P_{\theta^{\circ}}\!\!\left[\{\Upsilon(k) - \Upsilon(m) = \pen(k) - \pen(m)\}\right] = 0$.
+
+\subsection{Contraction rate for the hierarchical prior}\label{BAYES_GAUSS_CONTRACT_HIERARCHICAL}
+
+In this subsection, we discuss the contraction rate of the hierarchical Gaussian iterated posterior distribution by applying the methodology described in \nref{BAYES_STRATEGIES_EXPO}.
+
+The results are similar to the ones obtained in \ncite{JJASRS} but extended to the iterated posterior distribution, included in the case of "$\eta = \infty$", in such a way that it offers a novel proof for optimality of the penalised contrast maximiser projection estimator.
+
+Remind that we defined for any $m$ in $\N$ the quantities $\Lambda_{+}(m) = \max_{\vert s \vert \leq m}\{\Lambda(s)\}$ and $\Lambda_{\circ}(m) = m^{-1} \sum_{\vert s \vert \leq m}\Lambda(s)$.
+
+The results are obtained using the following contraction inequalities, which can be found in this form in \ncite{JJASRS} as a result adapted from \ncite{Birge2001} and \ncite{LaurentLM2012}.
+\begin{lm}\label{BAYES_GAUSS_CONTRACT_HIERARCHICAL_LM_PROB}\label{lmA.1.1}
+Let $\{X(s)\}_{s \geq 1}$ be independent and normally distributed random variables with real mean $\alpha(s)$ and standard deviation $\beta(s) \geq 0$. For $m \in \mathds{N}$, set $S_{m} := \sum \limits_{s = 1}^{m} X(s)^{2}$ and consider $v_{m} \geq \sum\limits_{s = 1}^{m} \beta(s)^{2}, t_{m} \geq \max \limits_{1 \leq s \leq m} \beta(s)^{2}$ and $r_{m} \geq \sum\limits_{s = 1}^{m} \alpha(s)^{2}$.
+Then for all $c \geq 0$, we have
+\begin{alignat*}{3}
+&\sup\limits_{m \geq 1} \exp\left[\frac{c (c \wedge 1) (v_{m} + 2 r_{m})}{4 t_{m}}\right]\mathds{P}\left(S_{m} - \mathds{E}[S_{m}] \leq - c (v_{m} + 2 r_{m})\right) &&\leq&& 1; \\
+&\sup\limits_{m \geq 1} \exp\left[\frac{c (c \wedge 1) (v_{m} + 2 r_{m})}{4 t_{m}}\right]\mathds{P}\left(S_{m} - \mathds{E}[S_{m}] \geq \frac{3 c}{2} (v_{m} + 2 r_{m})\right) &&\leq&& 1.
+\end{alignat*}
+\reEnd
+\end{lm}
+
+\begin{lm}\label{BAYES_GAUSS_CONTRACT_HIERARCHICAL_LM_ESP}\label{lmA.1.2}
+Let $\{X(s)\}_{s \geq 1}$ be independent and normally distributed random variables with real mean $\alpha(s)$ and standard deviation $\beta(s) \geq 0$. For $m \in \mathds{N}$, set $S_{m} := \sum \limits_{s = 1}^{m} X(s)^{2}$ and consider $v_{m} \geq \sum\limits_{s = 1}^{m} \beta(s)^{2}, t_{m} \geq \max \limits_{1 \leq s \leq m} \beta(s)^{2}$ and $r_{m} \geq \sum\limits_{s = 1}^{m} \alpha(s)^{2}$.
+Then for all $c \geq 0$, we have
+\[\sup\limits_{m \geq 1}(6 t_{m})^{-1} \exp\left[\frac{c (v_{m} + 2 r_{m})}{4 t_{m}}\right] \mathds{E}\left[S_{m} - \mathds{E}[S_{m}] - \frac{3}{2} c (v_{m} + 2 r_{m})\right]_{+} \leq 1\]
+with $(a)_{+} := (a \vee 0).$
+\reEnd
+\end{lm}
+We will use them to obtain concentration of sums of the shape $\sum\nolimits_{s = m_{1}}^{m_{2}}(\phi_{n}(s) \lambda(s)^{-1} - \theta^{\circ}(s))^{2}$ and $\sum\nolimits_{s = m_{1}}^{m_{2}} \phi_{n}(s)^{2}$.
+
+\medskip
+
+We start by stating the set of assumptions which allow us to obtain our results.
+
+\begin{as}\label{AS_BAYES_GAUSS_CONTRACT_HIERARCHICAL_LAMBDA}
+Suppose that $\lambda$ is monotonically and polynomially decreasing, that is, there exist $c$ in $[1, \infty[$ and $a$ in $\mathds{R}_{+}$ such that $\Lambda(m) \approx m^{-2a}$.
+\end{as}
+
+This assumption assures that $\Lambda_{+}(m) = \Lambda(m)$ for any $m$ and that there exist a constant $L := L(\lambda)$ in $[1, \infty[$, independent of $\theta^{\circ}$ such that for any sequence $\left(m_{n}\right)_{n \in \mathds{N}^{\star}}$ 
+\[\sup\nolimits_{n \in \mathds{N}^{\star}} m_{n} \Lambda(m_{n})(n \Phi_{n}^{m_{n}})^{-1} \leq \sup\nolimits_{n \in \mathds{N}^{\star}} \Lambda(m_{n})/\Lambda_{\circ}(m_{n}) \leq L.\]
+It basically requires that we are in the situation \ref{il:oo} or \ref{il:so} and is not valid under \ref{il:os}.
+
+\begin{as}\label{AS_BAYES_GAUSS_CONTRACT_HIERARCHICAL_ORACLE}
+Let $\theta^{\circ}$ and $\lambda$ be such that there exists $n^{\circ}$ in $\mathds{N}^{\star}$
+\[0 < \kappa^{\circ} := \kappa^{\circ}(\theta^{\circ}, \lambda) := \inf\nolimits_{n \geq n^{\circ}} \left\{\left(\Phi_{n}^{\circ}(\theta^{\circ})\right)^{-1} \left[\mathfrak{b}_{m_{n}^{\circ}} \wedge n^{-1} m_{n}^{\circ} \Lambda_{\circ}(m_{n}^{\circ})\right]\right\} \leq 1\]
+\end{as}
+
+\begin{as}\label{AS_BAYES_GAUSS_CONTRACT_HIERARCHICAL_MINIMAX}
+Let $\mathfrak{a}$ and $\lambda$ be sequences such that there exists $n^{\star}$ in $\mathds{N}^{\star}$
+\[0 < \kappa^{\star} := \kappa^{\star}(\mathfrak{a}, \lambda) := \inf\nolimits_{n > n^{\star}} \left\{\left(\Phi_{n}^{\star}\right)^{-1}\left[\mathfrak{a}_{m_{n}^{\star}} \wedge n^{-1} m_{n}^{\star} \Lambda_{\circ}(m_{n}^{\star}) \right]\right\} \leq 1.\]
+\end{as}
+
+The corollaries hereafter generalise the results obtained in \ncite{JJASRS} to finitely iterated posterior distributions.
+The proofs are sensibly similar to the original ones and we hence skip them.
+
+\begin{cor}\label{COR_BAYES_GAUSS_CONTRACT_HIERARCHICAL_ORACLE}
+Under \nref{AS_BAYES_GAUSS_CONTRACT_HIERARCHICAL_LAMBDA} and \textsc{\cref{AS_BAYES_GAUSS_CONTRACT_HIERARCHICAL_ORACLE}}, if, in addition $\log(G_{n})/m_{n}^{\circ} \rightarrow 0$ as $n \rightarrow \infty$ then with $D^{\circ} := D^{\circ}(\theta^{\circ}, \lambda) = \lceil 5 L/\kappa^{\circ} \rceil$ and $K^{\circ} := 10(2 \vee \Vert \theta^{\circ} \Vert_{l^{2}}^{2})L^{2}(16 \vee D^{\circ} \Lambda_{D^{\circ}})$ we have, for any $\eta$ ($1 \leq \eta < \infty$):
+\[\lim\nolimits_{n \rightarrow \infty} \E\left[\P_{\boldsymbol{\theta}_{\overline{M}} \vert \phi_{n}}^{n, (\eta)} \left(\left(K^{\circ}\right)^{-1} \Phi_{n}^{\circ}(\theta^{\circ}) \leq \Vert \theta^{\circ} - \boldsymbol{\theta}_{\overline{M}} \Vert_{l^{2}}^{2} \leq K^{\circ} \Phi_{n}^{\circ}(\theta^{\circ})\right)\right] = 1.\]
+\reEnd
+\end{cor}
+
+\begin{cor}\label{COR_BAYES_GAUSS_CONTRACT_HIERARCHICAL_MINIMAX}
+Under \nref{AS_BAYES_GAUSS_CONTRACT_HIERARCHICAL_LAMBDA} and \nref{AS_BAYES_GAUSS_CONTRACT_HIERARCHICAL_MINIMAX}, if, in addition, $\log(G_{n})/m_{n}^{\star} \rightarrow 0$ as $n \rightarrow \infty$ then, for any $\eta$ ($1 \leq \eta < \infty$)
+\begin{itemize}
+\item for all $\theta^{\circ}$ in $\Theta_{\mathfrak{a}}(r)$, with $D^{\star} := D^{\star}(\mathfrak{a}, \lambda) = \lceil 5 L/\kappa^{\star} \rceil$ and $K^{\star} := 16 L^{2} (2 \vee r)(16 \vee D^{\star} \Lambda_{D^{\star}})$, we have
+\[\lim\nolimits_{n \rightarrow \infty} \E\left[\P_{\boldsymbol{\theta}_{\overline{M}} \vert \phi_{n}}^{n, (\eta)}\left(\Vert \theta^{\circ} - \boldsymbol{\theta}_{\overline{M}} \Vert_{l^{2}}^{2} \leq K^{\star} \Phi_{n}^{\star}\right)\right] =1;\]
+\item for any monotonically increasing and unbounded sequence $K_{n}$ holds
+\[\lim\nolimits_{n \rightarrow \infty} \inf\nolimits_{\theta^{\circ} \in \Theta_{\mathfrak{a}}(r)} \E\left[\P_{\boldsymbol{\theta}_{\overline{M}} \vert \phi_{n}}^{n, (\eta)}\left(\Vert \theta^{\circ} - \boldsymbol{\theta}_{\overline{M}} \Vert_{l^{2}}^{2} \leq K_{n} \Phi_{n}^{\star}\right)\right] =1.\]
+\end{itemize}
+\reEnd
+\end{cor}
+
+However, the following theorem assert that the results hold true in the asymptotic case where $\eta$ tends to $\infty$.
+The proofs are displayed in \nref{PROOF_BAYES_IGSSM_KNOWN_IID_ORACLE_NP} and \nref{PROOF_BAYES_IGSSM_KNOWN_IID_MINIMAX_NP} respectively.
+
+\begin{thm}\label{THM_BAYES_IGSSM_KNOWN_IID_ORACLE_NP}
+Under \nref{AS_BAYES_GAUSS_CONTRACT_HIERARCHICAL_LAMBDA}, \textsc{\cref{AS_BAYES_GAUSS_CONTRACT_HIERARCHICAL_ORACLE}} and the condition that $\limsup\nolimits_{n \rightarrow \infty} \log\left(G_{n}\right) (m_{n}^{\circ})^{-1}$, define $D^{\circ} := \left\lceil 3 (\kappa^{\circ})^{-1} + 1 \right\rceil$ and $K^{\circ} := 16 L \cdot \left[9 \vee D^{\circ} \Lambda_{D^{\circ}}\right]$; then, we have for all $\theta^{\circ}$ in $\Theta$,
+\[\lim\nolimits_{n \rightarrow \infty} \E\left[\P_{\boldsymbol{\theta}_{\overline{M}} \vert \phi_{n}}^{n, (\infty)}\left(\left(K^{\circ}\right)^{-1} \Phi_{n}^{\circ}(\theta^{\circ}) \leq \Vert \boldsymbol{\theta}_{\overline{M}} - \theta^{\circ} \Vert_{l^{2}}^{2} \leq K^{\circ} \Phi_{n}^{\circ}(\theta^{\circ}) \right)\right] = 1.\]
+\end{thm}
+
+\begin{thm}\label{THM_BAYES_IGSSM_KNOWN_IID_MINIMAX_NP}
+Under \textsc{\cref{AS_BAYES_GAUSS_CONTRACT_HIERARCHICAL_LAMBDA}}, \textsc{\cref{AS_BAYES_GAUSS_CONTRACT_HIERARCHICAL_MINIMAX}} and the condition that $\limsup\nolimits_{n \rightarrow \infty} \frac{\log\left(G_{n}\right)}{m_{n}^{\star}},$ define $D^{\star} := \left\lceil \frac{3 \left(1 \vee r\right)}{\kappa^{\star} L} + 1 \right\rceil$ and $K^{\star} := 6 (1 \vee r) (9L \vee D^{\star} \Lambda_{D^{\star}})$; then, we have for all $\theta^{\circ}$ in $\Theta^{\mathfrak{a}}(r)$,
+\[\lim\nolimits_{n \rightarrow \infty} \E\left[\P_{\boldsymbol{\theta}_{\overline{M}} \vert \phi_{n}}^{n, (\infty)}\left(\Vert \boldsymbol{\theta}_{\overline{M}} - \theta^{\circ} \Vert_{l^{2}}^{2} \leq K^{\star} \Phi_{n}^{\star} \right)\right] = 1,\]
+and, for any increasing sequence $K_{n}$ such that $\lim\nolimits_{n \rightarrow \infty} K_{n} = \infty,$
+\[\lim\nolimits_{n \rightarrow \infty} \inf\nolimits_{\theta^{\circ} \in \Theta^{\mathfrak{a}}(r)} \E\left[\P_{\boldsymbol{\theta}_{\overline{M}} \vert \phi_{n}}^{n, (\infty)}\left(\Vert \boldsymbol{\theta}_{\overline{M}} - \theta^{\circ} \Vert_{l^{2}}^{2} \leq K_{n} \Phi_{n}^{\star} \right)\right] = 1.\]
+\end{thm}
+
+
+We have hence showed that the self informative Bayes carrier contracts around the true parameter with the oracle optimal rate of sieve priors and with minimax optimal rate over Sobolev's ellipsoids.
+We will see in \nref{FREQ_IGSSM} that the self informative limit also converges with optimal rates.

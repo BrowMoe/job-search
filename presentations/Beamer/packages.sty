@@ -1,0 +1,259 @@
+\ProvidesPackage{packages}
+
+
+%babel – Multilingual support for Plain TEX or LATEX
+%The pack­age man­ages cul­tur­ally-de­ter­mined ty­po­graph­i­cal (and other) rules, and hy­phen­ation pat­terns for a wide range of lan­guages. A doc­u­ment may se­lect a sin­gle lan­guage to be sup­ported, or it may se­lect sev­eral, in which case the doc­u­ment may switch from one lan­guage to an­other in a va­ri­ety of ways.
+\usepackage[ngerman, english]{babel}
+
+%fontenc – Standard package for selecting font encodings
+%The pack­age al­lows the user to se­lect font en­cod­ings, and for each en­cod­ing pro­vides an in­ter­face to ‘font-en­cod­ing-spe­cific’ com­mands for each font. Its most pow­er­ful ef­fect is to en­able hy­phen­ation to op­er­ate on texts con­tain­ing any char­ac­ter in the font.
+\usepackage[T1]{fontenc}
+
+%inputenc – Accept different input encodings
+%The pack­age trans­lates var­i­ous stan­dard and other in­put en­cod­ings into a ‘LATEX in­ter­nal lan­guage’. The in­ter­nal lan­guage is ex­pressed en­tirely in TEX's base en­cod­ing (stan­dard ASCII print­able char­ac­ters, car­riage con­trol to­kens and TEX con­trol se­quences, the lat­ter mostly de­fined by LATEX).
+\usepackage[utf8x]{inputenc}
+
+%textcomp – LATEX support for the Text Companion fonts
+%The pack­age sup­ports the Text Com­pan­ion fonts, which pro­vide many text sym­bols (such as baht, bul­let, copy­right, mu­si­cal­note, onequar­ter, sec­tion, and yen), in the TS1 en­cod­ing.
+%Note that the pack­age has been adopted as part of the LATEX dis­tri­bu­tion; the ref­er­ence here is to the orig­i­nal pack­age, which is now lit­tle used (if at all).
+%\usepackage{textcomp}
+
+%stmaryrd – St Mary Road symbols for theoretical computer science
+%The fonts were orig­i­nally dis­tributed as METAFONT sources only, but Adobe Type 1 ver­sions are also now avail­able.
+%Macro sup­port is pro­vided for use un­der LATEX; the pack­age sup­ports the "only" op­tion (pro­vided by the somedefs pack­age) to re­strict what is loaded, for those who don't need the whole font.
+\usepackage{stmaryrd}
+
+%algorithm2e – Floating algorithm environment with algorithmic keywords
+%Al­go­rith­m2e is an en­vi­ron­ment for writ­ing al­go­rithms. An al­go­rithm be­comes a float­ing ob­ject (like fig­ure, ta­ble, etc.). The pack­age pro­vides macros that al­low you to cre­ate dif­fer­ent key­words, and a set of pre­de­fined key words is pro­vided; you can change the ty­pog­ra­phy of the key­words. The pack­age al­lows ver­ti­cal lines de­lim­it­ing a block of in­struc­tions in an al­go­rithm, and de­fines dif­fer­ent sorts of al­go­rithms such as Pro­ce­dure or Func­tion; the name of these func­tions may be reused in the text or in other al­go­rithms.
+\usepackage{algorithm2e}
+
+%listings – Typeset source code listings using LATEX
+%The pack­age en­ables the user to type­set pro­grams (pro­gram­ming code) within LATEX; the source code is read di­rectly by TEX—no front-end pro­ces­sor is needed. Key­words, com­ments and strings can be type­set us­ing dif­fer­ent styles (de­fault is bold for key­words, italic for com­ments and no spe­cial style for strings). Sup­port for hy­per­ref is pro­vided.
+%To use, \usep­a­ck­age{list­ings}, iden­tify the lan­guage of the ob­ject to type­set, us­ing a con­struct like: \lst­set{lan­guage=Python}, then use en­vi­ron­ment lstlist­ing for in­line code. Ex­ter­nal files may be for­mat­ted us­ing \lstin­put­list­ing to pro­cess a given file in the form ap­pro­pri­ate for the cur­rent lan­guage. Short (in-line) list­ings are also avail­able, us­ing ei­ther \lstin­line|...| or |...| (af­ter defin­ing the | to­ken with the \lstMakeShortIn­line com­mand).
+\usepackage{listings}
+\lstloadlanguages{R}
+
+%amsthm – Typesetting theorems (AMS style)
+%The pack­age fa­cil­i­tates the kind of the­o­rem setup typ­i­cally needed in Amer­i­can Math­e­mat­i­cal So­ci­ety pub­li­ca­tions. The pack­age of­fers the the­o­rem setup of the AMS doc­u­ment classes (am­sart, ams­book, etc.) en­cap­su­lated in LATEX pack­age form so that it can be used with other doc­u­ment classes.
+%Am­sthm is part of the (re­quired) AMS-LATEX dis­tri­bu­tion, so should be present in any LATEX dis­tri­bu­tion.
+\usepackage{amsthm}
+
+%amsmath – AMS mathematical facilities for LATEX
+%The prin­ci­pal pack­age in the AMS-LATEX dis­tri­bu­tion. It adapts for use in LATEX most of the math­e­mat­i­cal fea­tures found in AMS-TEX; it is highly rec­om­mended as an ad­junct to se­ri­ous math­e­mat­i­cal type­set­ting in LATEX.
+%When ams­math is loaded, AMS-LATEX pack­ages ams­bsy (for bold sym­bols), am­sopn (for op­er­a­tor names) and am­s­text (for text em­bed­ded in math­e­mat­ics) are also loaded.
+%ams­math is part of the LATEX re­quired dis­tri­bu­tion; how­ever, sev­eral con­tributed pack­ages add still fur­ther to its ap­peal; ex­am­ples are em­pheq, which pro­vides func­tions for dec­o­rat­ing and high­light­ing math­e­mat­ics, and nthe­o­rem, for spec­i­fy­ing the­o­rem (and sim­i­lar) def­i­ni­tions.
+\usepackage{amsmath}
+
+%mh – Stub for the (old) ‘mh’ bundle
+%The mh bun­dle was a se­ries of pack­ages to en­hance the ap­pear­ance of doc­u­ments con­tain­ing a lot of maths; the pack­age were de­signed to sup­port and ex­tend the LATEX re­quired ams­math The pack­ages (no longer dis­tributed as a bun­dle) com­prise:
+%breqn, which en­ables au­to­matic line-break­ing in dis­played equa­tions;
+%em­pheq, which pro­vides var­i­ous mech­a­nisms for ‘vi­sual markup’ of math­e­mat­i­cal mat­ter;
+%flex­isym, which con­verts sym­bol def­i­ni­tions to a form us­able within breqn;
+%math­style, which takes ad­van­tage of LATEX’s sup­pres­sion of some of TEX’s maths op­er­a­tors, to im­prove the per­for­mance of sub- and su­per­scripts, and other as­pects of math­e­mat­i­cal type­set­ting style, in­clud­ing the ever-tricky \math­choice op­er­a­tor;
+%math­tools, pro­vid­ing a range of ex­ten­sions to maths as a whole; and
+%mh­setup, which pro­vides var­i­ous pro­gram­ming tools for other pack­ages of the set.
+\usepackage{mathtools}
+
+%\usepackage{amssymb}
+
+%amsfonts – TEX fonts from the American Mathematical Society
+%An ex­tended set of fonts for use in math­e­mat­ics, in­clud­ing: ex­tra math­e­mat­i­cal sym­bols; black­board bold let­ters (up­per­case only); frak­tur let­ters; sub­script sizes of bold math italic and bold Greek let­ters; sub­script sizes of large sym­bols such as sum and prod­uct; added sizes of the Com­puter Modern small caps font; cyril­lic fonts (from the Univer­sity of Wash­ing­ton); Euler math­e­mat­i­cal fonts. All fonts are pro­vided as Adobe Type 1 files, and all ex­cept the Euler fonts are pro­vided as METAFONT source.
+%The dis­tri­bu­tion also in­cludes the canon­i­cal Type 1 ver­sions of the Com­puter Modern fam­ily of fonts.
+%Ba­sic LATEX sup­port for the sym­bol fonts is pro­vided by ams­fonts.sty, with names of in­di­vid­ual sym­bols de­fined in amssymb.sty. The Euler fonts are sup­ported by sep­a­rate pack­ages; de­tails can be found in the doc­u­men­ta­tion.
+\usepackage{amsfonts}
+
+%array – Extending the array and tabular environments
+%An ex­tended im­ple­men­ta­tion of the ar­ray and tab­u­lar en­vi­ron­ments which ex­tends the op­tions for col­umn for­mats, and pro­vides "pro­grammable" for­mat spec­i­fi­ca­tions.
+%This pack­age is part of the la­tex-tools bun­dle in the LATEX re­quired dis­tri­bu­tion.
+\usepackage{array}
+
+%xcolor – Driver-independent color extensions for LATEX and pdfLATEX
+%The pack­age starts from the ba­sic fa­cil­i­ties of the color pack­age, and pro­vides easy driver-in­de­pen­dent ac­cess to sev­eral kinds of color tints, shades, tones, and mixes of ar­bi­trary col­ors. It al­lows a user to se­lect a doc­u­ment-wide tar­get color model and of­fers com­plete tools for con­ver­sion be­tween eight color mod­els. Ad­di­tion­ally, there is a com­mand for al­ter­nat­ing row col­ors plus re­peated non-aligned ma­te­rial (like hor­i­zon­tal lines) in ta­bles. Colors can be mixed like \color{red!30!green!40!blue}.
+\usepackage{xcolor}
+
+
+\usepackage{dsfont}
+
+%eurosym – METAFONT and macros for Euro sign
+%The Euro­pean cur­rency sym­bol for the Euro im­ple­mented in METAFONT, us­ing the of­fi­cial Euro­pean Com­mis­sion di­men­sions, and pro­vid­ing sev­eral shapes (nor­mal, slanted, bold, out­line). The pack­age also in­cludes a LATEX pack­age which de­fines the macro, pre-com­piled tfm files, and doc­u­men­ta­tion.
+%\usepackage{eurosym}
+
+%yfonts – Support for old German fonts
+%A LATEX in­ter­face to the old-ger­man fonts de­signed by Yan­nis Har­alam­bous: Gothic, Sch­wabacher, Frak­tur and the baroque ini­tials.
+\usepackage{yfonts}
+
+%graphicx – Enhanced support for graphics
+%The pack­age builds upon the graph­ics pack­age, pro­vid­ing a key-value in­ter­face for op­tional ar­gu­ments to the \in­clude­graph­ics com­mand. This in­ter­face pro­vides fa­cil­i­ties that go far be­yond what the graph­ics pack­age of­fers on its own.
+%For ex­tended doc­u­men­ta­tion, see ep­s­la­tex.
+%The pack­age is part of the la­tex-graph­ics bun­dle, which is one of the col­lec­tions in the LATEX ‘re­quired’ set of pack­ages.
+\usepackage{graphicx}
+
+%shorttoc – Table of contents with different depths
+%A pack­age to cre­ate an­other ta­ble of con­tents with a dif­fer­ent depth, use­ful in large doc­u­ments where a de­tailed ta­ble of con­tents should be ac­com­pa­nied by a shorter one, giv­ing only a gen­eral overview of the main top­ics in the doc­u­ment.
+\usepackage{shorttoc}
+
+%textpos – Place boxes at arbitrary positions on the LATEX page
+%A pack­age to fa­cil­i­tate place­ment of boxes at ab­so­lute po­si­tions on the LATEX page. There are sev­eral rea­sons why this might be use­ful, an im­por­tant one be­ing to help the cre­ation of large-for­mat con­fer­ence posters.
+\usepackage{textpos}
+
+%here – Emulation of obsolete package for "here" floats
+%Pro­vides the H op­tion for floats in LATEX to sig­nify that the en­vi­ron­ment is not re­ally a float (and should there­fore be placed “here” and not float at all). The pack­age em­u­lates an older pack­age of the same name, which has long been sup­pressed by its au­thor.
+%The job is done by noth­ing more than load­ing the float pack­age, which has long pro­vided the op­tion in an ac­cept­able frame­work.
+%\usepackage{here}
+
+%float – Improved interface for floating objects
+%Im­proves the in­ter­face for defin­ing float­ing ob­jects such as fig­ures and ta­bles. In­tro­duces the boxed float, the ruled float and the plain­top float. You can de­fine your own floats and im­prove the be­haviour of the old ones.
+%The pack­age also pro­vides the H float mod­i­fier op­tion of the ob­so­lete here pack­age. You can se­lect this as au­to­matic de­fault with \float­place­ment{fig­ure}{H}.
+\usepackage{float}
+
+%titlesec – Select alternative section titles
+%A pack­age pro­vid­ing an in­ter­face to sec­tion­ing com­mands for se­lec­tion from var­i­ous ti­tle styles. E.g., marginal ti­tles and to change the font of all head­ings with a sin­gle com­mand, also pro­vid­ing sim­ple one-step page styles. Also in­cludes a pack­age to change the page styles when there are floats in a page. You may as­sign head­ers/foot­ers to in­di­vid­ual floats, too.
+% \usepackage{titlesec}
+
+%verbatim – Reimplementation of and extensions to LATEX verbatim
+%The ver­ba­tim pack­age reim­ple­ments the LATEX ver­ba­tim and ver­ba­tim* en­vi­ron­ments. The pack­age also pro­vides a com­ment en­vi­ron­ment (that skips ev­ery­thing be­tween \be­gin{com­ment} and \end{com­ment}), and a com­mand \ver­ba­tim­in­put for type­set­ting the con­tents of a file, ver­ba­tim.
+%The pack­age is part of the la­tex-tools bun­dle in the LATEX re­quired dis­tri­bu­tion.
+\usepackage{verbatim}
+
+%enumerate – Enumerate with redefinable labels
+%The pack­age adds an op­tional ar­gu­ment to the enu­mer­ate en­vi­ron­ment which de­ter­mines the style in which the counter is printed. The en­u­mitem pack­age su­per­sedes—it pro­vides the same fa­cil­i­ties in a well-struc­tured way.
+%The pack­age is part of the la­tex-tools bun­dle in the LATEX re­quired dis­tri­bu­tion.
+\usepackage{enumerate}
+
+%setspace – Set space between lines
+%Pro­vides sup­port for set­ting the spac­ing be­tween lines in a doc­u­ment. Pack­age op­tions in­clude sin­glespac­ing, one­half­s­pac­ing, and dou­blespac­ing. Al­ter­na­tively the spac­ing can be changed as re­quired with the \sin­glespac­ing, \one­half­s­pac­ing, and \dou­blespac­ing com­mands. Other size spac­ings also avail­able.
+\usepackage{setspace}
+
+%geometry – Flexible and complete interface to document dimensions
+%The pack­age pro­vides an easy and flex­i­ble user in­ter­face to cus­tomize page lay­out, im­ple­ment­ing auto-cen­ter­ing and auto-bal­anc­ing mech­a­nisms so that the users have only to give the least de­scrip­tion for the page lay­out. For ex­am­ple, if you want to set each mar­gin 2cm with­out header space, what you need is just \usep­a­ck­age[mar­gin=2cm,no­head]{ge­om­e­try}.
+%The pack­age knows about all the stan­dard pa­per sizes, so that the user need not know what the nom­i­nal ‘real’ di­men­sions of the pa­per are, just its stan­dard name (such as a4, let­ter, etc.).
+%An im­por­tant fea­ture is the pack­age’s abil­ity to com­mu­ni­cate the pa­per size it's set up to the out­put (whether via DVI \spe­cials or via di­rect in­ter­ac­tion with pdf(LA)TEX).
+% \usepackage[a4paper,width=150mm,top=20mm, bottom=20mm, includeheadfoot ,headheight = 10mm, footskip = 10mm]{geometry}
+
+%hyperref – Extensive support for hypertext in LATEX
+%The hy­per­ref pack­age is used to han­dle cross-ref­er­enc­ing com­mands in LATEX to pro­duce hy­per­text links in the doc­u­ment. The pack­age pro­vides back­ends for the \spe­cial set de­fined for HyperTEX DVI pro­ces­sors; for em­bed­ded pdf­mark com­mands for pro­cess­ing by Acro­bat Dis­tiller (dvips and Y&Y’s dvip­sone); for Y&Y’s dvi­windo; for PDF con­trol within pdfTEX and dvipdfm; for TEX4ht; and for VTEX’s pdf and HTML back­ends.
+%The pack­age is dis­tributed with the back­ref and nameref pack­ages, which make use of the fa­cil­i­ties of hy­per­ref.
+%The pack­age de­pends on the au­thor’s kvop­tions, ltx­cmds and re­f­count pack­ages.
+%\usepackage[pdfpagemode=UseOutlines ,plainpages=false,
+%hypertexnames=false ,pdfpagelabels=TRUE ,
+%hyperindex=true,colorlinks=true]{hyperref}
+%%	\makeatletter
+%%	\Hy@breaklinkstrue
+%%	\makeatother}
+
+%fancyvrb – Sophisticated verbatim text
+%Flex­i­ble han­dling of ver­ba­tim text in­clud­ing: ver­ba­tim com­mands in foot­notes; a va­ri­ety of ver­ba­tim en­vi­ron­ments with many pa­ram­e­ters; abil­ity to de­fine new cus­tomized ver­ba­tim en­vi­ron­ments; save and re­store ver­ba­tim text and en­vi­ron­ments; write and read files in ver­ba­tim mode; build "ex­am­ple" en­vi­ron­ments (show­ing both re­sult and ver­ba­tim source).
+\usepackage{fancyvrb}
+
+%fancyhdr – Extensive control of page headers and footers in LATEX2ε
+%The pack­age pro­vides ex­ten­sive fa­cil­i­ties, both for con­struct­ing head­ers and foot­ers, and for con­trol­ling their use (for ex­am­ple, at times when LATEX would au­to­mat­i­cally change the head­ing style in use).
+\usepackage{fancyhdr}
+
+%booktabs – Publication quality tables in LATEX
+%The pack­age en­hances the qual­ity of ta­bles in LATEX, pro­vid­ing ex­tra com­mands as well as be­hind-the-scenes op­ti­mi­sa­tion. Guide­lines are given as to what con­sti­tutes a good ta­ble in this con­text. From ver­sion 1.61, the pack­age of­fers longtable com­pat­i­bil­ity.
+\usepackage{booktabs}
+
+%color – Colour control for LATEX documents
+%The color pack­age pro­vides both fore­ground (text, rules, etc.) and back­ground colour man­age­ment; it uses the de­vice driver con­fig­u­ra­tion mech­a­nisms of the graph­ics pack­age to de­ter­mine how to con­trol its oup­tut.
+%The pack­age is part of the LATEX la­tex-graph­ics bun­dle.
+\usepackage{color}
+
+
+%caption – Customising captions in floating environments
+%The cap­tion pack­age pro­vides many ways to cus­tomise the cap­tions in float­ing en­vi­ron­ments like fig­ure and ta­ble, and co­op­er­ates with many other pack­ages. Fa­cil­i­ties in­clude ro­tat­ing cap­tions, side­ways cap­tions, con­tin­ued cap­tions (for ta­bles or fig­ures that come in sev­eral parts). A list of com­pat­i­bil­ity notes, for other pack­ages, is pro­vided in the doc­u­men­ta­tion.
+%The pack­age also pro­vides the “cap­tion out­side float” fa­cil­ity, in the same way that sim­pler pack­ages like capt-of do.
+%The pack­age su­per­sedes cap­tion2.
+\usepackage{caption}
+
+%subcaption – Support for sub-captions
+%The pack­age pro­vides a means of us­ing fa­cil­i­ties analagous to those of the cap­tion pack­age, when writ­ing cap­tions for sub­fig­ures and the like.
+%The pack­age is dis­tributed with cap­tion.
+\usepackage{subcaption}
+
+%natbib – Flexible bibliography support
+%The bun­dle pro­vides a pack­age that im­ple­ments both au­thor-year and num­bered ref­er­ences, as well as much de­tailed of sup­port for other bib­li­og­ra­phy use. Also Pro­vided are ver­sions of the stan­dard BibTEX styles that are com­pat­i­ble with nat­bib—plain­nat, un­srt­nat, ab­br­nat. The bib­li­og­ra­phy styles pro­duced by cus­tom-bib are de­signed from the start to be com­pat­i­ble with nat­bib.
+\usepackage{natbib}
+
+%cite – Improved citation handling in LATEX
+%The pack­age sup­ports com­pressed, sorted lists of nu­mer­i­cal ci­ta­tions, and also deals with var­i­ous punc­tu­a­tion and other is­sues of rep­re­sen­ta­tion, in­clud­ing com­pre­hen­sive man­age­ment of break points. The pack­age is com­pat­i­ble with both hy­per­ref and back­ref.
+%The pack­age is (un­sur­pris­ingly) part of the cite bun­dle of the au­thor’s ci­ta­tion-re­lated pack­ages.
+\usepackage{cite}
+
+%cleveref – Intelligent cross-referencing
+%The pack­age en­hances LATEX’s cross-ref­er­enc­ing fea­tures, al­low­ing the for­mat of ref­er­ences to be de­ter­mined au­to­mat­i­cally ac­cord­ing to the type of ref­er­ence. The for­mats used may be cus­tomised in the pream­ble of a doc­u­ment; ba­bel sup­port is avail­able (though the choice of lan­guages re­mains lim­ited: cur­rently Dan­ish, Dutch, English, French, Ger­man, Ital­ian, Nor­we­gian, Rus­sian, Span­ish and Ukra­nian).
+%The pack­age also of­fers a means of ref­er­enc­ing a list of ref­er­ences, each for­mat­ted ac­cord­ing to its type. In such lists, it can col­lapse se­quences of nu­mer­i­cally-con­sec­u­tive la­bels to a ref­er­ence range.
+\usepackage[nameinlink]{cleveref}
+
+%\usepackage{anyfontsize}
+%
+%
+%\usepackage{alphalph}
+%
+%\usepackage{times}
+%
+%\RequirePackage{ucs}
+%%\RequirePackage{autofe}
+%%% Schriftartverbesserung pdf
+%%\RequirePackage{lmodern}
+%
+%
+% \RequirePackage{amssymb, amstext}
+\RequirePackage{amssymb}
+%\RequirePackage{amsbsy} 
+%\RequirePackage{mathrsfs}
+%\RequirePackage{bm}
+%\RequirePackage{bbm}
+%\RequirePackage{aliascnt,ifthen}
+\RequirePackage{aliascnt}
+%\RequirePackage{calc}
+%\RequirePackage{times}
+%\usepackage{url}
+%\usepackage{verbatim}
+%
+%
+%
+
+
+\usepackage{multicol}
+\usepackage{libertine}
+\usepackage{tikz}
+\usepackage{animate}
+\usepackage{pdfrender}
+
+%
+%
+%\RequirePackage{paralist}
+%\usepackage{enumitem}
+%
+%% BIBLIOGRAPHY
+%\usepackage{hypernat}
+
+
+
+
+
+
+
+\usepackage{ifpdf}
+\ifpdf
+\DeclareGraphicsRule{*}{mps}{*}{}
+\fi
+
+
+\usepackage[sfdefault]{AlegreyaSans} %% Option 'black' gives heavier bold face
+%% The 'sfdefault' option to make the base font sans serif
+\renewcommand*\oldstylenums[1]{{\AlegreyaSansOsF #1}}
+
+
+
+
+
+\usepackage{fourier}
+% \usepackage{hyperref}
+
+ \usepackage{amssymb}
+
+\usepackage[cal=boondox]{mathalfa}
+
+%\usepackage[style=authoryear]{biblatex}
+%\renewcommand*{\nameyeardelim}{\addcomma\addspace}

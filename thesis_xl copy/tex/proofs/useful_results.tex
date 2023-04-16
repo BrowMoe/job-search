@@ -1,0 +1,108 @@
+\section{Lemmata for the gaussian sequence space model}
+
+\begin{lm}\label{lmA.1.1}
+Let $\{X_{j}\}_{j \geq 1}$ be independent and normally distributed random variables with real mean $\alpha_{j}$ and standard deviation $\beta_{j} \geq 0$. For $m \in \mathds{N}$, set $S_{m} := \sum \limits_{j = 1}^{m} X_{j}^{2}$ and consider $v_{m} \geq \sum\limits_{j = 1}^{m} \beta_{j}^{2}, t_{m} \geq \max \limits_{1 \leq j \leq m} \beta_{j}^{2}$ and $r_{m} \geq \sum\limits_{j = 1}^{m} \alpha_{j}^{2}$.
+Then for all $c \geq 0$, we have
+\begin{alignat*}{3}
+&\sup\limits_{m \geq 1} \exp\left[\frac{c (c \wedge 1) (v_{m} + 2 r_{m})}{4 t_{m}}\right]\mathds{P}\left(S_{m} - \mathds{E}[S_{m}] \leq - c (v_{m} + 2 r_{m})\right) &&\leq&& 1; \\
+&\sup\limits_{m \geq 1} \exp\left[\frac{c (c \wedge 1) (v_{m} + 2 r_{m})}{4 t_{m}}\right]\mathds{P}\left(S_{m} - \mathds{E}[S_{m}] \geq \frac{3 c}{2} (v_{m} + 2 r_{m})\right) &&\leq&& 1.
+\end{alignat*}
+\end{lm}
+
+\begin{lm}\label{lmA.1.2}
+Let $\{X_{j}\}_{j \geq 1}$ be independent and normally distributed random variables with real mean $\alpha_{j}$ and standard deviation $\beta_{j} \geq 0$. For $m \in \mathds{N}$, set $S_{m} := \sum \limits_{j = 1}^{m} X_{j}^{2}$ and consider $v_{m} \geq \sum\limits_{j = 1}^{m} \beta_{j}^{2}, t_{m} \geq \max \limits_{1 \leq j \leq m} \beta_{j}^{2}$ and $r_{m} \geq \sum\limits_{j = 1}^{m} \alpha_{j}^{2}$.
+Then for all $c \geq 0$, we have
+\[\sup\limits_{m \geq 1}(6 t_{m})^{-1} \exp\left[\frac{c (v_{m} + 2 r_{m})}{4 t_{m}}\right] \mathds{E}\left[S_{m} - \mathds{E}[S_{m}] - \frac{3}{2} c (v_{m} + 2 r_{m})\right]_{+} \leq 1\]
+with $(a)_{+} := (a \vee 0).$
+\end{lm}
+
+\section{Lemmata for circular deconvolution}
+
+\begin{lm}{\textsc{Talagrand's inequalities}\\}\label{LM_TALAGRAND}
+Let $X_{1}, \hdots , X_{n}$ be independent $\mathcal{X}$-valued random variables and let $\overline{\nu}_{t} = \frac{1}{n} \sum\limits_{i = 1}^{n} [\nu_{t}(X_{i}) - \mathds{E}(\nu_{t}(X_{i}))]$ for $\nu_{t}$ belonging to a countable class $\{\nu_{t}, t \in \mathcal{T}\}$ of measurable functions. Then,
+\begin{alignat*}{3}
+& \mathds{E}\left[\left(\sup\limits_{t \in \mathcal{T}}\vert \overline{\nu}_{t} \vert^{2} - 6 H^{2}\right)_{+}\right] && \leq && C \left[\frac{v}{n} \exp\left(\frac{-n H^{2}}{6 v}\right) + \frac{h^{2}}{n^{2}} \exp\left(\frac{- K n H}{h}\right)\right];\\
+& \mathds{P}\left(\sup\limits_{t \in \mathcal{T}} \vert \overline{\nu}_{t} \vert \geq 2 H + \gamma\right) && \leq && 3 \exp\left[- K n \left(\frac{\gamma^{2}}{v} \wedge \frac{\gamma}{h}\right)\right];
+\end{alignat*}
+for any $\gamma > 0$, with numerical constants $K = (\sqrt{2} - 1) /(21\sqrt{2})$ and $C > 0$ and where 
+\[\sup\limits_{t \in \mathcal{T}}\sup\limits_{x \in \mathcal{X}}\vert \nu_{t}(x)\vert \leq h, \quad \mathds{E}[\sup\limits_{t \in \mathcal{T}}  \vert \overline{\nu}_{t} \vert] \leq H, \quad \sup\limits_{t \in \mathcal{T}} \frac{1}{n} \sum\limits_{i = 1}^{n} \mathds{V}[\nu_{t}(X_{i})] \leq v.\]
+\end{lm}
+
+\textcolor{red}{
+% --------------------------------------------------------------------
+% <<Lemma \ref{re:tal}>>
+% --------------------------------------------------------------------
+\begin{lm}(Talagrand's inequalities)\label{re:tal} Let
+  $\rOb_1,\dotsc,\rOb_n$ be independent $\cZ$-valued random variables and let $\overline{\nu_{\He}}=n^{-1}\sum_{i=1}^n\left[\nu_{\He}(\rOb_i)-\Ex\left(\nu_{\He}(\rOb_i)\right) \right]$ for $\nu_{\He}$ belonging to a countable class $\{\nu_{\He},\He\in\cH\}$ of measurable functions. Then,
+\begin{align}
+	 &\Ex\vectp{\sup_{\He\in\cH}|\overline{\nu_{\He}}|^2-6\TcH^2}\leq C \left[\frac{\Tcv}{n}\exp\left(\frac{-n\TcH^2}{6\Tcv}\right)+\frac{\Tch^2}{n^2}\exp\left(\frac{-K n \TcH}{\Tch}\right) \right]\label{re:tal:e1} \\
+	&\pM\big(\sup_{\He\in\cH}|\overline{\nu_{\He}}|\geq2\TcH+\lambda\big)\leq3\exp\big[-Kn\big(\frac{\lambda^2}{\Tcv}\wedge\frac{\lambda}{\Tch}\big)\big]\leq 3\big[\exp\big(\frac{-Kn\lambda^2}{\Tcv}\big)+\exp\big(\frac{-Kn\lambda}{\Tch}\big)\big]\label{re:tal:e2}
+\end{align}
+for any $\lambda>0$, with numerical constants $K=({\sqrt{2}-1})/({21\sqrt{2}})$ and $C>0$ and where
+\begin{equation*}
+	\sup_{\He\in\cH}\sup_{z\in\cZ}|\nu_{\He}(z)|\leq \Tch,\qquad \Ex(\sup_{\He\in\cH}|\overline{\nu_{\He}}|)\leq \TcH,\qquad \sup_{\He\in\cH}\frac{1}{n}\sum_{i=1}^n \Var(\nu_{\He}(\rOb_i))\leq \Tcv.
+\end{equation*}
+\end{lm}
+% --------------------------------------------------------------------
+% <<Remark Talagrand>>
+% --------------------------------------------------------------------
+\begin{rmk}
+Consequently,
+setting $\lambda=\sqrt{2}(\sqrt{3}-\sqrt{2})\TcH=\tfrac{(\sqrt{6}-\sqrt{4})(\sqrt{6}+\sqrt{4})}{(\sqrt{6}+\sqrt{4})}\TcH=\tfrac{\sqrt{2}}{(\sqrt{3}+\sqrt{2})}\TcH$, and hence $\sqrt{2}\sqrt{3}\TcH=\sqrt{2}\sqrt{2}\TcH+\sqrt{2}(\sqrt{3}-\sqrt{2})\TcH$ we have  
+\begin{align}
+	 &\Ex\vectp{\sup_{\He\in\cH}|\overline{\nu_{\He}}|^2-6\TcH^2}\leq C \left[\frac{\Tcv}{n}\exp\left(\frac{-n\TcH^2}{6\Tcv}\right)+\frac{\Tch^2}{n^2}\exp\left(\frac{-n \TcH}{100\Tch}\right) \right]\label{re:tal:e3} \\
+	&\pM\big(\sup_{\He\in\cH}|\overline{\nu_{\He}}|^2\geq6\TcH^2\big)\leq 3\big[\exp\big(\frac{-n\TcH^2}{400\Tcv}\big)+\exp\big(\frac{-n\TcH}{200\Tch}\big)\big]\label{re:tal:e4}
+\end{align}
+where we used that
+$K\tfrac{2}{(\sqrt{3}+\sqrt{2})^2}=\tfrac{(\sqrt{2}-1)}{(21\sqrt{2})}\tfrac{2}{(\sqrt{3}+\sqrt{2})^2}=\tfrac{(2-\sqrt{2})}{21(\sqrt{3}+\sqrt{2})^2}\geq\tfrac{1}{400}$
+and
+$K\tfrac{\sqrt{2}}{(\sqrt{3}+\sqrt{2})}=\tfrac{\sqrt{2}-1}{21(\sqrt{3}+\sqrt{2})}\geq\tfrac{1}{200}$
+and $K\geq \tfrac{1}{100}$.\remEnd
+\end{rmk}
+% --------------------------------------------------------------------
+% <<Remark Talagrand>>
+% --------------------------------------------------------------------
+\begin{rmk}\label{rem:re:tal} Introduce further the unit ball $\mBaH:=\set{\He\in\mHiH:\VnormLp{\He}\leq1}$
+ contained in the linear subspace
+ $\mHiH=\lin\set{\bas_{j},|j|\in\nset{1,\Di}}$. Setting
+ $\nu_{\He}(\rY)=\sum_{|j|\in\nset{1,\Di}}\ofHe{j}\fedfI[j]\bas_j(-\rY)$
+ with
+ $\FuEx[\ssY]{\ydf}\nu_{\He}(\rY)=\sum_{|j|\in\nset{1,\Di}}\ofHe{j}\fedfI[j]\fydf[j]$,
+ hence $\overline{\nu_{\He}}=\tfrac{1}{\ssY}\sum_{i=1}^{\ssY}\sum_{|j|\in\nset{1,\Di}}\ofHe{j}\fedfI[j](\bas_j(-\rY_i)-\fydf[j])$ and
+ keeping in mind that $\ofHe{j}=\VskalarLp{\bas_j,\He}$ we have
+\begin{multline*}
+	\VnormLp{\txdfPr-\xdfPr}^2=\sup_{\He\in\mBaH}|\VskalarLp{\txdfPr-\xdfPr,\He}|^2=\sup_{\He\in\mBaH}|\sum_{|j|\in\nset{1,\Di}}\fedfI[j](\hfydf[j]-\fydf[j])\ofHe{j}|^2\\
+=\sup_{\He\in\mBaH}|\sum_{|j|\in\nset{1,\Di}}\fedfI[j]\{\tfrac{1}{\ssY}\sum_{i=1}^{\ssY}(\bas_j(-\rY_i)-\fydf[j])\}\ofHe{j}|^2
+=\sup_{\He\in\mBaH}|\overline{\nu_{\He}}|^2.
+\end{multline*}
+The last identity provides the necessary argument to link the
+condition  \ref{C1} and Talagrand's inequality.  Note that, the unit ball $\mBaH$ is not a countable set of functions, however, it contains a countable dense subset, say $\cH$, since $\Lp^2$ is separable, and it is straightforward to see that $\sup_{\He\in\mBaH}|\overline{\nu_{\He}}|^2=\sup_{\He\in\cH}|\overline{\nu_{\He}}|^2$.
+\remEnd
+\end{rmk}
+}
+
+\begin{rmk}{\textsc{Special case} \\}\label{rmkA.2.1}
+Using $\gamma = \sqrt{2}\left( \sqrt{3} - \sqrt{2}\right) H$ we have 
+\begin{alignat*}{3}
+& \mathds{E}\left(\sup\limits_{t \in \mathcal{T}}\vert \overline{\nu}_{t} \vert^{2} - 6 H^{2}\right)_{+} && \leq && C \left[\frac{v}{n} \exp\left(\frac{-n H^{2}}{6 v}\right) + \frac{h^{2}}{n^{2}} \exp\left(\frac{- n H}{100 h}\right)\right];\\
+& \mathds{P}\left(\sup\limits_{t \in \mathcal{T}} \vert \overline{\nu}_{t} \vert^{2} \geq 6 H^{2}\right) && \leq && 3 \left(\exp\left[- \frac{n H^{2}}{400 v} \right] + \exp\left[- \frac{n H}{200 h} \right]\right);
+\end{alignat*}
+\end{rmk}
+
+\section{Commonly used inequalities}
+
+\begin{lm}{\textsc{Young's inequality} \\}\label{A.3.1}
+Consider $p$, $q$, and $r$, three real numbers greater than 1 such that $\frac{1}{p} + \frac{1}{q} = 1 + \frac{1}{r}$; as well as $x$ and $y$, respectively in $\mathcal{L}^{p}$ and $\mathcal{L}^{q}$.
+Then,
+\[\left\Vert x \star y\right\Vert_{r} \leq \Vert f \Vert_{p} \cdot \Vert g \Vert_{q}.\]
+\end{lm}
+
+\begin{lm}{\textsc{Cauchy Schwarz inequality} \\}\label{A.3.2}
+Let be $x$ and $y$ in an inner product space (e.g. $\mathcal{L}^{2}$), then we have
+\[\vert \langle x \vert y \rangle \vert^{2} \leq \Vert x \Vert^{2} \cdot \Vert y \Vert^{2}.\]
+\end{lm}
+
+\begin{lm}{\textsc{Hölder's inequality} \\}\label{A.3.3}
+Let $p$ and $q$ be elements of $[1, \infty]$ such that $\frac{1}{p} + \frac{1}{q} = 1$. Then, for any measurable complex-valued functions $f$ and $g$,
+\[\Vert h b \Vert_{L^{1}} = \Vert h \Vert_{L^{p}} \cdot \Vert b \Vert_{L^{q}}\]
+\end{lm}

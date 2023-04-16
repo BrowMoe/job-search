@@ -1,0 +1,254 @@
+% ======================================================================================================================
+%                                                                 
+% Title: Bayes
+% Author: Jan JOHANNES, Ensai, Rue Blaise Pascal - BP 37203, 35172 Bruz Cedex, France
+% Email: jan.johannes@ensai.fr
+% Date: %%ts latex start%%[2016-02-09 Tue 10:25]%%ts latex end%%
+% Main-TeX-File: 2015-01-Paris-Vortrag in der form "Name"
+%
+% ======================================================================================================================
+
+% --------------------------------------------------------------------
+% <<Model-F7>>
+% --------------------------------------------------------------------
+\frameVL{\againframe<2>{OPC}}{\againframe<2>{OPC}}
+% --------------------------------------------------------------------
+% <<Bayes-F1>>
+% --------------------------------------------------------------------
+\bframeVL{4,9}{9}
+\frametitle{Sieve family of prior distributions}
+\begin{overlayarea}{\textwidth}{\textheight}
+\begin{rudiListeS}[\setListeL{3ex}{2ex}{5ex}{5ex}] 
+ \item<1-> Gaussian prior distribution for $\RvSo=\suite{\RvSo}$
+\begin{rudiListeT}[\setListeL{1ex}{1ex}{3ex}{0ex}] 
+  \item<2-> $\{\RvSo_j\}_{j\geq1}$ are independent, normally distributed
+  \item<3-> prior means $0$ and prior variances $\RvSoVa=\suite{\RvSoVa}$:
+\begin{rudiListeB}[\setListeL{1ex}{1ex}{3ex}{5ex}] 
+\item<4-> $\RvSo_j\sim\cN(0,\RvSoVa_j),\quad \text{ independent,}\quad j\in\Nz.$
+\end{rudiListeB}
+\end{rudiListeT}
+\item<5-> Sieve family of prior distributions  $\{P_{\DiRvSo}\}_{\Di}$ depending on a hyper parameter $\Di$:
+\begin{rudiListeT}[\setListeL{1ex}{1ex}{3ex}{0ex}] 
+\item<6-> first $\Di$ random parameters $\{\RvSo_j\}_{j=1}^{\colmm}$ non-degenerate
+\item<7-> independent random variables $\{\DiRvSo_j\}_{j\geq1}$
+with marginals:
+\begin{rudiListeB}[\setListeL{1ex}{1ex}{3ex}{0ex}] 
+\item<8-> $\label{intro:def:prior:mrvSo}
+\DiRvSo_j\sim
+\cN(0,\RvSoVa_j)$ for  $1\leq j\leq \Di$  and 
+\item<9-> $\DiRvSo_j\sim\delta_{0}$ for $j>\Di.$
+\end{rudiListeB}
+\end{rudiListeT}
+\end{rudiListeS}
+\end{overlayarea}
+\end{frame}
+% --------------------------------------------------------------------
+% <<Bayes-F2>>
+% --------------------------------------------------------------------
+\bframeVL{4,8}{8}
+\frametitle{Posterior distribution}
+\begin{overlayarea}{\textwidth}{\textheight}
+\begin{rudiListeS}[\setListeL{3ex}{2ex}{5ex}{5ex}] 
+\item<1-> posterior distribution of  $\RvSo=\suite{\RvSo}$ given  $\ObSo=\suite{\ObSo}$ 
+\begin{drListeT}[\setListeL{1ex}{1ex}{2ex}{0ex}] 
+\item<2-> $\{\RvSo_j\}_{j\geq1}$   are conditionally independent, normally distributed% given $\rvSoObs$
+\begin{drListeB}[\setListeL{1ex}{1ex}{2ex}{0ex}]
+\item<3-> posterior variance
+$\PoVa[j]:=\Var[\RvSo_j\vert\ObSo]=(\Ev_j^2\ObSoNoL^{-1}+\RvSoVa^{-1}_j)^{-1}$
+\item<4-> posterior  mean
+$ \PoEr{j}:=\Ex[\RvSo_j\vert\ObSo]=\PoVa[j]\;(\Ev_j\ObSoNoL^{-1}\ObSo_j)$
+\end{drListeB}
+\end{drListeT}
+\item<5-> posterior distribution of $\DiRvSo=\suite{\DiRvSo}$ given $\ObSo$ 
+\begin{drListeT}[\setListeL{1ex}{1ex}{2ex}{0ex}] 
+\item<6-> $\{\DiRvSo_j\}_{j\geq1}$ are conditionally independent, normally
+  distributed% given $\rvSoObs$
+\begin{drListeB}[\setListeL{1ex}{1ex}{2ex}{0ex}]
+ \item<7->  posterior mean $\PoEr{j}$ and variance $\PoVa[j]$ for $1\leq j\leq \Di$
+ \item<8-> degenerate on $0$ for $j>\Di$
+\end{drListeB}
+\end{drListeT}
+\end{rudiListeS}
+% \begin{rudiListeS}[\setListeL{2ex}{2ex}{5ex}{5ex}]
+%   \item<9->  common Bayes estimator $\hDiSo=\suite{\hDiSo}=\Ex[\DiRvSo\vert
+% \ObSo]$ given by
+% \begin{drListeT}[\setListeL{1ex}{1ex}{2ex}{0ex}] 
+%  \item<10->  $\hDiSo_j:=\PoEr{j}\Ind{1\leq j\leq \Di}$  for $j\geq1$.
+% \end{drListeT}
+% \end{rudiListeS}
+\end{overlayarea}
+\end{frame}
+% --------------------------------------------------------------------
+% <<Bayes-F3>>
+% --------------------------------------------------------------------
+\bframeVL{1-2}{2}
+  \frametitle{{\rudicolor Exact} posterior concentration}
+\begin{overlayarea}{\textwidth}{\textheight}
+\begin{rudiListeT}[\setListeL{2ex}{3ex}{3ex}{0ex}] 
+\item Let $\Evs_j:= \Ev_j^{-2}$,  $\oEvs[m]:=\frac{1}{m}\sum\limits_{j=1}^{m}\Evs_j$, $\mEvs[m]:=\max\limits_{1\leq j\leq m}\Evs_j$ and $\gb_{m}^2:=\sum\limits_{j>m} (\TrSo[j])^2$.
+\end{rudiListeT}
+\mywsboxinvisible{0}{{\db\textsc{Assumption A1.} (Prior variances)}\\[1ex]
+Let $\DiMa:=\max\{1\leq m\leq
+\gauss{\ObSoNoL^{-1}}:\ObSoNoL\mEvs[m]\leq\Evs_1\}$.\\[1ex] There exists
+$d>0$ such that $\RvSoVa_j\geq
+d[(\ObSoNoL\Evs_j)^{1/2}\vee\ObSoNoL\Evs_j]$ for all \small$1\leq
+j\leq \DiMa$.}
+% \begin{rudiListeT}[\setListeL{2ex}{3ex}{3ex}{0ex}] 
+% \item<2-> Consider sub-family $\{P_{\DiRvSo[\eDi]}\}_{\eDi}$ and Bayes
+%   estimator $\hDiSo[\eDi]=\Ex[\DiRvSo[\eDi]\vert
+% \ObSo]$.
+% \end{rudiListeT}
+% \mysboxinvisible{-2}{{\dr\sc Proposition.} Under Assumption A1.  holds
+% \[\eRa^{\eDi}(\TrSo)\lesssim\Ex_{\TrSo}
+% \normV{\hDiSo[\eDi]-\TrSo}^2\lesssim
+% [\ObSoNoL\eDi\oEvs[\eDi]\vee\gb_{\eDi}^2]=\eRa^{\eDi}(\TrSo)\]}
+\hfill\\[6ex]
+\mywsboxinvisible{1}{{\db\textsc{Assumption A2.} (Regular sub-family $\{P_{\DiRvSo[{\Di_\ObSoNoL}]}\}_{\Di_\ObSoNoL}$)}\\[1ex]
+\centerline{$\sup_{\ObSoNoL} (\ObSoNoL\Di_{\ObSoNoL}\mEvs[\Di_{\ObSoNoL}])[ \ObSoNoL\Di_{\ObSoNoL}\oEvs[\Di_{\ObSoNoL}]\vee\gb_{\Di_{\ObSoNoL}}^2]^{-1}<\infty$}}
+\end{overlayarea}
+\end{frame}
+% --------------------------------------------------------------------
+% <<Bayes-F4>>
+% --------------------------------------------------------------------
+\bframeVL{2-4}{4}
+  \frametitle{{\rudicolor Exact} posterior concentration\only<3->{ and {\rudicolor oracle} prior}}
+\mysboxinvisible{-1}{{\dr\sc Proposition.} Under Assumption A1. and
+  A.2  holds\\[1.5ex]
+%\hspace*{-1.5ex}
+\mbox{$\Ex_{\TrSo} P_{\hspace*{-.8ex}\DiRvSo[\eDi]|\ObSo}\Bigl(\mbox{\small$\eRa^{\eDi}(\TrSo)$} \lesssim
+\normV{\DiRvSo[\eDi]-\TrSo}^2\lesssim \mbox{\small$\eRa^{\eDi}(\TrSo)$}\Bigr)\geq 1-
+ce^{-c\eDi}$}}
+\begin{rudiListeS}[\setListeL{2ex}{3ex}{3ex}{0ex}]
+\item<3-> {\rudicolor oracle} cut-off $\treDi:=\treDi(\TrSo):=\argmin\nolimits_{\Di\geq 1}\set{\eRa^{\Di}(\TrSo)}$% [ \gb_{\Di}\vee\epsilon \Di \oEvs]} $
+\item<3-> {\rudicolor oracle} rate $\treRa:=\treRa(\TrSo): =[\epsilon \treDi
+  \oEvs[\treDi]\vee\gb_{\treDi}^2]=  \min_{\Di\geq 1}\eRa^{\Di}(\TrSo)$%[\gb_{\Di}\vee \epsilon \Di \oEvs]$ 
+% \item<4-> {\rudicolor oracle} Bayes estimator  $\hDiSo[\treDi]=\Ex[\DiRvSo[\treDi]\vert
+% \ObSo]$, since $\Ex_{\TrSo}  \normV{\hDiSo[\treDi]-\TrSo}^2\lesssim \treRa$
+\end{rudiListeS}
+\mysboxinvisible{-3}{{\dr\sc Theorem.} Under A1., A2. and in addition $\treDi\to\infty$ then\\[1.5ex]
+\mbox{$\lim_{\ObSoNoL\to\infty}\Ex_{\TrSo}
+  P_{\hspace*{-.8ex}\DiRvSo[\treDi]|\ObSo}\Bigl( \treRa \lesssim
+\normV{\DiRvSo[\treDi]-\TrSo}^2\lesssim\;\treRa\Bigr)=1$}}
+\end{frame}
+% --------------------------------------------------------------------
+% <<Bayes-F5>>
+% --------------------------------------------------------------------
+\bframeVL{1-3}{3}
+  \frametitle{{\rudicolor Exact} posterior concentration and {\rudicolor minimax} prior}
+\begin{overlayarea}{\textwidth}{\textheight}
+\begin{rudiListeS}[\setListeL{1ex}{1.5ex}{3ex}{0ex}]
+\item<1-> {\rudicolor  minimax} cut-off $\oeDi:=\oeDi(\wSo):=\argmin\nolimits_{\Di\geq
+    1} \{ [\epsilon \Di \oEvs\vee\wSo_{\Di}]\} $
+\item<1-> {\rudicolor minimax} rate $\oeRa :=\oeRa (\wSo):=[\epsilon \oeDi \oEvs[\oeDi]\vee\wSo_{\oeDi}]$%=\min_{\Di\geq 1}[\ObSoNoL \Di \oEvs \vee\wSo_{\Di}]$ 
+% \item<2-> {\rudicolor minimax} Bayes estimator $\hDiSo[\oeDi]=\Ex[\DiRvSo[\oeDi]\vert
+% \ObSo]$,i.e.,  $\Ex_{\TrSo}  \normV{\hSo^{\oeDi}-\TrSo}^2\lesssim \oeRa$
+\end{rudiListeS}
+\mywsboxinvisible{-1}{{\db\textsc{Assumption A3.} (Regular parameter space)}\\[1ex]
+\centerline{$\inf_\ObSoNoL [\epsilon \oeDi
+  \oEvs[\oeDi] \wedge\wSo_{\oeDi}][\epsilon \oeDi \oEvs[\oeDi]\vee\wSo_{\oeDi}]^{-1}>0$}}
+\hfill\\[4ex]
+\mysboxinvisible{-2}{{\dr\sc Theorem.} Under A1, A2 and A3 holds\\[1.5ex]
+%\begin{drListeT}[\setListeL{2ex}{2ex}{3ex}{0ex}]
+%\item 
+\mbox{$\lim\limits_{\ObSoNoL\to\infty}\inf\limits_{\TrSo\in\cwSo}\Ex_{\TrSo} P_{\hspace*{-.8ex}\DiRvSo[\oeDi]|\ObSo}\Bigl(\oeRa \lesssim
+\normV{\DiRvSo[\oeDi]-\TrSo}^2\lesssim \oeRa\Bigr)=1$}
+% \item<4-> $\sup\limits_{\TrSo\in\cwSo}\Ex_{\TrSo}
+%   \normV{\hSo^{\oeDi}-\TrSo}^2\lesssim \oeRa$\quad where $\hDiSo[\oeDi]=\Ex[\DiRvSo[\oeDi]\vert
+% \ObSo]$
+%\end{drListeT}
+}
+\end{overlayarea}
+\end{frame}
+
+
+% % --------------------------------------------------------------------
+% % <<Bayes-F4>>
+% % --------------------------------------------------------------------
+% \bframeVL{1-4}{4}
+%   \frametitle{Posterior consitency}
+% \begin{rudiListeT}[\setListeL{2ex}{1ex}{3ex}{0ex}] 
+% \item Let $\Evs_j:= \Ev_j^{-2}$,  $\oEvs[m]:=\frac{1}{m}\sum\limits_{j=1}^{m}\Evs_j$, $\mEvs[m]:=\max\limits_{1\leq j\leq m}\Evs_j$ and $\gb_{m}:=\sum\limits_{j>m} (\TrSo[j])^2$.
+% \end{rudiListeT}
+% \mywsboxinvisible{0}{{\db\textsc{Assumption A1.} (Prior variances)}\\[1ex]
+% There exists $d>0$ such that $\RvSoVa_j\geq d[(\ObSoNoL\Evs_j)^{1/2}\vee\ObSoNoL\Evs_j]$ for all \small$1\leq j\leq \gauss{\ObSoNoL^{-1}}$.}
+% \begin{rudiListeT}[\setListeL{2ex}{1ex}{3ex}{0ex}] 
+% \item<2-> Consider a sub-family $(P_{\DiRvSo[\eDi]})_{\eDi}$ and set $\eRa^{\eDi}=[\gb_{\eDi}\vee \ObSoNoL\eDi\oEvs[\eDi]]$.
+% \end{rudiListeT}
+% \mywsboxinvisible{-2}{{\db\textsc{Assumption A2.} (Regular sub-family)}\\[1ex]
+% \centerline{$\sup_{\ObSoNoL} (\ObSoNoL\Di_{\ObSoNoL}\mEvs[\Di_{\ObSoNoL}])[\gb_{\Di_{\ObSoNoL}}\vee \ObSoNoL\Di_{\ObSoNoL}\oEvs[\Di_{\ObSoNoL}]]^{-1}<\infty$}}
+% \hfill\\[4ex]
+% \mysboxinvisible{-3}{{\dr\sc Proposition.} Under Assumption A1. and
+%   A.2  holds
+% \[\Ex_{\TrSo} P_{\hspace*{-.8ex}\DiRvSo[\eDi]|\ObSo}\Bigl(\eRa^{\eDi} \lesssim
+% \normV{\DiRvSo[\eDi]-\TrSo}^2\lesssim \eRa^{\eDi}\Bigr)\geq 1- c\exp(-c\eDi).\]}
+% \end{frame}
+% % --------------------------------------------------------------------
+% % <<Bayes-F7>>
+% % --------------------------------------------------------------------
+% \bframeVL{1-3}{3}
+%   \frametitle{Optimal posterior concentration rate}
+% Recall $\mes:=\mes(\colga,\collambda):=\argmin_{\colmm\geq 1}
+% (\colga_{\colmm+1}^{-1}\vee \SoObsNoL\, \colmm\,
+% \overline{\colLambda}_{\colmm})$ \mbox{and}\\\hfill
+%    $\Res:=\Res[\colga,\collambda]:=(\colga_{\mes+1}^{-1}\vee \SoObsNoL\, \mes\,
+%    \overline{\colLambda}_{\mes})$.\\[3ex]
+% %\end{multline*}
+% \mywboxinvisible{-1}{{\rudicolor{\sc Theorem}}\\[1ex]
+% There exists a constant $K:=K(\ga,\Ev, \SoPriVar)$ such that 
+%   \[\lim_{\SoObsNoL\to0}
+%   \inf_{\colthetao\in\colThetaa}
+%   \Ex_{\colthetao}
+%   P_{\rvSo^{\smedir}|\rvSoObs}\Bigl(
+%   \normV{\rvSo^{\smedir}-\colthetao}^2\leq K R^*_\epsilon
+%   \Bigr)=1
+%   \]   
+%   \uncover<3->{moreover, if $\Psi_\SoObsNoL/ R^*_\epsilon
+%   =o(1)$ as $\SoObsNoL\to0$ then
+%   \[\lim_{\SoObsNoL\to0}
+%   \sup_{\colthetao\in\colThetaa}
+%   \Ex_{\colthetao}
+%   P_{\rvSo^{\smedir}|\rvSoObs}(
+%   \normV{\rvSo^{\smedir}-\colthetao}^2\leq \Psi_\SoObsNoL)=0.
+%   \]}}
+% \end{frame}
+% % --------------------------------------------------------------------
+% % <<Bayes-F8>>
+% % --------------------------------------------------------------------
+% \bframeVL{1}{1}
+%   \frametitle{Minimax-optimal Bayes estimate}
+% \mywboxinvisible{0}{{\rudicolor{\sc Proposition}}\\[1ex]
+% There exists a constant $K:=K(\ga,\Ev, \SoPriVar)$ such that the Bayes estimate $\widehat{\theta}_B^{\mes}:=\Ex[\mrvSo[\mes]|\rvSoObs]$
+%     satisfies
+%   \[\sup_{\colthetao\in\colThetaa}
+%   \Ex_{\colthetao} 
+%   \normV{\widehat{\theta}_B^{\mes}-\colthetao}^2 \leq K
+%   \Res.\]}
+% \hfill\\[10ex]
+% \end{frame}
+% --------------------------------------------------------------------
+% <<Bayes-F6>>
+% --------------------------------------------------------------------
+\bframeVL{1-4}{4}
+\frametitle{~}
+\mywboxinvisible{0}{{\rudicolor Remark:}
+\begin{rudiListeS}[\setListeL{2ex}{2ex}{5ex}{5ex}] 
+\item<1-> {\rudicolor oracle}  prior sub-family
+  $\{P_{\hspace*{-.8ex}\DiRvSo[\treDi]}\}_{\treDi}$  attains
+  {\rudicolor oracle}  rate  $\treRa$  as {\rudicolor exact} posterior concentration rate
+\item<2->  {\rudicolor minimax} prior sub-family
+  $\{P_{\hspace*{-.8ex}\DiRvSo[\oeDi]}\}_{\oeDi}$ attains  {\rudicolor
+    minimax} rate  $\oeRa$ as {\rudicolor exact} posterior concentration rate
+\item<3-> choice of $\treDi$ and $\oeDi$ depends, respectively, on $\TrSo$ and $\cwSo$
+\end{rudiListeS}}
+\hfill\\[4ex]
+\mywboxinvisible{-3}{{\rudicolor Objective:}
+\begin{rudiListeS}[\setListeL{2ex}{2ex}{5ex}{2ex}] 
+\item<4-> put prior on hyperparameter $\Di$ as outcome of a r.v. $\RvDi$
+\end{rudiListeS}}
+\end{frame}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "_2016-02-CIRM-Marseille"
+%%% End:

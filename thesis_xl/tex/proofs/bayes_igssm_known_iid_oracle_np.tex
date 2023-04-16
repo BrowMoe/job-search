@@ -1,0 +1,134 @@
+\subsection{Intermediate results}
+To prove this result, we will apply \nref{THM_BAYES_STRATEGIES_EXPOLIM}.
+Hence, we will verify \nref{AS_BAYES_STRATEGIES_EXPOLIM}.
+We will take the following expressions for the sequences $G^{+}_{n}$, and $G^{-}_{n}$.
+\begin{de}\label{deB.1.1}
+Define the following quantities :
+\begin{alignat*}{3}
+& G_{n}^{-} &&:=&& \min\{m \in \llbracket 1, m_{n}^{\circ} \rrbracket : \quad \mathfrak{b}_{m}^{2}(\theta^{\circ}) \leq 9 L \Phi_{n}^{\circ}(\theta^{\circ}, \lambda)\},\\
+& G_{n}^{+} &&:=&& \max \{m \in \llbracket m_{n}^{\circ}, G_{n} \rrbracket : n^{-1}( m - m_{n}^{\circ} ) \leq 3 \Lambda(m_{n}^{\circ})^{-1} \Phi_{n}^{\circ}(\theta^{\circ}, \lambda)\}.
+\end{alignat*}
+\assEnd
+\end{de}
+
+With this choice, we have the following results, for which the proofs are given underneath.
+
+\begin{pr}\label{prB.1.1}
+Under \textsc{\cref{AS_BAYES_GAUSS_CONTRACT_HIERARCHICAL_LAMBDA}}, we have, for all $m$ in $\llbracket 1, G_{n} \rrbracket$
+\begin{alignat*}{3}
+&\P[\Vert \theta_{n, \overline{m}} - \theta^{\circ} \Vert_{l^{2}}^{2} < [\mathfrak{b}_{m}^{2}(\theta^{\circ}) \vee n^{-1}m \Lambda_{\circ}(m)]/2] &&\leq&& \exp[-m/(16 L)],\\
+&\P[\Vert \theta_{n, \overline{m}} - \theta^{\circ} \Vert_{l^{2}}^{2} > 4 [\mathfrak{b}_{m}^{2}(\theta^{\circ}) \vee n^{-1}m \Lambda_{\circ}(m)]] &&\leq&& \exp[-m/(9 L)].
+\end{alignat*}
+\reEnd
+\end{pr}
+This first result implies the third condition of \nref{AS_BAYES_STRATEGIES_EXPOLIM}.
+
+\begin{pr}\label{prB.1.2}
+Under \textsc{\cref{AS_BAYES_GAUSS_CONTRACT_HIERARCHICAL_LAMBDA}}, we have the following concentration inequalities for the threshold hyper parameter :
+\begin{alignat*}{3}
+& \sum\nolimits_{m > G^{+}_{n}} \P(\Upsilon(m, \phi_{n}) - \Upsilon(m^{\circ}_{n}, \phi_{n}) < \pen(m^{\circ}_{n}) - \pen(m)) && \leq && \exp[- 5 m_{n}^{\circ}/(9 L) + \log (G_{n})];\\
+& \sum\nolimits_{m < G^{-}_{n}} \P(\Upsilon(m, \phi_{n}) - \Upsilon(m^{\circ}_{n}, \phi_{n}) < \pen(m^{\circ}_{n}) - \pen(m)) && \leq && \exp[- 4 m_{n}^{\circ}/9 + \log (G_{n})].
+\end{alignat*}
+\reEnd
+\end{pr}
+This second result implies the two remaining conditions of \nref{AS_BAYES_STRATEGIES_EXPOLIM}.
+
+And we can hence directly apply \nref{THM_BAYES_STRATEGIES_EXPOLIM} to obtain the considered theorem.
+
+\subsection{Detailed proofs}
+\begin{pro}{\textsc{Proof of \textsc{\cref{prB.1.1}}} \\}\label{proB.1.1}
+Let be $m$ in $\llbracket 1, G_{n} \rrbracket$ and note that $\Vert \theta_{n, \overline{m}} - \theta^{\circ} \Vert^{2} = \sum\nolimits_{s = 1}^{m} (\phi_{n}(s)\lambda(s)^{-1} - \theta^{\circ}(s))^{2} + \mathfrak{b}_{m}^{2}(\theta^{\circ})$.
+
+We will use \textsc{\cref{lmA.1.1}}; therefor, define, for any $s$ in $\llbracket 1, m \rrbracket$
+\begin{alignat*}{7}
+& S_{m} &&:=&& \sum\nolimits_{j = 1}^{m} (\phi_{n}(s) \lambda(s)^{-1} - \theta^{\circ}(s))^{2}; \quad && && \mu_{m}&&:=&&\E[S_{m}] = n^{-1}m \Lambda_{\circ}(m); \\
+& \beta(s)^{2} &&:=&& \V[\phi_{n}(s) \lambda(s)^{-1} - \theta^{\circ}(s)] = n^{-1} \Lambda(s); \quad && && v_{m} &&:=&& \sum\nolimits_{j = 1}^{m}\beta(s)^{2} = n^{-1} m \Lambda_{\circ}(m);\\
+& \alpha(s)^{2} &&:=&& \E[\phi_{n}(s) \lambda(s)^{-1} - \theta^{\circ}(s)] = 0; && && t_{m} &&:=&& \max\nolimits_{j \in \llbracket 1, m \rrbracket}\beta(s)^{2} = n^{-1} \Lambda(m).
+\end{alignat*}
+
+We then control the concentration of $S_{m}$, first from above, using that, for any $a$ and $b$ in $\R_{+}$, we have $a \vee b \leq a+b$; \nref{lmA.1.1}; and \nref{AS_BAYES_GAUSS_CONTRACT_HIERARCHICAL_LAMBDA}.
+We obtain
+\begin{alignat*}{2}
+& \P&&[S_{m} + \mathfrak{b}_{m}^{2}(\theta^{\circ}) \leq [n^{-1} m \Lambda_{\circ}(m) \vee \mathfrak{b}_{m}^{2}(\theta^{\circ})]/2 ]\\
+& && \leq \P[S_{m} + \mathfrak{b}_{m}^{2}(\theta^{\circ}) \leq (n^{-1}m \Lambda_{\circ}(m) + \mathfrak{b}_{m}^{2}(\theta^{\circ}))/2 ]\\
+& && \leq \P[S_{m} + \mathfrak{b}_{m}^{2}(\theta^{\circ}) \leq (2n)^{-1} m \Lambda_{\circ}(m) + \mathfrak{b}_{m}^{2}(\theta^{\circ}) ] \leq \P[S_{m} \leq (2n)^{-1} m \Lambda_{\circ}(m) ] \\
+& &&\leq \P[S_{m} - \mu_{m} \leq - (2n)^{-1} m \Lambda_{\circ}(m)] \leq \exp[- (n m \Lambda_{\circ}(m))(16 n \Lambda(m))^{-1}]\\
+\leq \exp[- m(16 L)^{-1}].
+\end{alignat*}
+Finally, we control the concentration of $S_{m}$ from bellow using that, for any $a$ and $b$ in $\R_{+}$, we have $a \vee b \geq (a+b)/2$; \nref{lmA.1.1}; and \nref{AS_BAYES_GAUSS_CONTRACT_HIERARCHICAL_LAMBDA};
+We obtain
+\begin{alignat*}{2}
+& \P &&[S_{m} + \mathfrak{b}_{m}^{2}(\theta^{\circ}) \geq 4 [n^{-1} m \Lambda_{\circ}(m) \vee \mathfrak{b}_{m}^{2}(\theta^{\circ})] ]\\
+& && \leq \P[S_{m} + \mathfrak{b}_{m}^{2}(\theta^{\circ}) \geq 2 (n^{-1} m \Lambda_{\circ}(m) + \mathfrak{b}_{m}^{2}(\theta^{\circ})) ]\\
+& && \leq \P[S_{m} + \mathfrak{b}_{m}^{2}(\theta^{\circ}) \geq 2 n^{-1} m \Lambda_{\circ}(m) + \mathfrak{b}_{m}^{2}(\theta^{\circ}) ] \leq \P[S_{m} \geq 2 n^{-1} m \Lambda_{\circ}(m)]\\
+& && \leq \P[S_{m} - \mu_{m} \geq n^{-1} m \Lambda_{\circ}(m)] \leq \exp[- (n m \Lambda_{\circ}(m))(9 n \Lambda(m))^{-1}] \leq \exp[- m(9 L)^{-1}].
+\end{alignat*}
+\proEnd
+\end{pro}
+
+\begin{pro}{\textsc{Proof for \nref{prB.1.2}} \\}\label{proB.1.2}
+First, let's proof the first inequality.
+Use the fact that : 
+\begin{alignat*}{2}
+& \sum\nolimits && _{m > G^{+}_{n}} \P(\Upsilon(m, \phi_{n}) - \Upsilon(m^{\circ}_{n}, \phi_{n}) < \pen(m^{\circ}_{n}) - \pen(m))\\
+& && = \sum\nolimits_{m = G_{n}^{+} + 1}^{G_{n}} \P[0 < 3 n^{-1} (m_{n}^{\circ} - m ) + \sum\nolimits_{s = m_{n}^{\circ} + 1}^{m} \phi_{n}(s)^{2}]
+\end{alignat*}
+We will now use \textsc{\cref{lmA.1.1}}. For this purpose, define then for all $m$ in $\llbracket G_{n}^{+} + 1, G_{n} \rrbracket$ : $S_{m} := \sum\nolimits_{j = m_{n}^{\circ} + 1}^{m} \phi_{n}(s)^{2}$, we then have $\mu_{m} := \E[S_{m}] = n^{-1} (m- m_{n}^{\circ}) + \sum\nolimits_{s = m_{n}^{\circ} + 1}^{m} (\theta^{\circ}(s)\lambda(s))^{2}$, $\alpha(s)^{2} := \E[\phi_{n}(s)]^{2} = (\theta^{\circ}(s)\lambda(s))^{2}$ and $\beta(s)^{2} := \V[\phi_{n}(s)] = n^{-1}$.
+Now, using that $\lambda$ is monotonically decreasing and $\b_{m_{n}^{\circ}}^{2}(\theta^{\circ}) \leq \Phi_{n}^{\circ}(\theta^{\circ}, \lambda)$, we note
+\begin{alignat*}{3}
+&\sum\nolimits_{s = m_{n}^{\circ} + 1}^{m} \alpha(s)^{2} &&=&& \sum\nolimits_{s = m_{n}^{\circ} + 1}^{m}(\theta^{\circ}(s)\lambda(s))^{2} \leq \Lambda(m_{n}^{\circ})^{-1} \sum\nolimits_{j = m_{n}^{\circ} + 1}^{m}(\theta^{\circ}(s))^{2} \\
+& &&\leq&& \Lambda(m_{n}^{\circ})^{-1} \b_{m_{n}^{\circ}}^{2}(\theta^{\circ}) \leq \Lambda(m_{n}^{\circ})^{-1} \Phi_{n}^{\circ}(\theta^{\circ}, \lambda) =: r_{m};\\
+&\sum\nolimits_{s = m_{n}^{\circ} + 1}^{m} \beta(s)^{2} &&=&& n^{-1}(m - m_{n}^{\circ}) =: v_{m}; \quad \max\nolimits_{j \in \llbracket m_{n}^{\circ} + 1, m \rrbracket} \beta_{j} = n^{-1} =: t_{m}
+\end{alignat*}
+Hence, we have, for all $m$ in $\llbracket G_{n}^{+}, G_{n}\rrbracket$
+\begin{alignat*}{2}
+&\P && [\sum\nolimits_{s = m_{n}^{\circ} + 1}^{m} \phi_{n}(s)^{2} - 3 n^{-1}(m - m_{n}^{\circ}) > 0] \\
+& && =\P[S_{m} - n^{-1} (m - m_{n}^{\circ}) > 2 n^{-1} (m - m_{n}^{\circ})]\\
+%& && = \P[S_{m} - n^{-1} (m - m_{n}^{\circ}) - \sum\nolimits_{s = m_{n}^{\circ} + 1}^{m} (\theta^{\circ}(s)\lambda(s))^{2} > 2 n^{-1} (m - m_{n}^{\circ}) - \sum\nolimits_{s = m_{n}^{\circ} + 1}^{m} (\theta^{\circ}(s)\lambda(s))^{2}]\\
+& && \leq \P[S_{m} - \mu_{m} > 2 n^{-1} (m - m_{n}^{\circ}) - \Lambda(m_{n}^{\circ})^{-1} \Phi_{n}^{\circ}(\theta^{\circ}, \lambda)].
+\end{alignat*}
+Using the definition of $G_{n}^{+},$ we have $n^{-1} (m - m_{n}^{\circ}) > 3 \Lambda(m_{n}^{\circ})^{-1}\Phi_{n}^{\circ}(\theta^{\circ}, \lambda).$
+Hence, we can write, using \textsc{\cref{AS_BAYES_GAUSS_CONTRACT_HIERARCHICAL_LAMBDA}} and \textsc{\cref{lmA.1.1}} with $c = 2/3$ :
+\begin{alignat*}{2}
+& \P&&[\sum\nolimits_{s = m_{n}^{\circ}}^{m} \phi_{n}(s)^{2} -  3 n^{-1} (m - m_{n}^{\circ}) > 0 ]\\
+& && \leq \P[S_{m} - \mu_{m} > n^{-1} (m - m_{n}^{\circ}) + 2 \Lambda(m_{n}^{\circ})^{-1} \Phi_{n}^{\circ}(\theta^{\circ}, \lambda)]\\
+& && \leq \P[S_{m} - \mu_{m} > v_{m} + 2 r_{m}] \leq \exp[- n (n^{-1} (m - m_{n}^{\circ}) + 2 \Lambda(m_{n}^{\circ})^{-1} \Phi_{n}^{\circ}(\theta^{\circ}, \lambda))/9]\\
+& && \leq \exp[- n (5 \Lambda(m_{n}^{\circ})^{-1} \Phi_{n}^{\circ}(\theta^{\circ}, \lambda))/9 ] \leq \exp[- 5 m_{n}^{\circ}/(9 L)].
+\end{alignat*}
+Which gives
+\[ \sum\nolimits_{m > G^{+}_{n}} \P(\Upsilon(m, \phi_{n}) - \Upsilon(m^{\circ}_{n}, \phi_{n}) < \pen(m^{\circ}_{n}) - \pen(m)) \leq \exp[- 5 m_{n}^{\circ}/(9 L) + \log (G_{n})]\]
+Hence, the hypothesis is verified.
+
+We now prove the second inequality.
+We begin by noting that:
+\begin{alignat*}{2}
+& \sum\nolimits&&_{m < G^{-}_{n}} \P(\Upsilon(m, \phi_{n}) - \Upsilon(m^{\circ}_{n}, \phi_{n}) < \pen(m^{\circ}_{n}) - \pen(m))\\
+& && = \sum\nolimits_{m = 1}^{G_{n}^{-}} \P [\sum\nolimits_{s = m + 1}^{m_{n}^{\circ}} \phi_{n}(s)^{2} < 3 n^{-1} (m_{n}^{\circ} - m) ].
+\end{alignat*}
+The \textsc{\cref{lmA.1.1}} steps in again.
+Define $S_{m} := \sum\nolimits_{s = m + 1}^{m_{n}^{\circ}} \phi_{n}(s)^{2}$ and we want to control the concentration of this sum, hence we take the following notations :
+\begin{alignat*}{3}
+& \mu_{m} &&:=&& \E[S_{m}] = n^{-1} (m_{n}^{\circ} - m) + \sum\nolimits_{s = m + 1}^{m_{n}^{\circ}}(\theta^{\circ}(s)\lambda(s))^{2}\\
+&r_{m} &&:=&& \sum\nolimits_{j = m+1}^{m_{n}^{\circ}}(\theta^{\circ}(s)\lambda(s))^{2}; \quad v_{m} := n^{-1} (m_{n}^{\circ} - m); \quad t_{m} := n^{-1}.
+\end{alignat*}
+Hence, we have, using \textsc{\cref{AS_BAYES_GAUSS_CONTRACT_HIERARCHICAL_LAMBDA}} and the definition of $G_{n}^{-}$
+\begin{alignat*}{2}
+&\P&&[S_{m} < 3 n^{-1} (m_{n}^{\circ} - m)]\\
+& && = \P[S_{m} - \mu_{m} < 3 n^{-1} (m_{n}^{\circ} - m) - n^{-1} (m_{n}^{\circ} - m) - \sum\nolimits_{s = m + 1}^{m_{n}^{\circ}}(\theta^{\circ}(s)\lambda(s))^{2}]\\
+% & && = \P[S_{m} - \mu_{m} < 3 n^{-1} (m_{n}^{\circ} - m) - 2 n^{-1} (m_{n}^{\circ} - m) / 3 - \sum\nolimits_{s = m + 1}^{m_{n}^{\circ}}(\theta^{\circ}(s)\lambda(s))^{2}/3 - [v_{m} + 2 r_{m}]/3]\\
+%& && \leq \P[S_{m} - \mu_{m} <  - [v_{m} + 2 r_{m}]/3 + 7 n^{-1} m_{n}^{\circ}/3 - 7 n^{-1} m / 3 - \Lambda(m_{n}^{\circ})^{-1}\sum\nolimits_{s = m + 1}^{m_{n}^{\circ}}(\theta^{\circ}(s))^{2} / 3]\\
+& && \leq \P[S_{m} - \mu_{m} <  - [v_{m} + 2 r_{m}]/3 + 7 n^{-1} m_{n}^{\circ}/3 + \Lambda(m_{n}^{\circ})^{-1} (\b_{m_{n}^{\circ}}^{2}(\theta^{\circ}) - \mathfrak{b}_{m}^{2}(\theta^{\circ})) / 3]\\
+% & && \leq \P[S_{m} - \mu_{m} < -  [v_{m} + 2 r_{m}]/3 + 7 L \Phi_{n}^{\circ}(\theta^{\circ}, \lambda) \Lambda(m_{n}^{\circ})^{-1}/3 + \Lambda(m_{n}^{\circ})^{-1} (\Phi_{n}^{\circ}(\theta^{\circ}, \lambda) - 9 L \Phi_{n}^{\circ}(\theta^{\circ}, \lambda))/3]\\
+& && \leq \P[S_{m} - \mu_{m} < - [v_{m} + 2 r_{m}]/3 + (1 - 2L)(\Phi_{n}^{\circ}(\theta^{\circ}, \lambda) \Lambda(m_{n}^{\circ})^{-1})/3 ]\\
+\end{alignat*}
+we now use \textsc{\cref{lmA.1.1}}
+\begin{alignat*}{3}
+&\P[S_{m} < 3 n^{-1} (m_{n}^{\circ} - m)] && \leq && \P[S_{m} - \mu_{m} < - [v_{m} + 2 r_{m}]/3]\\
+& &&\leq&& \exp[- n(n^{-1}(m_{n}^{\circ} - m) + 2 \sum\nolimits_{s = m + 1}^{m_{n}^{\circ}}(\theta^{\circ}(s)\lambda(s))^{2})/36]\\
+%& &&\leq&& \exp[- n(n^{-1} (m_{n}^{\circ} - m) + 2 \Lambda(m_{n}^{\circ})^{-1} \mathfrak{b}_{m}^{2}(\theta^{\circ}) - 2 \Lambda(m_{n}^{\circ})^{-1} \b_{m_{n}^{\circ}}^{2}(\theta^{\circ}))/36]\\
+& &&\leq&& \exp[- n (16 L \Phi_{n}^{\circ}(\theta^{\circ}, \lambda) \Lambda(m_{n}^{\circ})^{-1})/36] \leq \exp [ - 4 m_{n}^{\circ}/9 ].
+\end{alignat*}
+And hence
+\[\sum\nolimits_{m < G^{-}_{n}} \P(\Upsilon(m, \phi_{n}) - \Upsilon(m^{\circ}_{n}, \phi_{n}) < \pen(m^{\circ}_{n}) - \pen(m)) \leq\exp[- 4 m_{n}^{\circ}/9 + \log (G_{n})].\]
+\proEnd
+\end{pro}

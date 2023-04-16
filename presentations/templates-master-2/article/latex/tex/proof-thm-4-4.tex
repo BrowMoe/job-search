@@ -1,0 +1,113 @@
+\section{Proof of \textsc{\cref{thm6}}}
+
+\begin{pr}\label{pr4}
+Under \textsc{\cref{as1}}, we have, for all $m$ in $\llbracket 1, G_{n} \rrbracket$ and $c$ greater than $\frac{3}{2}$,
+\[\mathds{P}_{\theta^{\circ}}^{n}\left[\left\Vert \overline{\theta}^{m} - \theta^{\circ} \right\Vert^{2} > 4 c \left[\mathfrak{b}_{m} \vee \frac{m \overline{\Lambda}_{m}}{n}\right]\right] \leq \exp\left[-\frac{c m}{6 L}\right].\]
+\end{pr}
+
+\subsection{Proof of \textsc{\cref{pr4}}}
+Let be $m$ in $\llbracket 1, G_{n} \rrbracket$ and note that
+\[\Vert \overline{\theta}^{m} - \theta^{\circ} \Vert^{2} = \sum\limits_{j = 1}^{m} \left(\frac{Y_{j}}{\lambda_{j}} - \theta^{\circ}_{j}\right)^{2} + \mathfrak{b}_{m},\]
+hence, we will use \textsc{\cref{lm3}}.
+
+We then define 
+\begin{alignat*}{4}
+& && S_{m} && := && \sum\limits_{j = 1}^{m} \left(\frac{Y_{j}}{\lambda_{j}} - \theta^{\circ}_{j}\right)^{2},\\
+& && \mu_{m} && := && \mathds{E}_{\theta^{\circ}}^{n}\left[S_{m}\right] = \frac{m \overline{\Lambda}_{m}}{n},\\
+& \forall j \in \llbracket 1, m \rrbracket \quad && \beta_{j}^{2} && := && \mathds{V}_{\theta^{\circ}}^{n}\left[\frac{Y_{j}}{\lambda_{j}} - \theta^{\circ}_{j}\right] = \frac{\Lambda_{j}}{n},\\
+& \forall j \in \llbracket 1, m \rrbracket \quad && \alpha_{j}^{2} && := && \mathds{E}_{\theta^{\circ}}^{n}\left[\frac{Y_{j}}{\lambda_{j}} - \theta^{\circ}_{j}\right] = 0,\\
+& && v_{m} && := && \sum\limits_{j = 1}^{m}\beta_{j}^{2} = \frac{m \overline{\Lambda}_{m}}{n},\\
+& && t_{m} && := && \max\limits_{j \in \llbracket 1, m \rrbracket}\beta_{j}^{2} = \frac{\Lambda_{m}}{n}.
+\end{alignat*}
+
+We then control the concentration of $S_{m}$, define $c$ a constant greater than $\frac{3}{2}$ :
+\begin{alignat*}{3}
+& \exp\left[- \frac{c m}{6 L}\right] && \geq && \exp\left[- \frac{c n m \overline{\Lambda}_{m}}{6 n \Lambda_{m}}\right]\\
+& && \geq && \mathds{P}_{\theta^{\circ}}^{n}\left[S_{m} - \mu_{m} \geq c \frac{m \overline{\Lambda}_{m}}{n}\right]\\
+& && \geq && \mathds{P}_{\theta^{\circ}}^{n}\left[S_{m} \geq 2 c \frac{m \overline{\Lambda}_{m}}{n}\right]\\
+& && \geq && \mathds{P}_{\theta^{\circ}}^{n}\left[S_{m} + \mathfrak{b}_{m} \geq 2 c \frac{m \overline{\Lambda}_{m}}{n} + \mathfrak{b}_{m} \right]\\
+& && \geq && \mathds{P}_{\theta^{\circ}}^{n}\left[S_{m} + \mathfrak{b}_{m} \geq 4 c \left(\frac{m \overline{\Lambda}_{m}}{n} \vee \mathfrak{b}_{m}\right) \right].
+\end{alignat*}
+
+
+
+\subsection{Proof of the final statement}
+By the the total probability formula, we have :
+\begin{alignat*}{2}
+& \mathds{E}_{\theta^{\circ}}^{n}&&\left[\mathds{P}_{\boldsymbol{\theta}^{M}\vert Y^{n}}^{n, (\infty)}\left(\Vert \boldsymbol{\theta}^{M} - \theta^{\circ} \Vert ^{2} \leq K^{\star} \Psi_{n}^{\star}\right)\right]\\
+& = && 1 - \mathds{E}_{\theta^{\circ}}^{n}\left[\mathds{P}_{\boldsymbol{\theta}^{M}\vert Y^{n}}^{n, (\infty)}\left(K^{\star} \Psi_{n}^{\star} < \Vert \boldsymbol{\theta}^{M} - \theta^{\circ} \Vert^{2}\right)\right].
+\end{alignat*}
+
+Hence, we will control $\mathds{E}_{\theta^{\circ}}^{n}\left[\mathds{P}_{\boldsymbol{\theta}^{M}\vert Y^{n}}^{n, (\infty)}\left(K^{\star} \Psi_{n}^{\star} < \Vert \boldsymbol{\theta}^{M} - \theta^{\circ} \Vert ^{2}\right)\right]$.
+
+We can write :
+\begin{alignat*}{2}
+& \mathds{E}_{\theta^{\circ}}^{n} && \left[\mathds{P}_{\boldsymbol{\theta}^{M}\vert Y^{n}}^{n, (\infty)}\left(K^{\star} \Psi_{n}^{\star} < \Vert \boldsymbol{\theta} - \theta^{\circ} \Vert ^{2}\right)\right] = \sum\limits_{m = 1}^{G_{n}} \mathds{E}_{\theta^{\circ}}^{n}\left[\mathds{P}_{\boldsymbol{\theta}^{M} \vert Y^{n}}^{n, (\infty)}\left(\left\{K^{\star} \Psi_{n}^{\star} < \Vert \boldsymbol{\theta}^{M} - \theta^{\circ} \Vert^{2}\right\} \cap \left\{M = m\right\}\right)\right]\\
+& && \leq \sum\limits_{m = 1}^{G_{n}^{\star-} - 1} \mathds{E}_{\theta^{\circ}}^{n}\left[\mathds{P}_{M \vert Y^{n}}^{n, (\infty)}\left(\left\{M = m\right\}\right)\right] + \sum\limits_{m = G_{n}^{\star+} + 1}^{G_{n}} \mathds{E}_{\theta^{\circ}}^{n}\left[\mathds{P}_{\boldsymbol{\theta}^{M} \vert Y^{n}}^{n, (\infty)}\left(\left\{M = m\right\}\right)\right]\\
+& && + \sum\limits_{m = G_{n}^{\star-}}^{G_{n}^{\star+}} \mathds{E}_{\theta^{\circ}}^{n}\left[\mathds{P}_{\boldsymbol{\theta}^{M}\vert Y, M = m}^{n, (\infty)}\left(\left\{K^{\star} \Psi_{n}^{\star} < \Vert \boldsymbol{\theta}^{M} - \theta^{\circ} \Vert^{2}\right\}\right)\right]\\
+& && \leq \underbrace{\sum\limits_{m = 1}^{G_{n}^{\star-} - 1} \mathds{P}_{\theta^{\circ}}^{n}\left[\left\{\widehat{m} = m\right\}\right]}_{=: A} + \underbrace{\sum\limits_{m = G_{n}^{\star+} + 1}^{G_{n}} \mathds{P}_{\theta^{\circ}}^{n}\left[\left\{\widehat{m} = m\right\}\right]}_{=: B} + \sum\limits_{m = G_{n}^{\star-}}^{G_{n}^{\star+}} \underbrace{\mathds{P}_{\theta^{\circ}}^{n}\left[\left\{K^{\star} \Psi_{n}^{\star} < \left\Vert \overline{\theta}^{m} - \theta^{\circ} \right\Vert^{2}\right\}\right]}_{=: C_{m}}.
+\end{alignat*}
+
+\medskip
+
+As previously, $A$ and $B$ are controlled in \textsc{\cref{pr3}}.
+Hence, we now control $\sum\limits_{m = G_{n}^{\star-}}^{G_{n}^{\star+}} C_{m}.$
+
+\medskip
+
+Start by noting that for all $m$ in $\llbracket G_{n}^{\star-}, m_{n}^{\star} \rrbracket$, we have $\left[\mathfrak{b}_{m} \vee \frac{m \overline{\Lambda}_{m}}{n}\right] \leq 9 L \left(1 \vee r\right) \Psi_{n}^{\star}$ and, if we define $D^{\star} := \left\lceil \frac{3 \left(1 \vee r\right)}{\kappa^{\star}} + 1\right\rceil$ for all $m$ in $\llbracket m_{n}^{\star}, G_{n}^{\star+} \rrbracket$, we have $\left[\mathfrak{b}_{m} \vee \frac{m \overline{\Lambda}_{m}}{n}\right] \leq D^{\star} \Lambda_{D^{\star}} \left( 1 \vee r\right) \Psi_{n}^{\star}$.
+
+Using \textsc{\cref{pr4}}, we have that, for all $m$ in $\llbracket G_{n}^{\star-}, G_{n}^{\star+} \rrbracket$ and $c$ greater than $\frac{3}{2}$ :
+\[\mathds{P}_{\theta^{\circ}}^{n}\left[\left\{\Vert \overline{\theta}^{m} - \theta^{\circ}\Vert^{2} > 4c \left(9 L \vee D^{\star} \Lambda_{D^{\star}}\right) \left(1 \vee r\right) \Psi_{n}^{\star}\right\}\right] \leq \exp\left[-\frac{c m}{6 L}\right].\]
+
+Hence, we set $K^{\star} := 6 \left(9L \vee D^{\star} \Lambda_{D^{\star}}\right) \left(1 \vee r\right),$ which leads us to the upper bound \textcolor{red}{LES DEUX FORMULES DE SOMME D'exp NE SEMBLENT PAS EN ACCORD ?}
+\[\sum\limits_{m = G_{n}^{\star-}}^{G_{n}^{\star+}}C_{m} \leq \sum\limits_{m = G_{n}^{\star-}}^{G_{n}^{\star+}} \exp\left[- \frac{m}{4 L}\right] \leq 8L \exp\left[-\frac{G_{n}^{\star-}}{4 L}\right].\]
+
+\bigskip
+
+Finally, we can conclude :
+
+\begin{alignat*}{2}
+& \mathds{E}_{\theta^{\circ}}^{n} && \left[\mathds{P}_{\boldsymbol{\theta}^{M}\vert Y^{n}}^{n, (\infty)}\left(\Vert \boldsymbol{\theta}^{M} - \theta^{\circ} \Vert ^{2} \leq K^{\star} \Psi_{n}^{\star}\right)\right]\\
+& && \geq 1 - 2 \exp\left[- \frac{5 m_{n}^{\star}}{9 L} + \log\left(G_{n}\right)\right] - 2 \exp\left[- \frac{7 m_{n}^{\star}}{9} + \log\left(G_{n}\right)\right] - 8 L \exp\left[- \frac{G_{n}^{\star-}}{4L}\right].
+\end{alignat*}
+
+This proves the first part of the theorem for any $\theta^{\circ}$ such that $G_{n}^{\star-}$ tends to infinity when $n$ tends to $\infty$.
+In the opposite case, it means that there exist $n^{\circ}$ such that for all $n$ larger than $n^{\circ}$, $G_{n}^{\star-} = G_{n^{\circ}}^{\star-}.$
+This means that $n \mapsto \mathfrak{b}_{G_{n}^{\star-}}$ is constant function for $n$ larger that $n^{\circ}$ but it is also, by definition of $G_{n}^{\star-}$, we have $\mathfrak{b}_{G_{n}^{\star-}} \leq 9 \left(1 \vee r\right) L \Psi_{n}^{\star}$ which leads to the conclusion that for all $m$ greater than $G_{n^{\circ}}^{\star-}$, $\mathfrak{b}_{m} = 0.$
+Hence, for all $m$ greater than $G_{n^{\circ}}^{\star-}$, we can write
+\[\frac{K^{\star} \cdot \Psi_{n}^{\star}}{\left[\mathfrak{b}_{m} \vee \frac{m \overline{\Lambda}_{m}}{n} \right]} = \frac{ K^{\star} \Psi_{n}^{\star}}{\left[\frac{m \overline{\Lambda}_{m}}{n} \right]} \geq \frac{K^{\star} \frac{m_{n}^{\star} \overline{\Lambda}_{m_{n}^{\star}}}{n}}{\left[\frac{m \overline{\Lambda}_{m}}{n} \right]} \geq \frac{K^{\star} m_{n}^{\star}}{L m} \geq 9 D^{\star} \Lambda_{D^{\star}} \left(1 \vee r\right) \frac{m_{n}^{\star}}{m} \geq 1.\]
+
+Hence, we set $c := 18 D^{\star} \Lambda_{D^{\star}} \left(1 \vee r\right) \frac{m_{n}^{\star}}{m} \geq \frac{3}{2}$ and can write in this case for all $n$ smaller than $n^{\circ}$ :
+
+\begin{alignat*}{3}
+& \sum\limits_{m = G_{n}^{\star-}}^{G_{n}^{\star+}} \mathds{P}_{\theta^{\circ}}^{n}\left[K^{\star} \Psi_{n}^{\star} < \left\Vert \overline{\theta}^{m} - \theta^{\circ} \right\Vert^{2}\right] && \leq && \sum\limits_{m = G_{n}^{\star-}}^{G_{n}^{\star+}} \mathds{P}_{\theta^{\circ}}^{n}\left[ 4 c \left[\mathfrak{b}_{m} \vee \frac{m \overline{\Lambda}_{m}}{n}\right] < \left\Vert \overline{\theta}^{m} - \theta^{\circ} \right\Vert^{2}\right]\\
+& && \leq && \sum\limits_{m = G_{n}^{\star-}}^{G_{n}^{\star+}} \exp\left[-\frac{c m}{6 L}\right]\\
+& && \leq && \sum\limits_{m = G_{n}^{\star-}}^{G_{n}^{\star+}} \exp\left[-\frac{3 D^{\star} \Lambda_{D^{\star}} \left(1 \vee r\right) m_{n}^{\star}}{L}\right] \\
+& && \leq && \exp\left[-\frac{3 D^{\star} \Lambda_{D^{\star}} \left(1 \vee r \right) m_{n}^{\star}}{L} + \log\left(G_{n}\right)\right].
+\end{alignat*}
+
+We can hence conclude that
+\begin{alignat*}{2}
+& \mathds{E}_{\theta^{\circ}}^{n}&&\left[\mathds{P}_{\boldsymbol{\theta}^{M}\vert Y^{n}}^{n, (\infty)}\left(\Vert \boldsymbol{\theta}^{M} - \theta^{\circ} \Vert ^{2} \leq K^{\star} \Psi_{n}^{\star}\right)\right] > 1 - \exp\left[-\frac{3 D^{\star} \Lambda_{D^{\star}} \left(1 \vee r\right) m_{n}^{\star}}{L} + \log\left(G_{n}\right)\right]\\
+& &&- 2 \exp\left[- \frac{5 m_{n}^{\star}}{9 L} + \log\left(G_{n}\right)\right] - 2 \exp\left[- \frac{7 m_{n}^{\star}}{9} + \log\left(G_{n}\right)\right].
+\end{alignat*}
+
+
+Hence, we have shown here that $\Psi_{n}^{\star}$ is an upper bound for the contraction rate under the quadratic risk.
+We will now use this to proof that it is also for the minimax risk.
+
+\medskip
+
+Note that $K^{\star} \, \Psi_{n}^{\star} \geq 4 \left[\mathfrak{b}_{m} \vee \frac{m \overline{\Lambda}_{m}}{n}\right]$ for all $m$ in $\llbracket G_{n}^{\star-}, G_{n}^{\star+} \rrbracket$.
+Hence, for any increasing function $K_{n}$ such that $\lim\limits_{n \rightarrow \infty} K_{n} = \infty,$ we have
+\[K_{n} \Psi_{n}^{\star} \geq 4 \frac{K_{n}}{K^{\star}} \left[\mathfrak{b}_{m} \vee \frac{m \overline{\Lambda}_{m}}{n}\right].\]
+So, if we define $\tilde{n}^{\circ},$ the smallest integer such that $\frac{K_{n}}{K^{\star}} \geq 1$, we can apply \textsc{\cref{pr4}} and we have
+\begin{alignat*}{3}
+& \sum\limits_{m = G_{n}^{\star-}}^{G_{n}^{\star+}} \mathds{P}_{\theta^{\circ}}^{n}\left[K_{n} \Psi_{n}^{\star} < \left\Vert \overline{\theta}^{m} - \theta^{\circ} \right\Vert^{2}\right] && \leq && \sum\limits_{m = G_{n}^{\star-}}^{G_{n}^{\star+}} \mathds{P}_{\theta^{\circ}}^{n}\left[4 \frac{K_{n}}{K^{\star}} \left[\mathfrak{b}_{m} \vee \frac{m \overline{\Lambda}_{m}}{n}\right] < \left\Vert \overline{\theta}^{m} - \theta^{\circ} \right\Vert^{2}\right] \\
+& && \leq && \sum\limits_{m = G_{n}^{\star-}}^{G_{n}^{\star+}} \exp\left[-\frac{4 K_{n} m}{9 K^{\star} L}\right]\\
+& && \leq && \exp\left[-\frac{4 K_{n}}{9 K^{\star} L}\right].
+\end{alignat*}
+\textcolor{red}{VERIFIER FORMULE $\exp$}
+
+We hence here have a uniform upper bound for the maximal risk which concludes the proof.

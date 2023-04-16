@@ -1,0 +1,30 @@
+\ProvidesPackage{theorem}
+
+\newtheoremstyle{custom}% name of the style to be used
+  {}% measure of space to leave above the theorem. E.g.: 3pt
+  {}% measure of space to leave below the theorem. E.g.: 3pt
+  {}% name of font to use in the body of the theorem
+  {0pt}% measure of space to indent
+  {\scshape}% name of head font
+  {\quad}% punctuation between head and body
+  { }% space after theorem head; " " = normal interword space
+  {\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+
+\theoremstyle{custom}
+
+\newsavebox{\BBbox}
+\newenvironment{DDbox}[1]{
+\begin{lrbox}{\BBbox}\begin{minipage}{\linewidth}}
+{\end{minipage}\end{lrbox}\noindent{\usebox{\BBbox}} \\
+[.5cm]}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{de}{Definition}[section]
+\newtheorem{lm}{Lemma}[section]
+\newtheorem{pr}{Proposition}[section]
+\newtheorem{as}{Assumption}[section]
+\newtheorem{pro}{Proof}[section]
+\newtheorem{rmk}{Remark}[section]
+\newtheorem{rem}{Reminder}[section]
+\newtheorem{nota}{Notations}[section]
+\newtheorem{cor}{Corollary}[section]
+\newtheorem{ex}{Example}[section]

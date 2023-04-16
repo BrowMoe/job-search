@@ -1,0 +1,375 @@
+\begin{te}
+ The next assertion
+provides our key arguments in order to control the deviations of the
+reminder terms.  Both inequalities are due to
+\ncite{Talagrand1996}, the formulation of the first part  can be found for
+example in \ncite{KleinRio2005}, while the second part is  based on
+equation (5.13) in Corollary 2 in \ncite{BirgeMassart1995} and stated
+in this form for example in  \ncite{ComteMerlevede2002}.
+\end{te}
+% --------------------------------------------------------------------
+% <<Lemma \ref{re:tal}>>
+% --------------------------------------------------------------------
+\begin{lm}(Talagrand's inequalities)\label{re:tal}\label{LM_TALAGRAND} Let
+  $\rOb_1,\dotsc,\rOb_n$ be independent $\cZ$-valued random variables and let $\overline{\nu_{\He}}=n^{-1}\sum_{i=1}^n[\nu_{\He}(\rOb_i)-\Ex(\nu_{\He}(\rOb_i)) ]$ for $\nu_{\He}$ belonging to a countable class $\{\nu_{\He},\He\in\cH\}$ of measurable functions. Then,
+\begin{align}
+	 &\Ex\vectp{\sup_{\He\in\cH}|\overline{\nu_{\He}}|^2-6\TcH^2}\leq C [\frac{\Tcv}{n}\exp(\frac{-n\TcH^2}{6\Tcv})+\frac{\Tch^2}{n^2}\exp(\frac{-K n \TcH}{\Tch}) ]\label{re:tal:e1} \\
+	&\pM\big(\sup_{\He\in\cH}|\overline{\nu_{\He}}|\geq2\TcH+\psi\big)\leq3\exp\big[-Kn\big(\frac{\psi^2}{\Tcv}\wedge\frac{\psi}{\Tch}\big)\big]\leq 3\big[\exp\big(\frac{-Kn\psi^2}{\Tcv}\big)+\exp\big(\frac{-Kn\psi}{\Tch}\big)\big]\label{re:tal:e2}
+\end{align}
+for any $\psi>0$, with numerical constants $K=({\sqrt{2}-1})/({21\sqrt{2}})$ and $C>0$ and where
+\begin{equation*}
+	\sup_{\He\in\cH}\sup_{z\in\cZ}|\nu_{\He}(z)|\leq \Tch,\qquad \Ex(\sup_{\He\in\cH}|\overline{\nu_{\He}}|)\leq \TcH,\qquad \sup_{\He\in\cH}\frac{1}{n}\sum_{i=1}^n \Var(\nu_{\He}(\rOb_i))\leq \Tcv.
+\end{equation*}
+\reEnd
+\end{lm}
+% --------------------------------------------------------------------
+% <<Remark Talagrand>>
+% --------------------------------------------------------------------
+\begin{rmk}\label{rem:re:tal1}
+Keeping the bounds  \eqref{re:tal:e1} and \eqref{re:tal:e2} in mind, let us
+specify particular choices for the constants $\psi$ and $K$. We
+choose
+$\psi=\sqrt{2}(\sqrt{3}-\sqrt{2})\TcH=\tfrac{(\sqrt{6}-\sqrt{4})(\sqrt{6}+\sqrt{4})}{(\sqrt{6}+\sqrt{4})}\TcH=\tfrac{\sqrt{2}}{(\sqrt{3}+\sqrt{2})}\TcH$,
+and hence
+$\sqrt{2}\sqrt{3}\TcH=\sqrt{2}\sqrt{2}\TcH+\sqrt{2}(\sqrt{3}-\sqrt{2})\TcH$. Moreover,
+ we have
+$K\tfrac{2}{(\sqrt{3}+\sqrt{2})^2}=\tfrac{(\sqrt{2}-1)}{(21\sqrt{2})}\tfrac{2}{(\sqrt{3}+\sqrt{2})^2}=\tfrac{(2-\sqrt{2})}{21(\sqrt{3}+\sqrt{2})^2}\geq\tfrac{1}{400}$
+and
+$K\tfrac{\sqrt{2}}{(\sqrt{3}+\sqrt{2})}=\tfrac{\sqrt{2}-1}{21(\sqrt{3}+\sqrt{2})}\geq\tfrac{1}{200}$
+and $K\geq \tfrac{1}{100}$.
+The next bounds are now an immediate consequence, 
+\begin{align}
+	 &\Ex\vectp{\sup_{\He\in\cH}|\overline{\nu_{\He}}|^2-6\TcH^2}\leq C [\frac{\Tcv}{n}\exp(\frac{-n\TcH^2}{6\Tcv})+\frac{\Tch^2}{n^2}\exp(\frac{-n \TcH}{100\Tch}) ]\label{re:tal:e3} \\
+	&\pM\big(\sup_{\He\in\cH}|\overline{\nu_{\He}}|^2\geq6\TcH^2\big)\leq 3\big[\exp\big(\frac{-n\TcH^2}{400\Tcv}\big)+\exp\big(\frac{-n\TcH}{200\Tch}\big)\big]\label{re:tal:e4}
+\end{align}
+In the sequel we will make use of the slightly simplified bounds \eqref{re:tal:e3} and
+\eqref{re:tal:e4} rather than \eqref{re:tal:e1} and \eqref{re:tal:e2}.
+\remEnd
+\end{rmk}
+% --------------------------------------------------------------------
+% <<Remark Talagrand>>
+% --------------------------------------------------------------------
+\begin{rmk}\label{rem:re:tal2} Introduce further the unit ball $\mBaH:=\set{\He\in\mHiH:\Vnormlp{\He}\leq1}$
+ contained in the linear subspace
+ $\mHiH=\lin\set{(\mathds{1}_{\{s' = s\}})_{s' \in \Z},|s|\in\nset{1,\Di}}$.
+ 
+ Setting $\nu_{\He}(\rY)=\sum_{|s|\in\nset{1,\Di}}\ofHe{(s)}\fedfI[(s)]\bas_s(-\rY)$ with
+ $\E\nu_{\He}(\rY)=\sum_{|s|\in\nset{1,\Di}}\ofHe{(s)}\fedfI[(s)]\fydf[(s)]$,
+ hence $\overline{\nu_{\He}}=\tfrac{1}{\ssY}\sum_{p=1}^{\ssY}\sum_{|s|\in\nset{1,\Di}}\ofHe{(s)}\fedfI[(s)](\bas_s(-\rY_p)-\fydf[(s)])$ and we have
+\begin{multline*}
+	\Vnormlp{\txdfPr-\xdfPr}^2=\sup_{\He\in\mBaH}|\Vskalarlp{\txdfPr-\xdfPr\vert \He}|^2=\sup_{\He\in\mBaH}|\sum_{|s|\in\nset{1,\Di}}\fedfI[(s)](\hfydf[(s)]-\fydf[(s)])\ofHe{(s)}|^2\\
+=\sup_{\He\in\mBaH}|\sum_{|s|\in\nset{1,\Di}}\fedfI[(s)]\{\tfrac{1}{\ssY}\sum_{i=1}^{\ssY}(\bas_s(-\rY_i)-\fydf[(s)])\}\ofHe{(s)}|^2
+=\sup_{\He\in\mBaH}|\overline{\nu_{\He}}|^2.
+\end{multline*}
+Note that, the unit ball $\mBaH$ is not a countable set of functions, however, it contains a countable dense subset, say $\cH$, since $\lp[2]$ is separable, and it is straightforward to see that $\sup_{\He\in\mBaH}|\overline{\nu_{\He}}|^2=\sup_{\He\in\cH}|\overline{\nu_{\He}}|^2$.
+\remEnd
+\end{rmk}
+
+\section{Proofs for \nref{AK:RB}}
+ % --------------------------------------------------------------------
+ % <<Proof Lemma \ref{re:conc}>>
+ % --------------------------------------------------------------------
+ \begin{pro}[Proof of \nref{re:conc}.]\label{pro:conc}
+   For $\He\in\mBaH$ setting
+   \begin{multline*}
+   \nu_{\He}(\rY)=\sum_{|s|\in\nset{1,\Di}}\ofHe{(s)}\fedfI[(s)]\bas_s(-\rY)\\
+   \text{where }\E\nu_{\He}(\rY)=\sum_{|s|\in\nset{1,\Di}}\ofHe{(s)}\fedfI[(s)]\fydf[(s)]
+   \end{multline*}
+   we observe (see \nref{rem:re:tal2}) that
+   $\Vnormlp{\txdfPr-\xdfPr}^2=\sup_{\He\in\mBaH}|\overline{\nu_{\He}}|^2$. We
+   intent to apply \nref{re:tal}. Therefore, we compute next quantities
+   $\Tch$, $\TcH$, and $\Tcv$ verifying the three inequalities required
+   in \nref{re:tal}.
+
+   \noindent Consider $\Tch$ first:
+   \begin{multline*}
+     \sup_{\He\in\mBaH}\sup_{y\in[0,1]}|\nu_{\He}(y)|^2 
+     =\sup_{y\in[0,1]} \sum_{|s|\in\nset{1,\Di}} |\fedf[(s)]|^{-2}\;|\bas_s(y)|^2
+     = 2\sum_{s\in\nset{1,\Di}} \iSv[s]\\ = 2\Di\oiSv\leq 2\Di\miSv=:\Tch^2.
+   \end{multline*}
+   \noindent Next, find $\TcH$. Notice that
+   $\sup_{\He\in\mBaH} |\Vskalarlp{\txdfPr-\xdfPr,\He}|^2=
+   \sum_{|s|\in\nset{1,\Di}}\iSv[|s|]\,|\hfydf[(s)]-\fydf[(s)]|^2$.  As
+   $\E|\hfydf[(s)]-\fydf[(s)]|^2=\tfrac{1}{\ssY}(1-|\fydf[(s)]|^2)\leq
+   \tfrac{1}{\ssY}$, we define
+   \begin{equation*}
+     \E[\sup_{\He\in\mBaH} |\Vskalarlp{\txdfPr-\xdfPr}^2] 
+     \leq 2\Di\oiSv/\ssY\leq \cmSv2\Di\miSv/\ssY= 2\DipenSv/\ssY  =: \TcH^2.
+   \end{equation*}
+   \noindent Finally, consider $\Tcv$.  Given $\He\in \mBaH$ we observe
+   with $\E[\bas_s(Y_1)\bas_{s'}(-Y_1)]=\fydf[(s'-s)]$ that
+   \begin{multline*}
+     \E|\nu_{\He}(Y_1)|^2=\E\lVabs{\sum\nolimits_{|s|\in\nset{1,\Di}}\ofHe{(s)}\fedfI[(s)]\bas_s(-Y_1)}^2\\
+     =\sum_{|s|,|s'|\in\nset{1,\Di}}\fHe{(s)}\ofedfI[(s)]\E[\bas_s(Y_1)\bas_{s'}(-Y_1)] \fedfI[(s')]\,\ofHe{(s')}\\
+     =\sum_{|s|,|s'|\in\nset{1,\Di}}\fHe{(s)}\ofedfI[(s)]\fydf[(s'-s)] \fedfI[(s')]\,\ofHe{(s')}
+     =\Vskalarlp{\DiPro[k]A\DiPro[k]\;\fHe{},\fHe{}}
+   \end{multline*}
+   defining the Hermitian and positive semi-definite matrix
+   $A:= \Zsuite[s,s']{\ofedfI[(s)] \fedfI[(s')] \fydf[(s'-s)]}$ and the
+   mapping $\DiPro[k]:\Cz^\Zz\to\Cz^\Zz$ with
+   $z\mapsto\DiPro[k]z=(z_l\Ind{\{|l|\in\nset{1,\Di}\}})_{l\in\Zz}$. Obviously,
+   $\DiPro[k]$ is an orthogonal projection from $\lp^2$ onto the linear
+   subspace spanned by all $\lp^2$-sequences with support on the
+   index-set $\nset{-\Di,-1}\cup\nset{1,\Di}$.
+   Straightforward algebra shows
+   $\sup_{\He\in\mBaH}\Var(\nu_{\He}(Y_1)) \leq \sup_{\He\in\mBaH}
+   \Vskalarlp{\DiPro[k]A\DiPro[k] \;\fHe{},\fHe{}}$, hence
+   \begin{multline*}
+     \sup_{\He\in\mBaH} \tfrac{1}{\ssY}\sum_{i=1}^{\ssY}\Var(\nu_{\He}(Y_i))
+     \leq \sup_{\He\in\mBaH}
+     \Vskalarlp{\DiPro[k]A\DiPro[k]\fHe{},\fHe{}}
+     = \sup_{\He\in\mBaH} \Vnormlp{\DiPro[k]A\DiPro[k]\fHe{}}\leq\Vnorm[s]{\DiPro[k]A\DiPro[k]}.
+   \end{multline*}
+   where $\Vnorm[s]{M}:=\sup_{\Vnormlp{x}\leq 1}\Vnormlp{Mx}$ denotes
+   the spectral-norm of a linear map $M:\lp^2\to\lp^2$. For a sequence
+   $z\in(\Cz\backslash\{0\})^\Zz$ let $\Diag{z}$ and $\Diag{z}^{-1}$ be
+   the multiplication operator given by $\Diag{z}x:=\Zsuite{z(s) x(s)}$
+   and $\Diag{z}^{-1}:=\Diag{z^{-1}}$, respectively.  Clearly, we have
+   $\DiPro[k]A\DiPro[k] = \DiPro[k]\Diag{\fedf}^{-1} \DiPro[k]
+   \cC_{\fydf} \DiPro[k] \Diag {\ofedf}^{-1}\DiPro[k],$ where
+   $ \cC_{\fydf} := \Zsuite[s,s']{\fou[s-s']{\ydf}}.$ Consequently,
+   \begin{multline*}
+     \sup_{\He\in\mBaH}\tfrac{1}{\ssY}\sum_{i=1}^{\ssY}\Var(\nu_{\He}(Y_i))
+     \leq \Vnorm[s]{\DiPro[k]\Diag{\fedf}^{-1} \DiPro[k]}\;
+     \Vnorm[s]{ \cC_{\fydf}}\;\Vnorm[s]{\DiPro[k]\Diag{\ofedf}^{-1} \DiPro[k]}\\=
+     \Vnorm[s]{\DiPro[k]\Diag{\fedf}^{-1} \DiPro[k]}^2\; \Vnorm[s]{\cC_{\fydf}}.
+   \end{multline*}
+   We have that
+   $\Vnorm[s]{\DiPro[k]\Diag{\fedf}^{-1} \DiPro[k]}^2=
+   \max\{\iSv[s],s\in\nset{1,\Di}\}=\miSv.$ It remains to show the
+   boundedness of $\Vnorm[s]{\cC_{\fydf}}$.  Keeping in mind that
+   $(\cC_{\fydf}z)_k:= \sum_{s\in\Zz}\fydf[(s-k)]z(s)$, $k\in\Zz$, it is
+   easily verified that
+   $\Vnormlp{\cC_{\fydf} z}^2\leq \Vnormlp[1]{\fydf}^2\Vnormlp{z}^2$
+   and hence $ \Vnorm[s]{\cC_{\fydf}}\leq\Vnormlp[1]{\fydf}$, which
+   implies
+   \begin{equation*}
+     \sup_{\He\in\mBaH}\tfrac{1}{\ssY}\sum_{i=1}^{\ssY}\Var(\nu_{\He}(Y_i))\leq\Vnormlp[1]{\fydf}\,\miSv\leq\Vnormlp[1]{\fydf}\,\miSv=:\Tcv.
+   \end{equation*}
+   % employing $\fydf=\fxdf\fedf$ and the Cauchy-Schwarz inequality
+   % yields
+   % $ \Vnorm[s]{\cC_{\fydf}}^2 \leq
+   % \Vnormlp{\fedf}^2\;\Vnormlp{\fxdf}^2$ which implies
+   % \begin{equation*}
+   %   \sup_{\He\in\mBaH}\tfrac{1}{\ssY}\sum_{i=1}^{\ssY}\Var(\nu_{\He}(Y_i))\leq\Vnormlp{\edf}\Vnormlp{\xdf}\,\miSv=:\Tcv.
+   % \end{equation*}
+   % {\dr Alternatively,
+   % $\sup_{\He\in\mBaH}\tfrac{1}{\ssY}\sum_{i=1}^{\ssY}\Var(\nu_{\He}(Y_i))\leq\Vnormlp[1]{\fydf}\miSv=:\Tcv$.
+   % Note, if $\xdf=\bas_0$, then $\ydf=\bas_0$ and hence
+   % $\Vnormlp[1]{\fydf}=1$, while $\Vnormlp{\edf}\Vnormlp{\xdf}$ can
+   % become arbitrarly large depending on $\edf$.}
+   Replacing in \nref{rem:re:tal1} \eqref{re:tal:e3} and \eqref{re:tal:e4}
+   the quantities $\Tch,\TcH$ and $\Tcv$ together with
+   $\DipenSv=\cmSv\Di\miSv$ gives the assertion \ref{re:conc:i} and
+   \ref{re:conc:ii}. Setting
+   $\TcH:=2\daRa{\Di}{(\xdf,\Lambda)}=2[\bias^2(\xdf)\vee
+   \DipenSv\,\ssY^{-1}]\geq 2\DipenSv\,\ssY^{-1}$ and the quantities
+   $\Tch$ as above $\Tcv$ we obtain \ref{re:conc:iii}, which completes the
+   proof.\proEnd
+ \end{pro}
+ 
+ \section{Proofs for \nref{FREQ_CIRCDECONV_KNOWN_BETA}}
+
+\begin{pro}{\textsc{Proof of \nref{LM_FREQ_CIRCDECONV_KNOWN_BETA_ORACLE_NP_SPLITBETA}}\\}\label{PRO_FREQ_CIRCDECONV_KNOWN_BETA_ORACLE_NP_SPLITBETA}
+
+In this part, let $m$ and $l$ be two positive integers with $l < m$.
+We have, for any $t$ in $\mathds{B}_{l, m}$
+\[\langle t \vert \theta_{n} \rangle_{l^{2}} = n^{-1} \sum\nolimits_{p = 1}^{n} \sum\nolimits_{l \leq \vert s \vert \leq m} (t(s)\overline{\lambda}(s)^{-1} \cdot e_{s}(- Y_{p})) = n^{-1} \sum\nolimits_{p = 1}^{n} \mathcal{F}^{-1}(t \overline{\lambda}^{-1})(- Y_{p}).\]
+So we define for any $t$ in $\mathds{B}_{l, m}$ the functional $\nu_{t} := \sum\nolimits_{l \leq \vert s \vert \leq m} (t(s)\overline{\lambda}(s)^{-1}) e_{s} = \mathcal{F}^{-1}(t\overline{\lambda}^{-1})$ and we obtain $\overline{\nu}_{t} := \langle t \vert \theta_{n} - \theta^{\circ} \rangle_{l^{2}} = n^{-1} \sum\nolimits_{p = 1}^{n} (\nu_{t}(Y_{p}) - \E[\nu_{t}(Y_{p})])$.
+Then, for any $t$ in $\mathds{B}_{l, m}$ and $x$ in $\mathcal{L}^{2}$ we define $v_{t}(x) = w^{-1}  \sum\nolimits_{p = 1}^{w} \nu_{t}(x_{p})$, so we can write $n^{-1} \sum\nolimits_{p = 1}^{n} \nu_{t}(Y_{p}) = \frac{1}{2} \{ r^{-1}  \sum\nolimits_{q = 1}^{r} v_{t}(E_{q}) +  r^{-1}  \sum\nolimits_{q = 1}^{r} v_{t}(O_{q}) \}$, which gives
+\begin{alignat*}{3}
+& \langle t \vert \theta_{n} - \theta^{\circ}\rangle && = && n^{-1} \sum\nolimits_{p = 1}^{n} (\nu_{t}(Y_{p}) - \E[\nu_{t}(Y_{p})])\\
+& && = && \frac{1}{2} (\underbrace{ r^{-1}  \sum\nolimits_{q = 1}^{r} (v_{t}(E_{q})- \E[v_{t}(E_{q})])}_{=: \overline{\nu}_{t}^{e}} + \underbrace{ r^{-1}  \sum\nolimits_{q = 1}^{r} (v_{t}(O_{q})- \E[v_{t}(O_{q})])}_{=: \overline{\nu}_{t}^{o}})
+\end{alignat*}
+Similarly, we define for any $t$ in $\mathds{B}_{l, m}$ the quantities $\overline{\nu}_{t}^{e, \perp} :=  r^{-1}  \sum\nolimits_{q = 1}^{r} (v_{t}(E_{q}^{\perp})- \E[v_{t}(E_{q}^{\perp})])$ and $\overline{\nu}_{t}^{o, \perp} :=  r^{-1}  \sum\nolimits_{q = 1}^{r} (v_{t}(O_{q}^{\perp})- \E[v_{t}(O_{q}^{\perp})])$ which combined give $\overline{\nu}_{t}^{\perp} := \frac{1}{2} (\overline{\nu}_{t}^{e, \perp} + \overline{\nu}_{t}^{o, \perp})$.
+
+Consider first \nref{EQ1_LM_FREQ_CIRCDECONV_KNOWN_BETA_ORACLE_NP_SPLITBETA}.
+\begin{alignat*}{3}
+& \E && && [ (\sup\nolimits_{t \in \mathds{B}_{l, m}} \vert\langle t \vert \theta_{n} - \theta^{\circ}\rangle_{l^{2}} \vert^{2} - C_{n} )_{+} ] = \E[ (\sup\nolimits_{t \in \mathds{B}_{l, m}} \vert \overline{\nu}_{t} \vert^{2} - C_{n} )_{+} ]\notag\\
+& && \leq && \E[ (\sup\nolimits_{t \in \mathds{B}_{l, m}} \vert \overline{\nu}^{e, \perp}_{t} \vert^{2} - C_{n} )_{+} ] + \E[ \sup\nolimits_{t \in \mathds{B}_{l, m}} \vert \overline{\nu}^{e, \perp}_{t} - \overline{\nu}^{e}_{t} \vert^{2} ] + \notag\\
+& && &&\E[ (\sup\nolimits_{t \in \mathds{B}_{l, m}} \vert \overline{\nu}^{o, \perp}_{t} \vert^{2} - C_{n} )_{+} ] + \E[ \sup\nolimits_{t \in \mathds{B}_{l, m}} \vert \overline{\nu}^{o, \perp}_{t} - \overline{\nu}^{o}_{t} \vert^{2} ] \notag\\
+& && \leq && 2 \cdot \E[ (\sup\nolimits_{t \in \mathds{B}_{l, m}} \vert \overline{\nu}^{e, \perp}_{t} \vert^{2} - C_{n} )_{+} ] + 2 \cdot \E[ \sup\nolimits_{t \in \mathds{B}_{l, m}} \vert \overline{\nu}^{e, \perp}_{t} - \overline{\nu}^{e}_{t} \vert^{2} ]
+\end{alignat*}
+which proves the statement.
+
+Consider now \nref{EQ2_LM_FREQ_CIRCDECONV_KNOWN_BETA_ORACLE_NP_SPLITBETA}.
+\begin{alignat*}{2}
+&\P&&(\sup\nolimits_{t \in \mathds{B}_{l, m}} \vert \langle t \vert \theta_{n} - \theta^{\circ}\rangle_{l^{2}} \vert \geq C_{n}) =\P(\sup\nolimits_{t \in \mathds{B}_{l, m}} \vert \overline{\nu}_{t} \vert \geq C_{n})\notag\\
+& && = \P(\sup\nolimits_{t \in \mathds{B}_{l, m}} \vert (\overline{\nu}_{t}^{e} - \overline{\nu}_{t}^{e, \perp} + \overline{\nu}_{t}^{e, \perp} + \overline{\nu}_{t}^{o} - \overline{\nu}_{t}^{o, \perp} + \overline{\nu}_{t}^{o, \perp})/2 \vert \geq C_{n})\notag\\
+& && = \P(\{\sup\nolimits_{t \in \mathds{B}_{l, m}} \vert (\overline{\nu}_{t}^{e} - \overline{\nu}_{t}^{e, \perp} + \overline{\nu}_{t}^{e, \perp} + \overline{\nu}_{t}^{o} - \overline{\nu}_{t}^{o, \perp} + \overline{\nu}_{t}^{o, \perp} )/2 \vert \geq C_{n}\}\\
+& &&\cap_{q \in \llbracket 1, r \rrbracket} (\{ E_{q}^{\perp} = E_{q} \} \cap \{ E_{q}^{\perp} = E_{q} \})) \notag\\
+& && + \P(\{\sup\nolimits_{t \in \mathds{B}_{l, m}} \vert (\overline{\nu}_{t}^{e} - \overline{\nu}_{t}^{e, \perp} + \overline{\nu}_{t}^{e, \perp} + \overline{\nu}_{t}^{o} - \overline{\nu}_{t}^{o, \perp} + \overline{\nu}_{t}^{o, \perp} )/2 \vert \geq C_{n}\}\\
+& && \cap (\{ \exists q \in \llbracket 1, r \rrbracket, E_{q}^{\perp} \neq E_{q} \}\cup \{ \exists q \in \llbracket 1, r \rrbracket, O_{q}^{\perp} \neq O_{q} \}))\notag\\
+& &&\leq\P(\sup\nolimits_{t \in \mathds{B}_{l, m}} \vert \overline{\nu}_{t}^{e, \perp} \vert \geq C_{n}) + 2\sum_{q = 1}^{r}\P(\{E_{q}^{\perp} \neq E_{q}\})
+\end{alignat*}
+Which completes the proof.
+\proEnd
+\end{pro}
+
+\begin{pro}{\textsc{Proof of \nref{LM_FREQ_CIRCDECONV_KNOWN_BETA_ORACLE_NP_TALAGRAND}}\\}\label{PRO_FREQ_CIRCDECONV_KNOWN_BETA_ORACLE_NP_TALAGRAND}
+Let be $m$ and $l$ in $\N$ with $m \leq l$ throughout this proof.
+Recall that we want to bound
+$\E[(\sup\nolimits_{t \in \mathds{B}_{m, l}}\vert \overline{\nu}^{e, \perp}_{t} \vert^{2} - 6 H^{2})_{+}]$ and
+$\P(\sup\nolimits_{t \in \mathds{B}_{m, l}} \vert \overline{\nu}^{e, \perp}_{t} \vert \geq 6 H^{2})$,
+where, for any $t$ in $\mathds{B}_{\underline{m}, \overline{l}}$
+\begin{alignat*}{3}
+& \overline{\nu}^{e, \perp}_{t} && = && r^{-1} \sum\nolimits_{q = 1}^{r} (v_{t}(E^{\perp}_{q}) - \E[v_{t}(E^{\perp}_{q})]); \quad v_{t}(E^{\perp}_{q}) = w^{-1} \sum\nolimits_{p = 1}^{w} \nu_{t}(E^{\perp}_{q, p});\\
+& \nu_{t}(E^{\perp}_{q, p}) && = && \sum\nolimits_{m \leq \vert s \vert \leq l} (t(s)\overline{\lambda}(s)^{-1} e_{s}(E^{\perp}_{q, p})).
+\end{alignat*}
+and $H$ is such that $H^{2} \geq n^{-1}\Lambda_{+}(l)(l - m + 1) (\psi_{m} + 1)$.
+
+We will use Talagrand's inequality (\nref{LM_TALAGRAND}).
+Recall that to do so, we have to exhibit three real numbers $h$, $H$ and $v$ verifying:
+\begin{multline*}
+	\sup\nolimits_{t \in \mathds{B}_{\underline{m}, \overline{l}}}\sup\nolimits_{y \in [0, 1]^{w}}\vert v_{t}(y)\vert \leq h; \quad \E[\sup\nolimits_{t \in \mathds{B}_{\underline{m}, \overline{l}}}\vert \overline{\nu}_{t}^{e, \perp}\vert ]\leq H;\\ \sup\nolimits_{t \in \mathds{B}_{\underline{m}, \overline{l}}} w^{-1} \sum\nolimits_{p = 1}^{w} \V_{\theta^{\circ}}[\nu_{t}(E_{q,p}^{\perp})]\leq v.
+\end{multline*}
+We start with $h$ which gives us
+\begin{alignat*}{2}
+& \sup\nolimits&&_{t \in \mathds{B}_{\underline{m}, \overline{l}}} \sup\nolimits_{y \in [0, 1]^{w}} \vert v_{t}(y) \vert^{2} = \sup\nolimits_{t \in \mathds{B}_{\underline{m}, \overline{l}}} \sup\nolimits_{y \in [0, 1]^{w}} \vert  w^{-1}  \sum\nolimits_{p = 1}^{w} \nu_{t}(y_{p}) \vert^{2}\\
+& && = \sup\nolimits_{y \in [0, 1]^{w}} \sum\nolimits_{s = m}^{l} \vert w^{-1}  \sum\nolimits_{p = 1}^{w} e_{s}(y_{p})\vert^{2}\Lambda(s)\leq \sum\nolimits_{m \leq \vert s \vert \leq l} \Lambda(s).
+\end{alignat*}
+Hence we define $h^{2} := \delta^{\star}_{m, l} \geq \sum\nolimits_{m \leq \vert s \vert \leq l} \Lambda(s)$.
+
+Considering $H^{2}$, we define the following objects: $\overline{e}_{s}^{\perp} := (r \cdot w)^{-1} \sum\nolimits_{q = 1}^{r} \sum\nolimits_{p = 1}^{w} e_{s}(E^{\perp}_{q, p})$ and $\overline{e}^{\perp} = (\overline{e}_{s}(E_{q}^{\perp}))_{s \in \mathds{Z}}$.
+We first replace $\overline{\nu}^{e, \perp}_{t}$, then $v_{t}(E^{\perp}_{q})$ and finally $\nu_{t}(E^{\perp}_{q, p})$ by their respective definition; using Fubini theorem, a scalar product appears and we use $\E[e_{s}(E^{\perp}_{q, 1})] = \phi(s)$ as $E^{\perp}_{q, 1} \sim \P_{\phi}$; Riesz representation theorem allows to get rid of the supremum, we then use the linearity of expectation and independence of the blocs and finally we use \nref{LM_DEPENDENTDATA_VARIANCEBOUNDIII} in the last line with $K = \lfloor \cmiSv \sqrt{(l - m + 1)}(4 \gamma_{g})^{-1}\rfloor$ which tends to infinity and is smaller than $w - 1$ and conclude (for $w$ large enough):
+\[\E[\sup\nolimits_{t \in \mathds{B}_{\underline{m}, \underline{l}}} \vert \overline{\nu}^{e, \perp}_{t}\vert^{2}] \leq 8 n^{-1} \Lambda_{+}(l) (l - m + 1) \cmiSv.\]
+So we set $H^{2} \geq 8 n^{-1} \Lambda_{+}(l) (l - m + 1) \cmiSv$.
+
+Finally we control $v$.
+Using \nref{LMI_INTRO_DATA_REGULAR} and Cauchy-Schwarz inequality, we have
+\begin{multline}\label{PRO_FREQ_CIRCDECONV_KNOWN_BETA_ORACLE_NP_TALAGRAND_EQ1}
+\sup\nolimits_{[x] \in \mathds{B}_{l, m}}r^{-1} \sum\nolimits_{q = 1}^{r} \V[v_{[x]}(E_{q}^{\perp})] = \sup\nolimits_{[x] \in \mathds{B}_{l, m}} w^{-2} \V[\sum\nolimits_{p = 1}^{w} \nu_{[x]}(E_{1, p}^{\perp})]\\
+\leq 4w^{-1} \sup_{[x] \in \mathds{B}_{l, m}} \E[\vert \nu_{[x]}(E_{q, 0}^{\perp}) \vert^{2} b(E_{q, 0}^{\perp})] \leq 4w^{-1} \sup_{[x] \in \mathds{B}_{l, m}} \sqrt{\E[\vert \nu_{[x]}(E_{q, 0}^{\perp}) \vert^{2}] \Vert \nu_{[x]} \Vert_{\infty} \E[b(E_{q, 0}^{\perp})]}
+\end{multline}
+as we have already proven in \nref{pro:conc} we have
+\begin{equation}\label{PRO_FREQ_CIRCDECONV_KNOWN_BETA_ORACLE_NP_TALAGRAND_EQ2}
+\E[\vert \nu_{[x]}(E_{q, 0}^{\perp}) \vert^{2}] \leq \Vert \phi \Vert_{l^{1}} \Lambda_{+}(m), \quad \text{ and }\sup_{[x] \in \mathds{B}_{l, m}} \Vert \nu_{[x]} \Vert_{\infty} \leq \sum_{s = l}^{m}\Lambda(s).
+\end{equation}
+Combining \ref{PRO_FREQ_CIRCDECONV_KNOWN_BETA_ORACLE_NP_TALAGRAND_EQ1}, and \ref{PRO_FREQ_CIRCDECONV_KNOWN_BETA_ORACLE_NP_TALAGRAND_EQ2}, we obtain
+\begin{multline*}
+\sup_{[x] \in \mathds{B}_{l, m}}r^{-1} \sum_{q = 1}^{r} \V[v_{[x]}(E_{q}^{\perp})] \leq 4w^{-1} \sqrt{m} \Lambda_{+}(m) \sqrt{2 \Vert \phi \Vert_{l^{1}} \sum_{p = 1}^{\infty} (p + 1)\beta_{p}} =: v.\hfill
+\end{multline*}
+Using Talagrand's inequality gives us the result.
+\proEnd
+\end{pro}
+
+\begin{pro}{\textsc{Proof of \nref{LM_FREQ_CIRCDECONV_KNOWN_BETA_ORACLE_NP_BLOCKDIFF}} \\}\label{PRO_FREQ_CIRCDECONV_KNOWN_BETA_ORACLE_NP_BLOCKDIFF}
+
+Both inequalities are verified using $\P(E_{q} \neq E^{\perp}_{q}) \leq \beta_{w}$ and, as it was proven in \nref{pro:conc}, $\Vert v_{t} \Vert_{\infty}^{2} \leq \sum\nolimits_{m \leq \vert s \vert \leq l}\Lambda(s)$.
+
+\medskip
+
+Consider first \nref{EQ1_LM_FREQ_CIRCDECONV_KNOWN_BETA_ORACLE_NP_BLOCKDIFF}, that is to say
+\[ \E[\sup\nolimits_{t \in \mathds{B}_{m, l}} \vert \overline{\nu}^{e, \perp}_{t} - \overline{\nu}^{e}_{t} \vert^{2} ] \leq 2 r \beta_{s} \sum\nolimits_{m \leq \vert s \vert \leq l}\Lambda(s).\]
+To prove it we define the sequence of events for any two integers $m$ and $l$ with $m \leq l$; and $t$ in $\mathds{B}_{m, l}$ let be $\Omega_{r, s} := \bigcap\nolimits_{q \in \llbracket 1, r \rrbracket} \{E_{q}^{\perp} = E_{q}\}$.
+Notice that $\P(\Omega_{r, s}) \geq \sum\nolimits_{q \in \llbracket 1, r \rrbracket} \P_{\theta^{\circ}}(E_{q}^{\perp} = E_{q}) - r + 1 \geq r (1 - \beta_{s}) - r + 1 \geq \max\{1 - r \beta_{s}, 0 \}$.
+Then, we have
+\[ \E[\sup\nolimits_{t \in \mathds{B}_{m, l}} \vert \overline{\nu}^{e, \perp}_{t} - \overline{\nu}^{e}_{t} \vert^{2} ] \leq 2 \Vert \nu_{t} \Vert_{\infty}^{2}\P[\Omega_{r, s}^{c} ] \leq 2 \Vert \nu_{t} \Vert_{\infty}^{2} r \beta_{s} \leq 2 r \beta_{s} \sum\nolimits_{m \leq \vert s \vert \leq l}\Lambda(s);\]
+which proofs the first statement.
+\proEnd
+\end{pro}
+ 
+ 
+ \section{Proofs for \nref{FREQ_DECONV_UNKNOWN}}
+% % --------------------------------------------------------------------
+% % <<Proof Lemma \ref{re:conc}>>
+% % --------------------------------------------------------------------
+ \begin{pro}[Proof of \nref{re:cconc}.]\label{pro:cconc}
+ For  $\He\in\mBaH$ setting
+ \begin{multline*}
+ \nu_{\He}(\rY)=\sum_{|s|\in\nset{1,\Di}}\ofHe{(s)}\hfedfmpI[(s)]\bas_s(-\rY) \\
+ \text{where }\E_{\rY\vert\rE}\nu_{\He}(\rY)=\sum_{|s|\in\nset{1,\Di}}\ofHe{(s)}\hfedfmpI[(s)]\fydf[(s)]
+ \end{multline*}
+  we observe (see \nref{rem:re:tal1}) that
+  $\Vnormlp{\hxdfPr-\dxdfPr}^2=\sup_{\He\in\mBaH}|\overline{\nu_{\He}}|^2$. We
+  intent to apply \nref{re:tal}. Therefore,  we compute  next quantities $\Tch$, $\TcH$,
+ and $\Tcv$  verifying the three  inequalities required in
+ \nref{re:tal}.
+
+ \noindent Consider $\Tch$ first:
+ \begin{multline*}
+     \sup_{\He\in\mBaH}\sup_{y\in[0,1]}|\nu_{\He}(y)|^2 
+     =\sup_{y\in[0,1]} \sum_{|s|\in\nset{1,\Di}} |\hfedfmpI[(s)]|^{2}\;|\bas_s(y)|^2\\
+   = 2\sum_{s\in\nset{1,\Di}} \eiSv[(s)] = 2\Di\oeiSv\leq 2\Di\meiSv=:\Tch^2.
+   \end{multline*}
+ \noindent Next, find  $\TcH$. Notice that $\sup_{\He\in\mBaH} |\Vskalarlp{\hxdfPr-\dxdfPr,\He}|^2= \sum_{|s|\in\nset{1,\Di}}\eiSv[|s|]\,|\hfydf[(s)]-\fydf[(s)]|^2$.  As $\E_{\rY\vert\rE}|\hfydf[(s)]-\fydf[(s)]|^2=\tfrac{1}{\ssY}(1-|\fydf[(s)]|^2)\leq \tfrac{1}{\ssY}$, we define
+ \begin{equation*}
+ \E_{\rY\vert\rE}[\sup_{\He\in\mBaH} |\Vskalarlp{\hxdfPr-\dxdfPr}^2] 
+ \leq 2\Di\oeiSv/\ssY\leq \cmeiSv2\Di\meiSv/\ssY= 2\DiepenSv/\ssY  =: \TcH^2.
+ \end{equation*}
+ \noindent Finally, consider $\Tcv$.  Given $\He\in \mBaH$  we observe
+ with
+ \begin{equation*}
+ \E_{Y \vert \epsilon}[\bas_s(Y_1)\bas_{s'}(-Y_1)]=\E[\bas_s(Y_1)\bas_{s'}(-Y_1)]=\fydf[(s'-s)]
+  \end{equation*}
+ % \begin{multline*}
+ %   \E[\bas_s(Y_1)\bas_{s'}(-Y_1)]=\int \ydf(y)
+ %   \exp(-\iota2\pi jy)\exp(+\iota2\pi s' y)dy\\=\int \ydf(y)
+ %   \exp(+\iota2\pi (s'-s)y)dy=\int \ydf(y)\overline{\bas_{s'-s}(y)}dy=\Vskalarlp{\ydf,\bas_{s'-s}}=\fydf[(s'-s)]
+ % \end{multline*}
+ that
+ \begin{multline*}
+   \E_{Y \vert \epsilon}|\nu_{\He}(Y_1)|^2=\E_{Y \vert \epsilon}\lVabs{\sum\nolimits_{|s|\in\nset{1,\Di}}\ofHe{(s)}\hfedfmpI[(s)]\bas_s(-Y_1)}^2\\
+ =\sum\nolimits_{|s|,|s'|\in\nset{1,\Di}}\fHe{(s)}\overline{\lambda_{n_{\lambda}}^{+}}(s)\E[\bas_s(Y_1)\bas_{s'}(-Y_1)] \hfedfmpI[(s')]\,\ofHe{(s')}\\
+ =\sum_{|s|,|s'|\in\nset{1,\Di}}\fHe{(s)}\overline{\lambda_{n_{\lambda}}^{+}}(s)\fydf[(s'-s)] \hfedfmpI[(s')]\,\ofHe{(s')}
+ =\Vskalarlp{\DiPro[k]\hA\DiPro[k]\;\fHe{},\fHe{}}
+ \end{multline*}
+ defining the Hermitian and positive semi-definite matrix $\hA:=
+ \Zsuite[s,s']{\overline{\lambda_{n_{\lambda}}^{+}}(s) \hfedfmpI[(s')] \fydf[(s'-s)]}$ and the mapping
+ $\DiPro[k]:\Cz^\Zz\to\Cz^\Zz$ with
+ $z\mapsto\DiPro[k]z=(z_l\Ind{\{|l|\in\nset{1,\Di}\}})_{l\in\Zz}$. Obviously,
+ $\DiPro[k]$ is an orthogonal projection from $\lp^2$ onto the linear
+ subspace spanned by all $\lp^2$-sequences with support on the
+ index-set $\nset{-\Di,-1}\cup\nset{1,\Di}$. Straightforward algebra shows
+ 
+  $\sup_{\He\in\mBaH}\Var(\nu_{\He}(Y_1))
+  \leq \sup_{\He\in\mBaH} \Vskalarlp{\DiPro[k]\hA\DiPro[k] \;\fHe{},\fHe{}}$, hence
+ \begin{multline*}
+   \sup_{\He\in\mBaH} \tfrac{1}{\ssY}\sum_{i=1}^{\ssY}\Var(\nu_{\He}(Y_i))
+ \leq \sup_{\He\in\mBaH} \Vskalarlp{\DiPro[k]\hA\DiPro[k]\fHe{},\fHe{}}= \sup_{\He\in\mBaH} \Vnormlp{\DiPro[k]\hA\DiPro[k]\fHe{}}\leq\Vnorm[s]{\DiPro[k]\hA\DiPro[k]}.
+ \end{multline*}
+ where $\Vnorm[s]{M}:=\sup_{\Vnormlp{x}\leq 1}\Vnormlp{Mx}$ denotes the
+ spectral-norm of a linear map $M:\lp^2\to\lp^2$. For  a
+ sequence $z\in(\Cz\backslash\{0\})^\Zz$ let $\Diag{z}$   be the multiplication operator
+ given by $\Diag{z}x:=\Zsuite{z(s) x(s)}$.   Clearly, we have
+  $\DiPro[k]\hA\DiPro[k] = \DiPro[k]\Diag{\hfedfmpI} \DiPro[k]  \cC_{\fydf}
+  \DiPro[k] \Diag  {\ohfedfmpI}\DiPro[k],$
+ where $  \cC_{\fydf} := \Zsuite[s,s']{\fou[s-s']{\ydf}}.$
+ Consequently,
+ \begin{multline*}
+    \sup_{\He\in\mBaH}\tfrac{1}{\ssY}\sum_{i=1}^{\ssY}\Var(\nu_{\He}(Y_i))
+ \leq \Vnorm[s]{\DiPro[k]\Diag{\hfedfmpI}\DiPro[k]}\; \Vnorm[s]{ \cC_{\fydf}}\;\Vnorm[s]{\DiPro[k]\Diag{\ohfedfmpI}\DiPro[k]}\\=
+ \Vnorm[s]{\DiPro[k]\Diag{\hfedfmpI} \DiPro[k]}^2\; \Vnorm[s]{\cC_{\fydf}}.
+ \end{multline*}
+ We have that $\Vnorm[s]{\DiPro[k]\Diag{\hfedfmpI}\DiPro[k]}^2= \max\{\eiSv[(s)],s\in\nset{1,\Di}\}=\meiSv.$
+ It remains to show the boundedness of $\Vnorm[s]{\cC_{\fydf}}$. 
+ Keeping in mind that $(\cC_{\fydf}z)_k:=
+ \sum_{s\in\Zz}\fydf[(s-k)]z(s)$, $k\in\Zz$, it is
+ easily verified that $\Vnormlp{\cC_{\fydf} z}^2\leq
+ \Vnormlp[1]{\fydf}^2\Vnormlp{z}^2$  and hence $ \Vnorm[s]{\cC_{\fydf}}\leq\Vnormlp[1]{\fydf}$, which
+   implies
+   \begin{equation*}
+     \sup_{\He\in\mBaH}\tfrac{1}{\ssY}\sum_{i=1}^{\ssY}\Var(\nu_{\He}(Y_i))\leq\Vnormlp[1]{\fydf}\,\meiSv=:\Tcv.
+   \end{equation*}
+   Replacing in \nref{rem:re:tal1} \eqref{re:tal:e3} and \eqref{re:tal:e4}
+   the quantities $\Tch,\TcH$ and $\Tcv$ together with
+   $\DipeneSv=\cmeiSv\Di\meiSv$ gives the assertion \ref{re:cconc:i} and
+   \ref{re:cconc:ii}. Setting
+   $\TcH:=2\daRa{\Di}{\xdf,\eiSv}=2[\bias^2(\xdf)\vee
+   \DipeneSv\,\ssY^{-1}]\geq 2\DipeneSv\,\ssY^{-1}$ and the quantities
+   $\Tch$ as above $\Tcv$ we obtain \ref{re:cconc:iii}, which completes the
+   proof.\proEnd
+ \end{pro}
+% --------------------------------------------------------------------
+% <<Proof Re conc>>
+% --------------------------------------------------------------------
+\begin{pro}[Proof of \nref{re:xevent}.]
+The assertion follows directly from Hoeffding's inequality. Indeed, setting
+$\tX_i:=\bas_s(-\rE_i)-\fedf[(s)]$, $i\in\nset{1,\ssE}$, obviously
+$\tX_1,\dotsc,\tX_{\ssE}$ are \iid with mean zero and $|\tX_i|\leq d=2$, hence
+\begin{multline*}
+  \P\big(|\hfedf[(s)]/\fedf[(s)]-1|>1/3\big)=\P\big(|\hfedf[(s)]-\fedf[(s)]|>|\fedf[(s)]|/3\big)\\=\P\big(|\sum_{i=1}^n\tX_i|>\ssE|\fedf[(s)]|/3\big)\leq
+  2\exp(-\tfrac{(\ssE|\fedf[(s)]|/3)^2}{2d^2\ssE})=2\exp(-\tfrac{\ssE|\fedf[(s)]|^2}{72}).
+\end{multline*}
+\proEnd
+\end{pro}

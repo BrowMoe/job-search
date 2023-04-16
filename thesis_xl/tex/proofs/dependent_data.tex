@@ -1,0 +1,96 @@
+We present in this annex definitions, and results which are used in \nref{FREQ_CIRCDECONV_KNOWN_BETA} in order to compute the convergence rate of the adaptive aggregation estimator for strictly stationary, absolutely regular process.
+
+Those results are commonly used in the derivation of convergence rate of estimators in presence of absolutely regular data, see for example \textcolor{red}{Viennet, Johannes and Asin (x2), Bosq}
+
+Let us first remind the definitions of a strictly stationary process and of an absolutely regular process.
+A strictly stationary process, is a process for which the marginal distributions are time invariant as formally formulated in the definition bellow.
+\begin{de}{\textsc{Strict stationarity} \\}\label{DE_DEPENDENTDATA_STRICTSTATIONARITY}
+Consider a sequence of random variables $\left(Y_{p}\right)_{p \in \N}$.
+We say that $\left(Y_{p}\right)_{p \in \N}$ is strictly stationary if, for any integer $q$, any finite family of integers $\left(p_{r}\right)_{r \in \llbracket 1, q\rrbracket}$, and integer $h$, $\left(Y_{p_{r}}\right)_{r \in \llbracket 1, q \rrbracket}$ is identically distributed to $\left(Y_{p_{r} + h}\right)_{r \in \llbracket 1, q \rrbracket}$. In particular, for any integers $p$ and $q$, $Y_{p}$ and $Y_{q}$ have same distribution.
+\end{de}
+
+On the other hand, an absolutely regular process is a process admitting a structure of dependence which is lighter than independence based on the following quantification of dependence, called $\beta$-mixing coefficients.
+
+\begin{de}{\textsc{$\beta$-mixing coefficients} \\}
+Let $\left(\Omega, \mathcal{A}, \P\right)$ be a probability space and $\mathcal{U}$ and $\mathcal{V}$ be two sub $\sigma$-algebras of $\mathcal{A}$.
+Then, we define the $\beta$-mixing coefficient of $\mathcal{U}$ and $\mathcal{V}$:
+\[\beta(\mathcal{U}, \mathcal{V}) := \frac{1}{2} \sup\limits_{(U_{j})_{j \in I}(V_{j})_{j \in J}}\left\{\sum\sum \vert \P(U_{j}\P(V_{k}) - \P(U_{j} \cap V_{k}) \vert \right\}\]
+where the $\sup$ is taken over all possible finite partition of $\Omega$ which are respectively $\mathcal{U}$ and $\mathcal{V}$ measurable.
+
+In addition for two random variables $Y_{1}$ and $Y_{2}$ we note $\sigma(Y_{1})$ and $\sigma(Y_{2})$ the $\sigma$-algebra they generate and $\beta\left(Y_{1}, Y_{2}\right) = \beta\left(\sigma(Y_{1}), \sigma(Y_{2})\right)$.
+\end{de}
+
+For a process to be absolutely regular, the sequence of $\beta$-mixing coefficients has to tend to $0$ as the distance between indices increases, as formally formulated hereafter.
+
+\begin{de}{\textsc{Absolutely regular process} \\}
+Consider a stochastic process $(Y_{p})_{p \in \mathds{Z}}$.
+Denote, for any $p$ in $\N$, by $\mathcal{F}^{-}_{p} := \sigma\left((Y_{q})_{q \leq p}\right)$ and $\mathcal{F}^{+}_{p} := \sigma\left((Y_{q})_{q \geq p}\right)$.
+The stochastic process $(Y_{p})_{p \in \mathds{Z}}$ is said to be absolutely regular if
+\[\lim\limits_{p \rightarrow \infty} \beta(\mathcal{F}_{0}^{-}, \mathcal{F}_{p}^{+}) = 0.\]
+\end{de}
+
+When one relaxes the independence assumption and wants to study the convergence rate, the main troubles come from the control of the variance as the linearity of the expectation keeps the bias unmoved.
+It is why we need the following definitions and lemmata.
+
+A first useful lemma is the following one, relating the variance of empirical basis functions mean and the $\beta$-mixing coefficients.
+It is a direct consequence of Lemma 4.1 in \textcolor{red}{Johannes and Asin}
+\begin{lm}\label{LM_DEPENDENTDATA_VARIANCEBOUNDI}
+Let the process $(Y_{p})_{p \in \mathds{Z}}$ of our observations be a strictly stationary process.
+Then, there exists a sequence $(b_{p})_{p \in \mathds{N}}$ of measurable functions from $\R$ to $[0, 1]$ such that $\E\left[b_{k}(Y_{0})\right] = \beta(Y_{0}, Y_{k})$ and for any $j$ in $\mathds{Z}$ and any integer $n$ we have
+\[\V\left[ \sum\limits_{p = 1}^{n} e_{j}(Y_{p})\right] \leq n \left(1 + 4 \sum\limits_{p = 1}^{n - 1} \beta(Y_{0}, Y_{k})\right)\]
+\end{lm}
+
+However, this bound is sometimes not satisfying as it depends on the mixing coefficients.
+That is in order to present a lemma which does not involve this sum that we further introduce the class $\mathcal{L}(q, \omega, \P)$ of functions.
+
+\begin{de}{\textsc{Space $\mathcal{L}(q, \omega, \P)$} \\}\label{DE_DEPENDENTDATA_FUNCSPACE}
+Keeping in mind the notations from \nref{DE_DEPENDENTDATA_ABSOLUTELYREGULAR}, consider the following space of functions.
+Given $q \geq 2$, a non negative sequence $\omega = \left(\omega_{p}\right)_{p \in \N}$ and a probability measure $\P$, let $\mathcal{L}(q, \omega, \P)$ be the set of functions $b : \R \rightarrow \overline{\R_{+}}$ such that there exists a sequence $(b_{p})_{p \in \N}$ of measurable functions $b_{p}: \R \rightarrow [0, 1]$ with $b_{0} = \mathds{1}$ and $\E_{\P} b_{p} \leq \omega_{p}$ satisfying $b = \sum\limits_{p = 0}^{\infty} (p + 1)^{q - 2} b_{p}$.
+\end{de}
+
+One can easily see that a sufficient condition for elements of $\mathcal{L}(q, \omega, \P)$ to be non-negative $\P$-integrable functions is $\sum\limits_{j = 0}^{\infty} (j - 1)^{q-2} \omega_{j} < \infty$.
+
+\begin{lm}\label{LM_DEPENDENTDATA_VARIANCEBOUNDII}
+Considering our strictly stationary observations process $(Y_{p})_{p \in \mathds{Z}}$, their common marginal distribution $\P_{Y}$ and $\left(\beta_{p}\right)_{p \in \N} = \left(\beta(\mathcal{F}_{0}^{-}, \mathcal{F}_{p}^{+})\right)_{p \in \N}$ the sequence of mixing coefficients; there exist a function $b$ belonging to $\mathcal{L}(2, \beta, \P)$ such that for any $j$ in $\mathds{Z}$ and any integer $n$, we have
+\[\V\left[\sum\limits_{p = 1}^{n} e_{j}(Y_{p})\right] \leq 4 n \sum\limits_{p = 0}^{n} \beta(Y_{0}, Y_{p}).\]
+
+Alternatively, assuming, for $r$ and $q$ exponents as in Hölder's inequality, that $\beta_{p}$ tends to $0$ as $p$ tends to $\infty$ with $\omega_{0} = 1$ and that, for some $r$, $\sum\limits_{p \in \N} (p+1)^{r-1} \beta_{p} < \infty$ then, we have
+\[\E\left[\left\vert e_{j}(Y_{0})\right\vert^{2} b(Y_{0})\right] \leq \E\left[\left\vert e_{j}(Y_{0})\right\vert^{2q}\right]^{1/q} \left(r \sum\limits_{p \in \N} (p+1)^{r-1} \beta_{p}\right)^{1/r}.\]
+\end{lm}
+
+\begin{as}\label{AS_DEPENDENTDATA_MARGINS}
+Considering the process of observations $(Y_{p})_{p \in \mathds{Z}}$, assume that for any $p$, the joint distribution $\P_{Y_{0}, Y_{p} \vert \theta^{\circ}}^{n}$ of $Y_{0}$ and $Y_{p}$ admits a density denoted $g_{Y_{0}, Y_{p}}$ which is square integrable.
+Abusing our notations for norms, denote
+$\left\Vert f_{Y_{0}, Y_{p}}\right\Vert_{L^{2}}^{2} := \int_{0}^{1}\int_{0}^{1} \vert f_{Y_{0}, Y_{p}}(y_{0}, y_{p})\vert^{2}
+\text{d}\!y_{0} \, \text{d}\!y_{p}$ and for any $y_{0}$ and $y_{p}$ in $[0, 1]$ set $g \otimes g(y_{0}, y_{p}) = g(y_{0}) \cdot g_{y_{p}}$.
+Then, we assume $\gamma_{g} := \sup\limits_{p \geq 1} \Vert g_{Y_{0}^{n}, Y_{p}^{n}} - g \otimes g \Vert_{L^{2}} < \infty$.
+\end{as}
+
+\begin{lm}\label{LM_DEPENDENTDATA_VARIANCEBOUNDIII}
+Let the process of observations $(Y_{p})_{p \in \N}$ be a strictly stationary process with associated sequence of mixing coefficients $\left(\beta(Y_{0}, Y_{p})\right)_{p \in \N}$.
+Under \nref{AS_DEPENDENTDATA_MARGINS}, for any $n \geq 1$; $m$ and $l$ in $\mathds{N}$ with $m \leq l$ and $K \in \llbracket 0, n-1\rrbracket$, it holds
+\[\sum\limits_{m \leq \vert j \vert \leq l} \V\left[\sum\limits_{p = 1}^{n} e_{j}(Y_{p})\right] \leq n 2 (l-m+1) \left\{1 + 2\left[\gamma_{g} \frac{K}{\sqrt{(l-m+1)}} + 2 \sum\limits_{p = K + 1}^{n - 1} \beta(Y_{0}, Y_{p})\right]\right\}.\]
+Moreover, as $\sum\limits_{p \in \mathds{N}} \beta(Y_{0}, Y_{p})$ is finite, we have $\lim\limits_{K \rightarrow \infty} \sum\limits_{p = K + 1}^{\infty} \beta(Y_{0}, Y_{p}) = 0$, so we can find $K^{\circ}$ in $\N$ such that for any $K$ greater than $K^{\circ}$, $\sum\limits_{p = K + 1}^{\infty} \beta(Y_{0}, Y_{p}) \leq \frac{1}{4}$.
+We can take $K = \frac{\sqrt{l - m + 1}}{4 \gamma_{g}}$ and assuming that this choice is greater than $K^{\circ}$, we have
+\[\sum\limits_{m \leq \vert j \vert \leq l} \V\left[\sum\limits_{p = 1}^{n} e_{j}(Y_{p})\right] \leq 4 n (l-m+1).\]
+\end{lm}
+
+Contrarily to the previous lemmata, this one exhibits an upper bound for the variance which does not involve the sum of mixing coefficients which allows to design a data driven estimator which does not requires knowledge of them.
+
+\begin{lm}\label{AS_DEPENDENTDATA_RICHSPACE}
+Assume that the universe is rich enough in the sense that there exist a sequence of random variables with uniform distribution on $[0,1]$ which is independent of $(Y_{p})_{p \in \mathds{Z}}$.
+
+Then, there exist a sequence $(Y_{p}^{\perp})_{p \in \mathds{Z}}$ satisfying the following properties.
+For any positive integer $s$ and for any strictly positive integer $q$, define the sets $(I_{q, p}^{e})_{p \in \llbracket 1, s\rrbracket} := \llbracket 2(q-1) s + 1, (2q - 1) s\rrbracket$ and $\left(I_{q, p}^{o}\right)_{p \in \llbracket 1, s \rrbracket} := \llbracket (2q-1) s + 1, 2q s\rrbracket$.
+
+Define for any $q$ in $\mathds{Z}$ the vectors of random variables $E_{q} := (Y_{I_{q, p}^{e}}^{n})_{p \in \llbracket 1, s \rrbracket}$; $O_{q} := (Y_{I_{q, p}^{o}}^{n})_{p \in \llbracket 1, s \rrbracket}$; and their counterparts $E_{q}^{\perp} := (Y_{I_{q, p}^{e}}^{n, \perp})_{p \in \llbracket 1, s \rrbracket}$ and $O_{q}^{\perp} := (Y_{I_{q, p}^{o}}^{n, \perp})_{p \in \llbracket 1, s \rrbracket}$.
+
+Then, $\left(Y^{\perp}_{p}\right)_{p \in \N}$ satisfies:
+\begin{itemize}
+\item for any integer $q$, $E^{\perp}_{q}$, $E_{q}$, $O^{\perp}_{q}$, and $O_{q}$ are identically distributed;
+\item for any integer $q$, $\P_{\theta^{\circ}}^{n}\left(E_{q} \neq E^{\perp}_{q}\right) \leq \beta_{s}$ and $\P_{\theta^{\circ}}^{n}\left(O_{q} \neq O^{\perp}_{q}\right) \leq \beta_{s}$;
+\item $\left(E^{\perp}_{q}\right)_{q \in \mathds{Z}}$ are independent and identically distributed and $\left(O^{\perp}_{q}\right)_{q \in \mathds{Z}}$ as well.
+\end{itemize}
+\end{lm}
+
+

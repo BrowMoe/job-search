@@ -1,0 +1,91 @@
+\section{Adaptivity using a hierarchical prior}\label{2.2}
+
+We denote $\P_{\boldsymbol{\theta}^{M}}$ a so called hierarchical prior distribution, described hereafter, and $\boldsymbol{\theta}^{M}$ a random variable following this prior.
+Define $G$ a finite subset of $\mathds{J}$ and  $\pen: \mathcal{P}(G) \rightarrow \R_{+}$ a so-called penalty function.
+The threshold parameter noted $m$ for the sieve prior described in the previous section is now a $\mathcal{P}(G)$-valued random variable denoted $M$. We note $\P_{M}$ the distribution of this parameter.
+
+The density of $\P_{M}$ with respect to the counting measure has the shape
+\[\P_{M}(m) \propto \exp[- \pen(m)] \mathds{1}_{m \subset G}.\]
+
+The dependance structure between the different quantities of the model is then the following:
+
+\begin{alignat*}{3}
+& \P_{\boldsymbol{\theta}^{M} \vert M=m} && = && \P_{\boldsymbol{\theta}^{m}};\\
+& \P_{Y \vert \boldsymbol{\theta}, M} && = && \P_{Y \vert \boldsymbol{\theta}}.
+\end{alignat*}
+
+We can then obtain the following form for the posterior distribution of the hyper parameter:
+
+\begin{alignat*}{3}
+&\P_{M \vert Y}(m, y) &&\propto&& \frac{d\P_{M, Y}}{d\P^{\circ}}(m, y)\\
+& &&\propto&&\int_{\Theta}\frac{d\P_{M, Y, \boldsymbol{\theta}^{M}}}{d\P^{\circ} \, d\Q^{\circ}}(m, y, \theta)d\mathds{Q}^{\circ}(\theta)\\
+& &&\propto&&\int_{\Theta}\frac{d\P_{Y \vert M, \boldsymbol{\theta}^{M}}}{d\P^{\circ}}(m, y, \theta) \, \frac{d\P_{M, \boldsymbol{\theta}^{M}}}{d\mathds{Q}^{\circ}}(m, \theta)d\mathds{Q}^{\circ}(\theta)\\
+& &&\propto&&\int_{\Theta}\frac{d\P_{Y \vert \boldsymbol{\theta}^{M}}}{d\P^{\circ}}(y, \theta) \, \frac{d\P_{\boldsymbol{\theta}^{M}\vert M}}{d\mathds{Q}^{\circ}}(m, \theta) \P_{M}(m)d\mathds{Q}^{\circ}(\theta)\\
+& &&\propto&&\P_{M}(m)\int_{\Theta}\frac{d\P_{Y \vert \boldsymbol{\theta}^{M}}}{d\P^{\circ}}(y, \theta) \, \frac{d\P_{\boldsymbol{\theta}^{m}}}{d\mathds{Q}^{\circ}}(m, \theta) d\mathds{Q}^{\circ}(\theta)\\
+& && = && \frac{\P_{M}(m)\int_{\Theta}\frac{d\P_{Y \vert \boldsymbol{\theta}^{M}}}{d\P^{\circ}}(y, \theta) \, \frac{d\P_{\boldsymbol{\theta}^{m}}}{d\mathds{Q}^{\circ}}(m, \theta) d\mathds{Q}^{\circ}(\theta)}{\sum\limits_{j \subset G}\P_{M}(j)\int_{\Theta}\frac{d\P_{Y \vert \boldsymbol{\theta}^{M}}}{d\P^{\circ}}(y, \theta) \, \frac{d\P_{\boldsymbol{\theta}^{m}}}{d\mathds{Q}^{\circ}}(j, \theta) d\mathds{Q}^{\circ}(\theta)}\\
+& && = && \frac{\exp[- \pen(m)] \int_{\Theta_{m}}\exp[-\frac{1}{2}(2 l(y, \theta) + \sum\limits_{k \in m} \vert \theta_{k} \vert^{2})] d\mathds{Q}^{\circ}(\theta)}{\sum\limits_{j \subset G}\exp[- \pen(j)] \int_{\Theta_{j}}\exp[-\frac{1}{2}(2 l(y, \theta) + \sum\limits_{k \in j} \vert \theta_{k} \vert^{2})] d\mathds{Q}^{\circ}(\theta)}.
+\end{alignat*}
+
+From this, we can deduce the iterated posterior.
+Indeed, by defining
+\[\exp[\Upsilon(Y, m)] := \int_{\Theta_{m}}\exp[-\frac{1}{2}(2 l(y, \theta) + \sum\limits_{k \in m} \vert \theta_{k} \vert^{2})] d\mathds{Q}^{\circ}(\theta)\]
+we have:
+
+\begin{alignat*}{3}
+&\P_{M \vert Y}^{\eta}(m, y) && = && \frac{\P_{M}(m)\left(\int_{\Theta_{m}}\exp[-\frac{1}{2}(2 l(y, \theta) + \sum\limits_{k \in m} \vert \theta_{k} \vert^{2})] d\mathds{Q}^{\circ}(\theta)\right)^{\eta}}{\sum\limits_{j \subset J}\P_{M}(j)\left(\int_{\Theta_{j}}\exp[-\frac{1}{2}(2 l(y, \theta) + \sum\limits_{k \in j} \vert \theta_{k} \vert^{2})] d\mathds{Q}^{\circ}(\theta)\right)^{\eta}}\\
+& && = && \frac{\exp[-\pen(m) + \eta \Upsilon(Y, m)]}{\sum\limits_{j \subset G}\exp[- \pen(j) + \eta \Upsilon(Y, j)]} \mathds{1}_{m \subset G}\\
+& && = && \frac{1}{\sum\limits_{j \subset G}\exp\left[\eta \left(\Upsilon(Y, j) - \Upsilon(Y, m)\right) - \left(\pen(j) - \pen(m)\right)\right]} \mathds{1}_{m \subset G}
+\end{alignat*}
+
+and we can deduce the self informative Bayes carrier.
+
+\begin{lm}{\textsc{Self informative Bayes carrier of the hyper-parameter in a hierarchical sieve prior I}\\}\label{lm2.2.1}
+The support of the self informative Bayes carrier for the hyper-parameter $M$ is
+\[\argmax\limits_{m \subset G} \{\Upsilon(Y, m)\}.\]
+\end{lm}
+
+Unfortunately, in many practical cases, the choice led by $\argmax\limits_{m \subset G} \{\Upsilon(Y, m)\}$ is $G$ itself and leads to inconsistent inference (as we will show later).
+However, if one allows the prior distribution to depend on $\eta$ and to take the shape $\exp[- \eta \pen(m)] \mathds{1}_{m \subset G}$, we obtain the following theorem.
+
+\begin{thm}{\textsc{Self informative Bayes carrier of the hyper-parameter in a hierarchical sieve prior II}\\}\label{thm2.2.1}
+Using the modified prior which depends on $\eta$, the support of the self informative Bayes carrier for the hyper-parameter $M$ is
+\[\argmax\limits_{m \subset G} \{\Upsilon(Y, m) - \pen(Y, m)\}.\]
+\end{thm}
+
+\begin{pro}{\textsc{Proof of \nref{thm2.2.1}}\\}\label{pro2.2.1}
+For any finite set $P$ of subsets of $G$ such that $\max\limits_{m \in P} \Upsilon(Y, m) - \pen(Y, m) < \max\limits_{k \subset G} \Upsilon(Y, k) - \pen(Y, k)$, we can write
+
+\begin{alignat*}{3}
+& \P_{M\vert Y}^{\eta}(P) && = && \sum\limits_{m \in P} \frac{1}{\sum\limits_{j \subset G}\exp\left[\eta \left(\Upsilon(Y, j) - \Upsilon(Y, m) - \left(\pen(j) - \pen(m)\right)\right)\right]} \mathds{1}_{m \subset G}\\
+& && \leq && \frac{Card(P)}{\exp\left[\eta \left(\max\limits_{j \subset G}\left(\Upsilon(Y, j) - \pen(j)\right) - \max\limits_{m \in P}\left(\Upsilon(Y, m) - \pen(m)\right)\right)\right]} \mathds{1}_{m \subset G}\\
+& && \rightarrow && 0.
+\end{alignat*}
+\qedsymbol
+\end{pro}
+
+
+The posterior distribution for $\boldsymbol{\theta}^{M}$ itself follows:
+
+\begin{alignat*}{3}
+&\frac{d\mathds{Q}_{\boldsymbol{\theta}^{M} \vert Y}}{d\P^{\circ}}(\theta, y) && \propto && \frac{d\P_{\boldsymbol{\theta}^{M}, Y}}{d\mathds{Q}^{\circ} \, d\P^{\circ}}(\theta, y)\\
+& &&\propto&& \sum\limits_{m \subset J} \frac{d\P_{\boldsymbol{\theta}^{M}, Y, M}}{d\mathds{Q}^{\circ} \, d\P^{\circ} \, d\P^{\circ}}(\theta, y, m)\\
+& &&\propto&& \sum\limits_{m \subset J} \frac{d\P_{\boldsymbol{\theta}^{M} \vert Y, M}}{d\mathds{Q}^{\circ}}(\theta, y, m) \frac{d\P_{Y, M}}{d\P^{\circ} \, d\P^{\circ}}\\
+& &&\propto&& \sum\limits_{m \subset J} \frac{d\P_{\boldsymbol{\theta}^{m} \vert Y}}{d\mathds{Q}^{\circ}}(\theta, y, m) \frac{d\P_{M \vert Y}}{d\P^{\circ}} \frac{d\P_{Y}}{d\P^{\circ}}(Y)\\
+& &&=&& \sum\limits_{m \subset J} \frac{d\P_{\boldsymbol{\theta}^{m} \vert Y}}{d\mathds{Q}^{\circ}}(\theta, y, m) \frac{d\P_{M \vert Y}}{d\P^{\circ}}.
+\end{alignat*}
+
+From this, we can deduce the iterated posterior distribution for $\boldsymbol{\theta}^{M}$:
+\begin{alignat*}{3}
+& \frac{d\mathds{Q}_{\boldsymbol{\theta}^{M} \vert Y}^{\eta}}{d\P^{\circ}}(\theta, y) && = && \sum\limits_{m \subset G} \frac{d\P_{\boldsymbol{\theta}^{m} \vert Y}^{\eta}}{d\mathds{Q}^{\circ}}(\theta, y, m) \frac{d\P_{M \vert Y}^{\eta}}{d\P^{\circ}}(m, y)\\
+& && = && \sum\limits_{m \subset G} \frac{\exp\left[-\left(\frac{1}{2}\sum\limits_{j \in m} \vert \boldsymbol{\theta}_{j} \vert^{2} + \eta l(\boldsymbol{\theta}, y)\right)\right] \cdot \prod\limits_{j \notin m} \delta_{0}(\boldsymbol{\theta}_{j})}{\int_{\Theta_{m}} \exp\left[-\left(\frac{1}{2}\sum\limits_{j \in m} \vert \mu_{j} \vert^{2} + \eta l(\mu, y)\right)\right] d\mu} \frac{\exp[-\pen(m) + \eta \Upsilon(Y, m)]}{\sum\limits_{j \subset G}\exp[- \pen(j) + \eta \Upsilon(Y, j)]} \mathds{1}_{m \subset G}\\
+\end{alignat*}
+
+And as a consequence, we can deduce the self informative Bayes carrier.
+
+\begin{thm}{\textsc{Self informative carrier using a hierarchical sieve prior}\\}
+Denote $\widehat{m} := \argmax\limits_{m \subset G} \{\Upsilon(Y, m) - \pen(m)\}$ then the support of the self informative Bayes carrier is contained in $\argmax\limits_{\theta \in \Theta_{m}, m \in \widehat{m}}\{-l(\theta, Y)\}$.
+\end{thm}
+
+We have hence seen in these two first sections investigated the behaviour of the sieve prior and its hierarchical version under the iterative asymptotic and shown that under some mild assumptions, their self informative Bayes carriers correspond to some constrained maximum likelihood estimator and penalised contrast model selection version of it respectively.
+
+We should now investigate the behaviour of these (iterated) priors under the noise asymptotic and define hypotheses under which they behave properly.

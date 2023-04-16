@@ -1,0 +1,919 @@
+% ====================================================================
+%                                                                 
+%                           DACD-abrev-package.sty
+%
+% %%ts latex start%%[2018-03-28 Wed 16:24]%%ts latex end%%
+% ====================================================================
+\NeedsTeXFormat{LaTeX2e}[1998/06/01]
+%%%%%%%%%%%%%%%%%%%%
+\ProvidesPackage{ACDE-abrev-package}
+                [2018/03/09 v1.4%
+     ACDE Abrevation Package]
+%%%%%%%%%%%%%%%%%%%%    
+%  used  Packages 
+\ProcessOptions
+
+
+
+% ====================================================================
+% Deconvolution
+% <<SIP-Deconv>>
+% ====================================================================
+
+
+
+\newcommand{\rX}{X}
+\newcommand{\rY}{Y}
+\newcommand{\rE}{\epsilon}
+
+\newcommand{\rOb}{Z}
+
+
+
+\newcommand{\ssY}{n}
+\newcommand{\ssE}{n_{\lambda}}
+
+
+\newcommand{\xdf}{\theta^{\circ}}
+\newcommand{\ydf}{\phi}
+\newcommand{\edf}{\lambda}
+
+
+\newcommand{\xdfCw}[1][(\Di)]{\ga #1}
+\newcommand{\xdfCr}{r}
+\newcommand{\xdfC}{\widetilde{\Theta}}
+\newcommand{\wCxdf}[1][{\xdfCw[]}]{\Theta(#1)}
+\newcommand{\wrCxdf}[1][{\xdfCw[{}]}]{\wCxdf[{#1, \xdfCr}]}
+\newcommand{\rwCxdf}[1][\xdfCr]{\wrCxdf}
+
+\newcommand{\edfCw}[1][\Di]{\ge_{#1}}
+\newcommand{\edfCr}{d}
+\newcommand{\edfC}{\cE}
+\newcommand{\wCedf}[1][{\edfCw[]}]{\edfC_{^{\hspace*{-.2ex}#1}}}
+\newcommand{\wrCedf}[1][{\edfCw[]}]{\wCedf[#1]^{\xdfCr}}
+\newcommand{\rwCedf}[1][\edfCr]{\wCedf^{#1}}
+
+\newcommand{\edfCwm}[1][\Di]{\ge_{(#1)}}
+\newcommand{\edfCwo}[1][\Di]{\overline{\ge}_{#1}}
+
+
+\newcommand{\wNo}{\ga}
+
+
+\newcommand{\fxdf}[1][]{\xdf #1}
+\newcommand{\ofxdf}[1][]{\overline{\xdf}#1}
+\newcommand{\fydf}[1][]{\ydf #1}
+
+
+\newcommand{\xdfPr}[1][\Di]{\xdf_{\overline{#1}}}
+\newcommand{\fxdfPr}[2][\Di]{\fou[#2]{\xdf_{#1}}}
+
+
+\newcommand{\fedf}[1][]{\edf #1}
+\newcommand{\ofedf}[1][]{\ofou[#1]{\edf}}
+
+\newcommand{\fedfI}[1][]{\edf^{-1} #1}
+\newcommand{\ofedfI}[1][]{\ofou[#1]{\edf}^{^{_{-1}}}}
+
+
+\newcommand{\hfxdf}[1][]{\hfou[#1]{\xdf}}
+\newcommand{\tfxdf}[1][]{\tfou[#1]{\xdf}}
+
+\newcommand{\hfydf}[1][]{\ydf_{\ssY} #1}
+\newcommand{\hfedf}[1][]{\edf_{\ssE} #1}
+
+
+\newcommand{\hfedfmpI}[1][(s)]{\edf^{+}_{\ssE} #1}
+\newcommand{\ohfedfmpI}[1][(s)]{\overline{\hfedf^{+}}[#1]}
+\newcommand{\hfedfP}[2][j]{\hfedf[#1]^{#2}}
+\newcommand{\hfedfI}[1][j]{\hfedfP[#1]{-1}}
+
+\newcommand{\Dihfxdf}[1][\Di]{\widehat{\fou[]{\xdf}}\hspace*{-.1ex}^{#1}}
+\newcommand{\Difxdf}[1][\Di]{\fou[]{\xdf}^{#1}}
+
+\newcommand{\Dihfydf}[1][\Di]{\widehat{\fou[]{\ydf}}\hspace*{-.1ex}^{#1}}
+\newcommand{\Difydf}[1][\Di]{\fou[]{\ydf}\hspace*{-.1ex}^{#1}}
+
+\newcommand{\hxdf}[1][]{\widehat{\theta}_{#1}}
+\newcommand{\fhxdf}[2][\hxdf]{\fou[#2]{#1}}
+\newcommand{\ofhxdf}[2][\hxdf]{\ofou[#2]{#1}}
+\newcommand{\ofhxdfPr}[2][\Di]{\ofou[#2]{\hxdfPr[{#1}]}}
+\newcommand{\txdf}[1][]{\theta_{n, \overline{#1}}}
+\newcommand{\ftxdf}[2][\txdf]{#1 (#2)}
+\newcommand{\oftxdf}[2][\txdf]{\overline{#1}#2}
+
+\newcommand{\txdfPr}[1][\Di]{\txdf[{#1}]}
+\newcommand{\ftxdfPr}[2][\Di]{\txdfPr[{#1}] #2}
+\newcommand{\tfxdfPr}[2][\Di]{\tfou[#2]{\xdfPr[#1]}}
+
+\newcommand{\txdfAg}[1][{\rWe[]}]{\widehat{\theta}^{(\rWc)}}
+\newcommand{\hxdfAg}[1][{\erWe[]}]{\widehat{\theta}^{(\rWc)}}
+
+\newcommand{\dxdf}[1][]{\breve{\theta}_{\overline{#1}}}
+\newcommand{\dxdfPr}[1][\Di]{\dxdf[#1]}
+\newcommand{\fdxdfPr}[2][\Di]{\fou[#2]{\dxdfPr[#1]}}
+
+
+\newcommand{\hxdfPr}[1][\Di]{\theta_{n, n_{\lambda}, \overline{#1}}}
+\newcommand{\fhxdfPr}[2][\Di]{\fou[#2]{\hxdfPr[{#1}]}}
+\newcommand{\hfxdfPr}[2][\Di]{\hfou[#2]{\xdfPr[#1]}}
+
+
+\newcommand{\decSo}{\xdf}
+\newcommand{\decOp}[1][\edf]{C_{\mbox{\hspace*{-.2ex}\tiny$#1$}}}
+\newcommand{\fdecOp}[1][\edf]{\fou{C_{\mbox{\hspace*{-.2ex}\tiny$#1$}}}}
+\newcommand{\decIm}{\ydf}
+
+\newcommand{\hdecIm}{\widehat{f}_Y}
+\newcommand{\fhdecIm}{\fou{\hdecIm}}
+\newcommand{\hfdecIm}{\hfou{\decIm}}
+\newcommand{\fdecIm}{\fou{\decIm}}
+\newcommand{\fdecSo}{\fou{\decSo}}
+\newcommand{\hedf}{\widehat{\edf}}
+
+
+
+
+
+
+
+\newcommand{\cSo}{\Theta}
+
+\newcommand{\wSo}{\ga}
+\newcommand{\rSo}{r}
+\newcommand{\cwrSo}{\cSo^\rSo_\wSo}
+\newcommand{\cwSo}{\cSo_\wSo}
+
+\newcommand{\So}{\theta}
+\newcommand{\DiSo}[1][\Di]{\So^{#1}}
+\newcommand{\hDiSo}[1][\Di]{\hSo^{#1}}
+\newcommand{\TrSo}[1][]{\So^\TrSy_{#1}}
+\newcommand{\Trxdf}{\xdf_\TrSy}
+\newcommand{\oSo}[1][\Di]{\overline{\So}_{#1}}
+\newcommand{\mSo}[1][\Di]{\So_{(#1)}}
+
+
+
+\newcommand{\Hebase}{[x]}
+\newcommand{\He}[1][\Hebase]{#1} % Hilfsfunktion
+\newcommand{\fHe}[2][x]{\fou[#2]{#1}}
+\newcommand{\ofHe}[2][x]{\ofou[#2]{#1}}
+
+\newcommand{\SoPr}[1][\Di]{\So_{#1}}
+\newcommand{\fSoPr}[2][\Di]{\fou[#2]{\So_{#1}}}
+
+
+\newcommand{\hSoPr}[1][\Di]{\hSo[#1]}
+\newcommand{\fhSoPr}[2][\Di]{\fou[#2]{\hSoPr[#1]}}
+\newcommand{\hfSoPr}[2][\Di]{\hfou[#2]{\SoPr[#1]}}
+\newcommand{\tSoPr}[1][\Di]{\tSo[#1]}
+\newcommand{\ftSoPr}[2][\Di]{\fou[#2]{\tSoPr[#1]}}
+\newcommand{\tfSoPr}[2][\Di]{\tfou[#2]{\SoPr[#1]}}
+
+\newcommand{\dSo}[1][]{\breve{\So}_{#1}}
+\newcommand{\dSoPr}[1][\Di]{\dSo[#1]}
+\newcommand{\fdSoPr}[2][\Di]{\fou[#2]{\dSoPr[#1]}}
+
+\newcommand{\hSo}[1][]{\widehat{\So}_{#1}}
+\newcommand{\tSo}[1][]{\widetilde{\So}_{#1}}
+\newcommand{\fhSo}[2][]{\fou[#2]{\hSo[#1]}}
+\newcommand{\hfSo}[2][\So]{\hfou[#2]{#1}}
+\newcommand{\ftSo}[2][]{\fou[#2]{\tSo[#1]}}
+\newcommand{\tfSo}[2][\So]{\tfou[#2]{#1}}
+
+\newcommand{\Proj}[1][]{\Pi_{\overline{#1}}}
+\newcommand{\ProjC}[1][]{\Proj[{#1}]^\perp}
+% \newcommand{\dProj}[2]{\Proj[{\dmHiH{#1}{#2}}]}
+% \newcommand{\dProjC}[2]{\Proj[{\dmHiH{#1}{#2}}]^\perp}
+\newcommand{\dProj}[2]{\Pi_{\underline{#2} \overline{#1}}}
+\newcommand{\dProjC}[2]{\ProjC[{#1}{#2}]}
+\newcommand{\DiProCo}[1][\Di]{\DiPro[#1]^\perp}
+
+\newcommand{\Pro}{\cU}
+\newcommand{\ProCo}{\cU^\perp}
+\newcommand{\DiPro}[1][\Di]{\Pro_{#1}}
+
+
+\newcommand{\mLp}[1][\Di]{\Uz_{^{_{#1}}}}
+\newcommand{\mHiH}[1][\Di]{\Theta_{\overline{#1}}}
+\newcommand{\dmHiH}[2]{\Theta_{\underline{#1}, \overline{#2}}}
+
+
+
+% Eigenvalues
+\newcommand{\Ev}[1][]{\fedf[#1]}
+\newcommand{\Evs}[1][]{\Lambda #1}
+\newcommand{\oEvs}[1][\Di]{\Lambda_{\circ} (#1)}
+\newcommand{\mEvs}[1][\Di]{\Evs[(#1)]}
+
+\newcommand{\cEv}[1][\edf]{C_{#1}}%
+
+\newcommand{\Sv}[1][]{\fedf[#1]}
+\newcommand{\eSv}[1][]{\hfedf[#1]}
+\newcommand{\Svs}[1][]{|\Phi_{#1}}
+\newcommand{\iSv}[1][]{\Lambda(#1)}%
+\newcommand{\eiSv}[1][]{\hPhi #1}%
+\newcommand{\cSv}[1][\edf]{C_{#1}}%
+\newcommand{\miSv}[1][\Di]{\Lambda_{+}(#1)}%
+\newcommand{\meiSv}[1][\Di]{\eiSv_{+}(#1)}%
+\newcommand{\oiSv}[1][\Di]{\Lambda_{\circ}(#1)}
+\newcommand{\oeiSv}[1][(\Di)]{\Lambda_{\circ}#1}
+\newcommand{\oSvs}[1][\Di]{\overline{\Svs}_{#1}}
+\newcommand{\mSvs}[1][\Di]{\Svs[(#1)]}
+\newcommand{\mSv}[1][\Di]{\Sv[(#1)]}
+\newcommand{\SvPr}[1][]{\Sv[#1]}
+\newcommand{\SvPrI}[1][]{\Sv[#1]^+}
+\newcommand{\oSvPrI}[1][]{\eiSv[#1]^+}
+
+
+% Projection
+\newcommand{\fou}[2][\uDi]{[#2]#1}
+\newcommand{\hfou}[2][\uDi]{\widehat{[#2]}_{_{\hspace*{-.1ex}#1}}}
+\newcommand{\ofou}[2][(\uDi)]{\overline{[#2]}#1}
+\newcommand{\ufou}[2][\uDi]{\underline{[#2]}_{_{\hspace*{-.1ex}#1}}}
+\newcommand{\tfou}[2][\uDi]{\widetilde{[#2]}_{_{\hspace*{-.1ex}#1}}}
+\newcommand{\bas}{e}
+\newcommand{\basH}{u}
+\newcommand{\Fou}{\cF}
+\newcommand{\ebas}{u}
+\newcommand{\DiHiSo}[1][\Di]{\Uz_{#1}}
+
+
+\newcommand{\Dilp}[1][\Di]{\Uz_{#1}}
+\newcommand{\Balp}[1][\Di]{\Bz_{#1}}
+\newcommand{\mBall}[1][\Di]{\Bz_{#1}}
+\newcommand{\mBaH}[1][\Di]{\Bz_{^{_{#1}}}}
+\newcommand{\dmBaH}[2]{\mBaH[#1 #2]}
+
+% Symbols
+\newcommand{\PrSy}{\times}
+\newcommand{\TrSy}{\circ} % true symble
+\newcommand{\oSy}{\circ} % oracle symble
+\newcommand{\mSy}{\star} % minimax symble
+\newcommand{\sSy}{\bullet} % oracle symble
+\newcommand{\hSy}{\dagger} % hilfs symble
+\newcommand{\dSy}{\bullet} % hilfs symble
+\newcommand{\OpSy}{\star} % optimal symble
+\newcommand{\DSy}{\dagger} % data-driven symble
+
+
+
+\def\Ra{\cR}
+\newcommand{\oRaDi}[2][\ssY]{\Ra_{#1}^{\oSy}[#2]} %oracle rate
+\newcommand{\oRa}[2][\ssY]{\mathcal{R}_{#1}^{\oSy}(#2)} %oracle rate
+\newcommand{\oRaS}[2][\ssY]{\Ra_{#1}^{\oSy}} %oracle rate
+\newcommand{\sRa}[1][\ssY]{\Ra_{#1}^{\sSy}} %oracle rate
+\newcommand{\hRaDi}[2][\ssY]{\Ra_{#1}^{\hSy}[#2]} %hilfs rate
+\newcommand{\hRa}[2][\ssY]{\Ra_{#1}^{\hSy}(#2)} %hilfs rate
+\newcommand{\mRa}[2][\ssE]{\Ra_{#1}^{\hSy}(#2)} %oracle rate fehler im operator
+
+
+
+
+% Hierarchical Prior
+\newcommand{\DiMa}[1][n]{G_{#1}} % Maximal value of prior dimension 
+\newcommand{\sDiMa}[1][n]{{#1}} % Maximal value of prior dimension 
+
+
+\newcommand{\HiSu}{\Theta} % Hilbert Solution
+\newcommand{\HiFu}{\cD} % Hilbert Solution
+\newcommand{\wHiSu}[1][\wSo]{\HiSu_{#1}} % Hilbert Solution
+\newcommand{\rwHiFu}[1][\wSo]{\HiFu_{#1}^{\rSo}} % Hilbert Solution
+\newcommand{\wHiFu}[1][\wSo]{\HiFu_{#1}} % Hilbert Solution
+
+
+
+% ====================================================================
+% <<WN-Minimax>>
+% ====================================================================
+% Rates
+\def\Now{\gv}
+\def\Ra{\cR}%  rate
+\def\aRa{\gR}%  rate 
+\newcommand{\nRa}[1][n]{\Ra_{#1}}%  e rate
+\newcommand{\mnRa}[2][\ssY]{\Ra_{#1}^{\mSy}(#2)}%  minimax e rate
+\newcommand{\mmRa}[2][\ssE]{\Ra_{#1}^{\mSy}(#2)}%  minimax e rate
+\newcommand{\mnRaS}[2][\ssY]{\Ra_{#1}^{\mSy}(#2)}%  minimax e rate
+\newcommand{\onRa}[1][\ssY]{\Ra_{#1}^{\oSy}}%  oracle e rate
+\newcommand{\noRao}[1][\ssY]{\Phi_{#1}^{\circ}(\xdf, \Lambda)}
+\newcommand{\moRaE}[1][\xdf, \Lambda]{\mathcal{R}_{\ssE}^{\dagger}(#1)}
+\newcommand{\moRa}[1][\xdf]{\mathcal{R}_{\ssE}^{\dagger}(#1)}
+\newcommand{\dnRa}[1][n]{\Ra_{^{#1}}^{_\DSy}}%data-driven
+\newcommand{\dRa}[3][\ssY]{\Ra_{#1}^{#2}(#3)} %dimension rate
+\newcommand{\daRa}[2][\ssY]{\aRa_{#1}^{#2}} %aggregation dimension
+% rate
+\newcommand{\daRaS}[3][\ssY]{\aRa_{#1}^{#2}} %aggregation
+                                %dimension rate, short
+\newcommand{\naRa}[2][\ssY]{\aRa_{#1}^{\DSy}#2} %aggregation rate
+\newcommand{\naRaS}[2][\ssY]{\aRa_{#1}^{\DSy}} %aggregation rate, short
+
+
+\newcommand{\Di}[1][m]{#1}
+\newcommand{\hDi}[1][\Di]{\widehat{#1}}
+\newcommand{\tDi}[1][\Di]{\widetilde{#1}}
+\newcommand{\uDi}[1][\Di]{\underline{#1}}
+
+\newcommand{\onDi}[1][\ssY]{\Di_{#1}^\oSy}
+\newcommand{\mnDi}[1][\ssY]{\Di_{#1}^\mSy}
+\newcommand{\oDi}[2][\Di]{#1_{#2}^\oSy} 
+\newcommand{\sDi}[2][\Di]{#1_{#2}^\sSy}
+\newcommand{\aDi}[2][\Di]{#1_{#2}^\hSy}
+
+
+\newcommand{\mDi}[1][\Di]{#1_{-}}
+\newcommand{\meDi}[1][m_n]{#1^-}
+\newcommand{\moeDi}[1][n]{#1^{{\OpSy}_{-}}} %minimax
+\newcommand{\pDi}[1][\Di]{#1_{+}}
+\newcommand{\peDi}[1][m_n]{#1^+}
+\newcommand{\poeDi}[1][n]{#1^{{\OpSy}_{+}}} %minimax
+
+\newcommand{\dDi}[1][\Di]{#1^\hSy}
+\newcommand{\ndDi}[2][\Di]{\dDi[#1]_{#2}}
+\newcommand{\mdDi}[1][\Di]{\dDi[#1]_{-}}
+\newcommand{\pdDi}[1][\Di]{\dDi[#1]_{+}}
+
+
+% \newcommand{\mDi}[2][\Di]{#1^-_{#2}}
+% \newcommand{\meDi}[1][G_n]{#1^-}
+% \newcommand{\moeDi}[1][\DiMa]{#1^{{\OpSy}_{-}}} %minimax
+% \newcommand{\pDi}[2][\Di]{#1^+_{#2}}
+% \newcommand{\peDi}[1][G_n]{#1^+}
+% \newcommand{\poeDi}[1][\DiMa]{#1^{{\OpSy}_{+}}} %minimax
+% \newcommand{\nDi}[1][\Di]{#1_{n}}
+% \newcommand{\mnDi}[1][k]{#1^{_\OpSy}_{^n}} %minimax
+% \newcommand{\onDi}[1][k]{#1^{_\TrSy}_{^n}} %oracle
+% \newcommand{\dnDi}[1][k]{#1^{_\DSy}_{^n}} %data-driven
+% \newcommand{\oesDi}[1][\Di]{#1^{\OpSy}_{\ImNoL\vee\OpNoL}}
+% \newcommand{\utreDi}[1][\Di]{\underline{#1}^{_\TrSy}_{^n}}
+% \newcommand{\maDi}[1][]{M_{#1}} % Maximal dimension 
+% \newcommand{\umaDi}[1][]{\maDi^u_{#1}} % Maximal dimension 
+% \newcommand{\omaDi}[1][]{\maDi^o_{#1}} % Maximal dimension 
+% \newcommand{\diaDi}[1][n]{\Di^{\diamond}_{#1}} % Maximal dimension 
+% \newcommand{\wmaDi}[1][n]{\maDi[#1]^{\wNo}} % Maximal dimension 
+
+% risk
+\def\oRi{\cR^\star}%
+\def\DiRi{\cR^m}%
+\def\wNo{\ga}
+\def\owNo{\overline{\wNo}}
+\newcommand{\wRi}[2][\wNo]{\cR_{#1}[#2]}
+\newcommand{\Ri}[2][\wNo]{\cR_{#1}[#2]}
+\newcommand{\Bi}[1][\Di]{\gb_{#1}}
+
+\def\Ri{\cR}%
+\newcommand{\nRi}[3][\ssY]{\Ri_{#1}\big(#2, #3\big)}
+\newcommand{\nmRi}[3][\ssY,\ssE]{\Ri_{#1}\big(#2, #3\big)}
+
+
+% ====================================================================
+% Model selection
+% <<Ms>>
+% ====================================================================
+% \newcommand{\pen}[1][\Di]{\mathop{\mathrm{pen}}\nolimits_{#1}^{_{{n}}}}%
+\newcommand{\penD}[1][\Di]{\cpen\,\DipenSv[#1]\,\ssY^{-1}}%
+\newcommand{\peneD}[1][\Di]{\cpen\,\DipeneSv[#1]\,\ssY^{-1}}%
+\newcommand{\cpen}[1][]{\kappa_{#1}}%
+\newcommand{\cpenIm}[1][\rIm]{\Delta_{#1}}%
+\newcommand{\cpenSv}[1][\So]{\Delta_{#1}^{\Sv}}%
+\newcommand{\penSv}[1][\Di]{\pen^{\Lambda}(#1)}%
+\newcommand{\peneSv}[1][(\Di)]{\mathop{\mathrm{pen}}\nolimits^{\eiSv} #1}%
+\newcommand{\penSvD}[1][\Di]{12\cpen\DipenSv[#1]/\ssY}%
+\newcommand{\DipenSv}[1][\Di]{\Delta_{\Lambda}(#1)}%
+\newcommand{\DipeneSv}[1][\Di]{\Delta_{\eiSv}(#1)}%
+\newcommand{\epenSv}[1][\Di]{12\cpen\DiepenSv[#1]/\ssY}%
+\newcommand{\DiepenSv}[1][(\Di)]{\Delta_{\eiSv} #1}%
+\newcommand{\DipenSvs}[1][\Di]{\Lambda_{#1}^{\Svs}}%
+\newcommand{\cmSv}[1][\Di]{\delta_{\Lambda}(#1)}%
+\newcommand{\cmiSv}[1][\Di]{\delta_{\Lambda}(#1)}%
+\newcommand{\cmeiSv}[1][\Di]{\delta_{\eiSv}(#1)}%
+\newcommand{\cmSvs}[1][\Di]{\delta_{#1}^{\Svs}}%
+%\newcommand{\cpen}[1][\So]{\Delta_{^{_{#1}}}^{_{^{\hspace*{-2pt}n}}}}%
+\newcommand{\hcpen}[1][\So]{\hDelta_{#1}}%
+%\newcommand{\hcpen}[1][\So]{\hDelta_{^{_{#1}}}^{_{^{\hspace*{-2pt}n}}}}%
+%\newcommand{\hpen}[1][\Di]{\mathop{\widehat{\mathrm{pen}}}\nolimits_{#1}}%
+\newcommand{\hpen}[1][\Di]{\hcpen\,#1\,\oSvs[#1]\,n^{-1}}%
+\newcommand{\bias}[1][\Di]{\mathop{\gb}\nolimits_{{#1}}}
+\newcommand{\contr}[1][\Di]{\mathop{\mathrm{\gamma}}\nolimits_{#1}}
+\newcommand{\hcontr}[1][\Di]{\mathop{\widehat{\mathrm{\Upsilon}}}\nolimits_{#1}}
+\newcommand{\We}[1][(\Di)]{\P_{M}^{(\eta)} #1} % random Weights
+\newcommand{\rWe}[1][(\Di)]{\P_{M}^{(\rWc)}#1} % random Weights
+\newcommand{\erWe}[1][(\Di)]{{\widehat{\P}_{M}^{(\eta)}} #1 } %estimated  random Weights
+\newcommand{\rWn}[1][n]{\rWc #1} % random Weights
+\newcommand{\rWc}{\eta} % random Weights
+\newcommand{\msWe}[1][(\Di)]{\P_{M}^{(\infty)}#1} % random Weights
+
+\newcommand{\Tch}{h}
+\newcommand{\TcH}{H}
+\newcommand{\Tcv}{v}
+
+\newcommand{\mEv}[1][]{\Omega_{^{#1}}}
+\newcommand{\mEvC}[1][]{\Omega_{^{#1}}^c}
+\newcommand{\dmEv}[2]{\mEv[#1 #2]}
+\newcommand{\dmEvC}[2]{\mEvC[#1 #2]}
+\newcommand{\aEv}[1][]{\Omega_{^{#1}}}
+\newcommand{\bEv}[1][\lnOp]{\mho_{#1}}
+\newcommand{\xEv}[1][s]{\cX_{#1}}
+\newcommand{\axEv}[1][\Di]{\Omega_{#1}}
+\newcommand{\aixEv}[1][\Di]{\mho_{#1}}
+
+
+% ====================================================================
+% Globale Änderungen
+% <<Global>>
+% ====================================================================
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\epsilon}{\varepsilon}
+
+\RequirePackage{xspace}
+\newcommand{\iid}{iid.\xspace}
+\newcommand{\id}{id.\xspace}
+\newcommand{\rv}{rv.\xspace}
+\newcommand{\ps}{p.s.\xspace}
+% \newcommand{\fd}{fd.\xspace}
+% \newcommand{\fp}{fp.\xspace}
+% \newcommand{\fr}{fr.\xspace}
+% ====================================================================
+% Folgen, Klammern
+% <<Folgen>>
+% ====================================================================
+\newcommand{\ls}{\left<}
+\newcommand{\rs}{\right>}
+\newcommand{\suite}[2][j]{(#2)_{#1 \geq 1}}
+%\newcommand{\Ksuite}[2][j]{(#2)_{#1 \in\Kz}}
+\newcommand{\Jsuite}[2][j\in\cJ]{(#2)_{#1}}
+\newcommand{\Ksum}[2][s\in\cJ]{\sum_{#1}#2}
+\newcommand{\Jsum}[2][s]{\sum_{#1 \in\cJ}#2}
+\newcommand{\Jsup}[2][s]{\sup_{#1 \in\cJ}#2}
+\newcommand{\Jset}[2][s\in\cJ]{\set{#2,#1}}
+\newcommand{\JsetB}[2][s\in\cJ]{\big\{#2,#1\big\}}
+\newcommand{\Nsuite}[2][s]{(#2)_{#1 \in\Nz}}
+\newcommand{\Ksuite}[2][s\in\Kz]{(#2)_{#1}}
+\newcommand{\Nsum}[2][s]{\sum_{#1 \in\Nz}#2}
+\newcommand{\Nset}[2][s\in\Nz]{\set{#2,#1}}
+\newcommand{\NsetB}[2][s\in\Nz]{\big\{#2,#1\big\}}
+\newcommand{\Kset}[2][s\in\Kz]{\set{#2,#1}}
+\newcommand{\KsetB}[2][s\in\Kz]{\setB{#2,#1}}
+\newcommand{\Zsuite}[2][s]{(#2)_{#1 \in\Zz}}
+\newcommand{\Zsum}[2][s]{\sum_{#1 \in\Zz}#2}
+\newcommand{\Zset}[2][s\in\Zz]{\set{#2,#1}}
+\newcommand{\Hset}[2][h\in\HiH]{\set{#2,#1}}
+\newcommand{\HsetB}[2][h\in\HiH]{\big\{#2,#1\big\}}
+\newcommand{\Hsuite}[2][h\in\HiH]{(#2)_{#1}}
+\newcommand{\Hproc}[2][h\in\HiH]{(#2,#1)}
+\newcommand{\Gproc}[2][g\in\HiG]{(#2,#1)}
+\newcommand{\HprocB}[2][h\in\HiH]{\big(#2,#1\big)}
+\newcommand{\GprocB}[2][g\in\HiG]{\big(#2,#1\big)}
+
+\newcommand{\set}[1]{{\left\lbrace #1\right\rbrace }}	
+\newcommand{\setB}[1]{{\big\lbrace #1\big\rbrace }}	
+\newcommand{\nset}[1]{{\llbracket #1 \rrbracket }}	
+\newcommand{\nsetlo}[1]{{\left\rrbracket #1\right\rrbracket }}	
+\newcommand{\nsetro}[1]{{\left\llbracket #1\right\llbracket }}	
+\newcommand{\seq}[1]{\ls#1\rs}
+\newcommand{\vect}[1]{{\left( #1\right) }}	
+\newcommand{\vectB}[1]{{\big( #1\big) }}	
+\newcommand{\vectp}[1]{{\big( #1\big)_{\hspace*{-.5ex}+}}}	
+\newcommand{\gauss}[1]{\lfloor #1\rfloor}
+\newcommand{\floor}[1]{\lfloor #1\rfloor}
+\newcommand{\ceil}[1]{\lceil #1\rceil}
+
+
+%====================================================================
+%Mathematische Operatoren
+%<<MathOp>>
+%====================================================================
+\newcommand{\Ex}[1][]{\Ez_{#1}}%
+\def\Var{\mathop{\mathrm{\mathbb{V}ar}}\nolimits}%
+\def\1{\mathds{1}}%
+%\def\1{{\mathbbm 1}} %indicator
+%\newcommand{\Ind}[1]{\1{\mbox{\scriptsize$#1$}}}%
+\newcommand{\Ind}[1]{\1_{#1}}%
+\newcommand{\pM}[1][]{\Pz_{#1}}
+\newcommand{\pF}[1][]{\Fz_{#1}}
+\newcommand{\dirac}[1][x]{\delta_{#1}} %indicator
+%\def\dirac{\mathop{\delta}\nolimits}%
+% \def\argmax{\mathop{\rm arg \; max}\limits}%
+% \def\argmin{\mathop{\rm arg \; min}\limits}%
+\def\argsup{\mathop{\rm arg \; sup}\limits}%
+\def\arginf{\mathop{\rm arg \; inf}\limits}%
+\def\diag{\mathop{\mathrm{\nabla}}\nolimits}%
+\newcommand{\Diag}[1]{\diag_{\hspace{-.3ex}#1}}
+\newcommand{\fDiag}[1]{\fou{\diag_{#1}}}
+\def\Id{\mathop{\rm Id}\nolimits}%
+%\def\pen{\mathop{\rm pen}\nolimits}%
+\def\tr{\mathop{\rm tr}\nolimits}%
+
+\def\dom{\mathop{\mathrm{dom}}\nolimits}%
+\def\ran{\mathop{\cR}\nolimits}%
+\def\ker{\mathop{\cN}\nolimits}%
+%\def\lin{\mathop{\overline{\mathrm lin}}\nolimits}%
+\def\lin{\mathop{\mathrm{span}}\nolimits}%
+\def\inn{\mathop{\mathrm int}\nolimits}%
+
+\newcommand{\FuVg}[2][]{\pM[{^{\hspace*{-.5ex}#2}}]^{#1}}
+%\newcommand{\FueVg}[2][]{\overline{\Pz}_{\hspace*{-.5ex}\mbox{\tiny$#2$}}^{_{#1}}}
+\newcommand{\FueVg}[2][]{\overline{\Pz}_{^{\hspace*{-.3ex}#2}}^{_{#1}}}
+\newcommand{\FuVgC}[2][-.4ex]{\pM[{_{\hspace*{#1}#2}}]}
+%\newcommand{\FunVg}[2][-.1ex]{\nVg_{\hspace*{#1}\mbox{\tiny$#2$}}}
+\newcommand{\FunVg}[2][-.1ex]{\nVg_{^{\hspace*{#1}#2}}}
+%\newcommand{\FunVgC}[2][0ex]{\nVg_{\hspace*{#1}{\mbox{\tiny$#2$}}}}
+\newcommand{\FunVgC}[2][0ex]{\nVg_{^{\hspace*{#1}#2}}}
+%\newcommand{\FulVg}[2][-.1ex]{\lVg_{\hspace*{#1}\mbox{\tiny$#2$}}}
+\newcommand{\FulVg}[2][-.1ex]{\lVg_{^{\hspace*{#1}#2}}}
+%\newcommand{\FulVgC}[2][0ex]{\lVg_{\hspace*{#1}\mbox{\tiny$#2$}}}
+\newcommand{\FulVgC}[2][0ex]{\lVg_{^{\hspace*{#1}#2}}}
+\newcommand{\FuEx}{\E}%
+
+\newcommand{\ipVg}[2][]{\pM[{^{\hspace*{-.4ex}#2}}]^{_{\hspace*{0ex}#1}}}
+\newcommand{\ipEx}[2][]{\Ex[{^{\hspace*{-.2ex}#2}}]^{_{\hspace*{0ex}#1}}}
+
+\newcommand{\oIm}[1][]{Y_{#1}}
+\newcommand{\oSv}[1][]{X_{#1}}
+\newcommand{\fIm}[2][\ydf]{\fou[#2]{#1}} % Bild
+
+
+\newcommand{\cst}[2][]{\cC^{#1}_{#2}}
+
+
+% ====================================================================
+% Funkana - Normen und Skalarprodukte
+% <<Funkana-NormSkalar>>
+% ====================================================================
+\newcommand{\skalar}[1][]{\langle\cdot,\cdot\rangle_{#1}}   %Skalarprodukt
+\newcommand{\Vskalar}[2][]{\langle #2\rangle_{#1}}   %Skalarprodukt
+\newcommand{\lVskalar}[2][]{\left\langle #2\right\rangle_{#1}}   %Skalarprodukt
+\newcommand{\norm}[1][]{\lVert\cdot\rVert_{#1}}   %Norm
+\newcommand{\Vnorm}[2][]{\lVert#2\rVert_{#1}}   %Norm
+\newcommand{\lVnorm}[2][]{\left\lVert#2\right\rVert_{#1}}   %Norm
+\DeclareMathOperator{\abs}{\lvert\cdot\rvert}   %betrag
+\newcommand{\Vabs}[2][]{\lvert#2\rvert_{#1}}   %betrag
+\newcommand{\lVabs}[2][]{\left\lvert#2\right\rvert_{#1}}   %betrag
+
+\def\dom{\mathop{\cD}\nolimits}%
+\def\ran{\mathop{\cR}\nolimits}%
+\def\clran{\mathop{\overline{\cR}}\nolimits}%
+\def\ker{\mathop{\cN}\nolimits}%
+\def\lin{\mathop{\overline{\mathrm lin}}\nolimits}%
+\def\inn{\mathop{\mathrm int}\nolimits}%
+
+\newcommand{\lp}[1][]{l_{#1}}
+\newcommand{\lpw}[1][\Now]{l_{#1}}
+\newcommand{\skalarlp}[1][2]{\skalar[\lp^{#1}]}   %Skalarprodukt Lösung
+\newcommand{\Vskalarlp}[2][2]{\Vskalar[\lp^{#1}]{#2}}   
+\newcommand{\lVskalarlp}[2][2]{\lVskalar[\lp^{#1}]{#2}} 
+\newcommand{\normlp}[1][2]{\norm[\lp^{#1}]}   %Norm Lösung
+\newcommand{\Vnormlp}[2][2]{\Vnorm[l^{#1}]{#2}}   
+\newcommand{\lVnormlp}[2][2]{\lVnorm[\lp^{#1}]{#2}}   
+
+
+\newcommand{\Lp}[1][]{L^{#1}}
+\newcommand{\Lpw}[1][\Now]{\Lp[2]_{#1}}
+\newcommand{\skalarLp}[1][2]{\skalar[{\Lp[#1]}]}
+\newcommand{\VskalarLp}[2][2]{\Vskalar[{\Lp[#1]}]{#2}}
+\newcommand{\lVskalarLp}[2][2]{\lVskalar[{\Lp[#1]}]{#2}}
+\newcommand{\normLp}[1][2]{\norm[{\Lp[#1]}]}
+\newcommand{\VnormLp}[2][2]{\Vnorm[{\Lp[#1]}]{#2}}
+\newcommand{\lVnormLp}[2][2]{\lVnorm[{\Lp[#1]}]{#2}}
+
+\newcommand{\cLp}[1][1]{\cL_{#1}}
+\newcommand{\skalarW}[1][\Now]{\skalar[{#1}]} 
+\newcommand{\normW}[1][\Now]{\norm[#1]}
+\newcommand{\VnormW}[2][\Now]{\Vnorm[#1]{#2}}   %Weighted Norm
+\newcommand{\lVnormW}[2][\Now]{\lVnorm[#1]{#2}}   %Weighted Norm
+\newcommand{\VskalarW}[2][\Now]{\Vskalar[{#1}]{#2}}   
+\newcommand{\VnormInf}[2][\Lp^\infty]{\Vnorm[{#1}]{#2}} 
+\newcommand{\lVnormInf}[2][\Lp^\infty]{\lVnorm[{#1}]{#2}} 
+
+\newcommand{\HiH}[1][]{\Hz}
+\newcommand{\skalarH}[1][\HiH]{\skalar[{#1}]}   %Skalarprodukt Lösung
+\newcommand{\VskalarH}[2][\HiH]{\Vskalar[{#1}]{#2}}   
+\newcommand{\lVskalarH}[2][\HiH]{\lVskalar[{#1}]{#2}} 
+\newcommand{\normH}[1][\HiH]{\norm[{#1}]}   %Norm Lösung
+\newcommand{\VnormH}[2][\HiH]{\Vnorm[^{_{#1}}]{#2}}   
+\newcommand{\lVnormH}[2][\HiH]{\lVnorm[{#1}]{#2}}   
+
+\newcommand{\HiG}[1][]{\Gz}
+\newcommand{\skalarG}[1][\HiG]{\skalar[{#1}]}   %Skalarprodukt Lösung
+\newcommand{\VskalarG}[2][\HiG]{\Vskalar[{#1}]{#2}}   
+\newcommand{\lVskalarG}[2][\HiG]{\lVskalar[{#1}]{#2}} 
+\newcommand{\normG}[1][\HiG]{\norm[{#1}]}   %Norm Lösung
+\newcommand{\VnormG}[2][\HiG]{\Vnorm[^{_{#1}}]{#2}}   
+\newcommand{\lVnormG}[2][\HiG]{\lVnorm[{#1}]{#2}}   
+
+\newcommand{\VnormOp}[2][{\sL}]{\Vnorm[{#1}]{#2}}
+\newcommand{\lVnormOp}[2][{\sL}]{\lVnorm[{#1}]{#2}}
+\newcommand{\VnormS}[2][s]{\Vnorm[{#1}]{#2}}
+\newcommand{\lVnormS}[2][s]{\lVnorm[{#1}]{#2}}
+
+
+% ====================================================================
+% Buchstaben - Command
+% <<Buchstaben-CommandLetters>>
+% ====================================================================
+\newcommand{\mm}[1]{\mathbb{#1}}
+\newcommand{\mc}[1]{\mathcal{#1}}
+\newcommand{\mf}[1]{\mathfrak{#1}}
+\newcommand{\ocirc}[1]{\overset{\circ}{#1}}
+% ====================================================================
+% Buchstaben - Doppelstrich letters
+% <<Buchstaben-DoppelLetters>>
+% ====================================================================
+\newcommand{\Bz}{{\mathbb B}}
+\newcommand{\Cz}{{\mathbb C}}
+\newcommand{\Dz}{{\mathbb D}}
+\newcommand{\Ez}{{\mathbb E}}
+\newcommand{\Fz}{{\mathbb F}}
+\newcommand{\Gz}{{\mathbb G}}
+\newcommand{\Hz}{{\mathbb H}}
+\newcommand{\Iz}{{\mathbb I}}
+\newcommand{\Jz}{{\mathbb J}}
+\newcommand{\Kz}{{\mathbb K}}
+\newcommand{\Nz}{{\mathbb N}}
+\newcommand{\Pz}{{\mathbb P}}
+\newcommand{\Rz}{{\mathbb R}}
+\newcommand{\Sz}{{\mathbb S}}
+\newcommand{\Uz}{{\mathbb U}}
+\newcommand{\Vz}{{\mathbb V}}
+\newcommand{\Wz}{{\mathbb W}}
+\newcommand{\Xz}{{\mathbb X}}
+\newcommand{\Yz}{{\mathbb Y}}
+\newcommand{\Zz}{{\mathbb Z}}
+% ====================================================================
+% Buchstaben - German letters
+% <<Buchstaben-GermanLetters>>
+% ====================================================================
+\newcommand{\ga}{\mathfrak{a}}
+\newcommand{\gb}{\mathfrak{b}}
+\newcommand{\gd}{\mathfrak{d}}
+\renewcommand{\ge}{\mathfrak{e}}
+\newcommand{\gf}{\mathfrak{f}}
+\newcommand{\gl}{\mathfrak{l}}
+\newcommand{\gn}{\mathfrak{n}}
+\newcommand{\gp}{\mathfrak{p}}
+\newcommand{\gq}{\mathfrak{q}}
+\newcommand{\gr}{\mathfrak{r}}
+\newcommand{\gs}{\mathfrak{s}}
+\newcommand{\gt}{\mathfrak{t}}
+\newcommand{\gu}{\mathfrak{u}}
+\newcommand{\gv}{\mathfrak{v}}
+\newcommand{\gw}{\mathfrak{w}}
+\newcommand{\gL}{\mathfrak{L}}
+\newcommand{\gD}{\mathfrak{D}}
+\newcommand{\gG}{\mathfrak{G}}
+\newcommand{\gN}{\mathfrak{N}}
+\newcommand{\gR}{\mathfrak{R}}
+\newcommand{\gT}{\mathfrak{T}}
+\newcommand{\gV}{\mathfrak{V}}
+% ====================================================================
+% Buchstaben - Scr letters
+% <<Buchstaben-ScrLetters>>
+% ====================================================================
+\newcommand{\sA}{\mathscr{A}}
+\newcommand{\sB}{\mathscr{B}}
+\newcommand{\sD}{\mathscr{D}}
+\newcommand{\sH}{\mathscr{H}}
+\newcommand{\sK}{\mathscr{K}}
+\newcommand{\sL}{\mathscr{L}}
+\newcommand{\sM}{\mathscr{M}}
+\newcommand{\sN}{\mathscr{N}}
+\newcommand{\sP}{\mathscr{P}}
+\newcommand{\sR}{\mathscr{R}}
+\newcommand{\sS}{\mathscr{S}}
+\newcommand{\sT}{\mathscr{T}}
+\newcommand{\sW}{\mathscr{W}}
+% ====================================================================
+% Buchstaben - Cal letters
+% <<Buchstaben-CalLetters>>
+% ====================================================================
+\newcommand{\cA}{{\mathcal A}}
+\newcommand{\cB}{{\mathcal B}}
+\newcommand{\cC}{{\mathcal C}}
+\newcommand{\cD}{{\mathcal D}}
+\newcommand{\cE}{{\mathcal E}}
+\newcommand{\cF}{{\mathcal F}}
+\newcommand{\cG}{{\mathcal G}}
+\newcommand{\cH}{{\mathcal H}}
+\newcommand{\cI}{{\mathcal I}}
+\newcommand{\cJ}{{\mathcal J}}
+\newcommand{\cK}{{\mathcal K}}
+\newcommand{\cL}{{\mathcal L}}
+\newcommand{\cM}{{\mathcal M}}
+\newcommand{\cN}{{\mathcal N}}
+\newcommand{\cO}{{\mathcal O}}
+\newcommand{\cP}{{\mathcal P}}
+\newcommand{\cQ}{{\mathcal Q}}
+\newcommand{\cR}{{\mathcal R}}
+\newcommand{\cS}{{\mathcal S}}
+\newcommand{\cT}{{\mathcal T}}
+\newcommand{\cU}{{\mathcal U}}
+\newcommand{\cV}{{\mathcal V}}
+\newcommand{\cW}{{\mathcal W}}
+\newcommand{\cX}{{\mathcal X}}
+\newcommand{\cY}{{\mathcal Y}}
+\newcommand{\cZ}{{\mathcal Z}}
+% ====================================================================
+% Buchstaben - Overline letters
+% <<Buchstaben-OverLetters>>
+% ====================================================================
+\newcommand{\oa}{\overline{a}}
+\newcommand{\ob}{\overline{b}}
+\newcommand{\oc}{\overline{c}}
+\newcommand{\of}{\overline{f}}
+\newcommand{\og}{\overline{g}} %% Achtung falls Babel frnazösisch ist dies schon definiert!! 
+\newcommand{\oh}{\overline{h}}
+\newcommand{\oi}{\overline{i}}
+\newcommand{\ok}{\overline{k}}
+\newcommand{\ol}{\overline{l}}
+\newcommand{\om}{\overline{m}}
+\newcommand{\op}{\overline{p}}
+\newcommand{\oq}{\overline{q}}
+\newcommand{\ot}{\overline{t}}
+\newcommand{\ou}{\overline{u}}
+\newcommand{\ov}{\overline{v}}
+\newcommand{\ox}{\overline{x}}
+\newcommand{\oy}{\overline{y}}
+\newcommand{\oz}{\overline{z}}
+\newcommand{\oA}{\overline{A}}
+\newcommand{\oB}{\overline{B}}
+\newcommand{\oC}{\overline{C}}
+\newcommand{\oD}{\overline{D}}
+\newcommand{\oG}{\overline{G}}
+\newcommand{\oH}{\overline{H}}
+\newcommand{\oI}{\overline{I}}
+\newcommand{\oK}{\overline{K}}
+\newcommand{\oN}{\overline{N}}
+\newcommand{\oP}{\overline{P}}
+\newcommand{\oQ}{\overline{Q}}
+\newcommand{\oR}{\overline{R}}
+\newcommand{\oS}{\overline{S}}
+\newcommand{\oT}{\overline{T}}
+\newcommand{\oU}{\overline{U}}
+\newcommand{\oV}{\overline{V}}
+\newcommand{\oW}{\overline{W}}
+\newcommand{\oX}{\overline{X}}
+\newcommand{\oXb}{\overline{\Xb}}
+\newcommand{\oY}{\overline{Y}}
+\newcommand{\oZ}{\overline{Z}}
+\newcommand{\omu}{\overline{\mu}}
+\newcommand{\olambda}{\overline{\lambda}}
+\newcommand{\orho}{\overline{\rho}}
+\newcommand{\otheta}{\overline{\theta}}
+\newcommand{\oDelta}{\overline{\Delta}}
+\newcommand{\oLambda}{\overline{\Lambda}}
+\newcommand{\oOmega}{\overline{\Omega}}
+\newcommand{\oPsi}{\overline{\Psi}}
+\newcommand{\oTheta}{\overline{\Theta}}
+\newcommand{\oSigma}{\overline{\Sigma}}
+% ====================================================================
+% Buchstaben - Underline letters
+% <<Buchstaben-UnderLetters>>
+% ====================================================================
+\newcommand{\uc}{\underline{c}}
+\newcommand{\ud}{\underline{d}}
+\newcommand{\uk}{{\underline{k}}}
+\newcommand{\um}{{\underline{m}}}
+\newcommand{\ut}{\underline{t}}
+\newcommand{\ux}{{\underline x}}
+\newcommand{\uC}{\underline{C}}
+\newcommand{\uD}{\underline{D}}
+\newcommand{\uU}{\underline{U}}
+\newcommand{\uV}{\underline{V}}
+\newcommand{\uX}{{\underline X}}
+\newcommand{\uY}{{\underline Y}}
+\newcommand{\uZ}{{\underline Z}}
+\newcommand{\uxi}{{\underline \xi}}
+\newcommand{\utheta}{\underline{\theta}}
+% ====================================================================
+% Buchstaben - Widetilde letters
+% <<Buchstaben-WTildeLetters>>
+% ====================================================================
+\newcommand{\ta}{\widetilde{a}}
+\newcommand{\tb}{\widetilde{b}}
+\newcommand{\tc}{\widetilde{c}}
+\newcommand{\td}{\widetilde{d}}
+\newcommand{\tf}{\widetilde{f}}
+\newcommand{\tg}{\widetilde{g}}
+\newcommand{\tk}{\widetilde{k}}
+\newcommand{\tl}{\widetilde{l}}
+\newcommand{\tm}{\widetilde{m}}
+\newcommand{\wtm}{\widetilde{m}}
+\newcommand{\tn}{\widetilde{n}}
+\newcommand{\tp}{\widetilde{p}}
+\newcommand{\tq}{\widetilde{q}}
+\newcommand{\ts}{\widetilde{s}}
+\newcommand{\tv}{\widetilde{v}}
+\newcommand{\tw}{\widetilde{w}}
+\newcommand{\tx}{\widetilde{x}}
+\newcommand{\tA}{\widetilde{A}}
+\newcommand{\tB}{\widetilde{B}}
+\newcommand{\tD}{\widetilde{D}}
+\newcommand{\tF}{\widetilde{F}}
+\newcommand{\tG}{\widetilde{G}}
+\newcommand{\tI}{\widetilde{I}}
+\newcommand{\tK}{\widetilde{K}}
+\newcommand{\tL}{\widetilde{L}}
+\newcommand{\tN}{\widetilde{N}}
+\newcommand{\tM}{\widetilde{M}}
+\newcommand{\tP}{\widetilde{P}}
+\newcommand{\tQ}{\widetilde{Q}}
+\newcommand{\tR}{\widetilde{R}}
+\newcommand{\tS}{\widetilde{S}}
+\newcommand{\tU}{\widetilde{U}}
+\newcommand{\tV}{\widetilde{V}}
+\newcommand{\tW}{\widetilde{W}}
+\newcommand{\tX}{\widetilde{X}}
+\newcommand{\tZ}{\widetilde{Z}}
+\newcommand{\talpha}{\widetilde{\alpha}}
+\newcommand{\tbeta}{\widetilde{\beta}}
+\newcommand{\tgamma}{\widetilde{\gamma}}
+\newcommand{\tmu}{\widetilde{\mu}}
+\newcommand{\tlambda}{\widetilde{\lambda}}
+\newcommand{\trho}{\widetilde{\rho}}
+\newcommand{\tsigma}{\widetilde{\sigma}}
+\newcommand{\ttheta}{\widetilde{\theta}}
+\newcommand{\tDelta}{\widetilde{\Delta}}
+\newcommand{\tGamma}{\widetilde{\Gamma}}
+\newcommand{\tOmega}{\widetilde{\Omega}}
+\newcommand{\tPhi}{\widetilde{\Phi}}
+\newcommand{\tLambda}{\widetilde{\Lambda}}
+\newcommand{\tSigma}{\widetilde{\Sigma}}
+% ====================================================================
+% Buchstaben - WidetHat letters
+% <<Buchstaben-WHatLetters>>
+% ====================================================================
+\newcommand{\ha}{\widehat{a}}
+\newcommand{\hb}{\widehat{b}}
+\newcommand{\hf}{\widehat{f}}
+\newcommand{\hg}{\widehat{g}}
+\newcommand{\whk}{\widehat{k}}
+\newcommand{\whm}{\widehat{m}}
+\newcommand{\hp}{\widehat{p}}
+\newcommand{\hw}{\widehat{w}}
+\newcommand{\hx}{\widehat{x}}
+\newcommand{\hy}{\widehat{y}}
+\newcommand{\hA}{\widehat{A}}
+\newcommand{\hB}{\widehat{B}}
+\newcommand{\hD}{\widehat{D}}
+\newcommand{\hF}{\widehat{F}}
+\newcommand{\hG}{\widehat{G}}
+\newcommand{\hM}{\widehat{M}}
+\newcommand{\hN}{\widehat{N}}
+\newcommand{\hP}{\widehat{P}}
+\newcommand{\hS}{\widehat{S}}
+\newcommand{\hV}{\widehat{V}}
+\newcommand{\hmu}{\widehat{\mu}}
+\newcommand{\halpha}{\widehat{\alpha}}
+\newcommand{\hbeta}{\widehat{\beta}}
+\newcommand{\hdelta}{\widehat{\delta}}
+\newcommand{\hDelta}{\widehat{\Delta}}
+\newcommand{\hgamma}{\widehat{\gamma}}
+\newcommand{\hlambda}{\widehat{\lambda}}
+\newcommand{\hPhi}{\widehat{\Lambda}}
+\newcommand{\hsigma}{\widehat{\sigma}}
+\newcommand{\htau}{\widehat{\tau}}
+\newcommand{\htheta}{\widehat{\theta}}
+\newcommand{\hLambda}{\widehat{\Lambda}}
+\newcommand{\hSigma}{\widehat{\Sigma}}
+\newcommand{\hTheta}{\widehat{\Theta}}
+\newcommand{\hXi}{\widehat{\Xi}}
+\newcommand{\hPsi}{\widehat{\Psi}}
+\newcommand{\hfb}{\widehat{\fb}}
+% \newcommand{\osA}{\overset{\circ}{\mathscr{A}}}
+% \newcommand{\osB}{\overset{\circ}{\mathscr{B}}}
+% \newcommand{\osH}{\overset{\circ}{\mathscr{H}}}
+% \newcommand{\osK}{\overset{\circ}{\mathscr{K}}}
+% \newcommand{\osL}{\overset{\circ}{\mathscr{L}}}
+% \newcommand{\osM}{\overset{\circ}{\mathscr{M}}}
+% \newcommand{\osW}{\overset{\circ}{\mathscr{W}}}
+% \newcommand{\ocB}{\overset{\circ}{\cal{B}}}
+% \newcommand{\ocH}{\overset{\circ}{\cal{H}}}
+
+
+%==========================================
+% Listen Definition
+% <<Def-Listen>>
+%==========================================
+\newcommand{\setListe}[5][3ex]{\setlength{\itemsep}{#2}\setlength{\topsep}{#3}\setlength{\leftmargin}{#4}\setlength{\rightmargin}{#5}\setlength{\labelwidth}{#1}}
+\newcommand{\setListeStandard}{\setListe{0ex}{.5ex}{4ex}{0ex}}
+\newcounter{ListeN}
+\renewcommand{\theListeN}{(\roman{ListeN})}
+
+\newenvironment{resListeN}[1][~]%
+{\setcounter{ListeN}{0}\renewcommand{\theListeN}{\normalfont\rmfamily\color{\colre}(\roman{ListeN})}\begin{list}{\theListeN}%
+{\usecounter{ListeN}\setListeStandard #1}}
+{\end{list}}
+
+\newenvironment{Liste}[1][~]%
+{\begin{list}{}%
+{\setListeStandard #1}}
+{\end{list}}
+
+
+\endinput
+%%
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "_0DACD"
+%%% End: 

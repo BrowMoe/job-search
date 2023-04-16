@@ -1,0 +1,135 @@
+\section{Intermediate results}
+
+\section{Detailed proofs}
+
+The $L^{2}$ risk can be written :
+
+\[\mathds{E}_{\theta^{\circ}}^{n}\left[\left\Vert \overline{\theta}^{\widehat{m}} - \theta^{\circ} \right\Vert^{2}\right] = \mathds{E}_{\theta^{\circ}}^{n}\left[\sum\limits_{j = 1}^{G_{n}} \left( \overline{\theta}_{j} - \theta^{\circ}_{j} \right)^{2}\right] + \mathds{E}_{\theta^{\circ}}^{n}\left[\sum\limits_{j = G_{n} + 1}^{\infty} \left(\theta^{\circ}_{j}\right)^{2}\right].\]
+
+Together with
+\[\forall j \in \llbracket 1, G_{n} \rrbracket, \quad \overline{\theta}^{\widehat{m}}_{j} - \theta^{\circ}_{j} = \left(\frac{Y_{j}}{\lambda_{j}} - \theta^{\circ}_{j}\right) \mathds{1}_{\{\widehat{m} \in \llbracket j, G_{n} \rrbracket\}} + \theta^{\circ}_{j} \mathds{1}_{\{\widehat{m} \in \llbracket 1, j-1 \rrbracket\}},\]
+implies that
+
+\begin{alignat*}{3}
+& \mathds{E}_{\theta^{\circ}}^{n}\left[\left\Vert \overline{\theta}^{\widehat{m}} - \theta^{\circ} \right\Vert^{2}\right] && \leq && \underbrace{\sum\limits_{j = 1}^{G_{n}}\mathds{E}_{\theta^{\circ}}^{n}\left[\left(\frac{Y_{j}}{\lambda_{j}} - \theta^{\circ}_{j}\right)^{2} \mathds{1}_{\{\widehat{m} \in \llbracket j, G_{n} \rrbracket\}}\right]}_{=: A}\\
+& && && + \underbrace{\sum\limits_{j = 1}^{G_{n}}\mathds{E}_{\theta^{\circ}}^{n}\left[\left(\theta^{\circ}_{j}\right)^{2} \mathds{1}_{\{\widehat{m} \in \llbracket 1, j-1 \rrbracket\}}\right]}_{=: B}+ \underbrace{\sum\limits_{j = G_{n} + 1}^{\infty}\left( \theta^{\circ}_{j}\right)^{2}}_{=: C}.
+\end{alignat*}
+
+\bigskip
+
+We will now control each of the three parts of the sum.
+
+\bigskip
+
+First, consider $A$ and let be some positive real number $p$ to be specified later.
+
+Then we can write
+\begin{alignat*}{3}
+& A && \leq && \sum\limits_{j = 1}^{G_{n}^{\star+}} \mathds{E}_{\theta^{\circ}}^{n}\left[\left(\frac{Y_{j}}{\lambda_{j}} - \theta^{\circ}_{j}\right)^{2}\right] + \sum\limits_{j = G_{n}^{\star+} + 1}^{G_{n}} \mathds{E}_{\theta^{\circ}}^{n} \left[ \left(\frac{Y_{j}}{\lambda_{j}} - \theta^{\circ}_{j} \right)^{2} \mathds{1}_{\{\widehat{m} \in \llbracket j, G_{n} \rrbracket\}}\right]\\
+& && \leq && \sum\limits_{j = 1}^{G_{n}^{\star+}} \mathds{E}_{\theta^{\circ}}^{n}\left[\left(\frac{Y_{j}}{\lambda_{j}} - \theta^{\circ}_{j}\right)^{2}\right] + \sum\limits_{j = G_{n}^{\star+} + 1}^{G_{n}} \mathds{E}_{\theta^{\circ}}^{n} \left[ \left(\frac{Y_{j}}{\lambda_{j}} - \theta^{\circ}_{j} \right)^{2} \mathds{1}_{\{\widehat{m} \in \llbracket G_{n}^{\star+}, G_{n} \rrbracket\}}\right]\\
+& && \leq && \sum\limits_{j = 1}^{G_{n}^{\star+}} \mathds{E}_{\theta^{\circ}}^{n}\left[\left(\frac{Y_{j}}{\lambda_{j}} - \theta^{\circ}_{j}\right)^{2}\right] + \sum\limits_{j = G_{n}^{\star+} + 1}^{G_{n}} \mathds{E}_{\theta^{\circ}}^{n} \left[ \left(\frac{Y_{j}}{\lambda_{j}} - \theta^{\circ}_{j} \right)^{2} \mathds{1}_{\{\widehat{m} \in \llbracket G_{n}^{\star+}, G_{n} \rrbracket\}}\right] \\
+& && && - p\mathds{E}_{\theta^{\circ}}^{n}\left[\mathds{1}_{\{\widehat{m} \in \llbracket G_{n}^{\star+}, G_{n} \rrbracket}\right] + p \mathds{E}_{\theta^{\circ}}^{n}\left[\mathds{1}_{\{\widehat{m} \in \llbracket G_{n}^{\star+}, G_{n} \rrbracket}\right]\\
+& && \leq && \sum\limits_{j = 1}^{G_{n}^{\star+}} \mathds{E}_{\theta^{\circ}}^{n}\left[\left(\frac{Y_{j}}{\lambda_{j}} - \theta^{\circ}_{j}\right)^{2}\right] + \mathds{E}_{\theta^{\circ}} \left[ \left(\sum\limits_{j = G_{n}^{\star+} + 1}^{G_{n}}\left(\frac{Y_{j}}{\lambda_{j}} - \theta^{\circ}_{j} \right)^{2} - p\right) \mathds{1}_{\{\widehat{m} \in \llbracket G_{n}^{\star+}, G_{n} \rrbracket\}}\right]\\
+& && && + p \mathds{E}_{\theta^{\circ}}^{n}\left[\mathds{1}_{\{\widehat{m} \in \llbracket G_{n}^{\star+}, G_{n} \rrbracket}\right]\\
+& && \leq && \underbrace{\sum\limits_{j = 1}^{G_{n}^{\star+}} \mathds{E}_{\theta^{\circ}}^{n}\left[\left(\frac{Y_{j}}{\lambda_{j}} - \theta^{\circ}_{j}\right)^{2}\right]}_{=: A_{3}} + \underbrace{\mathds{E}_{\theta^{\circ}}^{n} \left[ \left(\sum\limits_{j = G_{n}^{\star+} + 1}^{G_{n}}\left(\frac{Y_{j}}{\lambda_{j}} - \theta^{\circ}_{j} \right)^{2} - p\right)_{+}\right]}_{=: A_{1}} + \underbrace{p \mathds{E}_{\theta^{\circ}}^{n}\left[\mathds{1}_{\{\widehat{m} \in \llbracket G_{n}^{\star+}, G_{n} \rrbracket}\right]}_{=: A_{2}} .
+\end{alignat*}
+
+\medskip
+
+First, we will control $A_{1}$ using \textsc{\cref{lmA.1.2}}.
+
+The goal is to give $p$ a value that is large enough to control this object but small enough so $p \cdot \mathds{P}_{\theta^{\circ}}^{n} \left[G_{n}^{\star+} < \widehat{m} \leq G_{n}\right]$ is still for the most $\Psi_{n}^{\star}$.
+
+Define $S_{n} := \sum\limits_{j = G_{n}^{\star+} + 1}^{G_{n}}\left(\frac{Y_{j}}{\lambda_{j}} - \theta^{\circ}_{j}\right)^{2}.$
+
+We have, for all $j$ in $\llbracket G_{n}^{\star+} + 1, G_{n} \rrbracket$,
+\[ \frac{Y_{j}}{\lambda_{j}} - \theta^{\circ}_{j} \sim \mathcal{N}\left(0, \frac{\Lambda_{j}}{n} \right), \]
+so $\mathds{E}_{\theta^{\circ}}^{n}\left[S_{n}\right] = \frac{1}{n} \sum\limits_{j = G_{n}^{\star+} + 1}^{G_{n}} \Lambda_{j}$.
+
+And define
+\begin{alignat*}{7}
+& t_{m} && := && \Lambda_{1} && \geq && \frac{\Lambda_{G_{n}}}{n} && \geq && \max\limits_{j \in \llbracket G_{n}^{\star+} + 1, G_{n} \rrbracket} \frac{\Lambda_{j}}{n},\\
+& v_{m} && := && G_{n} \Lambda_{1} && \geq && \frac{G_{n} \Lambda_{G_{n}}}{n} && \geq &&  \frac{1}{n} \sum\limits_{j = G_{n}^{\star+} + 1}^{G_{n}} \Lambda_{j}.
+\end{alignat*}
+
+We can take $p = \mathds{E}_{\theta^{\circ}}^{n}\left[S_{n}\right] + 3 v_{m}$ which gives
+\begin{alignat*}{3}
+& A_{1} && = && \mathds{E}_{\theta^{\circ}}^{n}\left[\left(S_{n} - \mathds{E}_{\theta^{\circ}}^{n}\left[S_{n}\right] - 3 v_{m}\right)_{+}\right]\\
+& && \leq && 6 \Lambda_{1} \exp\left[- \frac{G_{n}}{2}\right]\\
+& && \leq && 6 \Lambda_{1} \exp\left[- \frac{n G_{n}}{2 n}\right]\\
+& && \leq && 6 \Lambda_{1} \exp\left[- n \frac{3 \Lambda_{m_{n}^{\star}}^{-1} \left(1 \vee r \right) \Psi_{n}^{\star}}{2} - \frac{m_{n}^{\star}}{2}\right]\\
+& A_{1} && \leq && 6 \Lambda_{1} \exp\left[- \frac{2 m_{n}^{\star}}{L}\right].
+\end{alignat*}
+
+\medskip
+
+Thanks to \textsc{\cref{prB.1.2}} it is easily shown that
+\[A_{2} \leq 4 \Lambda_{1} \exp\left[-\frac{5 m_{n}^{\star}}{9 L} + 2 \log \left(G_{n}\right)\right].\]
+
+\medskip
+
+Finally, we control $A_{3}.$
+Using the definition of $G_{n}^{\star+}$ we have
+\begin{alignat*}{3}
+& A_{3} && = && \sum\limits_{j = 1}^{G_{n}^{\star+}} \mathds{E}_{\theta^{\circ}}^{n}\left[\left(\overline{\theta}_{j} - \theta^{\circ}_{j}\right)^{2}\right]\\
+& && = && \sum\limits_{j = 1}^{G_{n}^{\star+}} \frac{\Lambda_{j}}{n}\\
+& && = && \frac{1}{n} G_{n}^{\star+} \overline{\Lambda}_{G_{n}^{\star+}}\\
+& A_{3} && \leq && \frac{\overline{\Lambda}_{G_{n}^{\star+}}}{\Lambda_{m_{n}^{\star}}} \Psi_{n}^{\star} \left(3 \left(1 \vee r\right) + \frac{\Lambda_{m_{n}^{\star}}}{\overline{\Lambda}_{m_{n}^{\star}}}\right).
+\end{alignat*}
+
+Note that, using \textsc{\cref{as2.4.2}} and the definition of $G_{n}^{\star+}$, we have that $\frac{\overline{\Lambda}_{G_{n}^{\star+}}}{\Lambda_{m_{n}^{\star}}}$ is bounded for $n$ large enough; indeed with $D^{\star} := \left\lceil \frac{3 \left( 1 \vee r \right) }{\kappa^{\star}} + 1\right\rceil$,
+
+\begin{alignat*}{3}
+& G_{n}^{\star+} && \leq && \frac{3 \left(1 \vee r \right) \Psi_{n}^{\star} n}{\Lambda_{m_{n}^{\star}}} + m_{n}^{\star} \leq \frac{3 \left(1 \vee r \right) m_{n}^{\star} \overline{\Lambda}_{m_{n}^{\star}} n}{ n\Lambda_{m_{n}^{\star}} \kappa^{\star}} + m_{n}^{\star} \leq \left(\frac{3\left(1 \vee r \right)}{\kappa^{\star}} + 1\right) m_{n}^{\star} \leq D^{\star} m_{n}^{\star}\\ 
+& && \Rightarrow && \frac{\overline{\Lambda}_{G_{n}^{\star+}}}{\Lambda_{m_{n}^{\star}}}\leq \Lambda_{D^{\star}}.
+\end{alignat*}
+
+\medskip
+
+Hence, we have
+\[A \leq 6 \Lambda_{1} \exp\left[- \frac{2 m_{n}^{\star}}{L}\right] + 4 \Lambda_{1} \exp\left[-\frac{5 m_{n}^{\star}}{9 L} + 2 \log \left(G_{n}\right)\right] +  4 \Lambda_{D^{\star}} L \left(1 \vee r\right) \Psi_{n}^{\star}.\]
+
+\bigskip
+
+Now we control $B$.
+We use a similar decomposition to the one used for $A$ :
+
+\begin{alignat*}{3}
+& B && \leq && \sum\limits_{j = G_{n}^{\star-} + 1}^{G_{n}} \left(\theta^{\circ}_{j}\right)^{2} + \sum\limits_{j = 1}^{G_{n}^{\star-}} \mathds{E}_{\theta^{\circ}}^{n}\left[\left(\theta^{\circ}_{j}\right)^{2} \mathds{1}_{\left\{\widehat{m} \in \llbracket 1, j - 1 \rrbracket\right\}}\right]\\
+& && \leq && \sum\limits_{j = G_{n}^{\star-} + 1}^{G_{n}} \left(\theta^{\circ}_{j}\right)^{2} + \sum\limits_{j = 1}^{G_{n}^{\star-}} \mathds{E}_{\theta^{\circ}}^{n}\left[\left(\theta^{\circ}_{j}\right)^{2} \mathds{1}_{\left\{\widehat{m} \in \llbracket 1, G_{n}^{\star-} - 1 \rrbracket\right\}}\right]\\
+& B && \leq && \underbrace{\sum\limits_{j = G_{n}^{\star-} + 1}^{G_{n}} \left(\theta^{\circ}_{j}\right)^{2}}_{=: B_{1}} + \underbrace{\sum\limits_{j = 1}^{G_{n}^{\star-}} \left(\theta^{\circ}_{j}\right)^{2} \mathds{P}_{\theta^{\circ}}^{n}\left[1 \leq \widehat{m} < G_{n}^{\star-}\right]}_{=: B_{2}}.
+\end{alignat*}
+
+\medskip
+
+First, notice that $B_{1} + C = \mathfrak{b}_{G_{n}^{\star-}} \leq 9 L \left(1 \vee r\right) \Psi_{n}^{\star}$ by the definition of $G_{n}^{\star-}.$
+
+\medskip
+
+To control $B_{2},$ we use the definition of the Sobolev ellipsoid and the \textsc{\cref{prB.1.2}}:
+ 
+\begin{alignat*}{3}
+& B_{2} && = && \mathds{P}_{\theta^{\circ}}^{n}\left[1 \leq \widehat{m} < G_{n}^{\star-}\right] \sum\limits_{j = 1}^{G_{n}^{\star-}} \left(\theta^{\circ}_{j}\right)^{2} \\
+& && \leq && \exp\left[-\frac{7 \left(1 \vee r\right) m_{n}^{\star}}{9} + \log\left(G_{n}\right)\right] \cdot \sum\limits_{j = 1}^{G_{n}^{\star-}} \frac{\mathfrak{a}_{j}}{\mathfrak{a}_{j}}\left(\theta^{\circ}_{j}\right)^{2}\\
+& && \leq && \exp\left[-\frac{7 \left(1 \vee L^{\circ} \right) m_{n}^{\star}}{9} + \log\left(G_{n}\right)\right] \cdot \mathfrak{a}_{1}\sum\limits_{j = 1}^{G_{n}^{\star-}} \frac{1}{\mathfrak{a}_{j}}\left(\theta^{\circ}_{j}\right)^{2}\\
+& && \leq && \exp\left[-\frac{7 m_{n}^{\star}}{9} + \log\left(G_{n}\right)\right] \cdot \mathfrak{a}_{1}r\\
+ \end{alignat*}
+
+\medskip
+
+So we have
+\[B + C \leq 9 L \left(1 \vee r \right) \Psi_{n}^{\star} + \mathfrak{a}_{1} L^{\circ} \cdot \exp\left[-\frac{7 m_{n}^{\star}}{9} + \log\left(G_{n}\right)\right].\]
+
+\bigskip
+
+Which leads to :
+\begin{alignat*}{3}
+& \mathds{E}_{\theta^{\circ}}^{n}\left[\left\Vert \overline{\theta}^{\widehat{m}} - \theta^{\circ} \right\Vert^{2}\right] && \leq && L \left( 1 \vee L^{\circ} \right) \left( 4 \Lambda_{D^{\star}} + 9\right) \Psi_{n}^{\star} +\\
+& && && \left(6 \Lambda_{1} \exp\left[- \frac{2 m_{n}^{\star}}{L} - \log\left(\Psi_{n}^{\star}\right)\right] + 4 \Lambda_{1} \exp\left[-\frac{5 m_{n}^{\star}}{9 L} + \log \left(\frac{G_{n}^{2}}{\Psi_{n}^{\star}}\right)\right] + \right.\\
+& && && \left.\mathfrak{a}_{1} r \cdot \exp\left[-\frac{7 m_{n}^{\star}}{9} + \log\left(\frac{G_{n}}{\Psi_{n}^{\star}}\right)\right]\right) \Psi_{n}^{\star},\\
+\end{alignat*}
+
+which proves that there exist $K$ such that, for $n$ large enough,
+\[\mathds{E}_{\theta^{\circ}}^{n}\left[\left\Vert \overline{\theta}^{\widehat{m}} - \theta^{\circ} \right\Vert^{2}\right] \leq C \Psi_{n}^{\star}.\]
+
+\textcolor{red}{Add remark stating that the bound is uniform over the ellipsoid hence rate for the maximal risk?}

@@ -1,0 +1,111 @@
+\section{Bayesian approach}\label{INTRO_BAYES}
+
+In the Bayesian paradigm, one does not assume the existence of a true parameter $\theta^{\circ}$ but, defining a sigma algebra on $\Theta$ denoted  $\mathcal{B}$, that this parameter is a random variable $\boldsymbol{\theta}$.
+Before observing any data, one might already have some knowledge or expectations about the said parameter and this knowledge is represented by the so-called prior distribution on $(\Xi, \mathcal{B})$, denoted $\P_{\boldsymbol{\theta}}$.
+Then, the data we observe, a random variable $Y$ taking values in $(\mathds{Y}, \mathcal{Y})$, depends on the parameter $\boldsymbol{\theta}$ in a way which is described by the conditional distribution $\P_{Y \vert \boldsymbol{\theta}}$ which we previously denoted $\P_{\theta}$ in the frequentist framework.
+
+One would then be interested in the so-called posterior distribution which is, if it exists, the conditional distribution of the parameter $\boldsymbol{\theta}$ given that the data $Y$ is $y$, that is to say, any function $\P_{\boldsymbol{\theta}\vert Y=y}: \mathcal{B} \times \mathds{Y}\to [0, 1]$ such that, for any $A$ in $\mathcal{Y}$ $\E[\P_{\boldsymbol{\theta} \vert Y}(B) \mathds{1}_{\{Y \in A\}}] = \E[\mathds{1}_{\{\boldsymbol{\theta} \in B\}} \mathds{1}_{\{Y \in A\}}]$.
+While in the parametric framework where $\Theta$ is a finite dimensional space, the existence of a satisfying posterior distribution (in a sense to be clarified later) is immediate, a deeper discussion is required in the non-parametric case.
+This topic is clearly treated in \ncite{ghosal2017fundamentals} and we hence refer the reader to this book for more details.
+In this thesis, we will only consider models where $\Theta$ is a Polish space, and $\mathcal{B}$ is the associated Borel $\sigma$-algebra which ensures the existence of a satisfying posterior distribution in the sense that it is a Markov Kernel, that is to say, for any $Y$ in $\mathds{Y}$, $B \mapsto \P_{\boldsymbol{\theta} \vert Y}(B)$ is a probability measure; and for any $B$ in $\mathcal{B}$, the map $y \mapsto \P_{\boldsymbol{\theta} \vert Y= y}(B)$ is measurable.
+
+Moreover, we will consider cases where the family of distributions $(\P_{Y \vert \boldsymbol{\theta}})_{\theta \in \Theta}$ is dominated by a common measure $\P^{\circ}$.
+We then define, for any $\theta$ in $\Theta$, the Radon-Nikodym density of $\P_{Y \vert \theta}$ with respect to $\P^{\circ}$, as any function from $\mathds{Y}$ to $[0, \infty[$, denoted $\d\P_{Y \vert \theta}/\d \P^{\circ}$, such that for any $A$ in $\mathcal{Y}$, we have $\P_{Y \vert \theta}(A) = \int_{A} \d\P_{Y \vert \theta}/\d \P^{\circ} \d \P^{\circ}$.
+Hence, a regular version of the posterior distribution is given by the Bayes formula, that is, for any $B$ in $\mathcal{B}$, $\P_{\boldsymbol{\theta} \vert Y}(B) = \tfrac{\int_{B} (\d \P_{Y \vert \boldsymbol{\theta}}/\d \P^{\circ})(y) \d \P_{\boldsymbol{\theta}}(\boldsymbol{\theta})}{\int (\d \P_{Y \vert \boldsymbol{\theta}}/\d \P^{\circ})(y) \d \P_{\boldsymbol{\theta}}(\boldsymbol{\theta})}$.
+
+\subsection{Iteration procedure, self informative limit and Bayes carrier}\label{INTRO_BAYES_ITERATIVE}
+As we have seen, the Bayesian paradigm relies on the notion of prior information.
+In some cases, it is reasonable to accept the eventuality that one does not trust the prior information available.
+A way to take in consideration such a possibility is the iteration procedure, studied for example in \ncite{OBJJ}.
+It consists in considering the distribution of $\boldsymbol{\theta} \vert Y$ conditionally on $Y$.
+We then obtain, for any $B$ in $\mathcal{B}$ the posterior distribution $\P_{\boldsymbol{\theta} \vert Y, Y}(B) = \tfrac{\int_{B} (\d \P_{Y \vert \boldsymbol{\theta}}/\d \P^{\circ})(y) \d \P_{\boldsymbol{\theta} \vert Y}(\boldsymbol{\theta})}{\int (\d \P_{Y \vert \boldsymbol{\theta}}/\d \P^{\circ})(y) \d \P_{\boldsymbol{\theta} \vert Y}(\boldsymbol{\theta})}$ which we may note $\P_{\boldsymbol{\theta} \vert Y}^{(2)}(B)$.
+Iterating this procedure generalises the \textit{iterated posterior distribution}, given, for any $\eta$ greater than $1$ by $\P_{\boldsymbol{\theta} \vert Y}^{(\eta)}(B) = \tfrac{\int_{B} (\d \P_{Y \vert \boldsymbol{\theta}}/\d \P^{\circ})(y) \d \P_{\boldsymbol{\theta} \vert Y}^{(\eta - 1)}(\boldsymbol{\theta})}{\int (\d \P_{Y \vert \boldsymbol{\theta}}/\d \P^{\circ})(y) \d \P_{\boldsymbol{\theta} \vert Y}^{(\eta - 1)}(\boldsymbol{\theta})}$.
+
+Then, a question of interest is the asymptotic with respect to the iteration parameter $\eta$.
+The support of the limiting distribution (that is to say, the smallest closed set with probability $1$), is called self informative Bayes carrier, whereas that posterior mean of this limiting distribution is called self informative limit.
+
+\subsection{Typical priors for non-parametric models}\label{INTRO_BAYES_PRIOR}
+In the context we depicted previously, many priors have been considered.
+We will however focus on a family of priors named Gaussian sieve priors and an \textit{adaptive} variant of theirs.
+They are a specific case of the Gaussian process prior family, defined hereafter , and for which an in depth and practical presentation can be found in \ncite{rasmussen2003gaussian}.
+\begin{de*}
+Given a sequence $\theta^{\times}$ in $\Theta$ and a semi-definite positive operator on $\Xi^{2}$ $\Xi$, let be $\boldsymbol{f}$ a $(\Xi, \mathcal{B})$-valued random variable and $\P_{\boldsymbol{f}}$ its distribution.
+If $\P_{\boldsymbol{f}}$ is such that, for any integer $p$ and any collection $(x_{j})_{j \in \llbracket 1, p \rrbracket}$ in $\Xi^{p}$, the collection of random variables $(\langle \boldsymbol{f} \vert x_{j} \rangle_{\Xi})_{j \in \llbracket 1, p \rrbracket}$ is a Gaussian vector with mean $(\sum_{s \in \mathds{F}} \theta^{\times}(s) \overline{[x_{j}]}(s) e_{s})_{j \in \llbracket 1, p \rrbracket}$, and covariance matrix $(\Sigma(x_{j}, x_{l}))_{(j, l) \in \llbracket 1, p \rrbracket}$, we say that $\P_{\boldsymbol{f}}$ is a Gaussian process prior.
+
+We will in particular be interested in the distribution $\P_{\boldsymbol{\theta}}$, the distribution induced on $\Theta$ by $\P_{\boldsymbol{f}}$.
+For any collection $(s_{j})_{j \in \llbracket 1, p \rrbracket}$ in $\mathds{F}^{p}$, the vector of random variables $(\boldsymbol{\theta}(s_{j}))_{j \in \llbracket 1, p \rrbracket} = (\langle\boldsymbol{f} \vert e_{s_{j}} \rangle_{\Xi})_{j \in \llbracket 1, p \rrbracket}$ follows a normal distribution with mean $(\theta^{\times}(s_{j}))_{j \in \llbracket 1, p \rrbracket}$, and covariance matrix $(\Sigma(e_{s_{j}}, e_{s_{k}})))_{(j, k) \in \llbracket 1, p \rrbracket^{2}}$.
+\assEnd
+\end{de*}
+In this case, the prior distribution is entirely determined by the choice of $\theta^{\times}$ and $\Sigma$.
+We will in practice only consider cases when $\mathds{F} = \N$ and hence, we can chose $\Sigma(e_{s}, e_{s'})$ to be $0$ as soon as $s \neq s'$.
+
+\begin{de}
+The Gaussian sieve priors are Gaussian process priors for which there exists $m$ in $\mathds{M}$ such that for any $s$ in $\mathds{F}$, $\Sigma(e_{s}, e_{s}) = \mathds{1}_{\{ s \in \mathds{F}_{m} \}}$ where $(\mathds{F}_{m})_{m \in \mathds{M}}$ is a sieve.
+\assEnd
+\end{de}
+Here we will have $(\mathds{F}_{m})_{m \in \mathds{M}} = (\llbracket -m, m \rrbracket)_{m \in \N}$ or $(\mathds{F}_{m})_{m \in \mathds{M}} = (\llbracket 0, m \rrbracket)_{m \in \N}$.
+
+\subsection{The pragmatic Bayesian approach}\label{INTRO_BAYES_PRAGMATIC}
+Even though the traditional Bayesian approach does not admit the existence of a true parameter and focuses on the study of the posterior distribution, one could wonder about the performances of such methods under a frequentist lens.
+Admitting the existence of a true parameter $\theta^{\circ}$ and assuming prior knowledge $\P_{\boldsymbol{\theta}}$ about it and observing some data $Y$ which distribution is hence given by $\P_{Y \vert \boldsymbol{\theta} = \theta^{\circ}}$, we wonder if the posterior distribution contracts around $\theta^{\circ}$, as formulated in the following definition.
+
+\begin{de}
+A posterior distribution is said to be consistent at $\theta^{\circ}$ if, for any real, strictly positive, constant $c$ we have
+$\lim_{n \rightarrow \infty} \E[\P_{\boldsymbol{\theta} \vert Y^{n}}(\Vert \theta^{\circ} - \boldsymbol{\theta} \Vert_{l^{2}}^{2} \geq c)] = 0$.
+\assEnd
+\end{de}
+
+Notice that for any $c$, the probability $\P_{\boldsymbol{\theta} \vert Y^{n}}(\Vert \theta^{\circ} - \boldsymbol{\theta} \Vert_{l^{2}}^{2} \geq c)$ is a random variable which depends on the observations $Y^{n}$.
+In addition, if, for any $Y$ in $\mathds{Y}$, the measure $\P_{\boldsymbol{\theta} \vert Y}$ is a Dirac measure, say $\delta_{\theta(Y)}$ then we recover the definition of the probability for the estimator $\theta(Y)$ to exceed the loss $c$, indeed,
+\[\E[\P_{\boldsymbol{\theta} \vert Y^{n}}(\Vert \theta^{\circ} - \boldsymbol{\theta} \Vert_{l^{2}}^{2} \geq c)] = \E[\mathds{1}_{(\Vert \theta^{\circ} - \theta(Y) \Vert_{l^{2}}^{2} \geq c)}] = \P(\Vert \theta^{\circ} - \theta(Y) \Vert_{l^{2}}^{2} \geq c).\]
+
+One can then quantify the so called rate of contraction of the posterior distribution.
+
+\begin{de}
+Given a consistent posterior distribution $\P_{\boldsymbol{\theta} \vert Y^{n}}$, a sequence $(\Psi_{n})_{n \in \N}$ of real, strictly positive, numbers, converging to $0$ is called a contraction rate for $\P_{\boldsymbol{\theta} \vert Y^{n}}$ if for any increasing unbounded sequence $(c_{n})_{n \in \N}$, $\lim_{n \rightarrow \infty}\E[\P_{\boldsymbol{\theta} \vert Y^{n}}(\Vert \theta^{\circ} - \boldsymbol{\theta} \Vert_{l^{2}}^{2} \geq c_{n} \Psi_{n})] = 0$.
+
+If, in addition, for any increasing unbounded sequence $(c_{n})_{n \in \N}$ we also have
+
+$\lim_{n \rightarrow \infty}\E[\P_{\boldsymbol{\theta} \vert Y^{n}}(\Vert \theta^{\circ} - \boldsymbol{\theta} \Vert_{l^{2}}^{2} \leq c_{n}^{-1} \Psi_{n})] = 0$ then, $(\Psi_{n})_{n \in \N}$ is called an exact contraction rate for $\P_{\boldsymbol{\theta} \vert Y^{n}}$.
+\assEnd
+\end{de}
+
+Hence, considering a family of posterior distributions $\mathcal{G}$, such as the one obtained while using the sieve priors introduced earlier, we can define the notion of oracle optimal prior within this family at a certain true parameter $\theta^{\circ}$.
+
+\begin{de}
+A posterior distribution $\P_{\boldsymbol{\theta} \vert Y^{n}}$ belonging to a family $\mathcal{G}$ of posterior distributions is called oracle optimal at a true parameter value $\theta^{\circ}$ if there exists a sequence $\Phi^{\circ}_{n}(\theta^{\circ})$ such that, for any increasing and unbounded sequence $(c_{n})_{n \in \N}$, we have $\sup_{\mathds{Q} \in \mathcal{G}} \lim_{n \to \infty} \E[\Q_{\boldsymbol{\theta} \vert Y^{n}}(\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert_{l^{2}}^{2} \leq c_{n}^{-1} \Psi_{n}^{\circ}(\theta^{\circ}))] = 0$ and in addition
+
+$\lim_{n \to \infty} \E[\P_{\boldsymbol{\theta} \vert Y^{n}}(\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert_{l^{2}}^{2} \leq c_{n} \Psi_{n}^{\circ}(\theta^{\circ}))] = 1$.
+\assEnd
+\end{de}
+
+As in the frequentist case, one can alternatively consider uniform rates.
+
+\begin{de}
+Considering a subspace of the parameter space $\widetilde{\Theta}$, and a posterior distribution $\P_{\boldsymbol{\theta} \vert Y}$, a sequence $(\Psi^{\star}_{n}(\widetilde{\Theta}))_{n \in \N}$ is called uniform contraction rate is, for any increasing unbounded sequence $(c_{n})_{n}$ we have $\lim_{n \to \infty} \inf_{\theta^{\circ} \in \widetilde{\Theta}} \E[\P_{\boldsymbol{\theta} \vert Y^{n}}(\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert_{l^{2}}^{2} \leq c_{n} \Psi^{\star}_{n}(\widetilde{\Theta}))] = 1$.
+
+It is called an exact uniform contraction rate if in addition, for any increasing unbounded sequence, $\lim_{n \to \infty} \inf_{\theta^{\circ} \in \widetilde{\Theta}} \E[\P_{\boldsymbol{\theta} \vert Y^{n}}(\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert_{l^{2}}^{2} \leq c_{n}^{-1} \Psi^{\star}_{n}(\widetilde{\Theta}))] = 0$.
+\assEnd
+\end{de}
+
+And with this definition at hand, we can define the minimax optimality, in a similar manner to the frequentist notion.
+
+\begin{de}
+A sequence $(\Psi^{\star}_{n}(\widetilde{\Theta}))_{n \in \N}$ is called minimax optimal contraction rate if, for any increasing unbounded sequence $(c_{n})_{n \in \N}$, we have
+\[\lim_{n \to \infty} \sup_{\Q_{\boldsymbol{\theta} \vert Y^{n}}} \inf_{\theta^{\circ} \in \widetilde{\Theta}} \E[\Q_{\boldsymbol{\theta} \vert Y^{n}}(\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert_{l^{2}}^{2} \leq c_{n}^{-1} \Psi^{\star}_{n}(\widetilde{\Theta}))]\]
+ and at the same time there exists a posterior distribution $\P_{\boldsymbol{\theta} \vert Y^{n}}$ such that for any increasing unbounded sequence $(c_{n})_{n \in \N}$ we have \[\lim_{n \to \infty} \inf_{\theta^{\circ} \in \widetilde{\Theta}} \E[\P_{\boldsymbol{\theta} \vert Y^{n}}(\Vert \boldsymbol{\theta} - \theta^{\circ} \Vert_{l^{2}}^{2} \leq c_{n} \Psi^{\star}_{n}(\widetilde{\Theta}))];\]
+ such a posterior distribution is called minimax optimal.
+Note that in "$\sup_{\Q_{\boldsymbol{\theta} \vert Y^{n}}}$", the supremum is taken over any possible posterior distribution contrarily to the definition of the oracle optimality.
+\assEnd
+\end{de}
+
+\subsection{Existing central results}\label{INTRO_BAYES_BIBLIO}
+Consistence and contraction rate of posterior distributions have gathered interest for a long while one could mention the work of \ncite{doob1949application}.
+More recently, results introduced in \ncite{schwartz1965bayes} and reformulated in \ncite{ghosal2000convergence}, seems to be at the origin of a very fecund theory allowing the systematic study of the posterior contraction rates based on the complexity of the parameter space in terms of $\epsilon$-packing numbers.
+Originally formulated with Kullback-Leibler divergence, these results have been adapted, for example, to $l^{p}$ distances in \ncite{gine2011rates}.
+It has since been applied to many models, including inverse problems (\ncite{knapik2011bayesian}).
+
+\medskip
+
+One of the main limitations of this approach is that the contraction rates obtained are generally penalised by a $\log$-loss compared to the convergence rates of frequentist approaches.
+That is why, in this thesis, we will give more attention to the approach suggested in \ncite{JJASRS} which allowed, in the context of the inverse Gaussian sequence space model, to obtained exact contraction rate for the posterior distribution obtained with a Gaussian sieve prior.

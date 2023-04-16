@@ -1,0 +1,326 @@
+\section{Circular deconvolution with independent data and partially known noise density}\label{FREQ_CIRCDECONV_UNKNOWN_IID}
+
+Finally, in this section, we consider the case of a partially known operator as described in \nref{INTRO_INVERSE_UNKNOWN}.
+
+As a consequence, we need here to simultaneously estimate the distribution $\P_{\epsilon}$ of the noise random variable $\epsilon$ and the density of interest $f^{X}$.
+We now assume that we have at hand two independent samples.
+The first is an i.i.d. sample from $\P^{\epsilon}$, denoted $\epsilon^{q} = \left(\epsilon_{r}\right)_{r \in \llbracket 1, q \rrbracket}$; the second is, as in the known operator case, a sample from the convolved distribution, assumed here to be i.i.d., denoted $Y^{n} = \left(Y_{p}\right)_{p \in \llbracket 1, n \rrbracket}$.
+
+\medskip
+
+We want to adapt our aggregation estimator shape to this case. In this perspective let us define an estimators for $\lambda^{-1}$.
+
+\begin{de}{\textsc{Thresholded estimator} \\}\label{DE_FREQ_CIRCDECONV_UNKNOWN_IID_THRESHOLDEDEST}
+For any $m$ in $\mathds{Z}$ define, with the convention "$0/0 = 0$"
+\begin{alignat*}{3}
+& \widehat{\lambda}_{m} && := && \frac{1}{q} \sum\limits_{r = 1}^{q} e_{m}(\epsilon_{r});\\
+& \widehat{\lambda}^{+}_{m} && := && \frac{1}{\widehat{\lambda}_{m}} \mathds{1}_{\vert \widehat{\lambda}_{m}\vert^{2} > \frac{1}{q}}.
+\end{alignat*}
+Mimicking notations we used until here we also note, for any $m$ in $\N$
+\begin{alignat*}{3}
+& \widehat{\Lambda}_{m} && := && \vert \widehat{\lambda}^{+}_{m} \vert^{2}\\
+& \widehat{\Lambda}_{(m)} && := && \max\left\{\widehat{\Lambda}_{k}, k \in \llbracket 1, m \rrbracket \right\};
+\end{alignat*}
+\end{de}
+
+With this definition, we define an alternative form for projection estimators which we aggregated in the two previous sections.
+
+\begin{de}{\textsc{Thresholded projection estimators} \\}\label{DE_FREQ_CIRCDECONV_UNKNOWN_IID_THRESHOLDEDPROJEST}
+For any $m$ in $\mathds{Z}$, let be
+\begin{alignat*}{3}
+& \overline{\theta}_{m}^{+} && := && \mathds{1}_{m = 0} + \mathds{1}_{m \neq 0} \frac{1}{n}\sum\limits_{p = 1}^{n} e_{m}(Y_{p}) \widehat{\lambda}_{m}^{+};\\
+& \left( \overline{\theta}^{m, +}_{j} \right)_{j \in \mathds{Z}} && := &&\left(\mathds{1}_{\vert j \vert \leq m} \overline{\theta}^{+}_{j}\right)_{j \in \mathds{Z}}.
+\end{alignat*}
+\end{de}
+
+We give the following shape to the weight sequence.
+
+\begin{de}{\textsc{Weight sequence} \\}\label{DE_FREQ_CIRCDECONV_UNKNOWN_IID_WEIGHT}
+Let be the following quantities:
+\begin{alignat*}{3}
+& \kappa && \geq && 1;\\
+& \sqrt{\delta^{\widehat{\Lambda}}_{m}} && := && \frac{\log\left(k \widehat{\Lambda}_{(m)} \vee \left(m + 2\right)\right)}{\log\left(m + 2\right)}\\
+& \Delta^{\widehat{\Lambda}}_{m} && := && \delta^{\widehat{\Lambda}}_{m} m \widehat{\Lambda}_{(m)}\\
+& \pen(m) && := && \frac{9}{2} 12 \kappa \Delta^{\widehat{\Lambda}}_{m};\\
+& \Upsilon(Y, \epsilon, m) && := && n \left\Vert \overline{\theta}^{m, +} \right\Vert_{l^{2}}^{2}.
+\end{alignat*}
+Then, for any couple of natural integers $n$ and $\eta$, we define the distribution $\P_{M \vert Y^{n}, \epsilon^{q}}^{n, (\eta)}$, dominated by the counting measure on $\N^{\star}$ such that, for any $m$ in $\llbracket 1, n \rrbracket$
+\[\P_{M \vert Y^{n}, \epsilon^{q}}^{n, (\eta)}(m) := \frac{\exp\left[\eta\left(- \pen(m) + \Upsilon(Y^{n}, \epsilon^{q}, m)\right)\right]}{\sum\limits_{k = 1}^{n} \exp\left[\eta\left(- \pen(k) + \Upsilon(Y^{n}, \epsilon^{q}, k)\right)\right]}.\]
+\end{de}
+
+With those definitions at hand, we are able to define an estimator that reproduces the structure of the posterior mean of iterated hierarchical sieves.
+
+\begin{de}{\textsc{Aggregation/shrinkage estimator} \\}\label{DE_FREQ_CIRCDECONV_UNKNOWN_IID_AGGREGEST}
+Using the notations we just introduced, we define, for any strictly positive integer $\eta$ the shrinkage/aggregation estimator $\widehat{\theta}^{(\eta)}$ such that, for any $j$ in $\mathds{Z}$
+\begin{alignat*}{3}
+& \widehat{\theta}^{(\eta)}_{j} && := && \P_{M \vert Y^{n}, \epsilon^{q}}^{n, (\eta)}(\llbracket \vert j \vert, n \rrbracket) \overline{\theta}^{+}_{j};\\
+& \widehat{\theta}^{\eta} && := && \sum\limits_{j = 1}^{n} \P_{M \vert Y^{n}, \epsilon^{q}}^{n, (\eta)}(j) \overline{\theta}^{j, +}.
+\end{alignat*}
+\end{de}
+
+As previously, one can notice that, as $\eta$ tends to infinity, this estimator converges to the penalised contrast maximiser projection estimator with penalty function $\pen$ and contrast $\Upsilon$.
+
+In addition, this time, it is important to note that this estimator does not depend on characteristics of $\lambda$ nor $\theta^{\circ}$ and is hence fully data driven and well designed for the context of a partially unknown operator problem.
+
+\medskip
+
+Using the method described in \nref{FREQ_STRATEGY}, we are able to show that, for any $\theta^{\circ}$, the sequence defined hereafter is a convergence rate.
+
+\begin{de}{\textsc{Convergence rate} \\}\label{DE_FREQ_CIRCDECONV_UNKNOWN_IID_CONVRATE}
+Let be the sequences:
+\[m^{\dagger}_{n} := \argmin_{m \in \N}\left\{\left[\mathfrak{b}_{m}^{2}(\theta^{\circ})\mathfrak{b}_{0}^{-2}(\theta^{\circ}) \vee 2 \frac{m \Lambda_{(m)}}{n} \psi_{n}\right]\right\};\]
+and
+\[\Phi^{\dagger}_{n} := \left[\mathfrak{b}_{m^{\dagger}_{n}}^{2}(\theta^{\circ})\mathfrak{b}_{0}^{-2}(\theta^{\circ}) \vee 2 \frac{m^{\dagger}_{n} \Lambda_{(m^{\dagger}_{n})}}{n} \psi_{n}\right].\]
+\end{de}
+
+\begin{as}\label{ass:au:ub:p}
+Let $\xdf$ have a finite series expansion as defined in \ref{oo:xdf:p}, that is, either
+\begin{inparaenum}[i]
+\renewcommand{\theenumi}{\dgrau\rm(\alph{enumi})}
+\item\label{ass:au:ub:p:c1} $\xdf=\bas_0$, i.e., $\bias[0](\xdf)=\VnormLp{\Proj[{\mHiH[0]}]^\perp\xdf}^2=0$ or
+\item\label{ass:au:ub:p:c2} there is $K\in\Nz$ with $1\geq \bias[{[K-1] }](\xdf)>0$ and $\bias[K](\xdf)=0$.
+\end{inparaenum}
+In case \ref{ass:au:ub:p:c1} set $\dr K_{\ydf}:=\ceil{15\tfrac{300^4}{\cpen^2}\vee3\tfrac{800^2}{\cpen^2}}$ while in case \ref{ass:au:ub:p:c2} given $K_{\ydf}:=K\dr\vee
+3\tfrac{800^2\Vnormlp[1]{\fydf}^2}{\cpen^2}$ and $c_{\xdf}:=\tfrac{2\VnormLp{\Proj[{\mHiH[0]}]^\perp\xdf}^2+7576\cpen}{\VnormLp{\Proj[{\mHiH[0]}]^\perp\xdf}^2\bias[{[K-1]}]^2(\xdf)}$ let there $\ssY_{\xdf,\iSv},\ssE_{\xdf,\iSv}\in\Nz$ be with $\ssY_{\xdf,\iSv}>\ceil{c_{\xdf}\DipenSv[K_{\ydf}]\dr\vee15\tfrac{300^4}{\cpen^2}}$ and $\ssE_{\xdf,\iSv}>\ceil{289\log(K_{\ydf}+2)\cmiSv[K_{\ydf}]\miSv[K_{\ydf}]}$ such that $\sDi{\ssY}:=\max\{\Di\in\nset{K,\ssY}:c_{\xdf}\,\DipenSv<\ssY\}$ and $\sDi{\ssE}:=\max\{\Di\in\nset{K_{\ydf},\ssE}:289\log(\Di+2)\cmiSv\miSv\leq\ssE\}$ where the defining sets contain $K_{\ydf}$ and thus they are not empty, satisfies $\cmiSv[\sDi{\ssY}]\sDi{\ssY}\geq K_{\ydf}(\log\ssY)$ for all $\ssY\geq \ssY_{\xdf,\iSv}$ and $\cmiSv[\sDi{\ssE}]\sDi{\ssE}\geq K_{\ydf}(\log\ssE)$ for all $\ssE\geq \ssE_{\xdf,\iSv}$, respectively.
+\end{as}
+
+\begin{il}\label{il:ass:au:ub:p}
+Let us illustrate \nref{ass:au:ub:p} considering as in \nref{il:oo} the commonly studied behaviours \ref{il:edf:o} and \ref{il:edf:s} for the sequence  $\Nsuite[j]{\iSv[j]}$.
+\begin{Liste}[]
+\item[\mylabel{il:ass:au:ub:p:o}{\dg\bfseries{(o)}}]
+	Let $\iSv[\Di]\sim \Di^{2a}$, $a>0$, then $\sDi{\ssY}\cmSv[\sDi{\ssY}]\sim\ssY^{1/(2a+1)}$ (cf. \nref{il:ass:ub:p} \ref{il:ass:ub:p:o}), while $\ssE\sim(\log\sDi{\ssE})\cmSv[\sDi{\ssY}]\miSv[\sDi{\ssE}]\sim(\log\sDi{\ssE})(\sDi{\ssE})^{2a}$ implies $\sDi{\ssE}\sim(\ssE/\log\ssE)^{1/(2a)}$ and $\sDi{\ssE}\cmSv[\sDi{\ssE}]\sim (\ssE/\log\ssE)^{1/(2a)}$.
+\item[\mylabel{il:ass:au:ub:p:s}{\dg\bfseries{(s)}}]
+	Let $\iSv[\Di]\sim \exp(\Di^{2a})$, $a>0$, then $\sDi{\ssY}\cmSv[\sDi{\ssY}]\sim (\log \ssY)^{2+1/(2a)}$ (cf. \nref{il:ass:ub:p} \ref{il:ass:ub:p:s}), while $\ssE\sim(\log\sDi{\ssE})\cmSv[\sDi{\ssE}]\miSv[\sDi{\ssE}]\sim (\log\sDi{\ssE})(\sDi{\ssE})^{4a}\exp((\sDi{\ssE})^{2a})$ implies $\sDi{\ssE}\sim(\log \ssE-\tfrac{1+4a}{2a}\log\log\ssE-\tfrac{1}{2a}\log\log\log\ssE)^{1/(2a)}$ and $\sDi{\ssE}\cmSv[\sDi{\ssE}]\sim (\log \ssE)^{2+1/(2a)}$.
+\end{Liste}
+Clearly, in both cases \ref{il:ass:au:ub:p:o} and \ref{il:ass:au:ub:p:s}, there are ${\ssY}_{\xdf,\iSv},{\ssE}_{\xdf,\iSv}\in\Nz$ such that $\cmiSv[\sDi{\ssY}]\sDi{\ssY}\geq K_{\ydf}(\log\ssY)$ for all $\ssY\geq{\ssY}_{\xdf,\iSv}$ and  $\cmiSv[\sDi{\ssE}]\sDi{\ssE}\geq K_{\ydf}(\log\ssE)$ for all $\ssE\geq{\ssE}_{\xdf,\iSv}$  hold true.
+\end{il}
+
+
+\begin{thm}\label{THM_FREQ_CIRCDECONV_UNKNOWN_IID_ORACLE_P}
+Let $\xdf$ have a finite series expansion as defined in \ref{oo:xdf:p}.
+Under \nref{ass:au:ub:p} there is a finite numerical constant $\cst{}$ such that for all $\dr\ssY,\ssE\in\Nz$
+\begin{equation}\label{re:au:ub:p:e1}
+\FuEx[\ssY,\ssE]{\rY,\rE}\VnormLp{\hxdf-\xdf}^2
+\leq\cst{}(1\vee\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2)(\DipenSv[\ssY_{\xdf,\iSv}]\ssY^{-1}+K_{\ydf}\miSv[K_{\ydf}]^2\ssE^{-1}+\ssE_{\xdf,\iSv}\ssE^{-1})
+\end{equation}
+\end{thm}
+
+Comparison with the oracle rate of projection estimators reveals that in many cases, we obtain an oracle optimal estimator.
+
+\begin{il}\label{IL_FREQ_CIRCDECONV_UNKNOWN_IID_ORACLE_P}
+Let us illustrate \nref{THM_FREQ_CIRCDECONV_UNKNOWN_IID_ORACLE_P} considering as in \nref{il:ass:au:ub:p} the behaviours \ref{il:edf:o} and \ref{il:edf:s} for the sequence $\Nsuite[j]{\iSv[j]}$.  
+Keeping in mind that as shown in \nref{il:ass:au:ub:p} there are ${\ssY}_{\xdf,\iSv},{\ssE}_{\xdf,\iSv}\in\Nz$ such that $\cmiSv[\sDi{\ssY}]\sDi{\ssY}\geq K_{\ydf}(\log\ssY)$  for all $\ssY\geq{\ssY}_{\xdf,\iSv}$ and $\cmiSv[\sDi{\ssE}]\sDi{\ssE}\geq K_{\ydf}(\log\ssE)$  for all $\ssE\geq{\ssE}_{\xdf,\iSv}$ hold true, due to \nref{THM_FREQ_CIRCDECONV_UNKNOWN_IID_ORACLE_P} there is a constant $\cst{\xdf,\edf}$ depending only on the densities $\xdf$ and $\edf$ such that $\FuEx[\ssY,\ssE]{\rY,\rE}\VnormLp{\hxdf-\xdf}^2\leq \cst{\xdf,\edf}(\ssY^{-1}+\ssE^{-1})$ for all $\ssY,\ssE\in\Nz$.
+Comparing the last result with the oracle rates derived in \nref{il:ee} we conclude, that $\hxdf$ is optimal in an oracle sense in both, the case \ref{il:oo:po} and  \ref{il:oo:so}.
+\end{il}
+
+\begin{as}\label{ass:au:ub:np}
+Let $\xdf$  have an infinite series expansion as definied in \ref{oo:xdf:np}, that is, $1\geq \bias(\xdf)>0$ for all $\Di\in\Nz$.
+Given   $\Di_{\ydf}:=\dr3*800^2\Vnormlp[1]{\fydf}^2\cpen^{-2}$ and $\tDi_{\ydf}=\min\{\Di\in\Nz:\bias[\Di_{\ydf}](\xdf)>\bias[\Di](\xdf)\}$ there are $\ssY_{\xdf,\iSv},\ssE_{\xdf,\iSv}\in\Nz$ with $\ssY_{\xdf,\iSv}\geq\DipenSv[\tDi_{\ydf}]\bias[\tDi_{\ydf}]^{-2}(\xdf)\vee\dr15*300^4\cpen^{-2}$ and $\ssE_{\xdf,\iSv}\geq289\log(\Di_{\ydf}+2)\cmiSv[\Di_{\ydf}]\miSv[\Di_{\ydf}]$ such that \begin{inparaenum}[i]\renewcommand{\theenumi}{\dgrau\rm(\alph{enumi})} \item\label{ass:au:ub:np:c0} for all $\ssE\geq\ssE_{\xdf,\iSv}$, $\sDi{\ssE}:=\max\{\Di\in\nset{\Di_{\ydf},\ssE}:289\log(\Di+2)\cmiSv[\Di]\miSv[\Di]\leq\ssE\}$, where the defining set containing $\Di_{\ydf}$ is not empty, satisfies $\cmiSv[\sDi{\ssE}]\sDi{\ssE}\geq \Di_{\ydf}|\log\mRa{\xdf,\iSv}|$ and  either 
+\item\label{ass:au:ub:np:c1}
+$\cmiSv[\aDi{\ssY}]\aDi{\ssY}\geq \Di_{\ydf}|\log\hRa{\xdf,\iSv}|$ 
+for all
+$\ssY\geq{\ssY}_{\xdf,\iSv}$ or \item\label{ass:au:ub:np:c2}  
+$\aDi{\ssY}\leq  \Di_{\ydf}|\log\hRa{\xdf,\iSv}|$ for all
+$\ssY\geq{\ssY}_{\xdf,\iSv}$. \end{inparaenum} We set 
+$\sDi{\ssY}:= \ceil{\Di_{\ydf}|\log\hRa{\xdf,\iSv}|}\wedge\ssY$ for
+$\ssY<\ssY_{\xdf,\iSv}$ and $\sDi{\ssY}:= \ceil{\Di_{\ydf}|\log\hRa{\xdf,\iSv}|}\vee\aDi{\ssY}$ for
+$\ssY\geq\ssY_{\xdf,\iSv}$, and in addition $\sDi{\ssE}:=\sDi{\ssY}$
+for $\ssE<\ssE_{\xdf,\iSv}$, where consequently in case
+\ref{ass:au:ub:np:c1}  $\sDi{\ssY}= \Di_{\ydf}|\log\hRa{\xdf,\iSv}|$ for
+$\ssY<\ssY_{\xdf,\iSv}$, $\sDi{\ssY}=\aDi{\ssY}$ for
+$\ssY\geq\ssY_{\xdf,\iSv}$ and in case \ref{ass:au:ub:np:c2}
+$\sDi{\ssY}= \Di_{\ydf}|\log\hRa{\xdf,\iSv}|$ for all $\ssY\in\Nz$.
+\end{as}
+
+\begin{il}\label{il:ass:au:ub:np}
+Let us illustrate  \nref{ass:au:ub:np}
+  considering as in \nref{il:oo} usual
+  behaviour \ref{il:oo:oo}, \ref{il:oo:so} and \ref{il:oo:os}
+ for the sequences $\Nsuite[\Di]{\bias[\Di](\xdf)}$ and
+  $\Nsuite[\Di]{\iSv[\Di]}$:
+ \begin{Liste}[]
+\item[\mylabel{il:ass:au:ub:np:oo}{\dg\bfseries{[o-o]}}]
+$\cmiSv[\aDi{\ssY}]\aDi{\ssY}\sim\ssY^{1/(2p+2a+1)}$ and
+$|\log\hRa{\xdf,\iSv}|\sim(\log\ssY)$ (cf.  \nref{il:ass:ub:np}
+\ref{il:ass:ub:np:oo}) while
+$\sDi{\ssE}\cmSv[\sDi{\ssE}]\sim (\ssE/\log\ssE)^{1/(2a)}$ (cf.  \nref{il:ass:au:ub:p}
+\ref{il:ass:au:ub:p:o})  and $|\log\mRa{\xdf,\iSv}|\sim(\log\ssE)$ (cf.  \nref{il:ee}
+\ref{il:ee:oo})
+ \item[\mylabel{il:ass:au:ub:np:os}{\dg\bfseries{[o-s]}}]
+$\cmiSv[\aDi{\ssY}]\aDi{\ssY}\sim(\log \ssY)^{2+1/(2a)}$ and
+$|\log\hRa{\xdf,\iSv}|\sim(\log\log\ssY)$ (cf.  \nref{il:ass:ub:np}
+\ref{il:ass:ub:np:os}) while
+$\sDi{\ssE}\cmSv[\sDi{\ssE}]\sim (\log\ssE)^{2+1/(2a)}$ (cf.  \nref{il:ass:au:ub:p}
+\ref{il:ass:ub:p:s})  and $|\log\mRa{\xdf,\iSv}|\sim(\log\log\ssE)$ (cf.  \nref{il:ee}
+\ref{il:ee:os})
+ \item[\mylabel{il:ass:au:ub:np:so}{\dg\bfseries{[s-o]}}]
+$\cmiSv[\aDi{\ssY}]\aDi{\ssY}\sim(\log \ssY)^{1/(2p)}$ and
+$|\log\hRa{\xdf,\iSv}|\sim(\log\ssY)$ (cf.  \nref{il:ass:ub:np}
+\ref{il:ass:ub:np:so}) while
+$\sDi{\ssE}\cmSv[\sDi{\ssE}]\sim (\ssE/\log\ssE)^{1/(2a)}$ (cf.  \nref{il:ass:au:ub:p}
+\ref{il:ass:au:ub:p:o}) and $|\log\mRa{\xdf,\iSv}|\sim(\log\ssE)$ (cf.  \nref{il:ee}
+\ref{il:ee:so})
+\end{Liste}
+Clearly, there is ${\ssE}_{\xdf,\iSv}\in\Nz$ such that for all
+$\ssE\geq{\ssE}_{\xdf,\iSv}$ in the three cases
+\ref{il:ass:au:ub:np:oo}, \ref{il:ass:ub:np:os} and
+\ref{il:ass:ub:np:so}   $\cmiSv[\sDi{\ssE}]\sDi{\ssE}\geq
+\Di_{\ydf}|\log\mRa{\xdf,\iSv}|$, i.e., \nref{ass:au:ub:np}
+\ref{ass:au:ub:np:c0} holds.
+On the other hand side,  there is ${\ssY}_{\xdf,\iSv}\in\Nz$ such that for all
+$\ssY\geq{\ssY}_{\xdf,\iSv}$ in the cases \ref{il:ass:ub:np:oo} and
+\ref{il:ass:ub:np:os}   $\cmiSv[\aDi{\ssY}]\aDi{\ssY}\geq
+\Di_{\ydf}|\log\hRa{\xdf,\iSv}|$, i.e., \nref{ass:au:ub:np}
+\ref{ass:au:ub:np:c1} holds,   while in case \ref{il:ass:au:ub:np:so}
+$\aDi{\ssY}\leq \Di_{\ydf}|\log\hRa{\xdf,\iSv}|$ for $p\geq1/2$, i.e., \nref{ass:au:ub:np}
+\ref{ass:au:ub:np:c2} holds, and $\cmiSv[\aDi{\ssY}]\aDi{\ssY}\geq
+\Di_{\ydf}|\log\hRa{\xdf,\iSv}|$ for $p<1/2$, i.e., \nref{ass:au:ub:np}
+\ref{ass:au:ub:np:c1} holds.
+\end{il}
+
+\begin{thm}\label{THM_FREQ_CIRCDECONV_UNKNOWN_IID_ORACLE_NP}
+\label{re:au:ub:np} Let $\xdf$ have an infinite series expansion
+  as definied in \ref{oo:xdf:np}. Under \nref{ass:au:ub:np} there is a finite numerical
+  constant $\cst{}$ such that for all $\dr\ssY,\ssE\in\Nz$
+\begin{multline}\label{re:au:ub:np:e1}
+\FuEx[\ssY,\ssE]{\rY,\rE}\VnormLp{\hxdfPr[]-\xdf}^2\leq
+\cst{}\big\{[1\vee\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2]\,\hRaDi{\sDi{\ssY}\wedge\sDi{\ssE},\xdf,\iSv}+\mRa{\xdf,\iSv}\\
+\hfill+[1\vee\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2](\DipenSv[\ssY_{\xdf,\iSv}]\ssY^{-1}+\ssE_{\xdf,\iSv}\ssE^{-1})+\Vnormlp[1]{\fydf}^2\ssY^{-1}+\ssE_{\xdf,\iSv}^2\ssE^{-1}\big\}.
+\end{multline}
+\end{thm}
+
+Comparison with the oracle rate of projection estimators reveals that in many cases, we obtain an oracle optimal estimator.
+
+\begin{cor}\label{COR_FREQ_CIRCDECONV_UNKNOWN_IID_ORACLE_NP}
+Under the assumptions of
+  \nref{re:au:ub:np}  for  $\ssY\in\Nz$ let
+  $\ssE_{\ssY}:=\ssE(\ssY)\in\Nz$ such that
+  $\aDi{\ssY}\leq\sDi{\ssE_{\ssY}}$. If in addition
+  $\lim_{\ssY\to\infty}\cmiSv[\aDi{\ssY}]\aDi{\ssY}|\log\hRa{\xdf,\iSv}|^{-1}=\infty$, then there is a finite constant $\cst{\xdf,\edf}$ depending on the densities 
+$\xdf$ and $\edf$ such that
+\begin{equation*}
+\FuEx[\ssY,\ssE]{\rY,\rE}\VnormLp{\hxdf-\xdf}^2\leq\cst{\xdf,\edf}(\hRa{\xdf,\iSv}+\mRa[\ssE_{\ssY}]{\xdf,\iSv})\text{
+  for all } \ssY\in\Nz .
+\end{equation*}
+\end{cor}
+
+\begin{il}\label{IL_FREQ_CIRCDECONV_UNKNOWN_IID_ORACLE_NP}
+Let us illustrate  \nref{re:au:ub:np} considering as in \nref{il:ass:au:ub:np} usual
+  behaviour  \ref{il:ass:au:ub:np:oo}, \ref{il:ass:au:ub:np:os} and \ref{il:ass:au:ub:np:so}
+ for the sequences $\Nsuite[\Di]{\bias[\Di](\xdf)}$ and
+  $\Nsuite[\Di]{\iSv[\Di]}$. In light of \nref{il:ass:au:ub:np}, we
+  apply \nref{re:au:ub:np}, where  we need only check \nref{ass:au:ub:np}. The rates then follow by an evaluation of the upper bound. Let
+  $\Nsuite[\ssY]{\ssE_{\ssY}}$ be a sequence of positive integers and
+  suppose that the limits  $q_{\text{o-o}}$, $q_{\text{o-s}}$, and
+$q_{\text{s-o}}$  defined in \nref{il:ee} exists in the respective cases.
+\begin{Liste}[]
+\item[\mylabel{il:au:ub:np:oo}{\dg\bfseries{[o-o]}}] 
+Since \nref{ass:au:ub:np} \ref{ass:au:ub:np:c0} with $\sDi{\ssE}\sim
+(\ssE/\log\ssE)^{1/(2a)}$ and \ref{ass:au:ub:np:c1} with
+$\oDi{\ssY}\sim \ssY^{1/(2p+2a+1)}$ hold true
+(cf., respectively, \nref{il:ass:au:ub:p} \ref{il:ass:au:ub:p:o} and
+\nref{il:ass:ub:np} \ref{il:ass:ub:np:oo}), due to
+\nref{re:au:ub:np} and \nref{il:ee} \ref{il:ee:oo}
+there is a constant $\cst{\xdf,\edf}$ depending on $\xdf$ and $\edf$
+such that
+\begin{equation}\label{il:au:ub:np:oo:e1}\FuEx[\ssY,\ssE]{\rY,\rE}\VnormLp{\hxdf-\xdf}^2\leq\cst{\xdf,\edf}\{(\aDi{\ssY}\wedge\sDi{\ssE})^{-2p}+\ssE^{-(p\wedge
+    a)/a}\},\quad\forall\;\ssY,\ssE\in\Nz.\end{equation} 
+We consider two cases. Firstly, let $p> a$. If
+$q_{\text{o-o}}=\lim_{\ssY\to\infty}\ssY^{2p/(2p+2a+1)}\ssE_{\ssY}^{-1}<\infty$,
+then
+\begin{equation*}
+\frac{\aDi{\ssY}}{\sDi{\ssE}}\sim\frac{\ssY^{1/(2p+2a+1)}}{(\ssE_{\ssY}/\log\ssE_{\ssY})^{1/(2a)}}=\frac{\ssY^{1/(2p+2a+1)}}{(\ssE_{\ssY})^{1/(2p)}}\frac{(\log\ssE_{\ssY})^{1/(2a)}}{(\ssE_{\ssY})^{1/(2a)-1/(2p)}}=o(1).
+\end{equation*}
+This means $\aDi{\ssY}\lesssim\sDi{\ssE}$ so the resulting upper bound
+is of order
+$(\aDi{\ssY})^{-2p}+\ssE_{\ssY}^{-1}\lesssim(\aDi{\ssY})^{-2p}$. Suppose
+now that $q_{\text{o-o}}=\infty$. If in addition
+$q^b_{\text{o-o}}=\lim_{\ssY\to\infty}\aDi{\ssY}(\sDi{\ssE})^{-1}<\infty$
+then the first summand in the upper bound in \eqref{il:au:ub:np:oo:e1}
+reduces to $(\aDi{\ssY})^{-2p}$ and thus (keep $q_{\text{o-o}}=\infty$
+in mind) the resulting upper bound
+is of order $\ssE_{\ssY}^{-1}$. Now consider
+$q^b_{\text{o-o}}=\infty$, then   the upper bound in
+\eqref{il:au:ub:np:oo:e1} is of order $(\sDi{\ssE})^{-2p}+\ssE_{\ssY}^{-1}\lesssim\ssE_{\ssY}^{-1}$ because $p>a$. Combining both
+  cases, we obtain in case $p>a$ that as
+ $\ssY\to\infty$
+\begin{equation*}
+\FuEx[\ssY,\ssE]{\rY,\rE}\VnormLp{\hxdf-\xdf}^2=\left\{\begin{array}{ll}
+O(\ssY^{-2p/(2p+2a+1)}),& \text{if }q_{\text{o-o}}<\infty,\\
+O(\ssE_{\ssY}^{-1}),& \text{otherwise }.
+\end{array}\right.
+\end{equation*}
+Now assume $p\leq a$. First, suppose 
+$q^b_{\text{o-o}}=\lim_{\ssY\to\infty}\aDi{\ssY}(\sDi{\ssE})^{-1}<\infty$
+then the first summand in the upper bound in \eqref{il:au:ub:np:oo:e1}
+reduces to $(\aDi{\ssY})^{-2p}$ and moreover, it follows that
+$q_{\text{o-o}}<\infty$. Therefore, the resulting upper bound
+is of order $(\aDi{\ssY})^{-2p}$. Now consider
+$q^b_{\text{o-o}}=\infty$, then   the upper bound in
+\eqref{il:au:ub:np:oo:e1} is of order $(\ssE_{\ssY}/\log\ssE_{\ssY})^{-p/a}+\ssE_{\ssY}^{-p/a}\lesssim(\ssE_{\ssY}/\log\ssE_{\ssY})^{-p/a}$. Combining both
+  cases, we obtain in case $p\leq a$ that as
+ $\ssY\to\infty$
+\begin{equation*}
+\FuEx[\ssY,\ssE]{\rY,\rE}\VnormLp{\hxdf-\xdf}^2=\left\{\begin{array}{ll}
+O(\ssY^{-2p/(2p+2a+1)}),& \text{if }q^b_{\text{o-o}}<\infty,\\
+O((\ssE_{\ssY}/\log\ssE_{\ssY})^{-p/a}),& \text{otherwise }.
+\end{array}\right.
+\end{equation*}
+ \item[\mylabel{il:au:ub:np:os}{\dg\bfseries{[o-s]}}]
+Since \nref{ass:au:ub:np} \ref{ass:au:ub:np:c0} with $\sDi{\ssE}\sim
+(\log\ssE)^{1/(2a)}$ and \ref{ass:au:ub:np:c1} with
+$\oDi{\ssY}\sim (\log\ssY)^{1/(2a)}$ hold true
+(cf., respectively, \nref{il:ass:au:ub:p} \ref{il:ass:au:ub:p:s} and
+\nref{il:ass:ub:np} \ref{il:ass:ub:np:os}), due to
+\nref{re:au:ub:np} and \nref{il:ee} \ref{il:ee:os}
+there is a constant $\cst{\xdf,\edf}$ depending on $\xdf$ and $\edf$
+such that
+\begin{equation}\label{il:au:ub:np:os:e2}\FuEx[\ssY,\ssE]{\rY,\rE}\VnormLp{\hxdf-\xdf}^2\leq\cst{\xdf,\edf}\{(\log\ssY)^{-p/a}+(\log\ssE)^{-p/a}\},\quad\forall\;\ssY,\ssE\in\Nz.\end{equation} 
+Considering $q_{\text{o-s}}=\lim_{\ssY\to\infty}(\log \ssY)(\log \ssE_{\ssY})^{-1}$  it follows that as
+ $\ssY\to\infty$
+\begin{equation*}
+\FuEx[\ssY,\ssE]{\rY,\rE}\VnormLp{\hxdf-\xdf}^2=\left\{\begin{array}{ll}
+O\big((\log\ssY)^{-p/a}\big),& \text{if }q_{\text{o-s}}<\infty,\\
+O\big((\log \ssE_{\ssY})^{-p/a}\big),& \text{otherwise }.
+\end{array}\right.
+\end{equation*}
+\item[\mylabel{il:au:ub:np:so}{\dg\bfseries{[s-o]}}] 
+Since \nref{ass:au:ub:np} \ref{ass:au:ub:np:c0} with $\sDi{\ssE}\sim
+(\ssE/\log\ssE)^{1/(2a)}$, \ref{ass:au:ub:np:c2} with
+$\sDi{\ssY}\sim (\log\ssY)$ for $p\geq1/2$ and \ref{ass:au:ub:np:c1} with
+$\sDi{\ssY}\sim (\log\ssY)^{1/(2p)}$ for $p<1/2$  hold true
+(cf., respectively, \nref{il:ass:au:ub:p} \ref{il:ass:au:ub:p:o} and
+\nref{il:ass:ub:np} \ref{il:ass:ub:np:so}), 
+ due to
+\nref{re:au:ub:np} and \nref{il:ee} \ref{il:ee:os}
+there is a constant $\cst{\xdf,\edf}$ depending on $\xdf$ and $\edf$
+such that
+\begin{equation}\label{il:au:ub:np:os:e3}\FuEx[\ssY,\ssE]{\rY,\rE}\VnormLp{\hxdf-\xdf}^2\leq\cst{\xdf,\edf}\{\hRaDi{\sDi{\ssY}\wedge(\ssE/\log\ssE)^{1/(2a)},\xdf,\iSv}+\ssE^{-1}\},\quad\forall\;\ssY,\ssE\in\Nz.\end{equation} 
+Clearly, if
+$q^b_{\text{s-o}}=\lim_{\ssY\to\infty}\ssY(\sDi{\ssY})^{-(2a+1)}\ssE_{\ssY}^{-1}<\infty$
+then holds $\sDi{\ssY}=(\log\ssY)^{1\vee1/(2p)}\lesssim(\ssE_{\ssY}/\log\ssE_{\ssY})^{1/(2a)}$ and hence 
+$\hRaDi{\sDi{\ssY}\wedge(\ssE_{\ssY}/\log\ssE_{\ssY})^{1/(2a)},\xdf,\iSv}+\ssE_{\ssY}^{-1}\lesssim(\sDi{\ssY})^{2a+1}\ssY^{-1}$. Suppose
+now that $q^b_{\text{s-o}}=\infty$, then 
+\begin{multline*}
+\hRaDi{\sDi{\ssY}\wedge(\ssE_{\ssY}/\log\ssE_{\ssY})^{1/(2a)},\xdf,\iSv}+\ssE_{\ssY}^{-1}\\
+\hfill\lesssim(\sDi{\ssY})^{2a+1}\ssY^{-1}\vee\hRaDi{(\ssE_{\ssY}/\log\ssE_{\ssY})^{1/(2a)},\xdf,\iSv}+\ssE_{\ssY}^{-1}\\
+\lesssim\exp(-(\ssE_{\ssY}/\log\ssE_{\ssY})^{p/a})\vee\ssY^{-1}(\ssE_{\ssY}/\log\ssE_{\ssY})^{-(2a+1)/(2a)}+\ssE_{\ssY}^{-1}\lesssim \ssE_{\ssY}^{-1}.
+\end{multline*}
+Consequently, 
+it follows that as
+ $\ssY\to\infty$
+\begin{equation*}
+\FuEx[\ssY,\ssE]{\rY,\rE}\VnormLp{\hxdf-\xdf}^2=\left\{\begin{array}{ll}
+O\big(\ssY^{-1}(\log\ssY)^{(2a+1)[1\vee1/(2p)]}\big),& \text{if }q^b_{\text{o-s}}<\infty,\\
+O\big(\ssE_{\ssY}^{-1}),& \text{otherwise }.
+\end{array}\right.
+\end{equation*}
+  \end{Liste}
+Comparing the last rates with the oracle rates derived in
+ \nref{il:oo} \ref{il:oo:oo}, \ref{il:oo:os} and \ref{il:oo:so} we see
+ that in case \ref{il:au:ub:np:oo} with $p>a$, \ref{il:au:ub:np:os} and
+ \ref{il:au:ub:np:so} with $p<1/2$ $\hxdf$ attains
+ the oracle rate, while in case \ref{il:au:ub:np:oo} with $p\leq a$
+ and  \ref{il:au:ub:np:so} with $p\geq1/2$ the rate of the fully data-driven estimator $\hxdf$ features a detoriation  by a logarithmic factor compared to the
+ oracle rate.
+\end{il}

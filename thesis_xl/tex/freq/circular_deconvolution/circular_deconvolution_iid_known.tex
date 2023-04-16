@@ -1,0 +1,215 @@
+ %======================================================================================================================
+%                                                                 
+% Title:  Aggregated CDE: known error density
+% Author: Jan JOHANNES, Institut für Angewandte Mathematik, Ruprecht-Karls Universität Heidelberg, Deutschland  
+% 
+% Email: johannes@math.uni-heidelberg.de
+% Date: %%ts latex start%%[2018-03-29 Thu 12:11]%%ts latex end%%
+%
+% ======================================================================================================================
+% --------------------------------------------------------------------
+% section <<Aggregated CDE: known error density>>\nref{ak}
+% --------------------------------------------------------------------
+\subsection{Independent data and known convolution density}\label{FREQ_DECONV_KNOWN}\label{ak:rb}\label{AK:RB}
+% ....................................................................
+% <<Text Aggregated CDE>>
+% ....................................................................
+\begin{te}
+We place ourselves under \nref{AS_INTRO_DATA_KNOWN} and \nref{AS_INTRO_DATA_INDEPENDENT} and intend to apply the strategy highlighted in \nref{freq:ge:strat:kn}.
+\end{te}
+
+We assume here that we know $\lambda$ and observe the vector of independent random variables $Y^{n}$.
+Assume now that for any $s$ in $\N$, we know $\lambda(s)$ and $\lambda(s) > 0$.
+\subsubsection{Shape of the estimator}
+First, let us remind that we plan to use an aggregated orthogonal series estimator $\widehat{\theta}^{(\eta)}$, with $\eta$ in $\R_{+}^{\star} \cup \infty$ which form is reminded hereafter.
+\begin{de*}
+We first define so-called contrast $\Upsilon$ and penalisation $\pen^{\Lambda}$ sequences, which allow us to define weight $\P_{M}^{(\eta)}$ on the nested sieve space (here $(\llbracket 0, m \rrbracket)_{m \in \N}$)
+\begin{multline*}
+\Upsilon : \mathds{N} \to \R_{+}, \quad m \mapsto \Upsilon(m); \qquad \pen^{\Lambda} : \N \to \R_{-}, \quad m \mapsto \pen^{\Lambda}(m);\\
+\P_{M}^{(\eta)} : \N \to \R_{+}, \quad m \mapsto \tfrac{\exp[\eta n (\Upsilon(m) + \pen^{\Lambda}(m))]}{\sum\nolimits_{k = 0}^{n} \exp[\eta n (\Upsilon(k) + \pen^{\Lambda}(k))]} \mathds{1}_{m \leq n}.
+\end{multline*}
+Notice that letting $\eta$ tend to $\infty$ in the previous definition gives rise to the penalised contrast model selection estimator,
+\begin{equation*}
+  \tDi:=\argmin\nolimits_{\Di\in\nset{1,\ssY}} \big\{\Upsilon(m) + \penSv\big\}
+\end{equation*}
+which corresponds to the following weights
+\begin{equation*}
+  \lim\nolimits_{\rWc\to\infty}\rWe=\dirac[\tDi](\{\Di\})=:\msWe.
+\end{equation*}
+Here, we will use the following shape for $\Upsilon$ and $\pen^{\Lambda}$, for $\cpen := 84$
+\begin{alignat*}{4}
+  & \Upsilon(m) && := && \Vert \theta_{n, \overline{m}} \Vert_{l^{2}}^{2};  \quad && \cmiSv := \tfrac{\log^{2}(\Di\miSv \vee(\Di+2))}{\log^{2}(\Di+2)}\geq1;\\
+  & \DipenSv && := && \cmiSv \Di \miSv; \quad && \penSv:= \penD.
+  \end{alignat*}
+  \assEnd
+\end{de*}
+The family of estimators is hence entirely defined and can be implemented with the data we assume to have at hand in this subsection.
+  
+ \subsubsection{Quadratic risk bounds of the aggregated estimator}\label{AK:RB:OR}
+ In a first time we are interested in the quadratic risk for any $\theta^{\circ}$ fixed.
+Remind that the strategy we use allows to show that the following sequence is an upper bound for the quadratic risk.
+\begin{de*}
+Remind that we defined for any $\theta$ in $\Theta$ and $\Di$ in $\N$ the following term $\b_{m}^{2}(\theta) = \Vert \theta_{\underline{m}} \Vert_{l^{2}}/\Vert \theta_{\underline{0}} \Vert_{l^{2}} \leq 1$.
+We then define a family of sequences $(\daRa{\Di}{(\xdf)})_{\Di \in \N} := (\daRa{\Di}{(\xdf,\Lambda)})_{\Di \in \N} = [\b_{m}^{2}(\theta^{\circ}) \vee \penSv/\cpen]$ and hence it holds for all $\Di$ in $\nset{1,\ssY}$
+    \begin{equation}
+      [\Vnormlp{\xdf_{\underline{0}}}^2+\cpen]\daRa{\Di}{(\xdf)}\geq\Vnormlp{\xdf_{\underline{0}}}^2\bias^2(\xdf)\vee\penSv.
+      \end{equation}
+We intend to prove that the specific choice
+\begin{multline*}
+\aDi{\ssY}(\xdf):=\argmin\Nset[\Di\in\Nz]{\daRa{\Di}{(\xdf)}}\in\nset{1,\ssY}; \\
+\naRa{(\xdf)}:=\naRa{(\xdf,\Lambda)}:=\min\Nset[\Di\in\Nz]{\daRa{\Di}{(\xdf)}}
+\end{multline*}
+with $\daRa{\aDi{\ssY}}{(\xdf,\Lambda)}=\naRa{(\xdf,\Lambda)}$ defines an upper bound for the convergence rate of the aggregation estimators.
+\assEnd
+\end{de*}
+ 
+The following lemma shows that the assumption for our method is verified.
+\begin{lm}\label{re:conc}
+  Let $\oiSv=\tfrac{1}{\Di}\sum_{s\in\nset{1,\Di}}\iSv[s]$,
+  $\miSv= \max\{\iSv[s],s\in\nset{1,\Di}\}$, $\cmSv\geq1$ and
+  $\DipenSv=\cmSv\Di \miSv$, then there is a numerical constant
+  $\cst{}$ such that for all $\ssY\in\Nz$ and
+  $\Di\in\nset{1,\ssY}$ holds
+  \begin{resListeN}[]
+  \item\label{re:conc:i}
+    $\E \vectp{\Vnormlp{\txdfPr-\xdfPr}^2 - 12\DipenSv\ssY^{-1}}\\
+    \leq 
+    \cst{} \bigg[\tfrac{\Vnormlp[1]{\fydf}\,\miSv}{\ssY}\exp\big(\tfrac{-\cmSv\Di}{3\Vnormlp[1]{\fydf}}\big)+\tfrac{2\Di\miSv}{n^2}\exp\big(\tfrac{-\sqrt{n\cmSv}}{200}\big) \bigg]$
+  \item\label{re:conc:ii}
+    $\P\big(\Vnormlp{\txdfPr-\xdfPr}^2 \geq 12\DipenSv\ssY^{-1}\big)\leq 
+    3 \bigg[\exp\big(\tfrac{-\cmSv\Di}{200\Vnormlp[1]{\fydf}}\big)
+    +\exp\big(\tfrac{-\sqrt{\ssY\cmSv}}{200}\big)\bigg]$
+  \item\label{re:conc:iii}
+    $\P\big(\Vnormlp{\txdfPr-\xdfPr}^2 \geq 12\daRa{\Di}{(\xdf,\Lambda)}\big)\leq 
+    3 \bigg[\exp\big(\tfrac{-\ssY\daRa{\Di}{(\xdf,\Lambda)}}{200\Vnormlp[1]{\fydf}\miSv}\big)
+    +\exp\big(\tfrac{-\ssY\sqrt{\daRa{\Di}{(\xdf,\Lambda)}}}{200\sqrt{\Di\miSv}}\big)\bigg]$
+  \end{resListeN}
+\end{lm}
+
+Hence, using \nref{freq:ge:strat:kn:qu:pnp} gives us the following result.
+% ....................................................................
+% <<Re upper bound ag p np>>
+% ....................................................................
+\begin{thm}
+Consider the penalty sequence $\penSv:=\penD$, $\Di\in\nset{1,n}$, as in \nref{freq:ge:shape:kn:de:pen:oo} with numerical constant $\cpen \geq 84$.
+Let $\txdfAg[{\erWe[]}]=\sum_{\Di=1}^{\ssY}\We\txdfPr$ be an aggregation of the orthogonal series estimators, using either aggregation weights $\rWe[]$ as in \eqref{freq:ge:shape:kn:we}, or model selection weights $\msWe[]$ as in \eqref{freq:ge:shape:kn:de:msWe}.
+\begin{Liste}[]
+\item[{\dgrau\bfseries{(p)}}]Assume there is $K\in\Nz$
+  with   $1\geq \bias[{[K-1] }](\xdf)>0$ and $\bias[\Di](\xdf)=0$. For
+  $K>0$ let
+  $ c_{\xdf}:=\tfrac{\Vnormlp{\xdf_{\underline{0}}}^2+4\cpen}{\Vnormlp{\xdf_{\underline{0}}}^2\bias[{[K-1]}]^2(\xdf)}>1$ and
+  $\ssY_{\xdf}:=\gauss{c_{\xdf}\DipenSv[K]}\in\Nz$. If
+  $\ssY\in\nset{1,\ssY_{\xdf}}$ then set $\sDi{\ssY}:=\Di_{\cst{3}}\log(\ssY)$, and otherwise if
+  $\ssY>\ssY_{\xdf}$ then set
+  $\sDi{\ssY}:=\max\{\Di\in\nset{K,\ssY}:\ssY>c_{\xdf}\DipenSv\}$
+  where the defining set contains $K$ and thus is not empty.
+There is a finite constant $\cst{\xdf,\Lambda}$
+given in \eqref{ak:ag:ub:pnp:p7} depending only on $\xdf$ and $\Lambda$ such that for all $n\in\Nz$ holds
+\begin{equation}
+  \nRi{\txdfAg[{\erWe[]}]}{\xdf,\Lambda}
+  % \E\Vnormlp{\txdfAg[{\erWe[]}]-\xdf}^2
+  \leq
+  \cst{}\Vnormlp{\xdf_{\underline{0}}}^2\big[
+  \ssY^{-1}\vee\exp\big(-2\cmiSv[\sDi{\ssY}]\sDi{\ssY}\big)\big]
+  + \cst{\xdf,\Lambda}\ssY^{-1}.
+\end{equation}
+\item[{\dgrau\bfseries{(np)}}] Assume that
+  $\bias(\xdf)>0$ for all  $\Di\in\Nz$.
+There is a finite finite constant $\cst{\xdf,\Lambda}$ given in
+\eqref{ak:ag:ub:pnp:p8} depending only $\xdf$ and $\Lambda$ such that for all
+$\ssY\in\Nz$  holds 
+ \begin{equation}
+   \nRi{\txdfAg[{\erWe[]}]}{\xdf,\Lambda}
+   % \E\Vnormlp{\txdfAg[{\erWe[]}]-\xdf}^2
+    \leq 
+   \cst{}(\Vnormlp{\xdf_{\underline{0}}}^2\vee1)\min_{\Di\in\nset{1,\ssY}}\big[\dRa{\Di}{\xdf,\Lambda}\vee\exp\big(-2\cmiSv\Di\big)\big]\\
+   +\cst{\xdf,\Lambda}\ssY^{-1}.
+\end{equation}
+\end{Liste} 
+\reEnd 
+\end{thm}
+
+\begin{cor}
+  Let $\cpen \geq 84$.
+  \begin{Liste}[]
+  \item[{\dgrau\bfseries{(p)}}]
+    If in addition
+    \begin{inparaenum}\item[{{\dgrau\bfseries(A1)}}]
+      there is $\ssY_{\xdf,\Lambda}\in\Nz$ such that
+      $\cmiSv[\sDi{\ssY}]\sDi{\ssY}\geq (\log\ssY)/2$ for all
+      $\ssY\geq \ssY_{\xdf,\Lambda}$
+    \end{inparaenum}
+    holds true, then there is a constant $\cst{\xdf,\Lambda}$ depending
+    only on $\xdf$ and $\Lambda$ such that for all $n\in\Nz$ holds
+    $\nRi{\txdfAg[{\erWe[]}]}{\xdf,\Lambda} \leq
+    \cst{\xdf,\Lambda}\ssY^{-1}$.
+  \item[{\dgrau\bfseries{(np)}}]
+    If in addition
+    \begin{inparaenum}\item[{{\dgrau\bfseries(A2)}}]
+      there is  $\ssY_{\xdf,\Lambda}\in\Nz$ such that
+      $\aDi{\ssY}(\xdf)\cmSv[\aDi{\ssY}(\xdf)]\geq \vert \log\naRa{(\xdf,\Lambda)} \vert/2 $
+      for all $\ssY\geq \ssY_{\xdf,\Lambda}$
+    \end{inparaenum}
+    holds true, then there is a constant $\cst{\xdf,\Lambda}$ depending
+    only on $\xdf$ and $\Lambda$ such that $\nRi{\txdfAg[{\erWe[]}]}{\xdf,\Lambda}
+    \leq \cst{\xdf,\Lambda}\naRa{(\xdf,\Lambda)}$ for all $n\in\Nz$ holds true.
+  \end{Liste} 
+    \reEnd 
+\end{cor}
+
+\subsubsection{Maximal risk bounds of the aggregated estimator}\label{ak:mrb}\label{AK:MRB}
+% --------------------------------------------------------------------
+% <<Text Definition AG {p \vert m}Di>>
+% --------------------------------------------------------------------
+We now give interest to the maximal risk over Sobolev's ellipsoids.
+We aim to apply \nref{ak:ag:ub:pnp:mm} which allows to show that the sequences defined hereafter are upper bounds for the maximal risk of our estimators.
+\begin{de*}
+  Let be the following family of sequences,
+  $\daRa{\Di}{(\xdfCw[])}:=\daRa{\Di}{(\xdfCw[],\Lambda)}:=[\xdfCw^2\vee \DipenSv\,\ssY^{-1}]$.
+Considering the following specific case, we aim to show that it describes an upper bound for the maximal risk over $\rwCxdf$ for our aggregation estimator,
+    $\aDi{\ssY}(\xdfCw[]):=\argmin\Nset[\Di\in\Nz]{\daRa{\Di}{(\xdfCw[],\Lambda)}}\in\nset{1,\ssY}$\\
+    $\naRa{(\xdfCw[])}:=\naRa{(\xdfCw[],\Lambda)}:=\min\Nset[\Di\in\Nz]{\daRa{\Di}{(\xdfCw[],\Lambda)}}$
+    with $\daRa{\aDi{\ssY}(\xdfCw[])}{(\xdfCw[],\Lambda)}=\naRa{(\xdfCw[],\Lambda)}$
+\assEnd
+\end{de*}
+
+The hypotheses to apply \nref{ak:ag:ub:pnp:mm} are the same as for \nref{freq:ge:strat:kn:qu:pnp} and hence we directly obtain the following result.
+
+\begin{thm}
+Consider the penalty sequence $\penSv:=\penD$, $\Di\in\nset{1,n}$, as in \nref{freq:ge:shape:kn:de:pen:oo}.
+Let $\txdfAg[{\erWe[]}]=\sum_{\Di=1}^{\ssY} \We\txdfPr$ be an aggregation of the orthogonal series estimators using either aggregation weights $\rWe[]$ as in \eqref{freq:ge:shape:kn:we} or model selection weights $\msWe[]$ as in \eqref{freq:ge:shape:uk:we}. % Let $\Di_{\edf,\xdfCr}:=\floor{3(800\Vnorm[{\xdfCw[]}]{\edf}\xdfCr)^2}$ and
+    % $ \ssY_{o}:=15({300})^4$.
+There is a finite constant $\cst{\xdfCw[],\xdfCr,\Lambda}$ given in
+\eqref{ak:ag:ub:pnp:p8} depending only on $\xdfCw[]$, $\xdfCr$ and $\Lambda$ such that for all
+$\ssY\in\Nz$ and for all $\sDi{\ssY}\in\nset{\aDi{\ssY}(\xdfCw[]),\ssY}$  with
+ $\aDi{\ssY}(\xdfCw[])\in\nset{1,n}$ as in \nref{freq:ge:strat:kn:ma:de:rate} holds 
+ \begin{equation}
+ \nRi{\txdfAg[{\erWe[]}]}{\rwCxdf,\Lambda}
+   %\sup_{\xdf\in\rwCxdf}\E\Vnormlp{\txdfAg[{\erWe[]}]-\xdf}^2% \leq
+    \leq 
+   \cst{}(\xdfCr^2\vee1)\min_{\Di\in\nset{1,\ssY}}\big[\daRa{\Di}{(\xdfCw[],\Lambda)}\vee\exp\big(-2\cmiSv\Di\big)]\big)\big]
+   +\cst{\xdfCw[],\xdfCr,\Lambda}\ssY^{-1}.
+\end{equation}
+\reEnd
+\end{thm}
+
+\begin{cor}
+  Let the assumptions of \nref{ak:ag:ub:pnp:mm} be satisfied.  If in
+  addition
+  \begin{inparaenum}\item[{{\dgrau\bfseries(A)}}]
+    there is $\ssY_{\xdfCw[],\xdfCr,\Lambda}\in\Nz$  such that
+    $\aDi{\ssY}({\xdfCw[]})\cmSv[\aDi{\ssY}({\xdfCw[]})]\geq \vert \log\naRa{(\xdfCw[])} \vert/2 $
+    for all $\ssY\geq \ssY_{\xdfCw[],\xdfCr,\Lambda}$
+  \end{inparaenum}
+  holds true, then there is a constant $\cst{\xdfCw[],\xdfCr,\Lambda}$
+  depending only on $\rwCxdf$ and $\Lambda$ such that
+  $ \nRi{\txdfAg[{\erWe[]}]}{\rwCxdf,\Lambda} \leq
+  \cst{\xdfCw[],\xdfCr,\Lambda}\naRa{(\xdfCw[],\Lambda)}$ for all $n\in\Nz$
+  holds true.
+  \reEnd
+\end{cor}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "_0DACD"
+%%% End:

@@ -1,0 +1,67 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath,amssymb}
+\setlength{\textwidth}{16cm}
+\setlength{\textheight}{21cm}
+\setlength{\hoffset}{-1.4cm}
+\setlength{\parindent}{0cm}
+
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{times}
+
+
+\usepackage{natbib}
+% BIBLIOGRAPHY
+\renewcommand{\cite}{\citet}
+\bibliographystyle{abbrvnat}
+
+
+\begin{document}
+\thispagestyle{empty}
+\begin{center}
+{\large 
+	{\sc Bayesian minimax and oracle optimality in an inverse Gaussian sequence space model}}
+
+\bigskip
+
+Xavier {\sc Loizeau}\\[1ex] {\small Joint work with Jan Johannes}
+
+\end{center}
+
+\bigskip
+
+\begin{abstract}
+As Bayesian methods for non-parametric models gather more and more interest, the question of uncertainty quantification and optimality for those methods arose.
+Admitting existence of a true data-generating distribution, we will recall definitions of contraction rate and uniform contraction rate of a posterior distribution and their frequentist counterparts : convergence rate and uniform convergence rate of an estimator.
+Given those definitions, from a frequentist point of view, typically, one considers oracle optimal convergence rates (optimality over a class of estimators) and minimax optimal rates (optimal rate over a class of true distributions).
+Bayesian formulations of those notions still need to be inquired into and, for the moment, contraction rates of Bayesian methods are generally compared to frequentist optimal rates to determine if they are satisfactory.
+Hence, considering an inverse Gaussian sequence space model, we give a purely Bayesian formulation of oracle optimality and tracks for minimax optimality.
+
+Considering the hierarchical prior in \cite{JJASRS}, we generate a family of fully data-driven prior distributions, meaning that this method does not depend either on the true data-generating distribution or on a class it would belong to.
+This family is indexed by a so-called "iteration parameter", as, given an element of the family, the subsequent element is obtained by conditioning the posterior by the same data.
+Interestingly, increasing the value of the iteration parameter gives in some sense more weight to the information contained in the observations than in the hierarchical prior. 
+In particular, for a fixed  noise level letting the iteration parameter tend  to infinity, the associated posterior distribution shrinks to a point measure.
+The limite distribution is degenerated on the value of a  projection estimator with fully-data driven choice of the dimension parameter using a model selection approach as in \cite{PM} where a penalized contrast criterium is minimized.
+
+In \cite{JJASRS}, the contraction rate of the first element of the family was compared to the frequentist optimal convergence rate. We derive here contraction rate for any element of the family, including the limit case and compare those with our Bayesian oracle optimal rate.
+
+
+
+%Considering an indirect Gaussian sequence space model and a hierarchical prior in Johannes, Simoni and Schenk (2016), oracle and minimax-optimal concentration and convergences rates for the associated posterior distribution and Bayes estimator, respectively, are shown as the noise level tends to zero. Notably, the hierarchical prior does not depend neither on the parameter value $\theta^{\circ}$ that generates the data nor on the given class. In this paper the posterior is taken iteratively as a new prior and the associated posterior is calculated for the same observation again and again. Thereby, a family, indexed by the iteration parameter, of fully data driven prior distributions are constructed. Each element of this family leads to an oracle and minimax-optimal concentration and convergences rates for the associated posterior distribution and Bayes estimator as the noise level tends to zero. Moreover, the Bayes estimators can be interpreted either as fully data-driven shrinkage estimators or as a fully data-driven aggregation of projection estimators. Interestingly, increasing the value of the iteration parameter gives in some sense more weight to the information contained in the observations than in the hierarchical prior. 
+%In particular, for a fixed  noise level letting the iteration parameter tend  to infinity, the associated posterior distribution shrinks to a point measure. The limite distribution is degenerated on the value of a  projection estimator with fully-daten driven choice of the dimension parameter using a model selection approach as in Massart (2003) where a penalized contrast criterium is minimised. Thereby, the classical model selection approach gives in some sense an infinitely increasing weight to the information contained in the observations in comparison to the prior distribution. It is further shown that the limite distribution and the associated Bayes estimator converges with oracle and minimax-optimal rates as the noise level tends to zero.
+%Simulations are shown to illustrate the influence of the iteration parameter which provides in some sense a compromise between the fully-data driven hierarchical Bayes estimator proposed by Johannes, Simoni and Schenk (2016)  and the fully-data driven projection estimator by model selection.
+
+
+\end{abstract}
+\vfill
+\bibliography{biblio}
+\end{document}
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

@@ -1,0 +1,1228 @@
+%======================================================================================================================
+%                                                                 
+% Title:  Appendix: unknown error density
+% Author: Jan JOHANNES, Institut für Angewandte Mathematik, Ruprecht-Karls Universität Heidelberg, Deutschland  
+% 
+% Email: johannes@math.uni-heidelberg.de
+% Date: %%ts latex start%%[2018-03-29 Thu 13:25]%%ts latex end%%
+%
+% ======================================================================================================================
+% --------------------------------------------------------------------
+% section <<Appendix: Proofs of \cref{au}>>\ref{app:au}
+% --------------------------------------------------------------------
+% ....................................................................
+% <<Re key argument>>
+% ....................................................................
+\section{Intermediate results}
+
+\section{Detailed proofs}
+
+\begin{pro}[Proof of \nref{THM2.6.2}.]
+Due to \cref{re:au:ub:co3} under
+\cref{ass:au:ub:np}
+there is a finite numerical constant $\cst{}$ such that for all $\ssY,\ssE\in\Nz$ holds
+\begin{multline}\label{pro:au:ub:np:e1}
+\FuEx[\ssY,\ssE]{\rY,\rE}\VnormLp{\hxdfPr[]-\xdf}^2\leq
+\cst{}\big\{[1\vee\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2]\,\hRaDi{\sDi{\ssY}\wedge\sDi{\ssE},\xdf,\iSv}+\mRa{\xdf,\iSv}\\
+\hfill+[1\vee\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2](\DipenSv[\ssY_{\xdf,\iSv}]\ssY^{-1}+\ssE_{\xdf,\iSv}\ssE^{-1})+\Vnormlp[1]{\fydf}^2\ssY^{-1}+\ssE_{\xdf,\iSv}^2\ssE^{-1}\big\}
+\\
+\hfill+12
+\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\{\exp\big(\tfrac{-3\cpen\cmiSv[\sDi{\ssY}\wedge\sDi{\ssE}][\sDi{\ssY}\wedge\sDi{\ssE}]}{4000\Vnormlp[1]{\fydf}}\big)-[\hRa{\xdf,\iSv}\vee\mRa{\xdf,\iSv}]\}.
+\end{multline}
+Since under \cref{ass:au:ub:np} for all 
+$\ssY,\ssE\in\Nz$ hold
+$\cmiSv[\sDi{\ssY}]\sDi{\ssY}\geq\Di_{\ydf}|\log\hRa{\xdf,\iSv}|$ and
+$\cmiSv[\sDi{\ssE}]\sDi{\ssE}\geq \Di_{\ydf}[|\log\hRa{\xdf,\iSv}|\wedge|\log\mRa{\xdf,\iSv}|]$  true it follows
+\begin{multline}\label{pro:au:ub:np:e2}
+\FuEx[\ssY,\ssE]{\rY,\rE}\VnormLp{\hxdfPr[]-\xdf}^2\leq
+\cst{}\big\{[1\vee\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2]\,\hRaDi{\sDi{\ssY}\wedge\sDi{\ssE},\xdf,\iSv}+\mRa{\xdf,\iSv}\\
+\hfill+[1\vee\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2](\DipenSv[\ssY_{\xdf,\iSv}]\ssY^{-1}+\ssE_{\xdf,\iSv}\ssE^{-1})+\Vnormlp[1]{\fydf}^2\ssY^{-1}+\ssE_{\xdf,\iSv}^2\ssE^{-1}\big\}.
+\end{multline}
+which shows the assertion \eqref{re:au:ub:np:e1} and completes the proof.
+\end{pro}
+
+
+\begin{lm}\label{re:au:key}
+Consider the aggregated OSE $\hxdf=\sum_{\Di=1}^n\We\hxdfPr$ with weights
+$\We[\Di]\in[0,1]$, $\Di\in\nset{1,\ssY}$, satisfying $
+\sum_{\Di=1}^n\We[\Di]=1$ and given $\Di\in\Nz$ let $\dr\dxdfPr:=\sum_{j=-\Di}^{\Di}\hfedfmpI[j]\fydf[j]\bas_j$. For any $\mDi\in\nset{1,\ssY}$ and $\pDi\in\nset{1,\ssY}$  holds
+  \begin{multline}\label{re:au:key:e1}
+    \VnormLp{\hxdfPr[]-\xdf}^2\leq 
+3\VnormLp{\hxdfPr[\pDi]-\dxdfPr[\pDi]}^2
++3\sum_{l\in\nsetlo{\pDi,\ssY}}\vectp{\VnormLp{\hxdfPr[l]-\dxdfPr[l]}^2-\cst{1}\epenSv[l]}\\
++3(\cst{1}\cpen/\ssY)\sum_{l\in\nsetlo{\pDi,\ssY}}\DiepenSv[l]\Ind{\{\VnormLp{\hxdfPr[l]-\dxdfPr[l]}^2\geq\epenSv[l]\}}
++3(\cpen/\ssY)\sum_{l\in\nsetlo{\pDi,\ssY}}\DiepenSv[l]\We[l]\Ind{\{\VnormLp{\hxdfPr[l]-\dxdfPr[l]}^2<\epenSv[l]\}}\\
++3 \VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\{\FuVg{\We[]}(\nsetro{1,\mDi})+\bias[\mDi]^2(\xdf)\}\\
++6\sum_{j\in\nset{1,\ssY}}|\hfedfmpI[j]|^2|\fedf[j]-\hfedf[j]|^2|\fxdf[j]|^2
++2\sum_{j\in\nset{1,\ssY}}\Ind{\xEv^c}|\fxdf[j]|^2
+ \end{multline}
+\end{lm}
+% --------------------------------------------------------------------
+% <<Proof of Re key argument>>
+% --------------------------------------------------------------------
+\begin{pro}[Proof of \cref{re:au:key}.]
+We start the proof with the observation that
+$\ofhxdf{j}-\ofxdf[j]=\fhxdf{-j}-\fxdf[-j]$ for all $j\in\Zz$, 
+$\fhxdf{0}-\fxdf[0]=0$ and
+$\fhxdf{j}-\fxdf[j]=-\fxdf[j]$ for all $j>\ssY$, while for all
+$j\in\nset{1,n}$ with $\xEv:= \{|\hfedf[j]|^2\geq1/\ssE\}$ and
+$\xEv^c:= \{|\hfedf[j]|^2<1/\ssE\}$ holds
+\begin{multline*}
+  \fhxdf{j}-\fxdf[j]=(\hfedfmpI[j]\hfydf[j]-\fxdf[j])\FuVg{\We[]}(\nset{j,n})-\fxdf[j]\FuVg{\We[]}(\nsetro{1,j})% \\=
+\\
+=
+\hfedfmpI[j](\hfydf[j]-\fydf[j])\FuVg{\We[]}(\nset{j,n})
++\hfedfmpI[j](\fedf[j]-\hfedf[j])\fxdf[j]\FuVg{\We[]}(\nset{j,n})
+-\Ind{\xEv}\fxdf[j]\FuVg{\We[]}(\nsetro{1,j})-\Ind{\xEv^c}\fxdf[j]
+\end{multline*}
+Consequently, we  have
+  \begin{multline}\label{pro:au:key:e1}
+    \VnormLp{\hxdf-\xdf}^2=
+   2\sum_{j\in\nset{1,n}}|\hfedfmpI[j](\hfydf[j]-\fydf[j])\FuVg{\We[]}(\nset{j,\ssY})
++\hfedfmpI[j](\fedf[j]-\hfedf[j])\fxdf[j]\FuVg{\We[]}(\nset{j,\ssY})
+-\fxdf[j]\FuVg{\We[]}(\nsetro{1,j})|^2\Ind{\xEv}\\\hfill+2\sum_{j\in\nset{1,\ssY}}\Ind{\xEv^c}|\fxdf[j]|^2+2\sum_{j>\ssY}|\fxdf[j]|^2
+\\\hfill
+\leq6\sum_{j\in\nset{1,n}}|\hfedfmpI[j]|^2|\hfydf[j]-\fydf[j]|^2\FuVg{\We[]}(\nset{j,n})
++6\sum_{j\in\nset{1,n}}\Ind{\xEv}|\fxdf[j]|^2\FuVg{\We[]}(\nsetro{1,j})+2\sum_{j>n}|\fxdf[j]|^2\\\hfill
++6\sum_{j\in\nset{1,n}}|\hfedfmpI[j]|^2|\fedf[j]-\hfedf[j]|^2|\fxdf[j]|^2
++2\sum_{j\in\nset{1,n}}\Ind{\xEv^c}|\fxdf[j]|^2.
+ \end{multline}
+Consider the first r.hs. term in
+\eqref{pro:au:key:e1}. We split the sum into two parts which we
+bound separately.  Precisely, given
+$\dxdfPr=\sum_{j=-\Di}^{\Di}\hfedfmpI[j]\fydf[j]\bas_j$ where
+$\VnormLp{\hxdfPr-\dxdfPr}^2=2\sum_{j\in\nset{1,\Di}}|\fhxdfPr{j}-\fdxdfPr{j}|^2=2\sum_{j\in\nset{1,\Di}}|\hfedfmpI[j]|^2|\hfydf[j]-\fydf[j]|^2$
+it follows
+\begin{multline}\label{pro:au:key:e2}
+2\sum_{j\in\nset{1,\ssY}}|\hfedfmpI[j]|^2(\hfydf[j]-\fydf[j])^2
+\FuVg{\We[]}(\nset{j,\ssY})\\
+%=\sum_{j=1}^{\DiMa}\Ex\Vnormlp{\DiPro[(j-1)j](\hfxdf[]-\fxdf[])}^2\pM[\hw](\nset{j,\DiMa})\}\\
+\leq2 \sum_{j\in\nset{1,\pDi}}|\hfedfmpI[j]|^2|(\hfydf[j]-\fydf[j])^2 +
+2\sum_{j\in\nsetlo{\pDi,n}}|\hfedfmpI[j]|^2(\hfydf[j]-\fydf[j])^2\sum_{l\in\nset{j,\ssY}}\We[l]\\
+= 2\sum_{j\in\nset{1,\pDi}}|\hfedfmpI[j]|^2|(\hfydf[j]-\fydf[j])^2 +
+2\sum_{l\in\nsetlo{\pDi,\ssY}}\We[l]\sum_{j\in\nsetlo{\pDi,l}}|\hfedfmpI[j]|^2(\hfydf[j]-\fydf[j])^2\\
+\leq \VnormLp{\hxdfPr[\pDi]-\dxdfPr[\pDi]}^2
++\sum_{l\in\nsetlo{\pDi,\ssY}}\We[l]\VnormLp{\hxdfPr[l]-\dxdfPr[l]}^2\\
+% \leq\VnormH{\hxdfPr[\pDi]-\dSoPr[\pDi]}^2
+% +\sum_{l\in\nsetlo{\pDi,\nS}}\We[l]\VnormH{\hxdfPr[l]-\dSoPr[l]}^2\Ind{\{\VnormH{\hxdfPr[l]-\dSoPr[l]}^2\geq\epenSv[l]\}}
+% \\
+% \hfill+(\cpen/\ssY)\sum_{l\in\nsetlo{\pDi,\nS}}\DiepenSv[l]\We[l]\Ind{\{\VnormH{\hxdfPr[l]-\dSoPr[l]}^2<\epenSv[l]\}}\\
+% =\VnormH{\hxdfPr[\pDi]-\dSoPr[\pDi]}^2
+% +\sum_{l\in\nsetlo{\pDi,\nS}}\We[l]\vectp{\VnormH{\hxdfPr[l]-\dSoPr[l]}^2-\epenSv[l]}\Ind{\{\VnormH{\hxdfPr[l]-\dSoPr[l]}^2\geq\epenSv[l]\}}\\
+% \hfill+(\cpen/\ssY)\sum_{l\in\nsetlo{\pDi,\nS}}\DiepenSv[l]\Ind{\{\VnormH{\hxdfPr[l]-\dSoPr[l]}^2\geq\epenSv[l]\}}
+% +(\cpen/\ssY)\sum_{l\in\nsetlo{\pDi,\nS}}\DiepenSv[l]\We[l]\Ind{\{\VnormH{\hxdfPr[l]-\dSoPr[l]}^2<\epenSv[l]\}}\\
+\leq\VnormLp{\hxdfPr[\pDi]-\dxdfPr[\pDi]}^2
++\sum_{l\in\nsetlo{\pDi,\ssY}}\vectp{\VnormLp{\hxdfPr[l]-\dxdfPr[l]}^2-\cst{1}\epenSv[l]}\\
++(\cst{1}\cpen/\ssY)\sum_{l\in\nsetlo{\pDi,\ssY}}\DiepenSv[l]\Ind{\{\VnormLp{\hxdfPr[l]-\dxdfPr[l]}^2\geq\epenSv[l]\}}
++(\cpen/\ssY)\sum_{l\in\nsetlo{\pDi,\ssY}}\DiepenSv[l]\We[l]\Ind{\{\VnormLp{\hxdfPr[l]-\dxdfPr[l]}^2<\epenSv[l]\}}%\\
+% =\pen[\pDi] +
+% \vectp{\VnormH{\tSoPr[\pDi]-\SoPr[\pDi]}^2-\pen[\pDi]}+
+% \vectp{\VnormH{\tSoPr[n]-\SoPr[n]}^2-\pen[n]} + \cpen \FuVg{\We[]}(\nsetlo{\pDi,n})\\
+% =\VnormH{\tSoPr[\pDi]-\SoPr[\pDi]}^2+ 
+% \vectp{\VnormH{\tSoPr[\nS]-\SoPr[\nS]}^2-\cpen\DipenSv[\nS]} + \cpen\,\DipenSv[\nS]\, \FuVg{\We[]}(\nsetlo{\pDi,n}).% \\
+% \leq \pen[\peDi] +\cpen
+% \FuVg{\We[]}(\nsetlo{\pDi,n}) + 2\max\setB{\vectp{\VnormH{\tSoPr[k]-\SoPr[k]}^2-\pen[k]},k\in\set{\pDi,n}}
+\end{multline}
+Consider the second and third r.hs. term in \eqref{pro:au:key:e1}.  Splitting the first sum into two parts we obtain
+\begin{multline}\label{pro:au:key:e3}
+2\sum_{j\in\nset{1,n}}\Ind{\xEv}|\fxdf[j]|^2\FuVg{\We[]}(\nsetro{1,j})+2\sum_{j>n}|\fxdf[j]|^2\\
+\hspace*{5ex}\leq  2\sum_{j\in\nset{1,\mDi}}|\fxdf[j]|^2\Ind{\xEv}\FuVg{\We[]}(\nsetro{1,j})+ 2\sum_{j\in\nsetlo{\mDi,n}}|\fxdf[j]|^2+
+  2\sum_{j>n}|\fxdf[j]|^2\\\hfill
+\leq \VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\{\FuVg{\We[]}(\nsetro{1,\mDi})+\bias[\mDi]^2(\xdf)\}
+\end{multline}
+Combining  \eqref{pro:au:key:e1} and the upper bounds \eqref{pro:au:key:e2}
+and \eqref{pro:au:key:e3} we obtain   the assertion, which completes the proof.
+\end{pro}
+% ....................................................................
+% <<Re Random weights>>
+% ....................................................................
+\begin{lm}\label{re:au:erWe} For any $l\in\nset{1,n}$  
+\begin{enumerate}[label=\emph{\textbf{(\roman*)}},ref=\emph{\textbf{(\roman*)}}]\addtocounter{enumi}{0}
+\item\label{re:au:erWe:i} with   $\hRaDi{l,\xdf,\iSv}=[\bias[l]^2(\xdf)\vee \DipenSv[l]\, n^{-1}]$  for all $k\in\nsetro{1,l}$ we have\\
+  $ \erWe[k]\Ind{\set{\VnormLp{\hxdfPr[l]-\dxdfPr[l]}^2<\epenSv[l]}\cap\set{1/2\leq|\fedf[j]\hfedfmpI[j]|\leq3/2,\;\forall\;j\in\nset{1,l}}}$\\\null\hfill$\leq \exp\big(\rWn\big\{-\tfrac{\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2}{8}\bias[k]^2(\xdf)+[\tfrac{630}{16}*12\cpen+\tfrac{\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2}{8}]\hRaDi{l,\xdf,\iSv})\big\}\big)$
+\item\label{re:au:erWe:ii} with $\VnormLp{\ProjC[{\mHiH[l]}]\dxdfPr[\ssY]}^2=2\sum_{j=l+1}^{\ssY}|\fedf[j]\hfedfmpI[j]|^2|\fxdf[j]|^2$ for all $k\in\nsetlo{l,n}$ we have\\
+$\erWe[k]\Ind{\setB{\VnormLp{\hxdfPr[k]-\dxdfPr[k]}^2<\epenSv[k]}} \leq
+\exp\big(\rWn\big\{-\epenSv[k]+[\tfrac{3}{2}\VnormLp{\ProjC[{\mHiH[l]}]\dxdfPr[\ssY]}^2+\tfrac{9}{2}\epenSv[l]]\big\}\big)$.
+\end{enumerate}
+\end{lm}
+% --------------------------------------------------------------------
+% <<Proof Re Random weights>>
+% --------------------------------------------------------------------
+\begin{pro}[Proof of \cref{re:au:erWe}.]
+Given $\Di,l\in\nset{1,n}$ and an event $\dmEv{\Di}{l}$ (to be specified below) it clearly follows
+\begin{multline}\label{pro:au:erWe:e1}
+ \erWe\Ind{\dmEv{\Di}{l}}=\frac{\exp(-\rWn\{-\VnormLp{\hxdfPr}^2+\tfrac{9}{2}\epenSv\})}{\sum_{s\in\nset{1,\ssY}}\exp(-\rWn\{-\VnormLp{\hxdfPr[s]}^2+\tfrac{9}{2}\epenSv[s]\})}\Ind{\dmEv{\Di}{l}}\\
+\leq
+\exp\big(\rWn\big\{\VnormLp{\hxdfPr}^2-\VnormLp{\hxdfPr[l]}^2+\tfrac{9}{2}(\epenSv[l]-\epenSv)\big\}\big)\Ind{\dmEv{\Di}{l}}
+\end{multline}
+We distinguish the two cases $\Di<l$ and $\Di>l$.
+Consider first that $\Di<l$. From \ref{re:contr:e1} in \cref{re:contr}
+(with
+$\dxdfPr[\bullet]=\hxdfPr[\ssY]$
+and  $\xdf=\dxdfPr[\ssY]=\sum_{j\in\nset{-\ssY,\ssY}}\hfedfmpI[j]\fydf[j]\bas_j$) follows that
+\begin{multline}\label{pro:au:erWe:e2}
+ \erWe\Ind{\dmEv{\Di}{l}}
+\leq
+\exp\big(\rWn\big\{\VnormLp{\hxdfPr}^2-\VnormLp{\hxdfPr[l]}^2+\tfrac{9}{2}(\epenSv[l]-\epenSv)\big\}\big)\Ind{\dmEv{\Di}{l}}\\
+%\exp\big(\rWn\big\{\contr[](\tSoPr[l])-\contr[](\tSoPr)+\tfrac{9}{2}(\penSv[l]-\penSv)\big\}\big)\Ind{\dmEv{\Di}{l}}\\
+\leq
+\exp\big(\rWn\big\{\tfrac{11}{2}\VnormLp{\hxdfPr[l]-\dxdfPr[l]}^2-\tfrac{1}{2}\VnormLp{\dProj{k}{l}\dxdfPr[\ssY]}^2
++\tfrac{9}{2}(\epenSv[l]-\epenSv[k])\big\}\big)\Ind{\dmEv{k}{l}}
+\end{multline}
+Note that on the event
+$\aixEv[l]:=\set{1/2\leq|\fedf[j]\hfedfmpI[j]|\leq3/2,\;\forall\;j\in\nset{1,l}}$
+we have
+\begin{multline*}
+\VnormLp{\dProj{k}{l}\dxdfPr[\ssY]}^2\Ind{\aixEv[l]}\geq
+\tfrac{1}{4}\VnormLp{\dProj{k}{l}\xdf}^2=\tfrac{1}{4}\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2(\bias[k]^2(\xdf)-\bias[l]^2(\xdf))\hfill\\
+\meiSv[l]\Ind{\aixEv[l]}=\max\set{\eiSv[j]=(\hfedfmpI[j])^2,j\in\nset{1,l}}\Ind{\aixEv[l]}\leq\tfrac{9}{4}\max\set{\iSv[j]=\fedf[j]^{-2},j\in\nset{1,l}}=\tfrac{9}{4}\miSv[l]\hfill\\
+\meiSv[l]\Ind{\aixEv[l]}\geq\tfrac{1}{4}\miSv[l]\hfill
+\end{multline*}
+Thus on $\aixEv[l]$ holds  
+$\tfrac{1}{4}l\miSv[l]\vee(l+2)\leq l\meiSv[l]\vee(l+2)\leq
+\tfrac{9}{4}l\miSv[l]\vee(l+2) $. Since 
+$\cmiSv[l]=\tfrac{\log (l\miSv[l] \vee (l+2))}{\log(l+2)}\geq1 $
+ for all $l\in\Nz$ hold
+$\tfrac{\log (\tfrac{1}{4}l\miSv[l] \vee (l+2))}{\log(l+2)}\geq
+\cmiSv[l]\tfrac{\log(3/4)}{\log 3}\geq \tfrac{3}{10}\cmiSv[l]$
+and $\tfrac{\log (\tfrac{9}{4}l\miSv[l] \vee
+  (l+2))}{\log(l+2)}\leq\cmiSv[l]\tfrac{\log(27/4)}{\log 3}\leq
+\tfrac{7}{4}\cmiSv[l]$
+which together with $\DipenSv[l]=l\cmiSv[l]\miSv[l]$ imply 
+\begin{multline}\label{pro:au:erWe:e3}
+\tfrac{3}{10}\cmiSv[l]\leq\cmeiSv[l]\Ind{\aixEv[l]}\leq
+\tfrac{7}{4}\cmiSv[l]\hfill\\
+\tfrac{3}{40}\DipenSv[l]=l\,\tfrac{3}{10}\cmiSv[l]\,\tfrac{1}{4}\miSv[l]\leq
+l\,\cmeiSv[l]\,\meiSv[l]\Ind{\aixEv[l]}=\DiepenSv[l]\Ind{\aixEv[l]}\leq l\,\tfrac{7}{4}\cmiSv[l]\,\tfrac{9}{4}\miSv[l]=\tfrac{63}{16}\DipenSv[l]\hfill
+\end{multline}
+If we define $\dmEv{k}{l}:=\{\VnormLp{\hxdfPr[l]-\dxdfPr[l]}^2<\epenSv[l]\}\cap\aixEv[l]$
+then the last bounds imply
+\begin{multline*}
+ \erWe[k]\Ind{\setB{\VnormLp{\hxdfPr[l]-\dxdfPr[l]}^2<\epenSv[l]}}\Ind{\aixEv[l]}
+\\\leq\exp\big(\rWn\big\{\tfrac{11}{2}\epenSv[l]-\tfrac{1}{8}\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2(\bias[k]^2(\xdf)-\bias[l]^2(\xdf))+\tfrac{9}{2}(\epenSv[l]-\epenSv[k])\big\}\big)\\
+\hfill=\exp\big(\rWn\big\{10*\epenSv[l]-\tfrac{1}{8}\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2(\bias[k]^2(\xdf)-\bias[l]^2(\xdf))-\tfrac{9}{2}*\epenSv[k]\big\}\big)\\
+\leq\exp\big(\rWn\big\{\tfrac{630}{16}*\penSv[l]-\tfrac{1}{8}\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2(\bias[k]^2(\xdf)-\bias[l]^2(\xdf))\}\big)
+\end{multline*}
+ and hence, by exploiting that $\epenSv[k]\geq0$ and
+ $\hRaDi{l,\xdf,\iSv}=[\bias[l]^2(\xdf)\vee \DipenSv[l] n^{-1}]$  follows the
+ assertion \ref{re:au:erWe:i}, that is
+\begin{multline*}
+  \erWe[k]\Ind{\setB{\VnormLp{\hxdfPr[l]-\dxdfPr[l]}^2<\epenSv[l]}}\Ind{\aixEv[l]}\leq \exp\big(\rWn\big\{-\tfrac{\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2}{8}\bias[k]^2(\xdf)+[\tfrac{630}{16}*12\cpen+\tfrac{\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2}{8}]\hRaDi{l,\xdf,\iSv})\big\}\big).
+ \end{multline*}
+Consider secondly that $k>l$. From 
+\ref{re:contr:e2} in \cref{re:contr} (with $\dxdfPr[\bullet]=\hxdfPr[\ssY]$
+and  $\xdf=\dxdfPr[\ssY]=\sum_{j\in\nset{-\ssY,\ssY}}\hfedfmpI[j]\fydf[j]\bas_j$) and \eqref{pro:au:erWe:e1} follows 
+ \begin{multline}\label{pro:au:erWe:e4}
+  \erWe[k]\Ind{\dmEv{l}{k}}
+\leq\exp\big(\rWn\big\{\VnormLp{\hxdfPr}^2-\VnormLp{\hxdfPr[l]}^2+\tfrac{9}{2}(\epenSv[l]-\epenSv)\big\}\big)\Ind{\dmEv{\Di}{l}}\\
+\leq \exp\big(\rWn\big\{\tfrac{7}{2}\VnormLp{\hxdfPr[k]-\dxdfPr[k]}^2+\tfrac{3}{2}\VnormLp{\dProj{l}{k}\dxdfPr[\ssY]}^2+\tfrac{9}{2}(\epenSv[l]-\epenSv[k])\big\}\big)\Ind{\dmEv{l}{k}}
+\end{multline}
+Keep in mind that 
+$\VnormLp{\dProj{l}{k}\dxdfPr[\ssY]}^2\Ind{\aixEv[l]}%=\sum_{j=l+1}^k(\hfedfmpI[j])^2|\fydf[j]|^2
+=2\sum_{j=l+1}^k(\fedf[j]\hfedfmpI[j])^2|\fxdf[j]|^2\leq2\sum_{j=l+1}^{\ssY}(\fedf[j]\hfedfmpI[j])^2|\fxdf[j]|^2=\VnormLp{\ProjC[{\mHiH[l]}]\dxdfPr[\ssY]}^2$. 
+If we set $\dmEv{l}{k}:=\{\VnormLp{\hxdfPr[k]-\dxdfPr[k]}^2<\epenSv[k]\}$
+ then we clearly have \ref{re:au:erWe:ii}, that is
+ \begin{multline*}
+\erWe[k]\Ind{\setB{\VnormLp{\hxdfPr[k]-\dxdfPr[k]}^2<\epenSv[k]}} \leq
+\exp\big(\rWn\big\{\tfrac{7}{2}*\epenSv[k]+\tfrac{3}{2}\VnormLp{\ProjC[{\mHiH[l]}]\dxdfPr[\ssY]}^2+\tfrac{9}{2}(\epenSv[l]-\epenSv[k])\big\}\big)
+\\
+=
+\exp\big(\rWn\big\{-\epenSv[k]+[\tfrac{3}{2}\VnormLp{\ProjC[{\mHiH[l]}]\dxdfPr[\ssY]}^2+\tfrac{9}{2}\epenSv[l]]\big\}\big)
+ \end{multline*}
+which completes the proof.
+\end{pro}
+% ....................................................................
+% <<Re Sum estimated Random weights>>
+% ....................................................................
+\begin{lm}\label{re:SerWe} Given $\pdDi,\mdDi\in\nset{1,\ssY}$ let $\pDi$ and $\mDi$
+  as in \eqref{de:au:*Di}. Let $\DiepenSv=\cmeiSv \Di \meiSv$, $\dr\sqrt{\cmeiSv}=\tfrac{\log (\Di\meiSv \vee
+    (\Di+2))}{\log(\Di+2)}\geq1$, $\dr\cpen\geq1$ and
+  $\dr\rWc\geq1$. If
+ $\hRaDi{\Di,\xdf,\iSv}=[\bias^2(\xdf)\vee
+  \DipenSvs/\ssY]$ for any $\Di\in\nset{1,n}$ and   $\aixEv[\mdDi]:=\{1/2\leq|\fedf[j]\hfedfmpI[j]|\leq3/2,\;\forall\;j\in\nset{1,\mdDi}\}$, then
+\begin{enumerate}[label=\emph{\textbf{(\roman*)}},ref=\emph{\textbf{(\roman*)}}]\addtocounter{enumi}{0}
+\item\label{re:SerWe:i} $\FuVg{\erWe[]}(\nsetro{1,\mDi})\leq [\mDi-1]\exp\big(-\rWc\cpen\ssY\hRaDi{\mdDi,\xdf,\iSv}- \tfrac{\rWc\VnormLp{\Proj[{\mHiH[0]^\perp}]\So}^2}{16}\ssY\bias[{[\mDi-1]}]^2(\xdf)\big)$\\\null\hfill$+\Ind{\{\VnormLp{\hxdfPr[\mdDi]-\dxdfPr[\mdDi]}^2\geq\epenSv[\mdDi]\}\cap\aixEv[\mdDi]}+
+\Ind{\aixEv[\mdDi]^c}$;
+\item\label{re:SerWe:ii}
+  $\sum_{\Di=\pDi+1}^{\ssY}\DiepenSv\erWe\Ind{\{\VnormLp{\hxdfPr[k]-\dxdfPr[k]}^2<\epenSv[\Di]\}}\leq\tfrac{1}{36\cpen^2\rWc^{2}}+ \tfrac{1}{3\cpen\rWc}$.
+\end{enumerate}
+\end{lm}
+% ....................................................................
+% <<Proof Re Sum Random weights>>
+% ....................................................................
+\begin{pro}[Proof of \cref{re:SerWe}.]
+Consider \ref{re:SerWe:i}. From \cref{re:rWe} \ref{re:rWe:i} with  $l=\mdDi$ follows 
+for all $\Di<\mDi\leq \mdDi$, and hence $\bias\geq \bias[\mDi-1]$ that  
+  \begin{multline*}
+\erWe[k]\Ind{\set{\VnormLp{\hxdfPr[l]-\dxdfPr[l]}^2<\epenSv[l]}\cap\aixEv[l]}\\\null\hfill\leq \exp\big(\rWn\big\{-\tfrac{\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2}{8}\bias[k]^2(\xdf)+[\tfrac{630}{16}*12\cpen+\tfrac{\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2}{8}]\hRaDi{l,\xdf,\iSv})\big\}\big)\\
+    % \rWe\Ind{\setB{\VnormH{\tSoPr[\mdDi]-\SoPr[\mdDi]}^2<\penSv[\mdDi]}} \leq \exp\big(\rWn\big\{-\tfrac{\VnormH{\So}^2}{2}\bias[\Di]^2(\So)+[10\cpen\cSv+\tfrac{\VnormH{\So}^2}{2}]\hRa{\mdDi,\So,\Svs}\big\}\big)\\
+\hfill=\exp\big(\rWn\big\{\underbrace{-\tfrac{\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2}{16}\bias^2(\xdf)+[\tfrac{630*3+4}{4}\cpen+\tfrac{2\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2}{16}]\hRaDi{\mdDi,\xdf,\iSv}}_{\leq0}\}\big)\hfill\\\hfill\times\exp\big(\rWn\big\{-\cpen\hRaDi{\mdDi,\xdf,\iSv}-\tfrac{\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2}{16}\bias^2(\xdf)\big\}\big)\\\hfill
+\leq\exp\big(-\rWn \cpen\hRaDi{\mdDi,\xdf,\iSv}-\rWn \tfrac{\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2}{16}\bias[\mdDi-1]^2(\xdf)\big)
+  \end{multline*}
+which in turn implies \ref{re:SrWe:i}, that is,
+  \begin{multline*}
+   \FuVg{\erWe[]}(\nsetro{1,\mDi})\leq \FuVg{\erWe[]}(\nsetro{1,\mDi})\Ind{\set{\VnormLp{\hxdfPr[\mdDi]-\dxdfPr[\mdDi]}^2<\epenSv[\mdDi]}\cap\aixEv[\mdDi]}
++\Ind{\{\VnormH{\hxdfPr[\mdDi]-\dSoPr[\mdDi]}^2<\epenSv[\mdDi]\}^c\cup\aixEv[\mdDi]^c}
+% \Ind{\setB{\VnormH{\tSoPr[\mdDi]-\SoPr[\mdDi]}^2<\penSv[\mdDi]}}
+% +\Ind{\setB{\VnormH{\tSoPr[\mdDi]-\SoPr[\mdDi]}^2\geq\penSv[\mdDi]}}
+\\\leq
+[\mDi-1]\exp\big(-\rWc\cpen\ssY\hRaDi{\mdDi,\xdf,\iSv}-\rWn
+\tfrac{\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2}{16}\bias[{[\mDi-1]}]^2(\xdf)\big)\\
++\Ind{\{\VnormLp{\hxdfPr[\mdDi]-\dxdfPr[\mdDi]}^2\geq\epenSv[\mdDi]\}\cap\aixEv[\mdDi]}+\Ind{\aixEv[\mdDi]^c}\end{multline*}
+Consider \ref{re:SerWe:ii}. From \cref{re:au:erWe} \ref{re:au:erWe:ii} with  $l=\pdDi$ follows for all $\Di>\pDi\geq \pdDi$ 
+\begin{multline*}
+\erWe\Ind{\setB{\VnormLp{\hxdfPr[k]-\dxdfPr[k]}^2<\epenSv}}
+\leq \exp\big(\rWn\big\{-\epenSv+[\tfrac{3}{2}\VnormLp{\ProjC[{\mHiH[l]}]\dxdfPr[\ssY]}^2+\tfrac{9}{2}*\epenSv[l]]\big\}\big)
+\\
+\hfill= \exp\big(\rWn\big\{-\tfrac{1}{2} \epenSv
+\underbrace{-\tfrac{1}{2}*\epenSv 
++[\tfrac{3}{2}\VnormLp{\ProjC[{\mHiH[l]}]\dxdfPr[\ssY]}^2+\tfrac{9}{2}*\epenSv[l]]}_{\leq0}\big\}\big)\\
+\leq \exp\big(-\rWc6\cpen\DiepenSv\big).
+\end{multline*}
+Note that $|\hfedf[j]|^2\leq1$ for all $j\in\Zz$, hence if
+$|\hfedf[j]|^2\geq1/\ssE$ then $\eiSv[j]=|\hfedfmpI[j]|^2\geq1$. Thereby,
+$\eiSv[j]=|\hfedfmpI[j]|^2<1$ implies $|\hfedf[j]|^2<1/\ssE$ and hence
+$\eiSv[j]=|\hfedfmpI[j]|^2=0$. Thereby
+$1>\meiSv=\max\{|\hfedfmpI[j]|^2,j\in\nset{1,\Di}\}$ implies
+$\meiSv=0$, that is,
+\begin{equation}\label{pro:SerWe:hPhi}
+\dr\{\meiSv<1\}=\{\meiSv=0\}.
+\end{equation}
+Consequently, 
+ with $\DiepenSv=\cmeiSv \Di \meiSv$  follows 
+  \begin{multline}\label{pro:SerWe:ii:e1}
+\sum_{\Di=\pDi+1}^{\ssY}\DiepenSv\erWe\Ind{\{\VnormLp{\hxdfPr[k]-\dxdfPr[k]}^2\leq\epenSv\}}
+\leq \sum_{k=\pDi+1}^n\DiepenSv\exp\big(-\rWc6\cpen\DiepenSv\big)
+\\\hfill=\sum_{k=\pDi+1}^n\cmeiSv \Di
+\meiSv\exp\big(-6\rWc\cpen\cmeiSv \Di
+\meiSv\big)\Ind{\{\meiSv\geq1\}}\hfill\\\hfill+\sum_{k=\pDi+1}^n\cmeiSv \Di
+\meiSv\exp\big(-6\rWc\cpen\cmeiSv \Di \meiSv\big)\Ind{\{\meiSv<1\}}\\
+=\sum_{k=\pDi+1}^n\cmeiSv \Di
+\meiSv\exp\big(-6\rWc\cpen\cmeiSv \Di
+\meiSv\big)\Ind{\{\meiSv\geq1\}}.
+  \end{multline}
+Exploiting
+that   $\dr\sqrt{\cmeiSv}=\tfrac{\log (\Di\meiSv \vee
+    (\Di+2))}{\log(\Di+2)}\geq1$ and $\dr6\cpen\geq2\log(3e)\approx4.2$ let
+  $\dr\rWc\geq1$,   then for all $k\in\Nz$ we have $6\rWc\cpen k-\log(k+2)\geq1$ and thus
+exploiting $a\exp(-ab)\leq \exp(-b)$ for all $a,b\geq1$ we have  \begin{multline*}
+% \DiepenSv\exp\big(-\tfrac{\rWc\cpen}{2}\DiepenSv\big)\Ind{\{\meiSv\geq1\}}=4
+\cmeiSv
+\Di \meiSv\exp\big(-6\rWc\cpen\cmeiSv\Di
+\meiSv\big)\Ind{\{\meiSv\geq1\}}\leq
+\cmeiSv\exp\big(-6\rWc\cpen\cmeiSv\Di
+\meiSv + \cmeiSv\log(\Di+2)\big)\Ind{\{\meiSv\geq1\}}
+\\\hfill\leq
+\cmeiSv
+\exp\big(-\cmeiSv(6\rWc\cpen\Di-\log(\Di+2))\big)
+\leq\exp\big(-(6\rWc\cpen\Di-\log(\Di+2))\big)\\
+=(\Di+2)\exp\big(-6\rWc\cpen\Di\big)
+  \end{multline*}
+Since $\sum_{\Di\in\Nz}\mu\Di\exp(-\mu\Di)\leq (\mu)^{-1}$ und $\sum_{\Di\in\Nz}\mu\exp(-\mu\Di)\leq 1$
+follows  
+\begin{multline}\label{pro:SerWe:ii:e2}
+\sum_{k=\pDi+1}^{\ssY}\cmeiSv
+\Di \meiSv\exp\big(-6\rWc\cpen\cmeiSv\Di
+\meiSv\big)\Ind{\{\meiSv\geq1\}}\leq 
+\sum_{k=\pDi+1}^\infty(\Di+2)\exp\big(-6\rWc\cpen\Di\big)\\\leq \tfrac{1}{36\cpen^2\rWc^{2}}+ \tfrac{1}{3\cpen\rWc}.
+  \end{multline}
+Thereby, combining \eqref{pro:SerWe:ii:e1} and \eqref{pro:SerWe:ii:e2} we
+obtain \ref{re:SerWe:ii}, that is 
+\begin{equation*}
+\sum_{\Di=\pDi+1}^{\ssY}\DiepenSv\erWe\Ind{\{\VnormLp{\hxdfPr[k]-\dxdfPr[k]}^2\leq\epenSv\}}
+\leq \tfrac{1}{36\cpen^2\rWc^{2}}+ \tfrac{1}{3\cpen\rWc},
+\end{equation*}
+which completes the proof.
+\end{pro}
+% ....................................................................
+% <<Re crest>>
+% ....................................................................
+\begin{lm}\label{re:crest}Consider  
+$\hxdfPr-\dxdfPr=\sum_{j\in\nset{-\Di,\Di}}\hfedfmpI[j](\hfydf[j]-\fydf[j])\bas_j$.
+Conditionally on $\rE_1,\dotsc,\rE_{\ssE}$ the r.v.'s
+$\rY_1,\dotsc,\rY_{\ssY}$ are \iid and we  denote by $\FuVg[\ssY]{\rY|\rE}$ and $\FuEx[\ssY]{\rY|\rE}$ their conditional
+ distribution and expectation, respectively. 
+Let $\eiSv[j]=|\hfedfmpI[j]|^2$,
+$\oeiSv=\tfrac{1}{\Di}\sum_{j\in\nset{1,\Di}}\eiSv[j]$, $\meiSv=
+  \max\{\eiSv[j],j\in\nset{1,\Di}\}$, $\cpen\geq1$, $\DiepenSv=\cmeiSv\Di \meiSv$
+ and $\sqrt{\cmeiSv}=\tfrac{\log (\Di\meiSv \vee (\Di+2))}{\log(\Di+2)}\geq1$.  Then there is a numerical constant $\cst{}$ such
+ that for all $\ssY\in\Nz$ and $\Di\in\nsetro{1,\ssY}$ holds
+\begin{enumerate}[label=\emph{\textbf{(\roman*)}},ref=\emph{\textbf{(\roman*)}}]\addtocounter{enumi}{0}
+\item\label{re:crest:i} if $\dr\pDi\geq
+  3(\tfrac{12\Vnormlp[1]{\fydf}}{\cpen})^2$ and $\dr n\geq
+  15(\tfrac{200}{\sqrt{\cpen}})^4$
+   (alternatively $\dr\sqrt{\cpen}/200\geq\sqrt{3}$) then\\ 
+  $\sum_{\Di=1+\pDi}^{\ssY}\FuEx[\ssY]{\rY|\rE}\vectp{\VnormLp{\hxdfPr[\Di]-\dxdfPr[\Di]}^2-12\cpen\DiepenSv/\ssY}\leq \cst{}\big[\tfrac{12\Vnormlp[1]{\fydf}^2}{\cpen}+4\big]\ssY^{-1}$
+\item\label{re:crest:ii} if
+  $\dr\pDi\geq3(\tfrac{800\Vnormlp[1]{\fydf}}{\cpen})^2$ and
+  $\dr n\geq
+  15(\tfrac{300}{\sqrt{\cpen}})^4$ (alternatively $\dr\sqrt{\cpen}/300\geq\sqrt{3}$) then\\
+  $\sum_{\Di=1+\pDi}^{\ssY}\DipenSv[\Di]\FuVg[\ssY]{\rY|\rE}\big(\VnormLp{\hxdfPr[\Di]-\dxdfPr[\Di]}^2\geq12\cpen\DiepenSv/\ssY\big)\leq3\big[
+(\tfrac{400\Vnormlp[1]{\fydf}}{\cpen})^2+\tfrac{800\Vnormlp[1]{\fydf}}{\cpen}
++ 1\big]$.
+\end{enumerate}
+\end{lm}
+% ....................................................................
+% <<Proof Re rest>>
+% ....................................................................
+\begin{pro}[Proof of \cref{re:crest}.]\label{pro:crest}
+Since $\cmeiSv\geq1$ for $\dr\Di\geq
+3(\tfrac{12\Vnormlp[1]{\fydf}}{\cpen})^2$ 
+holds
+$\tfrac{\cpen\sqrt{\cmSv}\Di}{12\Vnormlp[1]{\fydf}}-\log(\Di+2)\geq0$
+and hence
+\begin{multline*}
+\meiSv\exp\big(\tfrac{-\cpen\cmeiSv\Di}{6\Vnormlp[1]{\fydf}}\big)\leq
+\exp\big(\tfrac{-\cpen\cmeiSv\Di}{12\Vnormlp[1]{\fydf}}\big)\exp\big(-\sqrt{\cmeiSv}[\tfrac{\cpen\sqrt{\cmeiSv}\Di}{12\Vnormlp[1]{\fydf}}-\log(\Di+2)]\big)
+\\\leq\exp\big(\tfrac{-\cpen\cmeiSv\Di}{12\Vnormlp[1]{\fydf}}\big)\leq\exp\big(-\tfrac{\cpen}{12\Vnormlp[1]{\fydf}}\Di\big)
+\end{multline*}
+consequently, if $\dr\pDi\geq 3(\tfrac{12\Vnormlp[1]{\fydf}}{\cpen})^2$ then
+\begin{multline*}
+\sum_{\Di=1+\pDi}^{\ssY}\meiSv\exp\big(\tfrac{-\cpen\cmeiSv\Di}{6\Vnormlp[1]{\fydf}}\big)\leq
+\sum_{\Di=1+\pDi}^{\ssY}\exp\big(-\tfrac{\cpen}{12\Vnormlp[1]{\fydf}}\Di\big)
+\leq \tfrac{12\Vnormlp[1]{\fydf}}{\cpen}
+\end{multline*}
+For all $\dr n\geq 15(\tfrac{200}{\sqrt{\cpen}})^4$ holds
+$\sqrt{n}\geq\tfrac{200}{\sqrt{\cpen}}\log(n+2)$
+ (or using $\sqrt{3x}\geq\log(x+2)$ for all $x\geq1$ and
+ $\dr\sqrt{\cpen}/200\geq\sqrt{3}$) thereby
+\begin{multline*}
+\tfrac{\Di^2\meiSv^2}{\ssY}\exp\big(\tfrac{-\sqrt{n\cpen\cmeiSv}}{100}\big)
+\leq
+\tfrac{1}{\ssY}\exp\big(-2\sqrt{\cmeiSv}[\tfrac{\sqrt{\ssY\cpen}}{200}-\log(\Di+2)]\big)% \\\leq
+% \tfrac{1}{\ssY}\exp\big(-2\sqrt{\cmSv\ssY}\underbrace{[\tfrac{\sqrt{\cpen}}{200}-\sqrt{3}]}_{\geq0\text{
+%     since } \sqrt{\cpen}/200\geq\sqrt{3}}\big)
+\leq \tfrac{1}{\ssY}
+\end{multline*}
+consequently, 
+\begin{multline*}
+\sum_{\Di=1+\pDi}^{\ssY}\tfrac{\Di^2\meiSv^2}{\ssY}\exp\big(\tfrac{-\sqrt{n\cpen\cmeiSv}}{100}\big)\leq\sum_{\Di=1+\pDi}^{\ssY}\tfrac{1}{\ssY}\leq1
+\end{multline*}
+Combining the last two bounds and \cref{re:cconc} we obtain \ref{re:crest:i}, that is 
+\begin{multline*}
+\sum_{\Di=1+\pDi}^{\ssY}\FuEx[\ssY]{\rY|\rE}\vectp{\VnormLp{\hxdfPr[\Di]-\dxdfPr[\Di]}^2-\epenSv}\\\hfill\leq \cst{}\bigg[\tfrac{\Vnormlp[1]{\fydf}}{\ssY}\sum_{\Di=1+\pDi}^{\ssY}
+\meiSv\exp\big(\tfrac{-\cpen\cmeiSv\Di}{6\Vnormlp[1]{\fydf}}\big)+\tfrac{4}{n}\sum_{\Di=1+\pDi}^{\ssY}\tfrac{\Di^2\meiSv^2}{n}\exp\big(\tfrac{-\sqrt{n\cpen\cmeiSv}}{100}\big)
+\bigg]\\\leq \cst{}\ssY^{-1}\big[\tfrac{12\Vnormlp[1]{\fydf}^2}{\cpen}+4\big]
+\end{multline*}
+If   $\dr\Di\geq 3(\tfrac{800\Vnormlp[1]{\fydf}}{\cpen})^2$ then 
+$\Di\geq  (\tfrac{800\Vnormlp[1]{\fydf}}{\cpen})\log(\Di+2)$ and
+hence
+$\Di-\tfrac{400\Vnormlp[1]{\fydf}}{\cpen}\log(\Di+2)\geq\tfrac{400\Vnormlp[1]{\fydf}}{\cpen}\log(\Di+2)$
+or equivalently,
+$\tfrac{\cpen}{400\Vnormlp[1]{\fydf}}\Di-\log(\Di+2)\geq\log(\Di+2)\geq1$
+and thus
+\begin{multline*}
+\Di\cmeiSv\meiSv\exp\big(\tfrac{-\cpen\cmeiSv\Di}{400\Vnormlp[1]{\fydf}}\big)\leq
+\cmeiSv\exp\big(-\cmeiSv\,[\tfrac{\cpen}{400\Vnormlp[1]{\fydf}}\Di-\log(\Di+2)]\big)\\\leq
+(\Di+2)\exp\big(-\tfrac{\cpen}{400\Vnormlp[1]{\fydf}}\Di\big)
+\end{multline*}
+consequently, if $\dr\pDi\geq
+3(\tfrac{800\Vnormlp[1]{\fydf}}{\cpen})^2$ exploiting $\sum_{\Di\in\Nz}(\Di+2)\exp(-\mu\Di)\leq \mu^{-2}+ 2\mu^{-1}$
+follows
+\begin{multline*}
+\sum_{\Di=1+\pDi}^{\ssY}\Di\cmeiSv\meiSv\exp\big(\tfrac{-\cpen\cmeiSv\Di}{400\Vnormlp[1]{\fydf}}\big)\leq
+\sum_{\Di=1+\pDi}^{\ssY}(k+2)\exp\big(-\tfrac{\cpen}{400\Vnormlp[1]{\fydf}}\Di\big)
+\\\leq (\tfrac{400\Vnormlp[1]{\fydf}}{\cpen})^2+\tfrac{800\Vnormlp[1]{\fydf}}{\cpen}
+\end{multline*}
+Keep in mind that $\dr\{\meiSv<1\}=\{\meiSv=0\}$
+(cf. \eqref{pro:SerWe:hPhi} in the proof of \cref{re:SerWe}).
+Since $\log(\Di\meiSv)\Ind{\{\meiSv\geq1\}}\leq(1/e)\Di\meiSv\Ind{\{\meiSv\geq1\}}$ follows $\cmeiSv\Ind{\{\meiSv\geq1\}}\leq\Di\meiSv\Ind{\{\meiSv\geq1\}}$,
+and using for all $\dr n\geq 15(\tfrac{300}{\sqrt{\cpen}})^4$ holds
+$\sqrt{n}\geq\tfrac{300}{\sqrt{\cpen}}\log(n+2)$ ({\dgrau alternatively: $\sqrt{3x}\geq\log(x+2)$ for all $x\geq1$ and
+$\dr\sqrt{\cpen}/300\geq\sqrt{3}$})
+\begin{multline*}
+\Di\cmeiSv\meiSv\exp\big(\tfrac{-\sqrt{n\cpen\cmeiSv}}{100}\big)\Ind{\{\meiSv\geq1\}}\leq
+\Di^2\meiSv^2\exp\big(\tfrac{-\sqrt{n\cpen\cmeiSv}}{100}\big)\Ind{\{\meiSv\geq1\}}\\\leq
+\tfrac{1}{\ssY}\exp\big(-\sqrt{\cmSv}[\tfrac{\sqrt{\ssY\cpen}}{100}-2\log(\Di+2)]+\log(\ssY+2)\big)\\
+ \leq\tfrac{1}{\ssY}\exp\big(-3\sqrt{\cmeiSv}[\tfrac{\sqrt{\ssY\cpen}}{300}-\log(\ssY+2)]\big)
+% \\\leq
+% \tfrac{1}{\ssY}\exp\big(-3\sqrt{\cmSv\ssY}\underbrace{[\tfrac{\sqrt{\cpen}}{300}-\sqrt{3}]}_{\geq0\text{
+%     since } \sqrt{\cpen}/300\geq\sqrt{3}}\big)
+\leq \tfrac{1}{\ssY}
+  \end{multline*}
+consequently, 
+\begin{multline*}
+\sum_{\Di=1+\pDi}^{\ssY}\Di\cmeiSv\meiSv\exp\big(\tfrac{-\sqrt{n\cpen\cmeiSv}}{100}\big)=\sum_{\Di=1+\pDi}^{\ssY}\Di\cmeiSv\meiSv\exp\big(\tfrac{-\sqrt{n\cpen\cmeiSv}}{100}\big)\Ind{\{\meiSv\geq1\}}\\\leq\sum_{\Di=1+\pDi}^{\ssY}\tfrac{1}{\ssY}\leq1
+\end{multline*}
+Combining the last two bounds and \cref{re:cconc} \ref{re:cconc:ii} we obtain \ref{re:rest:ii}, that is 
+\begin{multline*}
+\sum_{\Di=1+\pDi}^{\ssY}\cmeiSv \Di \meiSv\FuVg[\ssY]{\rY|\rE}\big(\VnormLp{\hxdfPr[\Di]-\dxdfPr[\Di]}^2\geq\epenSv\big)\\\hfill\leq 3\sum_{\Di=1+\pDi}^{\ssY}\cmeiSv \Di \meiSv\bigg[\exp\big(\tfrac{-\cpen\cmeiSv\Di}{400\Vnormlp[1]{\fydf}}\big)+\exp\big(\tfrac{-\sqrt{n\cpen\cmeiSv}}{100}\big)
+\bigg]\\
+\leq3\bigg[
+(\tfrac{400\Vnormlp[1]{\fydf}}{\cpen})^2+\tfrac{800\Vnormlp[1]{\fydf}}{\cpen}
++ 1\bigg]
+\end{multline*}
+which implies the result and completes the proof.\end{pro}
+% ....................................................................
+% <<Re upper bound>>
+% ....................................................................
+\begin{pr}\label{re:au:ub}Let $\rWc\geq1$, $\cpen\geq1$, $\DipenSv=\cmiSv \Di \miSv$
+  with $\sqrt{\cmiSv}=\tfrac{\log (\Di\miSv \vee
+    (\Di+2))}{\log(\Di+2)}\geq1$, 
+   $\hRaDi{l,\xdf,\iSv}=[\bias[l]^2(\xdf)\vee \DipenSv[l]\,
+n^{-1}]$ and $\mRa{\xdf,\iSv}:=\sum_{j\in\Nz}|\fxdf[j]|^2[1\wedge
+\ssE^{-1}\iSv[j]]$. Given  $\pdDi,\mdDi\in\nset{1,\ssY}$ let
+  $\mDi$ as in \eqref{de:au:*Di}. If $\dr\pdDi\geq3(\tfrac{800\Vnormlp[1]{\fydf}}{\cpen})^2$  and  $\dr n\geq
+  15(\tfrac{300}{\sqrt{\cpen}})^4$ then there is an universal
+  numerical constant $\cst{}$ such that  for all $\ssE\in\Nz$
+\begin{multline*}
+\FuEx[\ssY,\ssE]{\rY,\rE}\VnormLp{\hxdfPr[]-\xdf}^2\leq\cst{}\big\{[1\vee\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2]\hRaDi{\pdDi,\xdf,\iSv}+\mRa{\xdf,\iSv}+\Vnormlp[1]{\fydf}^2\ssY^{-1}\big\}
+\\
+\hfill+3\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\bias[\mDi]^2(\xdf)+9
+\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\exp\big(\tfrac{-3\cpen\cmiSv[\mdDi]\mdDi}{4000\Vnormlp[1]{\fydf}}\big)
+\\\hfill
++3
+\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2[\mDi-1]\exp\big(-\rWc\cpen\ssY\hRaDi{\mdDi,\xdf,\iSv}-
+\tfrac{\rWc\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2}{16}\ssY\bias[{[\mDi-1]}]^2(\xdf)\big)\\\null\hfill
++3\ssE\FuVg[\ssE]{\rE}(\aixEv[\pdDi]^c)+3
+\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\FuVg[\ssE]{\rE}(\aixEv[\mdDi]^c)
+  \end{multline*}
+\end{pr}
+% ....................................................................
+% <<Pro Re upper bound>>
+% ....................................................................
+\begin{pro}[Proof of \cref{re:au:ub}.]
+Given $\pdDi,\mdDi\in\nset{1,\ssY}$ let $\pDi$ and $\mDi$
+  as in \eqref{de:au:*Di}. Keep in mind that $\mDi$ is not random and
+  $\pDi$ does depend  on the error sample  only.
+From  \cref{re:au:key} together with  \cref{re:SerWe} follows
+  \begin{multline}\label{pro:au:ub:e1}
+\FuEx[\ssY]{\rY|\rE}\VnormLp{\hxdfPr[]-\xdf}^2\leq 
+3\FuEx[\ssY]{\rY|\rE}\VnormLp{\hxdfPr[\pDi]-\dxdfPr[\pDi]}^2
++3\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\bias[\mDi]^2(\xdf)+[\tfrac{1}{12\cpen\rWc^{2}}+ \tfrac{1}{\rWc}]\ssY^{-1}\\+3\sum_{l\in\nsetlo{\pDi,\ssY}}\FuEx[\ssY]{\rY|\rE}\vectp{\VnormLp{\hxdfPr[l]-\dxdfPr[l]}^2-\cst{1}\epenSv[l]}\\
++3(\cst{1}\cpen/\ssY)\sum_{l\in\nsetlo{\pDi,\ssY}}\DiepenSv[l]\FuVg[\ssY]{\rY|\rE}\vect{\VnormLp{\hxdfPr[l]-\dxdfPr[l]}^2\geq\epenSv[l]}
+\\
++3
+\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\{[\mDi-1]\exp\big(-\rWc\cpen\ssY\hRaDi{\mdDi,\xdf,\iSv}- \tfrac{\rWc\VnormLp{\Proj[{\mHiH[0]^\perp}]\So}^2}{16}\ssY\bias[{[\mDi-1]}]^2(\xdf)\big)\\\null\hfill+\FuVg[\ssY]{\rY|\rE}\vect{\VnormLp{\hxdfPr[\mdDi]-\dxdfPr[\mdDi]}^2\geq\epenSv[\mdDi]}\Ind{\aixEv[\mdDi]}+\Ind{\aixEv[\mdDi]^c}\}\\
++6\sum_{j\in\nset{1,\ssY}}|\hfedfmpI[j]|^2|\fedf[j]-\hfedf[j]|^2|\fxdf[j]|^2
++2\sum_{j\in\nset{1,\ssY}}\Ind{\xEv^c}|\fxdf[j]|^2
+  \end{multline}
+Since $\dr\pDi\geq\pdDi\geq3(\tfrac{800\Vnormlp[1]{\fydf}}{\cpen})^2$  and  $\dr n\geq
+  15(\tfrac{300}{\sqrt{\cpen}})^4$ due to \cref{re:crest}
+  \ref{re:crest:i} and \ref{re:crest:ii} there is a finite numerical constant
+  $\cst{}$ such that
+  \begin{multline}\label{pro:au:ub:e2}
+\FuEx[\ssY]{\rY|\rE}\VnormLp{\hxdfPr[]-\xdf}^2\leq 
+3\FuEx[\ssY]{\rY|\rE}\VnormLp{\hxdfPr[\pDi]-\dxdfPr[\pDi]}^2
++3\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\bias[\mDi]^2(\xdf)+[\tfrac{1}{12\cpen\rWc^{2}}+
+\tfrac{1}{\rWc}]\ssY^{-1}\\
++\cst{}\big[\tfrac{26\Vnormlp[1]{\fydf}^2}{\cpen}+12\big]\ssY^{-1}
++\cst{1}\big[
+\tfrac{9*400^2\Vnormlp[1]{\fydf}^2}{\cpen}+9*800\Vnormlp[1]{\fydf}
++ 9\cpen\big]\ssY^{-1}\\
++3
+\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2[\mDi-1]\exp\big(-\rWc\cpen\ssY\hRaDi{\mdDi,\xdf,\iSv}- \tfrac{\rWc\VnormLp{\Proj[{\mHiH[0]^\perp}]\So}^2}{16}\ssY\bias[{[\mDi-1]}]^2(\xdf)\big)\\\null\hfill+3
+\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\FuVg[\ssY]{\rY|\rE}\vect{\VnormLp{\hxdfPr[\mdDi]-\dxdfPr[\mdDi]}^2\geq\epenSv[\mdDi]}\Ind{\aixEv[\mdDi]}+3
+\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\Ind{\aixEv[\mdDi]^c}\\
++6\sum_{j\in\nset{1,\ssY}}|\hfedfmpI[j]|^2|\fedf[j]-\hfedf[j]|^2|\fxdf[j]|^2
++2\sum_{j\in\nset{1,\ssY}}\Ind{\xEv^c}|\fxdf[j]|^2.
+  \end{multline}
+and together with \cref{re:cconc} \ref{re:cconc:ii} we obtain
+\begin{multline*}
+\FuEx[\ssY]{\rY|\rE}\VnormLp{\hxdfPr[]-\xdf}^2\leq 
+3\FuEx[\ssY]{\rY|\rE}\VnormLp{\hxdfPr[\pDi]-\dxdfPr[\pDi]}^2
++3\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\bias[\mDi]^2(\xdf)+[\tfrac{1}{12\cpen\rWc^{2}}+
+\tfrac{1}{\rWc}]\ssY^{-1}\\
++\cst{}\big[\tfrac{26\Vnormlp[1]{\fydf}^2}{\cpen}+12\big]\ssY^{-1}
++\cst{1}\big[
+\tfrac{9*400^2\Vnormlp[1]{\fydf}^2}{\cpen}+9*800\Vnormlp[1]{\fydf}
++ 9\cpen\big]\ssY^{-1}\\
++3
+\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2[\mDi-1]\exp\big(-\rWc\cpen\ssY\hRaDi{\mdDi,\xdf,\iSv}-
+\tfrac{\rWc\VnormLp{\Proj[{\mHiH[0]^\perp}]\So}^2}{16}\ssY\bias[{[\mDi-1]}]^2(\xdf)\big)\\\null\hfill
++9
+\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\bigg[\exp\big(\tfrac{-\cpen\cmeiSv[\mdDi]\mdDi}{400\Vnormlp[1]{\fydf}}\big)
++\exp\big(\tfrac{-\sqrt{n\cpen\cmeiSv[\mdDi]}}{100}\big)\bigg]\Ind{\aixEv[\mdDi]}\\+3
+\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\Ind{\aixEv[\mdDi]^c}
++6\sum_{j\in\nset{1,\ssY}}|\hfedfmpI[j]|^2|\fedf[j]-\hfedf[j]|^2|\fxdf[j]|^2
++2\sum_{j\in\nset{1,\ssY}}\Ind{\xEv^c}|\fxdf[j]|^2.
+  \end{multline*}
+Moreover, for  $\dr \ssY>
+\ssY_{\xdf,\iSv}\geq 15(\tfrac{300}{\sqrt{\cpen}})^4$  holds
+$\sqrt{n}\geq \tfrac{300}{\sqrt{\cpen}}\log(\ssY+2)\geq\tfrac{100}{\sqrt{\cpen}}\log(\ssY+2)$ which in turn
+together with $\cmeiSv[\mDi]\geq1$ implies
+$\ssY\exp\big(-\sqrt{\ssY}\tfrac{\sqrt{\cpen\cmeiSv[\mdDi]}}{100}\big)\leq\exp\big(-\sqrt{\ssY}\tfrac{\sqrt{\cpen}}{100}+\log(\ssY+2)\big)\leq1$,
+and thus 
+\begin{multline}\label{pro:au:ub:e3}
+\FuEx[\ssY]{\rY|\rE}\VnormLp{\hxdfPr[]-\xdf}^2\leq 
+3\FuEx[\ssY]{\rY|\rE}\VnormLp{\hxdfPr[\pDi]-\dxdfPr[\pDi]}^2
++3\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\bias[\mDi]^2(\xdf)+[\tfrac{1}{12\cpen\rWc^{2}}+
+\tfrac{1}{\rWc}]\ssY^{-1}\\
++\cst{}\big[\tfrac{26\Vnormlp[1]{\fydf}^2}{\cpen}+12\big]\ssY^{-1}
++\cst{1}\big[
+\tfrac{9*400^2\Vnormlp[1]{\fydf}^2}{\cpen}+9*800\Vnormlp[1]{\fydf}
++ 9\cpen\big]\ssY^{-1}\\
++3
+\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2[\mDi-1]\exp\big(-\rWc\cpen\ssY\hRaDi{\mdDi,\xdf,\iSv}-
+\tfrac{\rWc\VnormLp{\Proj[{\mHiH[0]^\perp}]\So}^2}{16}\ssY\bias[{[\mDi-1]}]^2(\xdf)\big)\\\null\hfill
++9
+\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\bigg[\exp\big(\tfrac{-\cpen\cmeiSv[\mdDi]\mdDi}{400\Vnormlp[1]{\fydf}}\big)
++\ssY^{-1}\bigg]\Ind{\aixEv[\mdDi]}\\+3
+\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\Ind{\aixEv[\mdDi]^c}
++6\sum_{j\in\nset{1,\ssY}}|\hfedfmpI[j]|^2|\fedf[j]-\hfedf[j]|^2|\fxdf[j]|^2
++2\sum_{j\in\nset{1,\ssY}}\Ind{\xEv^c}|\fxdf[j]|^2.
+  \end{multline}
+As shown in \eqref{pro:au:erWe:e3} (cf. proof of \cref{re:au:erWe})
+holds  $\tfrac{3}{10}\cmiSv[\mdDi]\leq\cmeiSv[\mdDi]\Ind{\aixEv[\mdDi]}$ and thus
+\begin{multline}\label{pro:au:ub:e3}
+\FuEx[\ssY]{\rY|\rE}\VnormLp{\hxdfPr[]-\xdf}^2\leq 
+3\FuEx[\ssY]{\rY|\rE}\VnormLp{\hxdfPr[\pDi]-\dxdfPr[\pDi]}^2
++3\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\bias[\mDi]^2(\xdf)+[\tfrac{1}{12\cpen\rWc^{2}}+
+\tfrac{1}{\rWc}]\ssY^{-1}\\
++\cst{}\big[\tfrac{26\Vnormlp[1]{\fydf}^2}{\cpen}+12\big]\ssY^{-1}
++\cst{1}\big[
+\tfrac{9*400^2\Vnormlp[1]{\fydf}^2}{\cpen}+9*800\Vnormlp[1]{\fydf}
++ 9\cpen\big]\ssY^{-1}+9
+\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\ssY^{-1}\\
++3
+\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2[\mDi-1]\exp\big(-\rWc\cpen\ssY\hRaDi{\mdDi,\xdf,\iSv}-
+\tfrac{\rWc\VnormLp{\Proj[{\mHiH[0]^\perp}]\So}^2}{16}\ssY\bias[{[\mDi-1]}]^2(\xdf)\big)\\\null\hfill
++9
+\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\exp\big(\tfrac{-\cpen\tfrac{3}{10}\cmiSv[\mdDi]\mdDi}{400\Vnormlp[1]{\fydf}}\big)\\+3
+\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\Ind{\aixEv[\mdDi]^c}
++6\sum_{j\in\nset{1,\ssY}}|\hfedfmpI[j]|^2|\fedf[j]-\hfedf[j]|^2|\fxdf[j]|^2
++2\sum_{j\in\nset{1,\ssY}}\Ind{\xEv^c}|\fxdf[j]|^2.
+  \end{multline}
+ Consider
+  $\FuEx[\ssY]{\rY|\rE}\VnormLp{\hxdfPr[\pDi]-\dxdfPr[\pDi]}^2=2\sum_{j=1}^{\pDi}(\hfedfmpI[j])^2/\ssY=2\sum_{j=1}^{\pDi}\eiSv[j]/\ssY=2\pDi\oeiSv[\pDi]/\ssY$
+  where  $\DiepenSv[\pDi]\geq \oeiSv[\pDi]$ and
+  $\ssE\geq\pDi\oeiSv[\pDi]/ \ssY$ exploiting
+  $(\hfedfmpI[j])^2\leq\ssE$ and $\pDi\leq\ssY$.
+Considering the event $\aixEv[\pdDi]$ and its complement
+$\aixEv[\pdDi]^c$  it follows
+$\FuEx[\ssY]{\rY|\rE}\VnormLp{\hxdfPr[\pDi]-\dxdfPr[\pDi]}^2\leq \ssE\Ind{\aixEv[\pdDi]^c}+\DiepenSv[\pDi]/\ssY\Ind{\aixEv[\pdDi]}$.
+Taking into account the definition
+  \eqref{de:au:*Di} of
+  $\pDi$ we obtain $\FuEx[\ssY]{\rY|\rE}\VnormLp{\hxdfPr[\pDi]-\dxdfPr[\pDi]}^2\leq \ssE\Ind{\aixEv[\pdDi]^c}+[\tfrac{1}{4\cpen}\VnormLp{\ProjC[{\mHiH[\pdDi]}]\dxdfPr[\ssY]}^2+9\DiepenSv[\pdDi]/\ssY]\Ind{\aixEv[\pdDi]}$. 
+Due to \eqref{pro:au:erWe:e3} (cf. proof of \cref{re:au:erWe}) we have
+$\DiepenSv[\pdDi]\Ind{\aixEv[\pdDi]}\leq\tfrac{63}{16}\DipenSv[\pdDi]$,
+which implies
+$\FuEx[\ssY]{\rY|\rE}\VnormLp{\hxdfPr[\pDi]-\dxdfPr[\pDi]}^2\leq
+ \ssE\Ind{\aixEv[\pdDi]^c}+\tfrac{1}{4\cpen}\VnormLp{\ProjC[{\mHiH[\pdDi]}]\dxdfPr[\ssY]}^2+\tfrac{9*63}{16}\DipenSv[\pdDi]/\ssY$. Thereby, from
+\eqref{pro:au:ub:e3} together with \cref{re:crest} follows now
+\begin{multline}\label{pro:au:ub:e4}
+\FuEx[\ssY]{\rY|\rE}\VnormLp{\hxdfPr[]-\xdf}^2\leq 
+3\ssE\Ind{\aixEv[\pdDi]^c}+\tfrac{3}{4\cpen}\VnormLp{\ProjC[{\mHiH[\pdDi]}]\dxdfPr[\ssY]}^2+\tfrac{3*9*63}{16}\DipenSv[\pdDi]/\ssY
++3\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\bias[\mDi]^2(\xdf)+[\tfrac{1}{12\cpen\rWc^{2}}+
+\tfrac{1}{\rWc}]\ssY^{-1}\\
++\cst{}\big[\tfrac{26\Vnormlp[1]{\fydf}^2}{\cpen}+12\big]\ssY^{-1}
++\cst{1}\big[
+\tfrac{9*400^2\Vnormlp[1]{\fydf}^2}{\cpen}+9*800\Vnormlp[1]{\fydf}
++ 9\cpen\big]\ssY^{-1}+9
+\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\ssY^{-1}\\
++3
+\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2[\mDi-1]\exp\big(-\rWc\cpen\ssY\hRaDi{\mdDi,\xdf,\iSv}-
+\tfrac{\rWc\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2}{16}\ssY\bias[{[\mDi-1]}]^2(\xdf)\big)\\\null\hfill
++9
+\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\exp\big(\tfrac{-\cpen3\cmiSv[\mdDi]\mdDi}{4000\Vnormlp[1]{\fydf}}\big)\\+3
+\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\Ind{\aixEv[\mdDi]^c}
++6\sum_{j\in\nset{1,\ssY}}|\hfedfmpI[j]|^2|\fedf[j]-\hfedf[j]|^2|\fxdf[j]|^2
++2\sum_{j\in\nset{1,\ssY}}\Ind{\xEv^c}|\fxdf[j]|^2.
+  \end{multline}
+Exploiting \cref{oSv:re} we obtain from 
+\ref{oSv:re:i}
+$\FuEx[\ssE]{\rE}\VnormLp{\ProjC[{\mHiH[\pdDi]}]\dxdfPr[\ssY]}^2\leq4\sum_{|j|\in\nsetlo{\pDi,\ssY}}|\fxdf[j]|^2\leq
+4\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\bias[\pdDi]^2(\xdf)$, 
+from \ref{oSv:re:iii}
+$\sum_{j\in\nset{1,\ssY}}|\fxdf[j]|^2\FuEx[\ssE]{\rE}|\hfedfmpI[j]|^2|\fedf[j]-\hfedf[j]|^2% \leq12\sum_{j\in\nset{1,n}}(1\vee
+% \ssE\Sv[j]^2)^{-1}|\fSo{j}|^2
+\leq4\cst{4}\mRa{\xdf,\iSv}$
+and from
+\ref{oSv:re:ii}
+$\sum_{j\in\nset{1,n}}\FuVg[\ssE]{\rE}(\xEv^c)|\fxdf[j]|^2
+\leq4\mRa{\xdf,\iSv}$ where  $\mRa{\xdf,\iSv}:=\sum_{j\in\Nz}\fxdf[j]^2[1\wedge
+\iSv[j]/\ssE]$. The last bounds imply
+\begin{multline}\label{pro:au:ub:e5}
+\FuEx[\ssY,\ssE]{\rY,\rE}\VnormLp{\hxdfPr[]-\xdf}^2\leq \tfrac{3*9*63}{16}\DipenSv[\pdDi]\ssY^{-1}+
+\tfrac{3}{\cpen}\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\bias[\pdDi]^2(\xdf)+3\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\bias[\mDi]^2(\xdf)
+\\+[\tfrac{1}{12\cpen\rWc^{2}}+
+\tfrac{1}{\rWc}]\ssY^{-1}
++\cst{}\big[\tfrac{26\Vnormlp[1]{\fydf}^2}{\cpen}+12\big]\ssY^{-1}
++\cst{1}\big[
+\tfrac{9*400^2\Vnormlp[1]{\fydf}^2}{\cpen}+9*800\Vnormlp[1]{\fydf}
++ 9\cpen\big]\ssY^{-1}\\
+\hfill+9
+\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\ssY^{-1}\\
++3
+\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2[\mDi-1]\exp\big(-\rWc\cpen\ssY\hRaDi{\mdDi,\xdf,\iSv}-
+\tfrac{\rWc\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2}{16}\ssY\bias[{[\mDi-1]}]^2(\xdf)\big)\\\null\hfill
++9
+\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\exp\big(\tfrac{-3\cpen\cmiSv[\mdDi]\mdDi}{4000\Vnormlp[1]{\fydf}}\big)\\+3\ssE\FuVg[\ssE]{\rE}(\aixEv[\pdDi]^c)+3
+\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\FuVg[\ssE]{\rE}(\aixEv[\mdDi]^c)+(24\cst{4}+8)\mRa{\xdf,\iSv}.
+  \end{multline}
+Recalling that $\hRaDi{l,\xdf,\iSv}=[\bias[l]^2(\xdf)\vee
+\DipenSv[l]\,\ssY^{-1}]\geq\ssY^{-1}$ there is a finite numerical constant $\cst{}$ such
+that 
+\begin{multline}\label{pro:au:ub:e6}
+\FuEx[\ssY,\ssE]{\rY,\rE}\VnormLp{\hxdfPr[]-\xdf}^2\leq\cst{}\big\{[1\vee\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2]\hRaDi{\pdDi,\xdf,\iSv}+\mRa{\xdf,\iSv}+\Vnormlp[1]{\fydf}^2\ssY^{-1}\big\}
+\\
+\hfill+3\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\bias[\mDi]^2(\xdf)+9
+\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\exp\big(\tfrac{-3\cpen\cmiSv[\mdDi]\mdDi}{4000\Vnormlp[1]{\fydf}}\big)
+\\\hfill
++3
+\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2[\mDi-1]\exp\big(-\rWc\cpen\ssY\hRaDi{\mdDi,\xdf,\iSv}-
+\tfrac{\rWc\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2}{16}\ssY\bias[{[\mDi-1]}]^2(\xdf)\big)\\\null\hfill
++3\ssE\FuVg[\ssE]{\rE}(\aixEv[\pdDi]^c)+3
+\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\FuVg[\ssE]{\rE}(\aixEv[\mdDi]^c),
+  \end{multline}
+which shows the assertion and completes the proof.\end{pro}
+% ....................................................................
+% <<Re upper bound 1>>
+% ....................................................................
+\begin{lm}\label{re:au:ub:co1} If $\xdf=\bas_0$ then there is a finite numerical
+  constant $\cst{}$ such that for all $\dr\ssY,\ssE\in\Nz$ we have
+$\FuEx[\ssY,\ssE]{\rY,\rE}\VnormLp{\hxdf-\xdf}^2
+\leq\cst{}\{\DipenSv[\ssY_o]\ssY^{-1}+\ssY_o \miSv[\ssY_o]^2\ssE^{-1}\}$
+ with  
+$\dr\ssY_o:=\ceil{15\tfrac{300^4}{\cpen^2}\vee3\tfrac{800^2}{\cpen^2}}$.
+\end{lm}
+% ....................................................................
+% <<Pro Re upper bound 1>>
+% ....................................................................
+\begin{pro}[Proof of \cref{re:au:ub:co1}.]
+Let $\dr\ssY_o:=\ceil{15\tfrac{300^4}{\cpen^2}\vee3\tfrac{800^2}{\cpen^2}}$. We destinguish for $\ssY\in\Nz$ the following two cases
+cases, \begin{inparaenum}[i]\renewcommand{\theenumi}{\dgrau\rm(\alph{enumi})}\item\label{pro:au:ub:co1:c1}
+$\ssY\in\nsetro{1,\ssY_o}$ and \item\label{pro:au:ub:co1:c2}
+$\ssY\geq\ssY_o$. \end{inparaenum}
+Consider \ref{pro:au:ub:co1:c1}. We select 
+$\dr\pDi=\ssY\leq\ssY_o$ and thus keeping in mind that $\xdf=\bas_0$,
+and hence $\fxdf[j]=0$ and $\fydf[j]=0$ for all $|j|\in\Nz$,  from
+\eqref{pro:au:key:e1} (cf. proof of \cref{re:au:key}) together with
+\cref{oSv:re} \ref{oSv:re:i} follows for all $\ssE\in\Nz$
+\begin{multline}\label{pro:au:ub:co1:e1}
+\FuEx[\ssY,\ssE]{\rY,\rE}\VnormLp{\hxdfPr[]-\xdf}^2=
+ 2\sum_{j\in\nset{1,n}}\FuEx[\ssY,\ssE]{\rY,\rE} |\hfedfmpI[j](\hfydf[j]-\fydf[j])\FuVg{\We[]}(\nset{j,\ssY})|^2\\\hfill\leq2\sum_{j\in\nset{1,n}}\iSv[j]\FuEx[\ssE]{\rE}|\fedf[j]\hfedfmpI[j]|^2\FuEx[\ssY]{\rY}|\hfydf[j]-\fydf[j]|^2\leq8\sum_{j\in\nset{1,n}}\iSv[j]\ssY^{-1}=8\ssY\oiSv[\ssY]\ssY^{-1}\\\leq
+8 \ssY_o\oiSv[\ssY_o]\ssY^{-1}\leq8\DipenSv[\ssY_o]\ssY^{-1}.
+\end{multline}
+Consider \ref{pro:au:ub:co1:c2}, i.e., $\ssY\geq\ssY_o$. We select
+$\dr\pdDi:=\ssY_o\in\nset{1,\ssY}$. Since
+$\VnormLp{\Proj[{\mHiH[0]}]^\perp\xdf}^2=0$, and thus
+$\Vnormlp[1]{\fydf}^2=1$, 
+$\hRa{\pdDi,\xdf,\iSv}=\DipenSv[\pdDi]/\ssY=\DipenSv[\ssY_o]/\ssY$ and
+$\mRa{\xdf,\iSv}=0$,
+from \cref{re:au:ub} keeping in mind that by construction $\dr\pdDi\geq3(\tfrac{800\Vnormlp[1]{\fydf}}{\cpen})^2=3(\tfrac{800}{\cpen})^2$  and  $\dr n\geq
+  15(\tfrac{300}{\sqrt{\cpen}})^4$  
+ follows
+\begin{equation}\label{pro:au:ub:co1:e2}
+\FuEx[\ssY,\ssE]{\rY,\rE}\VnormLp{\hxdfPr[]-\xdf}^2\leq\cst{}\big\{\DipenSv[\ssY_o]\ssY^{-1}+\ssY^{-1}\big\}
++3\ssE\FuVg[\ssE]{\rE}(\aixEv[\ssY_o]^c)
+  \end{equation}
+Setting
+$\ssE_{o}:=\ceil{9\miSv[\ssY_o]/4}\in\Nz$ by employing \cref{re:evrest}
+\ref{re:evrest:ii} we have $\FuVg[\ssE]{\rE}(\aixEv[\ssY_o]^c)\leq 555
+\ssY_o \ssE_{o}^2 \ssE^{-2}$ for all $\ssE\in\Nz$, where $\ssE_{o}^2\leq \tfrac{81}{4}\miSv[\ssY_o]^2 $.
+% $\ceil{a}\leq
+% a(1+1/a)\leq2a$ for $a\geq1$
+Combining
+the upper bounds \eqref{pro:au:ub:co1:e1} and \eqref{pro:au:ub:co1:e2}
+for the two cases  \ref{pro:au:ub:co1:c1} and \ref{pro:au:ub:co1:c2}
+there is a finite numerical constant $\cst{}$ such that 
+ $\FuEx[\ssY,\ssE]{\rY,\rE}\VnormLp{\hxdf-\xdf}^2
+\leq\cst{}\{\DipenSv[\ssY_o]\ssY^{-1}+\ssY_o \miSv[\ssY_o]^2\ssE^{-1}\}$
+for all $\ssY,\ssE\in\Nz$, which shows the assertion and completes the proof.\end{pro}
+% ....................................................................
+% <<Re upper bound 2>>
+% ....................................................................
+\begin{lm}\label{re:au:ub:co2} Assume there is $K\in\Nz$
+  with   $1\geq \bias[{[K-1] }](\xdf)>0$ and $\bias[K](\xdf)=0$. Set
+ $K_{\ydf}:=K\dr\vee
+3(\tfrac{800\Vnormlp[1]{\fydf}}{\cpen})^2$, $c_{\xdf}:=\tfrac{2\VnormLp{\Proj[{\mHiH[0]}]^\perp\xdf}^2+7576\cpen}{\VnormLp{\Proj[{\mHiH[0]}]^\perp\xdf}^2\bias[{[K-1]}]^2(\xdf)}\geq1$,
+$\ssY_{\xdf,\iSv}=\ceil{c_{\xdf}\DipenSv[K_{\ydf}]\dr\vee15(\tfrac{300}{\sqrt{\cpen}})^4}$
+and $\ssE_{\xdf,\iSv}:=\ceil{289\log(K_{\ydf}+2)\cmiSv[K_{\ydf}]\miSv[K_{\ydf}]}$.
+For  all $\ssY,\ssE\in\Nz$ we set $\sDi{\ssY}:=K_{\ydf}(\log\ssY)$ for
+$\ssY\leq\ssY_{\xdf,\iSv}$,
+$\sDi{\ssY}:=\max\{\Di\in\nset{K_{\ydf},\ssY}:c_{\xdf}\DipenSv<\ssY\}$ 
+for $\ssY>\ssY_{\xdf,\iSv}$, $\sDi{\ssE}:=K_{\ydf}(\log\ssE)$ for
+$\ssE\leq\ssE_{K,\iSv}$, and
+$\sDi{\ssE}:=\max\{\Di\in\nset{K_{\ydf},\ssE}:289\log(\Di+2)\cmiSv\miSv\leq\ssE\}$ for
+$\ssE>\ssE_{K,\iSv}$, where the defining sets contain $K_{\ydf}$
+and thus they are not empty.
+There is a finite numerical  constant $\cst{}$
+such that for all $\ssY,\ssE\in\Nz$ holds
+\begin{multline}\label{re:au:ub:co2:e1}
+\FuEx[\ssY,\ssE]{\rY,\rE}\VnormLp{\hxdfPr[]-\xdf}^2\leq \cst{}(1\vee\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2)(\DipenSv[\ssY_{\xdf,\iSv}]\ssY^{-1}+K_{\ydf}\miSv[K_{\ydf}]^2\ssE^{-1}+\ssE_{\xdf,\iSv}\ssE^{-1})\\
+\hfill+9
+\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\{\exp\big(\tfrac{-3\cpen\cmiSv[\sDi{\ssY}\wedge\sDi{\ssE}](\sDi{\ssY}\wedge\sDi{\ssE})}{4000\Vnormlp[1]{\fydf}}\big)-\tfrac{1}{\ssY}\vee\tfrac{1}{\ssE}\}
+\end{multline}
+If there are
+$\widetilde{\ssY}_{\xdf,\iSv},\widetilde{\ssE}_{\xdf,\iSv}\in\Nz$ such
+that additionally for all $\ssY\geq\widetilde{\ssY}_{\xdf,\iSv}$,
+$\cmiSv[\sDi{\ssY}]\sDi{\ssY}\geq K_{\ydf}(\log\ssY)$, and for all
+$\ssE\geq\widetilde{\ssE}_{\xdf,\iSv}$,
+$\cmiSv[\sDi{\ssE}]\sDi{\ssE}\geq K_{\ydf}(\log\ssE)$
+hold true, then for all $\ssY,\ssE\in\Nz$ we have
+\begin{equation}\label{re:au:ub:co2:e2}
+\FuEx[\ssY,\ssE]{\rY,\rE}\VnormLp{\hxdfPr[]-\xdf}^2\leq 
+\cst{}(1\vee\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2)(\DipenSv[{[\widetilde{\ssY}_{\xdf,\iSv}\vee\ssY_{\xdf,\iSv}]}]\ssY^{-1}+K_{\ydf}\miSv[K_{\ydf}]^2\ssE^{-1}+[\widetilde{\ssE}_{\xdf,\iSv}\vee\ssE_{\xdf,\iSv}]\ssE^{-1})
+\end{equation}
+\end{lm}
+% ....................................................................
+% <<Pro Re upper bound 2>>
+% ....................................................................
+\begin{pro}[Proof of \cref{re:au:ub:co2}.]
+Given $K\in\Nz$   with   $1\geq \bias[{[K-1] }](\xdf)>0$ and
+$\bias(\xdf)=0$ for all $\Di\geq K$ we note that
+$\mRa{\xdf,\iSv}=\sum_{j=1}^{K-1}|\fxdf[j]|^2[1\wedge\ssE^{-1}\iSv[j]]\leq
+\ssE^{-1}\miSv[K]\VnormLp{\Proj[{\mHiH[0]}]^\perp\xdf}^2$. Let $K_{\ydf}:=K\dr\vee
+3(\tfrac{800\Vnormlp[1]{\fydf}}{\cpen})^2$, 
+$c_{\xdf}:=\tfrac{2\VnormLp{\Proj[{\mHiH[0]}]^\perp\xdf}^2+7576\cpen}{\VnormLp{\Proj[{\mHiH[0]}]^\perp\xdf}^2\bias[{[K-1]}]^2(\xdf)}$,
+$\ssY_{\xdf,\iSv}=\ceil{c_{\xdf}\DipenSv[K_{\ydf}]\dr\vee15(\tfrac{300}{\sqrt{\cpen}})^4}$
+and $\ssE_{\xdf,\iSv}:=\ceil{289\log(K_{\ydf}+2)\cmiSv[K_{\ydf}]\miSv[K_{\ydf}]}$.
+
+We distinguish for $\ssY\in\Nz$ the following two
+cases, \begin{inparaenum}[i]\renewcommand{\theenumi}{\dgrau\rm(\alph{enumi})}\item\label{pro:au:ub:co2:c1}
+$\ssY\in\nsetro{1,\ssY_{\xdf,\iSv}}$ and \item\label{pro:au:ub:co2:c2}
+$\ssY\geq\ssY_{\xdf,\iSv}$.\end{inparaenum}\\
+
+
+Firstly, consider \ref{pro:au:ub:co2:c1},  let
+$\ssY\in\nsetro{1,\ssY_{\xdf,\iSv}}$, then setting $\mDi=1$ and
+$\pDi=\ssY$ from \cref{re:au:key} follows
+\begin{multline*}
+\FuEx[\ssY,\ssE]{\rY,\rE}\VnormLp{\hxdfPr[]-\xdf}^2\leq 
+3\FuEx[\ssY,\ssE]{\rY,\rE}\VnormLp{\hxdfPr[\ssY]-\dxdfPr[\ssY]}^2
++3 \VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\bias[1]^2(\xdf)\\
++6\sum_{j\in\nset{1,\ssY}}\FuEx[\ssE]{\rE}|\hfedfmpI[j]|^2|\fedf[j]-\hfedf[j]|^2|\fxdf[j]|^2
++2\sum_{j\in\nset{1,\ssY}}\FuVg[\ssE]{\rE}(\xEv^c)|\fxdf[j]|^2
+\end{multline*}
+Exploiting \cref{oSv:re} we obtain from 
+\ref{oSv:re:i}
+$\FuEx[\ssY,\ssE]{\rY,\rE}\VnormLp{\hxdfPr[\ssY]-\dxdfPr[\ssY]}^2=
+2\sum_{j\in\nset{1,n}}\iSv[j]\FuEx[\ssE]{\rE}|\fedf[j]\hfedfmpI[j]|^2\FuEx[\ssY]{\rY}|\hfydf[j]-\fydf[j]|^2\leq8\ssY\oiSv[\ssY]\ssY^{-1}\leq 8\DipenSv[\ssY_{\xdf,\iSv}]\ssY^{-1}$, 
+from \ref{oSv:re:iii}
+$\sum_{j\in\nset{1,\ssY}}|\fxdf[j]|^2\FuEx[\ssE]{\rE}|\hfedfmpI[j]|^2|\fedf[j]-\hfedf[j]|^2\leq4\cst{4}\mRa{\xdf,\iSv}$
+and from
+\ref{oSv:re:ii}
+$\sum_{j\in\nset{1,n}}\FuVg[\ssE]{\rE}(\xEv^c)|\fxdf[j]|^2
+\leq4\mRa{\xdf,\iSv}$ where  $\mRa{\xdf,\iSv}:=\sum_{j\in\nsetro{1,K}}\fxdf[j]^2[1\wedge
+\iSv[j]/\ssE]\leq\VnormLp{\Proj[{\mHiH[0]}]^\perp\xdf}^2\miSv[K]\ssE^{-1}$. The
+last bounds together with $\bias[1]^2(\xdf)\leq1$, $\ssY<\ssY_{\xdf,\iSv}\leq\DipenSv[\ssY_{\xdf,\iSv}]$ and $\miSv[K]\leq\miSv[K_{\ydf}]$ imply for all $\ssE\in\Nz$
+\begin{multline}\label{pro:au:ub:co2:e1}
+\FuEx[\ssY,\ssE]{\rY,\rE}\VnormLp{\hxdfPr[]-\xdf}^2\leq 
+24\DipenSv[\ssY_{\xdf,\iSv}]\ssY^{-1}+3 \VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2
++(24\cst{4}+8)\VnormLp{\Proj[{\mHiH[0]}]^\perp\xdf}^2\miSv[K]\ssE^{-1}\\\leq \cst{}(1\vee\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2)\{\DipenSv[\ssY_{\xdf,\iSv}]\ssY^{-1}+\miSv[K_{\ydf}]\ssE^{-1}\}
+\end{multline}
+where $\cst{}$ is a finite numerical constant.
+
+Secondly, consider \ref{pro:au:ub:co2:c2}, i.e., 
+$\ssY\geq\ssY_{\xdf,\iSv}$. Setting $\pdDi:=K_{\ydf}\leq\DipenSv[K_{\ydf}]\leq\ssY_{\xdf,\iSv}$, i.e., $\pdDi\in\nset{1,\ssY}$ from $\pdDi=K_{\ydf}\geq K$  follows
+$\bias[\pdDi](\xdf)=0$ and hence
+$\hRa{\pdDi,\xdf,\iSv}=\DipenSv[K_{\ydf}]\ssY^{-1}$. Consequenly, from
+\cref{re:au:ub} (keep in mind that
+$\mRa{\xdf,\iSv}\leq\VnormLp{\Proj[{\mHiH[0]}]^\perp\xdf}^2\miSv[K]\ssE^{-1}$
+and by construction $\dr\pdDi\geq3(\tfrac{800\Vnormlp[1]{\fydf}}{\cpen})^2$  and  $\dr n\geq
+  15(\tfrac{300}{\sqrt{\cpen}})^4$) there is a numerical constant
+  $\cst{}$ such that 
+\begin{multline*}
+\FuEx[\ssY,\ssE]{\rY,\rE}\VnormLp{\hxdfPr[]-\xdf}^2\leq\cst{}\big\{[1\vee\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2]\DipenSv[K_{\ydf}]\ssY^{-1}+\VnormLp{\Proj[{\mHiH[0]}]^\perp\xdf}^2\miSv[K]\ssE^{-1}+\Vnormlp[1]{\fydf}^2\ssY^{-1}\big\}
+\\
+\hfill+3\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\bias[\mDi]^2(\xdf)+9
+\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\exp\big(\tfrac{-3\cpen\cmiSv[\mdDi]\mdDi}{4000\Vnormlp[1]{\fydf}}\big)
+\\\hfill
++3
+\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2[\mDi-1]\exp\big(-\rWc\cpen\ssY\hRaDi{\mdDi,\xdf,\iSv}-
+\tfrac{\rWc\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2}{16}\ssY\bias[{[\mDi-1]}]^2(\xdf)\big)\\\null\hfill
++3\ssE\FuVg[\ssE]{\rE}(\aixEv[K_{\ydf}]^c)+3
+\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\FuVg[\ssE]{\rE}(\aixEv[\mdDi]^c)
+  \end{multline*}
+Setting
+$\ssE_{\ydf}:=\ceil{9\miSv[K_{\ydf}]/4}\in\Nz$ by employing \cref{re:evrest}
+\ref{re:evrest:ii} we have $\FuVg[\ssE]{\rE}(\aixEv[K_{\ydf}]^c)\leq 555
+K_{\ydf}\ssE_{\ydf}^2 \ssE^{-2}$ for all $\ssE\in\Nz$. Since $\ssE_{\ydf}^2\leq\tfrac{81}{4}\miSv[K_{\ydf}]^2$ and 
+$\Vnormlp[1]{\fydf}^2\leq\cpen^2K_{\ydf}\leq\cpen^2\DipenSv[K_{\ydf}]$ we obtain
+\begin{multline}\label{pro:au:ub:co2:e2}
+\FuEx[\ssY,\ssE]{\rY,\rE}\VnormLp{\hxdfPr[]-\xdf}^2\leq\cst{1}[1\vee\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2](\DipenSv[K_{\ydf}]\ssY^{-1}+K_{\ydf}\miSv[K_{\ydf}]^2\ssE^{-1})
+\\
+\hfill+3\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\bias[\mDi]^2(\xdf)+9
+\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\exp\big(\tfrac{-3\cpen\cmiSv[\mdDi]\mdDi}{4000\Vnormlp[1]{\fydf}}\big)
+\\\hfill
++3
+\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2[\mDi-1]\exp\big(-\rWc\cpen\ssY\hRaDi{\mdDi,\xdf,\iSv}-
+\tfrac{\rWc\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2}{16}\ssY\bias[{[\mDi-1]}]^2(\xdf)\big)\\\null\hfill
++3
+\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\FuVg[\ssE]{\rE}(\aixEv[\mdDi]^c)
+  \end{multline}
+where $\cst{1}$ is a numerical constant.  In order to control the terms
+involving $\mdDi$ and $\mDi$ we destinguish for $\ssE\in\Nz$ the following two cases
+cases, \begin{inparaenum}[i]\renewcommand{\theenumi}{\dgrau\rm(b-\roman{enumi})}\item\label{pro:au:ub:co2:c3}
+$\ssE\in\nsetro{1,\ssE_{\xdf,\iSv}}$ and \item\label{pro:au:ub:co2:c4}
+$\ssE\geq\ssE_{\xdf,\iSv}$ \end{inparaenum}
+where $\ssE_{\xdf,\iSv}=\ceil{289\log(K_{\ydf}+2)\cmiSv[K_{\ydf}]\miSv[K_{\ydf}]}$.
+   
+Consider \ref{pro:au:ub:co2:c3}. We set $\mdDi=1$ and hence
+$\mDi=1$. Thereby, from \eqref{pro:au:ub:co2:e2} together with
+$\bias[1]^2(\xdf)\leq1$ and $\ssE<\ssE_{\xdf,\iSv}$ follows
+\begin{multline}\label{pro:au:ub:co2:e3}
+\FuEx[\ssY,\ssE]{\rY,\rE}\VnormLp{\hxdfPr[]-\xdf}^2
+\leq\cst{2}[1\vee\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2](\DipenSv[K_{\ydf}]\ssY^{-1}+K_{\ydf}\miSv[K_{\ydf}]^2\ssE^{-1})+15\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\\
+\leq\cst{3}[1\vee\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2](\DipenSv[K_{\ydf}]\ssY^{-1}+K_{\ydf}\miSv[K_{\ydf}]^2\ssE^{-1}+\ssE_{\xdf,\iSv}\ssE^{-1})
+  \end{multline}
+where $\cst{3}$ is a numerical constant.
+
+Consider \ref{pro:au:ub:co2:c4}. Note that for all $\ssE\geq \ssE_{K,\iSv}$ the defining set of
+$\sDi{\ssE}:=\max\{\Di\in\nset{K_{\ydf},\ssE}:289\log(\Di+2)\cmiSv[\Di]\miSv[\Di]\leq\ssE\}$
+is not empty, where obviously for each
+$\mdDi\in\nset{K_{\ydf},\sDi{\ssE}}$ holds 
+$\ssE\geq289\log(\mdDi+2)\cmiSv[\mdDi]\miSv[\mdDi]$, and thus from
+\cref{re:evrest} \ref{re:evrest:iii} follows
+$\FuVg[\ssE]{\rE}(\aixEv[\mdDi]^c)\leq 53\ssE^{-1}$.
+Recall that $c_{\xdf}:=\tfrac{2\VnormLp{\Proj[{\mHiH[0]}]^\perp\xdf}^2+7576\cpen}{\VnormLp{\Proj[{\mHiH[0]}]^\perp\xdf}^2\bias[{[K-1]}]^2(\xdf)}$
+and $\ssY>\ssY_{\xdf,\iSv}\geq c_{\xdf}\DipenSv[K_{\ydf}]$. Thereby,
+the defining set of
+$\sDi{\ssY}:=\max\{\Di\in\nset{K_{\ydf},\ssY}:\ssY>c_{\xdf}\DipenSv\}$
+contains $K_{\ydf}$ and it is not empty. Consequently, for all
+$\mdDi\in\nset{K_{\ydf},\sDi{\ssY}}$ there hold $\mdDi\geq K_{\ydf}\geq K$, hence
+$\hRaDi{\mdDi,\xdf,\iSv}=\DipenSv[\mdDi]/\ssY$  and thus $\VnormLp{\Proj[{\mHiH[0]}]^\perp\xdf}^2\bias[{[K-1]}]^2(\xdf)>[2\VnormLp{\Proj[{\mHiH[0]}]^\perp\xdf}^2+7576\cpen]\hRaDi{\mdDi,\xdf,\iSv}$,
+  which in turn employing the definition
+  \eqref{de:au:*Di} implies  $\mDi=K$ and hence
+  $\bias[\mDi]^2(\xdf)=\bias[K]^2(\xdf)=0$,
+  $\bias[{[\mDi-1]}]^2(\xdf)=\bias[{[K-1]}]^2(\xdf)>0$. Selecting
+  $\mdDi:=\sDi{\ssY}\wedge\sDi{\ssE}$ we have 
+$\FuVg[\ssE]{\rE}(\aixEv[\mdDi]^c)\leq 53\ssE^{-1}$ and 
+$\mDi=K$, $\bias[\mDi]^2(\xdf)=0$,
+  $\bias[{[\mDi-1]}]^2(\xdf)=\bias[{[K-1]}]^2(\xdf)>0$, such that 
+ from  \eqref{pro:au:ub:co2:e2} follows
+\begin{multline}\label{pro:au:ub:co2:e4}
+\FuEx[\ssY,\ssE]{\rY,\rE}\VnormLp{\hxdfPr[]-\xdf}^2
+\leq\cst{2}[1\vee\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2](\DipenSv[K_{\ydf}]\ssY^{-1}+K_{\ydf}\miSv[K_{\ydf}]^2\ssE^{-1})
+\\
+\hfill+9
+\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\exp\big(\tfrac{-3\cpen\cmiSv[\sDi{\ssY}\wedge\sDi{\ssE}](\sDi{\ssY}\wedge\sDi{\ssE})}{4000\Vnormlp[1]{\fydf}}\big)
+\\\hfill
++3
+\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2[K-1]\exp\big(-\rWc\cpen\ssY\hRaDi{\sDi{\ssY}\wedge\sDi{\ssE},\xdf,\iSv}-
+\tfrac{\rWc\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2}{16}\ssY\bias[{[K-1]}]^2(\xdf)\big)\\\null\hfill
++3
+\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2 53\ssE^{-1}\\
+\leq\cst{3}[1\vee\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2](\DipenSv[K_{\ydf}]\ssY^{-1}+K_{\ydf}\miSv[K_{\ydf}]^2\ssE^{-1})\\
+\hfill+9
+\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\exp\big(\tfrac{-3\cpen\cmiSv[\sDi{\ssY}\wedge\sDi{\ssE}](\sDi{\ssY}\wedge\sDi{\ssE})}{4000\Vnormlp[1]{\fydf}}\big)
++3
+\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2[K-1]\underbrace{\exp\big(-
+\tfrac{\rWc\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2}{16}\ssY\bias[{[K-1]}]^2(\xdf)\big)}_{\leq\tfrac{16}{e\rWc\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\bias[{[K-1]}]^2(\xdf)}\ssY^{-1}}
+\\
+\leq\cst{3}[1\vee\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2](\DipenSv[K_{\ydf}]\ssY^{-1}+K_{\ydf}\miSv[K_{\ydf}]^2\ssE^{-1})\\
+\hfill+9
+\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\exp\big(\tfrac{-3\cpen\cmiSv[\sDi{\ssY}\wedge\sDi{\ssE}](\sDi{\ssY}\wedge\sDi{\ssE})}{4000\Vnormlp[1]{\fydf}}\big)
++3\tfrac{16[K-1]}{e\rWc\bias[{[K-1]}]^2(\xdf)}\ssY^{-1}\\
+\leq\cst{4}[1\vee\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2](\tfrac{\DipenSv[K_{\ydf}]}{\bias[{[K-1]}]^2(\xdf)}\ssY^{-1}+K_{\ydf}\miSv[K_{\ydf}]^2\ssE^{-1})\\
+\hfill+9
+\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\exp\big(\tfrac{-3\cpen\cmiSv[\sDi{\ssY}\wedge\sDi{\ssE}](\sDi{\ssY}\wedge\sDi{\ssE})}{4000\Vnormlp[1]{\fydf}}\big)
+\end{multline}
+where $\cst{4}$ is a numerical constant.
+
+
+Combining
+the upper bounds \eqref{pro:au:ub:co2:e1}, \eqref{pro:au:ub:co2:e3} and\eqref{pro:au:ub:co2:e4}
+for the three cases  \ref{pro:au:ub:co2:c1}, \ref{pro:au:ub:co2:c3} and
+\ref{pro:au:ub:co2:c4} and keeping in mind the definition of
+$\sDi{\ssY}$ and $\sDi{\ssE}$ there is a finite numerical constant
+$\cst{}$ such that for all $\ssY,\ssE\in\Nz$ holds
+\begin{multline}\label{pro:au:ub:co2:e5}
+\FuEx[\ssY,\ssE]{\rY,\rE}\VnormLp{\hxdfPr[]-\xdf}^2
+\leq
+\cst{}(1\vee\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2)(\DipenSv[\ssY_{\xdf,\iSv}]\ssY^{-1}+\miSv[K_{\ydf}]\ssE^{-1})\\
++\cst{}[1\vee\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2](\DipenSv[K_{\ydf}]\ssY^{-1}+K_{\ydf}\miSv[K_{\ydf}]^2\ssE^{-1}+\ssE_{\xdf,\iSv}\ssE^{-1})\\
++\cst{}[1\vee\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2](\tfrac{\DipenSv[K_{\ydf}]}{\bias[{[K-1]}]^2(\xdf)}\ssY^{-1}+K_{\ydf}\miSv[K_{\ydf}]^2\ssE^{-1})\\
+\hfill+9
+\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\exp\big(\tfrac{-3\cpen\cmiSv[\sDi{\ssY}\wedge\sDi{\ssE}](\sDi{\ssY}\wedge\sDi{\ssE})}{4000\Vnormlp[1]{\fydf}}\big)\\
+\leq
+\cst{}(1\vee\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2)(\DipenSv[\ssY_{\xdf,\iSv}]\ssY^{-1}+K_{\ydf}\miSv[K_{\ydf}]^2\ssE^{-1}+\ssE_{\xdf,\iSv}\ssE^{-1})\\
+\hfill+9
+\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\{\exp\big(\tfrac{-3\cpen\cmiSv[\sDi{\ssY}\wedge\sDi{\ssE}](\sDi{\ssY}\wedge\sDi{\ssE})}{4000\Vnormlp[1]{\fydf}}\big)-(\ssY^{-1}\vee\ssE^{-1})\}
+\end{multline}
+where we used that $\tfrac{\DipenSv[K_{\ydf}]}{\bias[{[K-1]}]^2(\xdf)}\leq
+\ssY_{\xdf,\iSv}\leq \DipenSv[\ssY_{\xdf,\iSv}]$.
+
+Assume finally, that there are in addition
+$\widetilde{\ssY}_{\xdf,\iSv},\widetilde{\ssE}_{\xdf,\iSv}\in\Nz$ such
+that for all $\ssY\geq\widetilde{\ssY}_{\xdf,\iSv}$,
+$\cmiSv[\sDi{\ssY}]\sDi{\ssY}\geq K_{\ydf}(\log\ssY)$, and for all
+$\ssE\geq\widetilde{\ssE}_{\xdf,\iSv}$,
+$\cmiSv[\sDi{\ssE}]\sDi{\ssE}\geq K_{\ydf}(\log\ssE)$.
+We shall use without further
+reference that then $\exp\big(\tfrac{-3\cpen\cmiSv[\sDi{\ssY}\wedge\sDi{\ssE}](\sDi{\ssY}\wedge\sDi{\ssE})}{4000\Vnormlp[1]{\fydf}}\big)\leq\ssY^{-1}+\ssE^{-1}$ for
+all $\ssY\geq\widetilde{\ssY}_{\xdf,\iSv}$ and $\ssE\geq\widetilde{\ssE}_{\xdf,\iSv}$
+since $\dr K_{\ydf}\geq
+\tfrac{4000\Vnormlp[1]{\fydf}}{3\cpen}$. Following line by line the
+proof of \eqref{pro:au:ub:co2:e5} using
+$\widetilde{\ssY}_{\xdf,\iSv}\vee\ssY_{\xdf,\iSv}$ and
+$\widetilde{\ssE}_{\xdf,\iSv}\vee\ssE_{\xdf,\iSv}$ rather than
+$\ssY_{\xdf,\iSv}$ and $\ssE_{\xdf,\iSv}$, respectively, we obtain the
+assertion, that is,
+s $\FuEx[\ssY,\ssE]{\rY,\rE}\VnormLp{\hxdfPr[]-\xdf}^2
+\leq\cst{}(1\vee\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2)(\DipenSv[{[\widetilde{\ssY}_{\xdf,\iSv}\vee\ssY_{\xdf,\iSv}]}]\ssY^{-1}+K_{\ydf}\miSv[K_{\ydf}]^2\ssE^{-1}+[\widetilde{\ssE}_{\xdf,\iSv}\vee\ssE_{\xdf,\iSv}]\ssE^{-1})$, which completes the proof.
+\end{pro}
+% ....................................................................
+% <<Re upper bound 3>>
+% ....................................................................
+\begin{lm}\label{re:au:ub:co3} Let $\xdf$ have an infinite series expansion
+  as definied in \ref{oo:xdf:np}, i.e., $\bias(\xdf)>0$ for all
+  $\Di\in\Nz$.  Set
+  $\Di_{\ydf}:=\ceil{3(\tfrac{800\Vnormlp[1]{\fydf}}{\cpen})^2}$,
+  $\tDi_{\ydf}:=\min\{\Di\in\Nz:\bias[\Di_{\ydf}](\xdf)>\bias[\Di](\xdf)\}$,
+  $\ssY_{\xdf,\iSv}:=\ceil{\tfrac{\DipenSv[\tDi_{\ydf}]}{\bias[\tDi_{\ydf}]^2(\xdf)}\vee \dr15\tfrac{300^4}{\cpen^2}}$
+  and $\ssE_{\xdf,\iSv}:=\ceil{289\log(\Di_{\ydf}+2)\cmiSv[\Di_{\ydf}]\miSv[\Di_{\ydf}]}$.
+
+For  all  $\ssY\in\Nz$ let $\sDi{\ssY}\in\nset{\aDi{\ssY},\ssY}$ and for all $\ssE\in\Nz$ we set  
+$\sDi{\ssE}:=\max\{\Di\in\nset{K_{\ydf},\ssE}:289\log(\Di+2)\cmiSv[\Di]\miSv[\Di]\leq\ssE\}$ for
+$\ssE>\ssE_{\xdf,\iSv}$, where the defining set containing $K_{\ydf}$
+ is not empty, and $\sDi{\ssE}:=\aDi{\ssY}$ for
+$\ssE\leq\ssE_{\xdf,\iSv}$.
+There is a finite numerical constant $\cst{}$ such that for all $\ssY,\ssE\in\Nz$ holds
+\begin{multline}\label{re:au:ub:co3:e1}
+\FuEx[\ssY,\ssE]{\rY,\rE}\VnormLp{\hxdfPr[]-\xdf}^2\leq
++\cst{}\big\{[1\vee\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2]\,\hRaDi{\sDi{\ssY}\wedge\sDi{\ssE},\xdf,\iSv}+\mRa{\xdf,\iSv}\\
+\hfill+[1\vee\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2](\DipenSv[\ssY_{\xdf,\iSv}]\ssY^{-1}+\ssE_{\xdf,\iSv}\ssE^{-1})+\Vnormlp[1]{\fydf}^2\ssY^{-1}+\ssE_{\xdf,\iSv}^2\ssE^{-1}\big\}
+\\
+\hfill+12
+\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\{\exp\big(\tfrac{-3\cpen\cmiSv[\sDi{\ssY}\wedge\sDi{\ssE}][\sDi{\ssY}\wedge\sDi{\ssE}]}{4000\Vnormlp[1]{\fydf}}\big)-[\hRa{\xdf,\iSv}\vee\mRa{\xdf,\iSv}]\}
+\end{multline}
+If there are
+$\widetilde{\ssY}_{\xdf,\iSv},\widetilde{\ssE}_{\xdf,\iSv}\in\Nz$ such that
+additionaly \begin{inparaenum}[i]\renewcommand{\theenumi}{\dgrau\rm(\roman{enumi})}\item\label{re:au:ub:co3:c1}
+  $\cmiSv[\ndDi{\ssY}]\ndDi{\ssY}\geq \Di_{\ydf}(-\log\hRa{\xdf,\iSv})$ for all
+  $\ssY\geq\widetilde{\ssY}_{\xdf,\iSv}$
+  and  \item\label{re:au:ub:co3:c2}$\cmiSv[\sDi{\ssE}]\sDi{\ssE}\geq \Di_{\ydf}(-\log\mRa{\xdf,\iSv})$
+  for all
+  $\ssE\geq\widetilde{\ssE}_{\xdf,\iSv}$, \end{inparaenum}
+then for all $\ssY,\ssE\in\Nz$ holds
+\begin{multline}\label{re:au:ub:co3:e2}
+\FuEx[\ssY,\ssE]{\rY,\rE}\VnormLp{\hxdfPr[]-\xdf}^2\leq
+\cst{}\big\{[1\vee\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2](\hRaDi{\aDi{\ssY}\wedge\sDi{\ssE},\xdf,\iSv}+\mRa{\xdf,\iSv})\\
+\hfill+[1\vee\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2](\DipenSv[{[\widetilde{\ssY}_{\xdf,\iSv}\vee\ssY_{\xdf,\iSv}]}]\ssY^{-1}+[\widetilde{\ssE}_{\xdf,\iSv}\vee\ssE_{\xdf,\iSv}]\ssE^{-1})+\Vnormlp[1]{\fydf}^2\ssY^{-1}+[\widetilde{\ssE}_{\xdf,\iSv}\vee\ssE_{\xdf,\iSv}]^2\ssE^{-1}\big\}
+\end{multline}
+\end{lm}
+% ....................................................................
+% <<Rem upper bound 3>>
+% ....................................................................
+\begin{rem}\label{rem:au:ub:co3}Keep in mind that
+$\aDi{\ssY}:=\argmin\Nset[{\Di\in\nset{1,\ssY}}]{\hRaDi{\Di,\xdf,\iSv}}$
+with $\hRaDi{\Di,\xdf,\iSv}=[\bias^2(\xdf)\vee \DipenSv\,\ssY^{-1}]$
+and $\hRa{\xdf,\iSv}:=\hRaDi{\aDi{\ssY},\xdf,\iSv}$.
+Considering 
+$\tDi_{\ydf}=\min\{\Di\in\Nz:\bias[\Di_{\ydf}](\ydf)>\bias[\Di](\ydf)\}$
+as defined in \cref{re:au:ub:co3} we note that the defining set is not empty since $\bias[\Di](\xdf)>0$ for all
+$\Di\in\Nz$ and $\lim_{\Di\to\infty}\bias[\Di](\xdf)=0$, where
+$\tDi_{\ydf}>\Di_{\ydf}$ due to the  monotonicity of
+$\bias(\xdf)$. Moreover, for all
+$\ssY\geq\ssY_{\xdf,\iSv}:=\ceil{\tfrac{\DipenSv[\tDi_{\ydf}]}{\bias[\tDi_{\ydf}]^2(\xdf)}}$
+ holds 
+$\oRaDi{\Di_{\ydf},\xdf,\iSv}\geq\bias[\Di_{\ydf}]^2(\xdf)>\bias[\tDi_{\ydf}]^2(\xdf)
+=\oRaDi{\tDi_{\ydf},\xdf,\iSv}$
+and hence, for all
+$\ssY\geq\ssY_{\xdf,\iSv}$ we have $\sDi{\ssY}\geq\aDi{\ssY}>
+\Di_{\ydf}$. Furthermore, for all $\ssE\geq \ssE_{\xdf,\iSv}:=\ceil{289\log(\Di_{\ydf}+2)\cmiSv[\Di_{\ydf}]\miSv[\Di_{\ydf}]}$
+is the defining set of
+$\sDi{\ssE}=\max\{\Di\in\nset{\Di_{\ydf},\ssE}:289\log(\Di+2)\cmiSv[\Di]\miSv[\Di]\leq\ssE\}$
+not empty.  Consequently, for all $\ssY\geq\ssY_{\xdf,\iSv}$, $\ssE\geq\ssE_{\xdf,\iSv}$
+follows $\sDi{\ssY}\wedge\sDi{\ssE}\geq \Di_{\ydf}$.  We use these
+preliminary findings in the proof of \cref{re:au:ub:co3} without
+further reference.  
+\end{rem}
+% ....................................................................
+% <<Pro Re upper bound 3>>
+% ....................................................................
+\begin{pro}[Proof of \cref{re:au:ub:co3}.]
+Let
+  $\Di_{\ydf}:=\ceil{3(\tfrac{800\Vnormlp[1]{\fydf}}{\cpen})^2}$,
+  $\tDi_{\ydf}:=\min\{\Di\in\Nz:\bias[\Di_{\ydf}](\xdf)>\bias[\Di](\xdf)\}$,
+  $\ssY_{\xdf,\iSv}:=\ceil{\tfrac{\tDi_{\Sv}\cmSvs[\tDi_{\Sv}]\mSvs[\tDi_{\Sv}]}{\bias[\tDi_{\Sv}]^2(\So)}\vee \dr15\tfrac{300^4}{\cpen^2}}$
+  and $\ssE_{\xdf,\iSv}:=\ceil{289\log(\Di_{\ydf}+2)\cmiSv[\Di_{\ydf}]\miSv[\Di_{\ydf}]}$.
+
+We distinguish for $\ssY\in\Nz$ the following two
+cases, \begin{inparaenum}[i]\renewcommand{\theenumi}{\dgrau\rm(\alph{enumi})}\item\label{pro:au:ub:co3:c1}
+$\ssY\in\nsetro{1,\ssY_{\xdf,\iSv}}$ and \item\label{pro:au:ub:co3:c2}
+$\ssY\geq\ssY_{\xdf,\iSv}$.\end{inparaenum}\\
+
+
+Firstly, consider \ref{pro:au:ub:co3:c1},  let
+$\ssY\in\nsetro{1,\ssY_{\xdf,\iSv}}$, then setting $\mDi=1$ and
+$\pDi=\ssY$ from \cref{re:au:key} follows
+\begin{multline*}
+\FuEx[\ssY,\ssE]{\rY,\rE}\VnormLp{\hxdfPr[]-\xdf}^2\leq 
+3\FuEx[\ssY,\ssE]{\rY,\rE}\VnormLp{\hxdfPr[\ssY]-\dxdfPr[\ssY]}^2
++3 \VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\bias[1]^2(\xdf)\\
++6\sum_{j\in\nset{1,\ssY}}\FuEx[\ssE]{\rE}|\hfedfmpI[j]|^2|\fedf[j]-\hfedf[j]|^2|\fxdf[j]|^2
++2\sum_{j\in\nset{1,\ssY}}\FuVg[\ssE]{\rE}(\xEv^c)|\fxdf[j]|^2
+\end{multline*}
+Exploiting \cref{oSv:re} we obtain from 
+\ref{oSv:re:i}
+$\FuEx[\ssY,\ssE]{\rY,\rE}\VnormLp{\hxdfPr[\ssY]-\dxdfPr[\ssY]}^2=
+2\sum_{j\in\nset{1,n}}\iSv[j]\FuEx[\ssE]{\rE}|\fedf[j]\hfedfmpI[j]|^2\FuEx[\ssY]{\rY}|\hfydf[j]-\fydf[j]|^2\leq8\ssY\oiSv[\ssY]\ssY^{-1}\leq 8\DipenSv[\ssY_{\xdf,\iSv}]\ssY^{-1}$, 
+from \ref{oSv:re:iii}
+$\sum_{j\in\nset{1,\ssY}}|\fxdf[j]|^2\FuEx[\ssE]{\rE}|\hfedfmpI[j]|^2|\fedf[j]-\hfedf[j]|^2\leq4\cst{4}\mRa{\xdf,\iSv}$
+and from
+\ref{oSv:re:ii}
+$\sum_{j\in\nset{1,n}}\FuVg[\ssE]{\rE}(\xEv^c)|\fxdf[j]|^2
+\leq4\mRa{\xdf,\iSv}$ where  $\mRa{\xdf,\iSv}:=\sum_{j\in\nsetro{1,K}}\fxdf[j]^2[1\wedge
+\iSv[j]/\ssE]$. The
+last bounds together with $\bias[1]^2(\xdf)\leq1$ and $\ssY<\ssY_{\xdf,\iSv}\leq\DipenSv[\ssY_{\xdf,\iSv}]$ imply for all $\ssE\in\Nz$
+\begin{multline}\label{pro:au:ub:co3:e1}
+\FuEx[\ssY,\ssE]{\rY,\rE}\VnormLp{\hxdfPr[]-\xdf}^2\leq 
+24\DipenSv[\ssY_{\xdf,\iSv}]\ssY^{-1}+3 \VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2
++(24\cst{4}+8)\mRa{\xdf,\iSv}\\\leq \cst{}\{(1\vee\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2)\DipenSv[\ssY_{\xdf,\iSv}]\ssY^{-1}+\mRa{\xdf,\iSv}\}
+\end{multline}
+where $\cst{}$ is a finite numerical constant.
+
+Secondly, consider \ref{pro:au:ub:co3:c2}, i.e., 
+$\ssY\geq\ssY_{\xdf,\iSv}\geq 15\tfrac{300^4}{\cpen^2}$ where by construction $\sDi{\ssY}\geq\aDi{\ssY}>
+\Di_{\ydf}\geq 3(\tfrac{800\Vnormlp[1]{\fydf}}{\cpen})^2$ (see \cref{rem:au:ub:co3}).
+We destinguish further for $\ssE\in\Nz$ the following two cases
+cases, \begin{inparaenum}[i]\renewcommand{\theenumi}{\dgrau\rm(b-\roman{enumi})}\item\label{pro:au:ub:co3:c3}
+$\ssE\in\nsetro{1,\ssE_{\xdf,\iSv}}$ and \item\label{pro:au:ub:co3:c4}
+$\ssE\geq\ssE_{\xdf,\iSv}$ \end{inparaenum}
+where $\ssE_{\xdf,\iSv}=\ceil{289\log(\Di_{\ydf}+2)\cmiSv[\Di_{\ydf}]\miSv[\Di_{\ydf}]}$.
+
+Consider \ref{pro:au:ub:co3:c3}. Since $\ssY\geq\ssY_{\xdf,\iSv}\geq 15\tfrac{300^4}{\cpen^2}$ and $\sDi{\ssY}>\Di_{\ydf}\geq 3(\tfrac{800\Vnormlp[1]{\fydf}}{\cpen})^2$
+we can employ \cref{re:au:ub} with $\pdDi:=\sDi{\ssY}$, and thus 
+\begin{multline*}
+\FuEx[\ssY,\ssE]{\rY,\rE}\VnormLp{\hxdfPr[]-\xdf}^2\leq\cst{}\big\{[1\vee\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2]\hRaDi{\sDi{\ssY},\xdf,\iSv}+\mRa{\xdf,\iSv}+\Vnormlp[1]{\fydf}^2\ssY^{-1}\big\}
+\\
+\hfill+3\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\bias[\mDi]^2(\xdf)+9
+\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\exp\big(\tfrac{-3\cpen\cmiSv[\mdDi]\mdDi}{4000\Vnormlp[1]{\fydf}}\big)
+\\\hfill
++3
+\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2[\mDi-1]\exp\big(-\rWc\cpen\ssY\hRaDi{\mdDi,\xdf,\iSv}-
+\tfrac{\rWc\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2}{16}\ssY\bias[{[\mDi-1]}]^2(\xdf)\big)\\\null\hfill
++3\ssE\FuVg[\ssE]{\rE}(\aixEv[\sDi{\ssY}]^c)+3
+\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\FuVg[\ssE]{\rE}(\aixEv[\mdDi]^c)
+  \end{multline*}
+Setting $\mdDi=1$, and hence $\mDi=1$, by employing  $\bias[1]^2(\xdf)\leq1$
+and $\ssE\leq\ssE_{\xdf,\iSv}$ it follows
+\begin{multline}\label{pro:au:ub:co3:e2}
+\FuEx[\ssY,\ssE]{\rY,\rE}\VnormLp{\hxdfPr[]-\xdf}^2\leq\cst{}\big\{[1\vee\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2]\hRaDi{\sDi{\ssY},\xdf,\iSv}+\mRa{\xdf,\iSv}+\Vnormlp[1]{\fydf}^2\ssY^{-1}\big\}
+\\\hfill
++15\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2+3\ssE\\
+\leq\cst{1}\big\{[1\vee\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2](\hRaDi{\sDi{\ssY},\xdf,\iSv}+\ssE_{\xdf,\iSv}\ssE^{-1})+\mRa{\xdf,\iSv}+\ssE_{\xdf,\iSv}^2\ssE^{-1}+\Vnormlp[1]{\fydf}^2\ssY^{-1}\big\}
+  \end{multline}
+where $\cst{1}$ is a finite numerical constant.
+
+Consider \ref{pro:au:ub:co3:c4}. We note that for all $\ssE\geq \ssE_{\xdf,\iSv}:=\ceil{289\log(\Di_{\ydf}+2)\cmiSv[\Di_{\ydf}]\miSv[\Di_{\ydf}]}$
+is the defining set of
+$\sDi{\ssE}=\max\{\Di\in\nset{\Di_{\ydf},\ssE}:289\log(\Di+2)\cmiSv[\Di]\miSv[\Di]\leq\ssE\}$
+not empty.  By construction, for all $\ssY\geq\ssY_{\xdf,\iSv}$, $\ssE\geq\ssE_{\xdf,\iSv}$
+follows $\sDi{\ssY}\wedge\sDi{\ssE}> \Di_{\ydf} \geq
+3(\tfrac{800\Vnormlp[1]{\fydf}}{\cpen})^2$. Since also $\ssY\geq\ssY_{\xdf,\iSv}\geq 15\tfrac{300^4}{\cpen^2}$ 
+we can employ \cref{re:au:ub} with $\pdDi:=\sDi{\ssY}\wedge\sDi{\ssE}$, and thus 
+\begin{multline*}
+\FuEx[\ssY,\ssE]{\rY,\rE}\VnormLp{\hxdfPr[]-\xdf}^2\leq\cst{}\big\{[1\vee\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2]\hRaDi{\sDi{\ssY}\wedge\sDi{\ssE},\xdf,\iSv}+\mRa{\xdf,\iSv}+\Vnormlp[1]{\fydf}^2\ssY^{-1}\big\}
+\\
+\hfill+3\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\bias[\mDi]^2(\xdf)+9
+\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\exp\big(\tfrac{-3\cpen\cmiSv[\mdDi]\mdDi}{4000\Vnormlp[1]{\fydf}}\big)
+\\\hfill
++3
+\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2[\mDi-1]\exp\big(-\rWc\cpen\ssY\hRaDi{\mdDi,\xdf,\iSv}-
+\tfrac{\rWc\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2}{16}\ssY\bias[{[\mDi-1]}]^2(\xdf)\big)\\\null\hfill
++3\ssE\FuVg[\ssE]{\rE}(\aixEv[\sDi{\ssY}\wedge\sDi{\ssE}]^c)+3
+\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\FuVg[\ssE]{\rE}(\aixEv[\mdDi]^c)
+  \end{multline*}
+Noting that
+$\pdDi=\sDi{\ssY}\wedge\sDi{\ssE}\in\nset{\Di_{\ydf},\sDi{\ssE}}$ and
+$289\log(\pdDi+2)\cmiSv[\pdDi]\miSv[\pdDi]\leq\ssE$ by construction of
+$\sDi{\ssE}$ from \cref{re:evrest} \ref{re:evrest:iii} follows
+$\ssE\FuVg[\ssE]{\rE}(\aixEv[\sDi{\ssY}\wedge\sDi{\ssE}]^c)\leq
+11226\ssE^{-1}$ and thus
+\begin{multline*}
+\FuEx[\ssY,\ssE]{\rY,\rE}\VnormLp{\hxdfPr[]-\xdf}^2\leq\cst{1}\big\{[1\vee\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2]\hRaDi{\sDi{\ssY}\wedge\sDi{\ssE},\xdf,\iSv}+\mRa{\xdf,\iSv}+\Vnormlp[1]{\fydf}^2\ssY^{-1}+\ssE^{-1}\big\}
+\\
+\hfill+3\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\bias[\mDi]^2(\xdf)+9
+\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\exp\big(\tfrac{-3\cpen\cmiSv[\mdDi]\mdDi}{4000\Vnormlp[1]{\fydf}}\big)
+\\\hfill
++3
+\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2[\mDi-1]\exp\big(-\rWc\cpen\ssY\hRaDi{\mdDi,\xdf,\iSv}-
+\tfrac{\rWc\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2}{16}\ssY\bias[{[\mDi-1]}]^2(\xdf)\big)\\\null\hfill
++3
+\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\FuVg[\ssE]{\rE}(\aixEv[\mdDi]^c)
+  \end{multline*}
+where $\cst{1}$ is a finite numerical constant. Setting
+$\mdDi:=\sDi{\ssY}\wedge\sDi{\ssE}$  and $\mDi$ as in  definition
+\eqref{de:au:*Di}, that is  $\mDi\leq\mdDi=\sDi{\ssY}\wedge\sDi{\ssE}$ and  $\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\bias[\mDi]^2(\xdf) \leq
+  [2\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2+7576\cpen]\hRaDi{\sDi{\ssY}\wedge\sDi{\ssE},\xdf,\iSv}$,
+  it follows
+\begin{multline*}
+\FuEx[\ssY,\ssE]{\rY,\rE}\VnormLp{\hxdfPr[]-\xdf}^2\leq\cst{2}\big\{[1\vee\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2]\hRaDi{\sDi{\ssY}\wedge\sDi{\ssE},\xdf,\iSv}+\mRa{\xdf,\iSv}+\Vnormlp[1]{\fydf}^2\ssY^{-1}+\ssE^{-1}\big\}
+\\
+\hfill+9
+\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\exp\big(\tfrac{-3\cpen\cmiSv[\sDi{\ssY}\wedge\sDi{\ssE}][\aDi{\ssY}\wedge\sDi{\ssE}]}{4000\Vnormlp[1]{\fydf}}\big)
+\\\hfill
++3
+\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2[\sDi{\ssY}\wedge\sDi{\ssE}]\exp\big(-\rWc\cpen\ssY\hRaDi{\sDi{\ssY}\wedge\sDi{\ssE},\xdf,\iSv}\big)\\\null\hfill
++3
+\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\FuVg[\ssE]{\rE}(\aixEv[\sDi{\ssY}\wedge\sDi{\ssE}]^c)
+  \end{multline*}
+where $\cst{2}$ is a finite numerical constant. Noting that
+$\mdDi=\sDi{\ssY}\wedge\sDi{\ssE}\in\nset{\Di_{\ydf},\sDi{\ssE}}$ and
+$289\log(\mdDi+2)\cmiSv[\mdDi]\miSv[\mdDi]\leq\ssE$ by construction of
+$\sDi{\ssE}$ from \cref{re:evrest} \ref{re:evrest:iii} follows
+$\FuVg[\ssE]{\rE}(\aixEv[\sDi{\ssY}\wedge\sDi{\ssE}]^c)\leq53\ssE^{-1}$
+and  together with $\mRa{\xdf,\iSv}\geq\tfrac{1}{2}\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\ssE^{-1}$
+thus
+\begin{multline*}
+\FuEx[\ssY,\ssE]{\rY,\rE}\VnormLp{\hxdfPr[]-\xdf}^2\leq\cst{3}\big\{[1\vee\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2]\hRaDi{\sDi{\ssY}\wedge\sDi{\ssE},\xdf,\iSv}+\mRa{\xdf,\iSv}+\Vnormlp[1]{\fydf}^2\ssY^{-1}+\ssE^{-1}\big\}
+\\
+\hfill+9
+\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\exp\big(\tfrac{-3\cpen\cmiSv[\sDi{\ssY}\wedge\sDi{\ssE}][\sDi{\ssY}\wedge\sDi{\ssE}]}{4000\Vnormlp[1]{\fydf}}\big)
+\\\hfill
++3
+\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2[\sDi{\ssY}\wedge\sDi{\ssE}]\exp\big(-\rWc\cpen\ssY\hRaDi{\sDi{\ssY}\wedge\sDi{\ssE},\xdf,\iSv}\big)
+  \end{multline*}
+where $\cst{3}$ is a finite numerical constant. Taking further into account that for all $\Di\in\Nz$ hold
+$\ssY\hRaDi{\Di,\xdf,\iSv}\geq\DipenSv\geq\cmiSv\Di$ and  (keeping
+in mind $\cmiSv\geq1$, $\cpen\geq1$, $\rWc\geq1$ and
+$\Vnormlp[1]{\fydf}\geq1$) hence
+\begin{multline*}
+\Di\exp(-\rWc\cpen\ssY\hRaDi{\Di,\xdf,\iSv})\leq
+\tfrac{2}{\rWc\cpen}\tfrac{\rWc\cpen}{2}\cmiSv\Di\exp\big(-\tfrac{\rWc\cpen}{2}\cmiSv\Di\big)\exp\big(-\tfrac{\rWc\cpen}{2}\cmiSv\Di\big)\\
+\leq\tfrac{2}{e\rWc\cpen}\exp\big(-\tfrac{\rWc\cpen}{2}\cmiSv\Di\big)\leq\tfrac{1}{\rWc\cpen}\exp\big(\tfrac{-3\cpen\cmiSv\Di}{4000\Vnormlp[1]{\fydf}}\big).
+\end{multline*}
+The last bound implies that
+\begin{multline}\label{pro:au:ub:co3:e3}
+\FuEx[\ssY,\ssE]{\rY,\rE}\VnormLp{\hxdfPr[]-\xdf}^2\leq\cst{3}\big\{[1\vee\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2]\hRaDi{\sDi{\ssY}\wedge\sDi{\ssE},\xdf,\iSv}+\mRa{\xdf,\iSv}+\Vnormlp[1]{\fydf}^2\ssY^{-1}+\ssE^{-1}\big\}
+\\
+\hfill+12
+\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\exp\big(\tfrac{-3\cpen\cmiSv[\sDi{\ssY}\wedge\sDi{\ssE}][\sDi{\ssY}\wedge\sDi{\ssE}]}{4000\Vnormlp[1]{\fydf}}\big)
+  \end{multline}
+Combining
+the upper bounds \eqref{pro:au:ub:co3:e1}, \eqref{pro:au:ub:co3:e2} and\eqref{pro:au:ub:co3:e3}
+for the three cases  \ref{pro:au:ub:co3:c1}, \ref{pro:au:ub:co3:c3} and
+\ref{pro:au:ub:co3:c4} and keeping in mind that
+$\hRaDi{\sDi{\ssY}\wedge\sDi{\ssE},\xdf,\iSv}\geq \hRa{\xdf,\iSv}=\min\{\hRaDi{\Di,\xdf,\iSv},\Di\in\Nz\}$ there is a finite numerical constant
+$\cst{}$ such that for all $\ssY,\ssE\in\Nz$ holds
+\begin{multline}\label{pro:au:ub:co3:e4}
+\FuEx[\ssY,\ssE]{\rY,\rE}\VnormLp{\hxdfPr[]-\xdf}^2\leq
+\cst{}\big\{[1\vee\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2]\,\hRaDi{\sDi{\ssY}\wedge\sDi{\ssE},\xdf,\iSv}+\mRa{\xdf,\iSv}\\
+\hfill+[1\vee\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2](\DipenSv[\ssY_{\xdf,\iSv}]\ssY^{-1}+\ssE_{\xdf,\iSv}\ssE^{-1})+\Vnormlp[1]{\fydf}^2\ssY^{-1}+\ssE_{\xdf,\iSv}^2\ssE^{-1}\big\}
+\\
+\hfill+12
+\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2\{\exp\big(\tfrac{-3\cpen\cmiSv[\sDi{\ssY}\wedge\sDi{\ssE}][\sDi{\ssY}\wedge\sDi{\ssE}]}{4000\Vnormlp[1]{\fydf}}\big)-[\hRa{\xdf,\iSv}\vee\mRa{\xdf,\iSv}]\}
+\end{multline}
+which shows the assertion \eqref{re:au:ub:co3:e1}. 
+
+
+Assume finally, that there are in addition
+$\widetilde{\ssY}_{\xdf,\iSv},\widetilde{\ssE}_{\xdf,\iSv}\in\Nz$ such
+that for all $\ssY\geq\widetilde{\ssY}_{\xdf,\iSv}$,
+$\cmiSv[\aDi{\ssY}]\aDi{\ssY}\geq \Di_{\ydf}(-\log\hRa{\xdf,\iSv})$, and for all
+$\ssE\geq\widetilde{\ssE}_{\xdf,\iSv}$,
+$\cmiSv[\sDi{\ssE}]\sDi{\ssE}\geq \Di_{\ydf}(-\log\mRa{\xdf,\iSv})$.
+We shall use without further
+reference that then $\exp\big(\tfrac{-3\cpen\cmiSv[\aDi{\ssY}\wedge\sDi{\ssE}](\aDi{\ssY}\wedge\sDi{\ssE})}{4000\Vnormlp[1]{\fydf}}\big)\leq\hRa{\xdf,\iSv}\vee\mRa{\xdf,\iSv}\leq\hRaDi{\aDi{\ssY}\wedge\sDi{\ssE},\xdf,\iSv}\vee\mRa{\xdf,\iSv}$ for
+all $\ssY\geq\widetilde{\ssY}_{\xdf,\iSv}$ and $\ssE\geq\widetilde{\ssE}_{\xdf,\iSv}$
+since $\dr \Di_{\ydf}\geq
+\tfrac{4000\Vnormlp[1]{\fydf}}{3\cpen}$. Following line by line the
+proof of \eqref{pro:au:ub:co2:e5} using
+$\widetilde{\ssY}_{\xdf,\iSv}\vee\ssY_{\xdf,\iSv}$ and
+$\widetilde{\ssE}_{\xdf,\iSv}\vee\ssE_{\xdf,\iSv}$ rather than
+$\ssY_{\xdf,\iSv}$ and $\ssE_{\xdf,\iSv}$, respectively, we obtain the
+assertion \eqref{re:au:ub:co3:e2}, that is,
+\begin{multline}\label{pro:au:ub:co3:e4}
+\FuEx[\ssY,\ssE]{\rY,\rE}\VnormLp{\hxdfPr[]-\xdf}^2\leq
+\cst{}\big\{[1\vee\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2](\hRaDi{\aDi{\ssY}\wedge\sDi{\ssE},\xdf,\iSv}+\mRa{\xdf,\iSv})\\
+\hfill+[1\vee\VnormLp{\Proj[{\mHiH[0]^\perp}]\xdf}^2](\DipenSv[{[\widetilde{\ssY}_{\xdf,\iSv}\vee\ssY_{\xdf,\iSv}]}]\ssY^{-1}+[\widetilde{\ssE}_{\xdf,\iSv}\vee\ssE_{\xdf,\iSv}]\ssE^{-1})+\Vnormlp[1]{\fydf}^2\ssY^{-1}+[\widetilde{\ssE}_{\xdf,\iSv}\vee\ssE_{\xdf,\iSv}]^2\ssE^{-1}\big\},
+\end{multline}
+which completes the proof.\end{pro}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "_0ACDE"
+%%% End:
