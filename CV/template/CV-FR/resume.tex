@@ -6,7 +6,8 @@
 \moderncvicons{awesome}
 \usepackage{multicol}
 
-\usepackage[scale=0.75]{geometry} % Reduce document margins
+\usepackage[scale=0.75]{geometry}
+\usepackage{hyperref} % Reduce document margins
 %\setlength{\hintscolumnwidth}{3cm} % Uncomment to change the width of the dates column
 %\setlength{\makecvtitlenamewidth}{10cm} % For the 'classic' style, uncomment to adjust the width of the space allocated to your name
 
@@ -35,9 +36,7 @@
 \email{subscription@loizeau.eu}
 \photo[70pt][0.6pt]{picture} % The first bracket is the picture height, the second is the thickness of the frame around the picture (0pt for no frame)
 %\quote{
-%Curious and enthusiast, I am always eager to learn new concepts and consider any source of knowledge valuable.
-%This energy comes with a deep joy in sharing knowledge, naturally resulting in a passion for popularization.
-%Even though I followed the path of mathematics, the range of my centers of interest is much broader and I am equally passionate about other forms of art, such as music or literature.
+%Mathematicien de formation,
 %}
 
 %----------------------------------------------------------------------------------------
@@ -47,50 +46,82 @@
 
 \makecvtitle % Print the CV title
 
-\section{Professional experiences}
-\cventry{$21^{st}$ of January 2019 -- present}{Higher Research Scientist}{NPL (National Physical Laboratory)}{Teddington, England}{}{
+\section{Experiences professionelles}
+\cventry{$21$ janvier $2019$ -- actuel}{Higher Research Scientist}{NPL (National Physical Laboratory)}{Teddington, Angleterre}{}{
 \begin{multicols}{2}
   \begin{itemize}
-    \item \textbf{Research:} mathematical modelling for physical, chemical and biological processes, developing statistical estimators and study their theoretical and empirical properties, providing software for data analysis and machine learning, deriving mathematically founded, data-driven conclusions and decisions;
-    \item \textbf{Software quality:} developing git templates, Slurm templates, audited by TickIT+, developing \LaTeX{} and Beamer templates;
-    \item \textbf{Management:} co-supervising PhD students, organising problem sharing meeting, 
-    \item \textbf{Strategy:} preparing grant proposals (internal, national, and European levels), creating opportunities by supporting other departments in their data analysis, contributing to company policies and Stonewall application as a member of the LGBTQ+ committee, interviewing candidates for recruitment
+    \item \textbf{Recherche:} modelisation mathematique de processus physiques, chimiques, et biologiques.
+      Conception d'estimateurs statistiques et etude de leurs proprietes theoriques et empiriques, developpement de
+      logiciels pour l'analyse de donnees et l'apprentissage machine, interpretation de modeles mathematiques bases sur
+      des donnees et prise de decision rationelle;
+    \item \textbf{Developpement de logiciels:} creation de templates de d\'epots git, templates SLURM, preparation
+      d'audit par TickIT+, creation de template \LaTeX{} et Beamer;
+    \item \textbf{Management:} co-supervision de doctorants, supervision d'\'etudiants (niveau L3) en stage de 12 mois,
+      direction technique de scientifiques moins experiment\é$\bullet$e$\bullet$s,
+    \item \textbf{Strat\'egie:} redaction de demandes de financement (interne, nationale, et Europ\'eenne), cr\'eation
+      de collaborations entre d\'epartements du laboratoire, contribution aux politiques internes du laboratoire et \'à
+      la preparation d'une candidature \'a l'atestation Stonewall en tant que membre du commit\'e LGBTQ+, r\'ealisation
+      d'entretiens pour le recrutement.
   \end{itemize}
 \end{multicols}
 }
-\cventry{2015--2018}{Philosophi\ae \, doctor (PhD) student in Mathematic}{Ruprecht-Karls-Universit\"at, Institute of applied mathematics,}{Heidelberg, Germany}{}{Hierarchical Bayes and frequentist aggregation in inverse problems: proved oracle and minimax optimal contraction rates for posterior distribution from hierarchical sieve priors, and oracle and minimax optimal convergence rate for aggregated projection estimators in the context of statistical linear inverse problems where the operator is unknown;}
-\cventry{2015}{Internship}{ONERA (National Agency of Study and Research in Aerospace)}{Palaiseau, France}{}{Building a multi-fidelity surrogate model for Infra-Red emission by space-rocket engines.}
-\cventry{2014}{Internship}{CREST (Research Center for Economics and Statistics)}{Rennes, France}{}{Studied, implemented and compared two methods for illumination bias removal on electronic microscope images.}
+\cventry{2015--2018}{Doctorant en math\'ematiques}{Ruprecht-Karls-Universit\"at, Institut de math\'ematiques appliqu\'ees,}{Heidelberg, Allemagne}{}{
+  \begin{multicols}{2}
+  \begin{itemize}
+    \item \textbf{Recherche:} M\'ethodes Bay\'esiennes hierarchiques and aggr\'egation fr\'equentistes pour les
+      probl\`emes inverses: demonstration de l'optimalit\'e d'a priori hierarchiques et d'estimateurs par aggregation en
+      terme de taux de contraction et convergence oracle et minimax pour des modeles de problemes inverses
+      (equation de chaleur, deconvolution de densites) lorsque l'operateur est inconnu;
+    \item \textbf{Enseignement:} encadrement de travaux dirig\'es, preparation et correction d'examens, co-encadrement
+      de m\'emoires (Licence et Master);
+    \item \textbf{Strat\'egie:} Contribution \'a la r\'edaction de \href{http://rtg1953.uni-heidelberg.uni-mannheim.de/research-training-group-1953.html}{demandes de financement}.
+  \end{itemize}
+}
+\cventry{2015}{Stage}{ONERA (Office National d'\'etudes et de recherche en a\'erospatial)}{Palaiseau, France}{}{
+  Creation d'un modele de substitution a partir de donnees multi-fidelite pour les signatures infra-rouge de moteur
+  d'engins aerospatiaux.}
+\cventry{2014}{Stage}{CREST (Centre de recherche pour l'\'economie et la statistique)}{Rennes, France}{}{
+  Etude, implementation et comparaison de methodes de correction de biais d'illumination pour les images de microscopie
+  electronique.}
 
 \medskip
 
 \subsection{Relevant technical skills}
 \begin{multicols}{2}
 \underline{\textsc{Applications:}}
-Multidisciplinary projects (communication, adaptable to new science areas), satellite imaging, satellite altimetry, pathology, sensor design, mass spectrometry imaging, image processing.
+Projects pluridisciplinaires (communication, capacite d'adaptation), image satellitaires, altimetry par satellite,
+pathologie, conception de capteurs, imagerie par spectrometrie de masse, analyse d'images.
 
-\underline{\textsc{Mathematics:}}
-statistical ill-posed inverse problems, non-parametric Bayesian and frequentist statistics, Fourier analysis, minimax theory, point processes, functional data analysis, stochastic processes, time series, probability theory, approximation algorithms, uncertainty quantification in sparse models, Optimal Transport based methods, MCMC methods;
+\underline{\textsc{Mathematiques:}}
+problemes inverses mal poses, statistique non-parametrique bayesienne et frequentiste, analyse de Fourier,
+theorie minimax, processus ponctuels, analyse de donnees fonctionnelles, processus stochastiques, series temporelles,
+theorie des probabilites, algorithmes d'approximation, quantification d'incertitude pour modeles parcimonieux,
+application du transport optimal a l'analyse de donnees, methodes MCMC;
 
-\underline{\textsc{Computer science:}} Python (advanced), R (advanced), C++ (intermediate), MatLab (intermediate), git with GitHub/GitLab (advanced), IDEs (emacs, visual studio, ...), Unix environment. 
+\underline{\textsc{Informatique:}}
+Python (usage avance), R (usage avance), C++ (intermediaire), MatLab (intermediaire),
+git avec GitHub/GitLab (usage avance), IDEs (emacs, visual studio, ...), environement Unix.
 
 \end{multicols}
 
-\subsection{Projects references}
-\href{https://www.npl.co.uk/news/next-generation-of-digital-pathology}{Digital pathology} (several papers in preparation), 
-\href{https://www.bipmwmo22.org/submissions/submission/137}{Global mean sea level} (technical leadership, paper in preparation), \href{https://www.bipmwmo22.org/submissions/submission/138}{Remeshing and uncertainty quantification} (technical leadership, paper in preparation), \href{https://www.npl.co.uk/earth-observation/truths}{TRUTHS} (contributing to sensor design), \href{https://www.npl.co.uk/grand-challenge}{CRUK Rosetta Grand challenge} (contribution in data analysis),
-\href{https://arxiv.org/pdf/2102.01037}{Minimax-optimal convergence rate of aggregation estimators for probability density deconvolution} (work done during PhD),
-\href{https://pubs.acs.org/doi/abs/10.1021/acs.analchem.1c02470}{Spatial resolution in MSI} (co-author).
+\subsection{Projets}
+\href{https://www.npl.co.uk/news/next-generation-of-digital-pathology}{Pathologie digitale} (direction technique, plusieurs articles en preparation),
+\href{https://www.bipmwmo22.org/submissions/submission/137}{Niveau moyen de la mer} (direction technique, article en preparation),
+\href{https://www.bipmwmo22.org/submissions/submission/138}{Propagation d'incertitude et re-meshing} (direction technique, article en preparation),
+\href{https://www.npl.co.uk/earth-observation/truths}{TRUTHS} (conception d'un capteur de calibration),
+\href{https://www.npl.co.uk/grand-challenge}{CRUK Rosetta Grand challenge} (analyse de donnees),
+\href{https://arxiv.org/pdf/2102.01037}{Taux de convergence minimax-optimal d'estimateurs par aggregation dans un model de deconvolution de densites} (article redige durant le doctorat),
+\href{https://pubs.acs.org/doi/abs/10.1021/acs.analchem.1c02470}{Resolution spatial en imagerie par spectrometrie de masse} (co-auteur, co-supervision de doctorant).
 
 %----------------------------------------------------------------------------------------
 %	EDUCATION SECTION
 %----------------------------------------------------------------------------------------
 
 \section{Education}
-\cventry{2012--2015}{MSc in }{ENSAI - National School for Statistics and Information Analysis}{Rennes, France}{Advanced Statistical Engineering;}{}
-\cventry{2015}{MSc in }{University of Rennes 1, department of mathematics}{Rennes, France}{Mathematical Statistics;}{}  % Arguments not required can be left empty
-\cventry{2012}{BSc in }{University of Rennes 1, department of mathematics}{Rennes, France}{Mathematics;}{}
-\cventry{2010--2012}{Post secondary classes pr\'eparatoires }{Lyc\'ee Clemenceau}{Nantes, France}{Specialisation in Mathematic and Physics}{undergraduate-level courses required in preparation for competitive entrance exams into top graduate and engineering schools (France's grandes \'ecoles).}
+\cventry{2012--2015}{MSc in }{ENSAI - Ecole National de la Statistique et de l'Analyse de l'Information}{Rennes, France}{Filiere genie statistique;}{}
+\cventry{2015}{MSc in }{Universite Rennes 1, department de mathematiques}{Rennes, France}{Statistique mathematique;}{}  % Arguments not required can be left empty
+\cventry{2012}{BSc in }{Universite Rennes 1, department de mathematiques}{Rennes, France}{Mathematiques;}{}
+\cventry{2010--2012}{Classe preparatoire}{Lyc\'ee Clemenceau}{Nantes, France}{Filiere MPSI - MP}{}
 
 %\medskip
 %
@@ -109,8 +140,10 @@ statistical ill-posed inverse problems, non-parametric Bayesian and frequentist 
 
 \medskip
 
-\subsection{Online lectures (certificates available on request)}
-Unreal engine and C++ (currently following), Initiation \`a la th\'eorie des distributions (Coursera, \'Ecole Polytechnique), Approximation Algorithms Part I (Coursera, \'Ecole Normale Sup\'erieure), Introduction to Complex Analysis (Coursera, Wesleyan University)
+\subsection{Apprentissage en ligne}
+Initiation \`a la th\'eorie des distributions (Coursera, \'Ecole Polytechnique),
+Approximation Algorithms Part I (Coursera, \'Ecole Normale Sup\'erieure),
+Introduction to Complex Analysis (Coursera, Wesleyan University)
 
 %\section{Programing languages}
 %\textbf{Python} (wrote several packages for analysis of data - MSI, satellite imaging, altimetry data, high resolution microscopy, ...), \textbf{R} (many projects during studies, intensive use during internships for simulations and real data applications, data simulations during my PhD, and since joining NPL), \textbf{C++} (using for video game development with Unreal Engine), \textbf{Matlab} (used in research context, during studies for image treatment projects).
@@ -120,14 +153,17 @@ Unreal engine and C++ (currently following), Initiation \`a la th\'eorie des dis
 %----------------------------------------------------------------------------------------
 
 \section{Languages}
-French (native), English (fluent), German (basic), Spanish (basic).
+Francais (langue natale), Anglais (bilingue), Allemand (basique), Espagnol (basique).
 
 %----------------------------------------------------------------------------------------
 %	INTERESTS SECTION
 %----------------------------------------------------------------------------------------
 
-\section{Interests}
-\textbf{Music} (Guitar, singing, composition), \textbf{dancing} (pole and ballet, performing), \textbf{sport} (sport climbing, bouldering, cycling), \textbf{reading} (fictions, philosophy, sociology, technological surveillance).
+\section{Centres d'interet}
+\textbf{Musique} (guitare, chant, composition),
+\textbf{dance} (pole, classique),
+\textbf{sport} (escalade de bloc et en voie, velo),
+\textbf{lecture} (romans, philosophie, sociologie, surveillance technologique).
 
 % \section{Personal Details}
 % \cvitem{Date of Birth:}{$13^{th}$ of January, 1992}
