@@ -4,24 +4,27 @@
 \moderncvstyle{banking} % CV theme - options include: 'casual' (default), 'classic', 'oldstyle' and 'banking'
 \moderncvcolor{black} % CV color - options include: 'blue' (default), 'orange', 'green', 'red', 'purple', 'grey' and 'black'
 \moderncvicons{awesome}
+\usepackage{fontawesome5}
 \usepackage{multicol}
-
+\usepackage[french]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
 \usepackage[scale=0.75]{geometry}
-\usepackage{hyperref} % Reduce document margins
+% \usepackage{hyperref} % Reduce document margins
 %\setlength{\hintscolumnwidth}{3cm} % Uncomment to change the width of the dates column
 %\setlength{\makecvtitlenamewidth}{10cm} % For the 'classic' style, uncomment to adjust the width of the space allocated to your name
 
 \renewcommand*{\cventry}[7][.25em]{
-  \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}%
-	  {\bfseries #4} & {\bfseries #5} \\%
-	  {#3\ifthenelse{\equal{#6}{}}{}{#6}}&{#2}\\%
-  \end{tabular*}%
-  \ifx&#7&%
-    \else{\\\vbox{\small#7}}\fi%
+\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}%
+{\bfseries #4} & {\bfseries #5} \\%
+{#3\ifthenelse{\equal{#6}{}}{}{#6}}&{#2}\\%
+\end{tabular*}%
+\ifx&#7&%
+\else{\\\vbox{\small#7}}\fi%
 \par\addvspace{#1}}
 
 \renewcommand*{\cvitem}[3][.25em]{%
-  \ifthenelse{\equal{#2}{}}{}{\hintstyle{#2} }{#3}%
+\ifthenelse{\equal{#2}{}}{}{\hintstyle{#2} }{#3}%
 \par\addvspace{#1}}
 %----------------------------------------------------------------------------------------
 %	NAME AND CONTACT INFORMATION SECTION
@@ -30,7 +33,7 @@
 \firstname{Xavier} % Your first name
 \familyname{Loizeau} % Your last name
 % All information in this block is optional, comment out any lines you don't need
-\title{PhD, \href{https://ima.org.uk/}{MIMA}}
+\title{Dr, \href{https://ima.org.uk/}{MIMA}}
 \address{Flat 1, The Lamb, 16 Acre Road}{KT2 6EF Kingston upon Thames, England}
 \mobile{(+44) 7845 079595}
 \email{subscription@loizeau.eu}
@@ -46,103 +49,111 @@
 
 \makecvtitle % Print the CV title
 
-\section{Experiences professionelles}
+\section{Expériences professionnelles}
 \cventry{$21$ janvier $2019$ -- actuel}{Higher Research Scientist}{NPL (National Physical Laboratory)}{Teddington, Angleterre}{}{
-\begin{multicols}{2}
-  \begin{itemize}
-    \item \textbf{Recherche:} modelisation mathematique de processus physiques, chimiques, et biologiques.
-      Conception d'estimateurs statistiques et etude de leurs proprietes theoriques et empiriques, developpement de
-      logiciels pour l'analyse de donnees et l'apprentissage machine, interpretation de modeles mathematiques bases sur
-      des donnees et prise de decision rationelle;
-    \item \textbf{Developpement de logiciels:} creation de templates de d\'epots git, templates SLURM, preparation
-      d'audit par TickIT+, creation de template \LaTeX{} et Beamer;
-    \item \textbf{Management:} co-supervision de doctorants, supervision d'\'etudiants (niveau L3) en stage de 12 mois,
-      direction technique de scientifiques moins experiment\é$\bullet$e$\bullet$s,
-    \item \textbf{Strat\'egie:} redaction de demandes de financement (interne, nationale, et Europ\'eenne), cr\'eation
-      de collaborations entre d\'epartements du laboratoire, contribution aux politiques internes du laboratoire et \'à
-      la preparation d'une candidature \'a l'atestation Stonewall en tant que membre du commit\'e LGBTQ+, r\'ealisation
-      d'entretiens pour le recrutement.
-  \end{itemize}
-\end{multicols}
+    \begin{multicols}{2}
+        \begin{itemize}
+            \item \textbf{Recherche:}
+                modélisation mathématique de processus physiques, chimiques, et biologiques.
+                Conception d'estimateurs statistiques et étude de leurs propriétés théoriques et empiriques.
+                Développement de logiciels pour l'analyse de données et l'apprentissage machine.
+                Interprétation de modèles mathématiques et aide à la prise de décision.
+                Rédaction d'articles.
+                Présentations en conférences.
+            \item \textbf{Qualité logiciels:}
+                création de gabarits de dépôts git, de scripts SLURM, et de rapports, articles et présentations en \LaTeX{} et Beamer.
+                Préparation d'audits par TickIT+;
+            \item \textbf{Management:}
+                co-supervision de doctorants, supervision d'étudiants (niveau L3) en stage de 12 mois.
+                Direction technique de scientifiques moins expérimenté\textbullet e\textbullet s.
+            \item \textbf{Stratégie:}
+                rédaction de demandes de financement (interne, nationale, et Européenne).
+                Création de collaborations entre départements du laboratoire.
+                Contribution aux politiques internes du laboratoire dans des \href{https://www.npl.co.uk/news/npl-achieves-new-diversity-and-inclusion-awards}{démarches de diversité et d'inclusivité (prix Stonewall)}.
+                Réalisation d'entretiens de recrutement.
+        \end{itemize}
+    \end{multicols}
 }
-\cventry{2015--2018}{Doctorant en math\'ematiques}{Ruprecht-Karls-Universit\"at, Institut de math\'ematiques appliqu\'ees,}{Heidelberg, Allemagne}{}{
-  \begin{multicols}{2}
-  \begin{itemize}
-    \item \textbf{Recherche:} M\'ethodes Bay\'esiennes hierarchiques and aggr\'egation fr\'equentistes pour les
-      probl\`emes inverses: demonstration de l'optimalit\'e d'a priori hierarchiques et d'estimateurs par aggregation en
-      terme de taux de contraction et convergence oracle et minimax pour des modeles de problemes inverses
-      (equation de chaleur, deconvolution de densites) lorsque l'operateur est inconnu;
-    \item \textbf{Enseignement:} encadrement de travaux dirig\'es, preparation et correction d'examens, co-encadrement
-      de m\'emoires (Licence et Master);
-    \item \textbf{Strat\'egie:} Contribution \'a la r\'edaction de \href{http://rtg1953.uni-heidelberg.uni-mannheim.de/research-training-group-1953.html}{demandes de financement}.
-  \end{itemize}
+\cventry{2015--2018}{Doctorant en mathématiques}{Ruprecht-Karls-Universität}{Heidelberg, Allemagne}{}{
+    \begin{multicols}{2}
+        \begin{itemize}
+            \item \textbf{Recherche:}
+                Preuve de l'optimalité oracle et minimax d'a priori hiérarchiques en terme du taux de contraction a posteriori, et d'estimateurs par agrégation en terme du taux de convergence.
+                Application à des problèmes inverses mal posés lorsque l'opérateur est inconnu (équation de chaleur, dé-convolution de densités).
+                Rédaction d'articles.
+                Présentations en conférences.
+            \item \textbf{Enseignement:}
+                encadrement de travaux dirigés, préparation et correction d'examens, co-encadrement de mémoires (licence et master);
+            \item \textbf{Stratégie:}
+                Contribution à la rédaction de \href{http://rtg1953.uni-heidelberg.uni-mannheim.de/research-training-group-1953.html}{demandes de financement}.
+        \end{itemize}
+    \end{multicols}
 }
-\cventry{2015}{Stage}{ONERA (Office National d'\'etudes et de recherche en a\'erospatial)}{Palaiseau, France}{}{
-  Creation d'un modele de substitution a partir de donnees multi-fidelite pour les signatures infra-rouge de moteur
-  d'engins aerospatiaux.}
-\cventry{2014}{Stage}{CREST (Centre de recherche pour l'\'economie et la statistique)}{Rennes, France}{}{
-  Etude, implementation et comparaison de methodes de correction de biais d'illumination pour les images de microscopie
-  electronique.}
+\cventry{2015}{Stage}{ONERA (Office National d'études et de recherche en aérospatial)}{Palaiseau, France}{}{
+Création d'un modèle de substitution a partir de données multi-fidélité pour les signatures infra-rouge de moteur d'engins aérospatiaux.}
+\cventry{2014}{Stage}{CREST (Centre de recherche pour l'économie et la statistique)}{Rennes, France}{}{
+Étude, implémentassion et comparaison de méthodes de correction de biais d'illumination pour les images de microscopie électronique.}
 
-\medskip
+\newpage
 
-\subsection{Relevant technical skills}
+\subsection{Compétences techniques pertinentes}
 \begin{multicols}{2}
 \underline{\textsc{Applications:}}
-Projects pluridisciplinaires (communication, capacite d'adaptation), image satellitaires, altimetry par satellite,
-pathologie, conception de capteurs, imagerie par spectrometrie de masse, analyse d'images.
+Projets pluridisciplinaires (communication, capacité d'adaptation),
+analyse d'images (imagerie spatiale, histopathologie, imagerie par spectrométrie de masse),
+altimétrie par satellite,
+optimisation de capteurs.
 
-\underline{\textsc{Mathematiques:}}
-problemes inverses mal poses, statistique non-parametrique bayesienne et frequentiste, analyse de Fourier,
-theorie minimax, processus ponctuels, analyse de donnees fonctionnelles, processus stochastiques, series temporelles,
-theorie des probabilites, algorithmes d'approximation, quantification d'incertitude pour modeles parcimonieux,
-application du transport optimal a l'analyse de donnees, methodes MCMC;
+\underline{\textsc{Mathématiques:}}
+problèmes inverses mal posés,
+statistique non-paramétrique Bayesienne et fréquentiste,
+analyse de Fourier,
+théorie minimax,
+processus ponctuels,
+analyse de données fonctionnelles,
+processus stochastiques,
+séries temporelles,
+théorie des probabilités,
+algorithmes d'approximation,
+quantification d'incertitude pour modèles parcimonieux,
+application du transport optimal a l'analyse de données (calibration de couleurs, morpho-métrie, normalisation de données),
+méthodes MCMC;
 
 \underline{\textsc{Informatique:}}
-Python (usage avance), R (usage avance), C++ (intermediaire), MatLab (intermediaire),
-git avec GitHub/GitLab (usage avance), IDEs (emacs, visual studio, ...), environement Unix.
+Python (usage avancé),
+R (usage avancé),
+C++ (intermédiaire),
+MatLab (intermédiaire),
+git avec GitHub / GitLab (usage avancé),
+IDEs (Emacs, visual studio, pycharm...),
+environnement Unix.
 
 \end{multicols}
 
 \subsection{Projets}
-\href{https://www.npl.co.uk/news/next-generation-of-digital-pathology}{Pathologie digitale} (direction technique, plusieurs articles en preparation),
-\href{https://www.bipmwmo22.org/submissions/submission/137}{Niveau moyen de la mer} (direction technique, article en preparation),
-\href{https://www.bipmwmo22.org/submissions/submission/138}{Propagation d'incertitude et re-meshing} (direction technique, article en preparation),
+\href{https://www.npl.co.uk/news/next-generation-of-digital-pathology}{Pathologie digitale} (direction technique, plusieurs articles en préparation),
+\href{https://www.bipmwmo22.org/submissions/submission/137}{Hausse du niveau moyen de la mer} (direction technique, article en préparation),
+\href{https://www.bipmwmo22.org/submissions/submission/138}{Propagation d'incertitude et re-meshing} (direction technique, article en préparation),
 \href{https://www.npl.co.uk/earth-observation/truths}{TRUTHS} (conception d'un capteur de calibration),
-\href{https://www.npl.co.uk/grand-challenge}{CRUK Rosetta Grand challenge} (analyse de donnees),
-\href{https://arxiv.org/pdf/2102.01037}{Taux de convergence minimax-optimal d'estimateurs par aggregation dans un model de deconvolution de densites} (article redige durant le doctorat),
-\href{https://pubs.acs.org/doi/abs/10.1021/acs.analchem.1c02470}{Resolution spatial en imagerie par spectrometrie de masse} (co-auteur, co-supervision de doctorant).
+\href{https://www.npl.co.uk/grand-challenge}{CRUK Rosetta Grand challenge} (analyse de données),
+\href{https://arxiv.org/pdf/2102.01037}{Taux de convergence minimax-optimal d'estimateurs par agrégation dans un modèle de de-convolution de densités} (article rédigé durant le doctorat),
+\href{https://pubs.acs.org/doi/abs/10.1021/acs.analchem.1c02470}{Résolution spatial en imagerie par spectrométrie de masse} (coauteur, co-supervision de doctorant).
 
 %----------------------------------------------------------------------------------------
 %	EDUCATION SECTION
 %----------------------------------------------------------------------------------------
 
 \section{Education}
-\cventry{2012--2015}{MSc in }{ENSAI - Ecole National de la Statistique et de l'Analyse de l'Information}{Rennes, France}{Filiere genie statistique;}{}
-\cventry{2015}{MSc in }{Universite Rennes 1, department de mathematiques}{Rennes, France}{Statistique mathematique;}{}  % Arguments not required can be left empty
-\cventry{2012}{BSc in }{Universite Rennes 1, department de mathematiques}{Rennes, France}{Mathematiques;}{}
-\cventry{2010--2012}{Classe preparatoire}{Lyc\'ee Clemenceau}{Nantes, France}{Filiere MPSI - MP}{}
-
-%\medskip
-%
-%\subsection{Subjects in study program}
-%
-%\begin{multicols}{2}
-%\underline{\textsc{Mathematics:}}
-%probability theory, complex analysis, topology, functional analysis, measure theory, numerical analysis, group theory, arithmetic, linear algebra;
-%
-%\underline{\textsc{stochastic:}}
-%survival analysis, Le Cam theory, test theory, generalized additive models, non linear regression, time series;
-%
-%\underline{\textsc{Data science:}} neural networks, SVM, random forests, classification/regression trees, CART, BAGGING, MCMC algorithms, image processing (filtering, Markov fields, MAP classification, MAP reconstruction), kNN, surrogate models, design of experiments, quality control of industrial processes.
-%\end{multicols}
-%------------------------------------------------
+\cventry{2012--2015}{Titre d'ingénieur en }{ENSAI - École nationale de la statistique et de l'analyse de l'information}{Rennes, France}{génie statistique;}{}
+\cventry{2015}{Master de }{Université Rennes 1, département de mathématiques}{Rennes, France}{statistique mathématique;}{}  % Arguments not required can be left empty
+\cventry{2012}{Licence de }{Université Rennes 1, département de mathématiques}{Rennes, France}{mathématiques;}{}
+\cventry{2010--2012}{Classe préparatoire}{Lycée Clemenceau}{Nantes, France}{Filière MPSI - MP}{}
 
 \medskip
 
 \subsection{Apprentissage en ligne}
-Initiation \`a la th\'eorie des distributions (Coursera, \'Ecole Polytechnique),
-Approximation Algorithms Part I (Coursera, \'Ecole Normale Sup\'erieure),
+Initiation à la théorie des distributions (Coursera, école Polytechnique),
+Approximation Algorithms Part I (Coursera, école Normale Supérieure),
 Introduction to Complex Analysis (Coursera, Wesleyan University)
 
 %\section{Programing languages}
@@ -152,18 +163,18 @@ Introduction to Complex Analysis (Coursera, Wesleyan University)
 %	LANGUAGES SECTION
 %----------------------------------------------------------------------------------------
 
-\section{Languages}
-Francais (langue natale), Anglais (bilingue), Allemand (basique), Espagnol (basique).
+\section{Langages}
+Français (langue natale), Anglais (bilingue), Allemand (basique), Espagnol (basique).
 
 %----------------------------------------------------------------------------------------
 %	INTERESTS SECTION
 %----------------------------------------------------------------------------------------
 
-\section{Centres d'interet}
+\section{Centres d'intérêt}
 \textbf{Musique} (guitare, chant, composition),
-\textbf{dance} (pole, classique),
-\textbf{sport} (escalade de bloc et en voie, velo),
-\textbf{lecture} (romans, philosophie, sociologie, surveillance technologique).
+\textbf{danse},
+\textbf{sport} (escalade de bloc et en voie, vélo, badminton),
+\textbf{lecture} (science-fiction, philosophie, sociologie, veille technologique).
 
 % \section{Personal Details}
 % \cvitem{Date of Birth:}{$13^{th}$ of January, 1992}
